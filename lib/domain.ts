@@ -83,6 +83,7 @@ export type EditionManquante = {
 
 export type Manquants = {
   editions: EditionManquante[];
+  arretees: EditionManquante[];
   tomesManquants: number;
 };
 

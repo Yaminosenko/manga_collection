@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CollapsibleSection } from "@/components/collapsible-section";
 import { CollectionRow } from "@/components/collection-row";
-import { CaretDown, CaretRight, Check, MagnifyingGlass, SortAscending } from "@/components/icons";
+import { Check, MagnifyingGlass, SortAscending } from "@/components/icons";
 import {
   CROISSANT_PAR_DEFAUT,
   LIBELLE_AUCUN_RESULTAT,
@@ -59,7 +60,6 @@ export function CollectionList({ collection }: { collection: Collection }) {
   const [recherche, setRecherche] = useState("");
   const [preference, appliquerPreference] = usePreferenceTri();
   const [menuOuvert, setMenuOuvert] = useState(false);
-  const [venduesOuvertes, setVenduesOuvertes] = useState(false);
 
   const lignes = useMemo(() => {
     const filtrees = collection.lignes.filter((ligne) => correspond(ligne, recherche));
@@ -177,26 +177,11 @@ export function CollectionList({ collection }: { collection: Collection }) {
         ))}
 
         {vendues.length > 0 ? (
-          <section className="mt-[8px]">
-            <button
-              type="button"
-              onClick={() => setVenduesOuvertes((ouvertes) => !ouvertes)}
-              aria-expanded={venduesOuvertes}
-              className="flex min-h-11 w-full items-center gap-[6px] text-[12px] text-neutral-600"
-            >
-              {venduesOuvertes ? (
-                <CaretDown className="size-[12px]" />
-              ) : (
-                <CaretRight className="size-[12px]" />
-              )}
-              {LIBELLE_VENDUES}
-              <span className="text-neutral-700">{vendues.length}</span>
-            </button>
-
-            {venduesOuvertes
-              ? vendues.map((ligne) => <CollectionRow key={ligne.slug} ligne={ligne} />)
-              : null}
-          </section>
+          <CollapsibleSection libelle={LIBELLE_VENDUES} compteur={vendues.length}>
+            {vendues.map((ligne) => (
+              <CollectionRow key={ligne.slug} ligne={ligne} />
+            ))}
+          </CollapsibleSection>
         ) : null}
       </div>
     </>

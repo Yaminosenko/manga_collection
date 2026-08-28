@@ -175,8 +175,14 @@ export async function chargerManquants(): Promise<Manquants> {
     .filter((edition) => edition.manquants.length > 0)
     .sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
 
+  const editionsActives = avecManquants.filter((edition) => edition.statut === "EN_COURS");
+
   return {
-    editions: avecManquants,
-    tomesManquants: avecManquants.reduce((total, edition) => total + edition.manquants.length, 0),
+    editions: editionsActives,
+    arretees: avecManquants.filter((edition) => edition.statut !== "EN_COURS"),
+    tomesManquants: editionsActives.reduce(
+      (total, edition) => total + edition.manquants.length,
+      0,
+    ),
   };
 }

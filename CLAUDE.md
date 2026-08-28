@@ -556,13 +556,18 @@ Décisions prises en chemin :
 - **Purger `.next` après un déplacement de route.** Le validateur de types généré garde une
   référence à l'ancien chemin et fait échouer la vérification TypeScript.
 
-### À trancher — le périmètre des Manquants
+### Tranché — le périmètre des Manquants
 
-§4 n'exclut que les vendues et les complétions forcées. Conséquence mesurée : **19 des
-34 éditions affichées, et 320 des 442 tomes — 72 % de l'écran — sont des séries abandonnées
-ou en pause.** Lu comme une liste de courses, l'écran est dominé par ce qu'on a arrêté
-d'acheter. La spec est appliquée telle quelle ; l'exclusion des abandonnées, ou leur
-regroupement dans une section repliée à la manière des vendues, reste à arbitrer.
+§4 n'excluait que les vendues et les complétions forcées, et 19 des 34 éditions affichées,
+320 des 442 tomes — 72 % de l'écran — étaient des séries abandonnées ou en pause. Lu comme
+une liste de courses, l'écran était dominé par ce qu'on a arrêté d'acheter.
+
+**Décision : section repliée**, comme les vendues sur la Collection. Rien n'est perdu, la
+liste principale redevient une liste d'achat. L'écran affiche **122 tomes sur 15 éditions**,
+et « Abandonnées et en pause » en compte 19. Les compteurs d'en-tête portent sur la seule
+liste principale, comme §3 le fait déjà pour les vendues.
+
+Le motif est extrait dans `components/collapsible-section.tsx`, partagé avec les vendues.
 
 ### Prochaine étape — étape 5
 
