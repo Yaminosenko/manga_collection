@@ -530,10 +530,45 @@ Décisions prises en chemin :
   aucun et fait foi sur le rendu. La complétion se lit au sous-titre « Complète » et à
   l'absence de zone hachurée. À trancher si le signal manque à l'usage.
 
-### Prochaine étape — étape 4
+### Fait — étape 4
 
-Manquants (§4) : les tomes non possédés déjà parus, groupés par édition, hors vendues et
-hors complétions forcées. La barre d'onglets se pose avec cet écran.
+Manquants (§4) et la barre d'onglets. Vérifié sur les données réelles : **442 tomes sur
+34 éditions**, soit les 492 manquants de la base moins les 42 tomes des 4 vendues et les
+8 des 3 complétions forcées. `npm run build` et `npm run lint` passent.
+
+| Fichier | Rôle |
+|---|---|
+| `app/(tabs)/layout.tsx` | le groupe de routes qui porte la barre d'onglets |
+| `app/(tabs)/manquants/page.tsx` | l'écran Manquants |
+| `components/missing-group.tsx` | un groupe : édition, puis les numéros manquants en pastilles |
+| `components/tab-bar.tsx` | la barre d'onglets |
+
+Décisions prises en chemin :
+
+- **Groupe de routes `app/(tabs)/`.** La barre d'onglets appartient à la Collection et aux
+  Manquants, pas à la page Édition ni à « Mes tomes » — le handoff les montre en écran plein
+  avec leur propre retour. Le groupe de routes porte donc la barre sans polluer l'URL.
+  Vérifié : présente sur les deux premiers écrans, absente des deux autres.
+- **Deux onglets, pas trois.** Ajouter n'existe pas encore ; le troisième onglet arrive avec
+  l'étape 5.
+- **Les pastilles ne sont pas cliquables** et le groupe pointe vers la page Édition, jamais
+  vers « Mes tomes » : §4 fait du bouton `X / Y TOMES` le seul accès à la sous-page.
+- **Purger `.next` après un déplacement de route.** Le validateur de types généré garde une
+  référence à l'ancien chemin et fait échouer la vérification TypeScript.
+
+### À trancher — le périmètre des Manquants
+
+§4 n'exclut que les vendues et les complétions forcées. Conséquence mesurée : **19 des
+34 éditions affichées, et 320 des 442 tomes — 72 % de l'écran — sont des séries abandonnées
+ou en pause.** Lu comme une liste de courses, l'écran est dominé par ce qu'on a arrêté
+d'acheter. La spec est appliquée telle quelle ; l'exclusion des abandonnées, ou leur
+regroupement dans une section repliée à la manière des vendues, reste à arbitrer.
+
+### Prochaine étape — étape 5
+
+Ajout de série via API (§4) : recherche mêlant collection locale et AniList, **étape de
+confirmation d'édition obligatoire**, génération des tomes, atterrissage sur la page édition.
+Le troisième onglet se pose ici. Dépend en partie de la clé Google Books.
 
 ### Reprendre sur un poste neuf
 

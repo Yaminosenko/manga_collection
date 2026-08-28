@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import type { Collection, Edition } from "@/lib/domain";
+import type { Collection, Edition, Manquants } from "@/lib/domain";
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
   const edition = await prisma.edition.findUnique({
@@ -125,5 +125,58 @@ export async function chargerCollection(): Promise<Collection> {
     vendues: toutes.filter((ligne) => ligne.statut === "VENDUE"),
     tomesPossedes: lignes.reduce((total, ligne) => total + ligne.possedes, 0),
     nombreEditions: lignes.length,
+  };
+}
+
+export async function chargerManquants(): Promise<Manquants> {
+  const editions = await prisma.edition.findMany({
+    where: { statut: { not: "VENDUE" }, termineeForcee: false },
+    select: {
+      slug: true,
+      nom: true,
+      editeur: true,
+      statut: true,
+      aVerifier: true,
+      tomesParus: true,
+      couvertureUrl: true,
+      serie: { select: { titre: true } },
+      volumes: {
+        orderBy: { numero: "asc" },
+        select: {
+          numero: true,
+          couvertureUrl: true,
+          possession: { select: { possede: true } },
+        },
+      },
+    },
+  });
+
+  const avecManquants = editions
+    .map((edition) => {
+      const parus = edition.volumes.filter((volume) => volume.numero <= edition.tomesParus);
+      const possedes = parus.filter((volume) => volume.possession?.possede);
+      const dernier = possedes.at(-1) ?? null;
+      return {
+        slug: edition.slug,
+        titre: edition.serie.titre,
+        nom: edition.nom,
+        editeur: edition.editeur,
+        statut: edition.statut,
+        aVerifier: edition.aVerifier,
+        tomesParus: edition.tomesParus,
+        possedes: possedes.length,
+        manquants: parus
+          .filter((volume) => !volume.possession?.possede)
+          .map((volume) => volume.numero),
+        dernierNumeroPossede: dernier?.numero ?? null,
+        couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
+      };
+    })
+    .filter((edition) => edition.manquants.length > 0)
+    .sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
+
+  return {
+    editions: avecManquants,
+    tomesManquants: avecManquants.reduce((total, edition) => total + edition.manquants.length, 0),
   };
 }

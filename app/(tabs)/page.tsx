@@ -7,7 +7,7 @@ export default async function Page() {
   const collection = await chargerCollection();
 
   return (
-    <main className="flex min-h-dvh flex-col">
+    <main className="flex flex-1 flex-col">
       <CollectionList collection={collection} />
     </main>
   );

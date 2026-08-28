@@ -67,6 +67,25 @@ export type Collection = {
   nombreEditions: number;
 };
 
+export type EditionManquante = {
+  slug: string;
+  titre: string;
+  nom: string;
+  editeur: string | null;
+  statut: StatutEdition;
+  aVerifier: boolean;
+  tomesParus: number;
+  possedes: number;
+  manquants: number[];
+  dernierNumeroPossede: number | null;
+  couvertureUrl: string | null;
+};
+
+export type Manquants = {
+  editions: EditionManquante[];
+  tomesManquants: number;
+};
+
 export function dernierTomePossede(tomes: Tome[]): Tome | null {
   for (let index = tomes.length - 1; index >= 0; index -= 1) {
     const tome = tomes[index];

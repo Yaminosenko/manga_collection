@@ -43,3 +43,8 @@ export const CROISSANT_PAR_DEFAUT: Record<CleTri, boolean> = {
   ajoutRecent: false,
   aVerifier: false,
 };
+
+export const TITRE_MANQUANTS = "Manquants";
+export const LIBELLE_AUCUN_MANQUANT = "Aucun tome manquant.";
+export const LIBELLE_MANQUANTS_ERREUR = "Les tomes manquants n’ont pas pu être chargés.";
+export const LIBELLE_COLLECTION_ERREUR = "La collection n’a pas pu être chargée.";

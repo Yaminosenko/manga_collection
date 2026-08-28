@@ -1,9 +1,11 @@
 "use client";
 
+import { LIBELLE_COLLECTION_ERREUR } from "@/lib/constants";
+
 export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center gap-[14px] px-[18px] text-center">
-      <p className="text-[13px] text-neutral-400">La collection n’a pas pu être chargée.</p>
+      <p className="text-[13px] text-neutral-400">{LIBELLE_COLLECTION_ERREUR}</p>
       <button
         type="button"
         onClick={reset}
