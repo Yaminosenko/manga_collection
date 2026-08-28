@@ -32,3 +32,7 @@ yarn-error.log*
 *.log
 .vercel
 coverage/
+
+/lib/generated/prisma
+
+!CLAUDE.md

@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum StatutEdition {
+  EN_COURS
+  ABANDONNEE
+  EN_PAUSE
+  VENDUE
+}
+
+model Serie {
+  id            String    @id @default(uuid())
+  slug          String    @unique
+  titre         String
+  titreVo       String?
+  auteur        String
+  genres        String[]
+  themes        String[]
+  cible         String?
+  couvertureUrl String?
+  editions      Edition[]
+
+  @@index([titre])
+}
+
+model Edition {
+  id                 String        @id @default(uuid())
+  serie              Serie         @relation(fields: [serieId], references: [id], onDelete: Cascade)
+  serieId            String
+  slug               String        @unique
+  nom                String
+  editeur            String?
+  tomesParus         Int
+  editionTerminee    Boolean?
+  prixDefautCentimes Int?
+  statut             StatutEdition
+  termineeForcee     Boolean       @default(false)
+  raisonCompletion   String?
+  aVerifier          Boolean       @default(false)
+  slugMangaNews      String?
+  couvertureUrl      String?
+  ajouteeLe          DateTime      @default(now())
+  volumes            Volume[]
+
+  @@index([serieId])
+  @@index([statut])
+}
+
+model Volume {
+  id            String      @id @default(uuid())
+  edition       Edition     @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  editionId     String
+  numero        Int
+  isbn          String?
+  dateSortie    DateTime?
+  prixCentimes  Int?
+  couvertureUrl String?
+  possession    Possession?
+
+  @@unique([editionId, numero])
+}
+
+model Possession {
+  id               String    @id @default(uuid())
+  volume           Volume    @relation(fields: [volumeId], references: [id], onDelete: Cascade)
+  volumeId         String    @unique
+  possede          Boolean   @default(false)
+  dateAchat        DateTime?
+  prixPayeCentimes Int?
+  etat             String?
+  lu               Boolean   @default(false)
+  note             Int?
+
+  @@index([possede])
+}
