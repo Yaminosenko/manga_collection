@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "@/components/icons";
 import { VolumeGrid } from "@/components/volume-grid";
-import { aDesTomesAParaitre, chargerEdition } from "@/lib/editions";
+import { chargerEdition } from "@/lib/editions";
+import { aDesTomesAParaitre } from "@/lib/domain";
 
 export const dynamic = "force-dynamic";
 

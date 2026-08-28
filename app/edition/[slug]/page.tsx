@@ -3,13 +3,13 @@ import { notFound } from "next/navigation";
 import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
 import { ArrowLeft, ArrowUpRight, WarningCircle } from "@/components/icons";
+import { chargerEdition } from "@/lib/editions";
 import {
   aDesTomesAParaitre,
-  chargerEdition,
   dernierTomePossede,
   libelleStatut,
   valeurCentimes,
-} from "@/lib/editions";
+} from "@/lib/domain";
 import { LIBELLE_A_VERIFIER, URL_FICHE_MANGA_NEWS } from "@/lib/constants";
 import { formaterPrix } from "@/lib/format";
 

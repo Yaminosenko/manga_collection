@@ -6,7 +6,7 @@ import { Cover } from "@/components/cover";
 import { Check } from "@/components/icons";
 import { CASES_A_PARAITRE } from "@/lib/constants";
 import { useEnLigne } from "@/lib/use-online";
-import type { Tome } from "@/lib/editions";
+import type { Tome } from "@/lib/domain";
 
 type Mutation = { type: "bascule"; numero: number } | { type: "tous"; possede: boolean };
 

@@ -1,52 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import {
-  LIBELLES_STATUT,
-  LIBELLE_COMPLETE,
-  LIBELLE_EDITION_TERMINEE,
-  LIBELLE_TERMINEE_FORCEE,
-} from "@/lib/constants";
-import type { StatutEdition } from "@/lib/generated/prisma/enums";
-
-export type Tome = {
-  numero: number;
-  possede: boolean;
-  couvertureUrl: string | null;
-  prixCentimes: number | null;
-};
-
-export type AutreEdition = {
-  slug: string;
-  nom: string;
-  editeur: string | null;
-  tomesParus: number;
-  possedes: number;
-  editionTerminee: boolean | null;
-  statut: StatutEdition;
-};
-
-export type Edition = {
-  slug: string;
-  nom: string;
-  editeur: string | null;
-  titre: string;
-  auteur: string;
-  genres: string[];
-  cible: string | null;
-  tomesParus: number;
-  editionTerminee: boolean | null;
-  statut: StatutEdition;
-  termineeForcee: boolean;
-  aVerifier: boolean;
-  slugMangaNews: string | null;
-  couvertureUrl: string | null;
-  prixDefautCentimes: number | null;
-  tomes: Tome[];
-  autresEditions: AutreEdition[];
-};
-
-function compterPossedes(volumes: { possession: { possede: boolean } | null }[]): number {
-  return volumes.filter((volume) => volume.possession?.possede).length;
-}
+import type { Collection, Edition } from "@/lib/domain";
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
   const edition = await prisma.edition.findUnique({
@@ -113,62 +66,64 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
         nom: autre.nom,
         editeur: autre.editeur,
         tomesParus: autre.tomesParus,
-        possedes: compterPossedes(autre.volumes),
+        possedes: autre.volumes.filter((volume) => volume.possession?.possede).length,
         editionTerminee: autre.editionTerminee,
         statut: autre.statut,
       })),
   };
 }
 
-export function numerosPossedes(tomes: Tome[]): number[] {
-  return tomes.filter((tome) => tome.possede).map((tome) => tome.numero);
-}
+export async function chargerCollection(): Promise<Collection> {
+  const editions = await prisma.edition.findMany({
+    select: {
+      slug: true,
+      nom: true,
+      editeur: true,
+      tomesParus: true,
+      editionTerminee: true,
+      statut: true,
+      termineeForcee: true,
+      aVerifier: true,
+      ajouteeLe: true,
+      couvertureUrl: true,
+      serie: { select: { titre: true } },
+      volumes: {
+        orderBy: { numero: "asc" },
+        select: {
+          numero: true,
+          couvertureUrl: true,
+          possession: { select: { possede: true } },
+        },
+      },
+    },
+  });
 
-export function dernierTomePossede(tomes: Tome[]): Tome | null {
-  for (let index = tomes.length - 1; index >= 0; index -= 1) {
-    const tome = tomes[index];
-    if (tome && tome.possede) {
-      return tome;
-    }
-  }
-  return null;
-}
+  const toutes = editions.map((edition) => {
+    const possedes = edition.volumes.filter((volume) => volume.possession?.possede);
+    const dernier = possedes.at(-1) ?? null;
+    return {
+      slug: edition.slug,
+      titre: edition.serie.titre,
+      nom: edition.nom,
+      editeur: edition.editeur,
+      tomesParus: edition.tomesParus,
+      possedes: possedes.length,
+      editionTerminee: edition.editionTerminee,
+      statut: edition.statut,
+      termineeForcee: edition.termineeForcee,
+      aVerifier: edition.aVerifier,
+      ajouteeLe: edition.ajouteeLe.getTime(),
+      dernierNumeroPossede: dernier?.numero ?? null,
+      couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
+    };
+  });
 
+  const lignes = toutes.filter((ligne) => ligne.statut !== "VENDUE");
 
-export function aDesTomesAParaitre(editionTerminee: boolean | null): boolean {
-  return editionTerminee !== true;
-}
-
-export function libelleStatut(
-  edition: Pick<Edition, "statut" | "tomesParus" | "termineeForcee" | "editionTerminee">,
-  possedes: number,
-): string {
-  if (edition.statut !== "EN_COURS") {
-    return LIBELLES_STATUT[edition.statut];
-  }
-  if (edition.termineeForcee) {
-    return LIBELLE_TERMINEE_FORCEE;
-  }
-  if (possedes === edition.tomesParus) {
-    return LIBELLE_COMPLETE;
-  }
-  return aDesTomesAParaitre(edition.editionTerminee)
-    ? LIBELLES_STATUT.EN_COURS
-    : LIBELLE_EDITION_TERMINEE;
-}
-
-export function valeurCentimes(edition: Pick<Edition, "prixDefautCentimes" | "tomes">): number | null {
-  const possedes = edition.tomes.filter((tome) => tome.possede);
-  if (possedes.length === 0) {
-    return 0;
-  }
-  let total = 0;
-  for (const tome of possedes) {
-    const prix = tome.prixCentimes ?? edition.prixDefautCentimes;
-    if (prix === null) {
-      return null;
-    }
-    total += prix;
-  }
-  return total;
+  return {
+    lignes,
+    vendues: toutes.filter((ligne) => ligne.statut === "VENDUE"),
+    tomesPossedes: lignes.reduce((total, ligne) => total + ligne.possedes, 0),
+    nombreEditions: lignes.length,
+  };
 }

@@ -3,7 +3,7 @@ type CoverProps = {
   numero: number | null;
   titre: string;
   afficherNumero?: boolean;
-  className?: string;
+  placeholderClassName?: string;
 };
 
 export function Cover({
@@ -11,7 +11,7 @@ export function Cover({
   numero,
   titre,
   afficherNumero = true,
-  className = "",
+  placeholderClassName = "p-[6px] text-neutral-600",
 }: CoverProps) {
   if (couvertureUrl) {
     return (
@@ -20,14 +20,14 @@ export function Cover({
         alt={numero === null ? titre : `${titre} — tome ${numero}`}
         loading="lazy"
         decoding="async"
-        className={`h-full w-full object-cover ${className}`}
+        className="h-full w-full object-cover"
       />
     );
   }
 
   return (
     <div
-      className={`cover-placeholder flex h-full w-full items-end justify-end p-[6px] font-medium text-neutral-600 ${className}`}
+      className={`cover-placeholder flex h-full w-full items-end justify-end font-medium ${placeholderClassName}`}
     >
       {afficherNumero && numero !== null ? numero : null}
     </div>

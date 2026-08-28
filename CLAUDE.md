@@ -491,9 +491,49 @@ Décisions prises en chemin :
 - **`app/page.tsx` liste les éditions en liens bruts**, juste de quoi atteindre les nouveaux
   écrans. C'est le point de départ de l'étape 3, pas la Collection.
 
-### Prochaine étape — étape 3
+### Fait — étape 3
 
-Collection (§4) : la liste, la recherche, le tri, la section « Vendues ».
+Collection (§4). Vérifié sur les données réelles : en-tête « 1 148 tomes · 108 éditions »,
+108 lignes rendues, section « Vendues » repliée avec son compteur 4, `npm run build` et
+`npm run lint` passent.
+
+| Fichier | Rôle |
+|---|---|
+| `app/page.tsx` | la Collection, remplace la page provisoire |
+| `app/{loading,error}.tsx` | les états de la route |
+| `components/collection-list.tsx` | recherche, menu de tri, section « Vendues » |
+| `components/collection-row.tsx` | l'anatomie d'une ligne |
+| `lib/domain.ts` | les types et les règles pures, sans Prisma |
+| `lib/use-sort-preference.ts` | la préférence de tri mémorisée |
+
+Décisions prises en chemin :
+
+- **`lib/domain.ts` séparé de `lib/editions.ts`.** Turbopack refuse de construire dès qu'un
+  composant client importe une valeur d'un module qui tire Prisma : le bundle navigateur
+  réclame alors `node:module`. Les types et les règles pures vivent donc dans un module sans
+  accès aux données, `lib/editions.ts` ne garde que les requêtes.
+- **La préférence de tri passe par `useSyncExternalStore`**, comme l'état réseau.
+  `localStorage` est un store externe ; le lire dans un `useEffect` déclenche un rendu en
+  cascade, que la règle `react-hooks/set-state-in-effect` refuse à raison.
+- **Sous-titre et icône portent deux signaux différents.** 19 des 37 éditions « à vérifier »
+  sont aussi abandonnées ou en pause : avec une seule précédence, leur drapeau disparaissait
+  de l'écran alors que §4 en fait un critère de tri. Le sous-titre suit le statut personnel
+  (§3), l'icône suit `aVerifier` en premier. Chaque combinaison montre donc ses deux états.
+- **Sens de tri par défaut selon le critère** : alphabétique croissant, les quatre autres
+  décroissants — le plus de tomes, le plus complet, le plus récent, à vérifier en premier.
+  Le sens reste inversable et le choix mémorisé.
+- **Recherche et filtrage côté client.** Les 112 éditions sont déjà chargées ; filtrer en
+  local évite un aller-retour serveur et fonctionne en consultation hors ligne.
+- **La barre d'onglets n'est pas rendue.** Manquants et Ajouter n'existent pas encore ;
+  deux onglets morts se lisent comme un bug. Elle arrive avec l'étape 4.
+- **Pas de badge de complétion sur la ligne.** §4 en mentionne un, le handoff n'en décrit
+  aucun et fait foi sur le rendu. La complétion se lit au sous-titre « Complète » et à
+  l'absence de zone hachurée. À trancher si le signal manque à l'usage.
+
+### Prochaine étape — étape 4
+
+Manquants (§4) : les tomes non possédés déjà parus, groupés par édition, hors vendues et
+hors complétions forcées. La barre d'onglets se pose avec cet écran.
 
 ### Reprendre sur un poste neuf
 
