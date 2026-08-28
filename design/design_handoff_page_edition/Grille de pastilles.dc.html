@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="stylesheet" href="nocturne/styles.css"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"><style>body{margin:0;background:#0e1018;font-family:var(--font-body)}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(255,255,255,.07)}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:var(--color-accent-800);color:var(--color-accent-200);border-radius:4px;text-decoration:none}.dv-tname{font:500 13px/1.2 var(--font-heading);color:var(--color-neutral-300)}.dv-intro{max-width:640px;margin:0 0 26px;font:400 12.5px/1.6 var(--font-body);color:var(--color-neutral-500)}.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(255,255,255,.08);color:var(--color-neutral-300);border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 var(--font-body);color:var(--color-neutral-500);max-width:390px}.dv-opt:target .dv-oid{background:var(--color-accent);color:#161826}.dv-next{margin:24px 0 0;font:12px/1.6 var(--font-body);color:var(--color-neutral-600)}.ph{line-height:1}</style></helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Couvertures dans la grille de <a class="dv-oid" href="#1d">1d</a></span></div>
+<p class="dv-intro">Oui, c'est jouable — mais pas à 7 colonnes et pas en plus des pastilles. Une vignette de 48 px de large ne montre rien d'une couverture ; elle devient une texture. Deux façons de s'en sortir : la couverture <em>remplace</em> le remplissage du dos (7 colonnes, on lit encore le rythme, la couverture reste une ambiance), ou on descend à 4 colonnes et la couverture devient lisible — mais Berserk passe alors de 6 à 11 rangées et le geste perd sa vue d'ensemble. Vignettes rayées = emplacement d'image réelle.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>7 colonnes — la couverture remplit le dos, le numéro reste en pastille</div>
+<div style="width:390px;background:var(--color-bg);border-radius:20px;box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px 18px;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;align-items:center;gap:9px">
+    <span style="font:500 15px var(--font-heading);color:var(--color-text)">{{ gf.count }} tomes</span>
+    <div style="flex:1;display:flex;gap:3px;height:6px"><div style="{{ gf.barOwned }}"></div><div style="{{ gf.barMissing }}"></div><div style="width:22px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">
+    <sc-for list="{{ gf.items }}" as="p" hint-placeholder-count="17"><div style="{{ p.style }}" onClick="{{ p.toggle }}"><div style="{{ p.stripe }}"></div><span style="{{ p.badge }}">{{ p.label }}</span></div></sc-for>
+  </div>
+  <span style="font:400 10.5px/1.5 var(--font-body);color:var(--color-neutral-600)">Manquant = même vignette désaturée à 34 %. La grille garde son rythme de 7, la couverture n'est qu'une ambiance.</span>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>4 colonnes — la couverture est vraiment lisible, la vue d'ensemble se perd</div>
+<div style="width:390px;background:var(--color-bg);border-radius:20px;box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px 18px;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;align-items:center;gap:9px">
+    <span style="font:500 15px var(--font-heading);color:var(--color-text)">{{ gg.count }} tomes</span>
+    <div style="flex:1;display:flex;gap:3px;height:6px"><div style="{{ gg.barOwned }}"></div><div style="{{ gg.barMissing }}"></div><div style="width:22px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">
+    <sc-for list="{{ gg.items }}" as="p" hint-placeholder-count="17"><div style="{{ p.style }}" onClick="{{ p.toggle }}"><div style="{{ p.stripe }}"></div><span style="{{ p.badge }}">{{ p.label }}</span><span style="{{ p.check }}"><i class="ph-fill ph-check"></i></span></div></sc-for>
+  </div>
+  <span style="font:400 10.5px/1.5 var(--font-body);color:var(--color-neutral-600)">Berserk : 11 rangées au lieu de 6. À réserver aux séries courtes, ou en second mode d'affichage.</span>
+</div>
+</div>
+
+</div>
+<p class="dv-next">À dire ensuite : « garde <a class="dv-oid" href="#2a">2a</a> mais sans les numéros » · « mets un basculeur pastilles / couvertures dans la sous-page » · « montre <a class="dv-oid" href="#2a">2a</a> sur Berserk »</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Page Édition — quatre grilles de pastilles, plus le contexte d'arrivée</span></div>
+<p class="dv-intro">Données réelles de <code>collection.json</code>. CALL OF THE NIGHT sert de cas de démonstration : 14 tomes parus, 9 possédés, avec des trous — exactement le cas que le compteur du Sheet ne sait pas décrire. Les pastilles sont vivantes : un tap coche ou décoche, le compteur et la barre suivent.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Collection — la ligne dont on part</div>
+<div style="width:390px;height:844px;background:var(--color-bg);border-radius:26px;box-shadow:0 0 0 1px var(--color-neutral-800),0 20px 50px rgba(0,0,0,.6);overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px 0;font:500 12px var(--font-body);color:var(--color-neutral-400)"><span>9:41</span><span style="display:flex;gap:6px"><i class="ph ph-wifi-high"></i><i class="ph ph-battery-high"></i></span></div>
+  <div style="padding:14px 18px 10px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <h4 style="margin:0;color:var(--color-text)">Collection</h4>
+      <span style="font:400 11.5px var(--font-body);color:var(--color-neutral-500)">1 148 tomes · 112 éditions</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <div style="flex:1;display:flex;align-items:center;gap:8px;height:38px;padding:0 12px;border-radius:8px;background:var(--color-surface);color:var(--color-neutral-500);font:400 13px var(--font-body)"><i class="ph ph-magnifying-glass"></i>Rechercher</div>
+      <div style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--color-neutral-800);color:var(--color-accent);font-size:16px"><i class="ph ph-sort-ascending"></i></div>
+    </div>
+  </div>
+  <div style="flex:1;overflow:hidden;padding:0 18px">
+    <sc-for list="{{ lines }}" as="l" hint-placeholder-count="6">
+      <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(233,233,237,.07)" style-hover="background:rgba(255,255,255,.02)">
+        <div style="{{ l.coverStyle }}">{{ l.coverNum }}</div>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding-top:2px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="{{ l.titleStyle }}">{{ l.titre }}</span>
+            <i class="{{ l.icon }}" style="{{ l.iconStyle }}"></i>
+          </div>
+          <span style="font:400 11.5px var(--font-body);color:var(--color-neutral-600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.sub }}</span>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:3px">
+            <div style="flex:1;display:flex;gap:3px;height:5px;align-items:stretch">
+              <div style="{{ l.barOwned }}"></div>
+              <div style="{{ l.barMissing }}"></div>
+              <sc-if value="{{ l.future }}" hint-placeholder-val="{{ true }}"><div style="width:20px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></sc-if>
+            </div>
+            <span style="{{ l.countStyle }}">{{ l.count }}</span>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+    <div style="display:flex;align-items:center;gap:8px;padding:14px 0;color:var(--color-neutral-600);font:500 12px var(--font-heading)"><i class="ph ph-caret-right"></i>Vendues<span style="color:var(--color-neutral-700);font-weight:400">4</span></div>
+  </div>
+  <div style="display:flex;border-top:1px solid rgba(233,233,237,.08);padding:8px 0 18px;background:var(--color-surface)">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--color-accent);font:500 10px var(--font-body)"><i class="ph-fill ph-books" style="font-size:20px"></i>Collection</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--color-neutral-600);font:400 10px var(--font-body)"><i class="ph ph-puzzle-piece" style="font-size:20px"></i>Manquants</div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--color-neutral-600);font:400 10px var(--font-body)"><i class="ph ph-plus-circle" style="font-size:20px"></i>Ajouter</div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Socle — pastille pleine / contour / pointillé, la page entière</div>
+<div style="position:relative;width:390px;height:844px;background:var(--color-bg);border-radius:26px;box-shadow:0 0 0 1px var(--color-neutral-800),0 20px 50px rgba(0,0,0,.6);overflow:hidden;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px 0;font:500 12px var(--font-body);color:var(--color-neutral-400)"><span>9:41</span><span style="display:flex;gap:6px"><i class="ph ph-wifi-high"></i><i class="ph ph-battery-high"></i></span></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 18px;color:var(--color-accent);font-size:18px"><i class="ph ph-arrow-left"></i><i class="ph ph-dots-three-outline"></i></div>
+  <sc-if value="{{ subOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;z-index:2;background:var(--color-bg);border-radius:26px;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:12px;padding:22px 18px 14px">
+        <i class="ph ph-arrow-left" style="font-size:18px;color:var(--color-accent);cursor:pointer" onClick="{{ closeSub }}"></i>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+          <span style="font:500 14px var(--font-heading);color:var(--color-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CALL OF THE NIGHT</span>
+          <span style="font:400 11px var(--font-body);color:var(--color-neutral-600)">Édition simple · 14 tomes parus</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 18px 14px">
+        <span style="font:500 17px var(--font-heading);color:var(--color-text)">{{ gb.count }} tomes</span>
+        <div style="display:flex;gap:7px">
+          <span style="padding:6px 11px;border-radius:var(--radius-md);border:1px solid var(--color-neutral-800);color:var(--color-neutral-300);font:500 11px var(--font-heading);cursor:pointer" style-hover="border-color:var(--color-accent-600);color:var(--color-accent-200)" onClick="{{ selectAll }}">Tout</span>
+          <span style="padding:6px 11px;border-radius:var(--radius-md);border:1px solid var(--color-neutral-800);color:var(--color-neutral-300);font:500 11px var(--font-heading);cursor:pointer" style-hover="border-color:var(--color-accent-600);color:var(--color-accent-200)" onClick="{{ selectNone }}">Aucun</span>
+        </div>
+      </div>
+      <div style="flex:1;overflow:auto;padding:0 18px 18px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">
+          <sc-for list="{{ gbc.items }}" as="p" hint-placeholder-count="17"><div style="{{ p.style }}" onClick="{{ p.toggle }}"><div style="{{ p.stripe }}"></div><span style="{{ p.badge }}">{{ p.label }}</span><span style="{{ p.check }}"><i class="ph-fill ph-check"></i></span></div></sc-for>
+        </div>
+        <div style="display:flex;gap:14px;font:400 10.5px var(--font-body);color:var(--color-neutral-600)">
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;background:var(--color-surface);box-shadow:inset 0 0 0 1px var(--color-accent-600)"></span>Possédé</span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;background:var(--color-surface);opacity:.34"></span>Manquant</span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="width:9px;height:9px;border-radius:2px;border:1px dashed var(--color-neutral-800)"></span>À paraître</span>
+        </div>
+        <span style="font:400 11px/1.5 var(--font-body);color:var(--color-neutral-600)">Un tap coche ou décoche. Les modifications sont enregistrées au fil de l'eau.</span>
+      </div>
+    </div>
+  </sc-if>
+  <div style="flex:1;overflow:auto;padding:0 18px 18px;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;gap:14px">
+      <div style="width:74px;height:104px;border-radius:6px;background:linear-gradient(160deg,var(--color-neutral-900),var(--color-surface));box-shadow:var(--shadow-sm);display:flex;align-items:flex-end;justify-content:flex-end;padding:6px;color:var(--color-neutral-600);font:500 13px var(--font-heading);flex:none">11</div>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px">
+        <h5 style="margin:0;color:var(--color-text);line-height:1.2">CALL OF THE NIGHT</h5>
+        <span style="font:400 11.5px var(--font-body);color:var(--color-neutral-600)">Édition simple · Soleil Manga</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;align-self:flex-start;margin-top:2px;padding:2px 7px;border-radius:4px;border:1px solid var(--color-neutral-800);color:var(--color-neutral-400);font:500 10px var(--font-body)"><i class="ph ph-warning-circle"></i>À vérifier</span>
+        <div style="display:flex;align-items:center;gap:9px;margin-top:7px">
+          <div style="flex:1;display:flex;gap:3px;height:6px"><div style="{{ gb.barOwned }}"></div><div style="{{ gb.barMissing }}"></div><div style="width:22px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></div>
+          <span style="font:500 12px var(--font-heading);color:var(--color-text);white-space:nowrap">{{ gb.count }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="btn btn-primary btn-block" style="letter-spacing:.06em;text-transform:uppercase" onClick="{{ openSub }}">{{ gb.count }} tomes</div>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <h6 style="margin:0;color:var(--color-neutral-500)">Couvertures possédées</h6>
+      <div style="display:flex;gap:9px;overflow:hidden">
+        <sc-for list="{{ gb.covers }}" as="c" hint-placeholder-count="5"><div style="width:66px;height:94px;flex:none;border-radius:5px;background:linear-gradient(160deg,var(--color-neutral-900),var(--color-surface));box-shadow:var(--shadow-sm);display:flex;align-items:flex-end;justify-content:flex-end;padding:5px;color:var(--color-neutral-600);font:500 11px var(--font-heading)">{{ c.n }}</div></sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(233,233,237,.08);padding-top:12px">
+      <sc-for list="{{ meta }}" as="m" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;padding:7px 0;font:400 12px var(--font-body)"><span style="color:var(--color-neutral-600)">{{ m.k }}</span><span style="color:var(--color-neutral-300)">{{ m.v }}</span></div></sc-for>
+      <a href="#1b" style="display:flex;align-items:center;gap:6px;padding:9px 0;font:500 12px var(--font-heading);color:var(--color-accent);text-decoration:none">Fiche manga-news<i class="ph ph-arrow-up-right"></i></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Trame — la grille est un bloc plein, les manquants sont des trous creusés dedans</div>
+<div style="width:390px;background:var(--color-bg);border-radius:20px;box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px 18px;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;gap:14px">
+    <div style="width:60px;height:84px;border-radius:6px;background:linear-gradient(160deg,var(--color-neutral-900),var(--color-surface));box-shadow:var(--shadow-sm);flex:none"></div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px">
+      <h5 style="margin:0;color:var(--color-text);line-height:1.2">CALL OF THE NIGHT</h5>
+      <span style="font:400 11.5px var(--font-body);color:var(--color-neutral-600)">Édition simple · Soleil Manga</span>
+      <div style="display:flex;align-items:center;gap:9px;margin-top:9px">
+        <div style="flex:1;display:flex;gap:3px;height:6px"><div style="{{ gc.barOwned }}"></div><div style="{{ gc.barMissing }}"></div><div style="width:22px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></div>
+        <span style="font:500 12px var(--font-heading);color:var(--color-text);white-space:nowrap">{{ gc.count }}</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;border-radius:8px;overflow:hidden">
+    <sc-for list="{{ gc.items }}" as="p" hint-placeholder-count="16"><div style="{{ p.style }}" onClick="{{ p.toggle }}">{{ p.label }}</div></sc-for>
+  </div>
+  <span style="font:400 10.5px var(--font-body);color:var(--color-neutral-600)">Les trous sont creusés dans la matière : on cherche le vide, pas le plein.</span>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Tranches — l'étagère vue de face, un tome est un dos de livre</div>
+<div style="width:390px;background:var(--color-bg);border-radius:20px;box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px 18px;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;gap:14px">
+    <div style="width:60px;height:84px;border-radius:6px;background:linear-gradient(160deg,var(--color-neutral-900),var(--color-surface));box-shadow:var(--shadow-sm);flex:none"></div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px">
+      <h5 style="margin:0;color:var(--color-text);line-height:1.2">CALL OF THE NIGHT</h5>
+      <span style="font:400 11.5px var(--font-body);color:var(--color-neutral-600)">Édition simple · Soleil Manga</span>
+      <div style="display:flex;align-items:center;gap:9px;margin-top:9px">
+        <div style="flex:1;display:flex;gap:3px;height:6px"><div style="{{ gd.barOwned }}"></div><div style="{{ gd.barMissing }}"></div><div style="width:22px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></div>
+        <span style="font:500 12px var(--font-heading);color:var(--color-text);white-space:nowrap">{{ gd.count }}</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);column-gap:5px;row-gap:16px">
+    <sc-for list="{{ gd.items }}" as="p" hint-placeholder-count="16"><div style="{{ p.style }}" onClick="{{ p.toggle }}">{{ p.label }}</div></sc-for>
+  </div>
+  <span style="font:400 10.5px var(--font-body);color:var(--color-neutral-600)">Le rangé et le trou se lisent comme sur une étagère réelle.</span>
+</div>
+</div>
+
+<div class="dv-opt" id="1e">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Trait — pas de pastille du tout : des nombres, soulignés quand ils sont là</div>
+<div style="width:390px;background:var(--color-bg);border-radius:20px;box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px 18px;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;gap:14px">
+    <div style="width:60px;height:84px;border-radius:6px;background:linear-gradient(160deg,var(--color-neutral-900),var(--color-surface));box-shadow:var(--shadow-sm);flex:none"></div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px">
+      <h5 style="margin:0;color:var(--color-text);line-height:1.2">CALL OF THE NIGHT</h5>
+      <span style="font:400 11.5px var(--font-body);color:var(--color-neutral-600)">Édition simple · Soleil Manga</span>
+      <div style="display:flex;align-items:center;gap:9px;margin-top:9px">
+        <div style="flex:1;display:flex;gap:3px;height:6px"><div style="{{ ge.barOwned }}"></div><div style="{{ ge.barMissing }}"></div><div style="width:22px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--color-neutral-800) 0 2px,transparent 2px 5px)"></div></div>
+        <span style="font:500 12px var(--font-heading);color:var(--color-text);white-space:nowrap">{{ ge.count }}</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(7,1fr);column-gap:4px;row-gap:10px">
+    <sc-for list="{{ ge.items }}" as="p" hint-placeholder-count="16"><div style="{{ p.style }}" onClick="{{ p.toggle }}">{{ p.label }}</div></sc-for>
+  </div>
+  <span style="font:400 10.5px var(--font-body);color:var(--color-neutral-600)">L'accent ne sert que de trait sous le nombre — la grille reste un champ de chiffres.</span>
+</div>
+</div>
+
+</div>
+<p class="dv-next">À dire ensuite : « garde <a class="dv-oid" href="#1c">1c</a> mais avec les numéros de <a class="dv-oid" href="#1b">1b</a> » · « montre <a class="dv-oid" href="#1d">1d</a> sur Berserk, 42 tomes » · « ajoute la sous-page Sélectionner mes tomes »</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1780,&quot;height&quot;:1080}}">
+const PARUS = 14, FUTURE = 3;
+const START = [1,2,3,5,6,7,9,10,11];
+
+class Component extends DCLogic {
+  state = { b: START.slice(), c: START.slice(), d: START.slice(), e: START.slice(), f: START.slice(), g: START.slice(), subOpen: false };
+
+  toggle(key, n) {
+    this.setState(s => {
+      const cur = s[key];
+      return { [key]: cur.includes(n) ? cur.filter(x => x !== n) : cur.concat(n) };
+    });
+  }
+
+  pastille(key, kind) {
+    const owned = this.state[key];
+    const items = [];
+    for (let n = 1; n <= PARUS + FUTURE; n++) {
+      const future = n > PARUS;
+      const has = owned.includes(n);
+      items.push({
+        key: key + n,
+        label: future ? '' : String(n),
+        style: this.style(kind, has, future),
+        toggle: future ? undefined : () => this.toggle(key, n)
+      });
+    }
+    return items;
+  }
+
+  style(kind, has, future) {
+    const base = {
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: 'var(--font-heading)', userSelect: 'none',
+      cursor: future ? 'default' : 'pointer',
+      transition: 'background .09s ease, border-color .09s ease, color .09s ease, box-shadow .09s ease'
+    };
+    if (kind === 'socle') {
+      Object.assign(base, { height: '42px', borderRadius: 'var(--radius-md)', fontSize: '13px', fontWeight: 500 });
+      if (future) return Object.assign(base, { border: '1px dotted var(--color-neutral-800)', color: 'transparent' });
+      if (has) return Object.assign(base, { background: 'var(--color-accent-800)', border: '1px solid var(--color-accent-600)', color: 'var(--color-accent-200)' });
+      return Object.assign(base, { background: 'transparent', border: '1px solid var(--color-neutral-800)', color: 'var(--color-neutral-600)' });
+    }
+    if (kind === 'trame') {
+      Object.assign(base, { height: '44px', fontSize: '13px', fontWeight: 500 });
+      if (future) return Object.assign(base, { background: 'transparent', border: '1px dashed var(--color-neutral-900)', color: 'transparent', borderRadius: '3px' });
+      if (has) return Object.assign(base, { background: 'var(--color-surface)', color: 'var(--color-neutral-300)', boxShadow: 'inset 0 -2px 0 var(--color-accent-700)' });
+      return Object.assign(base, { background: '#0b0d16', color: 'var(--color-neutral-700)', boxShadow: 'inset 0 2px 5px rgba(0,0,0,.75)' });
+    }
+    if (kind === 'tranche') {
+      Object.assign(base, { height: '66px', borderRadius: '3px', fontSize: '11px', fontWeight: 500, alignItems: 'flex-end', paddingBottom: '6px' });
+      if (future) return Object.assign(base, { border: '1px dashed var(--color-neutral-900)', color: 'transparent', height: '52px', alignSelf: 'flex-end' });
+      if (has) return Object.assign(base, { background: 'linear-gradient(180deg,var(--color-accent-600),var(--color-accent-800))', color: 'var(--color-accent-100)', boxShadow: 'inset -1px 0 0 rgba(0,0,0,.4), 0 1px 0 var(--color-neutral-900)' });
+      return Object.assign(base, { background: 'transparent', border: '1px solid var(--color-neutral-800)', color: 'var(--color-neutral-700)', height: '58px', alignSelf: 'flex-end' });
+    }
+    Object.assign(base, { height: '34px', fontSize: '15px', fontWeight: 500, paddingBottom: '3px' });
+    if (future) return Object.assign(base, { color: 'var(--color-neutral-800)', borderBottom: '2px dotted var(--color-neutral-800)' });
+    if (has) return Object.assign(base, { color: 'var(--color-text)', borderBottom: '2px solid var(--color-accent)' });
+    return Object.assign(base, { color: 'var(--color-neutral-700)', borderBottom: '2px solid var(--color-neutral-900)' });
+  }
+
+  coverItems(key, cols) {
+    const owned = this.state[key];
+    const items = [];
+    const big = cols === 4;
+    for (let n = 1; n <= PARUS + FUTURE; n++) {
+      const future = n > PARUS;
+      const has = owned.includes(n);
+      const box = {
+        position: 'relative', aspectRatio: '0.71', borderRadius: big ? '5px' : '3px',
+        overflow: 'hidden', cursor: future ? 'default' : 'pointer',
+        transition: 'opacity .09s ease, box-shadow .09s ease',
+        display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-start'
+      };
+      if (future) Object.assign(box, { border: '1px dashed var(--color-neutral-900)', background: 'transparent' });
+      else if (has) Object.assign(box, { boxShadow: 'inset 0 0 0 1px var(--color-accent-600), 0 1px 0 var(--color-neutral-900)', opacity: 1 });
+      else Object.assign(box, { boxShadow: 'inset 0 0 0 1px var(--color-neutral-800)', opacity: 0.34 });
+      items.push({
+        key: key + n,
+        label: future ? '' : String(n),
+        style: box,
+        stripe: {
+          position: 'absolute', inset: 0,
+          background: future ? 'none' : 'repeating-linear-gradient(' + (35 + (n % 4) * 25) + 'deg, var(--color-neutral-900) 0 5px, var(--color-surface) 5px 10px)',
+          filter: has ? 'none' : 'grayscale(1)'
+        },
+        badge: {
+          position: 'relative', margin: big ? '5px' : '3px',
+          padding: big ? '2px 6px' : '1px 4px', borderRadius: '3px',
+          background: has ? 'var(--color-accent-800)' : 'rgba(11,13,22,.8)',
+          color: has ? 'var(--color-accent-200)' : 'var(--color-neutral-500)',
+          font: '500 ' + (big ? '11px' : '9.5px') + ' var(--font-heading)',
+          display: future ? 'none' : 'block'
+        },
+        check: {
+          position: 'absolute', top: big ? '5px' : '3px', right: big ? '5px' : '3px',
+          width: big ? '18px' : '13px', height: big ? '18px' : '13px', borderRadius: '50%',
+          background: 'var(--color-accent-700)', color: 'var(--color-accent-100)',
+          display: has ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center',
+          font: '600 ' + (big ? '10px' : '8px') + ' var(--font-heading)'
+        },
+        toggle: future ? undefined : () => this.toggle(key, n)
+      });
+    }
+    return items;
+  }
+
+  coverOpt(key, cols) {
+    const n = this.state[key].length;
+    return {
+      count: n + ' / ' + PARUS,
+      items: this.coverItems(key, cols),
+      barOwned: { flexGrow: n, borderRadius: '3px', background: 'var(--color-accent)' },
+      barMissing: { flexGrow: Math.max(PARUS - n, 0), borderRadius: '3px', background: 'var(--color-neutral-800)' }
+    };
+  }
+
+  opt(key, kind) {
+    const owned = this.state[key];
+    const n = owned.length;
+    return {
+      count: n + ' / ' + PARUS,
+      items: this.pastille(key, kind),
+      covers: owned.slice().sort((a, b) => b - a).slice(0, 5).map(v => ({ n: v })),
+      barOwned: { flexGrow: n, borderRadius: '3px', background: 'var(--color-accent)' },
+      barMissing: { flexGrow: Math.max(PARUS - n, 0), borderRadius: '3px', background: 'var(--color-neutral-800)' }
+    };
+  }
+
+  line(titre, sub, ownedN, parus, o) {
+    o = o || {};
+    const dim = !!o.dim;
+    return {
+      key: titre + sub,
+      titre, sub,
+      count: ownedN + ' / ' + parus,
+      coverNum: String(ownedN || ''),
+      future: !o.complete,
+      icon: o.icon || 'ph',
+      iconStyle: { fontSize: '13px', color: 'var(--color-neutral-600)', display: o.icon ? 'block' : 'none' },
+      titleStyle: { font: '500 14px var(--font-heading)', color: dim ? 'var(--color-neutral-500)' : 'var(--color-text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
+      countStyle: { font: '500 11.5px var(--font-heading)', color: dim ? 'var(--color-neutral-600)' : 'var(--color-neutral-300)', whiteSpace: 'nowrap' },
+      coverStyle: {
+        width: '52px', height: '74px', flex: 'none', borderRadius: '5px',
+        background: 'linear-gradient(160deg,var(--color-neutral-900),var(--color-surface))',
+        boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
+        padding: '4px', font: '500 10px var(--font-heading)', color: 'var(--color-neutral-700)',
+        opacity: dim ? 0.5 : 1
+      },
+      barOwned: { flexGrow: ownedN, borderRadius: '3px', background: dim ? 'var(--color-accent-700)' : 'var(--color-accent)' },
+      barMissing: { flexGrow: Math.max(parus - ownedN, 0), borderRadius: '3px', background: 'var(--color-neutral-800)' }
+    };
+  }
+
+  renderVals() {
+    return {
+      gbc: this.coverOpt('b', 4),
+      gf: this.coverOpt('f', 7),
+      gg: this.coverOpt('g', 4),
+      subOpen: this.state.subOpen,
+      openSub: () => this.setState({ subOpen: true }),
+      closeSub: () => this.setState({ subOpen: false }),
+      selectAll: () => this.setState({ b: Array.from({ length: PARUS }, (_, i) => i + 1) }),
+      selectNone: () => this.setState({ b: [] }),
+      gb: this.opt('b', 'socle'),
+      gc: this.opt('c', 'trame'),
+      gd: this.opt('d', 'tranche'),
+      ge: this.opt('e', 'trait'),
+      meta: [
+        { key: 'a', k: 'Auteur', v: 'Kotoyama' },
+        { key: 'g', k: 'Genres', v: 'Comédie · Fantastique · Shōnen' },
+        { key: 's', k: 'Statut', v: 'En cours' },
+        { key: 'p', k: 'Valeur', v: '62,10 €' }
+      ],
+      lines: [
+        this.line('CALL OF THE NIGHT', 'Édition simple · à vérifier', 9, 14, { icon: 'ph ph-warning-circle' }),
+        this.line('BERSERK', 'Édition simple · à vérifier', 8, 42, { icon: 'ph ph-warning-circle' }),
+        this.line('BLEACH', 'Édition simple · complète', 74, 74, { complete: true }),
+        this.line('NOZOKIANA', 'Édition simple · terminée par choix', 11, 13, { complete: true, icon: 'ph ph-flag-checkered' }),
+        this.line('BLUE EXORCIST', 'Édition simple · abandonné', 3, 27, { dim: true, icon: 'ph ph-pause-circle' }),
+        this.line('FULLMETAL ALCHEMIST', 'Édition double · complète', 13, 13, { complete: true })
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
