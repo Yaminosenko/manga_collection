@@ -15,6 +15,14 @@ const eslintConfig = defineConfig([
     "lib/generated/**",
     "design/**",
   ]),
+  {
+    rules: {
+      // Les couvertures sont deja redimensionnees et servies depuis Vercel Blob.
+      // L'optimiseur next/image est plafonne a 1000 images sources par mois sur
+      // le plan Hobby et renvoie une 402 au-dela (CLAUDE.md, section 5).
+      "@next/next/no-img-element": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

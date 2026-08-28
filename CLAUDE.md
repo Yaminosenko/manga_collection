@@ -452,9 +452,48 @@ Schéma et seed. Les sept compteurs de §8 tombent juste en base :
 
 Next 16.3, React 19.2, Tailwind 4, Prisma 7.10. `npm run build` et `npm run lint` passent.
 
-### Prochaine étape — étape 2
+### Fait — étape 2
 
-Page Édition et sous-page « Mes tomes » (§4). L'écran qui compte.
+Page Édition et sous-page « Mes tomes » (§4). Vérifié sur les 112 éditions réelles :
+routes servies, écriture de `Possession` confirmée contre Neon, `npm run build` et
+`npm run lint` passent.
+
+| Fichier | Rôle |
+|---|---|
+| `app/edition/[slug]/page.tsx` | la page Édition : en-tête, bouton d'accès, carrousel, autres éditions, pied |
+| `app/edition/[slug]/tomes/page.tsx` | la sous-page de sélection |
+| `app/edition/[slug]/{loading,error,not-found}.tsx` | les états de la route |
+| `components/volume-grid.tsx` | la grille 4 colonnes, client, `useOptimistic` |
+| `components/progress-bar.tsx` | la barre à trois zones, `flex-grow` + zone fixe |
+| `components/cover.tsx` | couverture ou placeholder numéroté |
+| `components/icons.tsx` | les glyphes Phosphor inlinés, sans dépendance runtime |
+| `components/offline-banner.tsx` | le bandeau « Hors ligne · consultation seule » |
+| `lib/editions.ts` | `chargerEdition` et les règles dérivées |
+| `lib/actions.ts` | `basculerTome`, `definirTousLesTomes` |
+| `lib/constants.ts`, `lib/format.ts` | seuils, libellés, prix en centimes |
+| `lib/use-online.ts` | `useEnLigne`, via `useSyncExternalStore` |
+
+Décisions prises en chemin :
+
+- **Icônes inlinées, pas de paquet.** `@phosphor-icons/react` consomme un contexte React et
+  forcerait une frontière client sur chaque icône. Les tracés sont copiés depuis
+  `@phosphor-icons/core`, récupéré hors du dépôt.
+- **`no-img-element` désactivé dans `eslint.config.mjs`.** La règle pousse vers `next/image`,
+  que §5 interdit. La décision a sa place dans la configuration, pas dans un composant.
+- **`aVerifier` passe à `false` dès le premier tap** dans la grille, conformément au handoff.
+  Un seul tap ne prouve pourtant pas que les 42 tomes ont été revus.
+- **404 mou sur un slug inconnu.** `loading.tsx` ouvre une frontière Suspense : la coquille
+  part en 200 avant que `notFound()` ne soit atteint. L'écran « introuvable » s'affiche
+  correctement, seul le statut HTTP est faux. L'état de chargement l'emporte — §7 l'impose,
+  Neon dort après 5 minutes.
+- **Le bouton `dots-three-outline` de la barre de nav n'est pas rendu** : il n'ouvre rien en
+  V1, et un contrôle inerte se lit comme un bug.
+- **`app/page.tsx` liste les éditions en liens bruts**, juste de quoi atteindre les nouveaux
+  écrans. C'est le point de départ de l'étape 3, pas la Collection.
+
+### Prochaine étape — étape 3
+
+Collection (§4) : la liste, la recherche, le tri, la section « Vendues ».
 
 ### Reprendre sur un poste neuf
 
@@ -477,3 +516,16 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   déclarer, Vercel Authentication à activer avant toute donnée réelle en ligne.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
+- **`Edition.editeur` et `Edition.slugMangaNews` sont nuls sur les 112 éditions.** Le Sheet ne
+  les portait pas. Le sous-titre tombe donc sur le seul nom d'édition et le lien manga-news ne
+  s'affiche jamais. À remplir automatiquement depuis les API externes (§5), pas à la main.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
