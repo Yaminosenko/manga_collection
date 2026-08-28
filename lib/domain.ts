@@ -57,6 +57,7 @@ export type LigneCollection = {
   termineeForcee: boolean;
   aVerifier: boolean;
   ajouteeLe: number;
+  editionsDeLaSerie: number;
   dernierNumeroPossede: number | null;
   couvertureUrl: string | null;
 };
@@ -139,7 +140,7 @@ export function libelleStatut(
     : LIBELLE_EDITION_TERMINEE;
 }
 
-export function sousTitreLigne(ligne: LigneCollection): string {
+function etatLigne(ligne: LigneCollection): string | null {
   if (ligne.statut !== "EN_COURS") {
     return LIBELLES_STATUT[ligne.statut];
   }
@@ -152,7 +153,17 @@ export function sousTitreLigne(ligne: LigneCollection): string {
   if (ligne.possedes === ligne.tomesParus) {
     return LIBELLE_COMPLETE;
   }
-  return ligne.editeur ? `${ligne.nom} · ${ligne.editeur}` : ligne.nom;
+  return null;
+}
+
+export function sousTitreLigne(ligne: LigneCollection): string {
+  const etat = etatLigne(ligne);
+  const edition = ligne.editeur ? `${ligne.nom} · ${ligne.editeur}` : ligne.nom;
+
+  if (ligne.editionsDeLaSerie > 1) {
+    return etat === null ? edition : `${ligne.nom} · ${etat}`;
+  }
+  return etat ?? edition;
 }
 
 export function valeurCentimes(edition: Pick<Edition, "prixDefautCentimes" | "tomes">): number | null {

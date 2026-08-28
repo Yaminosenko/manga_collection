@@ -86,7 +86,7 @@ export async function chargerCollection(): Promise<Collection> {
       aVerifier: true,
       ajouteeLe: true,
       couvertureUrl: true,
-      serie: { select: { titre: true } },
+      serie: { select: { titre: true, _count: { select: { editions: true } } } },
       volumes: {
         orderBy: { numero: "asc" },
         select: {
@@ -113,6 +113,7 @@ export async function chargerCollection(): Promise<Collection> {
       termineeForcee: edition.termineeForcee,
       aVerifier: edition.aVerifier,
       ajouteeLe: edition.ajouteeLe.getTime(),
+      editionsDeLaSerie: edition.serie._count.editions,
       dernierNumeroPossede: dernier?.numero ?? null,
       couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
     };

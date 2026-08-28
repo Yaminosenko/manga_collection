@@ -612,6 +612,39 @@ compteurs reviennent à 108 / 112 / 1640 / 1148. Recherche « berserk » : 2 éd
 et le « Berserk » d'AniList marqué déjà en collection quand « Berserk of Gluttony » ne l'est
 pas. Une requête d'un caractère ne déclenche aucun appel externe.
 
+### Tests navigateur — 28 août 2026
+
+Première campagne de tests à la souris, sur les données réelles. Tout ce qui suit a été
+exercé et vérifié dans Chrome : recherche, menu de tri et sa mémorisation après rechargement,
+page Édition, cochage et décochage d'un tome avec persistance en base, écran Manquants,
+recherche AniList, formulaire de confirmation et création complète d'une édition.
+
+**Corrigé — les éditions multiples étaient indistinguables.** Sur la Collection, les deux
+éditions de BERSERK affichaient toutes deux « À vérifier » : le sous-titre remplaçait le nom
+d'édition par l'état, et rien ne les séparait. L'écran Manquants, lui, affichait bien
+« Édition Prestige » et « Édition simple ». Le sous-titre de la Collection montre désormais
+`Nom · état` quand la série compte plusieurs éditions, et l'état seul sinon — le nom
+d'édition n'apporte rien sur les 104 séries à édition unique.
+
+**À trancher — `aVerifier` est trop facile à effacer.** Un seul tap dans la grille suffit, et
+il n'y a aucun retour visible. Au cours des tests, le drapeau d'AIR GEAR est passé à faux sans
+que l'action responsable ait pu être identifiée — c'est précisément le problème : sur 37
+éditions marquées, une interaction accidentelle détruit silencieusement l'information, et
+rien ne permet de s'en apercevoir. Pistes : ne l'effacer que sur `Tout` / `Aucun`, ou le
+laisser à un geste explicite.
+
+**À trancher — pas de largeur maximale.** Sur un écran large, la grille de « Mes tomes »
+étale quatre cases de près de 400 px. Le design est coté pour 390 px. Un conteneur centré
+à ~430 px réglerait l'affichage bureau sans toucher au mobile.
+
+**À trancher — les genres d'AniList sont en anglais.** Une série ajoutée affiche
+« Action · Adventure · Drama » quand la collection importée porte « Aventure · Fantastique ·
+Horreur ».
+
+**Non testé** : le rendu sur un vrai téléphone. `resize_window` n'a pas eu d'effet sur ce
+poste, tous les tests se sont faits à 1920 px. La vérification tactile passe par l'URL réseau
+qu'affiche `npm run dev`, ouverte depuis le mobile sur le même Wi-Fi.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
