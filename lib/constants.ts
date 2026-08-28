@@ -50,3 +50,18 @@ export const LIBELLE_MANQUANTS_ERREUR = "Les tomes manquants n’ont pas pu êtr
 export const LIBELLE_COLLECTION_ERREUR = "La collection n’a pas pu être chargée.";
 
 export const LIBELLE_ARRETEES = "Abandonnées et en pause";
+
+export const URL_ANILIST = "https://graphql.anilist.co";
+export const RESULTATS_RECHERCHE_MAX = 10;
+export const DELAI_RECHERCHE_MS = 350;
+export const LONGUEUR_RECHERCHE_MIN = 2;
+
+export const TITRE_AJOUTER = "Ajouter";
+export const NOM_EDITION_PAR_DEFAUT = "Édition simple";
+export const LIBELLE_DEJA_EN_COLLECTION = "Déjà dans la collection";
+export const LIBELLE_ANILIST_INDISPONIBLE =
+  "La recherche externe est indisponible. La collection locale reste consultable.";
+export const LIBELLE_RECHERCHE_VIDE = "Aucun résultat.";
+export const LIBELLE_INVITE_RECHERCHE = "Cherchez une série par son titre.";
+export const LIBELLE_TOMES_JAPONAIS =
+  "Compte japonais indicatif : corrigez-le avec le nombre de tomes parus en France.";

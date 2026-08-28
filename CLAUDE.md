@@ -569,11 +569,60 @@ liste principale, comme §3 le fait déjà pour les vendues.
 
 Le motif est extrait dans `components/collapsible-section.tsx`, partagé avec les vendues.
 
-### Prochaine étape — étape 5
+### Fait — étape 5
 
-Ajout de série via API (§4) : recherche mêlant collection locale et AniList, **étape de
-confirmation d'édition obligatoire**, génération des tomes, atterrissage sur la page édition.
-Le troisième onglet se pose ici. Dépend en partie de la clé Google Books.
+Ajout de série via API (§4), et le troisième onglet. **La clé Google Books n'a pas été
+nécessaire** : AniList suffit au niveau série, qui est tout ce que l'ajout demande.
+
+| Fichier | Rôle |
+|---|---|
+| `app/(tabs)/ajouter/page.tsx` | l'écran d'ajout |
+| `components/add-series.tsx` | recherche puis confirmation d'édition, deux phases |
+| `lib/anilist.ts` | le client GraphQL et la conversion vers le modèle métier |
+| `lib/creation.ts` | `creerSerieAvecEdition` — slugs uniques, tomes, possessions |
+| `lib/slug.ts` | `slugifier`, transposition de celui de `scripts/import_sheet.py` |
+
+Décisions prises en chemin :
+
+- **Deux phases dans une seule route.** Passer par `/ajouter/[id]` aurait imposé un second
+  appel AniList à l'ouverture de l'écran de confirmation. La série choisie reste en état
+  client ; aucun appel externe n'a lieu à l'ouverture de `/ajouter`, seulement à la frappe.
+- **Lecture de §5.** « Jamais à l'ouverture d'un écran » vise le chargement des écrans, pas
+  une recherche que l'utilisateur déclenche — §4 la prescrit explicitement. Recherche
+  temporisée à 350 ms, deux caractères minimum, dix résultats.
+- **La couverture AniList n'est jamais enregistrée.** Elle sert d'aperçu dans les résultats,
+  le temps du choix. §5 interdit de stocker une URL d'API externe : les éditions créées
+  arrivent donc avec `couvertureUrl` nul, comme tout le reste aujourd'hui.
+- **L'auteur se déduit des rôles sans langue entre parenthèses.** AniList mêle créateurs et
+  traducteurs dans `staff` ; « Story & Art » n'a pas de parenthèse, « Translator (French) »
+  en a une. Discriminant vérifié sur des cas réels.
+- **`tomesParus` est pré-rempli avec le compte japonais** et signalé comme indicatif —
+  §5 rappelle qu'il ne vaut pas pour la France. `editionTerminee` n'est jamais déduit du
+  `status` AniList : c'est une case à cocher.
+- **`aVerifier` est faux à la création** : la répartition n'est pas devinée, elle est saisie.
+- **Slug d'édition selon la convention d'import** : égal au slug de série pour
+  « Édition simple », suffixé du nom sinon. Collision résolue par un suffixe numérique.
+- **La création est sortie de `lib/actions.ts`** vers `lib/creation.ts` : un module « use
+  server » ne peut exporter que des fonctions asynchrones, et la logique y devient testable
+  hors contexte de requête.
+
+Vérifié sur la vraie base, avec nettoyage : série créée avec 5 tomes numérotés, 5 possessions
+à `false`, prix en centimes, doublon de titre résolu en `-2`, puis suppression — les
+compteurs reviennent à 108 / 112 / 1640 / 1148. Recherche « berserk » : 2 éditions locales,
+et le « Berserk » d'AniList marqué déjà en collection quand « Berserk of Gluttony » ne l'est
+pas. Une requête d'un caractère ne déclenche aucun appel externe.
+
+### Reste à faire
+
+- **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
+  locaux mènent à la fiche existante. §4 ne décrit que la création d'une série neuve, mais
+  4 séries de la collection sont multi-éditions — le cas se posera.
+- **Couvertures** : les 1640 restent à remplir depuis le poste local (§5). C'est ce qui
+  sépare aujourd'hui les écrans réels des maquettes.
+- **Premier déploiement Vercel**, jamais fait. Vercel Authentication en portée
+  `All Deployments` à activer avant toute donnée réelle en ligne.
+- **PWA** : ni manifeste ni service worker. Le mode hors ligne de §6 se limite pour l'instant
+  au bandeau et à l'inertie des pastilles ; rien n'est mis en cache.
 
 ### Reprendre sur un poste neuf
 
@@ -591,7 +640,8 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
 ### Décisions encore ouvertes
 
 - **Clé d'API Google Books** : à créer, et à vérifier qu'elle ne réclame pas de carte. Sans elle,
-  aucune couverture de tome ni ISBN (§5).
+  aucune couverture de tome ni ISBN (§5). L'étape 5 ne l'a pas exigée — elle ne sert qu'au
+  niveau tome, donc au remplissage des couvertures et au rafraîchissement de fond.
 - **Premier déploiement Vercel** : jamais fait. Variables `DATABASE_URL` et `DIRECT_URL` à
   déclarer, Vercel Authentication à activer avant toute donnée réelle en ligne.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.

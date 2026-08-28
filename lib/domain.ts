@@ -5,6 +5,7 @@ import {
   LIBELLE_EDITION_TERMINEE,
   LIBELLE_TERMINEE_FORCEE,
 } from "@/lib/constants";
+import type { SerieDistante } from "@/lib/anilist";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
 export type Tome = {
@@ -86,6 +87,25 @@ export type Manquants = {
   arretees: EditionManquante[];
   tomesManquants: number;
 };
+
+export type ResultatLocal = {
+  slug: string;
+  titre: string;
+  nom: string;
+  editeur: string | null;
+  tomesParus: number;
+  possedes: number;
+};
+
+export type ResultatDistant = SerieDistante & { dejaEnCollection: boolean };
+
+export type ResultatRecherche = {
+  locales: ResultatLocal[];
+  distantes: ResultatDistant[];
+  indisponible: boolean;
+};
+
+export type EtatCreation = { erreur: string | null };
 
 export function dernierTomePossede(tomes: Tome[]): Tome | null {
   for (let index = tomes.length - 1; index >= 0; index -= 1) {

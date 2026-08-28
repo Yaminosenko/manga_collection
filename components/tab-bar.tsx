@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BooksFill, PuzzlePiece } from "@/components/icons";
-import { TITRE_MANQUANTS } from "@/lib/constants";
+import { BooksFill, PlusCircle, PuzzlePiece } from "@/components/icons";
+import { TITRE_AJOUTER, TITRE_MANQUANTS } from "@/lib/constants";
 
 const ONGLETS = [
   { href: "/", libelle: "Collection", Icone: BooksFill },
   { href: "/manquants", libelle: TITRE_MANQUANTS, Icone: PuzzlePiece },
+  { href: "/ajouter", libelle: TITRE_AJOUTER, Icone: PlusCircle },
 ] as const;
 
 export function TabBar() {
