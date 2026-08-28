@@ -626,12 +626,12 @@ d'édition par l'état, et rien ne les séparait. L'écran Manquants, lui, affic
 `Nom · état` quand la série compte plusieurs éditions, et l'état seul sinon — le nom
 d'édition n'apporte rien sur les 104 séries à édition unique.
 
-**À trancher — `aVerifier` est trop facile à effacer.** Un seul tap dans la grille suffit, et
-il n'y a aucun retour visible. Au cours des tests, le drapeau d'AIR GEAR est passé à faux sans
-que l'action responsable ait pu être identifiée — c'est précisément le problème : sur 37
-éditions marquées, une interaction accidentelle détruit silencieusement l'information, et
-rien ne permet de s'en apercevoir. Pistes : ne l'effacer que sur `Tout` / `Aucun`, ou le
-laisser à un geste explicite.
+**À trancher — l'effacement de `aVerifier` est à sens unique.** Le journal du serveur montre
+le cas en clair : `basculerTome("air-gear", 1, true)` puis `basculerTome("air-gear", 1, false)`.
+La possession est revenue à son état de départ, le drapeau non. **Cocher puis décocher un
+tome, geste rigoureusement neutre, détruit définitivement l'information** — sans annulation,
+sans trace, sans retour visuel. Sur 37 éditions marquées, rien ne permet de s'en apercevoir.
+Pistes : ne l'effacer que sur `Tout` / `Aucun`, ou le réserver à un geste explicite.
 
 **À trancher — pas de largeur maximale.** Sur un écran large, la grille de « Mes tomes »
 étale quatre cases de près de 400 px. Le design est coté pour 390 px. Un conteneur centré
