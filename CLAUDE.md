@@ -886,8 +886,15 @@ fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
   `All Deployments` à activer avant toute donnée réelle en ligne.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
   en cache, et l'installation attend le déploiement HTTPS.
-- **Test sur téléphone** : fait pour la mise en page (grille, largeur). **Le cochage tactile,
-  la barre d'onglets et les cibles à 44 px n'ont pas encore été exercés au doigt.**
+- **Test sur téléphone** : la mise en page est validée (grille à 2 colonnes, largeur), et le
+  blocage cross-origin qui tuait toute interaction est levé. **Le cochage au doigt, la barre
+  d'onglets et les cibles à 44 px restent à exercer sur l'écran tactile** — c'était impossible
+  tant que React n'hydratait pas.
+- **12 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent. Le
+  sélecteur de `fetch_covers.py` sait désormais les absorber par similarité — **transposer la
+  même approche à `fetch_publishers.py` les débloquerait probablement**.
+- **`next-env.d.ts` est modifié et non commité** : Next l'a réécrit pour pointer vers
+  `.next/dev/types/`. À verser ou à écarter, pas encore tranché.
 
 ### Reprendre sur un poste neuf
 
@@ -897,6 +904,9 @@ fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
    Les secrets ne sont pas dans le dépôt et n'y seront jamais.
 3. `npm run dev`. **Ne pas relancer le seed** : la base Neon est déjà remplie, elle est la
    source de vérité, pas `data/collection.json`.
+4. `npm run covers:fetch` puis `npm run covers:apply` — `public/covers/` est ignoré par git, un
+   poste neuf n'a aucune couverture. `data/covers.json` et `data/mangadex_ids.json` étant
+   versionnés, la reprise ne réinterroge pas MangaDex pour les séries déjà résolues.
 
 Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un réseau ordinaire,
 `prisma migrate dev` attaque Neon directement et le détour par `npx prisma dev` devient inutile —
