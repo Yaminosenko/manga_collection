@@ -1,21 +1,42 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { OfflineBanner } from "@/components/offline-banner";
+import {
+  COULEUR_FOND_APPLICATION,
+  LARGEUR_MAX_APPLICATION,
+  NOM_APPLICATION_COURT,
+} from "@/lib/constants";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Collection",
+  title: NOM_APPLICATION_COURT,
   description: "Suivi de collection de mangas, tome par tome",
+  applicationName: NOM_APPLICATION_COURT,
+  appleWebApp: {
+    capable: true,
+    title: NOM_APPLICATION_COURT,
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: COULEUR_FOND_APPLICATION,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={`${inter.variable} h-full`}>
-      <body className="bg-bg text-text min-h-full antialiased">
-        <OfflineBanner />
-        {children}
+      <body className="bg-bg text-text min-h-full pt-[env(safe-area-inset-top)] antialiased">
+        <div
+          className="mx-auto w-full"
+          style={{ maxWidth: LARGEUR_MAX_APPLICATION }}
+        >
+          <OfflineBanner />
+          {children}
+        </div>
       </body>
     </html>
   );

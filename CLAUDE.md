@@ -129,8 +129,9 @@ sous-page.
 ### Mes tomes — sous-page de sélection
 Le cœur de l'application : le geste que l'utilisateur répète des dizaines de fois.
 
-**Grille de couvertures, 4 colonnes.** Une case par tome de 1 à `tomesParus`, couverture du
-tome en fond, ratio 0,71.
+**Grille de couvertures, 2 colonnes.** Une case par tome de 1 à `tomesParus`, couverture du
+tome en fond, ratio 0,71. Le handoff en prescrivait 4 ; le test sur téléphone du 29 août 2026
+a tranché pour 2 — voir §12.
 
 | État | Traitement |
 |---|---|
@@ -146,8 +147,8 @@ tome en fond, ratio 0,71.
 - Compteur `X / Y tomes` en tête, légende des trois états en pied.
 
 Écartée : la grille de pastilles numérotées à 7 colonnes sans couverture. Elle reste la piste
-de repli si la vue d'ensemble manque sur les séries longues — Berserk occupe 11 rangées à
-4 colonnes — sous forme d'un second mode d'affichage basculable depuis l'en-tête.
+de repli si la vue d'ensemble manque sur les séries longues — à 2 colonnes, Berserk occupe
+21 rangées et Bleach 37 — sous forme d'un second mode d'affichage basculable depuis l'en-tête.
 
 ### Manquants
 Tous les tomes non possédés et déjà parus, groupés par édition.
@@ -174,9 +175,11 @@ l'ouverture d'un écran. Tout écran lit la base locale.
 ### Sources
 | Source | Usage | État mesuré |
 |---|---|---|
-| AniList (GraphQL) | Métadonnées série, couverture série | 12/12 · sans clé, sans quota gênant |
-| Google Books | Tomes VF par ISBN, date de parution, couverture tome | **bloqué sans clé d'API** |
-| Open Library | Complément ISBN | répond, mais sans ISBN sur les recherches par titre |
+| AniList (GraphQL) | Métadonnées série, couverture série, pont vers les titres romaji | 12/12 · sans clé, sans quota gênant |
+| MangaDex | Couvertures de tome | **93 % en `ja` · en attente d'autorisation** |
+| BnF (SRU) | Éditeur, ISBN, date de parution VF | **éditeur : 100/112 · sans clé** |
+| Google Books | Tomes VF par ISBN, date de parution, couverture tome | **bloqué sans clé d'API, couverture jamais mesurée** |
+| Open Library | Complément ISBN, couverture par ISBN | 0/11 sur des ISBN français |
 | manga-news | Planning des sorties VF | **En attente d'autorisation** |
 
 ### Ce que la sonde du 28 août 2026 a établi (échantillon de 12 séries)
@@ -194,6 +197,50 @@ publication japonaise, pas l'édition française. Il ne pilote donc pas `edition
 journalier du projet anonyme partagé est épuisé en permanence. Une clé Google Cloud est
 gratuite, avec ~1 000 requêtes par jour — de quoi couvrir les 1640 tomes en deux passes.
 Sans elle, aucun ISBN, aucune date VF, aucune couverture de tome.
+
+### Ce que la sonde du 29 août 2026 a établi
+
+**MangaDex couvre les tomes, mais en japonais.** Mesuré sur 30 éditions tirées au hasard, en
+vérifiant la présence de chaque tome de 1 à N : **359 tomes sur 384, soit 93 %**, et sans trou
+en milieu de série — c'est 100 % ou 0 % par série. Le français, lui, ne donne que **8 %** :
+les couvertures y sont déposées par la communauté, langue par langue, et suivent l'activité
+de scantrad, pas la publication. Naruto et Bleach n'ont que leur jeu japonais canonique.
+
+**L'illustration japonaise est la même que la française, seul le logo-titre change.** Vérifié
+côte à côte sur les trois séries qui ont les deux jeux. Le rendu est accepté (29 août 2026),
+y compris sur les titres entièrement en katakana comme Chainsaw Man.
+
+**Le pont passe par AniList.** Le titre VF est souvent introuvable tel quel ; AniList donne le
+romaji, MangaDex répond dessus. 11 correspondances sur 12 sur l'échantillon d'août.
+
+**La politique est `fr` d'abord, `ja` en repli.** Radiant l'impose : série française, 19
+couvertures `fr` contre 4 `ja`.
+
+**Poids réel mesuré : 23,3 Ko par couverture** en WebP 256×360, soit ~38 Mo pour 1 640 tomes.
+L'estimation de ~18 Ko était basse ; l'ordre de grandeur tient.
+
+**Les CGU de MangaDex interdisent la récupération systématique** pour constituer une base,
+sans autorisation écrite, alors que la documentation de l'API décrit une API publique ouverte
+aux clients tiers et impose de recopier les images plutôt que de les lier. La contradiction est
+dans leurs textes, pas dans notre lecture. **Une demande d'autorisation est rédigée, à envoyer
+à `admin@mangadex.org`** — même posture que manga-news. Rien de massif n'est téléchargé avant
+réponse ; seul l'essai visuel de 75 couvertures a été fait, au titre de l'usage personnel.
+
+**MangaDex est instable comme source** : ~7 000 titres et ~25 % des chapitres retirés sur
+notifications DMCA en mai 2025. Une couverture disponible aujourd'hui peut disparaître. La
+recopie dans Blob nous en rend indépendants une fois faite.
+
+**BnF donne l'éditeur, pas les couvertures.** Le dépôt légal rend le catalogue exhaustif sur le
+VF. Une notice porte titre, ISBN, éditeur et année. En revanche le **numéro de tome n'est pas
+exploitable** : cinq formats coexistent (`Naruto. 22`, `Beastars. Vol. 20`, `Chainsaw Man. T.22`,
+`Spy x Family - Tome 16`) et la moitié des notices portent le sous-titre du tome à la place du
+numéro — Bleach remonte `Black`, `Friend`, `Howling`. Pire, `Naruto. 22 (Éd. Hokage)` est une
+autre édition française. **L'ISBN par tome reste donc ouvert ; l'éditeur est acquis.**
+
+**MangaLib et MangaHook sont des impasses.** MangaHook est un scraper auto-hébergé d'un
+agrégateur pirate, son API de démonstration est morte, et il ne donne qu'une vignette par série
+et des pages de chapitre — jamais de couverture par tome. MangaLib est géobloqué depuis la
+France (DDoS-Guard 1020) et ses jaquettes seraient d'édition russe.
 
 Nautiljon interdit explicitement la récupération de ses données. Aucune utilisation.
 
@@ -430,7 +477,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 28 août 2026.
+Dernière mise à jour : 29 août 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -626,36 +673,150 @@ d'édition par l'état, et rien ne les séparait. L'écran Manquants, lui, affic
 `Nom · état` quand la série compte plusieurs éditions, et l'état seul sinon — le nom
 d'édition n'apporte rien sur les 104 séries à édition unique.
 
-**À trancher — l'effacement de `aVerifier` est à sens unique.** Le journal du serveur montre
-le cas en clair : `basculerTome("air-gear", 1, true)` puis `basculerTome("air-gear", 1, false)`.
-La possession est revenue à son état de départ, le drapeau non. **Cocher puis décocher un
-tome, geste rigoureusement neutre, détruit définitivement l'information** — sans annulation,
-sans trace, sans retour visuel. Sur 37 éditions marquées, rien ne permet de s'en apercevoir.
-Pistes : ne l'effacer que sur `Tout` / `Aucun`, ou le réserver à un geste explicite.
+**Tranché — l'effacement de `aVerifier` reste tel quel.** Le journal du serveur montre le cas
+en clair : `basculerTome("air-gear", 1, true)` puis `basculerTome("air-gear", 1, false)`. La
+possession revient à son état de départ, le drapeau non : cocher puis décocher un tome, geste
+rigoureusement neutre, détruit définitivement l'information. **Comportement conservé
+(29 août 2026)** — le drapeau signale une répartition devinée, et toucher la grille suffit à
+prouver qu'on l'a regardée. À rouvrir si la perte se fait sentir à l'usage.
 
-**À trancher — pas de largeur maximale.** Sur un écran large, la grille de « Mes tomes »
-étale quatre cases de près de 400 px. Le design est coté pour 390 px. Un conteneur centré
-à ~430 px réglerait l'affichage bureau sans toucher au mobile.
+**Reporté — pas de largeur maximale.** Sur un écran large, la grille de « Mes tomes » étale
+quatre cases de près de 400 px. Le design est coté pour 390 px. **Se tranchera au test sur
+téléphone (29 août 2026)**, en même temps que le reste du rendu tactile.
 
-**À trancher — les genres d'AniList sont en anglais.** Une série ajoutée affiche
-« Action · Adventure · Drama » quand la collection importée porte « Aventure · Fantastique ·
-Horreur ».
+**Tranché — les genres passent à l'anglais.** Une série ajoutée affiche « Action · Adventure ·
+Drama » quand la collection importée porte « Aventure · Fantastique · Horreur ». **Décision
+(29 août 2026) : aligner les 108 séries importées sur la liste fermée d'AniList**, vérifiée
+contre l'API — 19 valeurs : Action, Adventure, Comedy, Drama, Ecchi, Fantasy, Hentai, Horror,
+Mahou Shoujo, Mecha, Music, Mystery, Psychological, Romance, Sci-Fi, Slice of Life, Sports,
+Supernatural, Thriller.
+
+Quatre valeurs de la collection n'y ont pas d'équivalent — `School Life` (5), `Mature` (4),
+`Guide` (4), `Nekketsu` (2) : ce sont des *tags* AniList, pas des genres. **Elles basculent
+dans `themes`**, rien n'est perdu.
+
+L'alignement absorbe au passage le bruit d'import : `Science` et `fiction` sont les deux
+moitiés de « Science-fiction », découpée par le tiret de `SEPARATEURS_GENRES`
+(`import_sheet.py:28`, `[,\-–/]`) — même cause pour `Post` + `apocalyptique` et `Super` +
+`héros` dans les thèmes. S'y ajoutent les doublons de casse et d'accent : `Slice of Life` /
+`Slice of life`, `Mystère` / `Mystere`, `Drame` / `Drama`, `Psychologie` / `Psychologique`.
+
+**`themes` reste en français pour l'instant** : `lib/anilist.ts` ne récupère que `genres`,
+jamais les tags, donc les 96 thèmes n'ont aucun vis-à-vis. À reprendre le jour où on ira
+chercher les tags AniList. **Pas encore fait.**
 
 **Non testé** : le rendu sur un vrai téléphone. `resize_window` n'a pas eu d'effet sur ce
 poste, tous les tests se sont faits à 1920 px. La vérification tactile passe par l'URL réseau
 qu'affiche `npm run dev`, ouverte depuis le mobile sur le même Wi-Fi.
+
+### Fait — éditeurs depuis la BnF (29 août 2026)
+
+`Edition.editeur` était nul sur les 112 éditions ; il l'est encore sur 12.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/fetch_publishers.py` | interroge le catalogue SRU de la BnF et déduit l'éditeur |
+| `data/publishers.json` | le résultat, versionné — 100 éditions, 18 éditeurs |
+
+Décisions prises en chemin :
+
+- **Le garde-fou est l'auteur, pas le titre.** Une recherche sur un titre court remonte
+  n'importe quoi ; on ne retient que les notices dont `dc:creator` ou le titre contient un
+  jeton du champ `auteur`. `ONE PUCH MAN` remonte 46 notices retenues mais son éditeur
+  dominant ne pèse que 6 % : le seuil de 50 % le refuse, ce qui est le bon comportement.
+- **La BnF flanche par intermittence.** `black-clover` est ressorti bredouille au premier
+  passage et donne `Kazé` au simple réessai. Tout échec mérite une seconde tentative.
+- **Repli sur le titre AniList** quand le titre VF ne donne rien : `ITCHI THE WITCH` →
+  *Ichi the Witch* → Ki-oon.
+- **Noms canonisés** via `EDITEURS_CANONIQUES` : `Éd. Ki-oon` → `Ki-oon`,
+  `Dargaud Bénélux-Kana` → `Kana`, `Pika` et `Pika édition` → `Pika Édition`.
+- **Aucun changement de composant n'a été nécessaire** : `app/edition/[slug]/page.tsx` et
+  `components/missing-group.tsx` composaient déjà `Nom · Éditeur`, le champ était simplement
+  vide. La Collection, elle, garde le sous-titre d'état décidé à l'étape 3.
+
+**Les 12 restants sont bloqués par les fautes de frappe du Sheet**, pas par la BnF : `ONE PUCH
+MAN` (PUNCH), `SAGA OF TANY` (TANYA), `MARIMASHITA` (MAIRIMASHITA), `ORIANT` (ORIENT). AniList
+bute sur les mêmes. À corriger dans les titres, ou à saisir à la main.
+
+### Fait — PWA installable (29 août 2026)
+
+`app/manifest.ts`, icônes et métadonnées mobiles. `npm run build` sort
+`/manifest.webmanifest` et `/apple-icon.png` en routes statiques.
+
+| Fichier | Rôle |
+|---|---|
+| `app/manifest.ts` | le manifeste, via `MetadataRoute.Manifest` |
+| `scripts/generate_icons.py` | dessine les icônes en lisant les tokens de `globals.css` |
+| `public/icon-192.png`, `public/icon-512.png` | les icônes du manifeste, dont une `maskable` |
+| `app/apple-icon.png` | l'icône iOS, liée automatiquement par la convention Next |
+
+Décisions prises en chemin :
+
+- **Les icônes sont générées, pas dessinées à la main.** `generate_icons.py` lit
+  `--color-bg`, `--color-accent`, `--color-accent-400` et `--color-accent-700` dans
+  `app/globals.css` : trois tranches de livres sur le fond Nocturne. Changer la palette et
+  relancer le script suffit à refaire le jeu complet.
+- **`COULEUR_FOND_APPLICATION` dans `lib/constants.ts` duplique `--color-bg`.** Un manifeste
+  est du JSON, il ne peut pas lire une variable CSS. C'est la seule couleur en dur du code,
+  isolée dans une constante nommée. **Elle doit suivre `--color-bg` à la main.**
+- **`viewport-fit=cover` avec `statusBarStyle: black-translucent`**, donc les encoches sont
+  gérées explicitement : `pt-[env(safe-area-inset-top)]` sur le `body` et
+  `pb-[calc(18px+env(safe-area-inset-bottom))]` sur la barre d'onglets. Hors mode plein
+  écran ces valeurs valent zéro, rien ne bouge dans un navigateur.
+- **Next émet `mobile-web-app-capable`**, pas la variante préfixée Apple, qui est dépréciée.
+
+**L'installation exige HTTPS.** Chrome ne propose « Installer » que dans un contexte sécurisé ;
+`localhost` y échappe, une adresse IP de réseau local en HTTP non. **Le test sur téléphone via
+`http://192.168.1.13:3000` valide donc la mise en page, jamais l'installation** — celle-ci
+attend le déploiement Vercel.
+
+**Pas de service worker.** §6 (données texte en cache, images volontairement hors cache) reste
+entier : aujourd'hui le hors-ligne se limite au bandeau et à l'inertie des pastilles. À noter :
+cette version de Next documente `experimental.useOffline`
+(`node_modules/next/dist/docs/01-app/02-guides/offline-support.md`), qui met les navigations et
+Server Actions en attente au lieu de les faire échouer — à évaluer avant d'écrire un service
+worker à la main.
+
+### Tranché — 2 colonnes et largeur maximale (29 août 2026)
+
+Premier test sur un vrai téléphone, via l'URL réseau du serveur de développement.
+
+**La grille passe de 4 à 2 colonnes.** Le handoff prescrit 4 et fait foi sur le rendu ; il est
+écarté ici sur constat d'usage. Sur un écran de ~360 px CSS la case passe d'environ 74 px à
+157 px de large. Le coût est le défilement : Berserk passe de 11 à 21 rangées, Bleach de 19 à
+37. **3 colonnes reste le compromis** si le défilement devient pénible — une seule constante à
+changer. La décision est prise avec les couvertures à l'écran, pas sur des cases vides.
+
+**`COLONNES_GRILLE` est enfin la source de vérité.** Elle existait dans `lib/constants.ts`,
+valait 4, et **n'était importée nulle part** : `components/volume-grid.tsx` codait `grid-cols-4`
+juste à côté. Changer la constante n'avait aucun effet. La grille passe par
+`gridTemplateColumns` en style en ligne, Tailwind ne sachant pas interpoler `grid-cols-${n}`.
+
+**Conteneur centré à `LARGEUR_MAX_APPLICATION` = 430 px**, posé dans `app/layout.tsx` autour du
+bandeau hors-ligne et des écrans. À 2 colonnes, un écran large donnait des couvertures de
+~700 px : la largeur maximale n'était plus un confort mais une nécessité. La barre d'onglets
+est dans le conteneur, l'application se lit comme une colonne d'app sur bureau.
+
+**Détail non traité** : les trois cases fantômes « à paraître » forment désormais une rangée
+pleine plus une orpheline. `CASES_A_PARAITRE` reste à 3, conformément au handoff.
 
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
   locaux mènent à la fiche existante. §4 ne décrit que la création d'une série neuve, mais
   4 séries de la collection sont multi-éditions — le cas se posera.
-- **Couvertures** : les 1640 restent à remplir depuis le poste local (§5). C'est ce qui
-  sépare aujourd'hui les écrans réels des maquettes.
+- **Couvertures** : la source est trouvée et mesurée (MangaDex en `ja`, 93 % — §5), le rendu
+  est validé, mais **le remplissage des 1640 attend la réponse de MangaDex**. Seules 75
+  couvertures d'essai sont en place, sur 10 éditions, limitées à 8 tomes chacune. Elles vivent
+  dans `public/covers/`, ignoré par git — un poste neuf ne les aura pas.
+- **Alignement des genres sur AniList** : décidé, pas fait. Touche `import_sheet.py`,
+  `data/collection.json` et la base.
 - **Premier déploiement Vercel**, jamais fait. Vercel Authentication en portée
   `All Deployments` à activer avant toute donnée réelle en ligne.
-- **PWA** : ni manifeste ni service worker. Le mode hors ligne de §6 se limite pour l'instant
-  au bandeau et à l'inertie des pastilles ; rien n'est mis en cache.
+- **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
+  en cache, et l'installation attend le déploiement HTTPS.
+- **Test sur téléphone** : fait pour la mise en page (grille, largeur). **Le cochage tactile,
+  la barre d'onglets et les cibles à 44 px n'ont pas encore été exercés au doigt.**
 
 ### Reprendre sur un poste neuf
 
@@ -679,9 +840,8 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   déclarer, Vercel Authentication à activer avant toute donnée réelle en ligne.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.editeur` et `Edition.slugMangaNews` sont nuls sur les 112 éditions.** Le Sheet ne
-  les portait pas. Le sous-titre tombe donc sur le seul nom d'édition et le lien manga-news ne
-  s'affiche jamais. À remplir automatiquement depuis les API externes (§5), pas à la main.
+- **`Edition.slugMangaNews` est nul sur les 112 éditions.** Le Sheet ne le portait pas, et le
+  lien manga-news ne s'affiche donc jamais. `Edition.editeur` est réglé : 100/112 depuis la BnF.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

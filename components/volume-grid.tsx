@@ -4,7 +4,7 @@ import { useOptimistic, useTransition } from "react";
 import { basculerTome, definirTousLesTomes } from "@/lib/actions";
 import { Cover } from "@/components/cover";
 import { Check } from "@/components/icons";
-import { CASES_A_PARAITRE } from "@/lib/constants";
+import { CASES_A_PARAITRE, COLONNES_GRILLE } from "@/lib/constants";
 import { useEnLigne } from "@/lib/use-online";
 import type { Tome } from "@/lib/domain";
 
@@ -89,7 +89,10 @@ export function VolumeGrid({ slug, titre, tomesParus, aParaitre, tomes }: Volume
       </div>
 
       <div className="flex flex-1 flex-col gap-[14px] overflow-y-auto px-[18px] pb-[18px]">
-        <div className="grid grid-cols-4 gap-[9px]">
+        <div
+          className="grid gap-[9px]"
+          style={{ gridTemplateColumns: `repeat(${COLONNES_GRILLE}, minmax(0, 1fr))` }}
+        >
           {Array.from({ length: tomesParus }, (_, index) => index + 1).map((numero) => {
             const possede = possedesSet.has(numero);
             const tome = parNumero.get(numero) ?? null;

@@ -15,7 +15,7 @@ export function TabBar() {
   const chemin = usePathname();
 
   return (
-    <nav className="bg-surface border-divider sticky bottom-0 flex border-t pt-[8px] pb-[18px]">
+    <nav className="bg-surface border-divider sticky bottom-0 flex border-t pt-[8px] pb-[calc(18px+env(safe-area-inset-bottom))]">
       {ONGLETS.map(({ href, libelle, Icone }) => {
         const actif = href === "/" ? chemin === "/" : chemin.startsWith(href);
         return (

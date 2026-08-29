@@ -1,6 +1,8 @@
 export const CASES_A_PARAITRE = 3;
 
-export const COLONNES_GRILLE = 4;
+export const COLONNES_GRILLE = 2;
+
+export const LARGEUR_MAX_APPLICATION = "430px";
 
 export const LIBELLES_STATUT = {
   EN_COURS: "Édition en cours",
@@ -65,3 +67,7 @@ export const LIBELLE_RECHERCHE_VIDE = "Aucun résultat.";
 export const LIBELLE_INVITE_RECHERCHE = "Cherchez une série par son titre.";
 export const LIBELLE_TOMES_JAPONAIS =
   "Compte japonais indicatif : corrigez-le avec le nombre de tomes parus en France.";
+
+export const NOM_APPLICATION = "Collection de mangas";
+export const NOM_APPLICATION_COURT = "Collection";
+export const COULEUR_FOND_APPLICATION = "#161826";
