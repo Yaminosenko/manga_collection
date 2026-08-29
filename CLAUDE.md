@@ -847,6 +847,31 @@ Décisions et pièges :
 `npm run covers:fetch` ; le manifeste et le cache d'identifiants, eux, sont versionnés, donc la
 reprise est immédiate et ne réinterroge pas MangaDex pour les séries déjà résolues.
 
+### Corrigé — l'interactivité était morte depuis le téléphone (29 août 2026)
+
+Sur mobile, l'affichage était parfait mais **aucun tap ne faisait rien** : ni cochage, ni
+recherche, ni navigation.
+
+**Cause : Next bloque par défaut l'accès aux ressources de développement depuis une autre
+origine.** Le journal le dit en clair —
+`Blocked cross-origin request to Next.js dev resource /_next/static/chunks/... from "192.168.1.13"`.
+Le HTML rendu côté serveur arrivait intact, donc l'écran semblait normal ; **les chunks
+JavaScript, eux, n'étaient jamais servis**, React n'hydratait pas, et aucun gestionnaire
+d'événement n'existait. Tout ce qui est visuel marchait, tout ce qui est interactif était mort.
+
+**Correctif** : `allowedDevOrigins` dans `next.config.ts`, couvrant les sous-réseaux privés
+courants pour survivre à un changement de bail DHCP. C'est une option de développement, sans
+effet en production.
+
+Vérifié de bout en bout depuis `192.168.1.13` : `POST /edition/chainsaw-man/tomes 200`,
+`possede` bascule en base, les compteurs reviennent à 1 148 après annulation.
+
+**Piège de diagnostic à retenir** : chercher la présence des clés `__reactFiber$*` sur un
+élément du DOM n'est **pas** un test fiable d'hydratation, et un événement `input` fabriqué à
+la main ne déclenche pas toujours un `onChange` React. Les deux m'ont fait croire que
+l'application entière était cassée sur bureau, ce qui était faux. **Le seul test valable est
+fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
