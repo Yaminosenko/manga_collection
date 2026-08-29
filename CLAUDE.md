@@ -800,15 +800,61 @@ est dans le conteneur, l'application se lit comme une colonne d'app sur bureau.
 **Détail non traité** : les trois cases fantômes « à paraître » forment désormais une rangée
 pleine plus une orpheline. `CASES_A_PARAITRE` reste à 3, conformément au handoff.
 
+### Fait — les couvertures (29 août 2026)
+
+Autorisation obtenue de MangaDex. **1 426 couvertures sur 1 640, soit 87 % de la collection**
+et 89 % des éditions visées. 38 Mo sur disque, 23,4 Ko de moyenne — l'estimation de ~18 Ko de
+§5 était basse, l'ordre de grandeur tient.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/fetch_covers.py` | `npm run covers:fetch` — résout, télécharge, redimensionne |
+| `scripts/apply-covers.ts` | `npm run covers:apply` — écrit `couvertureUrl`, `--revert` pour annuler |
+| `data/covers.json` | le manifeste, versionné |
+| `data/mangadex_ids.json` | le cache des identifiants MangaDex, versionné |
+
+Décisions et pièges :
+
+- **Le premier passage n'a donné que 66 %, à cause d'un bug d'appariement, pas d'un manque de
+  données.** Le sélecteur prenait la première fiche dont le titre correspondait, et MangaDex
+  héberge des fiches satellites au titre identique : `Bleach (Pre-Serialization)` avec une
+  seule couverture, `Watashi no Hero Academia` qui est une parodie,
+  `En'en no Shouboutai (Fan Colored)`. Bleach repartait avec 1 tome sur 74.
+- **Le correctif rassemble tous les candidats, pénalise les marqueurs de fiche satellite, puis
+  départage les quatre premiers en comptant leurs couvertures réelles.** La fiche canonique
+  gagne toujours : c'est elle qui en a le plus. Deuxième passage : 66 % → 89 %.
+- **La similarité remplace l'égalité stricte des titres** (`SEUIL_SIMILARITE = 0.86`), ce qui
+  absorbe les fautes de frappe du Sheet : `ONE PUCH MAN` trouve *One Punch-Man*,
+  `MARIMASHITA ! IRUMA-KUN !` trouve *Mairimashita! Iruma-kun*.
+- **Le script est repris sur incident** : un fichier déjà présent n'est pas retéléchargé et les
+  identifiants sont mis en cache. Relancer coûte quelques appels, pas 1 400 images.
+- **Débit à 3 req/s**, sous les 5 documentées, User-Agent honnête, images recopiées et jamais
+  liées à chaud, comme leur documentation l'exige.
+- **Piège rencontré : supprimer des fichiers ne nettoie pas la base.** 8 volumes de
+  `soul-eater-edition-double` pointaient encore vers des fichiers effacés. Toute suppression de
+  couverture doit remettre `couvertureUrl` à null dans le même geste.
+
+**Ce qui reste sans couverture, et pourquoi :**
+
+| Cause | Tomes |
+|---|---|
+| 5 éditions non simples, exclues volontairement — un tome double ne correspond à aucun tome japonais | 36 |
+| 15 éditions sans correspondance MangaDex : hors-séries et databooks (`bleach-13-blades`, `pandora-heart-8-5`, `my-hero-academia-ultra-archive`), et titres trop éloignés (`UQHOLDER` pour *UQ Holder!*) | 177 |
+| `remember` : fiche trouvée, aucune couverture déposée | — |
+| `solo-leveling` : 18 sur 19 | 1 |
+
+**Les couvertures ne sont pas dans git** (`public/covers/` est ignoré). Un poste neuf relance
+`npm run covers:fetch` ; le manifeste et le cache d'identifiants, eux, sont versionnés, donc la
+reprise est immédiate et ne réinterroge pas MangaDex pour les séries déjà résolues.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
   locaux mènent à la fiche existante. §4 ne décrit que la création d'une série neuve, mais
   4 séries de la collection sont multi-éditions — le cas se posera.
-- **Couvertures** : la source est trouvée et mesurée (MangaDex en `ja`, 93 % — §5), le rendu
-  est validé, mais **le remplissage des 1640 attend la réponse de MangaDex**. Seules 75
-  couvertures d'essai sont en place, sur 10 éditions, limitées à 8 tomes chacune. Elles vivent
-  dans `public/covers/`, ignoré par git — un poste neuf ne les aura pas.
+- **Couvertures** : faites à 87 %. Restent les 214 tomes détaillés ci-dessus, dont 36 exclus
+  volontairement. **Elles vivent en local ; le dépôt vers Vercel Blob (§5) n'est pas fait** et
+  attend le premier déploiement.
 - **Alignement des genres sur AniList** : décidé, pas fait. Touche `import_sheet.py`,
   `data/collection.json` et la base.
 - **Premier déploiement Vercel**, jamais fait. Vercel Authentication en portée

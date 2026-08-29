@@ -9,7 +9,9 @@
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:migrate": "tsx scripts/apply-migrations.ts",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "covers:fetch": "python scripts/fetch_covers.py",
+    "covers:apply": "tsx scripts/apply-covers.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
