@@ -1,11 +1,11 @@
 {
-  "exporteeLe": "2026-08-30T15:13:52.109Z",
+  "exporteeLe": "2026-08-30T15:28:39.910Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
     "tomes": 1690,
     "possedes": 1151,
-    "aVerifier": 30,
+    "aVerifier": 29,
     "forcees": 3,
     "couvertures": 1611
   },
@@ -5836,7 +5836,8 @@
               "id": "bd965116-de61-496c-bd40-b5c13318b700",
               "numero": 33,
               "date": "2026-10-21T00:00:00.000Z",
-              "isbn": "9782820356574"
+              "isbn": "9782820356574",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/blue-exorcist/33.webp"
             }
           ],
           "volumes": [
@@ -7008,7 +7009,8 @@
               "id": "6265501a-12a4-4992-b36c-1a20c24fc82f",
               "numero": 23,
               "date": "2026-10-14T00:00:00.000Z",
-              "isbn": "9782820300348"
+              "isbn": "9782820300348",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/23.webp"
             }
           ],
           "volumes": [
@@ -13290,7 +13292,8 @@
               "id": "3f2011c0-25ee-49e1-87da-0cec61b6c982",
               "numero": 10,
               "date": "2026-09-11T00:00:00.000Z",
-              "isbn": "9782505142829"
+              "isbn": "9782505142829",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/10.webp"
             }
           ],
           "volumes": [
@@ -13492,7 +13495,8 @@
               "id": "84745fcc-9d79-4357-9e5c-5ac81896c490",
               "numero": 15,
               "date": "2026-10-08T00:00:00.000Z",
-              "isbn": "9791042021528"
+              "isbn": "9791042021528",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/15.webp"
             }
           ],
           "volumes": [
@@ -14536,7 +14540,8 @@
               "id": "202a38da-475b-456a-ba7e-2d967e9a4729",
               "numero": 16,
               "date": "2026-10-01T00:00:00.000Z",
-              "isbn": "9791032723395"
+              "isbn": "9791032723395",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/16.webp"
             }
           ],
           "volumes": [
@@ -17756,7 +17761,8 @@
               "id": "e545347d-ea9e-4d43-bbc9-ec8187ccfe29",
               "numero": 19,
               "date": "2026-09-25T00:00:00.000Z",
-              "isbn": "9782377176465"
+              "isbn": "9782377176465",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/monster-musume-everyday-life-with-monster-girls/19.webp"
             }
           ],
           "volumes": [
@@ -23632,7 +23638,8 @@
               "id": "80866b96-e4a9-4711-8380-baacebc121dc",
               "numero": 20,
               "date": "2026-10-30T00:00:00.000Z",
-              "isbn": "9791033570103"
+              "isbn": "9791033570103",
+              "couvertureUrl": null
             }
           ],
           "volumes": [
@@ -24002,7 +24009,8 @@
               "id": "ae39ba6e-9fc5-457a-925c-9bfd6344dd26",
               "numero": 17,
               "date": "2026-10-09T00:00:00.000Z",
-              "isbn": "9782505144649"
+              "isbn": "9782505144649",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ragna-crimson/17.webp"
             }
           ],
           "volumes": [
@@ -24321,7 +24329,8 @@
               "id": "ad1370b0-60f1-4aa1-ac86-8a9e6e98fadb",
               "numero": 3,
               "date": "2026-09-03T00:00:00.000Z",
-              "isbn": "9791032723579"
+              "isbn": "9791032723579",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/rai-rai-rai/3.webp"
             }
           ],
           "volumes": [
@@ -25533,7 +25542,8 @@
               "id": "7a635d12-e21d-4ce4-a174-43b02e40e263",
               "numero": 5,
               "date": "2026-10-21T00:00:00.000Z",
-              "isbn": "9782344071717"
+              "isbn": "9782344071717",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ruridragon/5.webp"
             }
           ],
           "volumes": [
@@ -30289,7 +30299,8 @@
               "id": "96c1ecd4-83be-4682-b6dc-4863d8fb193b",
               "numero": 24,
               "date": "2026-09-17T00:00:00.000Z",
-              "isbn": "9782372876308"
+              "isbn": "9782372876308",
+              "couvertureUrl": null
             }
           ],
           "volumes": [
@@ -32424,7 +32435,7 @@
           "statut": "ABANDONNEE",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",

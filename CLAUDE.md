@@ -1400,6 +1400,14 @@ l'acheter. D'où une **table `Sortie` isolée** — `(editionId, numero, date, i
 des lignes dans `Volume` : aucun compteur existant ne peut bouger, et il n'y a aucune requête
 à garder. Migration `20260830180000_sorties_annoncees`.
 
+**Les tomes annoncés ont leur couverture.** MangaDex publie souvent la jaquette avant la
+parution française : **9 des 11** en ont une. Elles suivent le même circuit que les autres —
+`fetch_covers.py` les récupère depuis `data/covers-annonces.json`, `upload-covers.ts` les
+dépose dans Blob et renseigne `Sortie.couvertureUrl` (migration
+`20260830183000_couverture_sortie`). La case reprend le traitement « manquant » : couverture à
+34 %, pastille du numéro, plus une pastille de mois, le tout sous contour pointillé. Les deux
+sans couverture — `radiant` et `the-ancient-magus-bride` — restent des cases vides datées.
+
 **La grille nomme les tomes annoncés.** §4 disait des trois cases fantômes qu'elles sont « un
 signal, pas une donnée : l'application ne sait pas combien de tomes restent ». Elle le sait
 maintenant pour 11 d'entre eux : la case porte son numéro et son mois, et les génériques ne

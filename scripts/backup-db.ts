@@ -42,6 +42,7 @@ type SortieSauvee = {
   numero: number;
   date: string;
   isbn: string | null;
+  couvertureUrl: string | null;
 };
 
 type EditionSauvee = {
@@ -159,6 +160,7 @@ async function exporter() {
           numero: sortie.numero,
           date: sortie.date.toISOString(),
           isbn: sortie.isbn,
+          couvertureUrl: sortie.couvertureUrl,
         })),
         volumes: edition.volumes.map((volume) => ({
           id: volume.id,
@@ -276,6 +278,7 @@ async function restaurer() {
         numero: sortie.numero,
         date: new Date(sortie.date),
         isbn: sortie.isbn,
+        couvertureUrl: sortie.couvertureUrl,
       })),
     ),
   );

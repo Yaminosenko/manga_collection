@@ -16,7 +16,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
       },
       sorties: {
         orderBy: { numero: "asc" },
-        select: { numero: true, date: true },
+        select: { numero: true, date: true, couvertureUrl: true },
       },
       serie: {
         include: {
@@ -60,6 +60,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     sorties: edition.sorties.map((sortie) => ({
       numero: sortie.numero,
       date: sortie.date.toISOString(),
+      couvertureUrl: sortie.couvertureUrl,
     })),
     tomes: edition.volumes.map((volume) => ({
       numero: volume.numero,

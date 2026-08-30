@@ -140,10 +140,20 @@ export function VolumeGrid({ slug, titre, tomesParus, aParaitre, sorties, tomes 
             <div
               key={`sortie-${sortie.numero}`}
               aria-label={`Tome ${sortie.numero}, à paraître`}
-              className="case-a-paraitre relative flex aspect-cover flex-col items-center justify-center gap-[3px] rounded-cover"
+              className="case-a-paraitre relative aspect-cover overflow-hidden rounded-cover"
             >
-              <span className="text-[15px] font-medium text-neutral-600">{sortie.numero}</span>
-              <span className="text-[10px] text-neutral-700">
+              <span className="couverture-manquante absolute inset-0">
+                <Cover
+                  couvertureUrl={sortie.couvertureUrl}
+                  numero={sortie.numero}
+                  titre={titre}
+                  afficherNumero={false}
+                />
+              </span>
+              <span className="bg-scrim absolute bottom-0 left-0 m-[5px] rounded-[3px] px-[6px] py-[2px] text-[11px] font-medium text-neutral-500">
+                {sortie.numero}
+              </span>
+              <span className="bg-scrim absolute right-0 bottom-0 m-[5px] rounded-[3px] px-[6px] py-[2px] text-[10px] text-neutral-500">
                 {formaterMoisSortie(sortie.date)}
               </span>
             </div>

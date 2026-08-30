@@ -54,12 +54,13 @@ model Edition {
 }
 
 model Sortie {
-  id        String   @id @default(uuid())
-  edition   Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
-  editionId String
-  numero    Int
-  date      DateTime
-  isbn      String?
+  id            String   @id @default(uuid())
+  edition       Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  editionId     String
+  numero        Int
+  date          DateTime
+  isbn          String?
+  couvertureUrl String?
 
   @@unique([editionId, numero])
   @@index([date])

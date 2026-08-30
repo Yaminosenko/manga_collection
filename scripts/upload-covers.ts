@@ -1,11 +1,12 @@
 import "dotenv/config";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { list, put } from "@vercel/blob";
 import { prisma } from "../lib/prisma";
 
 const SOURCE = join(process.cwd(), "data", "covers.json");
+const SOURCE_ANNONCES = join(process.cwd(), "data", "covers-annonces.json");
 const MANIFESTE_BLOB = join(process.cwd(), "data", "blob.json");
 const DOSSIER_LOCAL = join(process.cwd(), "public", "covers");
 const PREFIXE_BLOB = "covers";
@@ -25,6 +26,10 @@ type Couverture = {
   chemin: string;
   cheminLocal: string;
 };
+
+function charger(chemin: string): Manifeste {
+  return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as Manifeste) : {};
+}
 
 function inventorier(manifeste: Manifeste): Couverture[] {
   return Object.entries(manifeste).flatMap(([slug, numeros]) =>
@@ -80,6 +85,25 @@ async function enFile<T>(taches: (() => Promise<T>)[], concurrence: number) {
   return resultats;
 }
 
+async function ecrireSorties(urls: Map<string, string>, annonces: Couverture[]) {
+  let ecrites = 0;
+  for (const couverture of annonces) {
+    const url = urls.get(couverture.chemin);
+    if (!url) continue;
+    const edition = await prisma.edition.findUnique({
+      where: { slug: couverture.slug },
+      select: { id: true },
+    });
+    if (!edition) continue;
+    const { count } = await prisma.sortie.updateMany({
+      where: { editionId: edition.id, numero: couverture.numero },
+      data: { couvertureUrl: url },
+    });
+    ecrites += count;
+  }
+  return ecrites;
+}
+
 async function ecrireEnBase(urls: Map<string, string>, couvertures: Couverture[]) {
   const parSlug = new Map<string, Couverture[]>();
   for (const couverture of couvertures) {
@@ -124,8 +148,9 @@ async function effacerEnBase(couvertures: Couverture[]) {
 }
 
 async function main() {
-  const manifeste = JSON.parse(readFileSync(SOURCE, "utf-8")) as Manifeste;
-  const couvertures = inventorier(manifeste);
+  const couvertures = inventorier(charger(SOURCE));
+  const annonces = inventorier(charger(SOURCE_ANNONCES));
+  const toutes = [...couvertures, ...annonces];
 
   if (process.argv.includes(RETOUR_ARRIERE)) {
     const remisesANull = await effacerEnBase(couvertures);
@@ -147,7 +172,7 @@ async function main() {
   const echecs: string[] = [];
   const introuvables: string[] = [];
 
-  const aEnvoyer = couvertures.filter((couverture) => {
+  const aEnvoyer = toutes.filter((couverture) => {
     const deja = existants.get(couverture.chemin);
     if (deja && !forces.has(couverture.slug)) {
       urls.set(couverture.chemin, deja);
@@ -156,7 +181,7 @@ async function main() {
     return true;
   });
 
-  console.log(`${aEnvoyer.length} a envoyer sur ${couvertures.length} du manifeste`);
+  console.log(`${aEnvoyer.length} a envoyer sur ${toutes.length} du manifeste`);
 
   await enFile(
     aEnvoyer.map((couverture) => async () => {
@@ -175,6 +200,7 @@ async function main() {
   );
 
   const { ecrits, absents } = await ecrireEnBase(urls, couvertures);
+  const sortiesEcrites = await ecrireSorties(urls, annonces);
   const premiere = urls.values().next().value;
   if (premiere) {
     writeFileSync(MANIFESTE_BLOB, `${JSON.stringify({ base: new URL(premiere).origin }, null, 2)}\n`);
@@ -184,6 +210,7 @@ async function main() {
   const tomes = await prisma.volume.count();
 
   console.log(`${urls.size} couvertures dans Blob, ${ecrits} volumes mis a jour`);
+  console.log(`${sortiesEcrites} tomes annonces pourvus d'une couverture`);
   console.log(`volumes avec couverture : ${avecCouverture} / ${tomes}`);
   if (introuvables.length > 0) {
     console.log(`absentes du disque : ${introuvables.length}`);

@@ -20,6 +20,7 @@ QUALITE_WEBP = 82
 RACINE_COUVERTURES = "public/covers"
 FICHIER_IDS = "data/mangadex_ids.json"
 FICHIER_MANIFESTE = "data/covers.json"
+FICHIER_ANNONCES = "data/covers-annonces.json"
 SOURCE_COLLECTION = "data/backup.json"
 NOM_EDITION_SIMPLE = "Edition simple"
 LANGUES_PAR_PREFERENCE = ("fr", "ja")
@@ -273,6 +274,17 @@ def charger_json(chemin, defaut):
         return defaut
 
 
+def sorties_visees():
+    source = json.load(open(SOURCE_COLLECTION, encoding="utf-8"))
+    visees = []
+    for serie in source["series"]:
+        for edition in serie["editions"]:
+            numeros = [sortie["numero"] for sortie in edition.get("sorties", [])]
+            if numeros:
+                visees.append((edition["slug"], serie["titre"], sorted(numeros)))
+    return visees
+
+
 def editions_visees():
     source = json.load(open(SOURCE_COLLECTION, encoding="utf-8"))
     visees = []
@@ -365,6 +377,48 @@ def main():
 
     couverts = sum(len(v) for v in manifeste.values())
     attendus_total = sum(t for _, _, t in cibles)
+    annonces = charger_json(FICHIER_ANNONCES, {})
+    for slug, titre, numeros in sorties_visees():
+        identifiant = identifiants.get(slug)
+        if not identifiant:
+            continue
+        obtenus = list(annonces.get(slug, []))
+        familles = None
+        for numero in numeros:
+            chemin = f"{RACINE_COUVERTURES}/{slug}/{numero}.webp"
+            if os.path.exists(chemin):
+                obtenus.append(numero)
+                continue
+            if familles is None:
+                try:
+                    familles = couvertures_par_langue(identifiant)
+                except Exception:
+                    familles = {}
+            fichier = None
+            for langue in LANGUES_PAR_PREFERENCE:
+                for tomes in familles.get(langue, {}).values():
+                    if numero in tomes:
+                        fichier = tomes[numero]
+                        break
+                if fichier:
+                    break
+            if not fichier:
+                continue
+            try:
+                brut = curl(f"{MANGADEX_UPLOADS}/{identifiant}/{fichier}.512.jpg", binaire=True)
+                enregistrer(brut, chemin)
+            except Exception:
+                continue
+            obtenus.append(numero)
+            telecharges += 1
+            poids_total += os.path.getsize(chemin)
+        if obtenus:
+            annonces[slug] = sorted(set(obtenus))
+    json.dump(annonces, open(FICHIER_ANNONCES, "w", encoding="utf-8"),
+              ensure_ascii=False, indent=2, sort_keys=True)
+    total_annonces = sum(len(v) for v in annonces.values())
+    print(f"couvertures de tomes annonces : {total_annonces}")
+
     print(f"\ntelecharges cette passe    : {telecharges}")
     if telecharges:
         print(f"poids moyen                : {poids_total / telecharges / 1024:.1f} Ko")

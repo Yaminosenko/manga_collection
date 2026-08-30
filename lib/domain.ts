@@ -12,6 +12,7 @@ import type { StatutEdition } from "@/lib/generated/prisma/enums";
 export type SortieAnnoncee = {
   numero: number;
   date: string;
+  couvertureUrl: string | null;
 };
 
 export type Tome = {
