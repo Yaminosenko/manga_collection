@@ -477,7 +477,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 29 août 2026.
+Dernière mise à jour : 30 août 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -809,7 +809,7 @@ et 89 % des éditions visées. 38 Mo sur disque, 23,4 Ko de moyenne — l'estima
 | Fichier | Rôle |
 |---|---|
 | `scripts/fetch_covers.py` | `npm run covers:fetch` — résout, télécharge, redimensionne |
-| `scripts/apply-covers.ts` | `npm run covers:apply` — écrit `couvertureUrl`, `--revert` pour annuler |
+| `scripts/upload-covers.ts` | `npm run covers:upload` — dépose dans Blob et écrit `couvertureUrl` |
 | `data/covers.json` | le manifeste, versionné |
 | `data/mangadex_ids.json` | le cache des identifiants MangaDex, versionné |
 
@@ -843,9 +843,38 @@ Décisions et pièges :
 | `remember` : fiche trouvée, aucune couverture déposée | — |
 | `solo-leveling` : 18 sur 19 | 1 |
 
-**Les couvertures ne sont pas dans git** (`public/covers/` est ignoré). Un poste neuf relance
-`npm run covers:fetch` ; le manifeste et le cache d'identifiants, eux, sont versionnés, donc la
-reprise est immédiate et ne réinterroge pas MangaDex pour les séries déjà résolues.
+**Les couvertures ne sont pas dans git** (`public/covers/` est ignoré). Le poste local ne sert
+plus qu'à les acquérir : depuis leur dépôt dans Blob, l'application lit les mêmes URL en
+production et en développement.
+
+### Fait — les couvertures dans Vercel Blob (30 août 2026)
+
+Les 1 426 couvertures sont déposées dans le store Blob et `couvertureUrl` porte désormais leur
+URL absolue. Vérifié : **1 426 URL absolues, aucun chemin local restant**, sept compteurs
+intacts.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/upload-covers.ts` | `npm run covers:upload` — liste, envoie, écrit `couvertureUrl` |
+| `data/blob.json` | l'origine du store, versionnée |
+
+- **Le store doit être créé en accès *public*.** Le premier, créé en privé, a refusé les 1 426
+  envois d'un bloc : `Cannot use public access on a private store`. Un blob privé se lit par
+  `get()` côté serveur — chaque couverture passerait par une fonction serverless, ce qui casse
+  « servies telles quelles » et le cache immuable de §5, et brûlerait les invocations du plan
+  Hobby. Les jaquettes ne sont pas des données personnelles : la confidentialité vient de
+  Vercel Authentication sur l'application, pas du store.
+- **`couvertureUrl` est l'URL absolue Blob**, pas un chemin relatif. Le poste local lit donc les
+  mêmes images que la production, et `npm run covers:fetch` n'est plus nécessaire pour afficher
+  l'application — seulement pour acquérir de nouvelles couvertures.
+- **`scripts/apply-covers.ts` est supprimé.** Il écrivait `/covers/<slug>/<n>.webp` ; le lancer
+  après la bascule aurait écrasé les 1 426 URL par des chemins morts en production. Un seul
+  auteur de `couvertureUrl` désormais : `covers:upload`.
+- **Reprise sur incident** : le script liste le store avant d'envoyer, donc un relancement
+  n'expédie que ce qui manque. Vérifié — le second passage a vu la couverture de l'essai déjà
+  en place et n'a envoyé que les 1 425 autres.
+- **Cache confirmé sur l'URL publique** : `Cache-Control: public, max-age=31536000`, soit
+  l'année immuable que §5 demande.
 
 ### Corrigé — l'interactivité était morte depuis le téléphone (29 août 2026)
 
@@ -877,9 +906,8 @@ fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
   locaux mènent à la fiche existante. §4 ne décrit que la création d'une série neuve, mais
   4 séries de la collection sont multi-éditions — le cas se posera.
-- **Couvertures** : faites à 87 %. Restent les 214 tomes détaillés ci-dessus, dont 36 exclus
-  volontairement. **Elles vivent en local ; le dépôt vers Vercel Blob (§5) n'est pas fait** et
-  attend le premier déploiement.
+- **Couvertures** : faites à 87 % et **déposées dans Vercel Blob**. Restent les 214 tomes
+  détaillés ci-dessus, dont 36 exclus volontairement.
 - **Alignement des genres sur AniList** : décidé, pas fait. Touche `import_sheet.py`,
   `data/collection.json` et la base.
 - **Premier déploiement Vercel**, jamais fait. Vercel Authentication en portée
@@ -893,8 +921,9 @@ fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
 - **12 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent. Le
   sélecteur de `fetch_covers.py` sait désormais les absorber par similarité — **transposer la
   même approche à `fetch_publishers.py` les débloquerait probablement**.
-- **`next-env.d.ts` est modifié et non commité** : Next l'a réécrit pour pointer vers
-  `.next/dev/types/`. À verser ou à écarter, pas encore tranché.
+- **Pousser `main` sur GitHub.** `origin/main` en est resté à l'étape 1 : les 15 commits des
+  étapes 2 à 5, des couvertures et de Blob n'existent que sur le poste local. Le jeton GitHub
+  enregistré est périmé — purger l'identifiant (`git credential reject`) et repousser.
 
 ### Reprendre sur un poste neuf
 
@@ -904,9 +933,9 @@ fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
    Les secrets ne sont pas dans le dépôt et n'y seront jamais.
 3. `npm run dev`. **Ne pas relancer le seed** : la base Neon est déjà remplie, elle est la
    source de vérité, pas `data/collection.json`.
-4. `npm run covers:fetch` puis `npm run covers:apply` — `public/covers/` est ignoré par git, un
-   poste neuf n'a aucune couverture. `data/covers.json` et `data/mangadex_ids.json` étant
-   versionnés, la reprise ne réinterroge pas MangaDex pour les séries déjà résolues.
+4. Rien à faire pour les couvertures : elles sont dans Blob et la base porte leurs URL
+   absolues. `npm run covers:fetch` ne sert plus qu'à en acquérir de nouvelles, suivi de
+   `npm run covers:upload` — qui réclame `BLOB_READ_WRITE_TOKEN` dans `.env`.
 
 Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un réseau ordinaire,
 `prisma migrate dev` attaque Neon directement et le détour par `npx prisma dev` devient inutile —
