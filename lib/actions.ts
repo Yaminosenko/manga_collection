@@ -4,12 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { rechercherSurAniList } from "@/lib/anilist";
-import { chercherPrixDefautCentimes } from "@/lib/bnf";
+import { chercherParIsbn, chercherPrixDefautCentimes } from "@/lib/bnf";
 import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
 import { exigerProprietaire } from "@/lib/guard";
 import { LONGUEUR_RECHERCHE_MIN, RESULTATS_RECHERCHE_MAX } from "@/lib/constants";
-import type { EtatCreation, ResultatRecherche } from "@/lib/domain";
+import { isbnValide } from "@/lib/domain";
+import type { EtatCreation, ResultatRecherche, ResultatScan } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
 async function marquerVerifiee(slug: string): Promise<void> {
@@ -163,6 +164,88 @@ function lireCentimes(brut: string): number | null {
   }
   const valeur = Number(brut.replace(",", "."));
   return Number.isFinite(valeur) && valeur >= 0 ? Math.round(valeur * 100) : null;
+}
+
+function normaliserTitre(texte: string): string {
+  return texte
+    .normalize("NFKD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function racineDuTitre(titreNotice: string): string {
+  return normaliserTitre(titreNotice.replace(/[\s.:,-]*\d{1,3}\s*$/, ""));
+}
+
+export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
+  await exigerProprietaire();
+
+  const isbn = brut.replace(/[^0-9]/g, "");
+  if (!isbnValide(isbn)) {
+    return null;
+  }
+
+  const volume = await prisma.volume.findFirst({
+    where: { isbn },
+    select: {
+      numero: true,
+      possession: { select: { possede: true } },
+      edition: { select: { slug: true, nom: true, serie: { select: { titre: true } } } },
+    },
+  });
+  if (volume) {
+    return {
+      type: "tome",
+      isbn,
+      slug: volume.edition.slug,
+      titre: volume.edition.serie.titre,
+      nom: volume.edition.nom,
+      numero: volume.numero,
+      possede: volume.possession?.possede ?? false,
+    };
+  }
+
+  const sortie = await prisma.sortie.findFirst({
+    where: { isbn },
+    select: {
+      numero: true,
+      date: true,
+      edition: { select: { slug: true, serie: { select: { titre: true } } } },
+    },
+  });
+  if (sortie) {
+    return {
+      type: "annonce",
+      isbn,
+      slug: sortie.edition.slug,
+      titre: sortie.edition.serie.titre,
+      numero: sortie.numero,
+      date: sortie.date.toISOString(),
+    };
+  }
+
+  const notice = await chercherParIsbn(isbn);
+  if (!notice) {
+    return { type: "inconnu", isbn };
+  }
+
+  const racine = racineDuTitre(notice.titre);
+  const editions = await prisma.edition.findMany({
+    select: { slug: true, serie: { select: { titre: true } } },
+  });
+  const correspondance =
+    editions.find((edition) => normaliserTitre(edition.serie.titre) === racine) ?? null;
+
+  return {
+    type: "notice",
+    isbn,
+    titreNotice: notice.titre,
+    editeur: notice.editeur,
+    annee: notice.annee,
+    slugProbable: correspondance?.slug ?? null,
+    titreProbable: correspondance?.serie.titre ?? null,
+  };
 }
 
 export async function chercherPrix(titre: string, auteur: string): Promise<number | null> {

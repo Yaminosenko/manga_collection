@@ -1632,8 +1632,52 @@ l'expose pas — il faut `recordSchema=unimarcxchange`. Vérifié contre l'exemp
 Vérifié en appelant l'action par HTTP : 730 et 720 centimes sur deux séries, `null` sur une
 série inventée, **500 en invité**.
 
+### Fait — le scan de code-barres (30 août 2026)
+
+Le scan EAN-13 de §9, reporté « après les quatre écrans de base ». Écran `/scanner`, atteint
+depuis l'onglet Ajouter, réservé au propriétaire.
+
+| Fichier | Rôle |
+|---|---|
+| `components/scanner.tsx` | caméra, détection, résultat |
+| `lib/bnf.ts` | `chercherParIsbn`, notice UNIMARC complète |
+| `lib/actions.ts` | `resoudreIsbn`, la résolution en cascade |
+| `lib/domain.ts` | `isbnValide`, clé de contrôle EAN-13 |
+
+**La résolution est une cascade, et l'ordre compte** :
+
+1. `Volume.isbn` → le tome est connu : on l'affiche avec un bouton « Marquer possédé »
+2. `Sortie.isbn` → c'est une annonce : on donne sa date
+3. **BnF par ISBN** → titre, éditeur, année, et le rapprochement avec une édition de la collection
+4. rien → « Aucune notice ne correspond »
+
+**La BnF est le résolveur principal, pas la base.** Seuls **156 tomes sur 1 710** portent un
+ISBN, et 106 des 1 153 possédés : un scan a environ **9 chances sur 100** de tomber sur un tome
+déjà identifié. Cela s'améliorera à chaque import de planning.
+
+**La clé de contrôle est vérifiée avant tout appel réseau.** Un code-barres qui n'est pas un
+ISBN — un produit quelconque, un additif prix — est rejeté sans interroger personne.
+
+**`BarcodeDetector` n'existe que sur Android**, ce qui était su. L'écran se dégrade : sans lui,
+pas de caméra, un message qui le dit, et **une saisie manuelle de l'ISBN** qui marche partout.
+C'est aussi ce qui rend la fonction testable depuis le poste — la caméra elle-même reste à
+exercer sur le téléphone.
+
+Vérifié de bout en bout : un tome connu rend « CHAINSAW MAN · tome 17 · Possédé », une annonce
+rend sa date, `9782344067802` rend « Berserk 1 · Glénat · 2025 » avec un lien vers l'édition,
+un ISBN sans notice rend « inconnu », un code à clé fausse est refusé, et **l'invité reçoit
+500**.
+
+**Ce que ça n'adresse pas encore** : créer une seconde édition depuis un scan. La notice donne
+pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'est la suite naturelle.
+
 ### Reste à faire
 
+- **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
+  compte acheter. Distinct des Manquants, qui ne parle que de tomes absents d'éditions déjà
+  possédées. Demande sans doute un `statut` supplémentaire ou un drapeau sur `Edition`, et de
+  décider si ces séries comptent dans les compteurs d'en-tête et dans la valeur — a priori non,
+  comme les vendues.
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
   (`lib/creation.ts:33`) crée toujours une `Serie` neuve, et les résultats locaux de `/ajouter`
   sont de simples liens vers la fiche existante. Créer une Perfect Edition depuis le résultat

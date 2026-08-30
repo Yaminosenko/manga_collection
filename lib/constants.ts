@@ -115,3 +115,14 @@ export const PREFIXE_VALEUR_PARTIELLE = "≥ ";
 export const URL_SRU_BNF = "https://catalogue.bnf.fr/api/SRU";
 export const LIBELLE_PRIX_SUGGERE = "Prix relevé à la BnF, à corriger si besoin.";
 export const LIBELLE_PRIX_RECHERCHE = "Recherche du prix…";
+
+export const TITRE_SCANNER = "Scanner";
+export const LIBELLE_SCAN_ISBN_INVALIDE = "Ce code-barres n’est pas un ISBN de livre.";
+export const LIBELLE_SCAN_INCONNU = "Aucune notice ne correspond à cet ISBN.";
+export const LIBELLE_SCAN_HORS_COLLECTION = "Aucune édition de la collection ne correspond.";
+export const LIBELLE_SCAN_INDISPONIBLE =
+  "Le scan par la caméra n’est disponible que sur Android. Saisissez l’ISBN à la main.";
+export const LIBELLE_SCAN_INVITE = "Placez le code-barres du dos du tome dans le cadre.";
+export const LIBELLE_ISBN = "ISBN";
+export const LONGUEUR_ISBN = 13;
+export const PREFIXES_ISBN = ["978", "979"];

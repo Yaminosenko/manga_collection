@@ -5,9 +5,33 @@ import {
   LIBELLE_COMPLETE,
   LIBELLE_EDITION_TERMINEE,
   LIBELLE_TERMINEE_FORCEE,
+  LONGUEUR_ISBN,
+  PREFIXES_ISBN,
 } from "@/lib/constants";
 import type { SerieDistante } from "@/lib/anilist";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
+
+export type ResultatScan =
+  | {
+      type: "tome";
+      isbn: string;
+      slug: string;
+      titre: string;
+      nom: string;
+      numero: number;
+      possede: boolean;
+    }
+  | { type: "annonce"; isbn: string; slug: string; titre: string; numero: number; date: string }
+  | {
+      type: "notice";
+      isbn: string;
+      titreNotice: string;
+      editeur: string | null;
+      annee: string | null;
+      slugProbable: string | null;
+      titreProbable: string | null;
+    }
+  | { type: "inconnu"; isbn: string };
 
 export type SortiePlanning = {
   slug: string;
@@ -203,4 +227,15 @@ export function valeurCentimes(edition: Pick<Edition, "prixDefautCentimes" | "to
     total += prix;
   }
   return total;
+}
+
+export function isbnValide(brut: string): boolean {
+  const chiffres = brut.replace(/[^0-9]/g, "");
+  if (chiffres.length !== LONGUEUR_ISBN) return false;
+  if (!PREFIXES_ISBN.some((prefixe) => chiffres.startsWith(prefixe))) return false;
+  const somme = [...chiffres.slice(0, 12)].reduce(
+    (total, chiffre, rang) => total + Number(chiffre) * (rang % 2 === 0 ? 1 : 3),
+    0,
+  );
+  return (10 - (somme % 10)) % 10 === Number(chiffres[12]);
 }

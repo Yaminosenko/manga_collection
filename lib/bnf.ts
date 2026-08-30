@@ -99,3 +99,54 @@ export async function chercherPrixDefautCentimes(
 
   return [...releves.entries()].sort((gauche, droite) => droite[1] - gauche[1])[0][0];
 }
+
+export type NoticeBnf = {
+  isbn: string;
+  titre: string;
+  editeur: string | null;
+  annee: string | null;
+  format: string | null;
+  prixCentimes: number | null;
+};
+
+function nettoyerEditeur(brut: string | null): string | null {
+  if (!brut) return null;
+  return brut.replace(/\s*\([^)]*\)\s*$/, "").trim() || null;
+}
+
+export async function chercherParIsbn(isbn: string): Promise<NoticeBnf | null> {
+  const requete = new URLSearchParams({
+    version: "1.2",
+    operation: "searchRetrieve",
+    query: `bib.isbn all "${isbn}"`,
+    recordSchema: "unimarcxchange",
+    maximumRecords: "1",
+  });
+
+  let xml: string;
+  try {
+    const reponse = await fetch(`${URL_SRU_BNF}?${requete}`, { cache: "no-store" });
+    if (!reponse.ok) return null;
+    xml = await reponse.text();
+  } catch {
+    return null;
+  }
+
+  const bloc = xml.match(/<srw:recordData>[\s\S]*?<\/srw:recordData>/)?.[0];
+  if (!bloc) return null;
+
+  const titre = sousChamp(bloc, "200", "a");
+  if (!titre) return null;
+
+  const complement = sousChamp(bloc, "200", "h") ?? sousChamp(bloc, "200", "i");
+  const prixBrut = sousChamp(bloc, "010", "d");
+
+  return {
+    isbn,
+    titre: complement ? `${titre} ${complement}` : titre,
+    editeur: nettoyerEditeur(sousChamp(bloc, "214", "c") ?? sousChamp(bloc, "210", "c")),
+    annee: (sousChamp(bloc, "214", "d") ?? sousChamp(bloc, "210", "d") ?? "").match(/\d{4}/)?.[0] ?? null,
+    format: sousChamp(bloc, "215", "a"),
+    prixCentimes: prixBrut ? centimes(prixBrut) : null,
+  };
+}

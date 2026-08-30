@@ -18,6 +18,7 @@ import {
   NOM_EDITION_PAR_DEFAUT,
   PLACEHOLDER_RECHERCHE,
   TITRE_AJOUTER,
+  TITRE_SCANNER,
 } from "@/lib/constants";
 import type { EtatCreation, ResultatDistant, ResultatRecherche } from "@/lib/domain";
 
@@ -61,7 +62,15 @@ export function AddSeries() {
   return (
     <main className="flex flex-1 flex-col">
       <header className="flex flex-col gap-[12px] px-[18px] pt-[14px] pb-[10px]">
-        <h1 className="text-[20px] font-medium text-text">{TITRE_AJOUTER}</h1>
+        <div className="flex items-center justify-between gap-[12px]">
+          <h1 className="text-text text-[20px] font-medium">{TITRE_AJOUTER}</h1>
+          <Link
+            href="/scanner"
+            className="border-accent text-accent flex min-h-11 items-center rounded-md border px-[12px] text-[12.5px] font-medium transition-colors hover:bg-accent/12"
+          >
+            {TITRE_SCANNER}
+          </Link>
+        </div>
         <label className="bg-surface flex h-[38px] items-center gap-[8px] rounded-md px-[12px]">
           <MagnifyingGlass className="size-[15px] flex-none text-neutral-500" />
           <input
