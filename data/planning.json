@@ -39,7 +39,13 @@
     "tomesParusEnBase": 13
   },
   "blue-exorcist": {
-    "aParaitre": {},
+    "aParaitre": {
+      "33": {
+        "date": "2026-10-21",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820356574"
+      }
+    },
     "maximum": 32,
     "titre": "BLUE EXORCIST",
     "tomes": {
@@ -112,10 +118,16 @@
         "isbn": "9791042021214"
       }
     },
-    "tomesParusEnBase": 17
+    "tomesParusEnBase": 18
   },
   "chainsaw-man": {
-    "aParaitre": {},
+    "aParaitre": {
+      "23": {
+        "date": "2026-10-14",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820300348"
+      }
+    },
     "maximum": 22,
     "titre": "CHAINSAW MAN",
     "tomes": {
@@ -229,7 +241,7 @@
         "isbn": "9791042021382"
       }
     },
-    "tomesParusEnBase": 19
+    "tomesParusEnBase": 20
   },
   "je-suis-un-assassin-et-je-surpasse-le-heros": {
     "aParaitre": {},
@@ -263,7 +275,13 @@
     "tomesParusEnBase": 7
   },
   "kagurabachi": {
-    "aParaitre": {},
+    "aParaitre": {
+      "10": {
+        "date": "2026-09-11",
+        "editeur": "Kana",
+        "isbn": "9782505142829"
+      }
+    },
     "maximum": 9,
     "titre": "KAGURABACHI",
     "tomes": {
@@ -313,10 +331,16 @@
         "isbn": "9782505141938"
       }
     },
-    "tomesParusEnBase": 8
+    "tomesParusEnBase": 9
   },
   "kaijin-reijoh": {
-    "aParaitre": {},
+    "aParaitre": {
+      "15": {
+        "date": "2026-10-08",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021528"
+      }
+    },
     "maximum": 14,
     "titre": "KAIJIN REIJOH",
     "tomes": {
@@ -415,7 +439,13 @@
     "tomesParusEnBase": 24
   },
   "kindergarten-wars": {
-    "aParaitre": {},
+    "aParaitre": {
+      "16": {
+        "date": "2026-10-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032723395"
+      }
+    },
     "maximum": 15,
     "titre": "KINDERGARTEN WARS",
     "tomes": {
@@ -524,7 +554,13 @@
     "tomesParusEnBase": 4
   },
   "monster-musume-everyday-life-with-monster-girls": {
-    "aParaitre": {},
+    "aParaitre": {
+      "19": {
+        "date": "2026-09-25",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377176465"
+      }
+    },
     "maximum": 18,
     "titre": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
     "tomes": {
@@ -644,7 +680,13 @@
     "tomesParusEnBase": 16
   },
   "radiant": {
-    "aParaitre": {},
+    "aParaitre": {
+      "20": {
+        "date": "2026-10-30",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033570103"
+      }
+    },
     "maximum": 19,
     "titre": "RADIANT",
     "tomes": {
@@ -657,7 +699,13 @@
     "tomesParusEnBase": 19
   },
   "ragna-crimson": {
-    "aParaitre": {},
+    "aParaitre": {
+      "17": {
+        "date": "2026-10-09",
+        "editeur": "Kana",
+        "isbn": "9782505144649"
+      }
+    },
     "maximum": 16,
     "titre": "RAGNA CRIMSON",
     "tomes": {
@@ -685,7 +733,13 @@
     "tomesParusEnBase": 16
   },
   "rai-rai-rai": {
-    "aParaitre": {},
+    "aParaitre": {
+      "3": {
+        "date": "2026-09-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032723579"
+      }
+    },
     "maximum": 2,
     "titre": "RAI RAI RAI",
     "tomes": {
@@ -703,7 +757,13 @@
     "tomesParusEnBase": 2
   },
   "ruridragon": {
-    "aParaitre": {},
+    "aParaitre": {
+      "5": {
+        "date": "2026-10-21",
+        "editeur": "Glénat",
+        "isbn": "9782344071717"
+      }
+    },
     "maximum": 4,
     "titre": "RURIDRAGON",
     "tomes": {
@@ -853,10 +913,16 @@
         "isbn": "9782820352521"
       }
     },
-    "tomesParusEnBase": 22
+    "tomesParusEnBase": 23
   },
   "the-ancient-magus-bride": {
-    "aParaitre": {},
+    "aParaitre": {
+      "24": {
+        "date": "2026-09-17",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876308"
+      }
+    },
     "maximum": 23,
     "titre": "THE ANCIENT MAGUS BRIDE",
     "tomes": {

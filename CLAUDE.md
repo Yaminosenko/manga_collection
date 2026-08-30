@@ -1385,9 +1385,18 @@ pour ses 5 trous, et `terraformars` à 23 là où la BnF lisait 2.
 champs restés vides depuis l'étape 1. `demon-slave` passe de « À jour » à 19/20 : le tome paru
 le 20 août remonte désormais dans Manquants.
 
-**Ce que ça ouvre** : `Volume.isbn` alimente directement le scan de code-barres, et
-`Volume.dateSortie` rend possible l'écran « Sorties à venir » de §9 — il suffira des fichiers
-des mois suivants, ceux fournis s'arrêtant au mois courant.
+**Les fichiers sont rangés sous `planning_AAAA-MM.csv`**, le mois étant déduit de leur contenu
+et non de leur nom — manga-news les nomme tous à la date de téléchargement. 27 fichiers,
+**août 2024 → octobre 2026**, 7 880 lignes.
+
+**Ce que ça ouvre** : `Volume.isbn` alimente directement le scan de code-barres, et les deux mois
+futurs donnent **11 sorties à venir** sur la collection, avec date, ISBN et éditeur — la matière
+de l'écran « Sorties à venir » de §9.
+
+**Les sorties futures ne sont pas écrites en base, et ce n'est pas un oubli.** Un tome non paru
+ne doit pas être un `Volume` : il gonflerait le dénominateur et remonterait dans Manquants, où
+il n'a rien à faire puisqu'on ne peut pas l'acheter. Elles restent dans `aParaitre` au manifeste
+jusqu'à ce qu'un écran sache les montrer.
 
 ### Reste à faire
 
