@@ -1079,11 +1079,60 @@ l'utilisateur et que rien ne puisse reconstituer — n'étaient couvertes par ri
 **À lancer avant toute manipulation de masse**, et régulièrement. C'est le seul filet : le plan
 gratuit de Neon n'a aucune sauvegarde longue durée.
 
+### Établi — l'ISBN est la clé des éditions françaises (30 août 2026)
+
+Sonde menée en partant d'une remarque juste : **AniList et MangaDex modélisent l'œuvre, pas
+l'édition française.** L'Édition Prestige de Berserk est un objet Glénat ; aucune base
+internationale ne la connaît, et les autres pays découpent autrement. §4 le disait à demi-mot
+en imposant une étape de confirmation manuelle ; la conséquence n'avait pas été tirée :
+**aucune source du projet ne peut alimenter la création d'une seconde édition.**
+
+**L'ISBN-13 est l'EAN-13 imprimé au dos du tome**, et il identifie un livre physique précis —
+éditeur, édition, tome. Deux éditions de Berserk ont des ISBN différents. C'est la seule clé
+qui distingue ce qu'aucune API de série ne distingue.
+
+**La BnF répond par ISBN, sans clé.** `bib.isbn all "9782344074886"` rend **exactement une
+notice**, portant `dc:title` (numéro de tome et marqueur d'édition), `dc:publisher`, `dc:date`
+et l'ISBN dans `dc:identifier`. Vérifié le 30 août 2026. La réponse SRU est de l'UTF-8 correct.
+
+**Et elle connaît les éditions françaises.** Sur les 93 notices « Berserk » :
+
+```
+2025  9782344067802  Berserk. 1 (éd. prestige)
+2025  9782344067819  Berserk. 2 (éd. prestige)
+2025  9782344067826  Berserk. 3 (Édition Prestige)
+2026  9782344073957  Berserk : 5 (éd. prestige)
+2024  9782344063651  Berserk. 42 (éd. collector)
+2026  9782344074886  Berserk. 43 (collector)
+```
+
+**Mais le marqueur d'édition est aussi instable que la numérotation.** Quatre graphies pour deux
+éditions — `(Édition Prestige)`, `(éd. prestige)`, `(collector)`, `(éd. collector)` — et les
+séparateurs varient (`Berserk. 3` contre `Berserk : 5`). C'est le même désordre que §5 avait
+constaté sur les numéros de tome. **Conclusion : la résolution d'un ISBN est exacte,
+l'énumération des tomes d'une édition ne l'est pas.**
+
+**Ce qui tombe juste, c'est qu'on n'a pas besoin d'énumérer.** On scanne le tome qu'on tient.
+Chaque scan dit exactement quelle édition et quel tome. On n'énumère pas, on accumule — ce qui
+rend le scan EAN-13 de §9 non plus un confort différé mais **le chemin d'entrée des secondes
+éditions**.
+
+**Trouvaille au passage** : `berserk-prestige-edition` porte `tomesParus = 3` alors que la BnF
+affiche un tome 5 paru en 2026. Le dénominateur est périmé.
+
+**Reste à vérifier avant de concevoir** : la faisabilité du scan dans la PWA — `BarcodeDetector`
+est disponible dans Chrome sur Android, mais la caméra exige HTTPS et un accord de l'utilisateur,
+et rien n'a été essayé.
+
 ### Reste à faire
 
-- **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
-  locaux mènent à la fiche existante. §4 ne décrit que la création d'une série neuve, mais
-  4 séries de la collection sont multi-éditions — le cas se posera.
+- **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
+  (`lib/creation.ts:33`) crée toujours une `Serie` neuve, et les résultats locaux de `/ajouter`
+  sont de simples liens vers la fiche existante. Créer une Perfect Edition depuis le résultat
+  AniList produirait une série fantôme `berserk-2` : bloc « Autres éditions » vide des deux
+  côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
+  `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
+  30 août ci-dessus.
 - **Couvertures** : faites à 87 % et **déposées dans Vercel Blob**. Restent les 214 tomes
   détaillés ci-dessus, dont 36 exclus volontairement.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
