@@ -111,3 +111,7 @@ export const LIBELLE_PLANNING_VIDE =
 export const LIBELLE_PLANNING_ERREUR = "Le planning n’a pas pu être chargé.";
 
 export const PREFIXE_VALEUR_PARTIELLE = "≥ ";
+
+export const URL_SRU_BNF = "https://catalogue.bnf.fr/api/SRU";
+export const LIBELLE_PRIX_SUGGERE = "Prix relevé à la BnF, à corriger si besoin.";
+export const LIBELLE_PRIX_RECHERCHE = "Recherche du prix…";

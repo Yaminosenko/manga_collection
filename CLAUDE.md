@@ -185,7 +185,7 @@ l'ouverture d'un écran. Tout écran lit la base locale.
 |---|---|---|
 | AniList (GraphQL) | Métadonnées série, couverture série, pont vers les titres romaji | 12/12 · sans clé, sans quota gênant |
 | MangaDex | Couvertures de tome | **93 % en `ja` · en attente d'autorisation** |
-| BnF (SRU) | Éditeur, ISBN, date de parution VF | **éditeur : 100/112 · sans clé** |
+| BnF (SRU) | Éditeur, ISBN, date de parution VF, **prix en UNIMARC `010$d`** | **éditeur : 100/112 · sans clé** |
 | Google Books | Tomes VF par ISBN, date de parution, couverture tome | **bloqué sans clé d'API, couverture jamais mesurée** |
 | Open Library | Complément ISBN, couverture par ISBN | 0/11 sur des ISBN français |
 | manga-news | Planning des sorties VF | **En attente d'autorisation** |
@@ -1602,6 +1602,35 @@ possédés des éditions non vendues, et compte à part ceux dont le prix est in
 **Le préfixe `≥` apparaît dès qu'il en reste un** — aujourd'hui un seul, `goodnight-punpun`,
 créée depuis l'application sans prix saisi. Afficher un montant rond quand une part manque
 serait faux ; le signe le dit sans encombrer.
+
+### Fait — le prix suggéré à l'ajout (30 août 2026)
+
+À l'ajout d'une série, le champ « Prix par défaut » se pré-remplit depuis la BnF.
+
+**Découverte : la BnF porte le prix**, dans le sous-champ UNIMARC `010$d`. Le Dublin Core ne
+l'expose pas — il faut `recordSchema=unimarcxchange`. Vérifié contre l'exemplaire physique :
+`010$d = 24,90 EUR` pour Berserk Édition Prestige tome 1, exactement le prix imprimé au dos.
+§5 listait la BnF pour « éditeur, ISBN, date » ; le prix s'y ajoute.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/bnf.ts` | `chercherPrixDefautCentimes`, garde-fou par auteur et filtre d'édition |
+| `lib/actions.ts` | `chercherPrix`, réservée au propriétaire |
+
+- **La règle est le prix le plus fréquent, pas le plus récent.** La récence semblait meilleure
+  et s'est révélée pire : elle attrape les rééditions collector publiées plus tard — Bleach à
+  9,60 € au lieu de 6,90 €, Berserk à 19,90 € au lieu de 6,90 €. Le mode résiste.
+- **Fiable sur une série récente, approximatif sur une ancienne.** Mesuré : Kagurabachi 7,30 €,
+  Ruridragon 7,20 €, Ragna Crimson 7,95 €, Demon Slave 6,90 € — exacts. Sur les séries longues
+  la BnF mêle les éditions et les prix montent avec le temps ; plusieurs « écarts » sont
+  d'ailleurs le Sheet qui arrondit — 7,30 contre 7,29, 7,90 contre 7,95, où la BnF a raison.
+  **C'est une suggestion relue par l'utilisateur, pas une écriture autoritaire** — le champ
+  reste modifiable et le libellé le dit.
+- **Un titre fautif ne rend rien**, comme partout ailleurs : `ITCHI THE WITCH` n'a pas de
+  réponse BnF. Le champ reste vide, l'utilisateur saisit.
+
+Vérifié en appelant l'action par HTTP : 730 et 720 centimes sur deux séries, `null` sur une
+série inventée, **500 en invité**.
 
 ### Reste à faire
 

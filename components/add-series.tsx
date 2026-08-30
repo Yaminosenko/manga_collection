@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useActionState, useEffect, useState, useTransition } from "react";
 import { Cover } from "@/components/cover";
 import { ArrowLeft, MagnifyingGlass, WarningCircle } from "@/components/icons";
-import { creerEdition, rechercherSeries } from "@/lib/actions";
+import { chercherPrix, creerEdition, rechercherSeries } from "@/lib/actions";
 import {
   DELAI_RECHERCHE_MS,
   LIBELLE_ANILIST_INDISPONIBLE,
   LIBELLE_DEJA_EN_COLLECTION,
   LIBELLE_INVITE_RECHERCHE,
+  LIBELLE_PRIX_RECHERCHE,
+  LIBELLE_PRIX_SUGGERE,
   LIBELLE_RECHERCHE_VIDE,
   LIBELLE_TOMES_JAPONAIS,
   LONGUEUR_RECHERCHE_MIN,
@@ -160,6 +162,14 @@ function Confirmation({
   const [etat, action, enCours] = useActionState<EtatCreation, FormData>(creerEdition, {
     erreur: null,
   });
+  const [prix, setPrix] = useState<number | null>(null);
+  const [prixCherche, demarrerPrix] = useTransition();
+
+  useEffect(() => {
+    demarrerPrix(async () => {
+      setPrix(await chercherPrix(serie.titre, serie.auteur));
+    });
+  }, [serie.titre, serie.auteur]);
 
   return (
     <main className="flex flex-1 flex-col">
@@ -223,7 +233,19 @@ function Confirmation({
 
         <label className={ETIQUETTE}>
           Prix par défaut
-          <input name="prixDefaut" inputMode="decimal" placeholder="6,90" className={CHAMP} />
+          <input
+            key={prix ?? "vide"}
+            name="prixDefaut"
+            inputMode="decimal"
+            placeholder="6,90"
+            defaultValue={prix === null ? "" : (prix / 100).toFixed(2).replace(".", ",")}
+            className={CHAMP}
+          />
+          {prixCherche ? (
+            <span className="text-[10.5px] text-neutral-600">{LIBELLE_PRIX_RECHERCHE}</span>
+          ) : prix !== null ? (
+            <span className="text-[10.5px] text-neutral-600">{LIBELLE_PRIX_SUGGERE}</span>
+          ) : null}
         </label>
 
         <label className={ETIQUETTE}>

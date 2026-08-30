@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { rechercherSurAniList } from "@/lib/anilist";
+import { chercherPrixDefautCentimes } from "@/lib/bnf";
 import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
 import { exigerProprietaire } from "@/lib/guard";
@@ -162,6 +163,16 @@ function lireCentimes(brut: string): number | null {
   }
   const valeur = Number(brut.replace(",", "."));
   return Number.isFinite(valeur) && valeur >= 0 ? Math.round(valeur * 100) : null;
+}
+
+export async function chercherPrix(titre: string, auteur: string): Promise<number | null> {
+  await exigerProprietaire();
+
+  if (titre.trim() === "") {
+    return null;
+  }
+
+  return chercherPrixDefautCentimes(titre.trim(), auteur.trim());
 }
 
 export async function creerEdition(
