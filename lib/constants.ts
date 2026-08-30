@@ -1,4 +1,5 @@
 export const CASES_A_PARAITRE = 3;
+export const LIBELLE_A_PARAITRE = "À paraître";
 
 export const COLONNES_GRILLE = 2;
 

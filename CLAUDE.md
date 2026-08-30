@@ -146,8 +146,9 @@ a tranché pour 2 — voir §12.
 | Manquant | Contour neutre, même couverture à 34 % d'opacité, pastille du numéro |
 | À paraître | Contour pointillé, case vide, non cliquable |
 
-- **Trois cases fantômes « à paraître »** si `editionTerminee` est faux. Un signal, pas une
-  donnée : l'application ne sait pas combien de tomes restent.
+- **Trois cases « à paraître »** si `editionTerminee` est faux. Celles dont la sortie est
+  annoncée portent leur **numéro et leur mois** ; les autres restent un signal anonyme. Le
+  compte de trois est un plafond, pas un ajout : deux annonces laissent une case générique.
 - **Tap = coche ou décoche.** Un seul tap : pas de confirmation, pas de mode édition,
   enregistrement au fil de l'eau. Appui long réservé V2, sans effet en V1.
 - Actions de masse `Tout` / `Aucun` — jamais les cases à paraître.
@@ -1393,10 +1394,27 @@ et non de leur nom — manga-news les nomme tous à la date de téléchargement.
 futurs donnent **11 sorties à venir** sur la collection, avec date, ISBN et éditeur — la matière
 de l'écran « Sorties à venir » de §9.
 
-**Les sorties futures ne sont pas écrites en base, et ce n'est pas un oubli.** Un tome non paru
-ne doit pas être un `Volume` : il gonflerait le dénominateur et remonterait dans Manquants, où
-il n'a rien à faire puisqu'on ne peut pas l'acheter. Elles restent dans `aParaitre` au manifeste
-jusqu'à ce qu'un écran sache les montrer.
+**Les sorties futures ne doivent pas être des `Volume`.** Un tome non paru gonflerait le
+dénominateur et remonterait dans Manquants, où il n'a rien à faire puisqu'on ne peut pas
+l'acheter. D'où une **table `Sortie` isolée** — `(editionId, numero, date, isbn)` — plutôt que
+des lignes dans `Volume` : aucun compteur existant ne peut bouger, et il n'y a aucune requête
+à garder. Migration `20260830180000_sorties_annoncees`.
+
+**La grille nomme les tomes annoncés.** §4 disait des trois cases fantômes qu'elles sont « un
+signal, pas une donnée : l'application ne sait pas combien de tomes restent ». Elle le sait
+maintenant pour 11 d'entre eux : la case porte son numéro et son mois, et les génériques ne
+comblent que le reste des trois. Vérifié en HTTP avec un cookie valide — `chainsaw-man` rend
+« Tome 23 · oct 26 » plus deux génériques, `blue-exorcist` « Tome 33 · oct 26 », et `ajin`,
+terminée, n'affiche aucune case.
+
+**La sauvegarde couvre la nouvelle table.** `backup-db.ts` vidait quatre tables ; il en vide
+cinq, sans quoi une restauration aurait silencieusement perdu les annonces.
+
+**Piège de circuit rencontré** : `prisma migrate dev` échoue ici sur sa base fantôme
+(`type "StatutEdition" already exists`), et `migrate diff` réclame un `shadowDatabaseUrl`
+absent de la configuration. La migration a été **écrite à la main** en calquant les conventions
+de l'initiale, **essayée sur le Postgres local** — 5 colonnes, 3 index — puis appliquée à Neon
+par `npm run db:migrate`.
 
 ### Reste à faire
 

@@ -9,6 +9,11 @@ import {
 import type { SerieDistante } from "@/lib/anilist";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
+export type SortieAnnoncee = {
+  numero: number;
+  date: string;
+};
+
 export type Tome = {
   numero: number;
   possede: boolean;
@@ -43,6 +48,7 @@ export type Edition = {
   couvertureUrl: string | null;
   prixDefautCentimes: number | null;
   tomes: Tome[];
+  sorties: SortieAnnoncee[];
   autresEditions: AutreEdition[];
 };
 

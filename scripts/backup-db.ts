@@ -37,6 +37,13 @@ type VolumeSauve = {
   possession: PossessionSauvee | null;
 };
 
+type SortieSauvee = {
+  id: string;
+  numero: number;
+  date: string;
+  isbn: string | null;
+};
+
 type EditionSauvee = {
   id: string;
   slug: string;
@@ -53,6 +60,7 @@ type EditionSauvee = {
   couvertureUrl: string | null;
   ajouteeLe: string;
   volumes: VolumeSauve[];
+  sorties: SortieSauvee[];
 };
 
 type SerieSauvee = {
@@ -112,6 +120,7 @@ async function exporter() {
         orderBy: { slug: "asc" },
         include: {
           volumes: { orderBy: { numero: "asc" }, include: { possession: true } },
+          sorties: { orderBy: { numero: "asc" } },
         },
       },
     },
@@ -145,6 +154,12 @@ async function exporter() {
         slugMangaNews: edition.slugMangaNews,
         couvertureUrl: edition.couvertureUrl,
         ajouteeLe: edition.ajouteeLe.toISOString(),
+        sorties: edition.sorties.map((sortie) => ({
+          id: sortie.id,
+          numero: sortie.numero,
+          date: sortie.date.toISOString(),
+          isbn: sortie.isbn,
+        })),
         volumes: edition.volumes.map((volume) => ({
           id: volume.id,
           numero: volume.numero,
@@ -253,6 +268,18 @@ async function restaurer() {
     ),
   );
 
+  const sorties = sauvegarde.series.flatMap((serie) =>
+    serie.editions.flatMap((edition) =>
+      (edition.sorties ?? []).map((sortie) => ({
+        id: sortie.id,
+        editionId: edition.id,
+        numero: sortie.numero,
+        date: new Date(sortie.date),
+        isbn: sortie.isbn,
+      })),
+    ),
+  );
+
   const possessions = sauvegarde.series.flatMap((serie) =>
     serie.editions.flatMap((edition) =>
       edition.volumes.flatMap((volume) =>
@@ -279,6 +306,9 @@ async function restaurer() {
   await ecrireParLots("tomes", volumes, (lot) => prisma.volume.createMany({ data: lot }));
   await ecrireParLots("possessions", possessions, (lot) =>
     prisma.possession.createMany({ data: lot }),
+  );
+  await ecrireParLots("sorties annoncees", sorties, (lot) =>
+    prisma.sortie.createMany({ data: lot }),
   );
 
   const obtenus = await compter();

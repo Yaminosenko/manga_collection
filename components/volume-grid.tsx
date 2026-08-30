@@ -5,6 +5,8 @@ import { basculerTome, definirTousLesTomes } from "@/lib/actions";
 import { Cover } from "@/components/cover";
 import { Check } from "@/components/icons";
 import { CASES_A_PARAITRE, COLONNES_GRILLE } from "@/lib/constants";
+import { formaterMoisSortie } from "@/lib/format";
+import type { SortieAnnoncee } from "@/lib/domain";
 import { useEnLigne } from "@/lib/use-online";
 import type { Tome } from "@/lib/domain";
 
@@ -15,6 +17,7 @@ type VolumeGridProps = {
   titre: string;
   tomesParus: number;
   aParaitre: boolean;
+  sorties: SortieAnnoncee[];
   tomes: Tome[];
 };
 
@@ -32,7 +35,7 @@ function reduire(etat: number[], mutation: Mutation, tomesParus: number): number
     : [...etat, mutation.numero];
 }
 
-export function VolumeGrid({ slug, titre, tomesParus, aParaitre, tomes }: VolumeGridProps) {
+export function VolumeGrid({ slug, titre, tomesParus, aParaitre, sorties, tomes }: VolumeGridProps) {
   const enLigne = useEnLigne();
   const [, demarrerTransition] = useTransition();
   const [possedes, appliquer] = useOptimistic(
@@ -133,14 +136,30 @@ export function VolumeGrid({ slug, titre, tomesParus, aParaitre, tomes }: Volume
             );
           })}
 
+          {sorties.map((sortie) => (
+            <div
+              key={`sortie-${sortie.numero}`}
+              aria-label={`Tome ${sortie.numero}, à paraître`}
+              className="case-a-paraitre relative flex aspect-cover flex-col items-center justify-center gap-[3px] rounded-cover"
+            >
+              <span className="text-[15px] font-medium text-neutral-600">{sortie.numero}</span>
+              <span className="text-[10px] text-neutral-700">
+                {formaterMoisSortie(sortie.date)}
+              </span>
+            </div>
+          ))}
+
           {aParaitre
-            ? Array.from({ length: CASES_A_PARAITRE }, (_, index) => (
-                <div
-                  key={`a-paraitre-${index}`}
-                  aria-hidden="true"
-                  className="case-a-paraitre aspect-cover rounded-cover"
-                />
-              ))
+            ? Array.from(
+                { length: Math.max(0, CASES_A_PARAITRE - sorties.length) },
+                (_, index) => (
+                  <div
+                    key={`a-paraitre-${index}`}
+                    aria-hidden="true"
+                    className="case-a-paraitre aspect-cover rounded-cover"
+                  />
+                ),
+              )
             : null}
         </div>
 

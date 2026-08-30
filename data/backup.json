@@ -1,11 +1,11 @@
 {
-  "exporteeLe": "2026-08-30T14:51:55.656Z",
+  "exporteeLe": "2026-08-30T15:13:52.109Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
     "tomes": 1690,
-    "possedes": 1150,
-    "aVerifier": 33,
+    "possedes": 1151,
+    "aVerifier": 30,
     "forcees": 3,
     "couvertures": 1611
   },
@@ -42,6 +42,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "a81129f3-2764-4a18-a870-01754721853a",
@@ -118,6 +119,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "6112e2a8-e370-4d3d-8cc5-9348a86913ae",
@@ -788,6 +790,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "ec05fe5f-d802-45b8-bc1c-a653b329e807",
@@ -1120,6 +1123,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "2921d7aa-2645-4870-a9fd-66fa02451d51",
@@ -1194,6 +1198,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "63d07187-4f4c-44e7-9108-afd3266f8678",
@@ -1302,6 +1307,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "eb654616-2986-4609-ab96-c17331e9f497",
@@ -1707,6 +1713,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "83ba08f7-3bf2-4798-936f-2f3d616c6b25",
@@ -2123,6 +2130,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "8b1df3e0-1f1c-45e6-9085-77f6d8c0f7e8",
@@ -2872,6 +2880,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "6ed4a767-d79a-4b7a-94b2-b2972df66803",
@@ -2961,6 +2970,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "25ac11a9-b71d-458f-952e-6035670ef018",
@@ -3630,6 +3640,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "06b0b623-654f-4659-8202-792d1d29cb52",
@@ -3891,6 +3902,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "98296ea3-9c08-4ae5-b4e2-245f25ac82dc",
@@ -4013,6 +4025,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "478472c2-792f-4016-8a46-7fa9941ea40c",
@@ -4063,6 +4076,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "584af912-6d81-4775-9de0-6b66c0fcd699",
@@ -4138,6 +4152,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "79243929-4726-4399-91e5-6bb74bd9c4ae",
@@ -4275,6 +4290,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "8e5ea88f-a8c7-4498-8cf8-edb795333432",
@@ -4467,6 +4483,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "270feaa5-9122-4704-9930-9d97ea859b3e",
@@ -5758,6 +5775,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "273b148e-fb58-4d94-9e03-bbaf70d11e48",
@@ -5809,10 +5827,18 @@
           "statut": "ABANDONNEE",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "bd965116-de61-496c-bd40-b5c13318b700",
+              "numero": 33,
+              "date": "2026-10-21T00:00:00.000Z",
+              "isbn": "9782820356574"
+            }
+          ],
           "volumes": [
             {
               "id": "5dc9fe95-5ca9-4d4d-a2f0-c3a18dba4e42",
@@ -5857,7 +5883,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/blue-exorcist/3.webp",
               "possession": {
                 "id": "9abd2cab-6043-40a8-9bf8-639660b90e99",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -6396,6 +6422,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "18f191df-7b5b-4bb5-959d-3178932915a8",
@@ -6569,6 +6596,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "21e05ab6-488b-4b17-8e7e-41eeb1c7838b",
@@ -6627,6 +6655,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "79bdd7c2-5660-4db7-8630-4246b8599f6f",
@@ -6974,6 +7003,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "6265501a-12a4-4992-b36c-1a20c24fc82f",
+              "numero": 23,
+              "date": "2026-10-14T00:00:00.000Z",
+              "isbn": "9782820300348"
+            }
+          ],
           "volumes": [
             {
               "id": "72ba405a-034a-4846-8b15-1bd6e34e12c8",
@@ -7385,6 +7422,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "6c4c377b-2b3d-4910-aad7-108b1bf22ae4",
@@ -7491,6 +7529,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "03826e64-a8d1-47b9-b425-2f02cb2a2673",
@@ -7884,6 +7923,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "25190cf0-6902-46c9-a238-03b754702a9a",
@@ -8378,10 +8418,11 @@
           "statut": "EN_COURS",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "be10c6dd-a805-4fc5-9e7b-ee1dca1cd3f1",
@@ -8528,7 +8569,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/9.webp",
               "possession": {
                 "id": "a3760b09-e184-40de-83e0-a0041e71f20a",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8545,7 +8586,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/10.webp",
               "possession": {
                 "id": "9ee21ed5-e606-49a0-aa78-798303a955fd",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8596,7 +8637,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/13.webp",
               "possession": {
                 "id": "86081761-0ce3-4733-9640-cd286446b954",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8681,7 +8722,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/18.webp",
               "possession": {
                 "id": "dbb2cf99-2f48-427c-ab8a-001af590be9d",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8817,7 +8858,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/26.webp",
               "possession": {
                 "id": "6e1e9ce7-fd1a-40bd-af49-41fc12245669",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8834,7 +8875,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/27.webp",
               "possession": {
                 "id": "dcfea963-aa14-4313-9959-56c33c5634a3",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8851,7 +8892,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/28.webp",
               "possession": {
                 "id": "ea74bfd2-5ebf-4e3b-97f1-e872ba791676",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8868,7 +8909,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/29.webp",
               "possession": {
                 "id": "d9d7ca8d-1dc2-4282-a498-5147a6f3a7d5",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -8915,6 +8956,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "eb1b0eb1-6ce3-4979-8f81-e93764f19495",
@@ -9294,6 +9336,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "66c8fc2f-27de-4ab5-b3bb-c8cb5ecef4b8",
@@ -9406,6 +9449,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "b584418a-d65d-4b83-828c-7918935600f9",
@@ -9781,6 +9825,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "67874f8b-c905-4e11-8447-1e22ccef6012",
@@ -9868,6 +9913,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "bd003630-318a-4c14-b6aa-abfd6cc33294",
@@ -10489,6 +10535,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "17f92932-80ae-4b32-8138-f356190d207c",
@@ -10666,6 +10713,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "8c61729e-6aa4-4836-9842-421ddce4ee11",
@@ -11143,6 +11191,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "0e4d83b8-b218-4b82-b55b-43a6743bdeb7",
@@ -11405,6 +11454,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "0fca1f04-2f27-462f-97cb-ff2008121bb0",
@@ -11746,6 +11796,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-30T12:45:28.542Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "f24b8db4-0f26-4e7e-9bd7-6ecf58efdb9a",
@@ -12002,10 +12053,11 @@
           "statut": "EN_COURS",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "1ede0901-0506-43eb-b2d3-bdf8aa3cb9dc",
@@ -12067,7 +12119,7 @@
               "couvertureUrl": null,
               "possession": {
                 "id": "cd932ab1-fc39-43ca-9674-8c9053b965f5",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -12084,7 +12136,7 @@
               "couvertureUrl": null,
               "possession": {
                 "id": "ed0e4568-d035-46b9-a993-422d456badca",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -12128,6 +12180,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "e951abdc-706b-44b8-8eb1-a45a666b482c",
@@ -12186,6 +12239,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "e128c30e-36c6-451e-881b-6fbad25b1d3f",
@@ -12685,6 +12739,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "79c3336f-bb27-4dce-9706-b580df4a716a",
@@ -12790,6 +12845,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "f76a4775-2842-4db8-a5db-2f941fb94cfd",
@@ -12929,6 +12985,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "f96d8ee5-51a0-4f74-b21b-029f40642e9a",
@@ -13086,6 +13143,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "8530b409-a81e-4245-aaca-a766ffb242bc",
@@ -13227,6 +13285,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "3f2011c0-25ee-49e1-87da-0cec61b6c982",
+              "numero": 10,
+              "date": "2026-09-11T00:00:00.000Z",
+              "isbn": "9782505142829"
+            }
+          ],
           "volumes": [
             {
               "id": "07c6ae30-67f5-41fe-88e2-be4dd6a9d6fc",
@@ -13421,6 +13487,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "84745fcc-9d79-4357-9e5c-5ac81896c490",
+              "numero": 15,
+              "date": "2026-10-08T00:00:00.000Z",
+              "isbn": "9791042021528"
+            }
+          ],
           "volumes": [
             {
               "id": "97f110c2-6486-4636-8716-0acd5b1f47f1",
@@ -13697,6 +13771,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "cfe23437-7fcd-4b90-9bde-7e22938125f9",
@@ -14007,6 +14082,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "b6b42742-b291-4406-bcd9-d031cc57a031",
@@ -14455,6 +14531,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "202a38da-475b-456a-ba7e-2d967e9a4729",
+              "numero": 16,
+              "date": "2026-10-01T00:00:00.000Z",
+              "isbn": "9791032723395"
+            }
+          ],
           "volumes": [
             {
               "id": "0446d7db-90b8-43db-9c10-2bfd5a2877e5",
@@ -14747,6 +14831,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "51db169a-e984-4800-9ca8-36fa8894f8fd",
@@ -14940,6 +15025,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "d3b35733-532e-4668-9b95-8715cb9c3a24",
@@ -15179,6 +15265,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "c2bfc35f-92d4-4a32-9b03-c81ad4dfd73a",
@@ -15270,6 +15357,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "421c9325-cfaa-48c8-9854-7c08b7773eba",
@@ -15935,6 +16023,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "68b7164e-3d67-406a-8bd2-84c20b6407f6",
@@ -16126,6 +16215,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "a4a5d850-01f3-4836-8d0c-7b6621400136",
@@ -16742,6 +16832,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "ce376bb7-11e1-4d83-9a40-c68192f99c9c",
@@ -17088,6 +17179,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "0a26a3db-bd26-4ada-b6bc-c612f70e9b75",
@@ -17331,6 +17423,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "736e94c5-bf0d-4239-9bb6-7ca69c2d76bc",
@@ -17387,6 +17480,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "5ebe785a-f26f-4f85-ae14-617d3812bf71",
@@ -17442,6 +17536,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "52197873-bc55-4b21-b580-1e5adba4aae0",
@@ -17548,6 +17643,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "086cab9d-36da-449f-bead-e476a24047e6",
@@ -17655,6 +17751,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "e545347d-ea9e-4d43-bbc9-ec8187ccfe29",
+              "numero": 19,
+              "date": "2026-09-25T00:00:00.000Z",
+              "isbn": "9782377176465"
+            }
+          ],
           "volumes": [
             {
               "id": "174ef050-c76f-4dbf-9d24-e320b20552d8",
@@ -18001,6 +18105,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "fd55ff33-b833-45ab-b1f7-4ab0346bdd25",
@@ -18428,6 +18533,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "39f008dd-8ba3-4ba5-a4a3-443be08a86a9",
@@ -18485,6 +18591,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "ca3d242f-1359-421e-8cef-ecc5d8781b07",
@@ -18727,6 +18834,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "f9934738-bd71-481f-9157-0c0a77e80936",
@@ -18868,6 +18976,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "49d54223-65f5-460a-897d-4e911ffbf8ab",
@@ -19619,6 +19728,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "aa00e291-d4bd-4c9c-96fd-173739f58890",
@@ -19737,6 +19847,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "cc3d37b7-45b6-4df3-9047-ec30bde1b8b7",
@@ -19796,6 +19907,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "4bd6fd5a-544a-4b8a-964f-6211a8096d70",
@@ -21063,6 +21175,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "46c20fcc-90f8-4db2-beba-bef4506f0066",
@@ -21222,6 +21335,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "4d7f3f85-7f17-4ab8-b2d2-fc8e2eb4076a",
@@ -21328,6 +21442,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "a53fa473-96af-4e8f-a434-e69b41cfd8a3",
@@ -21595,6 +21710,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "237010a3-d96c-468c-bd7f-5ba8124f0a4a",
@@ -22039,6 +22155,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "28beccb5-bc2e-4a59-b04a-f81e54c1a76b",
@@ -22402,6 +22519,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "11b4b18e-485c-4189-ae2f-fbacf6ed7904",
@@ -22717,6 +22835,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "7ce11c9f-0e12-4755-9da2-6d319243d2ae",
@@ -23166,6 +23285,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "83e360a9-c423-4175-b89f-a60d0ef70fe2",
@@ -23223,6 +23343,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "9bb510a0-b615-4591-9629-2f8718b9e0b6",
@@ -23362,6 +23483,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "d88220ad-67de-4c39-866d-b885d21f1d3f",
@@ -23416,6 +23538,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "f8dafbab-72d9-43e1-bb5d-dcdb92754e83",
@@ -23504,6 +23627,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "80866b96-e4a9-4711-8380-baacebc121dc",
+              "numero": 20,
+              "date": "2026-10-30T00:00:00.000Z",
+              "isbn": "9791033570103"
+            }
+          ],
           "volumes": [
             {
               "id": "89d69ed1-a17b-4d34-9a8a-3e150a40be9a",
@@ -23866,6 +23997,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "ae39ba6e-9fc5-457a-925c-9bfd6344dd26",
+              "numero": 17,
+              "date": "2026-10-09T00:00:00.000Z",
+              "isbn": "9782505144649"
+            }
+          ],
           "volumes": [
             {
               "id": "0572ff98-733f-4e0f-afa1-d485de4355ba",
@@ -24177,6 +24316,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "ad1370b0-60f1-4aa1-ac86-8a9e6e98fadb",
+              "numero": 3,
+              "date": "2026-09-03T00:00:00.000Z",
+              "isbn": "9791032723579"
+            }
+          ],
           "volumes": [
             {
               "id": "d8eaafa3-5a12-465c-9c10-a407e405e2af",
@@ -24254,6 +24401,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "0ca11c53-4094-44ba-9a74-23db7950db31",
@@ -24550,6 +24698,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "22651707-0da0-488d-a286-3d2a5743a8ef",
@@ -24757,6 +24906,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "b7d8e48a-54e0-4643-b82e-16ecb12557e7",
@@ -25049,6 +25199,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "4cf5fe6b-d86d-47c2-a7e1-c602631c1947",
@@ -25377,6 +25528,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "7a635d12-e21d-4ce4-a174-43b02e40e263",
+              "numero": 5,
+              "date": "2026-10-21T00:00:00.000Z",
+              "isbn": "9782344071717"
+            }
+          ],
           "volumes": [
             {
               "id": "c0cd5192-2c73-44f0-ac23-e45a47b79abc",
@@ -25479,6 +25638,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "513660b4-477b-4800-a4be-e7eb94597872",
@@ -25891,6 +26051,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "39cf2e6f-8f00-4ca2-8a93-bad0e620b82b",
@@ -26357,6 +26518,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "49ad6c27-3c09-4b6f-a054-93b3f72c5387",
@@ -26671,6 +26833,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "5872d156-2643-4102-ad3b-dcf1fd5061dd",
@@ -26879,6 +27042,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "e15e5a7a-e848-47c1-8ef4-d1a359b5a9b6",
@@ -27309,6 +27473,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "418f827a-9132-4448-96c3-44fdc23b8a91",
@@ -27892,6 +28057,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "1b0d7763-13e1-4ef8-869c-4377a67b3fa8",
@@ -28034,6 +28200,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "e2efbb6d-a5bb-4569-b6be-da6665896a72",
@@ -28398,6 +28565,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "2719927f-3286-482c-ba60-aa150af44237",
@@ -28841,6 +29009,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "3782f68f-8f75-4424-85bb-3298aca528ee",
@@ -29085,6 +29254,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "450ce04f-3d17-477e-b24d-102e086751a1",
@@ -29399,6 +29569,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "bdc0fffc-8794-4665-8bd3-76dc3be2b598",
@@ -29680,6 +29851,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "ff471031-43e6-419c-a10c-af51ed438628",
@@ -30112,6 +30284,14 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [
+            {
+              "id": "96c1ecd4-83be-4682-b6dc-4863d8fb193b",
+              "numero": 24,
+              "date": "2026-09-17T00:00:00.000Z",
+              "isbn": "9782372876308"
+            }
+          ],
           "volumes": [
             {
               "id": "b5413f90-37f7-4918-bd02-823ed40b124c",
@@ -30542,6 +30722,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "ee49f8ef-2d9d-4983-8d05-d00f3ee8eff1",
@@ -30751,6 +30932,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "9aa16a01-1b16-4c67-8a5e-3f3660043c73",
@@ -30809,6 +30991,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "c237958c-bd74-41a9-8c68-ff285b621b35",
@@ -31187,6 +31370,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "430d1a8d-543f-4664-acd4-39f0bfb40575",
@@ -31430,6 +31614,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "1977a47e-f7cb-49ce-aee4-b9dc8afba1c6",
@@ -31570,6 +31755,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "61019b60-0767-4cfa-8f2d-cf2eedc9330c",
@@ -31729,6 +31915,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "064a6501-cd50-4943-a917-5319bdf42896",
@@ -32241,6 +32428,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "db88d977-b74b-40bf-ba96-fafb190a314a",
@@ -32483,6 +32671,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "7cca002d-5df0-4ace-818f-3707d32d27f2",
@@ -32930,6 +33119,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
+          "sorties": [],
           "volumes": [
             {
               "id": "ca586216-8b06-4864-83f3-19674f34643c",

@@ -14,6 +14,10 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
           possession: { select: { possede: true } },
         },
       },
+      sorties: {
+        orderBy: { numero: "asc" },
+        select: { numero: true, date: true },
+      },
       serie: {
         include: {
           editions: {
@@ -53,6 +57,10 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     slugMangaNews: edition.slugMangaNews,
     couvertureUrl: edition.couvertureUrl,
     prixDefautCentimes: edition.prixDefautCentimes,
+    sorties: edition.sorties.map((sortie) => ({
+      numero: sortie.numero,
+      date: sortie.date.toISOString(),
+    })),
     tomes: edition.volumes.map((volume) => ({
       numero: volume.numero,
       possede: volume.possession?.possede ?? false,

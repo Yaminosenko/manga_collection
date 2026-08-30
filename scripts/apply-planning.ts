@@ -18,6 +18,7 @@ type Fiche = {
   tomesParusEnBase: number;
   tomes: Record<string, Tome>;
   maximum: number | null;
+  aParaitre: Record<string, Tome>;
 };
 
 type Manifeste = Record<string, Fiche>;
@@ -45,6 +46,7 @@ async function restaurer() {
       where: { editionId: edition.id },
       data: { isbn: null, dateSortie: null },
     });
+    await prisma.sortie.deleteMany({ where: { editionId: edition.id } });
     await prisma.edition.update({ where: { slug }, data: { tomesParus: etat.tomesParus } });
     supprimes += count;
   }
@@ -81,6 +83,7 @@ async function main() {
   let tomesCrees = 0;
   let isbnEcrits = 0;
   let datesEcrites = 0;
+  let sortiesEcrites = 0;
   const elargies: string[] = [];
 
   for (const edition of editions) {
@@ -110,6 +113,16 @@ async function main() {
         datesEcrites += 1;
       }
     }
+
+    await prisma.sortie.deleteMany({ where: { editionId: edition.id } });
+    for (const [brut, annonce] of Object.entries(fiche.aParaitre ?? {})) {
+      const numero = Number(brut);
+      if (numero <= cible) continue;
+      await prisma.sortie.create({
+        data: { editionId: edition.id, numero, date: new Date(annonce.date), isbn: annonce.isbn },
+      });
+      sortiesEcrites += 1;
+    }
   }
 
   const compteurs = {
@@ -117,11 +130,13 @@ async function main() {
     possedes: await prisma.possession.count({ where: { possede: true } }),
     avecIsbn: await prisma.volume.count({ where: { isbn: { not: null } } }),
     avecDate: await prisma.volume.count({ where: { dateSortie: { not: null } } }),
+    sorties: await prisma.sortie.count(),
   };
 
   console.log(`${elargies.length} editions elargies, ${tomesCrees} tomes crees`);
   for (const ligne of elargies) console.log(`  ${ligne}`);
   console.log(`${isbnEcrits} ISBN et ${datesEcrites} dates de sortie ecrits`);
+  console.log(`${sortiesEcrites} sorties annoncees enregistrees`);
   console.log(`compteurs : ${JSON.stringify(compteurs)}`);
 }
 

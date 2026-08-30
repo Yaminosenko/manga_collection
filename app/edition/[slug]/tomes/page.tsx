@@ -38,6 +38,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/tomes"
         titre={edition.titre}
         tomesParus={edition.tomesParus}
         aParaitre={aDesTomesAParaitre(edition.editionTerminee)}
+        sorties={edition.sorties}
         tomes={edition.tomes}
       />
     </main>

@@ -47,9 +47,22 @@ model Edition {
   couvertureUrl      String?
   ajouteeLe          DateTime      @default(now())
   volumes            Volume[]
+  sorties            Sortie[]
 
   @@index([serieId])
   @@index([statut])
+}
+
+model Sortie {
+  id        String   @id @default(uuid())
+  edition   Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  editionId String
+  numero    Int
+  date      DateTime
+  isbn      String?
+
+  @@unique([editionId, numero])
+  @@index([date])
 }
 
 model Volume {
