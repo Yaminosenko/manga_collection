@@ -1047,6 +1047,38 @@ jamais être derrière une authentification.
 serveur et écrit par Server Actions contre Neon. Une coquille afficherait le même site distant,
 en plus lourd. Et quel que soit le chemin, **il faut le réseau** : §6 reste consultation seule.
 
+### Fait — la sauvegarde de la base (30 août 2026)
+
+§7 réclamait « un export JSON régulier de la base, versionné dans le dépôt » comme seul filet
+du plan gratuit. Il n'existait pas. Les possessions — la seule donnée qui vienne du geste de
+l'utilisateur et que rien ne puisse reconstituer — n'étaient couvertes par rien.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/backup-db.ts` | `npm run db:backup` — exporte ; `-- --restore` restaure |
+| `data/backup.json` | le vidage complet, versionné, 1,1 Mo |
+
+- **Le seed ne pouvait pas servir de restauration.** `prisma/seed.ts` lit `data/collection.json`,
+  qui est le point zéro de l'import : ni `titreVo`, ni `couvertureUrl`, ni les dates, ni les
+  identifiants. Restaurer par le seed aurait perdu les 1 426 couvertures et les 104 titres VO.
+  La sauvegarde est donc un vidage fidèle des quatre tables, identifiants compris.
+- **Le tour complet est prouvé, pas supposé.** Restauration dans un Postgres local, réexport,
+  comparaison au fichier d'origine : **identique au caractère près**, hors horodatage. Les sept
+  compteurs concordent. Une sauvegarde jamais restaurée n'est pas une sauvegarde.
+- **`LOCAL_DATABASE_URL` donne enfin un environnement d'essai.** Renseignée, elle fait passer le
+  script par `@prisma/adapter-pg` sur un Postgres local au lieu de Neon. C'est ce qui a permis
+  d'exercer une restauration destructive sans toucher à la vraie collection — jusqu'ici toute
+  manipulation s'exerçait sur elle. Le Postgres local se lève par `npx prisma dev`, puis
+  `npx prisma migrate deploy --config prisma7.local.config.ts`.
+- **Garde-fou à la restauration** : elle refuse d'écrire sur une base non vide sans `--reset`,
+  et vérifie les sept compteurs à l'arrivée, en échouant s'ils divergent.
+- **Ce que le fichier expose** : `prixDefautCentimes` sur les 112 éditions, c'est-à-dire le prix
+  de couverture, information publique. `prixPayeCentimes`, `dateAchat` et `note` sont nuls
+  partout — la V1 ne les écrit pas. Strictement moins que `data/export.csv`, que §7 assume déjà.
+
+**À lancer avant toute manipulation de masse**, et régulièrement. C'est le seul filet : le plan
+gratuit de Neon n'a aucune sauvegarde longue durée.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
@@ -1067,9 +1099,9 @@ en plus lourd. Et quel que soit le chemin, **il faut le réseau** : §6 reste co
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
   `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
   `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.
-- **Sauvegarde régulière de la base.** §7 la réclame et elle n'existe qu'en morceaux :
-  `data/series-avant-anilist.json` couvre les séries, rien ne couvre les possessions — la seule
-  donnée vraiment irremplaçable, puisqu'elle vient du geste de l'utilisateur.
+- **Automatiser la sauvegarde.** `npm run db:backup` existe et est prouvé, mais il se lance à
+  la main. Un cron Vercel quotidien ne peut pas écrire dans le dépôt ; le plus simple reste de
+  le lancer depuis le poste avant chaque manipulation de masse et de commiter le résultat.
 
 ### Reprendre sur un poste neuf
 
@@ -1079,7 +1111,9 @@ en plus lourd. Et quel que soit le chemin, **il faut le réseau** : §6 reste co
    Les secrets ne sont pas dans le dépôt et n'y seront jamais.
 3. `npm run dev`. **Ne pas relancer le seed** : la base Neon est déjà remplie, elle est la
    source de vérité, pas `data/collection.json`.
-4. Rien à faire pour les couvertures : elles sont dans Blob et la base porte leurs URL
+4. `npm run db:backup` avant toute manipulation de masse. `data/backup.json` est versionné et
+   `npm run db:backup -- --restore --reset` remonte la base entière si Neon la perd.
+5. Rien à faire pour les couvertures : elles sont dans Blob et la base porte leurs URL
    absolues. `npm run covers:fetch` ne sert plus qu'à en acquérir de nouvelles, suivi de
    `npm run covers:upload` — qui réclame `BLOB_READ_WRITE_TOKEN` dans `.env`.
 

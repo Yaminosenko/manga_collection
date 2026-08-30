@@ -10,6 +10,7 @@
     "postinstall": "prisma generate",
     "db:migrate": "tsx scripts/apply-migrations.ts",
     "db:seed": "tsx prisma/seed.ts",
+    "db:backup": "tsx scripts/backup-db.ts",
     "covers:fetch": "python scripts/fetch_covers.py",
     "covers:upload": "tsx scripts/upload-covers.ts",
     "anilist:fetch": "tsx scripts/fetch-anilist.ts",
@@ -25,8 +26,10 @@
     "ws": "^8.21.3"
   },
   "devDependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/ws": "^8.18.1",
@@ -34,6 +37,7 @@
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
+    "pg": "^8.23.0",
     "prisma": "^7.10.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.12",
