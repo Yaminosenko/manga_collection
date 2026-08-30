@@ -1120,9 +1120,41 @@ rend le scan EAN-13 de §9 non plus un confort différé mais **le chemin d'entr
 **Trouvaille au passage** : `berserk-prestige-edition` porte `tomesParus = 3` alors que la BnF
 affiche un tome 5 paru en 2026. Le dénominateur est périmé.
 
-**Reste à vérifier avant de concevoir** : la faisabilité du scan dans la PWA — `BarcodeDetector`
-est disponible dans Chrome sur Android, mais la caméra exige HTTPS et un accord de l'utilisateur,
-et rien n'a été essayé.
+**Vérifié sur un exemplaire physique le 30 août.** Photo du dos de *Berserk — Édition Prestige*
+tome 1 : les chiffres imprimés donnent `9782344067802`, clé de contrôle EAN-13 valide, et la BnF
+rend **une seule notice** —
+
+```
+title       Berserk. 1 (Éd. prestige) Kentaro Miura
+publisher   Glénat (Grenoble)
+date        2025
+format      1 vol. (451 p.) : ill. ; 27 cm
+```
+
+La chaîne code-barres → ISBN → édition française est donc complète, de bout en bout.
+
+- **`dc:format` est un discriminant inattendu et plus solide que le marqueur.** 451 pages en
+  27 cm ; l'édition simple fait ~230 pages en 18 cm. Le format physique sépare les éditions là
+  où `(Éd. prestige)` / `(éd. prestige)` / `(collector)` varient.
+- **Un seul code-barres, pas d'additif prix à 5 chiffres.** Le prix est imprimé en texte à côté
+  (`Prix TTC France 24,90 €`), donc hors de portée d'un lecteur de code-barres.
+- **Le bloc est sur fond blanc mais la couverture est sombre et pelliculée brillante.** C'est la
+  condition de scan réelle, pas la plus facile.
+
+**`BarcodeDetector` n'existe pas dans Chrome sous Windows** — vérifié, l'API répond `false`.
+C'est une API Android / macOS / ChromeOS. Le scan marchera donc sur le téléphone, qui est la
+cible de §7, mais **restera intestable depuis le poste de développement**, et l'écran devra se
+dégrader proprement sur bureau plutôt que d'offrir un bouton mort — même règle que le
+`dots-three-outline` non rendu à l'étape 2. L'alternative serait un décodeur JavaScript, qui
+marche partout mais pèse ~200 Ko.
+
+**Écarts relevés en confrontant l'exemplaire à la base :**
+
+| | Base | Réel |
+|---|---|---|
+| `prixDefautCentimes` de la Prestige | 2500 | 24,90 € imprimé |
+| `tomesParus` de la Prestige | 3 | au moins 5, la BnF en date un de 2026 |
+| `isbn` | **nul sur les 1 653 volumes** | le champ existe depuis l'étape 1, jamais écrit |
 
 ### Reste à faire
 

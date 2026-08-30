@@ -1,10 +1,10 @@
 {
-  "exporteeLe": "2026-08-30T12:13:32.555Z",
+  "exporteeLe": "2026-08-30T13:04:14.329Z",
   "compteurs": {
-    "series": 108,
-    "editions": 112,
-    "tomes": 1640,
-    "possedes": 1148,
+    "series": 109,
+    "editions": 113,
+    "tomes": 1653,
+    "possedes": 1149,
     "aVerifier": 35,
     "forcees": 3,
     "couvertures": 1426
@@ -11500,6 +11500,262 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/gantz/18.webp",
               "possession": {
                 "id": "e043b5ff-134a-4fe7-bc71-1bc694c9e07b",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13054b30-e121-43c4-b3b4-8c19f879b908",
+      "slug": "goodnight-punpun",
+      "titre": "Goodnight Punpun",
+      "titreVo": "おやすみプンプン",
+      "auteur": "Inio Asano & Hiro Kashiwaba",
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Slice of Life"
+      ],
+      "themes": [],
+      "cible": null,
+      "couvertureUrl": null,
+      "editions": [
+        {
+          "id": "de900589-3839-41dd-8ad1-e855408537b3",
+          "slug": "goodnight-punpun",
+          "nom": "Édition simple",
+          "editeur": null,
+          "tomesParus": 13,
+          "editionTerminee": true,
+          "prixDefautCentimes": null,
+          "statut": "EN_COURS",
+          "termineeForcee": false,
+          "raisonCompletion": null,
+          "aVerifier": false,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "ajouteeLe": "2026-08-30T12:45:28.542Z",
+          "volumes": [
+            {
+              "id": "f24b8db4-0f26-4e7e-9bd7-6ecf58efdb9a",
+              "numero": 1,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "2394dba4-0c5b-447e-b7f0-fa86df7849d4",
+                "possede": true,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "347069a0-7a4e-48f3-bcdc-c6888e187b72",
+              "numero": 2,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "ea034b5c-ca49-49a7-bc18-6bdf31aae05c",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "b21fd494-08ec-49bb-bb68-610c68555cbe",
+              "numero": 3,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "51c9dd19-e9aa-46b4-9a30-a8aae2ab22d9",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "7632fc8b-d40c-4e7c-bb44-ac3a77538c9f",
+              "numero": 4,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "316bdf8e-7176-419f-93cb-d8ac7055e690",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "46206552-3f1b-4f02-bd78-b8f677f51857",
+              "numero": 5,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "247f7da2-853f-464f-b9f1-d0b84da1740f",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "8241beb9-9a5d-4a37-a4ad-96f0c14836d0",
+              "numero": 6,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "11993805-a67a-4a4d-a66f-945986487cef",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "57366add-51a3-4972-b04a-197bf84da259",
+              "numero": 7,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "100e7898-4a26-4395-be34-540242a67672",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "14fa2057-ff13-42d4-a0b3-4270b964e567",
+              "numero": 8,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "4f67911a-2293-482b-9207-aa61ce305e2f",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "f39d2feb-2b90-4b20-93e1-da0c74abc797",
+              "numero": 9,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "454c11a3-1c19-4445-9bb1-b9a39d6b4973",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "b9a17778-d02f-412c-aab2-322f1ae9160d",
+              "numero": 10,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "96a931b6-c572-41a3-aa56-1bd55e511a5d",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "22e6bde8-0736-439b-ae54-216875333fa3",
+              "numero": 11,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "9ae400fa-8f5d-46c1-a380-bf00edb6a430",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "0f9fefc0-c307-4354-b0de-9fd57dab58a5",
+              "numero": 12,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "28b727bd-c300-4729-98b1-5b993dabead5",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "6f593f98-42d3-4f9b-91d9-df586240dff1",
+              "numero": 13,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possession": {
+                "id": "d22fef13-90a0-4508-83ef-84eec5e6e7ce",
                 "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
