@@ -1240,6 +1240,31 @@ confirmées par l'utilisateur avant réécriture, et vérifiées à l'œil aprè
 **La règle ne s'applique qu'aux éditions purgées explicitement**, le script sautant celles déjà
 complètes sur disque. Aucune des 17 autres n'a bougé.
 
+### Fait — `RECHERCHES_MANUELLES` dans le script de couvertures (30 août 2026)
+
+`UQHOLDER` figurait parmi les 15 sans correspondance MangaDex. **La cause n'était pas le
+score** : `normaliser("UQHOLDER")` et `normaliser("UQ HOLDER!")` donnent tous deux `uqholder`,
+soit une similarité de 1,0. C'est la *recherche* qui ne remontait rien, ni chez MangaDex ni
+chez AniList — le titre collé du Sheet n'est indexé nulle part.
+
+Même remède qu'à l'étape AniList : une table `RECHERCHES_MANUELLES` clé par slug, et
+`trouver_manga(titre, slug)` cherche avec le terme corrigé tout en gardant le titre local
+parmi les cibles de score.
+
+**Deuxième blocage, plus sournois** : `data/mangadex_ids.json` mémorisait `uqholder: null`, et
+la boucle ne résolvait que si le slug était **absent** du fichier. Un ajout dans la table
+restait donc sans effet. Les échecs sont désormais réinterrogés à chaque passage, comme dans
+`fetch-anilist.ts`.
+
+Résultat : 28 tomes, **27 couvertures françaises de Pika Édition** et la 28ᵉ en japonais, le
+français s'arrêtant à 27 — la politique « `fr` d'abord, `ja` en repli » de §5 à l'œuvre.
+Total : **1 467 sur 1 653**.
+
+**Ne pas généraliser cette table aux 14 restants sans vérification.** `data/anilist.json` porte
+le romaji correct pour la plupart, et il serait tentant de l'y injecter — mais `pandora-heart-8-5`
+chercherait *Pandora Hearts* et hériterait des couvertures de la série mère, exactement la faute
+corrigée le même jour sur Akame ga Kill Zero. Chaque entrée se confirme à l'exemplaire.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
@@ -1249,7 +1274,7 @@ complètes sur disque. Aucune des 17 autres n'a bougé.
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 439 sur 1 653, déposées dans Vercel Blob. Le remplissage reste
+- **Couvertures** : 1 467 sur 1 653, déposées dans Vercel Blob. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de

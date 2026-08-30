@@ -29,6 +29,10 @@ SEUIL_SIMILARITE = 0.86
 CANDIDATS_A_VERIFIER = 4
 PENALITE_SATELLITE = 0.30
 ECART_SCORE_NEGLIGEABLE = 0.02
+
+RECHERCHES_MANUELLES = {
+    "uqholder": "UQ HOLDER!",
+}
 MARQUEURS_SATELLITE = (
     "pre-serialization",
     "fan colored",
@@ -129,9 +133,10 @@ def compter_couvertures(identifiant):
     return len(numeros)
 
 
-def trouver_manga(titre):
-    termes = [terme for terme in [titre] + titres_anilist(titre) if terme]
-    cibles = {normaliser(terme) for terme in termes}
+def trouver_manga(titre, slug=None):
+    recherche = RECHERCHES_MANUELLES.get(slug, titre)
+    termes = [terme for terme in [recherche] + titres_anilist(recherche) if terme]
+    cibles = {normaliser(terme) for terme in [titre] + termes if terme}
     candidats = {}
 
     for terme in termes:
@@ -271,8 +276,8 @@ def main():
             sys.stdout.flush()
             continue
 
-        if slug not in identifiants:
-            identifiants[slug] = trouver_manga(titre)
+        if not identifiants.get(slug):
+            identifiants[slug] = trouver_manga(titre, slug)
             json.dump(identifiants, open(FICHIER_IDS, "w", encoding="utf-8"),
                       ensure_ascii=False, indent=2, sort_keys=True)
         identifiant = identifiants[slug]

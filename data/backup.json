@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-08-30T13:11:25.581Z",
+  "exporteeLe": "2026-08-30T13:35:34.363Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
@@ -7,7 +7,7 @@
     "possedes": 1149,
     "aVerifier": 35,
     "forcees": 3,
-    "couvertures": 1439
+    "couvertures": 1467
   },
   "series": [
     {
@@ -31107,7 +31107,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/1.webp",
               "possession": {
                 "id": "8c80627e-a128-4f3f-bd52-2962ecb93785",
                 "possede": true,
@@ -31124,7 +31124,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/2.webp",
               "possession": {
                 "id": "00141bcf-6cd4-49e8-99ac-f58bff7787bd",
                 "possede": true,
@@ -31141,7 +31141,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/3.webp",
               "possession": {
                 "id": "ecb5e43f-2fd8-4a1c-9c0d-15d9deb4e44a",
                 "possede": true,
@@ -31158,7 +31158,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/4.webp",
               "possession": {
                 "id": "d1e044ca-d8f7-4f2e-bd41-2810e44634d3",
                 "possede": true,
@@ -31175,7 +31175,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/5.webp",
               "possession": {
                 "id": "14bf1ba0-499c-476d-a6b1-6876131a50c9",
                 "possede": true,
@@ -31192,7 +31192,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/6.webp",
               "possession": {
                 "id": "dfc70a06-ae92-4e71-8e0f-6f7b3557298b",
                 "possede": true,
@@ -31209,7 +31209,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/7.webp",
               "possession": {
                 "id": "349b26f7-4850-4095-abe6-f74df1cf9e76",
                 "possede": true,
@@ -31226,7 +31226,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/8.webp",
               "possession": {
                 "id": "e0aa1f90-c75a-416f-90a6-54047e108296",
                 "possede": true,
@@ -31243,7 +31243,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/9.webp",
               "possession": {
                 "id": "97f0dda5-3ae7-4cd6-b842-bb8e6194ef95",
                 "possede": true,
@@ -31260,7 +31260,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/10.webp",
               "possession": {
                 "id": "351bed8d-36bd-4a94-9e70-92fa4abbe58d",
                 "possede": true,
@@ -31277,7 +31277,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/11.webp",
               "possession": {
                 "id": "c463a2d8-6e39-429b-8ef0-ac43983a9f26",
                 "possede": true,
@@ -31294,7 +31294,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/12.webp",
               "possession": {
                 "id": "01f22170-941a-47c1-90b2-8064a137df3f",
                 "possede": true,
@@ -31311,7 +31311,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/13.webp",
               "possession": {
                 "id": "c81dc391-652e-449f-a4ae-bed2d2c68e33",
                 "possede": true,
@@ -31328,7 +31328,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/14.webp",
               "possession": {
                 "id": "f4f0f477-fad2-463d-85a5-d5179df777af",
                 "possede": true,
@@ -31345,7 +31345,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/15.webp",
               "possession": {
                 "id": "2b90d071-7d6b-4cb9-86af-4841ee40f777",
                 "possede": true,
@@ -31362,7 +31362,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/16.webp",
               "possession": {
                 "id": "ebe1e034-9c45-4f0d-857b-f07ce8f1d803",
                 "possede": true,
@@ -31379,7 +31379,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/17.webp",
               "possession": {
                 "id": "7b719f6e-7bf2-44d9-bae4-077985b16385",
                 "possede": true,
@@ -31396,7 +31396,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/18.webp",
               "possession": {
                 "id": "a8589ce0-8602-46ca-a493-4ec6759d9a6b",
                 "possede": true,
@@ -31413,7 +31413,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/19.webp",
               "possession": {
                 "id": "f1a7e0a2-1208-4547-84d1-b8142273a2eb",
                 "possede": true,
@@ -31430,7 +31430,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/20.webp",
               "possession": {
                 "id": "23eef4fe-9571-4ed4-8252-d0418d401865",
                 "possede": true,
@@ -31447,7 +31447,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/21.webp",
               "possession": {
                 "id": "4f3dab8f-e20d-4f9f-b059-e045b687cbe3",
                 "possede": true,
@@ -31464,7 +31464,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/22.webp",
               "possession": {
                 "id": "0fdc3987-b486-4587-ad33-5953b087fb85",
                 "possede": true,
@@ -31481,7 +31481,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/23.webp",
               "possession": {
                 "id": "63dec091-6975-41fa-a4a8-6732f6c23eac",
                 "possede": true,
@@ -31498,7 +31498,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/24.webp",
               "possession": {
                 "id": "a95e1af2-748b-47d9-af2c-71f26d9f0ca3",
                 "possede": true,
@@ -31515,7 +31515,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/25.webp",
               "possession": {
                 "id": "78d671da-6865-42a1-a0b4-c71557e110c5",
                 "possede": true,
@@ -31532,7 +31532,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/26.webp",
               "possession": {
                 "id": "49c9fa4a-b864-45c2-b671-e8cf80d66e22",
                 "possede": true,
@@ -31549,7 +31549,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/27.webp",
               "possession": {
                 "id": "c7e1cc26-a434-42a6-b2c2-d9569eb84a21",
                 "possede": true,
@@ -31566,7 +31566,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/uqholder/28.webp",
               "possession": {
                 "id": "38476e18-d0e1-4697-b4d9-f1c228c984d1",
                 "possede": true,
