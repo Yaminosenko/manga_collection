@@ -1454,9 +1454,14 @@ sont deux `Edition` distinctes, pas deux familles d'une même fiche.
 `Bleach_13th_blades.jpg` serait lu comme le tome 13. Les fichiers sont recopiés sous un nom
 neutre avant import ; mieux vaut nommer `1.jpg` que se fier au titre.
 
+**Berserk Édition Prestige portée de 3 à 6 tomes.** Six couvertures fournies contre trois tomes
+en base : le garde-fou de l'importateur a refusé les trois derniers, ce qui a révélé la
+péremption plutôt que de la masquer. La BnF datait déjà un tome 5 de 2026. `tomesParus` passe à
+6, trois volumes non possédés sont créés, et l'édition affiche 1/6.
+
 **Reste 37 tomes** : `ippo-s4-la-loi-du-ring` 3 à 27 (une seule couverture fournie, posée sur
 les tomes 1 et 2), `les-legendaires-saga` 2 à 12, `solo-leveling` 19, et les deux annoncés
-`radiant` 20 et `the-ancient-magus-bride` 24.
+`radiant` 20 et `the-ancient-magus-bride` 24. Total : **1 656 sur 1 693**.
 
 ### Reste à faire
 
@@ -1467,7 +1472,7 @@ les tomes 1 et 2), `les-legendaires-saga` 2 à 12, `solo-leveling` 19, et les de
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 653 sur 1 690, déposées dans Vercel Blob. Les 37 manquantes n'ont aucune
+- **Couvertures** : 1 656 sur 1 693, déposées dans Vercel Blob. Les 37 manquantes n'ont aucune
   source automatique et attendent `npm run covers:manuelles` — voir le détail ci-dessus. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il

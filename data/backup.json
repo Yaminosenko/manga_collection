@@ -1,13 +1,13 @@
 {
-  "exporteeLe": "2026-08-30T15:49:41.225Z",
+  "exporteeLe": "2026-08-30T15:52:53.025Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
-    "tomes": 1690,
+    "tomes": 1693,
     "possedes": 1151,
-    "aVerifier": 29,
+    "aVerifier": 25,
     "forcees": 3,
-    "couvertures": 1653
+    "couvertures": 1656
   },
   "series": [
     {
@@ -2126,7 +2126,7 @@
           "statut": "EN_COURS",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
@@ -2870,13 +2870,13 @@
           "slug": "berserk-prestige-edition",
           "nom": "Édition Prestige",
           "editeur": "Glénat",
-          "tomesParus": 3,
+          "tomesParus": 6,
           "editionTerminee": null,
           "prixDefautCentimes": 2500,
           "statut": "EN_COURS",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
@@ -2925,6 +2925,57 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/3.webp",
               "possession": {
                 "id": "4fc1d4dd-af8b-410d-b134-9d80bd0851ba",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "a040f32e-6a65-4621-8d15-9a0f17aae198",
+              "numero": 4,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/4.webp",
+              "possession": {
+                "id": "839b205f-6cbc-47c4-bc77-005099dc70db",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "2a23b0dd-5ab5-4d9c-8a0d-ba72ef59d42d",
+              "numero": 5,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/5.webp",
+              "possession": {
+                "id": "ac677a12-6140-4201-8e2a-784d4c4444d7",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "c97d1d1b-9d2d-4bcd-a9ae-a360400dcb18",
+              "numero": 6,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/6.webp",
+              "possession": {
+                "id": "c4286af6-d9e9-4d85-b96f-1d2ce0928f2c",
                 "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
@@ -4072,7 +4123,7 @@
           "statut": "EN_COURS",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
@@ -4286,7 +4337,7 @@
           "statut": "ABANDONNEE",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
