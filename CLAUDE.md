@@ -1522,6 +1522,30 @@ dépôt étant public, l'URL est trouvable. Deux variantes ont été écartées 
 commodité : masquer les prix à l'invité, ou un second mot de passe `GUEST_PASSWORD`. L'une ou
 l'autre reste facile à ajouter — le rôle est déjà porté par le jeton.
 
+### Tranché — la vignette de la Collection (30 août 2026)
+
+Sur constat d'usage : la liste tenait 5,3 séries par écran, l'application de référence en tient
+4 avec des couvertures nettement plus grandes. Mesuré sur deux captures du même téléphone,
+1080 × 2400 à densité 3 :
+
+| | avant | référence, et désormais |
+|---|---|---|
+| Couverture | 52 × 74 CSS | **84 × 120 CSS** |
+| Pas de ligne | 101 CSS | **138 CSS** |
+| Lignes par écran | 5,3 | **4,0** |
+
+**La résolution stockée suffisait déjà.** 84 CSS à densité 3 font 252 px physiques, et §5 stocke
+en 256 × 360 — une taille cotée pour « grille 252×354 ». La vignette agrandie tombe pile dessus,
+**sans agrandissement ni retraitement des 1 657 images**.
+
+Le reste suit à proportion : titre 15,5 px, sous-titre et compteur 12,5 px, marge verticale
+réduite de 13 à 9 px pour que la ligne ne gagne que ce que la couverture exige.
+
+**Astuce de vérification à retenir** : le cookie d'accès est `httpOnly`, donc JavaScript ne peut
+ni le lire ni l'écraser. Passer par `127.0.0.1` au lieu de `localhost` donne une **origine
+distincte, sans cookie existant**, où l'on peut poser un jeton depuis la console — et le jeton
+*invité* suffit pour un contrôle visuel, ce qui évite d'avoir à manipuler le mot de passe.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
