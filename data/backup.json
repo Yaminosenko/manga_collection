@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-08-30T13:04:14.329Z",
+  "exporteeLe": "2026-08-30T13:11:25.581Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
@@ -7,7 +7,7 @@
     "possedes": 1149,
     "aVerifier": 35,
     "forcees": 3,
-    "couvertures": 1426
+    "couvertures": 1439
   },
   "series": [
     {
@@ -11549,7 +11549,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/1.webp",
               "possession": {
                 "id": "2394dba4-0c5b-447e-b7f0-fa86df7849d4",
                 "possede": true,
@@ -11566,7 +11566,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/2.webp",
               "possession": {
                 "id": "ea034b5c-ca49-49a7-bc18-6bdf31aae05c",
                 "possede": false,
@@ -11583,7 +11583,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/3.webp",
               "possession": {
                 "id": "51c9dd19-e9aa-46b4-9a30-a8aae2ab22d9",
                 "possede": false,
@@ -11600,7 +11600,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/4.webp",
               "possession": {
                 "id": "316bdf8e-7176-419f-93cb-d8ac7055e690",
                 "possede": false,
@@ -11617,7 +11617,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/5.webp",
               "possession": {
                 "id": "247f7da2-853f-464f-b9f1-d0b84da1740f",
                 "possede": false,
@@ -11634,7 +11634,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/6.webp",
               "possession": {
                 "id": "11993805-a67a-4a4d-a66f-945986487cef",
                 "possede": false,
@@ -11651,7 +11651,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/7.webp",
               "possession": {
                 "id": "100e7898-4a26-4395-be34-540242a67672",
                 "possede": false,
@@ -11668,7 +11668,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/8.webp",
               "possession": {
                 "id": "4f67911a-2293-482b-9207-aa61ce305e2f",
                 "possede": false,
@@ -11685,7 +11685,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/9.webp",
               "possession": {
                 "id": "454c11a3-1c19-4445-9bb1-b9a39d6b4973",
                 "possede": false,
@@ -11702,7 +11702,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/10.webp",
               "possession": {
                 "id": "96a931b6-c572-41a3-aa56-1bd55e511a5d",
                 "possede": false,
@@ -11719,7 +11719,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/11.webp",
               "possession": {
                 "id": "9ae400fa-8f5d-46c1-a380-bf00edb6a430",
                 "possede": false,
@@ -11736,7 +11736,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/12.webp",
               "possession": {
                 "id": "28b727bd-c300-4729-98b1-5b993dabead5",
                 "possede": false,
@@ -11753,7 +11753,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/goodnight-punpun/13.webp",
               "possession": {
                 "id": "d22fef13-90a0-4508-83ef-84eec5e6e7ce",
                 "possede": false,

@@ -1156,6 +1156,26 @@ marche partout mais pèse ~200 Ko.
 | `tomesParus` de la Prestige | 3 | au moins 5, la BnF en date un de 2026 |
 | `isbn` | **nul sur les 1 653 volumes** | le champ existe depuis l'étape 1, jamais écrit |
 
+### Corrigé — les séries ajoutées étaient invisibles des couvertures (30 août 2026)
+
+`Goodnight Punpun`, ajoutée depuis l'application, est restée sans couverture. La cause n'est pas
+que le processus soit manuel : **`fetch_covers.py` lisait `data/collection.json`**, figé aux
+108 séries de l'import. Toute série créée par l'écran Ajouter y était absente. **Il n'existait
+donc aucun chemin, ni manuel ni automatique, pour lui donner des couvertures.**
+
+**Correctif** : le script lit désormais `data/backup.json`, le vidage complet écrit par
+`npm run db:backup`. Même structure — `series[].editions[]` avec `titre`, `slug`, `nom`,
+`tomesParus` — donc une seule ligne à changer, et la sauvegarde sert deux fois.
+
+**Conséquence sur l'ordre des commandes** : `npm run db:backup` doit précéder
+`npm run covers:fetch`, sinon le script travaille sur une photographie périmée de la base.
+Contrainte utile : elle force la sauvegarde à rester fraîche.
+
+Résultat : 13 couvertures pour Punpun, **1 439 sur 1 653**. Elles pèsent 2,8 Ko de moyenne
+contre 23,4 Ko ailleurs — ce ne sont pas des images vides mais les couvertures d'Inio Asano,
+des aplats monochromes avec un dessin gaufré, que WebP réduit à presque rien. Vérifié à l'œil
+avant de conclure.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
@@ -1165,8 +1185,12 @@ marche partout mais pèse ~200 Ko.
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : faites à 87 % et **déposées dans Vercel Blob**. Restent les 214 tomes
-  détaillés ci-dessus, dont 36 exclus volontairement.
+- **Couvertures** : 1 439 sur 1 653, déposées dans Vercel Blob. Le remplissage reste
+  **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
+  §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
+  n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de
+  `fetch_covers.py`, celui qui pénalise les fiches satellites : sans lui, un appariement naïf
+  fait repartir Bleach avec 1 tome sur 74 (§ couvertures, 29 août).
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
   en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
