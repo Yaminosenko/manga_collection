@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "@/components/icons";
 import { EditionState } from "@/components/edition-state";
 import { chargerEdition } from "@/lib/editions";
+import { estProprietaire } from "@/lib/guard";
 import { TITRE_ETAT } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +12,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/etat">
   const { slug } = await params;
   const edition = await chargerEdition(slug);
 
-  if (!edition) {
+  if (!edition || !(await estProprietaire())) {
     notFound();
   }
 

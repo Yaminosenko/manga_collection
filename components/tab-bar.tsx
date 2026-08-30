@@ -11,12 +11,13 @@ const ONGLETS = [
   { href: "/ajouter", libelle: TITRE_AJOUTER, Icone: PlusCircle },
 ] as const;
 
-export function TabBar() {
+export function TabBar({ lectureSeule }: { lectureSeule: boolean }) {
   const chemin = usePathname();
+  const onglets = lectureSeule ? ONGLETS.filter((o) => o.href !== "/ajouter") : ONGLETS;
 
   return (
     <nav className="bg-surface border-divider sticky bottom-0 flex border-t pt-[8px] pb-[calc(18px+env(safe-area-inset-bottom))]">
-      {ONGLETS.map(({ href, libelle, Icone }) => {
+      {onglets.map(({ href, libelle, Icone }) => {
         const actif = href === "/" ? chemin === "/" : chemin.startsWith(href);
         return (
           <Link

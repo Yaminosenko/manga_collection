@@ -77,6 +77,7 @@ export const COULEUR_FOND_APPLICATION = "#161826";
 export const CHEMIN_ACCES = "/acces";
 export const COOKIE_ACCES = "collection.acces";
 export const MESSAGE_JETON = "acces";
+export const MESSAGE_JETON_INVITE = "invite";
 export const DUREE_ACCES_SECONDES = 31_536_000;
 
 export const TITRE_ACCES = "Collection privée";
@@ -97,3 +98,9 @@ export const MENTION_PARUTION =
   "Une édition terminée n’affiche plus de tomes à paraître, et « À jour » y devient « Complète ».";
 export const MENTION_COLLECTION_FORCEE =
   "Déclare la collection finie malgré des tomes manquants. Ils cessent de remonter dans Manquants ; la barre garde son compte réel.";
+
+export const LIBELLE_ENTRER_INVITE = "Entrer en invité";
+export const LIBELLE_MODE_INVITE = "Mode invité · consultation seule";
+export const LIBELLE_QUITTER_INVITE = "Quitter";
+export const MENTION_INVITE_LECTURE =
+  "En invité, la collection se consulte mais ne se modifie pas.";

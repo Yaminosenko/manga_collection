@@ -2,8 +2,13 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { jetonPour } from "./auth";
-import { COOKIE_ACCES, DUREE_ACCES_SECONDES, LIBELLE_ACCES_REFUSE } from "./constants";
+import { jetonInvite, jetonPour } from "./auth";
+import {
+  CHEMIN_ACCES,
+  COOKIE_ACCES,
+  DUREE_ACCES_SECONDES,
+  LIBELLE_ACCES_REFUSE,
+} from "./constants";
 import type { EtatAcces } from "./domain";
 
 export async function deverrouiller(
@@ -17,6 +22,11 @@ export async function deverrouiller(
     return { erreur: LIBELLE_ACCES_REFUSE };
   }
 
+  await poserCookie(jeton);
+  redirect("/");
+}
+
+async function poserCookie(jeton: string) {
   const magasin = await cookies();
   magasin.set(COOKIE_ACCES, jeton, {
     httpOnly: true,
@@ -25,6 +35,19 @@ export async function deverrouiller(
     path: "/",
     maxAge: DUREE_ACCES_SECONDES,
   });
+}
 
+export async function entrerEnInvite() {
+  const jeton = jetonInvite();
+  if (!jeton) {
+    return;
+  }
+  await poserCookie(jeton);
   redirect("/");
+}
+
+export async function quitterInvite() {
+  const magasin = await cookies();
+  magasin.delete(COOKIE_ACCES);
+  redirect(CHEMIN_ACCES);
 }

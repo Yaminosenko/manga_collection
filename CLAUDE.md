@@ -310,7 +310,7 @@ allumée en permanence. Tout ce qui suit découle de là.
 | Base | PostgreSQL sur Neon | Free — 0,5 Go, 100 CU-h/mois, veille après 5 min |
 | Hébergement | Vercel | Hobby — usage personnel, sans carte, non facturable |
 | Couvertures | Vercel Blob | Hobby — 1 Go inclus, ~30 Mo nécessaires |
-| Accès privé | Garde applicative, mot de passe unique dans `proxy.ts` | Hobby ne sait pas protéger la production |
+| Accès privé | Garde applicative : mot de passe pour écrire, bouton invité pour consulter | Hobby ne sait pas protéger la production |
 | Mobile | PWA installable | — |
 
 Alternative écartée : FastAPI + React séparés. Deux déploiements, une couche API à écrire et
@@ -1491,6 +1491,36 @@ moi, pas de l'application. `ACCESS_PASSWORD` avait changé dans `.env` et je ré
 Les tests en curl passaient parce qu'ils **calculent** le jeton depuis la variable
 d'environnement au lieu de deviner le mot de passe — c'est la bonne méthode, et elle évite au
 passage d'avoir à manipuler le mot de passe réel.
+
+### Fait — le mode invité (30 août 2026)
+
+Un bouton « Entrer en invité » sous le champ de mot de passe donne un accès **en consultation
+seule**, sans rien saisir.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/auth.ts` | deux jetons dérivés du même secret, `roleDuJeton` les départage |
+| `lib/guard.ts` | `exigerAcces` pour lire, **`exigerProprietaire` pour écrire** |
+| `lib/auth-actions.ts` | `entrerEnInvite`, `quitterInvite` |
+| `components/guest-banner.tsx` | le bandeau « Mode invité · consultation seule » |
+
+- **Les deux jetons sont des HMAC du même mot de passe**, sur des messages différents
+  (`acces` et `invite`). L'invité ne peut donc pas être forgé sans connaître le secret ; il est
+  simplement délivré sans le demander. Les cookies propriétaires existants restent valides.
+- **La frontière est dans les Server Actions, pas dans l'interface.** Les sept actions d'écriture
+  appellent `exigerProprietaire`. Vérifié en appelant `definirParution` par HTTP avec le cookie
+  invité : **500 et aucune écriture** ; le même appel en propriétaire écrit. L'interface qui
+  masque les contrôles est un confort, pas la protection.
+- **Ce que l'invité voit** : la Collection, les Manquants, les pages Édition et la grille des
+  tomes — **inerte, aucune case n'est un bouton**. L'onglet Ajouter disparaît, la ligne
+  « Statut » cesse d'être un lien, et `/ajouter` comme `/etat` rendent l'écran introuvable.
+- **Un bandeau permanent** le dit, avec un bouton « Quitter » qui efface le cookie.
+
+**Conséquence de confidentialité, assumée (30 août 2026)** : le bouton ne demande rien, donc
+**quiconque connaît l'URL peut consulter la collection**, prix et valeur totale compris. Le
+dépôt étant public, l'URL est trouvable. Deux variantes ont été écartées au profit de la
+commodité : masquer les prix à l'invité, ou un second mot de passe `GUEST_PASSWORD`. L'une ou
+l'autre reste facile à ajouter — le rôle est déjà porté par le jeton.
 
 ### Reste à faire
 

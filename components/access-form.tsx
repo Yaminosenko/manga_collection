@@ -1,8 +1,13 @@
 "use client";
 
 import { useActionState } from "react";
-import { deverrouiller } from "@/lib/auth-actions";
-import { LIBELLE_DEVERROUILLER, LIBELLE_MOT_DE_PASSE } from "@/lib/constants";
+import { deverrouiller, entrerEnInvite } from "@/lib/auth-actions";
+import {
+  LIBELLE_DEVERROUILLER,
+  LIBELLE_ENTRER_INVITE,
+  LIBELLE_MOT_DE_PASSE,
+  MENTION_INVITE_LECTURE,
+} from "@/lib/constants";
 import type { EtatAcces } from "@/lib/domain";
 
 export function AccessForm() {
@@ -32,6 +37,17 @@ export function AccessForm() {
       {etat.erreur ? (
         <p className="text-center text-[13px] text-neutral-400">{etat.erreur}</p>
       ) : null}
+
+      <button
+        type="button"
+        onClick={() => entrerEnInvite()}
+        className="mt-[10px] min-h-11 w-full text-[12.5px] text-neutral-500 transition-colors hover:text-neutral-300"
+      >
+        {LIBELLE_ENTRER_INVITE}
+      </button>
+      <p className="text-center text-[11px]/[1.5] text-neutral-700">
+        {MENTION_INVITE_LECTURE}
+      </p>
     </form>
   );
 }

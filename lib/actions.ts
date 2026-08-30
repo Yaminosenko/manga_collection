@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { rechercherSurAniList } from "@/lib/anilist";
 import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
-import { exigerAcces } from "@/lib/guard";
+import { exigerProprietaire } from "@/lib/guard";
 import { LONGUEUR_RECHERCHE_MIN, RESULTATS_RECHERCHE_MAX } from "@/lib/constants";
 import type { EtatCreation, ResultatRecherche } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
@@ -27,7 +27,7 @@ function revaliderEdition(slug: string): void {
 }
 
 export async function definirStatut(slug: string, statut: StatutEdition): Promise<void> {
-  await exigerAcces();
+  await exigerProprietaire();
   await prisma.edition.update({ where: { slug }, data: { statut } });
   revaliderEdition(slug);
 }
@@ -36,13 +36,13 @@ export async function definirParution(
   slug: string,
   editionTerminee: boolean | null,
 ): Promise<void> {
-  await exigerAcces();
+  await exigerProprietaire();
   await prisma.edition.update({ where: { slug }, data: { editionTerminee } });
   revaliderEdition(slug);
 }
 
 export async function definirTermineeForcee(slug: string, forcee: boolean): Promise<void> {
-  await exigerAcces();
+  await exigerProprietaire();
   await prisma.edition.update({ where: { slug }, data: { termineeForcee: forcee } });
   revaliderEdition(slug);
 }
@@ -52,7 +52,7 @@ export async function basculerTome(
   numero: number,
   possede: boolean,
 ): Promise<void> {
-  await exigerAcces();
+  await exigerProprietaire();
 
   const volume = await prisma.volume.findFirst({
     where: { numero, edition: { slug } },
@@ -74,7 +74,7 @@ export async function basculerTome(
 }
 
 export async function definirTousLesTomes(slug: string, possede: boolean): Promise<void> {
-  await exigerAcces();
+  await exigerProprietaire();
 
   const edition = await prisma.edition.findUnique({
     where: { slug },
@@ -99,7 +99,7 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
 }
 
 export async function rechercherSeries(terme: string): Promise<ResultatRecherche> {
-  await exigerAcces();
+  await exigerProprietaire();
 
   const requete = terme.trim();
   if (requete.length < LONGUEUR_RECHERCHE_MIN) {
@@ -168,7 +168,7 @@ export async function creerEdition(
   _precedent: EtatCreation,
   donnees: FormData,
 ): Promise<EtatCreation> {
-  await exigerAcces();
+  await exigerProprietaire();
 
   const titre = lireTexte(donnees, "titre");
   const auteur = lireTexte(donnees, "auteur");

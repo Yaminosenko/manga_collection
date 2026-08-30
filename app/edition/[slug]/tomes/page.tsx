@@ -4,12 +4,14 @@ import { ArrowLeft } from "@/components/icons";
 import { VolumeGrid } from "@/components/volume-grid";
 import { chargerEdition } from "@/lib/editions";
 import { aDesTomesAParaitre } from "@/lib/domain";
+import { estProprietaire } from "@/lib/guard";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page({ params }: PageProps<"/edition/[slug]/tomes">) {
   const { slug } = await params;
   const edition = await chargerEdition(slug);
+  const proprietaire = await estProprietaire();
 
   if (!edition) {
     notFound();
@@ -38,6 +40,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/tomes"
         titre={edition.titre}
         tomesParus={edition.tomesParus}
         aParaitre={aDesTomesAParaitre(edition.editionTerminee)}
+        lectureSeule={!proprietaire}
         sorties={edition.sorties}
         tomes={edition.tomes}
       />
