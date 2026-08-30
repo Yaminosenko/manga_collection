@@ -1440,14 +1440,23 @@ un tome *annoncé* va dans `covers-annonces.json` plutôt que dans `covers.json`
 `Sortie.couvertureUrl`. Le script n'écrit jamais en base : il alimente les manifestes, et
 `npm run covers:upload` fait le reste.
 
-**Ce qui reste à fournir : 81 images sur 13 éditions.**
+**Premier lot fourni le 30 août : 60 couvertures**, dont les 36 tomes des cinq éditions non
+simples que MangaDex ne pouvait pas donner par nature. Total : **1 653 sur 1 690**.
 
-| Cause | Tomes |
-|---|---|
-| 5 éditions non simples, exclues de MangaDex par nature — un tome double ne correspond à aucun tome japonais | 36 |
-| 5 éditions sans fiche MangaDex — `ippo-s4-la-loi-du-ring` (27), `les-legendaires-saga` (12), et trois hors-séries | 42 |
-| `solo-leveling` tome 19, trou isolé | 1 |
-| `radiant` 20 et `the-ancient-magus-bride` 24, annoncés sans jaquette déposée | 2 |
+**Dragon Ball : les couvertures étaient sur la mauvaise édition.** `dragon-ball` porte
+l'édition double en 21 volumes, mais ses jaquettes venaient de la famille MangaDex des tomes
+simples — celles-là appartiennent à `dragon-ball-tome-units`. Elles y ont été déplacées avant
+l'écrasement, et l'édition double a reçu ses vraies couvertures françaises. Même classe de faute
+que Blame!, Gantz et Evangelion, mais invisible aux règles automatiques : les deux éditions
+sont deux `Edition` distinctes, pas deux familles d'une même fiche.
+
+**Piège de nommage** : le lecteur de numéro prend la première suite de chiffres, donc
+`Bleach_13th_blades.jpg` serait lu comme le tome 13. Les fichiers sont recopiés sous un nom
+neutre avant import ; mieux vaut nommer `1.jpg` que se fier au titre.
+
+**Reste 37 tomes** : `ippo-s4-la-loi-du-ring` 3 à 27 (une seule couverture fournie, posée sur
+les tomes 1 et 2), `les-legendaires-saga` 2 à 12, `solo-leveling` 19, et les deux annoncés
+`radiant` 20 et `the-ancient-magus-bride` 24.
 
 ### Reste à faire
 
@@ -1458,8 +1467,8 @@ un tome *annoncé* va dans `covers-annonces.json` plutôt que dans `covers.json`
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 611 sur 1 690, déposées dans Vercel Blob. Les 79 manquantes n'ont
-  aucune source automatique et attendent `npm run covers:manuelles` — voir le détail ci-dessus. Le remplissage reste
+- **Couvertures** : 1 653 sur 1 690, déposées dans Vercel Blob. Les 37 manquantes n'ont aucune
+  source automatique et attendent `npm run covers:manuelles` — voir le détail ci-dessus. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de

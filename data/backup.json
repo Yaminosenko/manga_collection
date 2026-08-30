@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-08-30T15:28:39.910Z",
+  "exporteeLe": "2026-08-30T15:49:41.225Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
@@ -7,7 +7,7 @@
     "possedes": 1151,
     "aVerifier": 29,
     "forcees": 3,
-    "couvertures": 1611
+    "couvertures": 1653
   },
   "series": [
     {
@@ -2888,7 +2888,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/1.webp",
               "possession": {
                 "id": "283d4dcd-b38d-4997-b606-e12c2032799b",
                 "possede": true,
@@ -2905,7 +2905,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/2.webp",
               "possession": {
                 "id": "1ab61d05-778b-4cf1-bba3-4817097fff8c",
                 "possede": false,
@@ -2922,7 +2922,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk-prestige-edition/3.webp",
               "possession": {
                 "id": "4fc1d4dd-af8b-410d-b134-9d80bd0851ba",
                 "possede": false,
@@ -5783,7 +5783,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/bleach-13-blades/1.webp",
               "possession": {
                 "id": "abe57103-f15e-4172-8569-33b06eb85e08",
                 "possede": true,
@@ -9835,7 +9835,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/dragon-ball-tome-units/1.webp",
               "possession": {
                 "id": "1bfd01e6-4c47-43dd-aa8e-ff347c47d310",
                 "possede": true,
@@ -9852,7 +9852,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/dragon-ball-tome-units/2.webp",
               "possession": {
                 "id": "4a52b302-1480-4335-a337-163a7ff55f4f",
                 "possede": true,
@@ -9869,7 +9869,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/dragon-ball-tome-units/3.webp",
               "possession": {
                 "id": "4708a00b-bdaf-46d0-a4c3-3921aa9d213b",
                 "possede": true,
@@ -11201,7 +11201,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/1.webp",
               "possession": {
                 "id": "cae7b74f-a348-4632-8408-1fdb77f4fe06",
                 "possede": true,
@@ -11218,7 +11218,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/2.webp",
               "possession": {
                 "id": "a5092013-a2ce-450f-a6c4-d74feb7e9939",
                 "possede": true,
@@ -11235,7 +11235,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/3.webp",
               "possession": {
                 "id": "bc7cd0b9-cccb-4f47-8b9d-a2664a58b6bf",
                 "possede": true,
@@ -11252,7 +11252,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/4.webp",
               "possession": {
                 "id": "cc7648b8-5774-4eff-9f8b-a1bad139caeb",
                 "possede": true,
@@ -11269,7 +11269,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/5.webp",
               "possession": {
                 "id": "2ca195e5-b136-4e2b-a38a-bc431bfbbe97",
                 "possede": true,
@@ -11286,7 +11286,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/6.webp",
               "possession": {
                 "id": "b1dce7b9-0cd5-4d3f-a7b0-fc29d8c428ea",
                 "possede": true,
@@ -11303,7 +11303,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/7.webp",
               "possession": {
                 "id": "397bbece-8f12-42b8-85af-941e140db4e7",
                 "possede": true,
@@ -11320,7 +11320,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/8.webp",
               "possession": {
                 "id": "eb5e794f-76e6-4c4d-a422-471cbb81c1d4",
                 "possede": true,
@@ -11337,7 +11337,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/9.webp",
               "possession": {
                 "id": "080fdf7d-689b-4940-ba4d-a2fbdd5a67d2",
                 "possede": true,
@@ -11354,7 +11354,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/10.webp",
               "possession": {
                 "id": "a58ce954-d8a5-42c9-8e69-57c05974580e",
                 "possede": true,
@@ -11371,7 +11371,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/11.webp",
               "possession": {
                 "id": "d4f89e87-8bd2-424e-84a9-53e8cb6428c8",
                 "possede": true,
@@ -11388,7 +11388,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/12.webp",
               "possession": {
                 "id": "68e68579-35c7-4faa-8059-ce88a322e953",
                 "possede": true,
@@ -11405,7 +11405,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist-edition-double/13.webp",
               "possession": {
                 "id": "7484a25a-4929-47d1-ba9d-4b1ca17f9025",
                 "possede": true,
@@ -12067,7 +12067,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/hellsing-perfect-edition/1.webp",
               "possession": {
                 "id": "33eee7d3-e1e6-48c7-9447-8ddd8c0447ce",
                 "possede": true,
@@ -12084,7 +12084,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/hellsing-perfect-edition/2.webp",
               "possession": {
                 "id": "c9e16b48-f1fd-4857-8684-27fae737ade4",
                 "possede": true,
@@ -12101,7 +12101,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/hellsing-perfect-edition/3.webp",
               "possession": {
                 "id": "0c958db8-7aae-4822-924d-6b5ee35a86d1",
                 "possede": true,
@@ -12118,7 +12118,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/hellsing-perfect-edition/4.webp",
               "possession": {
                 "id": "cd932ab1-fc39-43ca-9674-8c9053b965f5",
                 "possede": true,
@@ -12135,7 +12135,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/hellsing-perfect-edition/5.webp",
               "possession": {
                 "id": "ed0e4568-d035-46b9-a993-422d456badca",
                 "possede": true,
@@ -12249,7 +12249,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ippo-s4-la-loi-du-ring/1.webp",
               "possession": {
                 "id": "c711d87d-a1af-4de4-9849-c8f9ffd4a58e",
                 "possede": true,
@@ -12266,7 +12266,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ippo-s4-la-loi-du-ring/2.webp",
               "possession": {
                 "id": "cda3f57b-8a85-4f32-9c3c-e297b289f053",
                 "possede": true,
@@ -15038,7 +15038,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/les-legendaires-saga/1.webp",
               "possession": {
                 "id": "4854ca6a-dd6c-4bae-a279-3539823ff4e5",
                 "possede": true,
@@ -19861,7 +19861,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/my-hero-academia-ultra-archive/1.webp",
               "possession": {
                 "id": "766dc382-815e-48db-a51a-5bd7a9c57d74",
                 "possede": true,
@@ -23497,7 +23497,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/pokemon-zoroark-le-maitre-des-illusion/1.webp",
               "possession": {
                 "id": "fa54d58d-0f01-4340-bf21-67bb2457ae56",
                 "possede": true,
@@ -29027,7 +29027,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/1.webp",
               "possession": {
                 "id": "f8dcd34b-fb9c-44ec-8e12-bc61e8c4aebf",
                 "possede": true,
@@ -29044,7 +29044,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/2.webp",
               "possession": {
                 "id": "7a1741ae-0bc2-420a-8898-3b69572897cb",
                 "possede": true,
@@ -29061,7 +29061,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/3.webp",
               "possession": {
                 "id": "70f2e008-d7ba-4978-b942-21db5f7e8c8f",
                 "possede": true,
@@ -29078,7 +29078,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/4.webp",
               "possession": {
                 "id": "e60b8b13-7027-4cbf-b676-af594f7f40cf",
                 "possede": true,
@@ -29095,7 +29095,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/5.webp",
               "possession": {
                 "id": "68913278-e09c-45d6-8210-5bb162f1734d",
                 "possede": true,
@@ -29112,7 +29112,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/6.webp",
               "possession": {
                 "id": "5a9f37a2-2c68-4f51-a9ba-9ac905489ff9",
                 "possede": true,
@@ -29129,7 +29129,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/7.webp",
               "possession": {
                 "id": "2fe61092-a24f-4555-bde1-c9dbb740f7f2",
                 "possede": true,
@@ -29146,7 +29146,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/8.webp",
               "possession": {
                 "id": "67e8f056-86e8-4ab8-8200-9a87ee280563",
                 "possede": true,
@@ -29163,7 +29163,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/9.webp",
               "possession": {
                 "id": "ec92f32b-79cd-4d43-898c-b508deaa7aba",
                 "possede": true,
@@ -29180,7 +29180,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/10.webp",
               "possession": {
                 "id": "116198e6-911d-4818-84dc-2d2ce5650580",
                 "possede": true,
@@ -29197,7 +29197,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/11.webp",
               "possession": {
                 "id": "761a847b-d551-42f2-9edd-b40bab4983ef",
                 "possede": true,
@@ -29214,7 +29214,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/soul-eater-edition-double/12.webp",
               "possession": {
                 "id": "3bcbb9d9-199e-46e2-8f8d-294d7d5acf9b",
                 "possede": true,
