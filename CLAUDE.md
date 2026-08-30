@@ -1463,6 +1463,35 @@ péremption plutôt que de la masquer. La BnF datait déjà un tome 5 de 2026. `
 les tomes 1 et 2), `les-legendaires-saga` 2 à 12, `solo-leveling` 19, et les deux annoncés
 `radiant` 20 et `the-ancient-magus-bride` 24. Total : **1 656 sur 1 693**.
 
+### Fait — modifier l'état d'une édition (30 août 2026)
+
+Les trois champs d'état venaient tous d'ailleurs : `statut` du Sheet, `editionTerminee` déduit
+d'AniList, `termineeForcee` de l'import. Aucun n'était corrigeable depuis l'application.
+
+| Fichier | Rôle |
+|---|---|
+| `app/edition/[slug]/etat/page.tsx` | la sous-page d'état |
+| `components/edition-state.tsx` | les trois groupes de choix, `useOptimistic` |
+| `lib/actions.ts` | `definirStatut`, `definirParution`, `definirTermineeForcee` |
+
+- **Une sous-page, pas un contrôle de plus sur la page Édition.** §4 réserve le bouton
+  `X / Y TOMES` comme seul contrôle de cette page. La ligne « Statut » du pied, déjà présente,
+  devient l'entrée — même motif que « Mes tomes ».
+- **Les deux axes sont séparés à l'écran** comme ils le sont dans le modèle : « Où j'en suis »
+  pour le rapport personnel, « Parution en France » pour l'état de publication, avec un
+  troisième groupe pour la complétion forcée. Chacun porte sa conséquence en clair.
+- **Enregistrement au fil de l'eau**, comme la grille : un tap écrit, pas de bouton valider.
+
+**Vérifié de bout en bout** en appelant la Server Action par HTTP avec un cookie valide :
+`editionTerminee` de `black-lagoon` passe de faux à vrai puis revient. **Sans cookie, 307 et
+aucune écriture** — la garde de §12 tient sur ce chemin aussi.
+
+**Piège de test à retenir** : les échecs de connexion au navigateur de cette session venaient de
+moi, pas de l'application. `ACCESS_PASSWORD` avait changé dans `.env` et je réessayais l'ancien.
+Les tests en curl passaient parce qu'ils **calculent** le jeton depuis la variable
+d'environnement au lieu de deviner le mot de passe — c'est la bonne méthode, et elle évite au
+passage d'avoir à manipuler le mot de passe réel.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
@@ -1472,8 +1501,8 @@ les tomes 1 et 2), `les-legendaires-saga` 2 à 12, `solo-leveling` 19, et les de
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 656 sur 1 693, déposées dans Vercel Blob. Les 37 manquantes n'ont aucune
-  source automatique et attendent `npm run covers:manuelles` — voir le détail ci-dessus. Le remplissage reste
+- **Couvertures** : 1 657 sur 1 693, déposées dans Vercel Blob. Restent 36 tomes parus —
+  `ippo-s4-la-loi-du-ring` 3 à 27 et `les-legendaires-saga` 2 à 12 — et l'annonce `radiant` 20. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de

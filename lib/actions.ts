@@ -21,6 +21,30 @@ async function marquerVerifiee(slug: string): Promise<void> {
 function revaliderEdition(slug: string): void {
   revalidatePath(`/edition/${slug}`);
   revalidatePath(`/edition/${slug}/tomes`);
+  revalidatePath(`/edition/${slug}/etat`);
+  revalidatePath("/");
+  revalidatePath("/manquants");
+}
+
+export async function definirStatut(slug: string, statut: StatutEdition): Promise<void> {
+  await exigerAcces();
+  await prisma.edition.update({ where: { slug }, data: { statut } });
+  revaliderEdition(slug);
+}
+
+export async function definirParution(
+  slug: string,
+  editionTerminee: boolean | null,
+): Promise<void> {
+  await exigerAcces();
+  await prisma.edition.update({ where: { slug }, data: { editionTerminee } });
+  revaliderEdition(slug);
+}
+
+export async function definirTermineeForcee(slug: string, forcee: boolean): Promise<void> {
+  await exigerAcces();
+  await prisma.edition.update({ where: { slug }, data: { termineeForcee: forcee } });
+  revaliderEdition(slug);
 }
 
 export async function basculerTome(

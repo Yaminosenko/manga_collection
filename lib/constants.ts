@@ -85,3 +85,15 @@ export const LIBELLE_DEVERROUILLER = "Entrer";
 export const LIBELLE_ACCES_REFUSE = "Mot de passe incorrect.";
 export const LIBELLE_ACCES_NON_CONFIGURE =
   "Aucun mot de passe n’est configuré : renseignez ACCESS_PASSWORD dans l’environnement.";
+
+export const TITRE_ETAT = "État";
+export const LIBELLE_STATUT_PERSONNEL = "Où j’en suis";
+export const LIBELLE_PARUTION = "Parution en France";
+export const LIBELLE_COLLECTION_FORCEE = "Collection terminée par choix";
+export const LIBELLE_PARUTION_TERMINEE = "Terminée";
+export const LIBELLE_PARUTION_EN_COURS = "En cours";
+export const LIBELLE_PARUTION_INCONNUE = "Inconnue";
+export const MENTION_PARUTION =
+  "Une édition terminée n’affiche plus de tomes à paraître, et « À jour » y devient « Complète ».";
+export const MENTION_COLLECTION_FORCEE =
+  "Déclare la collection finie malgré des tomes manquants. Ils cessent de remonter dans Manquants ; la barre garde son compte réel.";

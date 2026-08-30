@@ -145,7 +145,16 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
         <footer className="border-divider flex flex-col border-t pt-[12px] text-[12px]">
           <Ligne cle="Auteur" valeur={edition.auteur} />
           <Ligne cle="Genres" valeur={edition.genres.join(" · ")} />
-          <Ligne cle="Statut" valeur={libelleStatut(edition, possedes.length)} />
+          <Link
+            href={`/edition/${edition.slug}/etat`}
+            className="flex items-center justify-between gap-[12px] py-[7px] text-[12px]"
+          >
+            <span className="flex-none text-neutral-600">Statut</span>
+            <span className="flex items-center gap-[6px] text-right text-accent">
+              {libelleStatut(edition, possedes.length)}
+              <ArrowUpRight className="size-[11px]" />
+            </span>
+          </Link>
           <Ligne cle="Valeur" valeur={valeur} />
 
           {edition.slugMangaNews ? (

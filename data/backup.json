@@ -1,13 +1,13 @@
 {
-  "exporteeLe": "2026-08-30T15:52:53.025Z",
+  "exporteeLe": "2026-08-30T16:05:47.731Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
     "tomes": 1693,
-    "possedes": 1151,
-    "aVerifier": 25,
+    "possedes": 1153,
+    "aVerifier": 24,
     "forcees": 3,
-    "couvertures": 1656
+    "couvertures": 1657
   },
   "series": [
     {
@@ -9343,7 +9343,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/20.webp",
               "possession": {
                 "id": "ba96bb28-f242-404d-949c-fc75a99744d2",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -10762,7 +10762,7 @@
           "statut": "ABANDONNEE",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
@@ -10777,7 +10777,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist/1.webp",
               "possession": {
                 "id": "ff692dbd-7ed1-4adf-8af8-6ed26836b314",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -11185,7 +11185,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/fullmetal-alchemist/25.webp",
               "possession": {
                 "id": "b8bc39b9-add6-47e3-a425-2ded4e446786",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -13493,7 +13493,7 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/9.webp",
               "possession": {
                 "id": "e0093f60-c5f7-470e-ae48-e881863ed60c",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -28575,7 +28575,7 @@
               "isbn": "9782382884164",
               "dateSortie": "2025-09-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/solo-leveling/19.webp",
               "possession": {
                 "id": "f245fd70-901c-41cd-ab7a-268a4cf62316",
                 "possede": true,
@@ -30351,7 +30351,7 @@
               "numero": 24,
               "date": "2026-09-17T00:00:00.000Z",
               "isbn": "9782372876308",
-              "couvertureUrl": null
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride/24.webp"
             }
           ],
           "volumes": [
