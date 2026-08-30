@@ -42,6 +42,7 @@ RECHERCHES_MANUELLES = {
     "uqholder": "UQ HOLDER!",
     "why-nobody-remember-my-world": "Naze Boku no Sekai o Daremo Oboeteinai no ka?",
     "pandora-heart-8-5": "Pandora Hearts",
+    "remember": "Karada Sagashi",
     "yusei-no-last-boss": "Yasei no Last Boss ga Arawareta!",
 }
 

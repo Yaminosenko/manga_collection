@@ -1273,10 +1273,15 @@ un choix de famille mais une correspondance tome à tome, d'où une seconde tabl
 `famille_retenue`. Vérifié : la couverture obtenue est bien *Pandora Hearts Official Guide 8.5
 ~mine of mine~*.
 
-**Total : 1 562 sur 1 653, soit 95 %.** Restent 5 éditions sans correspondance —
-`bleach-13-blades`, `ippo-s4-la-loi-du-ring`, `les-legendaires-saga`,
-`my-hero-academia-ultra-archive`, `pokemon-zoroark-le-maitre-des-illusion` — et `remember`,
-dont la fiche existe mais n'a aucune couverture déposée.
+**`remember` est en réalité *Karada Sagashi* (カラダ探し).** Il avait résolu vers une fiche
+réelle mais dépourvue de couvertures — d'où un piège de cache différent des autres : son
+identifiant n'étant pas nul, la reprise ne le réinterrogeait pas. Il a fallu le purger en même
+temps qu'ajouter le nom. 17 tomes récupérés, et **plus une seule édition entièrement vide**.
+
+**Total : 1 579 sur 1 653.** Restent 5 éditions sans correspondance MangaDex —
+`bleach-13-blades` et `my-hero-academia-ultra-archive` (databooks), `les-legendaires-saga`
+(BD française), `ippo-s4-la-loi-du-ring` et `pokemon-zoroark-le-maitre-des-illusion` — plus
+le tome 8 de `yusei-no-last-boss` et un tome de `solo-leveling`.
 
 **Ne pas généraliser ces tables sans vérification.** `data/anilist.json` porte le romaji correct
 pour la plupart, et il serait tentant de l'injecter en masse — mais `pandora-heart-8-5` aurait
@@ -1292,7 +1297,8 @@ Akame ga Kill Zero. Chaque entrée se confirme à l'exemplaire.
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 562 sur 1 653, déposées dans Vercel Blob. Le remplissage reste
+- **Couvertures** : 1 579 sur 1 653, déposées dans Vercel Blob. Plus aucune édition
+  entièrement dépourvue. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de
