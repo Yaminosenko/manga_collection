@@ -31,7 +31,22 @@ PENALITE_SATELLITE = 0.30
 ECART_SCORE_NEGLIGEABLE = 0.02
 
 RECHERCHES_MANUELLES = {
+    "je-suis-un-assassin-et-je-surpasse-le-heros":
+        "Assassin de Aru Ore no Sutetasu ga Yuusha Yori mo Akiraka ni Tsuyoi Nodaga",
+    "kaijin-reijoh": "Kaijin Reijou",
+    "mirai-nikki-le-journal-du-futur": "Mirai Nikki",
+    "nier-automata-op-pearl-harbor":
+        "NieR: Automata: YoRHa Shinjuwan Kouka Sakusen Kiroku",
+    "saga-of-tany-the-evil-youjo-senki": "Youjo Senki",
+    "saint-seiya-the-lost-canvas-chronicles": "Saint Seiya: The Lost Canvas Gaiden",
     "uqholder": "UQ HOLDER!",
+    "why-nobody-remember-my-world": "Naze Boku no Sekai o Daremo Oboeteinai no ka?",
+    "pandora-heart-8-5": "Pandora Hearts",
+    "yusei-no-last-boss": "Yasei no Last Boss ga Arawareta!",
+}
+
+VOLUMES_MANUELS = {
+    "pandora-heart-8-5": {1: "8.5"},
 }
 MARQUEURS_SATELLITE = (
     "pre-serialization",
@@ -207,6 +222,19 @@ def couvertures_par_langue(identifiant):
     return par_langue
 
 
+def volumes_designes(familles, correspondance):
+    choisis = {}
+    for tome, brut in correspondance.items():
+        decoupe = decouper_volume(brut)
+        if decoupe is None:
+            continue
+        famille, numero = decoupe
+        fichier = familles.get(famille, {}).get(numero)
+        if fichier:
+            choisis[tome] = fichier
+    return choisis
+
+
 def famille_retenue(familles, tomes_parus):
     if not familles:
         return {}
@@ -289,8 +317,13 @@ def main():
 
         try:
             par_famille = couvertures_par_langue(identifiant)
+            correspondance = VOLUMES_MANUELS.get(slug)
             par_langue = {
-                langue: famille_retenue(familles, tomes_parus)
+                langue: (
+                    volumes_designes(familles, correspondance)
+                    if correspondance
+                    else famille_retenue(familles, tomes_parus)
+                )
                 for langue, familles in par_famille.items()
             }
         except Exception as erreur:

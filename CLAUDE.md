@@ -1256,14 +1256,32 @@ la boucle ne résolvait que si le slug était **absent** du fichier. Un ajout da
 restait donc sans effet. Les échecs sont désormais réinterrogés à chaque passage, comme dans
 `fetch-anilist.ts`.
 
-Résultat : 28 tomes, **27 couvertures françaises de Pika Édition** et la 28ᵉ en japonais, le
-français s'arrêtant à 27 — la politique « `fr` d'abord, `ja` en repli » de §5 à l'œuvre.
-Total : **1 467 sur 1 653**.
+UQ HOLDER! rend 28 tomes, dont **27 couvertures françaises de Pika Édition** et la 28ᵉ en
+japonais, le français s'arrêtant à 27 — la politique « `fr` d'abord, `ja` en repli » de §5 à
+l'œuvre.
 
-**Ne pas généraliser cette table aux 14 restants sans vérification.** `data/anilist.json` porte
-le romaji correct pour la plupart, et il serait tentant de l'y injecter — mais `pandora-heart-8-5`
-chercherait *Pandora Hearts* et hériterait des couvertures de la série mère, exactement la faute
-corrigée le même jour sur Akame ga Kill Zero. Chaque entrée se confirme à l'exemplaire.
+**Huit autres titres fournis à la main** ont ensuite débloqué 93 couvertures : *Assassin de Aru
+Ore no Sutetasu…*, *Kaijin Reijou*, *Mirai Nikki*, *NieR: Automata: YoRHa Shinjuwan Kouka
+Sakusen Kiroku*, *Youjo Senki*, *Saint Seiya: The Lost Canvas Gaiden*, *Naze Boku no Sekai o
+Daremo Oboeteinai no ka?*, *Yasei no Last Boss ga Arawareta!*. Contrôle de collision refait
+après coup : **102 slugs résolus, 102 identifiants distincts**, les trois Mirai Nikki et les
+deux Saint Seiya pointant chacun ailleurs.
+
+**`VOLUMES_MANUELS` pour les hors-séries numérotés dans la série mère.** `pandora-heart-8-5`
+n'est pas une fiche MangaDex distincte : c'est le volume `8.5` de *Pandora Hearts*. Ce n'est pas
+un choix de famille mais une correspondance tome à tome, d'où une seconde table qui court-circuite
+`famille_retenue`. Vérifié : la couverture obtenue est bien *Pandora Hearts Official Guide 8.5
+~mine of mine~*.
+
+**Total : 1 562 sur 1 653, soit 95 %.** Restent 5 éditions sans correspondance —
+`bleach-13-blades`, `ippo-s4-la-loi-du-ring`, `les-legendaires-saga`,
+`my-hero-academia-ultra-archive`, `pokemon-zoroark-le-maitre-des-illusion` — et `remember`,
+dont la fiche existe mais n'a aucune couverture déposée.
+
+**Ne pas généraliser ces tables sans vérification.** `data/anilist.json` porte le romaji correct
+pour la plupart, et il serait tentant de l'injecter en masse — mais `pandora-heart-8-5` aurait
+alors hérité des couvertures de la série mère, exactement la faute corrigée le même jour sur
+Akame ga Kill Zero. Chaque entrée se confirme à l'exemplaire.
 
 ### Reste à faire
 
@@ -1274,7 +1292,7 @@ corrigée le même jour sur Akame ga Kill Zero. Chaque entrée se confirme à l'
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 467 sur 1 653, déposées dans Vercel Blob. Le remplissage reste
+- **Couvertures** : 1 562 sur 1 653, déposées dans Vercel Blob. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de

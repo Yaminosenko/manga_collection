@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-08-30T13:35:34.363Z",
+  "exporteeLe": "2026-08-30T13:50:13.915Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
@@ -7,7 +7,7 @@
     "possedes": 1149,
     "aVerifier": 35,
     "forcees": 3,
-    "couvertures": 1467
+    "couvertures": 1562
   },
   "series": [
     {
@@ -12593,7 +12593,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/1.webp",
               "possession": {
                 "id": "5c6859fb-ce8c-4e6f-a907-2f68a69dc93e",
                 "possede": true,
@@ -12610,7 +12610,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/2.webp",
               "possession": {
                 "id": "448ab4bc-d5e2-4aa7-b0bb-498dcaa0318e",
                 "possede": true,
@@ -12627,7 +12627,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/3.webp",
               "possession": {
                 "id": "aac2fac9-54a2-4276-9308-12ca2a5b1972",
                 "possede": true,
@@ -12644,7 +12644,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/4.webp",
               "possession": {
                 "id": "b5df26b4-7cf1-4922-9545-f0be4925865b",
                 "possede": true,
@@ -12661,7 +12661,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/5.webp",
               "possession": {
                 "id": "2cdbb40c-f5ba-4ebd-b641-1948f97ca06c",
                 "possede": true,
@@ -12678,7 +12678,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/6.webp",
               "possession": {
                 "id": "58bd58e0-900f-4b15-b3d1-1b47ec6dcce6",
                 "possede": true,
@@ -13207,7 +13207,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/1.webp",
               "possession": {
                 "id": "79b2545b-2353-40db-9857-3ba1d6f93140",
                 "possede": true,
@@ -13224,7 +13224,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/2.webp",
               "possession": {
                 "id": "3c277839-e7d7-497d-a2ac-4211026be395",
                 "possede": true,
@@ -13241,7 +13241,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/3.webp",
               "possession": {
                 "id": "9ad3a8c7-c466-4918-9ef8-12bbc0619d9e",
                 "possede": true,
@@ -13258,7 +13258,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/4.webp",
               "possession": {
                 "id": "66385852-0d7f-4219-a015-6e3d8fdcc28c",
                 "possede": true,
@@ -13275,7 +13275,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/5.webp",
               "possession": {
                 "id": "411e023f-ceee-4ed3-8664-6e5162a4272f",
                 "possede": true,
@@ -13292,7 +13292,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/6.webp",
               "possession": {
                 "id": "a4daf965-e8e2-4e29-84b1-abfe6b9bc816",
                 "possede": true,
@@ -13309,7 +13309,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/7.webp",
               "possession": {
                 "id": "d283209e-db1a-4ef9-8098-75d94c9029e9",
                 "possede": true,
@@ -13326,7 +13326,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/8.webp",
               "possession": {
                 "id": "838da951-bdf9-42c5-bc82-ea343895a9c5",
                 "possede": true,
@@ -13343,7 +13343,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/9.webp",
               "possession": {
                 "id": "8a80f68e-88df-45e5-bafa-3b532f7819ce",
                 "possede": true,
@@ -13360,7 +13360,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/10.webp",
               "possession": {
                 "id": "16ce1979-c456-4e88-aa34-f167df42bfaf",
                 "possede": true,
@@ -13377,7 +13377,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/11.webp",
               "possession": {
                 "id": "190e23c7-54ea-4aaa-98e6-f6f43f645a8b",
                 "possede": true,
@@ -13394,7 +13394,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/12.webp",
               "possession": {
                 "id": "b194f47a-8314-4d2a-8e6e-08e7498ab85b",
                 "possede": true,
@@ -13411,7 +13411,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/13.webp",
               "possession": {
                 "id": "b649b7d5-3129-4678-9520-ec68f48b1466",
                 "possede": true,
@@ -13428,7 +13428,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/14.webp",
               "possession": {
                 "id": "00711163-977b-45df-bd17-37b5ebddfc1c",
                 "possede": true,
@@ -16738,7 +16738,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/1.webp",
               "possession": {
                 "id": "e1e6f905-de07-4936-a87e-d8dfa88d2245",
                 "possede": true,
@@ -16755,7 +16755,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/2.webp",
               "possession": {
                 "id": "85c06a77-79cb-4d8a-bac5-b5a4b4686aaf",
                 "possede": true,
@@ -16772,7 +16772,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/3.webp",
               "possession": {
                 "id": "702b45b0-199e-4ce0-bc50-8d8a497f653f",
                 "possede": true,
@@ -16789,7 +16789,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/4.webp",
               "possession": {
                 "id": "80e56b52-df77-4dea-9199-20ca5b3fd32a",
                 "possede": true,
@@ -16806,7 +16806,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/5.webp",
               "possession": {
                 "id": "57d5ad6e-81e2-4e51-bec0-7a7d2d2e02b8",
                 "possede": false,
@@ -16823,7 +16823,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/6.webp",
               "possession": {
                 "id": "06746c2d-cb9a-43b9-8eb6-6af9f7125432",
                 "possede": false,
@@ -16840,7 +16840,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/7.webp",
               "possession": {
                 "id": "8e102713-07aa-4f40-bbd9-d64249da5a4a",
                 "possede": false,
@@ -16857,7 +16857,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/8.webp",
               "possession": {
                 "id": "5d972465-ce0d-4dda-9a67-87966fda04c0",
                 "possede": false,
@@ -16874,7 +16874,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/9.webp",
               "possession": {
                 "id": "396a9f06-61ce-4e55-aac3-688fa488b74d",
                 "possede": false,
@@ -16891,7 +16891,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/10.webp",
               "possession": {
                 "id": "88984837-9f6e-4be7-8dcc-cf1772c3e08f",
                 "possede": false,
@@ -16908,7 +16908,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/11.webp",
               "possession": {
                 "id": "429ced2a-9533-4d52-abe5-34908f9180bd",
                 "possede": false,
@@ -16925,7 +16925,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mirai-nikki-le-journal-du-futur/12.webp",
               "possession": {
                 "id": "c3188be8-73ef-4d4a-8bb9-f452f12e52e1",
                 "possede": false,
@@ -20719,7 +20719,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/nier-automata-op-pearl-harbor/1.webp",
               "possession": {
                 "id": "f36a3ff1-f7fd-4d0d-8bf6-026815978806",
                 "possede": true,
@@ -20736,7 +20736,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/nier-automata-op-pearl-harbor/2.webp",
               "possession": {
                 "id": "84db08a3-bec8-47b4-9a00-e77649356bdf",
                 "possede": true,
@@ -20753,7 +20753,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/nier-automata-op-pearl-harbor/3.webp",
               "possession": {
                 "id": "c411d250-f803-441e-8714-8e0929a97016",
                 "possede": true,
@@ -20770,7 +20770,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/nier-automata-op-pearl-harbor/4.webp",
               "possession": {
                 "id": "cb8d8454-6445-44aa-bdcd-1fb4c570721d",
                 "possede": true,
@@ -22663,7 +22663,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/pandora-heart-8-5/1.webp",
               "possession": {
                 "id": "73cc6632-b28e-4d54-87c8-ea09fa32e517",
                 "possede": true,
@@ -24959,7 +24959,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/1.webp",
               "possession": {
                 "id": "c62ef121-43c2-40b3-bc29-31f3bccc94aa",
                 "possede": true,
@@ -24976,7 +24976,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/2.webp",
               "possession": {
                 "id": "03d06777-1fe6-4e58-8432-c92127f7e0c4",
                 "possede": true,
@@ -24993,7 +24993,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/3.webp",
               "possession": {
                 "id": "fda78888-f55c-4c85-9177-4150c0e6e83f",
                 "possede": true,
@@ -25010,7 +25010,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/4.webp",
               "possession": {
                 "id": "c75c7ae9-dc47-4c95-9082-87301eecf71b",
                 "possede": true,
@@ -25027,7 +25027,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/5.webp",
               "possession": {
                 "id": "441e3427-0d63-45ac-8d4a-d4b028cdbcd4",
                 "possede": true,
@@ -25044,7 +25044,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/6.webp",
               "possession": {
                 "id": "6d93675e-977a-4b1f-be1b-debe6805591a",
                 "possede": true,
@@ -25061,7 +25061,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/7.webp",
               "possession": {
                 "id": "ee1eaf6a-3a8e-4620-b3ac-389ed14c89d7",
                 "possede": true,
@@ -25078,7 +25078,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/8.webp",
               "possession": {
                 "id": "8c0aaed3-d8d7-4ff1-91c8-d730ac8cf5f3",
                 "possede": true,
@@ -25095,7 +25095,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/9.webp",
               "possession": {
                 "id": "ab5dd752-dea2-49b7-b03c-4c626d015573",
                 "possede": true,
@@ -25112,7 +25112,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/10.webp",
               "possession": {
                 "id": "70613e64-43b8-4002-bd26-1a727b278324",
                 "possede": true,
@@ -25129,7 +25129,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/11.webp",
               "possession": {
                 "id": "bc1170a9-04af-4a70-9d3e-19609e9668de",
                 "possede": true,
@@ -25146,7 +25146,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/12.webp",
               "possession": {
                 "id": "59ca0222-fbcc-4f00-bb94-fa758ad00ea2",
                 "possede": true,
@@ -25163,7 +25163,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/13.webp",
               "possession": {
                 "id": "0aa88130-3926-442f-924a-b2031b2561ae",
                 "possede": true,
@@ -25180,7 +25180,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/14.webp",
               "possession": {
                 "id": "bb266c0b-fbac-45a2-bd8e-9011bc8fcce0",
                 "possede": true,
@@ -25197,7 +25197,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/15.webp",
               "possession": {
                 "id": "fac09cca-76c1-4158-82eb-a85e2cc7b969",
                 "possede": true,
@@ -25214,7 +25214,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/16.webp",
               "possession": {
                 "id": "ca18135b-c342-4af0-927f-a788d191340a",
                 "possede": true,
@@ -25231,7 +25231,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/17.webp",
               "possession": {
                 "id": "3625b1a8-8b53-4e41-9919-38ca3561b807",
                 "possede": true,
@@ -25248,7 +25248,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/18.webp",
               "possession": {
                 "id": "7e3679ef-9454-4768-9f61-4a7d42ba2e4f",
                 "possede": true,
@@ -25265,7 +25265,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/19.webp",
               "possession": {
                 "id": "228ec9b4-a337-43bb-858a-86179302e231",
                 "possede": true,
@@ -25282,7 +25282,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/20.webp",
               "possession": {
                 "id": "6744f104-7b34-43cb-87bf-7d50af900bbc",
                 "possede": true,
@@ -25299,7 +25299,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/21.webp",
               "possession": {
                 "id": "764a83f7-1705-489a-bd69-859fa4e99872",
                 "possede": true,
@@ -25316,7 +25316,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saga-of-tany-the-evil-youjo-senki/22.webp",
               "possession": {
                 "id": "12c32aa3-e673-496c-bedb-a58777d7b76c",
                 "possede": true,
@@ -25837,7 +25837,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/1.webp",
               "possession": {
                 "id": "90e540ff-090d-4a75-a6d7-f68dcc305b6d",
                 "possede": true,
@@ -25854,7 +25854,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/2.webp",
               "possession": {
                 "id": "8dac0668-86c4-4bad-b2d5-38ee3a78f9a5",
                 "possede": true,
@@ -25871,7 +25871,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/3.webp",
               "possession": {
                 "id": "f55d010d-25c4-4ab7-98ac-04535d0fd60b",
                 "possede": true,
@@ -25888,7 +25888,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/4.webp",
               "possession": {
                 "id": "b0deb2fb-518d-46d6-b150-f0affe438a39",
                 "possede": true,
@@ -25905,7 +25905,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/5.webp",
               "possession": {
                 "id": "207ed87b-92e5-4695-b953-ba2ec26ac845",
                 "possede": true,
@@ -25922,7 +25922,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/6.webp",
               "possession": {
                 "id": "a95f546d-c83b-41d4-9d1d-42c2fd69994c",
                 "possede": true,
@@ -25939,7 +25939,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/7.webp",
               "possession": {
                 "id": "a86ce5dc-48a3-4357-95d9-1c93d630fe74",
                 "possede": true,
@@ -25956,7 +25956,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/8.webp",
               "possession": {
                 "id": "de677cd4-e7fe-4860-b3b2-f296e2f41c85",
                 "possede": true,
@@ -25973,7 +25973,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/9.webp",
               "possession": {
                 "id": "1a153e67-0ec0-4388-9b2b-5de2fd233bd2",
                 "possede": true,
@@ -25990,7 +25990,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/10.webp",
               "possession": {
                 "id": "2e26d0aa-dfa6-4648-bf58-a75e88189af6",
                 "possede": true,
@@ -26007,7 +26007,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/11.webp",
               "possession": {
                 "id": "6cae49f2-cdaa-4b57-8a91-2a6258ee27fe",
                 "possede": true,
@@ -26024,7 +26024,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/12.webp",
               "possession": {
                 "id": "fe60cd61-82d6-4d12-b279-c91fdf311be4",
                 "possede": true,
@@ -26041,7 +26041,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/13.webp",
               "possession": {
                 "id": "ac0ac4cc-8c7f-435a-965a-10c7d6fad1c1",
                 "possede": true,
@@ -26058,7 +26058,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/14.webp",
               "possession": {
                 "id": "8a2b748d-f7f0-49b3-a1db-08c5d39b3a14",
                 "possede": true,
@@ -26075,7 +26075,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/15.webp",
               "possession": {
                 "id": "77e042eb-681b-4c37-9fe1-242baec79fe4",
                 "possede": true,
@@ -26092,7 +26092,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/saint-seiya-the-lost-canvas-chronicles/16.webp",
               "possession": {
                 "id": "ddaa21d3-5c47-4e81-bec8-a08bffd7f7f6",
                 "possede": true,
@@ -31619,7 +31619,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/1.webp",
               "possession": {
                 "id": "fabd11a8-b074-44d9-83da-e6085d96602f",
                 "possede": true,
@@ -31636,7 +31636,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/2.webp",
               "possession": {
                 "id": "3d36cbe0-d51c-41ef-89c4-d67db0190f36",
                 "possede": true,
@@ -31653,7 +31653,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/3.webp",
               "possession": {
                 "id": "e05bb5ad-dd65-4004-a1b6-7962b4d1af73",
                 "possede": true,
@@ -31670,7 +31670,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/4.webp",
               "possession": {
                 "id": "93ddab74-fd1c-4512-91d0-61de2039e84e",
                 "possede": true,
@@ -31687,7 +31687,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/5.webp",
               "possession": {
                 "id": "528fcc56-7243-4459-8d41-9ac6a0e207c3",
                 "possede": true,
@@ -31704,7 +31704,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/6.webp",
               "possession": {
                 "id": "8f9e8d9b-8a26-4af6-a0aa-149a6e6da06d",
                 "possede": true,
@@ -31721,7 +31721,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/7.webp",
               "possession": {
                 "id": "c187ba58-6c8a-4a1d-beff-b0b8619d873b",
                 "possede": true,
@@ -31738,7 +31738,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/8.webp",
               "possession": {
                 "id": "c10378cb-acc2-4013-9cf3-40a46a11de9f",
                 "possede": true,
@@ -31755,7 +31755,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/9.webp",
               "possession": {
                 "id": "50d2f4a1-2191-49cb-b51e-4c3d9c3d8789",
                 "possede": true,
@@ -31772,7 +31772,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/10.webp",
               "possession": {
                 "id": "da30c4d7-d25f-41a3-9206-5be53b020c60",
                 "possede": true,
@@ -31789,7 +31789,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/11.webp",
               "possession": {
                 "id": "fb57e170-37c7-422f-9228-5937a5fd00c8",
                 "possede": false,
@@ -31806,7 +31806,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/12.webp",
               "possession": {
                 "id": "b149add9-7330-461f-9a7c-44c60f7ba678",
                 "possede": false,
@@ -32308,7 +32308,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/1.webp",
               "possession": {
                 "id": "27299164-906c-4e46-9117-1f9005348d7f",
                 "possede": false,
@@ -32325,7 +32325,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/2.webp",
               "possession": {
                 "id": "629f848a-4588-4b23-a7e7-ca4139fca749",
                 "possede": false,
@@ -32342,7 +32342,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/3.webp",
               "possession": {
                 "id": "58beb3e8-8d83-4a61-b555-b64ca21ed2bc",
                 "possede": false,
@@ -32359,7 +32359,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/4.webp",
               "possession": {
                 "id": "eab92baf-8400-4eb4-bd71-10aa0c270064",
                 "possede": false,
@@ -32376,7 +32376,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/5.webp",
               "possession": {
                 "id": "8a4821f2-71e0-406a-a15b-1b97463f7391",
                 "possede": false,
@@ -32393,7 +32393,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/6.webp",
               "possession": {
                 "id": "62a5853a-ff6e-4bcf-8ee0-fe7051ed8ac3",
                 "possede": false,
@@ -32410,7 +32410,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/7.webp",
               "possession": {
                 "id": "d63fa649-6f43-4aa9-bcbc-8f2b0d91aa03",
                 "possede": false,
@@ -32427,7 +32427,7 @@
               "isbn": null,
               "dateSortie": null,
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/8.webp",
               "possession": {
                 "id": "03954679-6667-44b8-a872-660a8860346c",
                 "possede": false,
