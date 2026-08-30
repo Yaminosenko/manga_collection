@@ -1,0 +1,917 @@
+{
+  "berserk": {
+    "aParaitre": {},
+    "maximum": 43,
+    "titre": "BERSERK",
+    "tomes": {
+      "43": {
+        "date": "2026-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782344074879"
+      }
+    },
+    "tomesParusEnBase": 43
+  },
+  "black-clover": {
+    "aParaitre": {},
+    "maximum": 37,
+    "titre": "BLACK CLOVER",
+    "tomes": {
+      "37": {
+        "date": "2026-02-25",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820355119"
+      }
+    },
+    "tomesParusEnBase": 37
+  },
+  "black-lagoon": {
+    "aParaitre": {},
+    "maximum": 13,
+    "titre": "BLACK LAGOON",
+    "tomes": {
+      "13": {
+        "date": "2024-08-14",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820347251"
+      }
+    },
+    "tomesParusEnBase": 13
+  },
+  "blue-exorcist": {
+    "aParaitre": {},
+    "maximum": 32,
+    "titre": "BLUE EXORCIST",
+    "tomes": {
+      "30": {
+        "date": "2024-11-13",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820350381"
+      },
+      "31": {
+        "date": "2025-04-16",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820352514"
+      },
+      "32": {
+        "date": "2026-04-22",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820354488"
+      }
+    },
+    "tomesParusEnBase": 32
+  },
+  "call-of-the-night": {
+    "aParaitre": {},
+    "maximum": 18,
+    "titre": "CALL OF THE NIGHT",
+    "tomes": {
+      "10": {
+        "date": "2024-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014469"
+      },
+      "11": {
+        "date": "2024-11-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014759"
+      },
+      "12": {
+        "date": "2025-02-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018412"
+      },
+      "13": {
+        "date": "2025-05-15",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018429"
+      },
+      "14": {
+        "date": "2025-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018436"
+      },
+      "15": {
+        "date": "2025-11-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018443"
+      },
+      "16": {
+        "date": "2026-02-12",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021191"
+      },
+      "17": {
+        "date": "2026-05-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021207"
+      },
+      "18": {
+        "date": "2026-08-20",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021214"
+      }
+    },
+    "tomesParusEnBase": 17
+  },
+  "chainsaw-man": {
+    "aParaitre": {},
+    "maximum": 22,
+    "titre": "CHAINSAW MAN",
+    "tomes": {
+      "17": {
+        "date": "2024-09-18",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820348517"
+      },
+      "18": {
+        "date": "2025-01-22",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820348814"
+      },
+      "19": {
+        "date": "2025-05-21",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820351661"
+      },
+      "20": {
+        "date": "2025-10-22",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820351678"
+      },
+      "21": {
+        "date": "2026-02-04",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820353597"
+      },
+      "22": {
+        "date": "2026-06-10",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820354464"
+      }
+    },
+    "tomesParusEnBase": 22
+  },
+  "classroom-for-heroes": {
+    "aParaitre": {},
+    "maximum": 21,
+    "titre": "CLASSROOM FOR HEROES",
+    "tomes": {
+      "19": {
+        "date": "2024-10-02",
+        "editeur": "Doki Doki",
+        "isbn": "9791041110704"
+      },
+      "20": {
+        "date": "2025-05-07",
+        "editeur": "Doki Doki",
+        "isbn": "9791041113392"
+      },
+      "21": {
+        "date": "2026-02-04",
+        "editeur": "Doki Doki",
+        "isbn": "9791041117376"
+      }
+    },
+    "tomesParusEnBase": 21
+  },
+  "d-gray-man": {
+    "aParaitre": {},
+    "maximum": 29,
+    "titre": "D.GRAY-MAN",
+    "tomes": {
+      "29": {
+        "date": "2026-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782344064924"
+      }
+    },
+    "tomesParusEnBase": 29
+  },
+  "demon-slave": {
+    "aParaitre": {},
+    "maximum": 20,
+    "titre": "DEMON SLAVE",
+    "tomes": {
+      "14": {
+        "date": "2024-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014476"
+      },
+      "15": {
+        "date": "2024-12-05",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014841"
+      },
+      "16": {
+        "date": "2025-04-10",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018450"
+      },
+      "17": {
+        "date": "2025-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018467"
+      },
+      "18": {
+        "date": "2025-12-04",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018474"
+      },
+      "19": {
+        "date": "2026-04-09",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021375"
+      },
+      "20": {
+        "date": "2026-08-20",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021382"
+      }
+    },
+    "tomesParusEnBase": 19
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "aParaitre": {},
+    "maximum": 6,
+    "titre": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "tomes": {
+      "6": {
+        "date": "2025-10-01",
+        "editeur": "Doki Doki",
+        "isbn": "9791041114351"
+      }
+    },
+    "tomesParusEnBase": 6
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "aParaitre": {},
+    "maximum": 7,
+    "titre": "JK HARU - SEX WORKER IN ANOTHER WORLD",
+    "tomes": {
+      "6": {
+        "date": "2024-10-25",
+        "editeur": "Meian",
+        "isbn": "9782385033651"
+      },
+      "7": {
+        "date": "2025-01-17",
+        "editeur": "Meian",
+        "isbn": "9782385033668"
+      }
+    },
+    "tomesParusEnBase": 7
+  },
+  "kagurabachi": {
+    "aParaitre": {},
+    "maximum": 9,
+    "titre": "KAGURABACHI",
+    "tomes": {
+      "1": {
+        "date": "2025-02-14",
+        "editeur": "Kana",
+        "isbn": "9782505132912"
+      },
+      "2": {
+        "date": "2025-04-18",
+        "editeur": "Kana",
+        "isbn": "9782505133285"
+      },
+      "3": {
+        "date": "2025-07-04",
+        "editeur": "Kana",
+        "isbn": "9782505133797"
+      },
+      "4": {
+        "date": "2025-08-29",
+        "editeur": "Kana",
+        "isbn": "9782505133803"
+      },
+      "5": {
+        "date": "2025-10-03",
+        "editeur": "Kana",
+        "isbn": "9782505133810"
+      },
+      "6": {
+        "date": "2025-12-05",
+        "editeur": "Kana",
+        "isbn": "9782505133957"
+      },
+      "7": {
+        "date": "2026-02-27",
+        "editeur": "Kana",
+        "isbn": "9782505140429"
+      },
+      "8": {
+        "date": "2026-04-10",
+        "editeur": "Kana",
+        "isbn": "9782505140597"
+      },
+      "9": {
+        "date": "2026-07-10",
+        "editeur": "Kana",
+        "isbn": "9782505141938"
+      }
+    },
+    "tomesParusEnBase": 8
+  },
+  "kaijin-reijoh": {
+    "aParaitre": {},
+    "maximum": 14,
+    "titre": "KAIJIN REIJOH",
+    "tomes": {
+      "11": {
+        "date": "2024-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014735"
+      },
+      "12": {
+        "date": "2025-03-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018870"
+      },
+      "13": {
+        "date": "2025-11-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018887"
+      },
+      "14": {
+        "date": "2026-04-09",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021511"
+      }
+    },
+    "tomesParusEnBase": 14
+  },
+  "kaiju-n8": {
+    "aParaitre": {},
+    "maximum": 16,
+    "titre": "KAIJU N°8",
+    "tomes": {
+      "12": {
+        "date": "2024-09-11",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820348654"
+      },
+      "13": {
+        "date": "2025-01-08",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820348937"
+      },
+      "14": {
+        "date": "2025-03-26",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820351814"
+      },
+      "15": {
+        "date": "2025-09-17",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820351821"
+      },
+      "16": {
+        "date": "2026-03-25",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820353443"
+      }
+    },
+    "tomesParusEnBase": 16
+  },
+  "kemono-incidents": {
+    "aParaitre": {},
+    "maximum": 24,
+    "titre": "KEMONO INCIDENTS",
+    "tomes": {
+      "19": {
+        "date": "2024-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014490"
+      },
+      "20": {
+        "date": "2024-12-05",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014865"
+      },
+      "21": {
+        "date": "2025-04-10",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018528"
+      },
+      "22": {
+        "date": "2025-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018535"
+      },
+      "23": {
+        "date": "2025-12-04",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018542"
+      },
+      "24": {
+        "date": "2026-06-11",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021535"
+      }
+    },
+    "tomesParusEnBase": 24
+  },
+  "kindergarten-wars": {
+    "aParaitre": {},
+    "maximum": 15,
+    "titre": "KINDERGARTEN WARS",
+    "tomes": {
+      "10": {
+        "date": "2025-09-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032721391"
+      },
+      "11": {
+        "date": "2025-11-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032720479"
+      },
+      "12": {
+        "date": "2026-01-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724637"
+      },
+      "13": {
+        "date": "2026-03-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724323"
+      },
+      "14": {
+        "date": "2026-05-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724033"
+      },
+      "15": {
+        "date": "2026-07-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032723791"
+      },
+      "4": {
+        "date": "2024-09-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032718117"
+      },
+      "5": {
+        "date": "2024-11-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032718131"
+      },
+      "6": {
+        "date": "2025-01-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719176"
+      },
+      "7": {
+        "date": "2025-03-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719183"
+      },
+      "8": {
+        "date": "2025-05-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719190"
+      },
+      "9": {
+        "date": "2025-07-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719206"
+      }
+    },
+    "tomesParusEnBase": 15
+  },
+  "magus-of-the-library": {
+    "aParaitre": {},
+    "maximum": 9,
+    "titre": "MAGUS OF THE LIBRARY",
+    "tomes": {
+      "8": {
+        "date": "2025-03-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719497"
+      },
+      "9": {
+        "date": "2026-04-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724187"
+      }
+    },
+    "tomesParusEnBase": 9
+  },
+  "mission-in-the-apocalypse": {
+    "aParaitre": {},
+    "maximum": 4,
+    "titre": "MISSION IN THE APOCALYPSE",
+    "tomes": {
+      "2": {
+        "date": "2024-11-06",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413084679"
+      },
+      "3": {
+        "date": "2025-04-23",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413088219"
+      },
+      "4": {
+        "date": "2025-09-10",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413090991"
+      }
+    },
+    "tomesParusEnBase": 4
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "aParaitre": {},
+    "maximum": 18,
+    "titre": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
+    "tomes": {
+      "17": {
+        "date": "2024-09-27",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377176199"
+      },
+      "18": {
+        "date": "2024-11-22",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377176298"
+      }
+    },
+    "tomesParusEnBase": 18
+  },
+  "mushoku-tensei": {
+    "aParaitre": {},
+    "maximum": 23,
+    "titre": "MUSHOKU TENSEI",
+    "tomes": {
+      "20": {
+        "date": "2024-08-21",
+        "editeur": "Doki Doki",
+        "isbn": "9791041107957"
+      },
+      "21": {
+        "date": "2025-03-05",
+        "editeur": "Doki Doki",
+        "isbn": "9791041111817"
+      },
+      "22": {
+        "date": "2025-08-20",
+        "editeur": "Doki Doki",
+        "isbn": "9791041114344"
+      },
+      "23": {
+        "date": "2026-04-01",
+        "editeur": "Doki Doki",
+        "isbn": "9791041119349"
+      }
+    },
+    "tomesParusEnBase": 23
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "aParaitre": {},
+    "maximum": 12,
+    "titre": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "tomes": {
+      "11": {
+        "date": "2024-08-21",
+        "editeur": "Doki Doki",
+        "isbn": "9791041105267"
+      },
+      "12": {
+        "date": "2025-03-05",
+        "editeur": "Doki Doki",
+        "isbn": "9791041107001"
+      }
+    },
+    "tomesParusEnBase": 12
+  },
+  "my-hero-academia": {
+    "aParaitre": {},
+    "maximum": 42,
+    "titre": "MY HERO ACADEMIA",
+    "tomes": {
+      "40": {
+        "date": "2024-11-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032716946"
+      },
+      "41": {
+        "date": "2025-02-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719640"
+      },
+      "42": {
+        "date": "2025-06-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032719657"
+      }
+    },
+    "tomesParusEnBase": 42
+  },
+  "oshi-no-ko": {
+    "aParaitre": {},
+    "maximum": 16,
+    "titre": "OSHI NO KO",
+    "tomes": {
+      "12": {
+        "date": "2024-08-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014551"
+      },
+      "13": {
+        "date": "2024-11-14",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014773"
+      },
+      "14": {
+        "date": "2025-03-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018948"
+      },
+      "15": {
+        "date": "2025-07-03",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018955"
+      },
+      "16": {
+        "date": "2025-12-04",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018962"
+      }
+    },
+    "tomesParusEnBase": 16
+  },
+  "radiant": {
+    "aParaitre": {},
+    "maximum": 19,
+    "titre": "RADIANT",
+    "tomes": {
+      "19": {
+        "date": "2024-11-22",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033517207"
+      }
+    },
+    "tomesParusEnBase": 19
+  },
+  "ragna-crimson": {
+    "aParaitre": {},
+    "maximum": 16,
+    "titre": "RAGNA CRIMSON",
+    "tomes": {
+      "13": {
+        "date": "2024-08-23",
+        "editeur": "Kana",
+        "isbn": "9782505125181"
+      },
+      "14": {
+        "date": "2025-04-11",
+        "editeur": "Kana",
+        "isbn": "9782505133827"
+      },
+      "15": {
+        "date": "2025-10-24",
+        "editeur": "Kana",
+        "isbn": "9782505133834"
+      },
+      "16": {
+        "date": "2026-04-17",
+        "editeur": "Kana",
+        "isbn": "9782505144632"
+      }
+    },
+    "tomesParusEnBase": 16
+  },
+  "rai-rai-rai": {
+    "aParaitre": {},
+    "maximum": 2,
+    "titre": "RAI RAI RAI",
+    "tomes": {
+      "1": {
+        "date": "2026-03-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724316"
+      },
+      "2": {
+        "date": "2026-06-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032723968"
+      }
+    },
+    "tomesParusEnBase": 2
+  },
+  "ruridragon": {
+    "aParaitre": {},
+    "maximum": 4,
+    "titre": "RURIDRAGON",
+    "tomes": {
+      "1": {
+        "date": "2025-07-02",
+        "editeur": "Glénat",
+        "isbn": "9782344067949"
+      },
+      "2": {
+        "date": "2025-10-22",
+        "editeur": "Glénat",
+        "isbn": "9782344070215"
+      },
+      "3": {
+        "date": "2026-02-18",
+        "editeur": "Glénat",
+        "isbn": "9782344071397"
+      },
+      "4": {
+        "date": "2026-06-17",
+        "editeur": "Glénat",
+        "isbn": "9782344071700"
+      }
+    },
+    "tomesParusEnBase": 4
+  },
+  "servamp": {
+    "aParaitre": {},
+    "maximum": 23,
+    "titre": "SERVAMP",
+    "tomes": {
+      "21": {
+        "date": "2024-10-02",
+        "editeur": "Doki Doki",
+        "isbn": "9791041109043"
+      },
+      "22": {
+        "date": "2025-09-10",
+        "editeur": "Doki Doki",
+        "isbn": "9791041113873"
+      },
+      "23": {
+        "date": "2026-06-03",
+        "editeur": "Doki Doki",
+        "isbn": "9791041114429"
+      }
+    },
+    "tomesParusEnBase": 23
+  },
+  "solo-leveling": {
+    "aParaitre": {},
+    "maximum": 19,
+    "titre": "SOLO LEVELING",
+    "tomes": {
+      "14": {
+        "date": "2024-08-21",
+        "editeur": "Kbooks",
+        "isbn": "9782382882917"
+      },
+      "15": {
+        "date": "2024-10-23",
+        "editeur": "Kbooks",
+        "isbn": "9782382882931"
+      },
+      "16": {
+        "date": "2024-12-04",
+        "editeur": "Kbooks",
+        "isbn": "9782382882924"
+      },
+      "17": {
+        "date": "2025-03-26",
+        "editeur": "Kbooks",
+        "isbn": "9782382883228"
+      },
+      "18": {
+        "date": "2025-07-02",
+        "editeur": "Kbooks",
+        "isbn": "9782382883235"
+      },
+      "19": {
+        "date": "2025-09-05",
+        "editeur": "Kbooks",
+        "isbn": "9782382884164"
+      }
+    },
+    "tomesParusEnBase": 19
+  },
+  "spy-x-family": {
+    "aParaitre": {},
+    "maximum": 16,
+    "titre": "SPY X FAMILY",
+    "tomes": {
+      "13": {
+        "date": "2024-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014704"
+      },
+      "14": {
+        "date": "2025-03-13",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018726"
+      },
+      "15": {
+        "date": "2025-10-09",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018733"
+      },
+      "16": {
+        "date": "2026-04-23",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021030"
+      }
+    },
+    "tomesParusEnBase": 16
+  },
+  "talentless": {
+    "aParaitre": {},
+    "maximum": 14,
+    "titre": "TALENTLESS",
+    "tomes": {
+      "12": {
+        "date": "2025-02-05",
+        "editeur": "Doki Doki",
+        "isbn": "9791041111466"
+      },
+      "13": {
+        "date": "2026-01-07",
+        "editeur": "Doki Doki",
+        "isbn": "9791041115877"
+      },
+      "14": {
+        "date": "2026-07-01",
+        "editeur": "Doki Doki",
+        "isbn": "9791041120703"
+      }
+    },
+    "tomesParusEnBase": 14
+  },
+  "terraformars": {
+    "aParaitre": {},
+    "maximum": 23,
+    "titre": "TERRAFORMARS",
+    "tomes": {
+      "23": {
+        "date": "2025-06-25",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820352521"
+      }
+    },
+    "tomesParusEnBase": 22
+  },
+  "the-ancient-magus-bride": {
+    "aParaitre": {},
+    "maximum": 23,
+    "titre": "THE ANCIENT MAGUS BRIDE",
+    "tomes": {
+      "20": {
+        "date": "2024-09-26",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372878043"
+      },
+      "21": {
+        "date": "2025-03-06",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372878487"
+      },
+      "22": {
+        "date": "2025-09-25",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372879026"
+      },
+      "23": {
+        "date": "2026-04-30",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372879552"
+      }
+    },
+    "tomesParusEnBase": 23
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "aParaitre": {},
+    "maximum": 10,
+    "titre": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "tomes": {
+      "10": {
+        "date": "2025-12-04",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372879316"
+      },
+      "9": {
+        "date": "2025-06-26",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372877756"
+      }
+    },
+    "tomesParusEnBase": 10
+  },
+  "to-a-new-you": {
+    "aParaitre": {},
+    "maximum": 6,
+    "titre": "TO A NEW YOU",
+    "tomes": {
+      "6": {
+        "date": "2024-10-16",
+        "editeur": "Panini",
+        "isbn": "9791039130165"
+      }
+    },
+    "tomesParusEnBase": 6
+  }
+}

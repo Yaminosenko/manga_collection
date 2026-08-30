@@ -1,13 +1,13 @@
 {
-  "exporteeLe": "2026-08-30T14:26:59.712Z",
+  "exporteeLe": "2026-08-30T14:51:55.656Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
-    "tomes": 1686,
+    "tomes": 1690,
     "possedes": 1150,
     "aVerifier": 33,
     "forcees": 3,
-    "couvertures": 1607
+    "couvertures": 1611
   },
   "series": [
     {
@@ -2841,8 +2841,8 @@
             {
               "id": "bab3f9f4-c864-4dab-96ca-cd9652aed22e",
               "numero": 43,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782344074879",
+              "dateSortie": "2026-07-01T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/berserk/43.webp",
               "possession": {
@@ -3577,8 +3577,8 @@
             {
               "id": "107ea07e-57ee-4f3e-a544-30e4a456bc3e",
               "numero": 37,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820355119",
+              "dateSortie": "2026-02-25T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/black-clover/37.webp",
               "possession": {
@@ -3838,8 +3838,8 @@
             {
               "id": "c33a888b-fe09-43b0-af6e-49e2504518ef",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820347251",
+              "dateSortie": "2024-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/black-lagoon/13.webp",
               "possession": {
@@ -6310,8 +6310,8 @@
             {
               "id": "780feed2-32b2-4d26-8ed1-15034ba6762e",
               "numero": 30,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820350381",
+              "dateSortie": "2024-11-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/blue-exorcist/30.webp",
               "possession": {
@@ -6327,8 +6327,8 @@
             {
               "id": "08f65424-0045-4280-9fc8-7aedf94ab7db",
               "numero": 31,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820352514",
+              "dateSortie": "2025-04-16T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/blue-exorcist/31.webp",
               "possession": {
@@ -6344,8 +6344,8 @@
             {
               "id": "f21884e7-9a75-42c0-a639-243b2127a270",
               "numero": 32,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820354488",
+              "dateSortie": "2026-04-22T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/blue-exorcist/32.webp",
               "possession": {
@@ -6617,7 +6617,7 @@
           "slug": "call-of-the-night",
           "nom": "Édition simple",
           "editeur": "Kurokawa",
-          "tomesParus": 17,
+          "tomesParus": 18,
           "editionTerminee": false,
           "prixDefautCentimes": 730,
           "statut": "EN_COURS",
@@ -6784,8 +6784,8 @@
             {
               "id": "cef68820-62ad-41fb-8664-a459a35407b9",
               "numero": 10,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014469",
+              "dateSortie": "2024-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/10.webp",
               "possession": {
@@ -6801,8 +6801,8 @@
             {
               "id": "6d94a42c-c05a-46b7-ab0b-9858ba3ca6ba",
               "numero": 11,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014759",
+              "dateSortie": "2024-11-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/11.webp",
               "possession": {
@@ -6818,8 +6818,8 @@
             {
               "id": "70c57273-95f0-4b5b-89fb-8f9f5d5af9b0",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018412",
+              "dateSortie": "2025-02-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/12.webp",
               "possession": {
@@ -6835,8 +6835,8 @@
             {
               "id": "4620ed90-91fb-4911-b774-bc4e0d2085d8",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018429",
+              "dateSortie": "2025-05-15T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/13.webp",
               "possession": {
@@ -6852,8 +6852,8 @@
             {
               "id": "989c6e7d-cbf0-448a-8761-6377661a0d75",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018436",
+              "dateSortie": "2025-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/14.webp",
               "possession": {
@@ -6869,8 +6869,8 @@
             {
               "id": "e2c4ef26-9709-493a-95da-6aa372cdad73",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018443",
+              "dateSortie": "2025-11-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/15.webp",
               "possession": {
@@ -6886,8 +6886,8 @@
             {
               "id": "b38f0f52-a816-44f3-ab67-6ba4e0b6b061",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042021191",
+              "dateSortie": "2026-02-12T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/16.webp",
               "possession": {
@@ -6903,12 +6903,29 @@
             {
               "id": "51b176b5-183b-456c-8aa5-70e3812b0f76",
               "numero": 17,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042021207",
+              "dateSortie": "2026-05-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/17.webp",
               "possession": {
                 "id": "873b7afb-5661-4529-b3c9-8bd4090f2fa1",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "ebf301d1-c895-4d41-b0a9-5e51ef62d001",
+              "numero": 18,
+              "isbn": "9791042021214",
+              "dateSortie": "2026-08-20T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/call-of-the-night/18.webp",
+              "possession": {
+                "id": "7dedc8ba-c34a-45a0-9942-370a7fd570e7",
                 "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
@@ -7233,8 +7250,8 @@
             {
               "id": "76e70a2c-3027-4fa7-a02f-8a197d9b942f",
               "numero": 17,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820348517",
+              "dateSortie": "2024-09-18T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/17.webp",
               "possession": {
@@ -7250,8 +7267,8 @@
             {
               "id": "a5bfe400-e85f-46e7-ba9d-4557d4b682f9",
               "numero": 18,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820348814",
+              "dateSortie": "2025-01-22T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/18.webp",
               "possession": {
@@ -7267,8 +7284,8 @@
             {
               "id": "066a6f2f-aa6d-4999-b862-8b2dae2326e4",
               "numero": 19,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820351661",
+              "dateSortie": "2025-05-21T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/19.webp",
               "possession": {
@@ -7284,8 +7301,8 @@
             {
               "id": "62f0937e-6760-4926-97ec-79841eddbeea",
               "numero": 20,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820351678",
+              "dateSortie": "2025-10-22T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/20.webp",
               "possession": {
@@ -7301,8 +7318,8 @@
             {
               "id": "6748423a-fcdb-4676-9106-f5c6fdd8b31e",
               "numero": 21,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820353597",
+              "dateSortie": "2026-02-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/21.webp",
               "possession": {
@@ -7318,8 +7335,8 @@
             {
               "id": "cb58f25b-2c63-4b74-9468-1a000e1309e1",
               "numero": 22,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820354464",
+              "dateSortie": "2026-06-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/chainsaw-man/22.webp",
               "possession": {
@@ -7784,8 +7801,8 @@
             {
               "id": "681ebe74-146d-4f17-a141-cfa1fefe5ba0",
               "numero": 19,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041110704",
+              "dateSortie": "2024-10-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/classroom-for-heroes/19.webp",
               "possession": {
@@ -7801,8 +7818,8 @@
             {
               "id": "b46d4f2d-0057-46ae-aa51-7022de4de677",
               "numero": 20,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041113392",
+              "dateSortie": "2025-05-07T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/classroom-for-heroes/20.webp",
               "possession": {
@@ -7818,8 +7835,8 @@
             {
               "id": "73a033b6-c371-4f6a-b285-160dbe7abbae",
               "numero": 21,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041117376",
+              "dateSortie": "2026-02-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/classroom-for-heroes/21.webp",
               "possession": {
@@ -8845,8 +8862,8 @@
             {
               "id": "ae92e127-7dc3-43d7-8148-1b5515e8e227",
               "numero": 29,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782344064924",
+              "dateSortie": "2026-07-01T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/d-gray-man/29.webp",
               "possession": {
@@ -8888,7 +8905,7 @@
           "slug": "demon-slave",
           "nom": "Édition simple",
           "editeur": "Kurokawa",
-          "tomesParus": 19,
+          "tomesParus": 20,
           "editionTerminee": false,
           "prixDefautCentimes": 690,
           "statut": "EN_COURS",
@@ -9123,8 +9140,8 @@
             {
               "id": "5a3cec9e-fbe6-44de-bcc6-d18ec4c2ac75",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014476",
+              "dateSortie": "2024-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/14.webp",
               "possession": {
@@ -9140,8 +9157,8 @@
             {
               "id": "2da1b823-7572-48a6-b819-4c4f8348685c",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014841",
+              "dateSortie": "2024-12-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/15.webp",
               "possession": {
@@ -9157,8 +9174,8 @@
             {
               "id": "cdbb758f-8430-4d44-a6b2-a54e6f88cfe4",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018450",
+              "dateSortie": "2025-04-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/16.webp",
               "possession": {
@@ -9174,8 +9191,8 @@
             {
               "id": "4530a3ff-22fd-477b-8471-329acc2a5fa0",
               "numero": 17,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018467",
+              "dateSortie": "2025-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/17.webp",
               "possession": {
@@ -9191,8 +9208,8 @@
             {
               "id": "b74d2772-fc45-47d4-bbc0-d25c48a2ade3",
               "numero": 18,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018474",
+              "dateSortie": "2025-12-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/18.webp",
               "possession": {
@@ -9208,13 +9225,30 @@
             {
               "id": "91817e25-0a94-470c-8c82-4f1b42ef2b9d",
               "numero": 19,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042021375",
+              "dateSortie": "2026-04-09T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/19.webp",
               "possession": {
                 "id": "01248ec3-dde0-4b75-be36-41ac759e5df8",
                 "possede": true,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "068e686d-3957-4a29-bb06-5a86508b8347",
+              "numero": 20,
+              "isbn": "9791042021382",
+              "dateSortie": "2026-08-20T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/demon-slave/20.webp",
+              "possession": {
+                "id": "ba96bb28-f242-404d-949c-fc75a99744d2",
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -12845,8 +12879,8 @@
             {
               "id": "5e3a95d9-d6a0-4f54-80c4-5ffd2e594289",
               "numero": 6,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041114351",
+              "dateSortie": "2025-10-01T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/je-suis-un-assassin-et-je-surpasse-le-heros/6.webp",
               "possession": {
@@ -12984,8 +13018,8 @@
             {
               "id": "47cda57d-0d0d-4a23-8aac-e82abf3763ed",
               "numero": 6,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782385033651",
+              "dateSortie": "2024-10-25T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/jk-haru-sex-worker-in-another-world/6.webp",
               "possession": {
@@ -13001,8 +13035,8 @@
             {
               "id": "a3bf52a2-f702-4a63-898b-0aa3e6a15c89",
               "numero": 7,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782385033668",
+              "dateSortie": "2025-01-17T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/jk-haru-sex-worker-in-another-world/7.webp",
               "possession": {
@@ -13183,7 +13217,7 @@
           "slug": "kagurabachi",
           "nom": "Édition simple",
           "editeur": "Kana",
-          "tomesParus": 8,
+          "tomesParus": 9,
           "editionTerminee": false,
           "prixDefautCentimes": 730,
           "statut": "EN_COURS",
@@ -13197,8 +13231,8 @@
             {
               "id": "07c6ae30-67f5-41fe-88e2-be4dd6a9d6fc",
               "numero": 1,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505132912",
+              "dateSortie": "2025-02-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/1.webp",
               "possession": {
@@ -13214,8 +13248,8 @@
             {
               "id": "a6a294d4-9985-46d3-8482-8cd98463edeb",
               "numero": 2,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133285",
+              "dateSortie": "2025-04-18T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/2.webp",
               "possession": {
@@ -13231,8 +13265,8 @@
             {
               "id": "f9349a6e-746b-4c65-8fbd-d4cae234a71b",
               "numero": 3,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133797",
+              "dateSortie": "2025-07-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/3.webp",
               "possession": {
@@ -13248,8 +13282,8 @@
             {
               "id": "1784c6db-7399-4d07-a679-77c36323dc7f",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133803",
+              "dateSortie": "2025-08-29T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/4.webp",
               "possession": {
@@ -13265,8 +13299,8 @@
             {
               "id": "b0d3591d-ed8d-4c7d-9acd-733f66c55a1f",
               "numero": 5,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133810",
+              "dateSortie": "2025-10-03T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/5.webp",
               "possession": {
@@ -13282,8 +13316,8 @@
             {
               "id": "6b9800d2-e4b7-49ae-ab59-56a0a9361f52",
               "numero": 6,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133957",
+              "dateSortie": "2025-12-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/6.webp",
               "possession": {
@@ -13299,8 +13333,8 @@
             {
               "id": "7b43421b-c63f-4705-a7ff-74b2791d28b2",
               "numero": 7,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505140429",
+              "dateSortie": "2026-02-27T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/7.webp",
               "possession": {
@@ -13316,13 +13350,30 @@
             {
               "id": "58aa16ec-8f1d-44d3-9a8c-e2e728d17585",
               "numero": 8,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505140597",
+              "dateSortie": "2026-04-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/8.webp",
               "possession": {
                 "id": "8cbb4fd3-2c44-4454-b96c-21b11771c8e8",
                 "possede": true,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "1fc2c413-e95e-46cc-81ee-ed75a9161d96",
+              "numero": 9,
+              "isbn": "9782505141938",
+              "dateSortie": "2026-07-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kagurabachi/9.webp",
+              "possession": {
+                "id": "e0093f60-c5f7-470e-ae48-e881863ed60c",
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -13544,8 +13595,8 @@
             {
               "id": "4d52f9d4-5e30-4b0f-810e-1e68264d49a5",
               "numero": 11,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014735",
+              "dateSortie": "2024-10-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/11.webp",
               "possession": {
@@ -13561,8 +13612,8 @@
             {
               "id": "cd67db0e-a0d3-4359-a8ed-6f2e1aa9cd73",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018870",
+              "dateSortie": "2025-03-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/12.webp",
               "possession": {
@@ -13578,8 +13629,8 @@
             {
               "id": "3a66849b-9283-4486-9ec2-db7403865cb6",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018887",
+              "dateSortie": "2025-11-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/13.webp",
               "possession": {
@@ -13595,8 +13646,8 @@
             {
               "id": "c47ab551-9bde-4b80-8235-d3fcfac62d08",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042021511",
+              "dateSortie": "2026-04-09T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaijin-reijoh/14.webp",
               "possession": {
@@ -13837,8 +13888,8 @@
             {
               "id": "b4b6fd80-c4b4-4f3a-9282-cff648edd6a9",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820348654",
+              "dateSortie": "2024-09-11T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaiju-n8/12.webp",
               "possession": {
@@ -13854,8 +13905,8 @@
             {
               "id": "9d7e8df0-4ef7-4b92-ac3a-ac6fb18aeade",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820348937",
+              "dateSortie": "2025-01-08T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaiju-n8/13.webp",
               "possession": {
@@ -13871,8 +13922,8 @@
             {
               "id": "1780a367-4cde-42d1-9233-4a3618681e7a",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820351814",
+              "dateSortie": "2025-03-26T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaiju-n8/14.webp",
               "possession": {
@@ -13888,8 +13939,8 @@
             {
               "id": "b58db7e4-0f1c-4226-a93a-b29f025f0d2b",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820351821",
+              "dateSortie": "2025-09-17T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaiju-n8/15.webp",
               "possession": {
@@ -13905,8 +13956,8 @@
             {
               "id": "bfc2fae5-543b-4df3-8c03-faa8cdc24a07",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782820353443",
+              "dateSortie": "2026-03-25T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kaiju-n8/16.webp",
               "possession": {
@@ -14266,8 +14317,8 @@
             {
               "id": "3769038c-c8b0-45e7-a56b-39bd3b911e83",
               "numero": 19,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014490",
+              "dateSortie": "2024-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kemono-incidents/19.webp",
               "possession": {
@@ -14283,8 +14334,8 @@
             {
               "id": "df7e6209-8578-44bf-a1d4-ef89d5f25a81",
               "numero": 20,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014865",
+              "dateSortie": "2024-12-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kemono-incidents/20.webp",
               "possession": {
@@ -14300,8 +14351,8 @@
             {
               "id": "011492e4-6ff1-48d4-9d1a-b17f7be71cda",
               "numero": 21,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018528",
+              "dateSortie": "2025-04-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kemono-incidents/21.webp",
               "possession": {
@@ -14317,8 +14368,8 @@
             {
               "id": "6c99d37f-062f-4d54-9c7b-73bbca27d5d3",
               "numero": 22,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018535",
+              "dateSortie": "2025-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kemono-incidents/22.webp",
               "possession": {
@@ -14334,8 +14385,8 @@
             {
               "id": "682fc974-3c8e-4e8e-82dd-9dddad5705a1",
               "numero": 23,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018542",
+              "dateSortie": "2025-12-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kemono-incidents/23.webp",
               "possession": {
@@ -14351,8 +14402,8 @@
             {
               "id": "d3dc2883-f084-4179-8d2c-675f8d49e11d",
               "numero": 24,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042021535",
+              "dateSortie": "2026-06-11T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kemono-incidents/24.webp",
               "possession": {
@@ -14459,8 +14510,8 @@
             {
               "id": "7041846c-416c-425d-811d-fb49d03a1b4e",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032718117",
+              "dateSortie": "2024-09-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/4.webp",
               "possession": {
@@ -14476,8 +14527,8 @@
             {
               "id": "cc6a1af9-34e7-43a1-979c-4a3e66944bcd",
               "numero": 5,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032718131",
+              "dateSortie": "2024-11-07T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/5.webp",
               "possession": {
@@ -14493,8 +14544,8 @@
             {
               "id": "50bd10d2-f39e-4aa2-b387-4d34bba24175",
               "numero": 6,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719176",
+              "dateSortie": "2025-01-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/6.webp",
               "possession": {
@@ -14510,8 +14561,8 @@
             {
               "id": "c7a54c54-f1c3-4b35-b1f1-80cb7317a16d",
               "numero": 7,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719183",
+              "dateSortie": "2025-03-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/7.webp",
               "possession": {
@@ -14527,8 +14578,8 @@
             {
               "id": "141a9750-5e4b-4373-b42a-feacb9e3ed43",
               "numero": 8,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719190",
+              "dateSortie": "2025-05-07T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/8.webp",
               "possession": {
@@ -14544,8 +14595,8 @@
             {
               "id": "a7e7554a-e10b-4772-be5d-0ab7832871d6",
               "numero": 9,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719206",
+              "dateSortie": "2025-07-03T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/9.webp",
               "possession": {
@@ -14561,8 +14612,8 @@
             {
               "id": "50c9ffae-83fb-40e9-9fe5-2a9a0dca25f9",
               "numero": 10,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032721391",
+              "dateSortie": "2025-09-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/10.webp",
               "possession": {
@@ -14578,8 +14629,8 @@
             {
               "id": "f4902f29-2439-4c51-8d2e-1ee2104442d3",
               "numero": 11,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032720479",
+              "dateSortie": "2025-11-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/11.webp",
               "possession": {
@@ -14595,8 +14646,8 @@
             {
               "id": "870276a8-4e61-4984-b174-5e38d85e4d16",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724637",
+              "dateSortie": "2026-01-08T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/12.webp",
               "possession": {
@@ -14612,8 +14663,8 @@
             {
               "id": "46da35b3-1c62-4c41-b0d8-fc21efc67ada",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724323",
+              "dateSortie": "2026-03-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/13.webp",
               "possession": {
@@ -14629,8 +14680,8 @@
             {
               "id": "f141cbfe-f47b-4537-b776-2063839eeb9b",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724033",
+              "dateSortie": "2026-05-07T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/14.webp",
               "possession": {
@@ -14646,8 +14697,8 @@
             {
               "id": "0f7a5886-90a3-4216-8689-3ca8af855a16",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032723791",
+              "dateSortie": "2026-07-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/kindergarten-wars/15.webp",
               "possession": {
@@ -16007,8 +16058,8 @@
             {
               "id": "4f920623-f4db-4a8f-8c8b-46b5a00bce05",
               "numero": 8,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719497",
+              "dateSortie": "2025-03-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/magus-of-the-library/8.webp",
               "possession": {
@@ -16024,8 +16075,8 @@
             {
               "id": "de935658-456c-47d8-a043-95a3611836b1",
               "numero": 9,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724187",
+              "dateSortie": "2026-04-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/magus-of-the-library/9.webp",
               "possession": {
@@ -17412,8 +17463,8 @@
             {
               "id": "71885beb-fb52-4b24-a110-2f5686c3f2b5",
               "numero": 2,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782413084679",
+              "dateSortie": "2024-11-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mission-in-the-apocalypse/2.webp",
               "possession": {
@@ -17429,8 +17480,8 @@
             {
               "id": "4cb5de2a-553b-40e7-9132-3fc6cdf35f5a",
               "numero": 3,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782413088219",
+              "dateSortie": "2025-04-23T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mission-in-the-apocalypse/3.webp",
               "possession": {
@@ -17446,8 +17497,8 @@
             {
               "id": "88345748-335f-4095-8ee9-dc6df201b0bc",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782413090991",
+              "dateSortie": "2025-09-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mission-in-the-apocalypse/4.webp",
               "possession": {
@@ -17880,8 +17931,8 @@
             {
               "id": "bdf9f050-d30f-457c-997c-5b15b1c72b50",
               "numero": 17,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782377176199",
+              "dateSortie": "2024-09-27T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/monster-musume-everyday-life-with-monster-girls/17.webp",
               "possession": {
@@ -17897,8 +17948,8 @@
             {
               "id": "f716abc0-82d4-4385-96ca-653289c0b15f",
               "numero": 18,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782377176298",
+              "dateSortie": "2024-11-22T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/monster-musume-everyday-life-with-monster-girls/18.webp",
               "possession": {
@@ -18277,8 +18328,8 @@
             {
               "id": "8bd93a86-1c93-4a65-ab3b-04b209cf1778",
               "numero": 20,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041107957",
+              "dateSortie": "2024-08-21T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mushoku-tensei/20.webp",
               "possession": {
@@ -18294,8 +18345,8 @@
             {
               "id": "23b05b70-a13a-4d42-b387-090a266a7339",
               "numero": 21,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041111817",
+              "dateSortie": "2025-03-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mushoku-tensei/21.webp",
               "possession": {
@@ -18311,8 +18362,8 @@
             {
               "id": "c2033c95-7f85-4fca-9ac5-7c3417aff822",
               "numero": 22,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041114344",
+              "dateSortie": "2025-08-20T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mushoku-tensei/22.webp",
               "possession": {
@@ -18328,8 +18379,8 @@
             {
               "id": "cd39b74d-9358-4a64-9622-ccb073d4c039",
               "numero": 23,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041119349",
+              "dateSortie": "2026-04-01T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mushoku-tensei/23.webp",
               "possession": {
@@ -18608,8 +18659,8 @@
             {
               "id": "37a5d3f9-48e6-44de-aa91-e52f4948fd59",
               "numero": 11,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041105267",
+              "dateSortie": "2024-08-21T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mushoku-tensei-les-aventures-de-roxy/11.webp",
               "possession": {
@@ -18625,8 +18676,8 @@
             {
               "id": "19542036-582a-4415-bbfd-0f186dff8343",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041107001",
+              "dateSortie": "2025-03-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/mushoku-tensei-les-aventures-de-roxy/12.webp",
               "possession": {
@@ -19484,8 +19535,8 @@
             {
               "id": "a978719a-725a-4790-a9f1-8122652eef1f",
               "numero": 40,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032716946",
+              "dateSortie": "2024-11-07T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/my-hero-academia/40.webp",
               "possession": {
@@ -19501,8 +19552,8 @@
             {
               "id": "abc63a3e-7b88-44f2-a85f-e0edb3989b97",
               "numero": 41,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719640",
+              "dateSortie": "2025-02-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/my-hero-academia/41.webp",
               "possession": {
@@ -19518,8 +19569,8 @@
             {
               "id": "f59252da-c97b-4e00-b767-de38340a0d52",
               "numero": 42,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032719657",
+              "dateSortie": "2025-06-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/my-hero-academia/42.webp",
               "possession": {
@@ -22542,8 +22593,8 @@
             {
               "id": "dd850b09-54df-4048-9793-141a4c8b7b25",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014551",
+              "dateSortie": "2024-08-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oshi-no-ko/12.webp",
               "possession": {
@@ -22559,8 +22610,8 @@
             {
               "id": "1406c23e-d763-470e-a32f-33e3e94c9c21",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014773",
+              "dateSortie": "2024-11-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oshi-no-ko/13.webp",
               "possession": {
@@ -22576,8 +22627,8 @@
             {
               "id": "4c0e0f6e-2317-493c-802b-0f80ef7b898e",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018948",
+              "dateSortie": "2025-03-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oshi-no-ko/14.webp",
               "possession": {
@@ -22593,8 +22644,8 @@
             {
               "id": "5912adae-c3df-4c84-93c1-81b4839db347",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018955",
+              "dateSortie": "2025-07-03T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oshi-no-ko/15.webp",
               "possession": {
@@ -22610,8 +22661,8 @@
             {
               "id": "bcea991b-f8b1-4506-a6a0-8de398125527",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018962",
+              "dateSortie": "2025-12-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oshi-no-ko/16.webp",
               "possession": {
@@ -23763,8 +23814,8 @@
             {
               "id": "204f4939-19e3-4140-a573-22300909a3ad",
               "numero": 19,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791033517207",
+              "dateSortie": "2024-11-22T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/radiant/19.webp",
               "possession": {
@@ -24023,8 +24074,8 @@
             {
               "id": "a86e32ad-5e61-4607-ac86-3c94c09f2dcb",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505125181",
+              "dateSortie": "2024-08-23T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ragna-crimson/13.webp",
               "possession": {
@@ -24040,8 +24091,8 @@
             {
               "id": "e8667771-85e6-4c99-a019-b6e719d74628",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133827",
+              "dateSortie": "2025-04-11T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ragna-crimson/14.webp",
               "possession": {
@@ -24057,8 +24108,8 @@
             {
               "id": "e370266e-db4b-4323-89fa-aa59e5b27911",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133834",
+              "dateSortie": "2025-10-24T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ragna-crimson/15.webp",
               "possession": {
@@ -24074,8 +24125,8 @@
             {
               "id": "fe7a0901-e797-40b3-bc44-f417080fe335",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505144632",
+              "dateSortie": "2026-04-17T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ragna-crimson/16.webp",
               "possession": {
@@ -24130,8 +24181,8 @@
             {
               "id": "d8eaafa3-5a12-465c-9c10-a407e405e2af",
               "numero": 1,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724316",
+              "dateSortie": "2026-03-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/rai-rai-rai/1.webp",
               "possession": {
@@ -24147,8 +24198,8 @@
             {
               "id": "b0b8d372-9c72-49c8-9e83-eca9289ed881",
               "numero": 2,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032723968",
+              "dateSortie": "2026-06-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/rai-rai-rai/2.webp",
               "possession": {
@@ -25330,8 +25381,8 @@
             {
               "id": "c0cd5192-2c73-44f0-ac23-e45a47b79abc",
               "numero": 1,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782344067949",
+              "dateSortie": "2025-07-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ruridragon/1.webp",
               "possession": {
@@ -25347,8 +25398,8 @@
             {
               "id": "6f1db8af-2a39-4e25-b055-9060be8b4758",
               "numero": 2,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782344070215",
+              "dateSortie": "2025-10-22T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ruridragon/2.webp",
               "possession": {
@@ -25364,8 +25415,8 @@
             {
               "id": "d4d1e8fa-d6ee-4b7b-a039-2237f3f6cc05",
               "numero": 3,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782344071397",
+              "dateSortie": "2026-02-18T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ruridragon/3.webp",
               "possession": {
@@ -25381,8 +25432,8 @@
             {
               "id": "0f10521e-c717-423d-951a-70c651680126",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782344071700",
+              "dateSortie": "2026-06-17T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/ruridragon/4.webp",
               "possession": {
@@ -27172,8 +27223,8 @@
             {
               "id": "b5bdab97-e983-4b89-9eb2-ab5fcfa1913b",
               "numero": 21,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041109043",
+              "dateSortie": "2024-10-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/servamp/21.webp",
               "possession": {
@@ -27189,8 +27240,8 @@
             {
               "id": "3d4bdf80-8711-4c86-8457-af84cdcd8bd7",
               "numero": 22,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041113873",
+              "dateSortie": "2025-09-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/servamp/22.webp",
               "possession": {
@@ -27206,8 +27257,8 @@
             {
               "id": "29558d51-c3d5-4571-a9d6-02f34febfb5c",
               "numero": 23,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041114429",
+              "dateSortie": "2026-06-03T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/servamp/23.webp",
               "possession": {
@@ -28208,8 +28259,8 @@
             {
               "id": "b11119f9-2e87-4822-97c7-6169981e06a7",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782382882917",
+              "dateSortie": "2024-08-21T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/solo-leveling/14.webp",
               "possession": {
@@ -28225,8 +28276,8 @@
             {
               "id": "2b258b1d-8906-48e3-8849-c3826248c204",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782382882931",
+              "dateSortie": "2024-10-23T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/solo-leveling/15.webp",
               "possession": {
@@ -28242,8 +28293,8 @@
             {
               "id": "8cf1b942-5c9c-4838-b5f9-fc8a8c33549b",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782382882924",
+              "dateSortie": "2024-12-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/solo-leveling/16.webp",
               "possession": {
@@ -28259,8 +28310,8 @@
             {
               "id": "cffc01ca-9387-4255-abaf-7bebb5ed5999",
               "numero": 17,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782382883228",
+              "dateSortie": "2025-03-26T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/solo-leveling/17.webp",
               "possession": {
@@ -28276,8 +28327,8 @@
             {
               "id": "b5fc6d62-649c-46ba-b9cd-6d05080da8f7",
               "numero": 18,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782382883235",
+              "dateSortie": "2025-07-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/solo-leveling/18.webp",
               "possession": {
@@ -28293,8 +28344,8 @@
             {
               "id": "bdbbc54e-e8df-4dbf-9a8a-7bd59fed4d4e",
               "numero": 19,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782382884164",
+              "dateSortie": "2025-09-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": null,
               "possession": {
@@ -29242,8 +29293,8 @@
             {
               "id": "4a98d6e5-8978-4aaf-93ef-30042203bf58",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014704",
+              "dateSortie": "2024-10-10T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/spy-x-family/13.webp",
               "possession": {
@@ -29259,8 +29310,8 @@
             {
               "id": "2e7b77cc-9b01-4aff-b48c-5ff0c17931c6",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018726",
+              "dateSortie": "2025-03-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/spy-x-family/14.webp",
               "possession": {
@@ -29276,8 +29327,8 @@
             {
               "id": "bebf87ce-8f65-4ac9-9740-1524e3c3e869",
               "numero": 15,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042018733",
+              "dateSortie": "2025-10-09T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/spy-x-family/15.webp",
               "possession": {
@@ -29293,8 +29344,8 @@
             {
               "id": "091fc6d8-9dcf-439e-a98a-c87b362ae977",
               "numero": 16,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042021030",
+              "dateSortie": "2026-04-23T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/spy-x-family/16.webp",
               "possession": {
@@ -29539,8 +29590,8 @@
             {
               "id": "44f517d4-f5a0-4f18-93a5-82e5183160bc",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041111466",
+              "dateSortie": "2025-02-05T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/talentless/12.webp",
               "possession": {
@@ -29556,8 +29607,8 @@
             {
               "id": "b98a4f02-a6bb-4750-8890-293551917e24",
               "numero": 13,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041115877",
+              "dateSortie": "2026-01-07T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/talentless/13.webp",
               "possession": {
@@ -29573,8 +29624,8 @@
             {
               "id": "a678e692-a2d0-4e69-8ba7-d9b786710006",
               "numero": 14,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041120703",
+              "dateSortie": "2026-07-01T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/talentless/14.webp",
               "possession": {
@@ -29619,7 +29670,7 @@
           "slug": "terraformars",
           "nom": "Édition simple",
           "editeur": "Kazé",
-          "tomesParus": 22,
+          "tomesParus": 23,
           "editionTerminee": false,
           "prixDefautCentimes": 829,
           "statut": "ABANDONNEE",
@@ -30003,6 +30054,23 @@
                 "lu": false,
                 "note": null
               }
+            },
+            {
+              "id": "48505247-0a3c-4b32-9790-f0cb3a173da4",
+              "numero": 23,
+              "isbn": "9782820352521",
+              "dateSortie": "2025-06-25T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/terraformars/23.webp",
+              "possession": {
+                "id": "76b907ce-5796-43c7-9a21-ab44ff06f1de",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
             }
           ]
         }
@@ -30371,8 +30439,8 @@
             {
               "id": "65be5f6e-ad88-47e8-a2d2-f825282acd1d",
               "numero": 20,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782372878043",
+              "dateSortie": "2024-09-26T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride/20.webp",
               "possession": {
@@ -30388,8 +30456,8 @@
             {
               "id": "0881ea45-f740-4b23-9dcf-0effc2b4404f",
               "numero": 21,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782372878487",
+              "dateSortie": "2025-03-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride/21.webp",
               "possession": {
@@ -30405,8 +30473,8 @@
             {
               "id": "74fe72b4-c3f0-4e81-86b7-4f1e459a0e08",
               "numero": 22,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782372879026",
+              "dateSortie": "2025-09-25T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride/22.webp",
               "possession": {
@@ -30422,8 +30490,8 @@
             {
               "id": "6da953f2-2919-4371-9c3f-4a984153df3a",
               "numero": 23,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782372879552",
+              "dateSortie": "2026-04-30T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride/23.webp",
               "possession": {
@@ -30614,8 +30682,8 @@
             {
               "id": "1dafe270-6872-4d2f-8cde-d070c9ddc37e",
               "numero": 9,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782372877756",
+              "dateSortie": "2025-06-26T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride-le-bleu-du-magicien/9.webp",
               "possession": {
@@ -30631,8 +30699,8 @@
             {
               "id": "e1ee5896-7088-4267-b222-0d7be7719959",
               "numero": 10,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782372879316",
+              "dateSortie": "2025-12-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-ancient-magus-bride-le-bleu-du-magicien/10.webp",
               "possession": {
@@ -31451,8 +31519,8 @@
             {
               "id": "ddcefdb1-face-4fa5-b433-a3b18032a2ad",
               "numero": 6,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791039130165",
+              "dateSortie": "2024-10-16T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/to-a-new-you/6.webp",
               "possession": {

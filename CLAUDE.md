@@ -1346,6 +1346,49 @@ certainement pas ; en cours au Japon ⇒ pas terminée. Résultat : **55 termin�
 fantôme** ; BLACK LAGOON 13/13 dit « À jour ». Sur les 69 éditions autrefois toutes dites
 « Complète », 32 le sont vraiment, 28 sont à jour, 9 restent indécidables.
 
+### Fait — le planning manga-news (30 août 2026)
+
+manga-news propose à ses visiteurs le **téléchargement des sorties mensuelles**, passées comme à
+venir. 25 fichiers fournis couvrent **août 2024 → août 2026 sans trou ni doublon**, 7 283 lignes.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/import_planning.py` | `npm run planning:import <dossier>` — n'écrit qu'un manifeste |
+| `scripts/apply-planning.ts` | `npm run planning:apply` — écrit, `--revert` pour annuler |
+| `data/planning.json` | le manifeste, limité aux séries de la collection |
+
+**Cette source bat la BnF sur tous les points qui bloquaient** : numérotation `Vol.N` uniforme
+là où la BnF a cinq formats, **date de parution exacte** et non l'année seule, éditeur, et
+surtout **l'EAN**, c'est-à-dire l'ISBN-13 établi le matin même comme la clé des éditions
+françaises. Elle est aussi plus fraîche : `call-of-the-night` était à 17 selon la BnF, le
+planning donne 18 paru le 20 août 2026 — le dépôt légal enregistre après coup.
+
+**Elle tranche deux cas que la BnF laissait en suspens** : `kagurabachi` à 9, que j'avais rejeté
+pour ses 5 trous, et `terraformars` à 23 là où la BnF lisait 2.
+
+- **Les fichiers ne sont pas versionnés.** Ce sont des données manga-news ; seul le manifeste
+  dérivé, limité aux 35 séries de la collection, entre dans le dépôt. §5 note que l'usage
+  *programmatique* de manga-news attend une autorisation — **ce cas est différent** : l'export
+  est offert par le site, obtenu par l'utilisateur, pour sa propre collection.
+- **Seules les lignes déjà parues comptent.** Une annonce à plus de deux mois bouge, de l'aveu
+  même de la source ; les lignes futures vont dans `aParaitre` et n'écrivent pas `tomesParus`.
+- **Même filtre d'édition que pour la BnF** : 543 lignes écartées portant `Coffret`,
+  `Collector`, `Édition spéciale`, `Roman`, `Perfect`… L'égalité de titre est stricte, ce qui
+  protège au passage des séries voisines : `Kaiju N°8 - Side B` ne matche pas `Kaiju N°8`.
+- **35 éditions sur 108 s'apparient, et c'est le bon chiffre** — pas un défaut de rapprochement.
+  Vérifié sur dix séries actives : neuf s'apparient exactement, et la dixième, `mashle`, n'a
+  effectivement rien publié dans la fenêtre. Les 73 autres n'ont pas paru en deux ans, ce qui
+  est cohérent avec 55 éditions terminées.
+
+**Écrit en base : 4 éditions élargies** — `call-of-the-night` 18, `demon-slave` 20,
+`kagurabachi` 9, `terraformars` 23 — et surtout **127 ISBN et 127 dates de sortie**, sur deux
+champs restés vides depuis l'étape 1. `demon-slave` passe de « À jour » à 19/20 : le tome paru
+le 20 août remonte désormais dans Manquants.
+
+**Ce que ça ouvre** : `Volume.isbn` alimente directement le scan de code-barres, et
+`Volume.dateSortie` rend possible l'écran « Sorties à venir » de §9 — il suffira des fichiers
+des mois suivants, ceux fournis s'arrêtant au mois courant.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
@@ -1355,7 +1398,7 @@ fantôme** ; BLACK LAGOON 13/13 dit « À jour ». Sur les 69 éditions autrefoi
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 579 sur 1 653, déposées dans Vercel Blob. Plus aucune édition
+- **Couvertures** : 1 611 sur 1 690, déposées dans Vercel Blob. Plus aucune édition
   entièrement dépourvue. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
