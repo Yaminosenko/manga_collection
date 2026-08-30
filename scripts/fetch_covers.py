@@ -28,6 +28,7 @@ LOT_COUVERTURES = 100
 SEUIL_SIMILARITE = 0.86
 CANDIDATS_A_VERIFIER = 4
 PENALITE_SATELLITE = 0.30
+ECART_SCORE_NEGLIGEABLE = 0.02
 MARQUEURS_SATELLITE = (
     "pre-serialization",
     "fan colored",
@@ -155,7 +156,12 @@ def trouver_manga(titre):
         return None
 
     ordonnes = sorted(candidats.items(), key=lambda paire: paire[1], reverse=True)
-    tetes = [identifiant for identifiant, _ in ordonnes[:CANDIDATS_A_VERIFIER]]
+    meilleur_score = ordonnes[0][1]
+    tetes = [
+        identifiant
+        for identifiant, score in ordonnes[:CANDIDATS_A_VERIFIER]
+        if meilleur_score - score <= ECART_SCORE_NEGLIGEABLE
+    ]
     if len(tetes) == 1:
         return tetes[0]
 

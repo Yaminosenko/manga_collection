@@ -1176,6 +1176,40 @@ contre 23,4 Ko ailleurs — ce ne sont pas des images vides mais les couvertures
 des aplats monochromes avec un dessin gaufré, que WebP réduit à presque rien. Vérifié à l'œil
 avant de conclure.
 
+### Corrigé — une série mère battait toujours son propre spin-off (30 août 2026)
+
+Signalé à l'usage : `RED EYES SWORD Akame Ga Kill – ZERO` portait les couvertures des tomes 1
+à 10 de la série de base. Les deux slugs pointaient vers le **même identifiant MangaDex**.
+
+**La cause est le départage introduit le 29 août contre les fiches satellites** :
+
+```python
+return max(tetes, key=compter_couvertures)
+```
+
+Il jetait le score de similarité et ne gardait que le candidat ayant le plus de couvertures.
+C'était juste contre `Bleach (Pre-Serialization)`, qui n'en a qu'une — mais **une série mère a
+toujours plus de tomes que son préquel**, donc elle gagnait systématiquement. Ici les deux
+fiches passaient le seuil de 0,86, mais *Akame ga Kill! Zero* marquait ~0,96 contre ~0,87 pour
+la série de base, et ce meilleur score était jeté.
+
+**Correctif** : `ECART_SCORE_NEGLIGEABLE = 0.02`. Le nombre de couvertures ne départage plus
+qu'entre candidats **à score équivalent**. L'intention d'origine tient : une fiche satellite
+porte le *même* titre, donc le même score, donc elle reste battue au compte ; un spin-off score
+franchement mieux et gagne d'emblée. Vérifié : Zero → `334fcfdf`, série de base inchangée.
+
+**Une seule collision dans toute la collection**, cherchée systématiquement en comptant les
+identifiants MangaDex partagés — 92 identifiants distincts pour 93 slugs résolus.
+
+**`covers:upload` gagne `--force <slug>`.** Sa reprise sur incident, qui saute ce qui est déjà
+dans Blob, empêchait précisément les corrections. `npm run covers:upload -- --force <slug>`
+renvoie l'édition quoi qu'il arrive.
+
+**Conséquence du cache immuable** : les URL Blob ne changent pas, et l'en-tête est
+`max-age=31536000`. Le CDN sert bien les nouvelles images — vérifié octet pour octet — mais
+**un appareil qui avait déjà affiché les mauvaises couvertures les gardera un an**. Il faut y
+forcer un rechargement dur une fois.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`

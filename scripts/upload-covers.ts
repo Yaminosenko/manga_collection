@@ -15,6 +15,7 @@ const CACHE_UN_AN_SECONDES = 31_536_000;
 const CONCURRENCE = 8;
 const PAGE_LISTE = 1000;
 const RETOUR_ARRIERE = "--revert";
+const FORCER = "--force";
 
 type Manifeste = Record<string, number[]>;
 
@@ -132,6 +133,13 @@ async function main() {
     return;
   }
 
+  const forces = new Set(
+    process.argv.slice(process.argv.indexOf(FORCER) + 1).filter((valeur) => !valeur.startsWith("--")),
+  );
+  if (process.argv.includes(FORCER)) {
+    console.log(`renvoi force : ${[...forces].join(", ") || "(aucun slug donne)"}`);
+  }
+
   const existants = await listerBlobsExistants();
   console.log(`${existants.size} couvertures deja dans Blob`);
 
@@ -141,7 +149,7 @@ async function main() {
 
   const aEnvoyer = couvertures.filter((couverture) => {
     const deja = existants.get(couverture.chemin);
-    if (deja) {
+    if (deja && !forces.has(couverture.slug)) {
       urls.set(couverture.chemin, deja);
       return false;
     }
