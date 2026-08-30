@@ -1054,25 +1054,22 @@ en plus lourd. Et quel que soit le chemin, **il faut le réseau** : §6 reste co
   4 séries de la collection sont multi-éditions — le cas se posera.
 - **Couvertures** : faites à 87 % et **déposées dans Vercel Blob**. Restent les 214 tomes
   détaillés ci-dessus, dont 36 exclus volontairement.
-- **Déclarer `ACCESS_PASSWORD` dans les variables du projet Vercel.** Sans elle la garde
-  refuse tout, ce qui est le bon échec mais rend l'application inutilisable.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
   en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
-- **Test sur téléphone** : la mise en page est validée (grille à 2 colonnes, largeur), et le
-  blocage cross-origin qui tuait toute interaction est levé. **Le cochage au doigt, la barre
-  d'onglets et les cibles à 44 px restent à exercer sur l'écran tactile** — c'était impossible
-  tant que React n'hydratait pas.
 - **12 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent.
   **Ne pas transposer la similarité de `fetch_covers.py`** comme le suggérait la note
   précédente : l'enrichissement AniList a montré que le seuil rejette les bonnes réponses dès
   que le titre VF s'éloigne. La table `RECHERCHES_MANUELLES` de `fetch-anilist.ts` est le
-  motif qui marche, et les titres romaji désormais en base (`titreVo`, 101/108) donnent
+  motif qui marche, et les titres romaji désormais en base (`titreVo`, 104/108) donnent
   au passage un second terme de recherche à essayer contre la BnF.
-- **Pousser `main` sur GitHub.** `origin/main` en est resté à l'étape 1 : les 15 commits des
-  étapes 2 à 5, des couvertures et de Blob n'existent que sur le poste local. Le jeton GitHub
-  enregistré est périmé — purger l'identifiant (`git credential reject`) et repousser.
+- **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
+  `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
+  `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.
+- **Sauvegarde régulière de la base.** §7 la réclame et elle n'existe qu'en morceaux :
+  `data/series-avant-anilist.json` couvre les séries, rien ne couvre les possessions — la seule
+  donnée vraiment irremplaçable, puisqu'elle vient du geste de l'utilisateur.
 
 ### Reprendre sur un poste neuf
 
@@ -1095,8 +1092,6 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
 - **Clé d'API Google Books** : à créer, et à vérifier qu'elle ne réclame pas de carte. Sans elle,
   aucune couverture de tome ni ISBN (§5). L'étape 5 ne l'a pas exigée — elle ne sert qu'au
   niveau tome, donc au remplissage des couvertures et au rafraîchissement de fond.
-- **Premier déploiement Vercel** : jamais fait. Variables `DATABASE_URL` et `DIRECT_URL` à
-  déclarer, Vercel Authentication à activer avant toute donnée réelle en ligne.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
 - **`Edition.slugMangaNews` est nul sur les 112 éditions.** Le Sheet ne le portait pas, et le
