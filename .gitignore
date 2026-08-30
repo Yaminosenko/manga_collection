@@ -36,3 +36,5 @@ coverage/
 /lib/generated/prisma
 
 !CLAUDE.md
+
+tsconfig.tsbuildinfo
