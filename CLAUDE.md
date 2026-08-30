@@ -1013,6 +1013,40 @@ manga), `tsugumi-project`. Elles sont dans `ABSENTES_D_ANILIST` et ne coûtent p
 aujourd'hui, et `creerSerieAvecEdition` les laisse vides : le nettoyage ne rapporterait rien
 tant qu'il n'y a pas d'écran pour les montrer.
 
+### Tranché — l'installation sur Android (30 août 2026)
+
+La volonté de départ était une application installable, pas un site. Elle est atteignable, et
+le manifeste de §12 remplit déjà tous les critères.
+
+**Chrome n'exige plus de service worker pour l'installation.** Les critères actuels sont :
+HTTPS, un manifeste avec `name` ou `short_name`, des icônes 192 et 512, un `start_url`, un
+`display` parmi `standalone` / `fullscreen` / `minimal-ui`, et `prefer_related_applications`
+absent ou faux. `app/manifest.ts` coche tout. La note « l'installation attend le service
+worker » était fausse : elle n'attend que le HTTPS.
+
+**Sur Android, « Installer » produit déjà un vrai APK.** Chrome demande à Google de générer un
+**WebAPK** : l'application entre dans le tiroir d'applications, figure dans *Paramètres →
+Applications*, a sa propre fenêtre dans les récents, sans barre de navigateur. Ce n'est pas un
+raccourci. Aucun travail supplémentaire.
+
+**Pour un fichier `.apk` autonome, le chemin est Bubblewrap** — l'outil officiel de Google. Il
+enveloppe le site dans une *Trusted Web Activity* et sort un APK signé, à installer en
+sideload. Il réclame un JDK, le SDK Android, un keystore, et surtout
+**`/.well-known/assetlinks.json` servi publiquement**, portant l'empreinte SHA-256 de la clé de
+signature. Sans lui, Android ne peut pas vérifier le domaine et le TWA affiche une barre d'URL.
+Le Play Store coûterait 25 $ une fois ; le sideload est gratuit et tient la contrainte de §7.
+
+**Conséquence déjà appliquée** : la garde d'accès interceptait `/.well-known/`. La vérification
+Digital Asset Links interroge cette URL **sans cookie** et aurait pris un 307 vers `/acces`. Le
+chemin est exclu du `matcher` de `proxy.ts`, avec le point échappé — vérifié que
+`/xwell-known/secret` reste refusé, ce qu'un point non échappé aurait laissé passer. C'est de
+toute façon la bonne hygiène : `/.well-known/` est réservé aux métadonnées machines et ne doit
+jamais être derrière une authentification.
+
+**Capacitor et les coquilles natives n'apportent rien ici** : l'application est rendue côté
+serveur et écrit par Server Actions contre Neon. Une coquille afficherait le même site distant,
+en plus lourd. Et quel que soit le chemin, **il faut le réseau** : §6 reste consultation seule.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
@@ -1023,7 +1057,9 @@ tant qu'il n'y a pas d'écran pour les montrer.
 - **Déclarer `ACCESS_PASSWORD` dans les variables du projet Vercel.** Sans elle la garde
   refuse tout, ce qui est le bon échec mais rend l'application inutilisable.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
-  en cache, et l'installation attend le déploiement HTTPS.
+  en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
+- **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
+  côté garde ; restent le keystore et `assetlinks.json`.
 - **Test sur téléphone** : la mise en page est validée (grille à 2 colonnes, largeur), et le
   blocage cross-origin qui tuait toute interaction est levé. **Le cochage au doigt, la barre
   d'onglets et les cibles à 44 px restent à exercer sur l'écran tactile** — c'était impossible
