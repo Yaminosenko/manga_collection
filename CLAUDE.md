@@ -1566,12 +1566,12 @@ distincte, sans cookie existant**, où l'on peut poser un jeton depuis la consol
   en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
-- **12 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent.
-  **Ne pas transposer la similarité de `fetch_covers.py`** comme le suggérait la note
-  précédente : l'enrichissement AniList a montré que le seuil rejette les bonnes réponses dès
-  que le titre VF s'éloigne. La table `RECHERCHES_MANUELLES` de `fetch-anilist.ts` est le
-  motif qui marche, et les titres romaji désormais en base (`titreVo`, 104/108) donnent
-  au passage un second terme de recherche à essayer contre la BnF.
+- **13 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent.
+  **Ne pas transposer la similarité de `fetch_covers.py`** : l'enrichissement AniList a montré
+  que le seuil rejette les bonnes réponses dès que le titre VF s'éloigne. La table
+  `RECHERCHES_MANUELLES` est le motif qui marche, et `titreVo` (104/108) donne un second terme
+  à essayer contre la BnF. **Le planning manga-news ne les couvre pas** — vérifié le 30 août :
+  aucune des 13 n'y figure, elles n'ont rien publié dans la fenêtre de 25 mois.
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
   `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
   `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.
@@ -1599,13 +1599,20 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
 
 ### Décisions encore ouvertes
 
-- **Clé d'API Google Books** : à créer, et à vérifier qu'elle ne réclame pas de carte. Sans elle,
-  aucune couverture de tome ni ISBN (§5). L'étape 5 ne l'a pas exigée — elle ne sert qu'au
-  niveau tome, donc au remplissage des couvertures et au rafraîchissement de fond.
+- **Clé d'API Google Books : devenue sans objet.** §5 la voulait pour l'ISBN et la date de
+  parution par tome ; le planning manga-news donne les deux, en meilleure qualité et sans clé.
+  À rouvrir seulement si une source de couvertures de tome manque un jour.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.slugMangaNews` est nul sur les 112 éditions.** Le Sheet ne le portait pas, et le
-  lien manga-news ne s'affiche donc jamais. `Edition.editeur` est réglé : 100/112 depuis la BnF.
+- **`Edition.slugMangaNews` est nul sur les 113 éditions.** Le Sheet ne le portait pas, et le
+  lien sortant de la page Édition ne s'affiche donc jamais. Le planning ne porte pas les slugs
+  non plus — il faudrait les déduire des titres, ou les saisir.
+- **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
+  peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
+- **Écran « Sorties à venir » (§9)** : les données existent désormais — 11 annonces avec date,
+  ISBN et couverture. Il ne manque que l'écran.
+- **Scan EAN-13 (§9)** : la chaîne photo → ISBN → édition est prouvée, et `Volume.isbn` est
+  amorcé sur 127 tomes. `BarcodeDetector` limite le scan à Android.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
