@@ -8,7 +8,7 @@ import re
 import sys
 import unicodedata
 
-DOSSIER_DEFAUT = "E:/Download/manga_planning_2024-2026"
+DOSSIER_DEFAUT = os.environ.get("PLANNING_DIR", "data/planning")
 SOURCE_BASE = "data/backup.json"
 FICHIER_MANIFESTE = "data/planning.json"
 NOM_EDITION_SIMPLE = "editionsimple"
@@ -110,6 +110,11 @@ def lire_planning(dossier):
 
 def main():
     dossier = sys.argv[1] if len(sys.argv) > 1 else DOSSIER_DEFAUT
+    if not os.path.isdir(dossier):
+        raise SystemExit(
+            f"{dossier} est introuvable. Les CSV manga-news ne sont pas versionnes : "
+            "les telecharger, puis passer le dossier en argument ou definir PLANNING_DIR."
+        )
     aujourd_hui = datetime.date.today()
     index = editions_simples()
     fichiers, lignes = lire_planning(dossier)

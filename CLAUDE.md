@@ -1742,17 +1742,48 @@ pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'e
 
 ### Reprendre sur un poste neuf
 
-1. `git clone` puis `npm install` — le client Prisma se régénère tout seul.
-2. Créer `.env` sur le modèle de `.env.example`, avec les deux chaînes reprises du tableau de
-   bord Neon (**Connect**, interrupteur *Connection pooling* pour l'une, sans pour l'autre).
-   Les secrets ne sont pas dans le dépôt et n'y seront jamais.
-3. `npm run dev`. **Ne pas relancer le seed** : la base Neon est déjà remplie, elle est la
-   source de vérité, pas `data/collection.json`.
-4. `npm run db:backup` avant toute manipulation de masse. `data/backup.json` est versionné et
-   `npm run db:backup -- --restore --reset` remonte la base entière si Neon la perd.
-5. Rien à faire pour les couvertures : elles sont dans Blob et la base porte leurs URL
-   absolues. `npm run covers:fetch` ne sert plus qu'à en acquérir de nouvelles, suivi de
-   `npm run covers:upload` — qui réclame `BLOB_READ_WRITE_TOKEN` dans `.env`.
+1. `git clone`, puis `npm install` — le client Prisma se régénère tout seul.
+2. **Python et Pillow** pour les scripts de couvertures : `pip install -r requirements.txt`.
+3. Créer `.env` sur le modèle de `.env.example`. **Trois variables sont indispensables** :
+
+   | Variable | Où la trouver |
+   |---|---|
+   | `DATABASE_URL` | Neon → *Connect*, interrupteur **Connection pooling** activé |
+   | `DIRECT_URL` | le même, **sans** le pooling. Sert aux migrations |
+   | `ACCESS_PASSWORD` | le mot de passe de la garde. **Le même que dans Vercel**, sinon les deux divergent |
+
+   Deux autres sont facultatives : `BLOB_READ_WRITE_TOKEN` (Vercel → Storage → le store, onglet
+   `.env.local`) pour déposer des couvertures, et `LOCAL_DATABASE_URL` pour exercer un script
+   destructif sur un Postgres local. **Aucun secret n'est dans le dépôt et n'y sera jamais.**
+4. `npm run dev`. **Ne pas relancer le seed** : la base Neon est remplie et fait foi, pas
+   `data/collection.json` qui est figé au point zéro de l'import.
+
+**Ce qui n'est pas dans le dépôt et qu'un poste neuf n'aura pas :**
+
+- **Les couvertures** (`public/covers/`, ignoré). Sans objet pour l'affichage : elles sont dans
+  Blob et la base porte leurs URL absolues. Ne les récupérer que pour en acquérir de nouvelles.
+- **Les CSV de planning manga-news.** À retélécharger depuis le site, un fichier par mois. Le
+  script les prend en argument ou par `PLANNING_DIR` ; il refuse de tourner si le dossier
+  n'existe pas plutôt que de travailler à vide.
+- **Les images de couvertures fournies à la main.** Elles ont déjà été converties et déposées ;
+  seul un nouveau lot en demanderait.
+
+**Les commandes, dans leur ordre d'emploi :**
+
+| Commande | Rôle |
+|---|---|
+| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout |
+| `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste |
+| `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
+| `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex |
+| `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
+| `npm run covers:upload` | dépose dans Blob et écrit `couvertureUrl`. `-- --force <slug>` pour corriger |
+| `npm run anilist:fetch` puis `anilist:apply` | genres et titres VO |
+| `npm run publication:fetch` puis `publication:apply` | tomes parus BnF et état de parution |
+| `npm run db:migrate` | applique les migrations à Neon sur le 443 |
+
+**Toujours relire le manifeste entre le `fetch` et le `apply`** — c'est la raison d'être du
+découpage en deux temps, et l'oublier a déjà coûté une relecture après coup.
 
 Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un réseau ordinaire,
 `prisma migrate dev` attaque Neon directement et le détour par `npx prisma dev` devient inutile —

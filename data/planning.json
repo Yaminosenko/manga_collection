@@ -759,7 +759,7 @@
         "isbn": "9791042021665"
       }
     },
-    "tomesParusEnBase": 24
+    "tomesParusEnBase": 34
   },
   "oriant-samurai-quest": {
     "aParaitre": {},
@@ -782,7 +782,7 @@
         "isbn": "9791043302039"
       }
     },
-    "tomesParusEnBase": 19
+    "tomesParusEnBase": 22
   },
   "oshi-no-ko": {
     "aParaitre": {},
@@ -1165,7 +1165,7 @@
         "isbn": "9782386585838"
       }
     },
-    "tomesParusEnBase": 12
+    "tomesParusEnBase": 13
   },
   "to-a-new-you": {
     "aParaitre": {},
@@ -1207,7 +1207,7 @@
         "isbn": "9791041117383"
       }
     },
-    "tomesParusEnBase": 12
+    "tomesParusEnBase": 13
   },
   "yusei-no-last-boss": {
     "aParaitre": {},
@@ -1225,6 +1225,6 @@
         "isbn": "9791041110667"
       }
     },
-    "tomesParusEnBase": 8
+    "tomesParusEnBase": 10
   }
 }
