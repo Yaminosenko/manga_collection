@@ -109,3 +109,5 @@ export const TITRE_PLANNING = "Planning";
 export const LIBELLE_PLANNING_VIDE =
   "Aucune sortie annoncée pour vos éditions. Importez les planning des mois à venir.";
 export const LIBELLE_PLANNING_ERREUR = "Le planning n’a pas pu être chargé.";
+
+export const PREFIXE_VALEUR_PARTIELLE = "≥ ";

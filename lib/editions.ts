@@ -95,21 +95,38 @@ export async function chargerCollection(): Promise<Collection> {
       aVerifier: true,
       ajouteeLe: true,
       couvertureUrl: true,
+      prixDefautCentimes: true,
       serie: { select: { titre: true, _count: { select: { editions: true } } } },
       volumes: {
         orderBy: { numero: "asc" },
         select: {
           numero: true,
           couvertureUrl: true,
+          prixCentimes: true,
           possession: { select: { possede: true } },
         },
       },
     },
   });
 
+  let valeurCentimes = 0;
+  let tomesSansPrix = 0;
+
   const toutes = editions.map((edition) => {
     const possedes = edition.volumes.filter((volume) => volume.possession?.possede);
     const dernier = possedes.at(-1) ?? null;
+
+    if (edition.statut !== "VENDUE") {
+      for (const volume of possedes) {
+        const prix = volume.prixCentimes ?? edition.prixDefautCentimes;
+        if (prix === null) {
+          tomesSansPrix += 1;
+        } else {
+          valeurCentimes += prix;
+        }
+      }
+    }
+
     return {
       slug: edition.slug,
       titre: edition.serie.titre,
@@ -135,6 +152,8 @@ export async function chargerCollection(): Promise<Collection> {
     vendues: toutes.filter((ligne) => ligne.statut === "VENDUE"),
     tomesPossedes: lignes.reduce((total, ligne) => total + ligne.possedes, 0),
     nombreEditions: lignes.length,
+    valeurCentimes,
+    tomesSansPrix,
   };
 }
 

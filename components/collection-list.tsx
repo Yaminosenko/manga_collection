@@ -12,10 +12,11 @@ import {
   LIBELLE_SENS_DECROISSANT,
   LIBELLE_VENDUES,
   PLACEHOLDER_RECHERCHE,
+  PREFIXE_VALEUR_PARTIELLE,
   TRIS,
   type CleTri,
 } from "@/lib/constants";
-import { formaterNombre } from "@/lib/format";
+import { formaterNombre, formaterPrix } from "@/lib/format";
 import { usePreferenceTri } from "@/lib/use-sort-preference";
 import type { Collection, LigneCollection } from "@/lib/domain";
 
@@ -82,10 +83,16 @@ export function CollectionList({ collection }: { collection: Collection }) {
     <>
       <header className="flex flex-col gap-[12px] px-[18px] pt-[14px] pb-[10px]">
         <div className="flex items-baseline justify-between gap-[12px]">
-          <h1 className="text-[20px] font-medium text-text">Collection</h1>
-          <span className="text-[11.5px] whitespace-nowrap text-neutral-500">
-            {formaterNombre(collection.tomesPossedes)} tomes ·{" "}
-            {formaterNombre(collection.nombreEditions)} éditions
+          <h1 className="text-text text-[20px] font-medium">Collection</h1>
+          <span className="flex flex-col items-end gap-[2px] whitespace-nowrap">
+            <span className="text-[11.5px] text-neutral-500">
+              {formaterNombre(collection.tomesPossedes)} tomes ·{" "}
+              {formaterNombre(collection.nombreEditions)} éditions
+            </span>
+            <span className="text-accent text-[13px] font-medium">
+              {collection.tomesSansPrix > 0 ? PREFIXE_VALEUR_PARTIELLE : ""}
+              {formaterPrix(collection.valeurCentimes)}
+            </span>
           </span>
         </div>
 

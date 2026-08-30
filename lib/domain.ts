@@ -86,6 +86,8 @@ export type Collection = {
   vendues: LigneCollection[];
   tomesPossedes: number;
   nombreEditions: number;
+  valeurCentimes: number;
+  tomesSansPrix: number;
 };
 
 export type EditionManquante = {

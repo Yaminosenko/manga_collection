@@ -1592,6 +1592,17 @@ l'appariement ne joue que si le titre correspond. À retenir avant de s'étonner
 **Visible en mode invité** : l'écran ne porte aucune écriture. La barre passe à quatre onglets
 pour le propriétaire, trois pour l'invité.
 
+### Fait — la valeur en en-tête de la Collection (30 août 2026)
+
+§3 définissait « valeur totale de la collection = somme sur toutes les éditions non vendues »
+sans qu'aucun écran ne l'affiche. Elle est désormais sous les compteurs : **≥ 8 772,91 €**.
+
+`chargerCollection` somme `Volume.prixCentimes ?? Edition.prixDefautCentimes` sur les tomes
+possédés des éditions non vendues, et compte à part ceux dont le prix est indéterminable.
+**Le préfixe `≥` apparaît dès qu'il en reste un** — aujourd'hui un seul, `goodnight-punpun`,
+créée depuis l'application sans prix saisi. Afficher un montant rond quand une part manque
+serait faux ; le signe le dit sans encombrer.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
