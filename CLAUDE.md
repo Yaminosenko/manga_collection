@@ -1564,6 +1564,23 @@ qui s'apparient à une édition possédée. Montrer les 598 aurait demandé une 
 lien avec `Edition` et un rafraîchissement mensuel — l'application suit une collection, pas un
 catalogue.
 
+**Corrigé — les fautes de frappe du Sheet faisaient rater 9 éditions (30 août).** Signalé sur
+`ITCHI THE WITCH`, dont le tome 5 manquait : l'appariement se faisait par **égalité stricte**
+des titres normalisés, et `itchithewitch` ne vaut pas `ichithewitch`. Une table
+`TITRES_MANUELS` dans `import_planning.py` corrige neuf cas — `One-Punch Man`,
+`Orient - Samurai Quest`, `The Unwanted Undead Adventurer`, `Why Nobody Remembers My World ?`,
+`Yasei no Last Boss`, `Nier: Automata - Opération Pearl Harbor`, `Légendaires (les) - Saga`,
+`Smoking behind the Supermarket with You`, `Ichi the Witch`.
+
+**Cherchés par similarité, mais retenus à la main.** Le balayage a rendu 14 candidats à plus de
+0,80 ; **cinq étaient faux** — `DRAGON BALL` → *Dragon Ball SD*, `GANTZ` → *Gantz E*,
+`MY HERO ACADEMIA - Smash` → *My Hero Academia*, `ALMA` → *Almark*, et un Pokémon d'une autre
+édition. Automatiser le seuil aurait injecté les tomes d'autres séries : même leçon qu'AniList.
+
+Gain : **44 éditions appariées au lieu de 35**, 156 tomes datés avec ISBN au lieu de 127,
+**16 sorties à venir au lieu de 11**, et cinq `tomesParus` périmés relevés — `one-puch-man`
+24 → 34, que ni la BnF ni AniList n'avaient pu corriger puisqu'ils butaient sur la même faute.
+
 **Le planning est une photographie, pas un flux.** Ajouter une série ne fait pas apparaître ses
 sorties : il faut relancer `npm run db:backup`, `planning:import` puis `planning:apply`, et
 l'appariement ne joue que si le titre correspond. À retenir avant de s'étonner d'un écran vide.

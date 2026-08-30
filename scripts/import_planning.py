@@ -37,6 +37,18 @@ MARQUEURS_AUTRE_EDITION = (
     "coloriage",
 )
 
+TITRES_MANUELS = {
+    "itchi-the-witch": "Ichi the Witch",
+    "les-legendaires-saga": "Légendaires (les) - Saga",
+    "nier-automata-op-pearl-harbor": "Nier: Automata - Opération Pearl Harbor",
+    "one-puch-man": "One-Punch Man",
+    "oriant-samurai-quest": "Orient - Samurai Quest",
+    "smoking-behind-the-supermarket": "Smoking behind the Supermarket with You",
+    "the-unwanted-unded-adventurer": "The Unwanted Undead Adventurer",
+    "why-nobody-remember-my-world": "Why Nobody Remembers My World ?",
+    "yusei-no-last-boss": "Yasei no Last Boss",
+}
+
 MOTIF_VOLUME = re.compile(r"\bVol\.\s*(\d{1,3})\b")
 LONGUEUR_EAN = 13
 
@@ -74,11 +86,15 @@ def editions_simples():
     for serie in base["series"]:
         for edition in serie["editions"]:
             if normaliser(edition["nom"]) == NOM_EDITION_SIMPLE:
-                index[normaliser(serie["titre"])] = {
+                fiche = {
                     "slug": edition["slug"],
                     "titre": serie["titre"],
                     "tomesParusEnBase": edition["tomesParus"],
                 }
+                index[normaliser(serie["titre"])] = fiche
+                manuel = TITRES_MANUELS.get(edition["slug"])
+                if manuel:
+                    index[normaliser(manuel)] = fiche
     return index
 
 

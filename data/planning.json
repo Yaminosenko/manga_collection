@@ -243,6 +243,40 @@
     },
     "tomesParusEnBase": 20
   },
+  "itchi-the-witch": {
+    "aParaitre": {
+      "5": {
+        "date": "2026-09-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032723524"
+      }
+    },
+    "maximum": 4,
+    "titre": "ITCHI THE WITCH",
+    "tomes": {
+      "1": {
+        "date": "2026-02-12",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724699"
+      },
+      "2": {
+        "date": "2026-02-12",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724484"
+      },
+      "3": {
+        "date": "2026-04-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032724217"
+      },
+      "4": {
+        "date": "2026-06-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032723944"
+      }
+    },
+    "tomesParusEnBase": 4
+  },
   "je-suis-un-assassin-et-je-surpasse-le-heros": {
     "aParaitre": {},
     "maximum": 6,
@@ -512,6 +546,35 @@
     },
     "tomesParusEnBase": 15
   },
+  "les-legendaires-saga": {
+    "aParaitre": {
+      "13": {
+        "date": "2026-09-17",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413093466"
+      }
+    },
+    "maximum": 12,
+    "titre": "LES LEGENDAIRES Saga",
+    "tomes": {
+      "10": {
+        "date": "2025-02-19",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413076162"
+      },
+      "11": {
+        "date": "2025-06-25",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413088639"
+      },
+      "12": {
+        "date": "2026-01-29",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413088646"
+      }
+    },
+    "tomesParusEnBase": 12
+  },
   "magus-of-the-library": {
     "aParaitre": {},
     "maximum": 9,
@@ -645,6 +708,81 @@
       }
     },
     "tomesParusEnBase": 42
+  },
+  "nier-automata-op-pearl-harbor": {
+    "aParaitre": {},
+    "maximum": 4,
+    "titre": "NIER AUTOMATA - OP PEARL HARBOR",
+    "tomes": {
+      "4": {
+        "date": "2025-01-09",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014391"
+      }
+    },
+    "tomesParusEnBase": 4
+  },
+  "one-puch-man": {
+    "aParaitre": {
+      "35": {
+        "date": "2026-10-08",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021672"
+      }
+    },
+    "maximum": 34,
+    "titre": "ONE PUCH MAN",
+    "tomes": {
+      "30": {
+        "date": "2024-12-05",
+        "editeur": "Kurokawa",
+        "isbn": "9791042014889"
+      },
+      "31": {
+        "date": "2025-04-10",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018627"
+      },
+      "32": {
+        "date": "2025-09-11",
+        "editeur": "Kurokawa",
+        "isbn": "9791042018634"
+      },
+      "33": {
+        "date": "2026-02-12",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021658"
+      },
+      "34": {
+        "date": "2026-06-11",
+        "editeur": "Kurokawa",
+        "isbn": "9791042021665"
+      }
+    },
+    "tomesParusEnBase": 24
+  },
+  "oriant-samurai-quest": {
+    "aParaitre": {},
+    "maximum": 22,
+    "titre": "ORIANT - SAMURAI QUEST",
+    "tomes": {
+      "20": {
+        "date": "2024-09-18",
+        "editeur": "Pika",
+        "isbn": "9782811690564"
+      },
+      "21": {
+        "date": "2024-12-04",
+        "editeur": "Pika",
+        "isbn": "9782811694944"
+      },
+      "22": {
+        "date": "2025-08-27",
+        "editeur": "Pika",
+        "isbn": "9791043302039"
+      }
+    },
+    "tomesParusEnBase": 19
   },
   "oshi-no-ko": {
     "aParaitre": {},
@@ -813,6 +951,50 @@
     },
     "tomesParusEnBase": 23
   },
+  "smoking-behind-the-supermarket": {
+    "aParaitre": {
+      "7": {
+        "date": "2026-10-30",
+        "editeur": "Kana",
+        "isbn": "9782505144434"
+      }
+    },
+    "maximum": 6,
+    "titre": "SMOKING BEHIND THE SUPERMARKET",
+    "tomes": {
+      "1": {
+        "date": "2024-09-06",
+        "editeur": "Kana",
+        "isbn": "9782505123545"
+      },
+      "2": {
+        "date": "2025-02-14",
+        "editeur": "Kana",
+        "isbn": "9782505129080"
+      },
+      "3": {
+        "date": "2025-05-30",
+        "editeur": "Kana",
+        "isbn": "9782505130024"
+      },
+      "4": {
+        "date": "2025-09-19",
+        "editeur": "Kana",
+        "isbn": "9782505133889"
+      },
+      "5": {
+        "date": "2026-02-06",
+        "editeur": "Kana",
+        "isbn": "9782505135791"
+      },
+      "6": {
+        "date": "2026-05-15",
+        "editeur": "Kana",
+        "isbn": "9782505144427"
+      }
+    },
+    "tomesParusEnBase": 6
+  },
   "solo-leveling": {
     "aParaitre": {},
     "maximum": 19,
@@ -967,6 +1149,24 @@
     },
     "tomesParusEnBase": 10
   },
+  "the-unwanted-unded-adventurer": {
+    "aParaitre": {},
+    "maximum": 13,
+    "titre": "THE UNWANTED UNDED ADVENTURER",
+    "tomes": {
+      "12": {
+        "date": "2024-09-13",
+        "editeur": "Meian",
+        "isbn": "9782385031077"
+      },
+      "13": {
+        "date": "2026-07-22",
+        "editeur": "Meian",
+        "isbn": "9782386585838"
+      }
+    },
+    "tomesParusEnBase": 12
+  },
   "to-a-new-you": {
     "aParaitre": {},
     "maximum": 6,
@@ -979,5 +1179,52 @@
       }
     },
     "tomesParusEnBase": 6
+  },
+  "why-nobody-remember-my-world": {
+    "aParaitre": {
+      "14": {
+        "date": "2026-10-07",
+        "editeur": "Doki Doki",
+        "isbn": "9791041119974"
+      }
+    },
+    "maximum": 13,
+    "titre": "WHY NOBODY REMEMBER MY WORLD",
+    "tomes": {
+      "11": {
+        "date": "2024-11-06",
+        "editeur": "Doki Doki",
+        "isbn": "9791041110674"
+      },
+      "12": {
+        "date": "2025-04-02",
+        "editeur": "Doki Doki",
+        "isbn": "9791041112999"
+      },
+      "13": {
+        "date": "2026-03-04",
+        "editeur": "Doki Doki",
+        "isbn": "9791041117383"
+      }
+    },
+    "tomesParusEnBase": 12
+  },
+  "yusei-no-last-boss": {
+    "aParaitre": {},
+    "maximum": 10,
+    "titre": "YUSEI NO LAST BOSS",
+    "tomes": {
+      "10": {
+        "date": "2026-06-03",
+        "editeur": "Doki Doki",
+        "isbn": "9791041119530"
+      },
+      "9": {
+        "date": "2025-04-02",
+        "editeur": "Doki Doki",
+        "isbn": "9791041110667"
+      }
+    },
+    "tomesParusEnBase": 8
   }
 }

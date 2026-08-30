@@ -1,13 +1,13 @@
 {
-  "exporteeLe": "2026-08-30T16:05:47.731Z",
+  "exporteeLe": "2026-08-30T18:03:39.320Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
-    "tomes": 1693,
+    "tomes": 1710,
     "possedes": 1153,
     "aVerifier": 24,
     "forcees": 3,
-    "couvertures": 1657
+    "couvertures": 1674
   },
   "series": [
     {
@@ -33,7 +33,7 @@
           "nom": "Édition simple",
           "editeur": "Ki-oon",
           "tomesParus": 2,
-          "editionTerminee": false,
+          "editionTerminee": true,
           "prixDefautCentimes": 690,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -4067,7 +4067,7 @@
           "nom": "Édition simple",
           "editeur": "Panini Manga",
           "tomesParus": 1,
-          "editionTerminee": false,
+          "editionTerminee": true,
           "prixDefautCentimes": 1600,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -5884,7 +5884,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "bd965116-de61-496c-bd40-b5c13318b700",
+              "id": "056f0db3-2c92-43d6-be3d-8a51be5afcbc",
               "numero": 33,
               "date": "2026-10-21T00:00:00.000Z",
               "isbn": "9782820356574",
@@ -6639,7 +6639,7 @@
           "nom": "Édition simple",
           "editeur": null,
           "tomesParus": 1,
-          "editionTerminee": null,
+          "editionTerminee": true,
           "prixDefautCentimes": 690,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -7057,7 +7057,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "6265501a-12a4-4992-b36c-1a20c24fc82f",
+              "id": "8c2baa69-7c4c-4a74-b246-13b37905db9d",
               "numero": 23,
               "date": "2026-10-14T00:00:00.000Z",
               "isbn": "9782820300348",
@@ -9493,7 +9493,7 @@
           "nom": "Édition simple",
           "editeur": "Glénat",
           "tomesParus": 21,
-          "editionTerminee": false,
+          "editionTerminee": true,
           "prixDefautCentimes": 690,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -9869,9 +9869,9 @@
           "nom": "Tomes unitaires",
           "editeur": "Glénat",
           "tomesParus": 3,
-          "editionTerminee": null,
+          "editionTerminee": true,
           "prixDefautCentimes": 690,
-          "statut": "EN_COURS",
+          "statut": "ABANDONNEE",
           "termineeForcee": false,
           "raisonCompletion": null,
           "aVerifier": false,
@@ -12101,7 +12101,7 @@
           "nom": "Perfect Edition",
           "editeur": "Tonkam",
           "tomesParus": 5,
-          "editionTerminee": null,
+          "editionTerminee": true,
           "prixDefautCentimes": 1600,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -12792,13 +12792,21 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [],
+          "sorties": [
+            {
+              "id": "6d4623c2-6483-4ec9-8fbb-16ecd18bc653",
+              "numero": 5,
+              "date": "2026-09-03T00:00:00.000Z",
+              "isbn": "9791032723524",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/itchi-the-witch/5.webp"
+            }
+          ],
           "volumes": [
             {
               "id": "79c3336f-bb27-4dce-9706-b580df4a716a",
               "numero": 1,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724699",
+              "dateSortie": "2026-02-12T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/itchi-the-witch/1.webp",
               "possession": {
@@ -12814,8 +12822,8 @@
             {
               "id": "4196f804-bed9-49ff-ba9c-7d9cc7397f6d",
               "numero": 2,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724484",
+              "dateSortie": "2026-02-12T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/itchi-the-witch/2.webp",
               "possession": {
@@ -12831,8 +12839,8 @@
             {
               "id": "7a82964e-8221-4f7f-87b9-0619ea9e5938",
               "numero": 3,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032724217",
+              "dateSortie": "2026-04-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/itchi-the-witch/3.webp",
               "possession": {
@@ -12848,8 +12856,8 @@
             {
               "id": "3197832f-23d0-4f05-beff-ab498ca7ba9f",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791032723944",
+              "dateSortie": "2026-06-04T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/itchi-the-witch/4.webp",
               "possession": {
@@ -13340,7 +13348,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "3f2011c0-25ee-49e1-87da-0cec61b6c982",
+              "id": "11f035ec-86f2-412c-8523-f8cc88527816",
               "numero": 10,
               "date": "2026-09-11T00:00:00.000Z",
               "isbn": "9782505142829",
@@ -13543,7 +13551,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "84745fcc-9d79-4357-9e5c-5ac81896c490",
+              "id": "a3a65724-f946-4a9b-ac7e-0d02a8765cc6",
               "numero": 15,
               "date": "2026-10-08T00:00:00.000Z",
               "isbn": "9791042021528",
@@ -14588,7 +14596,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "202a38da-475b-456a-ba7e-2d967e9a4729",
+              "id": "1bae70e0-cb55-469c-b8d1-5258d32c2c8a",
               "numero": 16,
               "date": "2026-10-01T00:00:00.000Z",
               "isbn": "9791032723395",
@@ -15081,7 +15089,15 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [],
+          "sorties": [
+            {
+              "id": "007cb47c-eb06-4028-9d3f-683c5c7d0dc3",
+              "numero": 13,
+              "date": "2026-09-17T00:00:00.000Z",
+              "isbn": "9782413093466",
+              "couvertureUrl": null
+            }
+          ],
           "volumes": [
             {
               "id": "d3b35733-532e-4668-9b95-8715cb9c3a24",
@@ -15239,8 +15255,8 @@
             {
               "id": "0e84f3d2-5b1b-4688-bf70-7341f8cebc50",
               "numero": 10,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782413076162",
+              "dateSortie": "2025-02-19T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": null,
               "possession": {
@@ -15256,8 +15272,8 @@
             {
               "id": "eecad036-9c5c-4302-8fe2-941143675462",
               "numero": 11,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782413088639",
+              "dateSortie": "2025-06-25T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": null,
               "possession": {
@@ -15273,8 +15289,8 @@
             {
               "id": "b094c60f-be22-431e-bf8b-ea49d01fe043",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782413088646",
+              "dateSortie": "2026-01-29T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": null,
               "possession": {
@@ -17809,7 +17825,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "e545347d-ea9e-4d43-bbc9-ec8187ccfe29",
+              "id": "94c11677-6faf-41a9-8130-5c14f81d0c0f",
               "numero": 19,
               "date": "2026-09-25T00:00:00.000Z",
               "isbn": "9782377176465",
@@ -19895,7 +19911,7 @@
           "nom": "Édition simple",
           "editeur": "Ki-oon",
           "tomesParus": 1,
-          "editionTerminee": null,
+          "editionTerminee": true,
           "prixDefautCentimes": 690,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -21448,8 +21464,8 @@
             {
               "id": "618bfd61-c14f-4713-b7ae-9d0b29f64eb5",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791042014391",
+              "dateSortie": "2025-01-09T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/nier-automata-op-pearl-harbor/4.webp",
               "possession": {
@@ -21757,7 +21773,7 @@
           "slug": "one-puch-man",
           "nom": "Édition simple",
           "editeur": null,
-          "tomesParus": 24,
+          "tomesParus": 34,
           "editionTerminee": false,
           "prixDefautCentimes": 680,
           "statut": "ABANDONNEE",
@@ -21767,7 +21783,15 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [],
+          "sorties": [
+            {
+              "id": "ab4b13a8-9096-4680-bbb7-fbdaab6fae27",
+              "numero": 35,
+              "date": "2026-10-08T00:00:00.000Z",
+              "isbn": "9791042021672",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/35.webp"
+            }
+          ],
           "volumes": [
             {
               "id": "237010a3-d96c-468c-bd7f-5ba8124f0a4a",
@@ -22176,6 +22200,176 @@
                 "lu": false,
                 "note": null
               }
+            },
+            {
+              "id": "b9ebd168-67e4-43b8-8ba0-7b3b11745700",
+              "numero": 25,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/25.webp",
+              "possession": {
+                "id": "134f031d-8b2e-4f8f-9353-14141ec460d5",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "4c78d85f-5d1f-422c-aaf7-2e75d16cc2ff",
+              "numero": 26,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/26.webp",
+              "possession": {
+                "id": "b0cdc4e1-73fd-4bba-948a-f7d7d08e441c",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "67b205ba-565d-4526-8ce0-931e89105568",
+              "numero": 27,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/27.webp",
+              "possession": {
+                "id": "76527663-dbad-4f2c-bd93-a707085572db",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "73ab7f55-cc40-41d9-abfb-bc64975dfb70",
+              "numero": 28,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/28.webp",
+              "possession": {
+                "id": "a7373fef-1355-4f7e-b5ba-fe419bfd5d98",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "7c538f93-39db-4216-b3e1-2e30a770923d",
+              "numero": 29,
+              "isbn": null,
+              "dateSortie": null,
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/29.webp",
+              "possession": {
+                "id": "012b6ad5-bd7d-416c-9451-a72302c22c24",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "7c51b959-852b-4ed6-b573-3c48902c8af1",
+              "numero": 30,
+              "isbn": "9791042014889",
+              "dateSortie": "2024-12-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/30.webp",
+              "possession": {
+                "id": "7e71b7bf-7072-47f3-a4c5-5ef3879aee33",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "6e49359d-f6dc-4f48-9de2-b6bd76e8cee0",
+              "numero": 31,
+              "isbn": "9791042018627",
+              "dateSortie": "2025-04-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/31.webp",
+              "possession": {
+                "id": "176fdfe2-0408-40c6-acf0-727edac40262",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "188a5cd1-6411-4196-9844-b8114685715e",
+              "numero": 32,
+              "isbn": "9791042018634",
+              "dateSortie": "2025-09-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/32.webp",
+              "possession": {
+                "id": "b0f35b91-0472-4432-8c3b-51eac609a0d6",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "3d1fd7cc-4072-4eea-81bf-6c0767fcb75e",
+              "numero": 33,
+              "isbn": "9791042021658",
+              "dateSortie": "2026-02-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/33.webp",
+              "possession": {
+                "id": "9e064916-fb19-4a15-9478-d94529efbc51",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "4f6ab48e-8433-4fc2-83ae-5330440559d0",
+              "numero": 34,
+              "isbn": "9791042021665",
+              "dateSortie": "2026-06-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/one-puch-man/34.webp",
+              "possession": {
+                "id": "9ec06bf1-21d3-4045-8c52-d47291812e87",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
             }
           ]
         }
@@ -22202,7 +22396,7 @@
           "slug": "oriant-samurai-quest",
           "nom": "Édition simple",
           "editeur": null,
-          "tomesParus": 19,
+          "tomesParus": 22,
           "editionTerminee": false,
           "prixDefautCentimes": 720,
           "statut": "EN_COURS",
@@ -22529,6 +22723,57 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oriant-samurai-quest/19.webp",
               "possession": {
                 "id": "8c394cd9-d5c2-4dbc-95a7-4ea2d2ba2994",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "0eb22875-eca7-4b33-9db5-b24f976db97b",
+              "numero": 20,
+              "isbn": "9782811690564",
+              "dateSortie": "2024-09-18T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oriant-samurai-quest/20.webp",
+              "possession": {
+                "id": "0f867302-47e8-4415-ab42-f2802736cab1",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "25dc5a99-8bdc-446d-89eb-90ed76be1f3b",
+              "numero": 21,
+              "isbn": "9782811694944",
+              "dateSortie": "2024-12-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oriant-samurai-quest/21.webp",
+              "possession": {
+                "id": "25df53ae-270b-453c-bfd0-50ec4a24f618",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "fc5b1642-d10c-4979-b515-2f3471891bf2",
+              "numero": 22,
+              "isbn": "9791043302039",
+              "dateSortie": "2025-08-27T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/oriant-samurai-quest/22.webp",
+              "possession": {
+                "id": "80fa6e35-9119-4b50-b710-d3129164c0fc",
                 "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
@@ -23686,7 +23931,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "80866b96-e4a9-4711-8380-baacebc121dc",
+              "id": "0c4ebddd-fca0-4dbf-b89b-35809769d732",
               "numero": 20,
               "date": "2026-10-30T00:00:00.000Z",
               "isbn": "9791033570103",
@@ -24057,7 +24302,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "ae39ba6e-9fc5-457a-925c-9bfd6344dd26",
+              "id": "3f876da0-a7f7-4f5c-a79d-035161a0086e",
               "numero": 17,
               "date": "2026-10-09T00:00:00.000Z",
               "isbn": "9782505144649",
@@ -24377,7 +24622,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "ad1370b0-60f1-4aa1-ac86-8a9e6e98fadb",
+              "id": "acd032c2-c451-4591-9e97-c17fda7901b2",
               "numero": 3,
               "date": "2026-09-03T00:00:00.000Z",
               "isbn": "9791032723579",
@@ -25590,7 +25835,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "7a635d12-e21d-4ce4-a174-43b02e40e263",
+              "id": "3d85add5-2160-4699-bfa5-1e1c0b7df0c9",
               "numero": 5,
               "date": "2026-10-21T00:00:00.000Z",
               "isbn": "9782344071717",
@@ -28118,13 +28363,21 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [],
+          "sorties": [
+            {
+              "id": "3ebd2d47-34c2-4b04-89a9-b7e8dcabbbd1",
+              "numero": 7,
+              "date": "2026-10-30T00:00:00.000Z",
+              "isbn": "9782505144434",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/7.webp"
+            }
+          ],
           "volumes": [
             {
               "id": "1b0d7763-13e1-4ef8-869c-4377a67b3fa8",
               "numero": 1,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505123545",
+              "dateSortie": "2024-09-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/1.webp",
               "possession": {
@@ -28140,8 +28393,8 @@
             {
               "id": "42f05ee4-d9c9-4b7f-b2bb-a8590b78e233",
               "numero": 2,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505129080",
+              "dateSortie": "2025-02-14T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/2.webp",
               "possession": {
@@ -28157,8 +28410,8 @@
             {
               "id": "1b6837cb-e25e-47d0-95d0-dac5d1998cbd",
               "numero": 3,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505130024",
+              "dateSortie": "2025-05-30T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/3.webp",
               "possession": {
@@ -28174,8 +28427,8 @@
             {
               "id": "8aab43b4-1af6-4e94-8d07-0dcc1af888d4",
               "numero": 4,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505133889",
+              "dateSortie": "2025-09-19T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/4.webp",
               "possession": {
@@ -28191,8 +28444,8 @@
             {
               "id": "35036cc6-2338-4677-8368-7f61e9616533",
               "numero": 5,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505135791",
+              "dateSortie": "2026-02-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/5.webp",
               "possession": {
@@ -28208,8 +28461,8 @@
             {
               "id": "21e6e53f-c3d8-4ecb-97ea-311934a3dc02",
               "numero": 6,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782505144427",
+              "dateSortie": "2026-05-15T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/smoking-behind-the-supermarket/6.webp",
               "possession": {
@@ -30347,7 +30600,7 @@
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
           "sorties": [
             {
-              "id": "96c1ecd4-83be-4682-b6dc-4863d8fb193b",
+              "id": "b8251c71-d785-4571-8f2f-b3d9bee6b93e",
               "numero": 24,
               "date": "2026-09-17T00:00:00.000Z",
               "isbn": "9782372876308",
@@ -30985,7 +31238,7 @@
           "nom": "Édition simple",
           "editeur": null,
           "tomesParus": 1,
-          "editionTerminee": false,
+          "editionTerminee": true,
           "prixDefautCentimes": 750,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -31422,7 +31675,7 @@
           "slug": "the-unwanted-unded-adventurer",
           "nom": "Édition simple",
           "editeur": "Meian",
-          "tomesParus": 12,
+          "tomesParus": 13,
           "editionTerminee": false,
           "prixDefautCentimes": 690,
           "statut": "EN_COURS",
@@ -31624,13 +31877,30 @@
             {
               "id": "9eddc51f-4388-49fb-972b-0918ec354f18",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9782385031077",
+              "dateSortie": "2024-09-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-unwanted-unded-adventurer/12.webp",
               "possession": {
                 "id": "0669694e-a9ea-4e74-a4de-9f9c03d3de93",
                 "possede": true,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "6308b7d4-a586-43b4-82e5-76f9dbbbe560",
+              "numero": 13,
+              "isbn": "9782386585838",
+              "dateSortie": "2026-07-22T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/the-unwanted-unded-adventurer/13.webp",
+              "possession": {
+                "id": "b7b2ddaf-6bb8-4c80-950d-89339b2856c7",
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -31808,7 +32078,7 @@
           "nom": "Édition simple",
           "editeur": null,
           "tomesParus": 7,
-          "editionTerminee": null,
+          "editionTerminee": true,
           "prixDefautCentimes": 790,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -32480,7 +32750,7 @@
           "slug": "why-nobody-remember-my-world",
           "nom": "Édition simple",
           "editeur": "Bamboo Édition",
-          "tomesParus": 12,
+          "tomesParus": 13,
           "editionTerminee": false,
           "prixDefautCentimes": 750,
           "statut": "ABANDONNEE",
@@ -32490,7 +32760,15 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [],
+          "sorties": [
+            {
+              "id": "900577cc-dc2e-4f4b-afc4-a51471667cc6",
+              "numero": 14,
+              "date": "2026-10-07T00:00:00.000Z",
+              "isbn": "9791041119974",
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/14.webp"
+            }
+          ],
           "volumes": [
             {
               "id": "db88d977-b74b-40bf-ba96-fafb190a314a",
@@ -32665,8 +32943,8 @@
             {
               "id": "c858015b-31a1-49c3-a726-1b29d0a1295f",
               "numero": 11,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041110674",
+              "dateSortie": "2024-11-06T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/11.webp",
               "possession": {
@@ -32682,12 +32960,29 @@
             {
               "id": "d6fbb76d-bdaf-4484-a652-fd56a61886d9",
               "numero": 12,
-              "isbn": null,
-              "dateSortie": null,
+              "isbn": "9791041112999",
+              "dateSortie": "2025-04-02T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/12.webp",
               "possession": {
                 "id": "b149add9-7330-461f-9a7c-44c60f7ba678",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "469f10ea-5d9b-414e-8d1b-f5b2ea311d9c",
+              "numero": 13,
+              "isbn": "9791041117383",
+              "dateSortie": "2026-03-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/why-nobody-remember-my-world/13.webp",
+              "possession": {
+                "id": "1931eff9-2b57-480a-86aa-037e30a24d1a",
                 "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
@@ -33171,7 +33466,7 @@
           "slug": "yusei-no-last-boss",
           "nom": "Édition simple",
           "editeur": null,
-          "tomesParus": 8,
+          "tomesParus": 10,
           "editionTerminee": false,
           "prixDefautCentimes": 750,
           "statut": "VENDUE",
@@ -33311,6 +33606,40 @@
               "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/8.webp",
               "possession": {
                 "id": "03954679-6667-44b8-a872-660a8860346c",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "0206e9f7-5a10-4eb7-b668-7245da9affa2",
+              "numero": 9,
+              "isbn": "9791041110667",
+              "dateSortie": "2025-04-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/9.webp",
+              "possession": {
+                "id": "869cde24-0cef-4582-a859-2895061fff43",
+                "possede": false,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "fecc16a9-16a0-410b-a48c-90e0b465e6ce",
+              "numero": 10,
+              "isbn": "9791041119530",
+              "dateSortie": "2026-06-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com/covers/yusei-no-last-boss/10.webp",
+              "possession": {
+                "id": "091b5c71-926a-4fec-b9a8-b1ad3318c41f",
                 "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
