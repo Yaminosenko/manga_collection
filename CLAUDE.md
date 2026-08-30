@@ -958,8 +958,8 @@ Les genres passent à la liste fermée d'AniList, décidée le 29 août. Au pass
 | `data/anilist.json` | le manifeste, versionné, relu à la main entre les deux |
 | `data/series-avant-anilist.json` | l'état des 108 séries avant écriture, versionné |
 
-Résultat : **101 correspondances sur 108**, 17 genres distincts contre 27 avant, tous dans la
-liste fermée. `titreVo` à 101/108. Les sept compteurs sont intacts.
+Résultat : **104 correspondances sur 108**, 17 genres distincts contre 27 avant, tous dans la
+liste fermée. `titreVo` à 104/108. Les sept compteurs sont intacts.
 
 - **Le seuil de similarité ne marche pas ici, et c'est le point central.** `fetch_covers.py`
   départage ses candidats MangaDex à 0,86 de similarité ; transposer cette approche à AniList
@@ -973,7 +973,9 @@ liste fermée. `titreVo` à 101/108. Les sept compteurs sont intacts.
   tronqué en `POKEMON` rend *Kabigon no Yume Gourmet*, et `YURAGI` rend *Natsu no Su*. Faux
   appariements confiants, qu'aucun score ne rattrape puisque le score ne vaut rien ici.
   **D'où `RECHERCHES_MANUELLES`**, une table écrite à la main — même forme que
-  `EDITEURS_CANONIQUES` — qui a fait passer la résolution de 79 à 101.
+  `EDITEURS_CANONIQUES` — qui a fait passer la résolution de 79 à 101, puis à 104 avec trois
+  titres japonais fournis à la main : *Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden*,
+  *YoRHa: Shinjuwan Kouka Sakusen Kiroku*, *Yasei no Last Boss ga Arawareta!*.
 - **AniList limite à 30 requêtes par minute, pas 90.** À 1 req/s le script s'est fait couper
   par une rafale de 429 après 34 séries. Réglé à 28/min, avec respect de l'en-tête
   `Retry-After`. Le cache par slug rend la reprise gratuite ; les échecs, eux, sont
@@ -983,20 +985,28 @@ liste fermée. `titreVo` à 101/108. Les sept compteurs sont intacts.
   après avoir sauvegardé l'état des 108 séries.
 - **Les 4 valeurs orphelines basculent en thèmes** — `School Life`, `Mature`, `Guide`,
   `Nekketsu` — comme le 29 août l'avait prévu. Vérifié en base : les quatre y sont.
-- **Les 7 séries sans correspondance gardent leurs genres, traduits** par une table de trois
+- **Les 4 séries sans correspondance gardent leurs genres, traduits** par une table de trois
   entrées (`Aventure`, `Comédie`, `Fantastique`). Deux databooks se retrouvent sans genre du
-  tout, ce qui est exact : leur seul genre était `Guide`.
+  tout, ce qui est exact : leur seul genre était `Guide`. `ABSENTES_D_ANILIST` les liste pour
+  qu'elles cessent d'être réinterrogées à chaque passage.
+- **Trois hors-séries héritent de leur série mère, et c'est assumé** (30 août) :
+  `PANDORA HEART – 8,5` et `THE ANCIENT MAGUS BRIDE – Supplément 2` n'avaient que `Guide`,
+  `MUSHOKU TENSEI – L'épée d'Iris` rien du tout. Les genres de l'œuvre principale valent mieux
+  que le vide sur un hors-série.
+- **La relecture du manifeste a été sautée la première fois.** Le dispositif en deux temps
+  existe pour qu'un humain regarde `data/anilist.json` avant l'écriture ; le premier passage
+  est allé droit à `anilist:apply`. C'est cette relecture, faite après coup, qui a fait
+  remonter les trois héritages et les trois titres manquants. **Ne pas enchaîner les deux
+  commandes.**
 
 **Ce que ça débloque, sans que ce fût le but** : `titreVo` sert à l'anti-doublon de l'écran
 Ajouter (`lib/actions.ts:107-125`). À 0/108 ce garde-fou ne fonctionnait que sur le titre
 français — chercher « Shingeki no Kyojin » ne reconnaissait pas « L'ATTAQUE DES TITANS » déjà
 en collection. Il fonctionne maintenant sur 101 séries.
 
-**Les 7 non résolues** : `bleach-13-blades` et `my-hero-academia-ultra-archive` (databooks,
-absents d'AniList), `les-legendaires-saga` (BD française, pas un manga),
-`nier-automata-op-pearl-harbor`, `saint-seiya-the-lost-canvas-chronicles`, `tsugumi-project`,
-`yusei-no-last-boss` — terme de recherche non trouvé. Une entrée dans `RECHERCHES_MANUELLES`
-suffit à en débloquer une, sans purger le cache.
+**Les 4 non résolues, confirmées absentes d'AniList** : `bleach-13-blades` et
+`my-hero-academia-ultra-archive` (databooks), `les-legendaires-saga` (BD française, pas un
+manga), `tsugumi-project`. Elles sont dans `ABSENTES_D_ANILIST` et ne coûtent plus d'appel.
 
 **`themes` reste en français et garde ses coupures d'import** — `Post` + `apo`, `Super` +
 `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`. 99 valeurs. Aucun écran ne les affiche

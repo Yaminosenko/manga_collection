@@ -11,6 +11,13 @@ const ATTENTE_PAR_DEFAUT_SECONDES = 60;
 const CANDIDATS_CONSERVES = 3;
 const SCORE_A_RELIRE = 0.5;
 
+const ABSENTES_D_ANILIST = new Set([
+  "bleach-13-blades",
+  "les-legendaires-saga",
+  "my-hero-academia-ultra-archive",
+  "tsugumi-project",
+]);
+
 const RECHERCHES_MANUELLES: Record<string, string> = {
   "ippo-s4-la-loi-du-ring": "Hajime no Ippo",
   "je-suis-un-assassin-et-je-surpasse-le-heros":
@@ -21,6 +28,7 @@ const RECHERCHES_MANUELLES: Record<string, string> = {
   "mirai-nikki-le-journal-du-futur": "Mirai Nikki",
   "monster-musume-everyday-life-with-monster-girls": "Monster Musume no Iru Nichijou",
   "mushoku-tensei-l-epee-d-iris": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+  "nier-automata-op-pearl-harbor": "YoRHa: Shinjuwan Kouka Sakusen Kiroku",
   "one-puch-man": "One Punch-Man",
   "oriant-samurai-quest": "Orient",
   "pandora-heart-8-5": "Pandora Hearts",
@@ -29,12 +37,15 @@ const RECHERCHES_MANUELLES: Record<string, string> = {
   "red-eyes-sword-akame-ga-kill": "Akame ga Kill!",
   "red-eyes-sword-akame-ga-kill-zero": "Akame ga Kill! Zero",
   "saga-of-tany-the-evil-youjo-senki": "Youjo Senki",
+  "saint-seiya-the-lost-canvas-chronicles":
+    "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden",
   "terraformars": "Terra Formars",
   "the-ancient-magus-bride-supplement-2": "Mahoutsukai no Yome",
   "the-unwanted-unded-adventurer": "Nozomanu Fushi no Boukensha",
   "uqholder": "UQ Holder",
   "why-nobody-remember-my-world": "Naze Boku no Sekai wo Daremo Oboeteinai no ka",
   "yuna-de-la-pension-yuragi": "Yuragi-sou no Yuuna-san",
+  "yusei-no-last-boss": "Yasei no Last Boss ga Arawareta!",
 };
 
 const REQUETE = `
@@ -168,7 +179,7 @@ async function main() {
   const aRelire: string[] = [];
 
   for (const serie of series) {
-    if (manifeste[serie.slug] == null) {
+    if (manifeste[serie.slug] == null && !ABSENTES_D_ANILIST.has(serie.slug)) {
       const recherche = RECHERCHES_MANUELLES[serie.slug] ?? serie.titre;
       try {
         const media = await interroger(recherche);

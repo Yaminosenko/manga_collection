@@ -638,7 +638,22 @@
     "score": 0.762,
     "autresCandidats": []
   },
-  "yusei-no-last-boss": null,
+  "yusei-no-last-boss": {
+    "titreLocal": "YUSEI NO LAST BOSS",
+    "recherche": "Yasei no Last Boss ga Arawareta!",
+    "id": 101829,
+    "romaji": "Yasei no Last Boss ga Arawareta!",
+    "native": "野生のラスボスが現れた！",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 0.538,
+    "autresCandidats": [
+      "Yasei no Last Boss ga Arawareta!"
+    ]
+  },
   "fire-punch": {
     "titreLocal": "FIRE PUNCH",
     "id": 87170,
@@ -1193,7 +1208,21 @@
       "Shin Seiki Evangelion: Koutetsu no Girlfriend 2nd"
     ]
   },
-  "nier-automata-op-pearl-harbor": null,
+  "nier-automata-op-pearl-harbor": {
+    "titreLocal": "NIER AUTOMATA - OP PEARL HARBOR",
+    "recherche": "YoRHa: Shinjuwan Kouka Sakusen Kiroku",
+    "id": 127809,
+    "romaji": "Yorha: Shinjuwan Kouka Sakusen Kiroku",
+    "native": "ヨルハ 真珠湾降下作戦記録",
+    "genres": [
+      "Action",
+      "Drama",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "score": 0.263,
+    "autresCandidats": []
+  },
   "nozokiana": {
     "titreLocal": "NOZOKIANA",
     "id": 51419,
@@ -1498,7 +1527,20 @@
       "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden"
     ]
   },
-  "saint-seiya-the-lost-canvas-chronicles": null,
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "titreLocal": "SAINT SEIYA - THE LOST CANVAS - CHRONICLES",
+    "recherche": "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden",
+    "id": 55916,
+    "romaji": "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden",
+    "native": "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 0.65,
+    "autresCandidats": []
+  },
   "saotome-love-boxing": {
     "titreLocal": "SAOTOME LOVE & BOXING",
     "id": 99851,
