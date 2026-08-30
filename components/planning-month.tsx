@@ -24,15 +24,13 @@ export function PlanningMonth({ sorties }: { sorties: SortiePlanning[] }) {
           href={`/edition/${sortie.slug}`}
           className="border-row-divider flex items-center gap-[12px] border-b py-[9px] transition-colors hover:bg-text/2"
         >
-          <span className="shadow-edge case-a-paraitre relative h-[100px] w-[70px] flex-none overflow-hidden rounded-cover">
-            <span className="couverture-manquante absolute inset-0">
-              <Cover
-                couvertureUrl={sortie.couvertureUrl}
-                numero={sortie.numero}
-                titre={sortie.titre}
-                afficherNumero={false}
-              />
-            </span>
+          <span className="shadow-edge relative h-[120px] w-[84px] flex-none overflow-hidden rounded-cover">
+            <Cover
+              couvertureUrl={sortie.couvertureUrl}
+              numero={sortie.numero}
+              titre={sortie.titre}
+              afficherNumero={false}
+            />
             <span className="bg-scrim absolute bottom-0 left-0 m-[4px] rounded-[3px] px-[6px] py-[2px] text-[11px] font-medium text-neutral-500">
               {sortie.numero}
             </span>

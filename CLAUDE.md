@@ -1548,9 +1548,13 @@ distincte, sans cookie existant**, où l'on peut poser un jeton depuis la consol
 
 ### Fait — l'écran Planning (30 août 2026)
 
-L'écran « Sorties à venir » de §9, quatrième onglet. Il lit la table `Sortie` : **11 sorties,
-groupées par mois**, avec la couverture au traitement « à paraître », le numéro de tome,
-l'éditeur et le jour.
+L'écran « Sorties à venir » de §9, quatrième onglet. Il lit la table `Sortie` : les sorties
+**groupées par mois**, avec la couverture, le numéro de tome, l'éditeur et le jour.
+
+**La couverture y est pleine et à la taille de la Collection** — 84 × 120, ni obscurcie ni
+sous contour pointillé, contrairement à la grille « Mes tomes ». Le traitement « à paraître »
+n'a de sens que mêlé aux tomes possédés, pour les distinguer ; sur un écran qui ne montre que
+des sorties futures, il n'oppose plus rien et ne fait qu'abîmer l'image.
 
 | Fichier | Rôle |
 |---|---|
