@@ -13,6 +13,7 @@
     "db:backup": "tsx scripts/backup-db.ts",
     "covers:fetch": "python scripts/fetch_covers.py",
     "covers:upload": "tsx scripts/upload-covers.ts",
+    "covers:manuelles": "python scripts/import_covers_manuelles.py",
     "anilist:fetch": "tsx scripts/fetch-anilist.ts",
     "anilist:apply": "tsx scripts/apply-anilist.ts",
     "publication:fetch": "python scripts/fetch_publication.py",

@@ -1424,6 +1424,31 @@ absent de la configuration. La migration a été **écrite à la main** en calqu
 de l'initiale, **essayée sur le Postgres local** — 5 colonnes, 3 index — puis appliquée à Neon
 par `npm run db:migrate`.
 
+### Fait — les couvertures fournies à la main (30 août 2026)
+
+§5 prévoyait « la possibilité d'uploader une photo manuellement » ; elle n'existait pas.
+`npm run covers:manuelles <dossier>` la fournit, pour les 81 images qu'aucune source ne donne.
+
+**Convention** : un sous-dossier par slug d'édition, un fichier par tome dont le nom contient
+son numéro. `ippo-s4-la-loi-du-ring/1.jpg`, `berserk-prestige-edition/tome 2.png`. Les formats
+courants sont acceptés ; le script recadre et convertit en **256×360 WebP** avec le même code
+que `fetch_covers.py`, donc le poids et le rendu sont identiques.
+
+**Trois garde-fous**, éprouvés à blanc : un dossier sans édition correspondante est signalé et
+ignoré, un numéro absent de la base est refusé — `tome 99` sur une série qui en compte 19 —, et
+un tome *annoncé* va dans `covers-annonces.json` plutôt que dans `covers.json`, donc vers
+`Sortie.couvertureUrl`. Le script n'écrit jamais en base : il alimente les manifestes, et
+`npm run covers:upload` fait le reste.
+
+**Ce qui reste à fournir : 81 images sur 13 éditions.**
+
+| Cause | Tomes |
+|---|---|
+| 5 éditions non simples, exclues de MangaDex par nature — un tome double ne correspond à aucun tome japonais | 36 |
+| 5 éditions sans fiche MangaDex — `ippo-s4-la-loi-du-ring` (27), `les-legendaires-saga` (12), et trois hors-séries | 42 |
+| `solo-leveling` tome 19, trou isolé | 1 |
+| `radiant` 20 et `the-ancient-magus-bride` 24, annoncés sans jaquette déposée | 2 |
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
@@ -1433,8 +1458,8 @@ par `npm run db:migrate`.
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 611 sur 1 690, déposées dans Vercel Blob. Plus aucune édition
-  entièrement dépourvue. Le remplissage reste
+- **Couvertures** : 1 611 sur 1 690, déposées dans Vercel Blob. Les 79 manquantes n'ont
+  aucune source automatique et attendent `npm run covers:manuelles` — voir le détail ci-dessus. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de
