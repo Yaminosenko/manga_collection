@@ -19,12 +19,13 @@ const CHAMP =
   "bg-surface w-full rounded-md px-[12px] py-[9px] text-[13px] text-text outline-none placeholder:text-neutral-600";
 const BOUTON =
   "flex min-h-11 items-center justify-center rounded-md border border-accent px-[14px] text-[13px] font-medium text-accent transition-colors hover:bg-accent/12";
+const INTERVALLE_DETECTION_MS = 400;
 
 type Detecteur = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: string }[]> };
 
 export function Scanner() {
   const video = useRef<HTMLVideoElement>(null);
-  const flux = useRef<MediaStream | null>(null);
+  const [flux, setFlux] = useState<MediaStream | null>(null);
   const [camera, setCamera] = useState<"inconnue" | "active" | "indisponible">("inconnue");
   const [saisie, setSaisie] = useState("");
   const [resultat, setResultat] = useState<ResultatScan | null>(null);
@@ -44,16 +45,11 @@ export function Scanner() {
     });
   }, []);
 
-  const arreterCamera = useCallback(() => {
-    flux.current?.getTracks().forEach((piste) => piste.stop());
-    flux.current = null;
-  }, []);
-
   useEffect(() => {
     let vivant = true;
-    let minuteur: ReturnType<typeof setInterval> | null = null;
+    let obtenu: MediaStream | null = null;
 
-    async function demarrerCamera() {
+    async function ouvrirCamera() {
       const Detecteur = (window as unknown as { BarcodeDetector?: new (o: object) => Detecteur })
         .BarcodeDetector;
       if (!Detecteur || !navigator.mediaDevices?.getUserMedia) {
@@ -61,58 +57,76 @@ export function Scanner() {
         return;
       }
       try {
-        const media = await navigator.mediaDevices.getUserMedia({
+        obtenu = await navigator.mediaDevices.getUserMedia({
           video: { facingMode: "environment" },
         });
         if (!vivant) {
-          media.getTracks().forEach((piste) => piste.stop());
+          obtenu.getTracks().forEach((piste) => piste.stop());
           return;
         }
-        flux.current = media;
-        if (video.current) {
-          video.current.srcObject = media;
-          await video.current.play();
-        }
         setCamera("active");
-
-        const detecteur = new Detecteur({ formats: ["ean_13"] });
-        minuteur = setInterval(async () => {
-          if (!video.current) return;
-          try {
-            const codes = await detecteur.detect(video.current);
-            const code = codes.find((c) => isbnValide(c.rawValue));
-            if (code) {
-              if (minuteur) clearInterval(minuteur);
-              arreterCamera();
-              setCamera("inconnue");
-              setSaisie(code.rawValue);
-              resoudre(code.rawValue);
-            }
-          } catch {
-            /* une image illisible n'est pas une erreur */
-          }
-        }, 400);
+        setFlux(obtenu);
       } catch {
         setCamera("indisponible");
       }
     }
 
-    demarrerCamera();
+    ouvrirCamera();
     return () => {
       vivant = false;
-      if (minuteur) clearInterval(minuteur);
-      arreterCamera();
+      obtenu?.getTracks().forEach((piste) => piste.stop());
     };
-  }, [arreterCamera, resoudre]);
+  }, []);
+
+  useEffect(() => {
+    if (!flux || !video.current) {
+      return;
+    }
+    const element = video.current;
+    element.srcObject = flux;
+    element.play().catch(() => setCamera("indisponible"));
+
+    const Detecteur = (window as unknown as { BarcodeDetector?: new (o: object) => Detecteur })
+      .BarcodeDetector;
+    if (!Detecteur) {
+      return;
+    }
+    const detecteur = new Detecteur({ formats: ["ean_13"] });
+
+    const minuteur = setInterval(async () => {
+      try {
+        const codes = await detecteur.detect(element);
+        const code = codes.find((c) => isbnValide(c.rawValue));
+        if (code) {
+          flux.getTracks().forEach((piste) => piste.stop());
+          setFlux(null);
+          setCamera("inconnue");
+          setSaisie(code.rawValue);
+          resoudre(code.rawValue);
+        }
+      } catch {
+        /* une image illisible n'est pas une erreur */
+      }
+    }, INTERVALLE_DETECTION_MS);
+
+    return () => {
+      clearInterval(minuteur);
+      element.srcObject = null;
+    };
+  }, [flux, resoudre]);
 
   return (
     <div className="flex flex-1 flex-col gap-[16px] px-[18px] pb-[18px]">
-      {camera === "active" ? (
-        <div className="relative overflow-hidden rounded-md bg-black">
-          <video ref={video} muted playsInline className="h-[240px] w-full object-cover" />
-          <span className="absolute inset-x-[14%] top-1/2 h-[2px] -translate-y-1/2 bg-accent/70" />
-        </div>
-      ) : null}
+      <div hidden={camera !== "active"} className="relative overflow-hidden rounded-md bg-black">
+        <video
+          ref={video}
+          muted
+          autoPlay
+          playsInline
+          className="h-[240px] w-full object-cover"
+        />
+        <span className="bg-accent/70 absolute inset-x-[14%] top-1/2 h-[2px] -translate-y-1/2" />
+      </div>
 
       <p className="text-[11.5px]/[1.6] text-neutral-600">
         {camera === "indisponible" ? LIBELLE_SCAN_INDISPONIBLE : LIBELLE_SCAN_INVITE}

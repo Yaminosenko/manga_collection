@@ -1668,6 +1668,20 @@ rend sa date, `9782344067802` rend « Berserk 1 · Glénat · 2025 » avec un li
 un ISBN sans notice rend « inconnu », un code à clé fausse est refusé, et **l'invité reçoit
 500**.
 
+**Corrigé — l'aperçu caméra était noir** (signalé le 30 août). Permission accordée, pastille
+verte allumée, et pourtant rien à l'écran. Cause : l'élément `<video>` n'était rendu que si
+`camera === "active"`, mais le flux lui était attaché **avant** ce changement d'état. Au moment
+de l'affectation, `video.current` valait `null` : le flux tournait, branché sur rien.
+
+**Le remède supprime la question d'ordre plutôt que de la contourner.** Le flux passe par un
+état React, et un second effet l'attache — donc forcément après le rendu, quand l'élément
+existe. L'élément est monté en permanence ; seul son cadre est masqué.
+
+**Vérifié sans toucher à la caméra** : `canvas.captureStream()` fournit un `MediaStream` réel
+sans aucune permission. Substitué à `getUserMedia`, il a montré `srcObject` attaché, lecture en
+cours et **640 × 360 de frames décodées** — trois indicateurs qui étaient tous faux avant. À
+retenir pour tout futur travail sur la caméra depuis le poste.
+
 **Ce que ça n'adresse pas encore** : créer une seconde édition depuis un scan. La notice donne
 pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'est la suite naturelle.
 
