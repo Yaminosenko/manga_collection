@@ -65,8 +65,15 @@ et attendent la V2.
 ## 3. Règles métier
 
 ### Complétion
-Calculée : `possédés == tomesParus`.
-`termineeForcee = true` la force à vrai quel que soit le compte.
+**Deux axes indépendants, et il faut les deux.** « J'ai tous les tomes parus » n'est pas
+« la série est finie » :
+
+| Condition | Libellé |
+|---|---|
+| `possédés == tomesParus` et `editionTerminee` vrai | **Complète** |
+| `possédés == tomesParus`, édition non terminée ou inconnue | **À jour** |
+
+`termineeForcee = true` force « Terminée par choix » quel que soit le compte.
 Une édition forcée **garde sa barre réelle** (11/13 reste affiché) et ses tomes manquants
 **ne remontent pas** dans l'écran Manquants.
 
@@ -1287,6 +1294,57 @@ le tome 8 de `yusei-no-last-boss` et un tome de `solo-leveling`.
 pour la plupart, et il serait tentant de l'injecter en masse — mais `pandora-heart-8-5` aurait
 alors hérité des couvertures de la série mère, exactement la faute corrigée le même jour sur
 Akame ga Kill Zero. Chaque entrée se confirme à l'exemplaire.
+
+### Fait — l'état de parution (30 août 2026)
+
+Signalé à l'usage : « Complète » était trompeur. Il ne regardait que `possédés == tomesParus`,
+alors qu'une édition dont on possède tous les tomes parus d'une série **encore en cours** n'est
+pas complète — elle est à jour. Deux axes étaient fondus en un mot.
+
+**Le constat était pire que le libellé** : `editionTerminee` était **nul sur 112 éditions sur
+113**, l'import ne l'ayant jamais rempli. Comme `aDesTomesAParaitre` renvoie
+`editionTerminee !== true`, les 70 éditions dites « Complète » affichaient **en même temps**
+trois cases fantômes « à paraître ». AJIN annonçait 17/17 complet et des tomes à venir.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/fetch_publication.py` | `npm run publication:fetch` — BnF + AniList, n'écrit qu'un manifeste |
+| `scripts/apply-publication.ts` | `npm run publication:apply` — écrit, `--revert` pour annuler |
+| `data/publication.json` | le manifeste, versionné, relu avant écriture |
+| `data/editions-avant-publication.json` | l'état des 108 éditions avant écriture |
+
+**Ce que la BnF sait faire, et ce qu'elle ne sait pas.** Elle donne le nombre de tomes parus en
+France, mesuré sur les 108 éditions : 54 concordent avec la base, 17 la dépassent, 29 n'ont
+aucun numéro exploitable. Elle ne dit **jamais** qu'une série est terminée — c'est un catalogue
+de dépôt légal, l'absence d'un tome 33 est indiscernable de « pas encore déposé ».
+
+**Règle d'asymétrie, essentielle** : la BnF ne peut que révéler des tomes **en plus**, jamais en
+moins. Les 8 cas où elle annonçait moins que la base étaient tous des échecs de lecture — Bleach
+n'a rendu que 3 numéros sur 90 notices, My Hero Academia 6 sur 83, ce sont les notices à
+sous-titre au lieu du numéro déjà repérées en §5. **`tomesParus` n'est jamais abaissé.**
+
+**Trois garde-fous** ont écarté de mauvaises écritures :
+- **Le taux de trous.** `fullmetal-alchemist` remontait 200 avec 172 trous, `kagurabachi` 9 avec
+  5. Une lecture dont plus de 15 % des numéros manquent est rejetée.
+- **Le garde-fou par auteur**, repris de `fetch_publishers.py` : sans lui, « Kaiju » attrapait
+  des œuvres sans rapport et culminait à 75.
+- **`REEDITIONS`.** La BnF décrit l'édition d'origine ; `gantz` (37 volumes) et `blame` (10) sont
+  possédés en réédition de 18 et 6, identifiées le matin même en corrigeant les couvertures. Les
+  élargir aurait été une régression.
+
+**`editionTerminee` se déduit d'AniList, pas de la BnF.** §5 avertissait que son `status` décrit
+la publication japonaise — vrai, mais combiné au compte l'inférence tient : terminé au Japon
+**et** `tomesParus` ≥ volumes japonais ⇒ édition française terminée ; français < japonais ⇒
+certainement pas ; en cours au Japon ⇒ pas terminée. Résultat : **55 terminées, 45 en cours,
+13 indécidables** qui restent nulles.
+
+**Écrit en base** : 13 éditions élargies, **33 tomes créés** avec leur possession à `false` — les
+1 150 possédés ne bougent pas, seuls les dénominateurs. Berserk passe à 43, Blue Exorcist de 27
+à 32, Call of the Night de 14 à 17. Les couvertures des nouveaux tomes ont suivi : **1 607**.
+
+**Effet à l'écran, vérifié** : AJIN 17/17 dit « Complète » et n'affiche **plus aucune case
+fantôme** ; BLACK LAGOON 13/13 dit « À jour ». Sur les 69 éditions autrefois toutes dites
+« Complète », 32 le sont vraiment, 28 sont à jour, 9 restent indécidables.
 
 ### Reste à faire
 

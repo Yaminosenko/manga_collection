@@ -13,6 +13,7 @@ export const LIBELLES_STATUT = {
 
 export const LIBELLE_EDITION_TERMINEE = "Édition terminée";
 export const LIBELLE_COMPLETE = "Complète";
+export const LIBELLE_A_JOUR = "À jour";
 export const LIBELLE_TERMINEE_FORCEE = "Terminée par choix";
 export const LIBELLE_A_VERIFIER = "À vérifier";
 

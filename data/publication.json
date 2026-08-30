@@ -1,0 +1,2089 @@
+{
+  "act-age": {
+    "anilist": {
+      "statut": "CANCELLED",
+      "volumes": 12
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 70,
+      "retenues": 4
+    },
+    "titre": "ACT-AGE",
+    "tomesParusEnBase": 2
+  },
+  "air-gear": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 37
+    },
+    "bnf": {
+      "annee_du_dernier": "2013",
+      "lus": 37,
+      "maximum": 37,
+      "notices": 55,
+      "retenues": 42,
+      "titre_du_dernier": "Air gear. 37 / Oh ! Great",
+      "trous": []
+    },
+    "titre": "AIR GEAR",
+    "tomesParusEnBase": 37
+  },
+  "ajin": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 17
+    },
+    "bnf": {
+      "annee_du_dernier": "2021",
+      "lus": 17,
+      "maximum": 17,
+      "notices": 22,
+      "retenues": 18,
+      "titre_du_dernier": "Ajin : semi-humain. 17 / Gamon Sakurai",
+      "trous": []
+    },
+    "titre": "AJIN",
+    "tomesParusEnBase": 17
+  },
+  "all-you-need-is-kill": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 2
+    },
+    "bnf": {
+      "annee_du_dernier": "2014",
+      "lus": 2,
+      "maximum": 2,
+      "notices": 7,
+      "retenues": 6,
+      "titre_du_dernier": "All you need is kill. 2 / scénario original, Hiroshi Sakurazaka ; storyboard, Ryosuke Takeuchi ; design des personnages, Yoshitoshi Abe ; dessin par Takeshi Obata",
+      "trous": []
+    },
+    "titre": "ALL YOU NEED IS KILL",
+    "tomesParusEnBase": 2
+  },
+  "alma": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 4
+    },
+    "bnf": {
+      "annee_du_dernier": "2021",
+      "lus": 4,
+      "maximum": 4,
+      "notices": 100,
+      "retenues": 6,
+      "titre_du_dernier": "Alma. 4 / Shinji Mito",
+      "trous": []
+    },
+    "titre": "ALMA",
+    "tomesParusEnBase": 4
+  },
+  "assassination-classroom": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 21
+    },
+    "bnf": {
+      "annee_du_dernier": "2018",
+      "lus": 19,
+      "maximum": 21,
+      "notices": 21,
+      "retenues": 20,
+      "titre_du_dernier": "Assassination classroom. 21 / Yusei Matsui",
+      "trous": [
+        6,
+        14
+      ]
+    },
+    "titre": "ASSASSINATION CLASSROOM",
+    "tomesParusEnBase": 21
+  },
+  "beastars": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 22
+    },
+    "bnf": {
+      "annee_du_dernier": "2022",
+      "lus": 22,
+      "maximum": 22,
+      "notices": 23,
+      "retenues": 23,
+      "titre_du_dernier": "Beastars. Vol. 22 / Paru Itagaki",
+      "trous": []
+    },
+    "titre": "BEASTARS",
+    "tomesParusEnBase": 22
+  },
+  "berserk": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 42,
+      "maximum": 43,
+      "notices": 93,
+      "retenues": 55,
+      "titre_du_dernier": "Berserk. 43",
+      "trous": [
+        29
+      ]
+    },
+    "titre": "BERSERK",
+    "tomesParusEnBase": 42
+  },
+  "black-clover": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 3,
+      "maximum": 37,
+      "notices": 48,
+      "retenues": 46,
+      "titre_du_dernier": "Rivalité. 37, Black Clover",
+      "trous": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        35,
+        36
+      ]
+    },
+    "titre": "BLACK CLOVER",
+    "tomesParusEnBase": 37
+  },
+  "black-lagoon": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2024",
+      "lus": 13,
+      "maximum": 13,
+      "notices": 24,
+      "retenues": 21,
+      "titre_du_dernier": "Black lagoon. 013 / Rei Hiroe",
+      "trous": []
+    },
+    "titre": "BLACK LAGOON",
+    "tomesParusEnBase": 13
+  },
+  "black-torch": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 5
+    },
+    "bnf": {
+      "annee_du_dernier": "2019",
+      "lus": 5,
+      "maximum": 5,
+      "notices": 10,
+      "retenues": 6,
+      "titre_du_dernier": "Black torch. 5 / Tsuyoshi Takaki",
+      "trous": []
+    },
+    "titre": "BLACK TORCH",
+    "tomesParusEnBase": 5
+  },
+  "blackrock-shooter-innocent-soul": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 3
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
+    "tomesParusEnBase": 1
+  },
+  "blackrock-shooter-the-game": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 2
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "BLACK★ROCK SHOOTER – THE GAME",
+    "tomesParusEnBase": 2
+  },
+  "blame": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 10
+    },
+    "bnf": {
+      "annee_du_dernier": "2004",
+      "lus": 10,
+      "maximum": 10,
+      "notices": 100,
+      "retenues": 21,
+      "titre_du_dernier": "Blame. Tome 10 / Tsutomu Nihei ; [trad. par Vincent Zouzoulkovsky]",
+      "trous": []
+    },
+    "titre": "BLAME!",
+    "tomesParusEnBase": 6
+  },
+  "blazer-drive": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 9
+    },
+    "bnf": {
+      "annee_du_dernier": "2011",
+      "lus": 9,
+      "maximum": 9,
+      "notices": 10,
+      "retenues": 10,
+      "titre_du_dernier": "Blazer drive. 009 / Seishi Kishimoto",
+      "trous": []
+    },
+    "titre": "BLAZER DRIVE",
+    "tomesParusEnBase": 9
+  },
+  "bleach": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 74
+    },
+    "bnf": {
+      "annee_du_dernier": "2008",
+      "lus": 3,
+      "maximum": 26,
+      "notices": 94,
+      "retenues": 90,
+      "titre_du_dernier": "Bleach. 26, The Mascaron drive / Tite Kubo",
+      "trous": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23,
+        24,
+        25
+      ]
+    },
+    "titre": "BLEACH",
+    "tomesParusEnBase": 74
+  },
+  "bleach-13-blades": {
+    "anilist": null,
+    "bnf": {
+      "maximum": null,
+      "notices": 1,
+      "retenues": 1
+    },
+    "titre": "BLEACH – 13 BLADES",
+    "tomesParusEnBase": 1
+  },
+  "blue-exorcist": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 32,
+      "maximum": 32,
+      "notices": 40,
+      "retenues": 40,
+      "titre_du_dernier": "Blue Exorcist. 32",
+      "trous": []
+    },
+    "titre": "BLUE EXORCIST",
+    "tomesParusEnBase": 27
+  },
+  "blue-eyes-sword": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 8
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 8,
+      "maximum": 8,
+      "notices": 11,
+      "retenues": 9,
+      "titre_du_dernier": "Blue eyes sword : Hinowa ga crush !. 8 / scénario, Takahiro ; manga, Strelka",
+      "trous": []
+    },
+    "titre": "BLUE EYES SWORD",
+    "tomesParusEnBase": 8
+  },
+  "burn-the-witch": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 2,
+      "retenues": 2
+    },
+    "titre": "BURN THE WITCH",
+    "tomesParusEnBase": 1
+  },
+  "call-of-the-night": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 20
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 17,
+      "maximum": 17,
+      "notices": 39,
+      "retenues": 19,
+      "titre_du_dernier": "Call of the night - Tome 17",
+      "trous": []
+    },
+    "titre": "CALL OF THE NIGHT",
+    "tomesParusEnBase": 14
+  },
+  "chainsaw-man": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 24
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 5,
+      "maximum": 22,
+      "notices": 35,
+      "retenues": 32,
+      "titre_du_dernier": "Chainsaw Man T22 - Édition Limitée",
+      "trous": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "titre": "CHAINSAW MAN",
+    "tomesParusEnBase": 22
+  },
+  "chastity-reverse-world": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 4,
+      "maximum": 4,
+      "notices": 5,
+      "retenues": 5,
+      "titre_du_dernier": "Chastity reverse world. 4",
+      "trous": []
+    },
+    "titre": "CHASTITY REVERSE WORLD",
+    "tomesParusEnBase": 4
+  },
+  "classroom-for-heroes": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 20,
+      "maximum": 21,
+      "notices": 22,
+      "retenues": 21,
+      "titre_du_dernier": "Classroom for heroes : the return of the former brave. 21",
+      "trous": [
+        16
+      ]
+    },
+    "titre": "CLASSROOM FOR HEROES",
+    "tomesParusEnBase": 20
+  },
+  "claymore": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 27
+    },
+    "bnf": {
+      "annee_du_dernier": "2008",
+      "lus": 1,
+      "maximum": 7,
+      "notices": 37,
+      "retenues": 27,
+      "titre_du_dernier": "Claymore. 7, Les qualifications des guerrières / Norihiro Yagi",
+      "trous": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "titre": "CLAYMORE",
+    "tomesParusEnBase": 27
+  },
+  "d-gray-man": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 2,
+      "maximum": 29,
+      "notices": 44,
+      "retenues": 36,
+      "titre_du_dernier": "D.Gray-Man. 29, l'autre bookman jr.",
+      "trous": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "titre": "D.GRAY-MAN",
+    "tomesParusEnBase": 29
+  },
+  "demon-slave": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 19,
+      "maximum": 19,
+      "notices": 21,
+      "retenues": 20,
+      "titre_du_dernier": "Demon Slave. Tome 19",
+      "trous": []
+    },
+    "titre": "DEMON SLAVE",
+    "tomesParusEnBase": 19
+  },
+  "doubt": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 4
+    },
+    "bnf": {
+      "annee_du_dernier": "2010",
+      "lus": 4,
+      "maximum": 4,
+      "notices": 100,
+      "retenues": 5,
+      "titre_du_dernier": "Doubt. 4 / Yoshiki Tonogai",
+      "trous": []
+    },
+    "titre": "DOUBT",
+    "tomesParusEnBase": 4
+  },
+  "dragon-ball": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 42
+    },
+    "bnf": {
+      "annee_du_dernier": "2012",
+      "lus": 14,
+      "maximum": 21,
+      "notices": 100,
+      "retenues": 76,
+      "titre_du_dernier": "Dragon Ball : perfect edition. 21 / Akira Toriyama",
+      "trous": [
+        4,
+        6,
+        12,
+        13,
+        14,
+        17,
+        18
+      ]
+    },
+    "titre": "DRAGON BALL",
+    "tomesParusEnBase": 21
+  },
+  "fire-force": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 34
+    },
+    "bnf": {
+      "annee_du_dernier": "2024",
+      "lus": 34,
+      "maximum": 34,
+      "notices": 53,
+      "retenues": 35,
+      "titre_du_dernier": "Fire force. 34 / Atsushi Ohkubo",
+      "trous": []
+    },
+    "titre": "FIRE FORCE",
+    "tomesParusEnBase": 34
+  },
+  "fire-punch": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 8
+    },
+    "bnf": {
+      "annee_du_dernier": "2018",
+      "lus": 8,
+      "maximum": 8,
+      "notices": 17,
+      "retenues": 16,
+      "titre_du_dernier": "Fire punch. 8 / Tatsuki Fujimoto",
+      "trous": []
+    },
+    "titre": "FIRE PUNCH",
+    "tomesParusEnBase": 8
+  },
+  "fullmetal-alchemist": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 27
+    },
+    "bnf": {
+      "annee_du_dernier": "2006",
+      "lus": 28,
+      "maximum": 200,
+      "notices": 83,
+      "retenues": 78,
+      "titre_du_dernier": "Fullmetal alchemist : recueil d'illustrations : 2001, 2002, 2003 / Hiromu Arakawa ; [traduit et adapté du japonais par Maiko Okazaki et Fabien Vautrin]",
+      "trous": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ]
+    },
+    "titre": "FULLMETAL ALCHEMIST",
+    "tomesParusEnBase": 27
+  },
+  "gantz": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 37
+    },
+    "bnf": {
+      "annee_du_dernier": "2013",
+      "lus": 36,
+      "maximum": 37,
+      "notices": 100,
+      "retenues": 79,
+      "titre_du_dernier": "Gantz. 37 / Hiroya Oku",
+      "trous": [
+        24
+      ]
+    },
+    "titre": "GANTZ",
+    "tomesParusEnBase": 18
+  },
+  "goodnight-punpun": {
+    "anilist": null,
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "Goodnight Punpun",
+    "tomesParusEnBase": 13
+  },
+  "hideout": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 10,
+      "retenues": 1
+    },
+    "titre": "HIDEOUT",
+    "tomesParusEnBase": 1
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "IPPO – S4 LA LOI DU RING",
+    "tomesParusEnBase": 27
+  },
+  "itchi-the-witch": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "ITCHI THE WITCH",
+    "tomesParusEnBase": 4
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2025",
+      "lus": 6,
+      "maximum": 6,
+      "notices": 9,
+      "retenues": 9,
+      "titre_du_dernier": "Je suis un assassin et je surpasse le héros. 6 / manga, Hiroyuki Aigamo ; oeuvre originale, Matsuri Akai ...",
+      "trous": []
+    },
+    "titre": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "tomesParusEnBase": 6
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 7
+    },
+    "bnf": {
+      "annee_du_dernier": "2024",
+      "lus": 7,
+      "maximum": 7,
+      "notices": 8,
+      "retenues": 8,
+      "titre_du_dernier": "JK Haru : sex worker in another world. 7 / manga, J-Ta Yamada ; oeuvre originale, Ko Hiratori",
+      "trous": []
+    },
+    "titre": "JK HARU - SEX WORKER IN ANOTHER WORLD",
+    "tomesParusEnBase": 7
+  },
+  "judge": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 6
+    },
+    "bnf": {
+      "annee_du_dernier": "2013",
+      "lus": 6,
+      "maximum": 6,
+      "notices": 100,
+      "retenues": 8,
+      "titre_du_dernier": "Judge. 6 / Yoshiki Tonogai",
+      "trous": []
+    },
+    "titre": "JUDGE",
+    "tomesParusEnBase": 6
+  },
+  "kagurabachi": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 4,
+      "maximum": 9,
+      "notices": 14,
+      "retenues": 13,
+      "titre_du_dernier": "Kagurabachi. 9",
+      "trous": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "titre": "KAGURABACHI",
+    "tomesParusEnBase": 8
+  },
+  "kaijin-reijoh": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 14,
+      "maximum": 14,
+      "notices": 15,
+      "retenues": 15,
+      "titre_du_dernier": "Kaijin Reijoh. 14",
+      "trous": []
+    },
+    "titre": "KAIJIN REIJOH",
+    "tomesParusEnBase": 14
+  },
+  "kaiju-n8": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 16
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 15,
+      "maximum": 16,
+      "notices": 28,
+      "retenues": 26,
+      "titre_du_dernier": "Kaiju n° 8. 16",
+      "trous": [
+        14
+      ]
+    },
+    "titre": "KAIJU N°8",
+    "tomesParusEnBase": 16
+  },
+  "kemono-incidents": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": 26
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 24,
+      "maximum": 24,
+      "notices": 27,
+      "retenues": 27,
+      "titre_du_dernier": "Kemono incidents. 24",
+      "trous": []
+    },
+    "titre": "KEMONO INCIDENTS",
+    "tomesParusEnBase": 21
+  },
+  "kindergarten-wars": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 15,
+      "maximum": 15,
+      "notices": 17,
+      "retenues": 17,
+      "titre_du_dernier": "Kindergarten wars. 15",
+      "trous": []
+    },
+    "titre": "KINDERGARTEN WARS",
+    "tomesParusEnBase": 15
+  },
+  "les-chroniques-d-azfareo": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 9
+    },
+    "bnf": {
+      "annee_du_dernier": "2022",
+      "lus": 9,
+      "maximum": 9,
+      "notices": 11,
+      "retenues": 11,
+      "titre_du_dernier": "Les chroniques d'Azfaréo. 9 / Shiki Chitose",
+      "trous": []
+    },
+    "titre": "LES CHRONIQUES D'AZFAREO",
+    "tomesParusEnBase": 9
+  },
+  "les-legendaires-saga": {
+    "anilist": null,
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 12,
+      "maximum": 12,
+      "notices": 13,
+      "retenues": 13,
+      "titre_du_dernier": "Saga. T12, Les légendaires",
+      "trous": []
+    },
+    "titre": "LES LEGENDAIRES Saga",
+    "tomesParusEnBase": 7
+  },
+  "leviathan": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 3,
+      "maximum": 3,
+      "notices": 100,
+      "retenues": 4,
+      "titre_du_dernier": "Léviathan. 3 / Shiro Kuroi",
+      "trous": []
+    },
+    "titre": "LEVIATHAN",
+    "tomesParusEnBase": 3
+  },
+  "magi-the-labyrinth-of-magic": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 37
+    },
+    "bnf": {
+      "annee_du_dernier": "2020",
+      "lus": 37,
+      "maximum": 37,
+      "notices": 38,
+      "retenues": 38,
+      "titre_du_dernier": "Magi : the labyrinth of magic. 37 / Shinobu Ohtaka",
+      "trous": []
+    },
+    "titre": "MAGI - THE LABYRINTH OF MAGIC",
+    "tomesParusEnBase": 37
+  },
+  "magus-of-the-library": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 9,
+      "maximum": 9,
+      "notices": 11,
+      "retenues": 11,
+      "titre_du_dernier": "Magus of the library. 9",
+      "trous": []
+    },
+    "titre": "MAGUS OF THE LIBRARY",
+    "tomesParusEnBase": 9
+  },
+  "marimashita-iruma-kun": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "MARIMASHITA ! IRUMA-KUN !",
+    "tomesParusEnBase": 34
+  },
+  "mashle": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 18
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 4,
+      "maximum": 17,
+      "notices": 26,
+      "retenues": 26,
+      "titre_du_dernier": "Mashle. 17, Mash burnedead et la magie qui ralentit le temps / Hajime Komoto ; [traduit du japonais par Jean-Benoît Silvestre]",
+      "trous": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14
+      ]
+    },
+    "titre": "MASHLE",
+    "tomesParusEnBase": 18
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 2
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "MIRAI NIKKI - LE JOURNAL DU FUTUR",
+    "tomesParusEnBase": 12
+  },
+  "mirai-nikki-mosaic": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 1,
+      "retenues": 1
+    },
+    "titre": "MIRAI NIKKI – MOSAIC",
+    "tomesParusEnBase": 1
+  },
+  "mirai-nikki-paradox": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 1,
+      "retenues": 1
+    },
+    "titre": "MIRAI NIKKI – PARADOX",
+    "tomesParusEnBase": 1
+  },
+  "mission-in-the-apocalypse": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2025",
+      "lus": 4,
+      "maximum": 4,
+      "notices": 8,
+      "retenues": 5,
+      "titre_du_dernier": "Mission in the apocalypse. 4 / Haruo Iwamune",
+      "trous": []
+    },
+    "titre": "MISSION IN THE APOCALYPSE",
+    "tomesParusEnBase": 4
+  },
+  "monster-hunter-orage": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 4
+    },
+    "bnf": {
+      "annee_du_dernier": "2010",
+      "lus": 4,
+      "maximum": 4,
+      "notices": 9,
+      "retenues": 9,
+      "titre_du_dernier": "Monster hunter orage. 04 / Hiro Mashima...",
+      "trous": []
+    },
+    "titre": "MONSTER HUNTER ORAGE",
+    "tomesParusEnBase": 4
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2024",
+      "lus": 18,
+      "maximum": 18,
+      "notices": 19,
+      "retenues": 19,
+      "titre_du_dernier": "Monster musume : everyday life with monster girls. 18 / présenté par Okayado",
+      "trous": []
+    },
+    "titre": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
+    "tomesParusEnBase": 15
+  },
+  "mushoku-tensei": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": 4
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 23,
+      "maximum": 23,
+      "notices": 38,
+      "retenues": 37,
+      "titre_du_dernier": "Mushoku tensei : nouvelle vie, nouvelle chance. 23",
+      "trous": []
+    },
+    "titre": "MUSHOKU TENSEI",
+    "tomesParusEnBase": 23
+  },
+  "mushoku-tensei-l-epee-d-iris": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 26
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "MUSHOKU TENSEI – L'épée d'Iris",
+    "tomesParusEnBase": 1
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 12
+    },
+    "bnf": {
+      "annee_du_dernier": "2025",
+      "lus": 11,
+      "maximum": 12,
+      "notices": 13,
+      "retenues": 12,
+      "titre_du_dernier": "Mushoku tensei : les aventures de Roxy. 12 / Shôko Iwami ; d'après l'oeuvre de Rifujin na Magonote...",
+      "trous": [
+        9
+      ]
+    },
+    "titre": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "tomesParusEnBase": 9
+  },
+  "my-elder-sister": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 6,
+      "maximum": 6,
+      "notices": 8,
+      "retenues": 7,
+      "titre_du_dernier": "My elder sister : the sister of the woods with a thousand young. 6",
+      "trous": []
+    },
+    "titre": "MY ELDER SISTER",
+    "tomesParusEnBase": 6
+  },
+  "my-hero-academia": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 6
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 6,
+      "maximum": 8,
+      "notices": 90,
+      "retenues": 83,
+      "titre_du_dernier": "My hero academia : team up mission. 8",
+      "trous": [
+        6,
+        7
+      ]
+    },
+    "titre": "MY HERO ACADEMIA",
+    "tomesParusEnBase": 42
+  },
+  "my-hero-academia-smash": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 5
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 5,
+      "maximum": 5,
+      "notices": 6,
+      "retenues": 6,
+      "titre_du_dernier": "My hero academia smash. Vol. 05 / Hirofumi Neda ; concept original, Kohei Horikoshi",
+      "trous": []
+    },
+    "titre": "MY HERO ACADEMIA - Smash",
+    "tomesParusEnBase": 2
+  },
+  "my-hero-academia-ultra-archive": {
+    "anilist": null,
+    "bnf": {
+      "maximum": null,
+      "notices": 1,
+      "retenues": 1
+    },
+    "titre": "MY HERO ACADEMIA – ULTRA ARCHIVE",
+    "tomesParusEnBase": 1
+  },
+  "naruto": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 72
+    },
+    "bnf": {
+      "annee_du_dernier": "2015",
+      "lus": 54,
+      "maximum": 66,
+      "notices": 100,
+      "retenues": 68,
+      "titre_du_dernier": "Naruto. 66 / Masashi Kishimoto",
+      "trous": [
+        20,
+        26,
+        46,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        61,
+        64
+      ]
+    },
+    "titre": "NARUTO",
+    "tomesParusEnBase": 72
+  },
+  "neon-genesis-evangelion": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 14
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 7,
+      "maximum": 7,
+      "notices": 54,
+      "retenues": 25,
+      "titre_du_dernier": "Neon genesis evangelion : perfect edition. 07 / manga, Yoshiyuki Sadamoto ; oeuvre originale, Khara",
+      "trous": []
+    },
+    "titre": "NEON GENESIS EVANGELION",
+    "tomesParusEnBase": 7
+  },
+  "nier-automata-op-pearl-harbor": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 4
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "NIER AUTOMATA - OP PEARL HARBOR",
+    "tomesParusEnBase": 4
+  },
+  "nozokiana": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 13
+    },
+    "bnf": {
+      "annee_du_dernier": "2015",
+      "lus": 13,
+      "maximum": 13,
+      "notices": 14,
+      "retenues": 14,
+      "titre_du_dernier": "Nozokiana. 13 / de Wakoh Honna",
+      "trous": []
+    },
+    "titre": "NOZOKIANA",
+    "tomesParusEnBase": 13
+  },
+  "one-puch-man": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "ONE PUCH MAN",
+    "tomesParusEnBase": 24
+  },
+  "oriant-samurai-quest": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 22
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "ORIANT - SAMURAI QUEST",
+    "tomesParusEnBase": 19
+  },
+  "oshi-no-ko": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 16
+    },
+    "bnf": {
+      "annee_du_dernier": "2025",
+      "lus": 16,
+      "maximum": 16,
+      "notices": 22,
+      "retenues": 19,
+      "titre_du_dernier": "Oshi no ko. 16",
+      "trous": []
+    },
+    "titre": "OSHI NO KO",
+    "tomesParusEnBase": 16
+  },
+  "pandora-heart": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 24
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 1,
+      "retenues": 0
+    },
+    "titre": "PANDORA HEART",
+    "tomesParusEnBase": 24
+  },
+  "pandora-heart-8-5": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 24
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "PANDORA HEART – 8,5",
+    "tomesParusEnBase": 1
+  },
+  "pokemon-la-grande-aventure": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2002",
+      "lus": 6,
+      "maximum": 6,
+      "notices": 53,
+      "retenues": 49,
+      "titre_du_dernier": "Pokémon : la grande aventure !. 6 / scénario, Hidenori Kusaka ; dessin, Mato ; [trad. par Olivier Huet]",
+      "trous": []
+    },
+    "titre": "POKEMON - LA GRANDE AVENTURE",
+    "tomesParusEnBase": 6
+  },
+  "pokemon-zoroark-le-maitre-des-illusion": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "POKEMON – ZOROARK LE MAITRE DES ILLUSION",
+    "tomesParusEnBase": 1
+  },
+  "prophecy-the-copycat": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 3
+    },
+    "bnf": {
+      "annee_du_dernier": "2017",
+      "lus": 3,
+      "maximum": 3,
+      "notices": 5,
+      "retenues": 4,
+      "titre_du_dernier": "Prophecy, the copycat. 3 / scénario original, Tetsuya Tsutsui ; dessin, Fumio Obata ; co-scénariste, Hitomi Houjo",
+      "trous": []
+    },
+    "titre": "PROPHECY – THE COPYCAT",
+    "tomesParusEnBase": 3
+  },
+  "radiant": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 1
+    },
+    "bnf": {
+      "annee_du_dernier": "2024",
+      "lus": 19,
+      "maximum": 19,
+      "notices": 100,
+      "retenues": 31,
+      "titre_du_dernier": "Radiant. 19 / Tony Valente",
+      "trous": []
+    },
+    "titre": "RADIANT",
+    "tomesParusEnBase": 18
+  },
+  "ragna-crimson": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 16,
+      "maximum": 16,
+      "notices": 17,
+      "retenues": 17,
+      "titre_du_dernier": "Ragna Crimson. 16",
+      "trous": []
+    },
+    "titre": "RAGNA CRIMSON",
+    "tomesParusEnBase": 16
+  },
+  "rai-rai-rai": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 2,
+      "maximum": 2,
+      "notices": 100,
+      "retenues": 4,
+      "titre_du_dernier": "Rai rai rai. 2 / Yoshiaki",
+      "trous": []
+    },
+    "titre": "RAI RAI RAI",
+    "tomesParusEnBase": 2
+  },
+  "red-eyes-sword-akame-ga-kill": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 15
+    },
+    "bnf": {
+      "annee_du_dernier": "2018",
+      "lus": 15,
+      "maximum": 15,
+      "notices": 27,
+      "retenues": 27,
+      "titre_du_dernier": "Red eyes sword : akame ga kill !. 15 / scénario, Takahiro ; manga, Tetsuya Tashiro",
+      "trous": []
+    },
+    "titre": "RED EYES SWORD Akame Ga Kill",
+    "tomesParusEnBase": 15
+  },
+  "red-eyes-sword-akame-ga-kill-zero": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 10
+    },
+    "bnf": {
+      "annee_du_dernier": "2019",
+      "lus": 9,
+      "maximum": 10,
+      "notices": 11,
+      "retenues": 11,
+      "titre_du_dernier": "Red eyes sword : Akame ga kill ! Zero. 10 / scénario, Takahiro ; manga, Kei Toru",
+      "trous": [
+        2
+      ]
+    },
+    "titre": "RED EYES SWORD Akame Ga Kill – ZERO",
+    "tomesParusEnBase": 10
+  },
+  "relife": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 15
+    },
+    "bnf": {
+      "annee_du_dernier": "2021",
+      "lus": 15,
+      "maximum": 15,
+      "notices": 17,
+      "retenues": 16,
+      "titre_du_dernier": "Relife. 15 / Yayoiso",
+      "trous": []
+    },
+    "titre": "RELIFE",
+    "tomesParusEnBase": 15
+  },
+  "remember": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 7
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 100,
+      "retenues": 1
+    },
+    "titre": "REMEMBER",
+    "tomesParusEnBase": 17
+  },
+  "ruridragon": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 3,
+      "maximum": 4,
+      "notices": 7,
+      "retenues": 5,
+      "titre_du_dernier": "Ruridragon. 4",
+      "trous": [
+        1
+      ]
+    },
+    "titre": "RURIDRAGON",
+    "tomesParusEnBase": 4
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "SAGA OF TANY THE EVIL: YOUJO SENKI",
+    "tomesParusEnBase": 22
+  },
+  "saint-seiya-the-lost-canvas": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 25
+    },
+    "bnf": {
+      "annee_du_dernier": "2012",
+      "lus": 25,
+      "maximum": 25,
+      "notices": 45,
+      "retenues": 45,
+      "titre_du_dernier": "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès. 25 / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi",
+      "trous": []
+    },
+    "titre": "SAINT SEIYA - THE LOST CANVAS",
+    "tomesParusEnBase": 25
+  },
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 16
+    },
+    "bnf": {
+      "annee_du_dernier": "2017",
+      "lus": 16,
+      "maximum": 16,
+      "notices": 17,
+      "retenues": 17,
+      "titre_du_dernier": "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès : chronicles. 16 / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi",
+      "trous": []
+    },
+    "titre": "SAINT SEIYA - THE LOST CANVAS - CHRONICLES",
+    "tomesParusEnBase": 16
+  },
+  "saotome-love-boxing": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 10
+    },
+    "bnf": {
+      "annee_du_dernier": "2023",
+      "lus": 10,
+      "maximum": 10,
+      "notices": 11,
+      "retenues": 11,
+      "titre_du_dernier": "Saotome : love &amp; boxing. 10 / scénario &amp; dessins, Naoki Mizuguchi",
+      "trous": []
+    },
+    "titre": "SAOTOME LOVE & BOXING",
+    "tomesParusEnBase": 8
+  },
+  "servamp": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 24
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 23,
+      "maximum": 23,
+      "notices": 27,
+      "retenues": 27,
+      "titre_du_dernier": "Servamp. 23",
+      "trous": []
+    },
+    "titre": "SERVAMP",
+    "tomesParusEnBase": 22
+  },
+  "shaman-king": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 32
+    },
+    "bnf": {
+      "annee_du_dernier": "2006",
+      "lus": 32,
+      "maximum": 32,
+      "notices": 80,
+      "retenues": 79,
+      "titre_du_dernier": "Shaman king. 32 / Hiroyuki Takei ; [traduit et adapté en français par Sébastien Gesell]",
+      "trous": []
+    },
+    "titre": "SHAMAN KING",
+    "tomesParusEnBase": 32
+  },
+  "smoking-behind-the-supermarket": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 6,
+      "maximum": 6,
+      "notices": 7,
+      "retenues": 7,
+      "titre_du_dernier": "Smoking behind the supermarket with you. 6",
+      "trous": []
+    },
+    "titre": "SMOKING BEHIND THE SUPERMARKET",
+    "tomesParusEnBase": 6
+  },
+  "solo-leveling": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 15
+    },
+    "bnf": {
+      "annee_du_dernier": "2025",
+      "lus": 19,
+      "maximum": 19,
+      "notices": 31,
+      "retenues": 29,
+      "titre_du_dernier": "Solo leveling. 19 / [dessin], Disciples,... ; [scénario], Chugong, H-goon",
+      "trous": []
+    },
+    "titre": "SOLO LEVELING",
+    "tomesParusEnBase": 19
+  },
+  "soul-eater": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 25
+    },
+    "bnf": {
+      "annee_du_dernier": "2014",
+      "lus": 25,
+      "maximum": 25,
+      "notices": 73,
+      "retenues": 54,
+      "titre_du_dernier": "Soul eater. 25 / Atsushi Ohkubo",
+      "trous": []
+    },
+    "titre": "SOUL EATER",
+    "tomesParusEnBase": 25
+  },
+  "spy-x-family": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2026",
+      "lus": 15,
+      "maximum": 16,
+      "notices": 24,
+      "retenues": 23,
+      "titre_du_dernier": "Spy x family. 16",
+      "trous": [
+        2
+      ]
+    },
+    "titre": "SPY X FAMILY",
+    "tomesParusEnBase": 14
+  },
+  "talentless": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 15
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 14,
+      "maximum": 14,
+      "notices": 15,
+      "retenues": 15,
+      "titre_du_dernier": "Talentless. 14",
+      "trous": []
+    },
+    "titre": "TALENTLESS",
+    "tomesParusEnBase": 14
+  },
+  "terraformars": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": "2017",
+      "lus": 2,
+      "maximum": 2,
+      "notices": 5,
+      "retenues": 4,
+      "titre_du_dernier": "Terra formars Asimov. 2 / oeuvre originale, Yu Sasuga &amp; Ken-Ichi Tachibana ; scénario, Ken-Ichi Fujiwara ; dessin, Boichi",
+      "trous": []
+    },
+    "titre": "TERRAFORMARS",
+    "tomesParusEnBase": 22
+  },
+  "the-ancient-magus-bride": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "annee_du_dernier": null,
+      "lus": 14,
+      "maximum": 23,
+      "notices": 30,
+      "retenues": 19,
+      "titre_du_dernier": "The ancient magus bride. 23",
+      "trous": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        22
+      ]
+    },
+    "titre": "THE ANCIENT MAGUS BRIDE",
+    "tomesParusEnBase": 23
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 10
+    },
+    "bnf": {
+      "annee_du_dernier": "2025",
+      "lus": 9,
+      "maximum": 9,
+      "notices": 10,
+      "retenues": 10,
+      "titre_du_dernier": "The ancient magus bride : psaume 108 : le bleu du magicien. 9 / scénario, Makoto Sanda ; dessin, Isuo Tsukumo...",
+      "trous": []
+    },
+    "titre": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "tomesParusEnBase": 10
+  },
+  "the-ancient-magus-bride-supplement-2": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "THE ANCIENT MAGUS BRIDE – Supplément 2",
+    "tomesParusEnBase": 1
+  },
+  "the-promised-neverland": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 20
+    },
+    "bnf": {
+      "annee_du_dernier": "2020",
+      "lus": 9,
+      "maximum": 16,
+      "notices": 53,
+      "retenues": 49,
+      "titre_du_dernier": "The promised Neverland : coffret tome 16 + gag manga / scénario, Kaiu Shirai ; dessin, Posuka Demizu",
+      "trous": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "titre": "THE PROMISED NEVERLAND",
+    "tomesParusEnBase": 20
+  },
+  "the-unwanted-unded-adventurer": {
+    "anilist": {
+      "statut": "RELEASING",
+      "volumes": null
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "THE UNWANTED UNDED ADVENTURER",
+    "tomesParusEnBase": 12
+  },
+  "to-a-new-you": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 6
+    },
+    "bnf": {
+      "annee_du_dernier": "2024",
+      "lus": 6,
+      "maximum": 6,
+      "notices": 100,
+      "retenues": 7,
+      "titre_du_dernier": "To a new you. 6 / Shinji Mito",
+      "trous": []
+    },
+    "titre": "TO A NEW YOU",
+    "tomesParusEnBase": 6
+  },
+  "tsugumi-project": {
+    "anilist": null,
+    "bnf": {
+      "maximum": null,
+      "notices": 8,
+      "retenues": 0
+    },
+    "titre": "TSUGUMI PROJECT",
+    "tomesParusEnBase": 7
+  },
+  "uqholder": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 28
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "UQHOLDER",
+    "tomesParusEnBase": 28
+  },
+  "why-nobody-remember-my-world": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 14
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "WHY NOBODY REMEMBER MY WORLD",
+    "tomesParusEnBase": 12
+  },
+  "yuna-de-la-pension-yuragi": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 24
+    },
+    "bnf": {
+      "annee_du_dernier": "2022",
+      "lus": 9,
+      "maximum": 24,
+      "notices": 25,
+      "retenues": 25,
+      "titre_du_dernier": "Yûna de la pension Yuragi. 24 / Tadahiro Miura",
+      "trous": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        10,
+        11,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    "titre": "YUNA DE LA PENSION YURAGI",
+    "tomesParusEnBase": 24
+  },
+  "yusei-no-last-boss": {
+    "anilist": {
+      "statut": "FINISHED",
+      "volumes": 9
+    },
+    "bnf": {
+      "maximum": null,
+      "notices": 0,
+      "retenues": 0
+    },
+    "titre": "YUSEI NO LAST BOSS",
+    "tomesParusEnBase": 8
+  }
+}

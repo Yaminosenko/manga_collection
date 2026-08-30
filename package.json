@@ -14,7 +14,9 @@
     "covers:fetch": "python scripts/fetch_covers.py",
     "covers:upload": "tsx scripts/upload-covers.ts",
     "anilist:fetch": "tsx scripts/fetch-anilist.ts",
-    "anilist:apply": "tsx scripts/apply-anilist.ts"
+    "anilist:apply": "tsx scripts/apply-anilist.ts",
+    "publication:fetch": "python scripts/fetch_publication.py",
+    "publication:apply": "tsx scripts/apply-publication.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

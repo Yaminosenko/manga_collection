@@ -1,5 +1,6 @@
 import {
   LIBELLES_STATUT,
+  LIBELLE_A_JOUR,
   LIBELLE_A_VERIFIER,
   LIBELLE_COMPLETE,
   LIBELLE_EDITION_TERMINEE,
@@ -135,7 +136,7 @@ export function libelleStatut(
     return LIBELLE_TERMINEE_FORCEE;
   }
   if (possedes === edition.tomesParus) {
-    return LIBELLE_COMPLETE;
+    return edition.editionTerminee === true ? LIBELLE_COMPLETE : LIBELLE_A_JOUR;
   }
   return aDesTomesAParaitre(edition.editionTerminee)
     ? LIBELLES_STATUT.EN_COURS
@@ -153,7 +154,7 @@ function etatLigne(ligne: LigneCollection): string | null {
     return LIBELLE_A_VERIFIER;
   }
   if (ligne.possedes === ligne.tomesParus) {
-    return LIBELLE_COMPLETE;
+    return ligne.editionTerminee === true ? LIBELLE_COMPLETE : LIBELLE_A_JOUR;
   }
   return null;
 }
