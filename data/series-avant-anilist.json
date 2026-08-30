@@ -1,0 +1,1300 @@
+{
+  "act-age": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Drame",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Cinéma"
+    ]
+  },
+  "air-gear": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Ecchi"
+    ],
+    "themes": [
+      "Ecole",
+      "Sport"
+    ]
+  },
+  "ajin": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Drame",
+      "Horreur"
+    ],
+    "themes": [
+      "Combats",
+      "Monstres",
+      "Mort"
+    ]
+  },
+  "all-you-need-is-kill": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Mature",
+      "Mystère",
+      "SF"
+    ],
+    "themes": [
+      "Aliens",
+      "Guerre",
+      "Mort"
+    ]
+  },
+  "alma": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "assassination-classroom": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "School Life",
+      "SF"
+    ],
+    "themes": [
+      "Alien",
+      "Assassinat"
+    ]
+  },
+  "beastars": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Drame",
+      "Mature"
+    ],
+    "themes": [
+      "Adolescence",
+      "Amitié",
+      "Amour",
+      "Animaux",
+      "Ecole",
+      "Enquête",
+      "Harcèlement",
+      "Secrets",
+      "Société"
+    ]
+  },
+  "berserk": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Fantastique",
+      "Horreur"
+    ],
+    "themes": [
+      "Démons",
+      "Malédiction",
+      "Combats"
+    ]
+  },
+  "black-clover": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure"
+    ],
+    "themes": [
+      "Nekketsu",
+      "amitié",
+      "magie"
+    ]
+  },
+  "black-lagoon": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Drame"
+    ],
+    "themes": [
+      "Crime",
+      "Mafia",
+      "Pirate"
+    ]
+  },
+  "black-torch": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Drame",
+      "Surnaturel"
+    ],
+    "themes": [
+      "Démons",
+      "Fantômes",
+      "Ninjas"
+    ]
+  },
+  "blackrock-shooter-innocent-soul": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Fantasy",
+      "Horreur"
+    ],
+    "themes": [
+      "BRS ✭"
+    ]
+  },
+  "blackrock-shooter-the-game": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantasy"
+    ],
+    "themes": [
+      "BRS ✭"
+    ]
+  },
+  "blame": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "blazer-drive": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "SF"
+    ],
+    "themes": [
+      "Autocollant"
+    ]
+  },
+  "bleach": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure"
+    ],
+    "themes": [
+      "Nekketsu",
+      "Shinigami",
+      "Combats"
+    ]
+  },
+  "bleach-13-blades": {
+    "titreVo": null,
+    "genres": [
+      "Guide"
+    ],
+    "themes": []
+  },
+  "blue-exorcist": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie"
+    ],
+    "themes": [
+      "Démons",
+      "Ecole",
+      "Magie"
+    ]
+  },
+  "blue-eyes-sword": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Horreur"
+    ],
+    "themes": [
+      "Bataille navale",
+      "Combats",
+      "Guerre"
+    ]
+  },
+  "burn-the-witch": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Dragon",
+      "Magie"
+    ]
+  },
+  "call-of-the-night": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "chainsaw-man": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Horreur"
+    ],
+    "themes": [
+      "Combats",
+      "Démons",
+      "Organisations secrètes"
+    ]
+  },
+  "chastity-reverse-world": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Ecchi",
+      "Erotique"
+    ],
+    "themes": [
+      "Sexe",
+      "Isekkai"
+    ]
+  },
+  "classroom-for-heroes": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Ecchi"
+    ],
+    "themes": [
+      "Amour",
+      "Combats"
+    ]
+  },
+  "claymore": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "d-gray-man": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Horreur",
+      "Comédie"
+    ],
+    "themes": [
+      "Démons",
+      "Malédiction",
+      "Combats"
+    ]
+  },
+  "demon-slave": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Ecchi",
+      "Romance"
+    ],
+    "themes": [
+      "Magie"
+    ]
+  },
+  "doubt": {
+    "titreVo": null,
+    "genres": [
+      "Horreur",
+      "Mystère",
+      "Psychologie"
+    ],
+    "themes": [
+      "Société",
+      "Survival game"
+    ]
+  },
+  "dragon-ball": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie"
+    ],
+    "themes": [
+      "Aliens",
+      "Arts martiaux",
+      "Combats",
+      "Super pouvoirs",
+      "Tournois"
+    ]
+  },
+  "fire-force": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "fire-punch": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Fantastique",
+      "Mature"
+    ],
+    "themes": [
+      "Post",
+      "apocalyptique",
+      "Vengeance"
+    ]
+  },
+  "fullmetal-alchemist": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Drame",
+      "Surnaturel"
+    ],
+    "themes": [
+      "Alchimie",
+      "Militaire",
+      "Steampunk"
+    ]
+  },
+  "gantz": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Ecchi",
+      "Horreur"
+    ],
+    "themes": [
+      "Aliens"
+    ]
+  },
+  "hellsing": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "hideout": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Horreur"
+    ],
+    "themes": [
+      "Sequestration"
+    ]
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "titreVo": null,
+    "genres": [
+      "Action"
+    ],
+    "themes": [
+      "Amitié",
+      "Boxe",
+      "Sport",
+      "Tournois"
+    ]
+  },
+  "itchi-the-witch": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Fantastique"
+    ],
+    "themes": [
+      "Isekkai"
+    ]
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "judge": {
+    "titreVo": null,
+    "genres": [
+      "Horreur",
+      "Mystère",
+      "Psychologie"
+    ],
+    "themes": [
+      "Survival game"
+    ]
+  },
+  "kagurabachi": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "kaijin-reijoh": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantastique",
+      "Horreur"
+    ],
+    "themes": [
+      "Assassinat",
+      "Crime"
+    ]
+  },
+  "kaiju-n8": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "SF",
+      "Horreur",
+      "Comédie"
+    ],
+    "themes": [
+      "Combats",
+      "Militaire",
+      "Monstres"
+    ]
+  },
+  "kemono-incidents": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "kindergarten-wars": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "les-chroniques-d-azfareo": {
+    "titreVo": null,
+    "genres": [
+      "Drame",
+      "Fantasy",
+      "Romance"
+    ],
+    "themes": [
+      "Dragons"
+    ]
+  },
+  "les-legendaires-saga": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie"
+    ],
+    "themes": [
+      "Magie",
+      "Malédiction",
+      "Super",
+      "héros"
+    ]
+  },
+  "leviathan": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "magi-the-labyrinth-of-magic": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie"
+    ],
+    "themes": [
+      "Guerre",
+      "Magie",
+      "Monstres"
+    ]
+  },
+  "magus-of-the-library": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Littérature"
+    ]
+  },
+  "marimashita-iruma-kun": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "mashle": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Fantastique"
+    ],
+    "themes": [
+      "Magie",
+      "Art martiaux"
+    ]
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantastique",
+      "Horreur"
+    ],
+    "themes": [
+      "Battle Royal",
+      "Psycho"
+    ]
+  },
+  "mirai-nikki-mosaic": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantastique",
+      "Horreur"
+    ],
+    "themes": [
+      "Battle Royal",
+      "Psycho"
+    ]
+  },
+  "mirai-nikki-paradox": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantastique",
+      "Horreur"
+    ],
+    "themes": [
+      "Battle Royal",
+      "Psycho"
+    ]
+  },
+  "mission-in-the-apocalypse": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "monster-hunter-orage": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Fantastique"
+    ],
+    "themes": [
+      "Monster Hunter"
+    ]
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Ecchi",
+      "Fantastique"
+    ],
+    "themes": [
+      "Monster Girls",
+      "Harem"
+    ]
+  },
+  "mushoku-tensei": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Ecchi",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Harem",
+      "Magie"
+    ]
+  },
+  "mushoku-tensei-l-epee-d-iris": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Ecchi",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Harem",
+      "Magie"
+    ]
+  },
+  "my-elder-sister": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Ecchi",
+      "Slice of life"
+    ],
+    "themes": [
+      "Démons",
+      "Erotique"
+    ]
+  },
+  "my-hero-academia": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "School Life"
+    ],
+    "themes": [
+      "Combat",
+      "Super héro",
+      "super pouvoir"
+    ]
+  },
+  "my-hero-academia-smash": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Slice of life"
+    ],
+    "themes": [
+      "Satyre"
+    ]
+  },
+  "my-hero-academia-ultra-archive": {
+    "titreVo": null,
+    "genres": [
+      "Guide"
+    ],
+    "themes": []
+  },
+  "naruto": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Nekketsu"
+    ],
+    "themes": [
+      "Amitié",
+      "Arts martiaux",
+      "Ninjas",
+      "Combats",
+      "Guerre"
+    ]
+  },
+  "neon-genesis-evangelion": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Drame",
+      "Mystère",
+      "Psychologique",
+      "Science",
+      "fiction",
+      "Tragique"
+    ],
+    "themes": [
+      "Mechas",
+      "Militaire",
+      "Post",
+      "apocalyptique"
+    ]
+  },
+  "nier-automata-op-pearl-harbor": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "nozokiana": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Drame",
+      "Ecchi"
+    ],
+    "themes": [
+      "Adultère",
+      "Sexe"
+    ]
+  },
+  "one-puch-man": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "SF",
+      "Surnaturel"
+    ],
+    "themes": [
+      "Aliens",
+      "Arts martiaux",
+      "Parodie",
+      "Combats",
+      "Cyborgs",
+      "Monstres",
+      "Super",
+      "héros",
+      "Super pouvoirs"
+    ]
+  },
+  "oriant-samurai-quest": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "oshi-no-ko": {
+    "titreVo": null,
+    "genres": [
+      "Drame",
+      "Psychologie",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Cinéma",
+      "Idols",
+      "Réincarnation"
+    ]
+  },
+  "pandora-heart": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Drame",
+      "Fantasy"
+    ],
+    "themes": [
+      "Crime",
+      "Magie",
+      "Alice"
+    ]
+  },
+  "pandora-heart-8-5": {
+    "titreVo": null,
+    "genres": [
+      "Guide"
+    ],
+    "themes": []
+  },
+  "pokemon-la-grande-aventure": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie"
+    ],
+    "themes": [
+      "Animaux",
+      "Nature"
+    ]
+  },
+  "pokemon-zoroark-le-maitre-des-illusion": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Fantastique"
+    ],
+    "themes": [
+      "Animaux",
+      "Nature"
+    ]
+  },
+  "prophecy-the-copycat": {
+    "titreVo": null,
+    "genres": [
+      "Drame",
+      "Mature",
+      "Mystère",
+      "Psychologie"
+    ],
+    "themes": []
+  },
+  "radiant": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Fantastique"
+    ],
+    "themes": [
+      "Magie",
+      "Combat"
+    ]
+  },
+  "ragna-crimson": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Drame",
+      "Fantasy"
+    ],
+    "themes": [
+      "Dragons",
+      "Voyage Temporel"
+    ]
+  },
+  "rai-rai-rai": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Horreur"
+    ],
+    "themes": [
+      "Assassinat",
+      "Combats",
+      "Gore",
+      "Organisations secrètes",
+      "Politique"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill-zero": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Drame",
+      "Horreur"
+    ],
+    "themes": [
+      "Assassinat",
+      "Combats",
+      "Gore",
+      "Organisations secrètes",
+      "Politique"
+    ]
+  },
+  "relife": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "remember": {
+    "titreVo": null,
+    "genres": [
+      "Horreur",
+      "School Life",
+      "Thriller"
+    ],
+    "themes": [
+      "Fantôme",
+      "Malédiction"
+    ]
+  },
+  "ruridragon": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "saint-seiya-the-lost-canvas": {
+    "titreVo": null,
+    "genres": [],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantastique"
+    ],
+    "themes": [
+      "Arts martiaux",
+      "Combats",
+      "Dieux",
+      "Déesses",
+      "Mythologie"
+    ]
+  },
+  "saotome-love-boxing": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Romance",
+      "School Life"
+    ],
+    "themes": [
+      "Amour",
+      "Sport",
+      "Boxe",
+      "Tomboy"
+    ]
+  },
+  "servamp": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Comédie",
+      "Surnaturel"
+    ],
+    "themes": [
+      "Combats",
+      "Vampire"
+    ]
+  },
+  "shaman-king": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Nekketsu",
+      "Fantastique"
+    ],
+    "themes": [
+      "Shaman"
+    ]
+  },
+  "smoking-behind-the-supermarket": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "solo-leveling": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Fantasy"
+    ],
+    "themes": [
+      "Apprentissage",
+      "Combats",
+      "Magie",
+      "Super pouvoirs"
+    ]
+  },
+  "soul-eater": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure"
+    ],
+    "themes": [
+      "Shinigami",
+      "école",
+      "folie"
+    ]
+  },
+  "spy-x-family": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "talentless": {
+    "titreVo": null,
+    "genres": [
+      "Drame",
+      "Psychologie",
+      "School Life"
+    ],
+    "themes": [
+      "Crime",
+      "Super pouvoir"
+    ]
+  },
+  "terraformars": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Horreur",
+      "SF",
+      "Tragique"
+    ],
+    "themes": [
+      "Espace",
+      "Gore",
+      "Guerre",
+      "Post",
+      "apocalyptique",
+      "Scientifique"
+    ]
+  },
+  "the-ancient-magus-bride": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Drame",
+      "Fantastique"
+    ],
+    "themes": [
+      "Magie",
+      "Dragon",
+      "Sorcière"
+    ]
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Drame",
+      "Fantastique"
+    ],
+    "themes": [
+      "Magie",
+      "Dragon",
+      "Sorcière"
+    ]
+  },
+  "the-ancient-magus-bride-supplement-2": {
+    "titreVo": null,
+    "genres": [
+      "Guide"
+    ],
+    "themes": []
+  },
+  "the-promised-neverland": {
+    "titreVo": null,
+    "genres": [
+      "Aventure",
+      "Drama",
+      "Horreur",
+      "Mystere"
+    ],
+    "themes": [
+      "Famille",
+      "Monstres"
+    ]
+  },
+  "the-unwanted-unded-adventurer": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Monstre",
+      "Harem"
+    ]
+  },
+  "to-a-new-you": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  },
+  "tsugumi-project": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure"
+    ],
+    "themes": [
+      "Post",
+      "apo",
+      "Survie"
+    ]
+  },
+  "uqholder": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Ecchi"
+    ],
+    "themes": [
+      "Combat",
+      "Harem",
+      "Nekkestu"
+    ]
+  },
+  "why-nobody-remember-my-world": {
+    "titreVo": null,
+    "genres": [],
+    "themes": []
+  },
+  "yuna-de-la-pension-yuragi": {
+    "titreVo": null,
+    "genres": [
+      "Comédie",
+      "Ecchi",
+      "Romance"
+    ],
+    "themes": [
+      "Harem",
+      "Fantôme"
+    ]
+  },
+  "yusei-no-last-boss": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Aventure",
+      "Comédie",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ]
+  }
+}

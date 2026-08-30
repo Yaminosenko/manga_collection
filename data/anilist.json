@@ -1,0 +1,1610 @@
+{
+  "act-age": {
+    "titreLocal": "ACT-AGE",
+    "id": 100991,
+    "romaji": "act-age",
+    "native": "アクタージュ act-age",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Slice of Life"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "air-gear": {
+    "titreLocal": "AIR GEAR",
+    "id": 30074,
+    "romaji": "Air Gear",
+    "native": "エア・ギア",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Ecchi",
+      "Romance",
+      "Sci-Fi",
+      "Sports"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Air Gear - Trick:358"
+    ]
+  },
+  "ajin": {
+    "titreLocal": "AJIN",
+    "id": 79865,
+    "romaji": "Ajin",
+    "native": "亜人",
+    "genres": [
+      "Action",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Ajin no Ou",
+      "Ajin Sharehouse"
+    ]
+  },
+  "all-you-need-is-kill": {
+    "titreLocal": "ALL YOU NEED IS KILL",
+    "id": 85215,
+    "romaji": "All You Need Is Kill",
+    "native": "All You Need Is Kill",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mecha",
+      "Psychological",
+      "Romance",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "All You Need is Kill"
+    ]
+  },
+  "alma": {
+    "titreLocal": "ALMA",
+    "id": 112429,
+    "romaji": "Alma",
+    "native": "アルマ",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Guren no Arma",
+      "Honbul"
+    ]
+  },
+  "assassination-classroom": {
+    "titreLocal": "ASSASSINATION CLASSROOM",
+    "id": 69883,
+    "romaji": "Ansatsu Kyoushitsu",
+    "native": "暗殺教室",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "beastars": {
+    "titreLocal": "BEASTARS",
+    "id": 98587,
+    "romaji": "BEASTARS",
+    "native": "BEASTARS",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Slice of Life"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "berserk": {
+    "titreLocal": "BERSERK",
+    "id": 30002,
+    "romaji": "Berserk",
+    "native": "ベルセルク",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Psychological"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Boushoku no Berserk: Ore Dake Level to Iu Gainen wo Toppa Suru THE COMIC",
+      "BERSERK THE PROTOTYPE"
+    ]
+  },
+  "black-clover": {
+    "titreLocal": "BLACK CLOVER",
+    "id": 114652,
+    "romaji": "Black Clover",
+    "native": "ブラッククローバー",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Black Clover",
+      "Black Clover: Yuno no Sho"
+    ]
+  },
+  "black-lagoon": {
+    "titreLocal": "BLACK LAGOON",
+    "id": 30735,
+    "romaji": "BLACK LAGOON",
+    "native": "ブラック・ラグーン",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "R of BLACK LAGOON",
+      "BLACK LAGOON: Eda - initial stage"
+    ]
+  },
+  "black-torch": {
+    "titreLocal": "BLACK TORCH",
+    "id": 98148,
+    "romaji": "BLACK TORCH",
+    "native": "BLACK TORCH",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "blackrock-shooter-innocent-soul": {
+    "titreLocal": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
+    "id": 56292,
+    "romaji": "Black★Rock Shooter: Innocent Soul",
+    "native": "ブラック★ロックシューター -イノセントソウル-",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "blackrock-shooter-the-game": {
+    "titreLocal": "BLACK★ROCK SHOOTER – THE GAME",
+    "id": 72339,
+    "romaji": "Black★RockShooter: The Game",
+    "native": "ブラック★ロックシューター THE GAME",
+    "genres": [],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "blame": {
+    "titreLocal": "BLAME!",
+    "id": 30149,
+    "romaji": "BLAME!",
+    "native": "BLAME!",
+    "genres": [
+      "Action",
+      "Drama",
+      "Horror",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "BLAME!²",
+      "Blame! Gakuen And So On"
+    ]
+  },
+  "blazer-drive": {
+    "titreLocal": "BLAZER DRIVE",
+    "id": 36612,
+    "romaji": "Blazer Drive",
+    "native": "ブレイザードライブ",
+    "genres": [
+      "Action"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "bleach": {
+    "titreLocal": "BLEACH",
+    "id": 30012,
+    "romaji": "BLEACH",
+    "native": "BLEACH",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Bleach Short Story Edition",
+      "not be, but be"
+    ]
+  },
+  "bleach-13-blades": null,
+  "blue-exorcist": {
+    "titreLocal": "BLUE EXORCIST",
+    "id": 43492,
+    "romaji": "Ao no Exorcist",
+    "native": "青の祓魔師",
+    "genres": [
+      "Action",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Miyama Uguisutei Jiken"
+    ]
+  },
+  "blue-eyes-sword": {
+    "titreLocal": "BLUE EYES SWORD",
+    "id": 99886,
+    "romaji": "Hinowa ga Yuku!",
+    "native": "ヒノワが征く!",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "burn-the-witch": {
+    "titreLocal": "BURN THE WITCH",
+    "id": 103028,
+    "romaji": "BURN THE WITCH",
+    "native": "BURN THE WITCH",
+    "genres": [
+      "Fantasy",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "BURN THE WITCH"
+    ]
+  },
+  "call-of-the-night": {
+    "titreLocal": "CALL OF THE NIGHT",
+    "id": 111233,
+    "romaji": "Yofukashi no Uta",
+    "native": "よふかしのうた",
+    "genres": [
+      "Comedy",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Yofukashi no Uta: Rakuen-hen",
+      "Calling Series"
+    ]
+  },
+  "chainsaw-man": {
+    "titreLocal": "CHAINSAW MAN",
+    "id": 105778,
+    "romaji": "Chainsaw Man",
+    "native": "チェンソーマン",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Chainsaw Man: Buddy Stories",
+      "Fujimoto Tatsuki Tanpenshuu: 17-21"
+    ]
+  },
+  "chastity-reverse-world": {
+    "titreLocal": "CHASTITY REVERSE WORLD",
+    "id": 111247,
+    "romaji": "Teisou Gyakuten Sekai",
+    "native": "貞操逆転世界",
+    "genres": [
+      "Comedy",
+      "Hentai"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Teisou Gyakuten Sekai"
+    ]
+  },
+  "classroom-for-heroes": {
+    "titreLocal": "CLASSROOM FOR HEROES",
+    "id": 86081,
+    "romaji": "Eiyuu Kyoushitsu",
+    "native": "英雄教室",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Slice of Life"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Eiyuu Kyoushitsu"
+    ]
+  },
+  "claymore": {
+    "titreLocal": "CLAYMORE",
+    "id": 30583,
+    "romaji": "CLAYMORE",
+    "native": "CLAYMORE",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Horror"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "CLAYMORE Bangai-hen: Senshi Reimei-hen"
+    ]
+  },
+  "d-gray-man": {
+    "titreLocal": "D.GRAY-MAN",
+    "id": 30024,
+    "romaji": "D.Gray-man",
+    "native": "ディー・グレイマン",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "D.Gray-man: Reverse",
+      "Zone"
+    ]
+  },
+  "demon-slave": {
+    "titreLocal": "DEMON SLAVE",
+    "id": 106064,
+    "romaji": "Mato Seihei no Slave",
+    "native": "魔都精兵のスレイブ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Ecchi",
+      "Fantasy",
+      "Romance"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Akuma de Dorei",
+      "Reizoku Maou"
+    ]
+  },
+  "doubt": {
+    "titreLocal": "DOUBT",
+    "id": 35293,
+    "romaji": "Doubt",
+    "native": "Doubt",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Thriller"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Doubt",
+      "Doubt Yi"
+    ]
+  },
+  "dragon-ball": {
+    "titreLocal": "DRAGON BALL",
+    "id": 30042,
+    "romaji": "Dragon Ball",
+    "native": "ドラゴンボール",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Dragon Ball Super",
+      "Dragon Ball SD"
+    ]
+  },
+  "fire-force": {
+    "titreLocal": "FIRE FORCE",
+    "id": 86310,
+    "romaji": "Enen no Shouboutai",
+    "native": "炎炎ノ消防隊",
+    "genres": [
+      "Action",
+      "Drama",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "talentless": {
+    "titreLocal": "TALENTLESS",
+    "id": 99536,
+    "romaji": "Munou na Nana",
+    "native": "無能なナナ",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Rakudai Kenja no Gakuin Musou: Nidome no Tensei, S-Rank Cheat Majutsushi Bouken-roku",
+      "Senmetsumadou no Saikyou Kenja: Musai no Kenja, Madou wo Kiwame Saikyou e Itaru"
+    ]
+  },
+  "terraformars": {
+    "titreLocal": "TERRAFORMARS",
+    "recherche": "Terra Formars",
+    "id": 67563,
+    "romaji": "Terra Formars",
+    "native": "テラフォーマーズ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Terra Formars 1",
+      "Terra Formars: LOST MISSION\t"
+    ]
+  },
+  "the-ancient-magus-bride": {
+    "titreLocal": "THE ANCIENT MAGUS BRIDE",
+    "id": 85435,
+    "romaji": "Mahoutsukai no Yome",
+    "native": "魔法使いの嫁",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "The Ancient Magus' Bride: fragments",
+      "Mahoutsukai no Yome: Kinshi-hen"
+    ]
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "titreLocal": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "id": 120190,
+    "romaji": "Mahoutsukai no Yome: Shihen.108 - Majutsushi no Ao",
+    "native": "魔法使いの嫁 詩篇.108 魔術師の青",
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "the-ancient-magus-bride-supplement-2": {
+    "titreLocal": "THE ANCIENT MAGUS BRIDE – Supplément 2",
+    "recherche": "Mahoutsukai no Yome",
+    "id": 85435,
+    "romaji": "Mahoutsukai no Yome",
+    "native": "魔法使いの嫁",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "score": 0.645,
+    "autresCandidats": [
+      "Mahoutsukai no Yome: Kinshi-hen",
+      "Mahoutsukai no Yome: Ginshi-hen"
+    ]
+  },
+  "the-promised-neverland": {
+    "titreLocal": "THE PROMISED NEVERLAND",
+    "id": 87423,
+    "romaji": "Yakusoku no Neverland",
+    "native": "約束のネバーランド",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Thriller"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Yakusoku no Neverland: Norman kara no Tegami",
+      "Yakusoku no Neverland: Senyuutachi no Record"
+    ]
+  },
+  "the-unwanted-unded-adventurer": {
+    "titreLocal": "THE UNWANTED UNDED ADVENTURER",
+    "recherche": "Nozomanu Fushi no Boukensha",
+    "id": 100693,
+    "romaji": "Nozomanu Fushi no Boukensha",
+    "native": "望まぬ不死の冒険者",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 0.963,
+    "autresCandidats": [
+      "Nozomanu Fushi no Boukensha"
+    ]
+  },
+  "to-a-new-you": {
+    "titreLocal": "TO A NEW YOU",
+    "id": 139411,
+    "romaji": "Atarashii Kimi e",
+    "native": "新しいきみへ",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Thriller"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Hajishirazu na Yoru",
+      "Wasureru Kimi to no 300-nichi"
+    ]
+  },
+  "tsugumi-project": null,
+  "uqholder": {
+    "titreLocal": "UQHOLDER",
+    "recherche": "UQ Holder",
+    "id": 85151,
+    "romaji": "UQ HOLDER!",
+    "native": "UQ HOLDER！",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "why-nobody-remember-my-world": {
+    "titreLocal": "WHY NOBODY REMEMBER MY WORLD",
+    "recherche": "Naze Boku no Sekai wo Daremo Oboeteinai no ka",
+    "id": 101762,
+    "romaji": "Naze Boku no Sekai wo Daremo Oboeteinai no ka?",
+    "native": "なぜ僕の世界を誰も覚えていないのか？",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "score": 0.96,
+    "autresCandidats": [
+      "Naze Boku no Sekai wo Daremo Oboeteinai no ka?"
+    ]
+  },
+  "yuna-de-la-pension-yuragi": {
+    "titreLocal": "YUNA DE LA PENSION YURAGI",
+    "recherche": "Yuragi-sou no Yuuna-san",
+    "id": 87213,
+    "romaji": "Yuragi-sou no Yuuna-san",
+    "native": "ゆらぎ荘の幽奈さん",
+    "genres": [
+      "Ecchi",
+      "Romance",
+      "Supernatural"
+    ],
+    "score": 0.762,
+    "autresCandidats": []
+  },
+  "yusei-no-last-boss": null,
+  "fire-punch": {
+    "titreLocal": "FIRE PUNCH",
+    "id": 87170,
+    "romaji": "Fire Punch",
+    "native": "ファイアパンチ",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "fullmetal-alchemist": {
+    "titreLocal": "FULLMETAL ALCHEMIST",
+    "id": 30025,
+    "romaji": "Hagane no Renkinjutsushi",
+    "native": "鋼の錬金術師",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Hagane no Renkinjutsushi",
+      "Hagane no Renkinjutsushi 0"
+    ]
+  },
+  "gantz": {
+    "titreLocal": "GANTZ",
+    "id": 30564,
+    "romaji": "GANTZ",
+    "native": "GANTZ",
+    "genres": [
+      "Action",
+      "Drama",
+      "Ecchi",
+      "Horror",
+      "Psychological",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "GANTZ:G",
+      "GANTZ/NISHI"
+    ]
+  },
+  "hellsing": {
+    "titreLocal": "HELLSING",
+    "id": 39760,
+    "romaji": "HELLSING",
+    "native": "HELLSING",
+    "genres": [
+      "Action",
+      "Hentai",
+      "Horror"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "HELLSING",
+      "HELLSING Gaiden: THE DAWN"
+    ]
+  },
+  "hideout": {
+    "titreLocal": "HIDEOUT",
+    "id": 58361,
+    "romaji": "HIDEOUT",
+    "native": "HIDEOUT",
+    "genres": [
+      "Action",
+      "Horror",
+      "Psychological"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Hideout",
+      "Nae Bange Chimipja"
+    ]
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "titreLocal": "IPPO – S4 LA LOI DU RING",
+    "recherche": "Hajime no Ippo",
+    "id": 30007,
+    "romaji": "Hajime no Ippo",
+    "native": "はじめの一歩",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Sports"
+    ],
+    "score": 0.235,
+    "autresCandidats": [
+      "Yami Kariudo"
+    ]
+  },
+  "itchi-the-witch": {
+    "titreLocal": "ITCHI THE WITCH",
+    "id": 180752,
+    "romaji": "Madan no Ichi",
+    "native": "魔男のイチ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "score": 0.923,
+    "autresCandidats": []
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "titreLocal": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "recherche": "Ansatsusha de aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi",
+    "id": 103655,
+    "romaji": "Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga",
+    "native": "暗殺者である俺のステータスが勇者よりも明らかに強いのだが",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 0.455,
+    "autresCandidats": [
+      "Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga"
+    ]
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "titreLocal": "JK HARU - SEX WORKER IN ANOTHER WORLD",
+    "id": 110175,
+    "romaji": "JK Haru wa Isekai de Shoufu ni Natta",
+    "native": "JKハルは異世界で娼婦になった",
+    "genres": [
+      "Drama",
+      "Ecchi",
+      "Fantasy",
+      "Psychological",
+      "Slice of Life"
+    ],
+    "score": 0.906,
+    "autresCandidats": [
+      "JK Haru wa Isekai de Shoufu ni Natta"
+    ]
+  },
+  "judge": {
+    "titreLocal": "JUDGE",
+    "id": 47915,
+    "romaji": "JUDGE",
+    "native": "JUDGE",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Licentious judge",
+      "Sahyeongsonyeon"
+    ]
+  },
+  "kagurabachi": {
+    "titreLocal": "KAGURABACHI",
+    "id": 169355,
+    "romaji": "Kagurabachi",
+    "native": "カグラバチ",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Kagurabachi Bangai-hen: Soujou Genichi no Ofuro Tanbou",
+      "Kagurabachi: Bangai-hen - Sazanami Soya no Modoranai de Kioku"
+    ]
+  },
+  "kaijin-reijoh": {
+    "titreLocal": "KAIJIN REIJOH",
+    "recherche": "Kaijin Reijou",
+    "id": 105713,
+    "romaji": "Kaijin Reijou",
+    "native": "怪人麗嬢",
+    "genres": [
+      "Action",
+      "Ecchi",
+      "Horror",
+      "Psychological",
+      "Romance",
+      "Supernatural"
+    ],
+    "score": 0.917,
+    "autresCandidats": []
+  },
+  "kaiju-n8": {
+    "titreLocal": "KAIJU N°8",
+    "recherche": "Kaijuu 8-gou",
+    "id": 120760,
+    "romaji": "Kaijuu 8-gou",
+    "native": "怪獣８号",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "score": 0.875,
+    "autresCandidats": [
+      "Kaijuu 8-gou: RELAX",
+      "Kaijuu 8-gou: Side B"
+    ]
+  },
+  "kemono-incidents": {
+    "titreLocal": "KEMONO INCIDENTS",
+    "id": 98466,
+    "romaji": "Kemono Jihen",
+    "native": "怪物事変",
+    "genres": [
+      "Action",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "kindergarten-wars": {
+    "titreLocal": "KINDERGARTEN WARS",
+    "id": 154349,
+    "romaji": "Youchien WARS",
+    "native": "幼稚園WARS",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Youchien WARS Bangai-hen"
+    ]
+  },
+  "les-chroniques-d-azfareo": {
+    "titreLocal": "LES CHRONIQUES D'AZFAREO",
+    "id": 99617,
+    "romaji": "Azufareo no Sobayounin",
+    "native": "蒼竜の側用人",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "les-legendaires-saga": null,
+  "leviathan": {
+    "titreLocal": "LEVIATHAN",
+    "id": 167361,
+    "romaji": "LEVIATHAN",
+    "native": "LEVIATHAN",
+    "genres": [
+      "Psychological",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Leviathan",
+      "Simhaesu"
+    ]
+  },
+  "magi-the-labyrinth-of-magic": {
+    "titreLocal": "MAGI - THE LABYRINTH OF MAGIC",
+    "id": 44790,
+    "romaji": "Magi",
+    "native": "マギ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "magus-of-the-library": {
+    "titreLocal": "MAGUS OF THE LIBRARY",
+    "id": 101131,
+    "romaji": "Toshokan no Daimajutsushi",
+    "native": "図書館の大魔術師",
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "marimashita-iruma-kun": {
+    "titreLocal": "MARIMASHITA ! IRUMA-KUN !",
+    "recherche": "Mairimashita! Iruma-kun",
+    "id": 99324,
+    "romaji": "Mairimashita! Iruma-kun",
+    "native": "魔入りました！入間くん",
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "score": 0.95,
+    "autresCandidats": [
+      "Mairimashita! Iruma-kun: Kalego Gaiden",
+      "Mairimashita! Iruma-kun if: Episode of Ma-fia"
+    ]
+  },
+  "mashle": {
+    "titreLocal": "MASHLE",
+    "id": 114960,
+    "romaji": "MASHLE",
+    "native": "マッシュル-MASHLE-",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "MASHLE: Tokubetsu Yomikiri",
+      "MASHLE: Mash Burnedead to Gangan Ikouze"
+    ]
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "titreLocal": "MIRAI NIKKI - LE JOURNAL DU FUTUR",
+    "recherche": "Mirai Nikki",
+    "id": 95441,
+    "romaji": "Mirai Nikki",
+    "native": "未来日記",
+    "genres": [
+      "Action",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "score": 0.385,
+    "autresCandidats": [
+      "Mirai Nikki",
+      "Mirai Nikki: Mosaic"
+    ]
+  },
+  "mirai-nikki-mosaic": {
+    "titreLocal": "MIRAI NIKKI – MOSAIC",
+    "id": 31543,
+    "romaji": "Mirai Nikki: Mosaic",
+    "native": "未来日記: Mosaic",
+    "genres": [
+      "Action",
+      "Psychological",
+      "Romance",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Mirai Nikki: Mosaic Keshi"
+    ]
+  },
+  "mirai-nikki-paradox": {
+    "titreLocal": "MIRAI NIKKI – PARADOX",
+    "id": 43277,
+    "romaji": "Mirai Nikki: Paradox",
+    "native": "未来日記・パラドックス",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Mystery",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "mission-in-the-apocalypse": {
+    "titreLocal": "MISSION IN THE APOCALYPSE",
+    "id": 145531,
+    "romaji": "Usuzumi no Hate",
+    "native": "ウスズミの果て",
+    "genres": [
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "monster-hunter-orage": {
+    "titreLocal": "MONSTER HUNTER ORAGE",
+    "id": 36097,
+    "romaji": "Monster Hunter Orage",
+    "native": "モンスターハンター オラージュ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "titreLocal": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
+    "recherche": "Monster Musume no Iru Nichijou",
+    "id": 66213,
+    "romaji": "Monster Musume no Iru Nichijou",
+    "native": "モンスター娘のいる日常",
+    "genres": [
+      "Comedy",
+      "Ecchi",
+      "Fantasy",
+      "Romance"
+    ],
+    "score": 0.415,
+    "autresCandidats": [
+      "Monster Musume no Iru Nichijou: Monster Girl Hello Work",
+      "Monster Musume no Iru Nichijou 4-koma Anthology"
+    ]
+  },
+  "mushoku-tensei": {
+    "titreLocal": "MUSHOKU TENSEI",
+    "id": 165131,
+    "romaji": "Mushoku Tensei: Dasoku-hen",
+    "native": "無職転生 ～蛇足編～",
+    "genres": [
+      "Action",
+      "Drama",
+      "Ecchi",
+      "Fantasy"
+    ],
+    "score": 0.591,
+    "autresCandidats": [
+      "Mushoku Tensei: Isekai Ittara Honki Dasu - Shitsui no Majutsushi-hen",
+      "Mushoku Tensei: Isekai Ittara Honki Dasu"
+    ]
+  },
+  "mushoku-tensei-l-epee-d-iris": {
+    "titreLocal": "MUSHOKU TENSEI – L'épée d'Iris",
+    "recherche": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+    "id": 85470,
+    "romaji": "Mushoku Tensei: Isekai Ittara Honki Dasu",
+    "native": "無職転生 ～異世界行ったら本気だす～",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Ecchi",
+      "Fantasy"
+    ],
+    "score": 0.545,
+    "autresCandidats": [
+      "Mushoku Tensei: Isekai Ittara Honki Dasu",
+      "Mushoku Tensei: Isekai Ittara Honki Dasu, Recollection"
+    ]
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "titreLocal": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "id": 104724,
+    "romaji": "Mushoku Tensei: Roxy datte Honki desu",
+    "native": "無職転生 ~ロキシーだって本気です~",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "my-elder-sister": {
+    "titreLocal": "MY ELDER SISTER",
+    "id": 151916,
+    "romaji": "Wo De Jiejie Shi Da Mingxing",
+    "native": "我的姐姐是大明星",
+    "genres": [
+      "Comedy",
+      "Ecchi",
+      "Romance"
+    ],
+    "score": 0.52,
+    "autresCandidats": [
+      "Onee-chan wa Uchuu.",
+      "H na Ane to NEET na Boku to"
+    ]
+  },
+  "my-hero-academia": {
+    "titreLocal": "MY HERO ACADEMIA",
+    "id": 97154,
+    "romaji": "Boku no Hero Academia: Yuuei Hakusho",
+    "native": "僕のヒーローアカデミア 雄英白書",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Boku no Hero Academia",
+      "Boku no Hero Academia Smash!!"
+    ]
+  },
+  "my-hero-academia-smash": {
+    "titreLocal": "MY HERO ACADEMIA - Smash",
+    "id": 86652,
+    "romaji": "Boku no Hero Academia Smash!!",
+    "native": "僕のヒーローアカデミアすまっしゅ",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "my-hero-academia-ultra-archive": null,
+  "naruto": {
+    "titreLocal": "NARUTO",
+    "id": 30011,
+    "romaji": "NARUTO",
+    "native": "NARUTO -ナルト-",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "NARUTO",
+      "Renge to Naruto!"
+    ]
+  },
+  "neon-genesis-evangelion": {
+    "titreLocal": "NEON GENESIS EVANGELION",
+    "id": 30698,
+    "romaji": "Shin Seiki Evangelion",
+    "native": "新世紀エヴァンゲリオン",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mecha",
+      "Mystery",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Evangelion: ANIMA",
+      "Shin Seiki Evangelion: Koutetsu no Girlfriend 2nd"
+    ]
+  },
+  "nier-automata-op-pearl-harbor": null,
+  "nozokiana": {
+    "titreLocal": "NOZOKIANA",
+    "id": 51419,
+    "romaji": "No Zo Ki A Na",
+    "native": "ノ・ゾ・キ・ア・ナ",
+    "genres": [
+      "Drama",
+      "Ecchi",
+      "Romance"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Nozukiana.com: Nozokimi Site"
+    ]
+  },
+  "one-puch-man": {
+    "titreLocal": "ONE PUCH MAN",
+    "recherche": "One Punch-Man",
+    "id": 74347,
+    "romaji": "One Punch-Man",
+    "native": "ワンパンマン",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "score": 0.909,
+    "autresCandidats": [
+      "One Punch Man"
+    ]
+  },
+  "oriant-samurai-quest": {
+    "titreLocal": "ORIANT - SAMURAI QUEST",
+    "recherche": "Orient",
+    "id": 101873,
+    "romaji": "ORIENT",
+    "native": "オリエント",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "score": 0.944,
+    "autresCandidats": []
+  },
+  "oshi-no-ko": {
+    "titreLocal": "OSHI NO KO",
+    "id": 117195,
+    "romaji": "[Oshi no Ko]",
+    "native": "【推しの子】",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "[Oshi no Ko]: interlude",
+      "[Oshi no Ko]: Ichibanboshi no Spica"
+    ]
+  },
+  "pandora-heart": {
+    "titreLocal": "PANDORA HEART",
+    "id": 33031,
+    "romaji": "Pandora Hearts",
+    "native": "パンドラハーツ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "score": 0.923,
+    "autresCandidats": [
+      "Xin Suo",
+      "Pandora Hearts: Caucus Race"
+    ]
+  },
+  "pandora-heart-8-5": {
+    "titreLocal": "PANDORA HEART – 8,5",
+    "recherche": "Pandora Hearts",
+    "id": 33031,
+    "romaji": "Pandora Hearts",
+    "native": "パンドラハーツ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "score": 0.857,
+    "autresCandidats": [
+      "Pandora Hearts: Caucus Race",
+      "Gilbert in Wonderland"
+    ]
+  },
+  "pokemon-la-grande-aventure": {
+    "titreLocal": "POKEMON - LA GRANDE AVENTURE",
+    "recherche": "Pocket Monsters Special",
+    "id": 30928,
+    "romaji": "Pocket Monsters SPECIAL",
+    "native": "ポケットモンスターSPECIAL",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "score": 0.917,
+    "autresCandidats": [
+      "Pocket Monsters SPECIAL: Yellow",
+      "Pocket Monsters SPECIAL: Emerald"
+    ]
+  },
+  "pokemon-zoroark-le-maitre-des-illusion": {
+    "titreLocal": "POKEMON – ZOROARK LE MAITRE DES ILLUSION",
+    "recherche": "Pokemon Zoroark Master of Illusions",
+    "id": 58457,
+    "romaji": "Pocket Monsters Diamond & Pearl: Genei no Hasha Zoroark",
+    "native": "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク",
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 0.758,
+    "autresCandidats": []
+  },
+  "prophecy-the-copycat": {
+    "titreLocal": "PROPHECY – THE COPYCAT",
+    "id": 86672,
+    "romaji": "Yokokuhan: The Copycat",
+    "native": "予告犯―THE COPYCAT―",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "radiant": {
+    "titreLocal": "RADIANT",
+    "id": 104693,
+    "romaji": "Ikujitsu",
+    "native": "幾日",
+    "genres": [
+      "Hentai",
+      "Romance"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Sanran",
+      "Ppodaejangnyeol"
+    ]
+  },
+  "ragna-crimson": {
+    "titreLocal": "RAGNA CRIMSON",
+    "id": 99065,
+    "romaji": "Ragna Crimson",
+    "native": "ラグナクリムゾン",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Mystery"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "rai-rai-rai": {
+    "titreLocal": "RAI RAI RAI",
+    "id": 168435,
+    "romaji": "Rai Rai Rai",
+    "native": "雷雷雷",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Hana Rai",
+      "Mirai Rai Furai"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill": {
+    "titreLocal": "RED EYES SWORD Akame Ga Kill",
+    "recherche": "Akame ga Kill!",
+    "id": 55132,
+    "romaji": "Akame ga Kill!",
+    "native": "アカメが斬る！",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "score": 0.522,
+    "autresCandidats": [
+      "Akame ga Kill! Zero",
+      "Akame ga Kill! 1.5"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill-zero": {
+    "titreLocal": "RED EYES SWORD Akame Ga Kill – ZERO",
+    "recherche": "Akame ga Kill! Zero",
+    "id": 85400,
+    "romaji": "Akame ga Kill! Zero",
+    "native": "アカメが斬る！零",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 0.593,
+    "autresCandidats": []
+  },
+  "relife": {
+    "titreLocal": "RELIFE",
+    "id": 85849,
+    "romaji": "ReLife",
+    "native": "リライフ",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Slice of Life"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "RELIFE PLAYER",
+      "InCha datta Ore no Seishun Revenge: Tenshi Sugiru Ano Ko to Ayumu Relife"
+    ]
+  },
+  "remember": {
+    "titreLocal": "REMEMBER",
+    "id": 73803,
+    "romaji": "ReMember",
+    "native": "リメンバー",
+    "genres": [
+      "Action"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "remember",
+      "Gieokaejwo"
+    ]
+  },
+  "ruridragon": {
+    "titreLocal": "RURIDRAGON",
+    "id": 150440,
+    "romaji": "Ruri Dragon",
+    "native": "ルリドラゴン",
+    "genres": [
+      "Comedy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "titreLocal": "SAGA OF TANY THE EVIL: YOUJO SENKI",
+    "recherche": "Youjo Senki",
+    "id": 97216,
+    "romaji": "Youjo Senki",
+    "native": "幼女戦記",
+    "genres": [
+      "Action",
+      "Fantasy"
+    ],
+    "score": 0.593,
+    "autresCandidats": [
+      "Youjo Senki",
+      "Youjo Senki Shokudou"
+    ]
+  },
+  "saint-seiya-the-lost-canvas": {
+    "titreLocal": "SAINT SEIYA - THE LOST CANVAS",
+    "id": 31047,
+    "romaji": "Saint Seiya: THE LOST CANVAS - Meiou Shinwa",
+    "native": "聖闘士星矢 THE LOST CANVAS 冥王神話",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "score": 0.676,
+    "autresCandidats": [
+      "Saint Seiya: The Lost Canvas - Meiou Shinwa Bangai-hen",
+      "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden"
+    ]
+  },
+  "saint-seiya-the-lost-canvas-chronicles": null,
+  "saotome-love-boxing": {
+    "titreLocal": "SAOTOME LOVE & BOXING",
+    "id": 99851,
+    "romaji": "Saotome-Senshu, Hitakakusu",
+    "native": "早乙女選手、ひたかくす",
+    "genres": [
+      "Comedy",
+      "Ecchi",
+      "Romance",
+      "Sports"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "servamp": {
+    "titreLocal": "SERVAMP",
+    "id": 59887,
+    "romaji": "SERVAMP",
+    "native": "SERVAMP -サーヴァンプ-",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "shaman-king": {
+    "titreLocal": "SHAMAN KING",
+    "id": 30050,
+    "romaji": "Shaman King",
+    "native": "シャーマンキング",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Shaman King Kanzenban",
+      "Shaman King 0"
+    ]
+  },
+  "smoking-behind-the-supermarket": {
+    "titreLocal": "SMOKING BEHIND THE SUPERMARKET",
+    "id": 147149,
+    "romaji": "Super no Ura de Yani Suu Futari",
+    "native": "スーパーの裏でヤニ吸うふたり",
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Slice of Life"
+    ],
+    "score": 1,
+    "autresCandidats": []
+  },
+  "solo-leveling": {
+    "titreLocal": "SOLO LEVELING",
+    "id": 105398,
+    "romaji": "Na Honjaman Level Up",
+    "native": "나 혼자만 레벨업",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Insaeng 2-hoechaui Teukgwoneun Pokpung Rebereop",
+      "Na Honjaman Level Up: Ragnarok"
+    ]
+  },
+  "soul-eater": {
+    "titreLocal": "SOUL EATER",
+    "id": 30908,
+    "romaji": "Soul Eater",
+    "native": "ソウルイーター",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "Soul Eater Not!",
+      "Hangyaku no Soul Eater"
+    ]
+  },
+  "spy-x-family": {
+    "titreLocal": "SPY X FAMILY",
+    "id": 108556,
+    "romaji": "SPY×FAMILY",
+    "native": "SPY×FAMILY",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "score": 1,
+    "autresCandidats": [
+      "SPYxFAMILY: Kazoku no Shouzou",
+      "SPY×FAMILY EXTRA MISSION"
+    ]
+  }
+}

@@ -946,6 +946,63 @@ Vérifié de bout en bout en `npm run start` : `/`, `/manquants` et `/edition/<s
 le message ; bon mot de passe menant à la Collection ; les couvertures servies depuis Blob en
 200 ; un tome décoché puis recoché sur `burn-the-witch`, base à 1 147 puis 1 148.
 
+### Fait — l'enrichissement AniList (30 août 2026)
+
+Les genres passent à la liste fermée d'AniList, décidée le 29 août. Au passage `titreVo`, qui
+était **nul sur les 108 séries**, est rempli sur 101.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/fetch-anilist.ts` | `npm run anilist:fetch` — résout, n'écrit que le manifeste |
+| `scripts/apply-anilist.ts` | `npm run anilist:apply` — écrit en base, `--revert` pour annuler |
+| `data/anilist.json` | le manifeste, versionné, relu à la main entre les deux |
+| `data/series-avant-anilist.json` | l'état des 108 séries avant écriture, versionné |
+
+Résultat : **101 correspondances sur 108**, 17 genres distincts contre 27 avant, tous dans la
+liste fermée. `titreVo` à 101/108. Les sept compteurs sont intacts.
+
+- **Le seuil de similarité ne marche pas ici, et c'est le point central.** `fetch_covers.py`
+  départage ses candidats MangaDex à 0,86 de similarité ; transposer cette approche à AniList
+  aurait tout cassé. `BLUE EYES SWORD` → *Hinowa ga Yuku!* marque **0,000** et c'est la bonne
+  réponse ; `L'ATTAQUE DES TITANS` → *Shingeki no Kyojin* marque 0,529. **AniList indexe les
+  synonymes, y compris les titres français : c'est sa pertinence de recherche qui fait le pont,
+  pas la ressemblance des chaînes.** Le score est conservé comme *indicateur* de relecture,
+  jamais comme filtre.
+- **La troncature automatique du titre est dangereuse.** Couper avant le tiret récupère bien
+  `MIRAI NIKKI - LE JOURNAL DU FUTUR` → *Mirai Nikki*, mais `POKEMON - LA GRANDE AVENTURE`
+  tronqué en `POKEMON` rend *Kabigon no Yume Gourmet*, et `YURAGI` rend *Natsu no Su*. Faux
+  appariements confiants, qu'aucun score ne rattrape puisque le score ne vaut rien ici.
+  **D'où `RECHERCHES_MANUELLES`**, une table écrite à la main — même forme que
+  `EDITEURS_CANONIQUES` — qui a fait passer la résolution de 79 à 101.
+- **AniList limite à 30 requêtes par minute, pas 90.** À 1 req/s le script s'est fait couper
+  par une rafale de 429 après 34 séries. Réglé à 28/min, avec respect de l'en-tête
+  `Retry-After`. Le cache par slug rend la reprise gratuite ; les échecs, eux, sont
+  réinterrogés à chaque passage pour qu'un ajout dans la table prenne effet sans purge.
+- **Deux temps, avec relecture humaine au milieu.** Aucune validation automatique n'étant
+  possible, `anilist:fetch` n'écrit que le manifeste et `anilist:apply` seul touche la base,
+  après avoir sauvegardé l'état des 108 séries.
+- **Les 4 valeurs orphelines basculent en thèmes** — `School Life`, `Mature`, `Guide`,
+  `Nekketsu` — comme le 29 août l'avait prévu. Vérifié en base : les quatre y sont.
+- **Les 7 séries sans correspondance gardent leurs genres, traduits** par une table de trois
+  entrées (`Aventure`, `Comédie`, `Fantastique`). Deux databooks se retrouvent sans genre du
+  tout, ce qui est exact : leur seul genre était `Guide`.
+
+**Ce que ça débloque, sans que ce fût le but** : `titreVo` sert à l'anti-doublon de l'écran
+Ajouter (`lib/actions.ts:107-125`). À 0/108 ce garde-fou ne fonctionnait que sur le titre
+français — chercher « Shingeki no Kyojin » ne reconnaissait pas « L'ATTAQUE DES TITANS » déjà
+en collection. Il fonctionne maintenant sur 101 séries.
+
+**Les 7 non résolues** : `bleach-13-blades` et `my-hero-academia-ultra-archive` (databooks,
+absents d'AniList), `les-legendaires-saga` (BD française, pas un manga),
+`nier-automata-op-pearl-harbor`, `saint-seiya-the-lost-canvas-chronicles`, `tsugumi-project`,
+`yusei-no-last-boss` — terme de recherche non trouvé. Une entrée dans `RECHERCHES_MANUELLES`
+suffit à en débloquer une, sans purger le cache.
+
+**`themes` reste en français et garde ses coupures d'import** — `Post` + `apo`, `Super` +
+`héros`, `Dieux` + `Déesses`, `Combats` / `Combat`. 99 valeurs. Aucun écran ne les affiche
+aujourd'hui, et `creerSerieAvecEdition` les laisse vides : le nettoyage ne rapporterait rien
+tant qu'il n'y a pas d'écran pour les montrer.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
@@ -953,8 +1010,6 @@ le message ; bon mot de passe menant à la Collection ; les couvertures servies 
   4 séries de la collection sont multi-éditions — le cas se posera.
 - **Couvertures** : faites à 87 % et **déposées dans Vercel Blob**. Restent les 214 tomes
   détaillés ci-dessus, dont 36 exclus volontairement.
-- **Alignement des genres sur AniList** : décidé, pas fait. Touche `import_sheet.py`,
-  `data/collection.json` et la base.
 - **Déclarer `ACCESS_PASSWORD` dans les variables du projet Vercel.** Sans elle la garde
   refuse tout, ce qui est le bon échec mais rend l'application inutilisable.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
@@ -963,9 +1018,12 @@ le message ; bon mot de passe menant à la Collection ; les couvertures servies 
   blocage cross-origin qui tuait toute interaction est levé. **Le cochage au doigt, la barre
   d'onglets et les cibles à 44 px restent à exercer sur l'écran tactile** — c'était impossible
   tant que React n'hydratait pas.
-- **12 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent. Le
-  sélecteur de `fetch_covers.py` sait désormais les absorber par similarité — **transposer la
-  même approche à `fetch_publishers.py` les débloquerait probablement**.
+- **12 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent.
+  **Ne pas transposer la similarité de `fetch_covers.py`** comme le suggérait la note
+  précédente : l'enrichissement AniList a montré que le seuil rejette les bonnes réponses dès
+  que le titre VF s'éloigne. La table `RECHERCHES_MANUELLES` de `fetch-anilist.ts` est le
+  motif qui marche, et les titres romaji désormais en base (`titreVo`, 101/108) donnent
+  au passage un second terme de recherche à essayer contre la BnF.
 - **Pousser `main` sur GitHub.** `origin/main` en est resté à l'étape 1 : les 15 commits des
   étapes 2 à 5, des couvertures et de Blob n'existent que sur le poste local. Le jeton GitHub
   enregistré est périmé — purger l'identifiant (`git credential reject`) et repousser.

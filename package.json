@@ -11,7 +11,9 @@
     "db:migrate": "tsx scripts/apply-migrations.ts",
     "db:seed": "tsx prisma/seed.ts",
     "covers:fetch": "python scripts/fetch_covers.py",
-    "covers:upload": "tsx scripts/upload-covers.ts"
+    "covers:upload": "tsx scripts/upload-covers.ts",
+    "anilist:fetch": "tsx scripts/fetch-anilist.ts",
+    "anilist:apply": "tsx scripts/apply-anilist.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
