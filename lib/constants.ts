@@ -126,3 +126,5 @@ export const LIBELLE_SCAN_INVITE = "Placez le code-barres du dos du tome dans le
 export const LIBELLE_ISBN = "ISBN";
 export const LONGUEUR_ISBN = 13;
 export const PREFIXES_ISBN = ["978", "979"];
+
+export const LIBELLE_REFAIRE_MISE_AU_POINT = "Touchez l’image pour refaire la mise au point.";

@@ -11,6 +11,7 @@ import {
   LIBELLE_SCAN_INDISPONIBLE,
   LIBELLE_SCAN_INVITE,
   LIBELLE_SCAN_ISBN_INVALIDE,
+  LIBELLE_REFAIRE_MISE_AU_POINT,
 } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
 import { isbnValide, type ResultatScan } from "@/lib/domain";
@@ -20,6 +21,29 @@ const CHAMP =
 const BOUTON =
   "flex min-h-11 items-center justify-center rounded-md border border-accent px-[14px] text-[13px] font-medium text-accent transition-colors hover:bg-accent/12";
 const INTERVALLE_DETECTION_MS = 400;
+const LARGEUR_IDEALE = 1920;
+const HAUTEUR_IDEALE = 1080;
+
+type CapacitesEtendues = MediaTrackCapabilities & { focusMode?: string[]; zoom?: unknown };
+
+async function reglerMiseAuPoint(flux: MediaStream): Promise<void> {
+  const piste = flux.getVideoTracks()[0];
+  if (!piste?.applyConstraints) {
+    return;
+  }
+  const capacites = piste.getCapabilities?.() as CapacitesEtendues | undefined;
+  const modes = capacites?.focusMode;
+  if (modes && !modes.includes("continuous")) {
+    return;
+  }
+  try {
+    await piste.applyConstraints({
+      advanced: [{ focusMode: "continuous" } as MediaTrackConstraintSet],
+    });
+  } catch {
+    /* l'appareil refuse la contrainte : on garde la mise au point par defaut */
+  }
+}
 
 type Detecteur = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: string }[]> };
 
@@ -58,8 +82,17 @@ export function Scanner() {
       }
       try {
         obtenu = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "environment" },
+          video: {
+            facingMode: "environment",
+            width: { ideal: LARGEUR_IDEALE },
+            height: { ideal: HAUTEUR_IDEALE },
+          },
         });
+        if (!vivant) {
+          obtenu.getTracks().forEach((piste) => piste.stop());
+          return;
+        }
+        await reglerMiseAuPoint(obtenu);
         if (!vivant) {
           obtenu.getTracks().forEach((piste) => piste.stop());
           return;
@@ -84,7 +117,10 @@ export function Scanner() {
     }
     const element = video.current;
     element.srcObject = flux;
-    element.play().catch(() => setCamera("indisponible"));
+    element
+      .play()
+      .then(() => reglerMiseAuPoint(flux))
+      .catch(() => setCamera("indisponible"));
 
     const Detecteur = (window as unknown as { BarcodeDetector?: new (o: object) => Detecteur })
       .BarcodeDetector;
@@ -117,19 +153,25 @@ export function Scanner() {
 
   return (
     <div className="flex flex-1 flex-col gap-[16px] px-[18px] pb-[18px]">
-      <div hidden={camera !== "active"} className="relative overflow-hidden rounded-md bg-black">
-        <video
-          ref={video}
-          muted
-          autoPlay
-          playsInline
-          className="h-[240px] w-full object-cover"
-        />
-        <span className="bg-accent/70 absolute inset-x-[14%] top-1/2 h-[2px] -translate-y-1/2" />
-      </div>
+      <button
+        type="button"
+        hidden={camera !== "active"}
+        onClick={() => {
+          if (flux) reglerMiseAuPoint(flux);
+        }}
+        aria-label={LIBELLE_REFAIRE_MISE_AU_POINT}
+        className="relative block overflow-hidden rounded-md bg-black"
+      >
+        <video ref={video} muted autoPlay playsInline className="h-[240px] w-full object-cover" />
+        <span className="bg-accent/70 pointer-events-none absolute inset-x-[14%] top-1/2 h-[2px] -translate-y-1/2" />
+      </button>
 
       <p className="text-[11.5px]/[1.6] text-neutral-600">
-        {camera === "indisponible" ? LIBELLE_SCAN_INDISPONIBLE : LIBELLE_SCAN_INVITE}
+        {camera === "indisponible"
+          ? LIBELLE_SCAN_INDISPONIBLE
+          : camera === "active"
+            ? `${LIBELLE_SCAN_INVITE} ${LIBELLE_REFAIRE_MISE_AU_POINT}`
+            : LIBELLE_SCAN_INVITE}
       </p>
 
       <form

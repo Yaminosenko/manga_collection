@@ -1682,6 +1682,22 @@ sans aucune permission. Substitué à `getUserMedia`, il a montré `srcObject` a
 cours et **640 × 360 de frames décodées** — trois indicateurs qui étaient tous faux avant. À
 retenir pour tout futur travail sur la caméra depuis le poste.
 
+**Corrigé — la caméra ne faisait pas la mise au point** (signalé le 30 août, une fois l'aperçu
+réparé). Sans contrainte explicite, Android ouvre souvent la caméra en mise au point fixe.
+Trois remèdes cumulés, aucun ne pouvant être essayé depuis le poste :
+
+- **Résolution demandée** : `1920 × 1080` en `ideal`. Une image basse définition suffit rarement
+  à décoder un EAN-13, et beaucoup d'appareils choisissent un meilleur mode caméra à cette
+  demande.
+- **`focusMode: "continuous"` appliqué deux fois** — avant l'attachement puis après le démarrage
+  de la lecture. Certains appareils ignorent la contrainte tant que la piste ne tourne pas. Les
+  capacités sont interrogées d'abord : si l'appareil n'annonce pas ce mode, on ne force rien.
+- **Appui sur l'aperçu pour refaire la mise au point**, avec la mention à l'écran. C'est le
+  rattrapage manuel quand l'autofocus continu décroche.
+
+Vérifié au canvas de test : `1920 × 1080` bien demandés, la contrainte appliquée **deux fois**,
+et l'appui la relance.
+
 **Ce que ça n'adresse pas encore** : créer une seconde édition depuis un scan. La notice donne
 pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'est la suite naturelle.
 
