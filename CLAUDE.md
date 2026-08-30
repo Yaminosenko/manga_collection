@@ -1546,6 +1546,31 @@ ni le lire ni l'écraser. Passer par `127.0.0.1` au lieu de `localhost` donne un
 distincte, sans cookie existant**, où l'on peut poser un jeton depuis la console — et le jeton
 *invité* suffit pour un contrôle visuel, ce qui évite d'avoir à manipuler le mot de passe.
 
+### Fait — l'écran Planning (30 août 2026)
+
+L'écran « Sorties à venir » de §9, quatrième onglet. Il lit la table `Sortie` : **11 sorties,
+groupées par mois**, avec la couverture au traitement « à paraître », le numéro de tome,
+l'éditeur et le jour.
+
+| Fichier | Rôle |
+|---|---|
+| `app/(tabs)/planning/page.tsx` | l'écran, groupement par mois |
+| `components/planning-month.tsx` | un mois et ses sorties |
+| `lib/editions.ts` | `chargerPlanning` |
+
+**Périmètre : les séries de la collection seulement**, tranché le 30 août. Les CSV contiennent
+**598 sorties à venir toutes séries confondues** ; `import_planning.py` n'en retient que celles
+qui s'apparient à une édition possédée. Montrer les 598 aurait demandé une seconde table sans
+lien avec `Edition` et un rafraîchissement mensuel — l'application suit une collection, pas un
+catalogue.
+
+**Le planning est une photographie, pas un flux.** Ajouter une série ne fait pas apparaître ses
+sorties : il faut relancer `npm run db:backup`, `planning:import` puis `planning:apply`, et
+l'appariement ne joue que si le titre correspond. À retenir avant de s'étonner d'un écran vide.
+
+**Visible en mode invité** : l'écran ne porte aucune écriture. La barre passe à quatre onglets
+pour le propriétaire, trois pour l'invité.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
@@ -1609,8 +1634,6 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   non plus — il faudrait les déduire des titres, ou les saisir.
 - **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
   peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
-- **Écran « Sorties à venir » (§9)** : les données existent désormais — 11 annonces avec date,
-  ISBN et couverture. Il ne manque que l'écran.
 - **Scan EAN-13 (§9)** : la chaîne photo → ISBN → édition est prouvée, et `Volume.isbn` est
   amorcé sur 127 tomes. `BarcodeDetector` limite le scan à Android.
 

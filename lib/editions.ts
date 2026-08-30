@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import type { Collection, Edition, Manquants } from "@/lib/domain";
+import type { Collection, Edition, Manquants, SortiePlanning } from "@/lib/domain";
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
   const edition = await prisma.edition.findUnique({
@@ -195,4 +195,34 @@ export async function chargerManquants(): Promise<Manquants> {
       0,
     ),
   };
+}
+
+export async function chargerPlanning(): Promise<SortiePlanning[]> {
+  const sorties = await prisma.sortie.findMany({
+    orderBy: [{ date: "asc" }, { numero: "asc" }],
+    select: {
+      numero: true,
+      date: true,
+      couvertureUrl: true,
+      edition: {
+        select: {
+          slug: true,
+          nom: true,
+          editeur: true,
+          serie: { select: { titre: true, _count: { select: { editions: true } } } },
+        },
+      },
+    },
+  });
+
+  return sorties.map((sortie) => ({
+    slug: sortie.edition.slug,
+    titre: sortie.edition.serie.titre,
+    nom: sortie.edition.nom,
+    editeur: sortie.edition.editeur,
+    numero: sortie.numero,
+    date: sortie.date.toISOString(),
+    couvertureUrl: sortie.couvertureUrl,
+    editionsDeLaSerie: sortie.edition.serie._count.editions,
+  }));
 }

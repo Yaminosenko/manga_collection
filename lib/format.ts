@@ -18,3 +18,19 @@ const MOIS_COURT = new Intl.DateTimeFormat("fr-FR", { month: "short", year: "2-d
 export function formaterMoisSortie(iso: string): string {
   return MOIS_COURT.format(new Date(iso)).replace(".", "");
 }
+
+const MOIS_LONG = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });
+const JOUR_COURT = new Intl.DateTimeFormat("fr-FR", { weekday: "short", day: "numeric" });
+
+export function formaterMoisLong(iso: string): string {
+  const rendu = MOIS_LONG.format(new Date(iso));
+  return rendu.charAt(0).toUpperCase() + rendu.slice(1);
+}
+
+export function formaterJour(iso: string): string {
+  return JOUR_COURT.format(new Date(iso)).replace(".", "");
+}
+
+export function cleMois(iso: string): string {
+  return iso.slice(0, 7);
+}

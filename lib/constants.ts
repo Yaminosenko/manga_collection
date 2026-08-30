@@ -104,3 +104,8 @@ export const LIBELLE_MODE_INVITE = "Mode invité · consultation seule";
 export const LIBELLE_QUITTER_INVITE = "Quitter";
 export const MENTION_INVITE_LECTURE =
   "En invité, la collection se consulte mais ne se modifie pas.";
+
+export const TITRE_PLANNING = "Planning";
+export const LIBELLE_PLANNING_VIDE =
+  "Aucune sortie annoncée pour vos éditions. Importez les planning des mois à venir.";
+export const LIBELLE_PLANNING_ERREUR = "Le planning n’a pas pu être chargé.";

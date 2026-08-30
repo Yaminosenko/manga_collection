@@ -9,6 +9,17 @@ import {
 import type { SerieDistante } from "@/lib/anilist";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
+export type SortiePlanning = {
+  slug: string;
+  titre: string;
+  nom: string;
+  editeur: string | null;
+  numero: number;
+  date: string;
+  couvertureUrl: string | null;
+  editionsDeLaSerie: number;
+};
+
 export type SortieAnnoncee = {
   numero: number;
   date: string;
