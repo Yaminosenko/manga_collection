@@ -124,7 +124,8 @@ def compter_couvertures(identifiant):
         return 0
     numeros = set()
     for langue in LANGUES_PAR_PREFERENCE:
-        numeros |= set(par_langue.get(langue, {}))
+        for tomes in par_langue.get(langue, {}).values():
+            numeros |= set(tomes)
     return len(numeros)
 
 
@@ -168,6 +169,14 @@ def trouver_manga(titre):
     return max(tetes, key=compter_couvertures)
 
 
+def decouper_volume(brut):
+    tete, _, suffixe = str(brut).strip().partition(".")
+    try:
+        return suffixe, int(tete)
+    except ValueError:
+        return None
+
+
 def couvertures_par_langue(identifiant):
     par_langue, decalage, total = {}, 0, 1
     while decalage < total:
@@ -183,14 +192,27 @@ def couvertures_par_langue(identifiant):
             brut = attributs.get("volume")
             if not brut:
                 continue
-            try:
-                numero = int(str(brut).strip())
-            except ValueError:
+            decoupe = decouper_volume(brut)
+            if decoupe is None:
                 continue
-            table = par_langue.setdefault(attributs.get("locale"), {})
-            table.setdefault(numero, attributs["fileName"])
+            famille, numero = decoupe
+            familles = par_langue.setdefault(attributs.get("locale"), {})
+            familles.setdefault(famille, {}).setdefault(numero, attributs["fileName"])
         decalage += LOT_COUVERTURES
     return par_langue
+
+
+def famille_retenue(familles, tomes_parus):
+    if not familles:
+        return {}
+
+    def rang(paire):
+        famille, tomes = paire
+        taille_exacte = 0 if len(tomes) == tomes_parus else 1
+        manquants = len([n for n in range(1, tomes_parus + 1) if n not in tomes])
+        return (taille_exacte, manquants, famille != "")
+
+    return min(familles.items(), key=rang)[1]
 
 
 def enregistrer(brut, chemin):
@@ -261,7 +283,11 @@ def main():
             continue
 
         try:
-            par_langue = couvertures_par_langue(identifiant)
+            par_famille = couvertures_par_langue(identifiant)
+            par_langue = {
+                langue: famille_retenue(familles, tomes_parus)
+                for langue, familles in par_famille.items()
+            }
         except Exception as erreur:
             sans_correspondance.append(slug)
             print(f"  {index:>3}/{len(cibles)}  {slug[:32]:32} echec liste ({erreur})")

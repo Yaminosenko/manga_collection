@@ -1210,6 +1210,36 @@ renvoie l'édition quoi qu'il arrive.
 **un appareil qui avait déjà affiché les mauvaises couvertures les gardera un an**. Il faut y
 forcer un rechargement dur une fois.
 
+### Corrigé — les rééditions ont leur propre numérotation (30 août 2026)
+
+Signalé à l'usage sur *Neon Genesis Evangelion* : l'édition possédée est la **Perfect Edition
+en 7 tomes**, mais la page affichait les tomes 1 à 7 de l'édition d'origine en 14 volumes.
+
+**Deux fautes superposées.** D'abord le script jetait silencieusement toute couverture dont le
+volume n'était pas un entier :
+
+```python
+numero = int(str(brut).strip())   # "1.1" leve ValueError, couverture ignoree
+```
+
+Or MangaDex numérote les rééditions avec un suffixe décimal : Evangelion a `1 … 14` pour
+l'origine et `1.1 … 7.1` pour la Perfect Edition. Le bon jeu n'était jamais candidat. Ensuite,
+même en le lisant, **la couverture du domaine ne discrimine rien** : le jeu de 14 couvre aussi
+parfaitement les tomes 1 à 7.
+
+**Le signal est la taille du jeu comparée à `tomesParus`.** Les couvertures sont désormais
+groupées par *famille de numérotation* — le suffixe décimal — et `famille_retenue` choisit
+celle dont la taille égale `tomesParus`, à défaut celle qui couvre le mieux 1..N, les entiers
+l'emportant à égalité.
+
+**Survol systématique des 93 éditions résolues : 20 ont plusieurs familles, la règle ne change
+le choix que pour trois** — Evangelion (`1.1…7.1`, Perfect Edition Glénat), Blame! (`1.1…6.1`,
+le 新装版 en 6 volumes) et Gantz (`x.18`, le bunko Shueisha en 18 volumes). Les trois ont été
+confirmées par l'utilisateur avant réécriture, et vérifiées à l'œil après.
+
+**La règle ne s'applique qu'aux éditions purgées explicitement**, le script sautant celles déjà
+complètes sur disque. Aucune des 17 autres n'a bougé.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
