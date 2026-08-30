@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { rechercherSurAniList } from "@/lib/anilist";
 import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
+import { exigerAcces } from "@/lib/guard";
 import { LONGUEUR_RECHERCHE_MIN, RESULTATS_RECHERCHE_MAX } from "@/lib/constants";
 import type { EtatCreation, ResultatRecherche } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
@@ -27,6 +28,8 @@ export async function basculerTome(
   numero: number,
   possede: boolean,
 ): Promise<void> {
+  await exigerAcces();
+
   const volume = await prisma.volume.findFirst({
     where: { numero, edition: { slug } },
     select: { id: true },
@@ -47,6 +50,8 @@ export async function basculerTome(
 }
 
 export async function definirTousLesTomes(slug: string, possede: boolean): Promise<void> {
+  await exigerAcces();
+
   const edition = await prisma.edition.findUnique({
     where: { slug },
     select: { tomesParus: true, volumes: { select: { id: true, numero: true } } },
@@ -70,6 +75,8 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
 }
 
 export async function rechercherSeries(terme: string): Promise<ResultatRecherche> {
+  await exigerAcces();
+
   const requete = terme.trim();
   if (requete.length < LONGUEUR_RECHERCHE_MIN) {
     return { locales: [], distantes: [], indisponible: false };
@@ -137,6 +144,8 @@ export async function creerEdition(
   _precedent: EtatCreation,
   donnees: FormData,
 ): Promise<EtatCreation> {
+  await exigerAcces();
+
   const titre = lireTexte(donnees, "titre");
   const auteur = lireTexte(donnees, "auteur");
   const nom = lireTexte(donnees, "nom");

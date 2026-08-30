@@ -71,3 +71,15 @@ export const LIBELLE_TOMES_JAPONAIS =
 export const NOM_APPLICATION = "Collection de mangas";
 export const NOM_APPLICATION_COURT = "Collection";
 export const COULEUR_FOND_APPLICATION = "#161826";
+
+export const CHEMIN_ACCES = "/acces";
+export const COOKIE_ACCES = "collection.acces";
+export const MESSAGE_JETON = "acces";
+export const DUREE_ACCES_SECONDES = 31_536_000;
+
+export const TITRE_ACCES = "Collection privée";
+export const LIBELLE_MOT_DE_PASSE = "Mot de passe";
+export const LIBELLE_DEVERROUILLER = "Entrer";
+export const LIBELLE_ACCES_REFUSE = "Mot de passe incorrect.";
+export const LIBELLE_ACCES_NON_CONFIGURE =
+  "Aucun mot de passe n’est configuré : renseignez ACCESS_PASSWORD dans l’environnement.";

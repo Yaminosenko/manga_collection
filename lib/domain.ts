@@ -108,6 +108,8 @@ export type ResultatRecherche = {
 
 export type EtatCreation = { erreur: string | null };
 
+export type EtatAcces = { erreur: string | null };
+
 export function dernierTomePossede(tomes: Tome[]): Tome | null {
   for (let index = tomes.length - 1; index >= 0; index -= 1) {
     const tome = tomes[index];

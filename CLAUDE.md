@@ -302,7 +302,7 @@ allumée en permanence. Tout ce qui suit découle de là.
 | Base | PostgreSQL sur Neon | Free — 0,5 Go, 100 CU-h/mois, veille après 5 min |
 | Hébergement | Vercel | Hobby — usage personnel, sans carte, non facturable |
 | Couvertures | Vercel Blob | Hobby — 1 Go inclus, ~30 Mo nécessaires |
-| Accès privé | Vercel Authentication, portée **All Deployments** | inclus sur Hobby |
+| Accès privé | Garde applicative, mot de passe unique dans `proxy.ts` | Hobby ne sait pas protéger la production |
 | Mobile | PWA installable | — |
 
 Alternative écartée : FastAPI + React séparés. Deux déploiements, une couche API à écrire et
@@ -317,9 +317,13 @@ neutre. Changer de stack ne le remet pas en cause.
   en pratique, servies depuis Vercel Blob. Aucune écriture disque ne survit.
 - **La base s'endort au bout de 5 minutes d'inactivité.** Premier écran après une pause :
   ~1 s de réveil. Prévoir un état de chargement, jamais un écran figé.
-- **Le déploiement est public par défaut.** Sans Vercel Authentication en portée
-  `All Deployments`, l'URL suffit à lire la collection. À activer avant le premier déploiement
-  contenant des données réelles.
+- **Le domaine de production est public, et Hobby ne sait pas le fermer.** Vérifié dans la
+  documentation Vercel le 30 août 2026 : la méthode *Vercel Authentication* existe sur tous les
+  plans, mais la portée **All Deployments** — la seule qui couvre la production — est réservée
+  aux plans **Pro et Enterprise**, et *Password Protection* est Enterprise ou un module à
+  **150 $/mois** sur Pro. Sur Hobby, *Standard Protection* protège les prévisualisations et les
+  URL générées, jamais le domaine de production. **La garde est donc dans l'application**, voir
+  §12. Activer quand même *Standard Protection* : elle ferme les prévisualisations pour rien.
 - **Pas de sauvegarde longue durée sur le plan gratuit.** Un export JSON régulier de la base,
   versionné dans le dépôt, est le seul filet. `data/collection.json` en est le point zéro.
 - **Le remplissage initial des 1640 couvertures se lance depuis le poste local**, pas depuis
@@ -901,6 +905,47 @@ la main ne déclenche pas toujours un `onChange` React. Les deux m'ont fait croi
 l'application entière était cassée sur bureau, ce qui était faux. **Le seul test valable est
 fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
 
+### Fait — la garde d'accès (30 août 2026)
+
+§7 promettait Vercel Authentication en portée `All Deployments`, « inclus sur Hobby ». C'est
+faux : cette portée est réservée aux plans Pro. Le domaine de production d'un projet Hobby est
+publiquement accessible, avec les prix payés et la valeur de la collection derrière. La garde
+passe donc dans l'application.
+
+| Fichier | Rôle |
+|---|---|
+| `proxy.ts` | intercepte toute requête et redirige vers `/acces` sans cookie valide |
+| `lib/auth.ts` | le jeton : HMAC-SHA256 du mot de passe, comparaison à temps constant |
+| `lib/guard.ts` | `exigerAcces`, la seconde couche, appelée dans chaque Server Action |
+| `lib/auth-actions.ts` | `deverrouiller` — pose le cookie, un an, `httpOnly` |
+| `app/acces/page.tsx`, `components/access-form.tsx` | l'écran de mot de passe |
+
+- **`proxy.ts`, pas `middleware.ts`.** Next 16 a renommé le fichier ; `middleware.ts` est
+  déprécié. Le proxy tourne en runtime **Node.js** par défaut, donc `node:crypto` est
+  disponible et il n'y a pas à passer par la Web Crypto.
+- **Deux couches, parce que la documentation l'exige.** Elle est explicite : *« Always verify
+  authentication inside each Server Function rather than relying on Proxy alone »* — un
+  changement de `matcher` peut silencieusement découvrir une Server Action. Les quatre actions
+  de `lib/actions.ts` appellent donc `exigerAcces` en première ligne.
+- **Le manifeste et les icônes restent hors garde**, sinon l'installation de la PWA se
+  comporte mal avant la connexion. Ils ne révèlent rien.
+- **L'erreur passe par `useActionState`, pas par une query string.** Première version :
+  `redirect("/acces?refuse=1")`. Le serveur répondait bien `303 → /acces?refuse=1` — vérifié
+  au curl — mais la navigation client perdait le paramètre et le message ne s'affichait
+  jamais. `useActionState` est de toute façon le motif déjà en place pour `creerEdition`.
+- **Sans `ACCESS_PASSWORD`, tout est refusé** et l'écran le dit. Échec fermé, volontairement.
+
+**Piège de test rencontré, à nouveau.** L'action `type` du pilote de navigateur ne déposait pas
+le texte dans le champ mot de passe ; cliquer sur « Entrer » ne déclenchait alors que la
+validation native du champ `required`, sans aucune requête — ce qui ressemblait trait pour
+trait à une hydratation morte. `form_input` sur la référence de l'élément fonctionne. C'est la
+troisième fois que la sonde ment : **seul un test fonctionnel abouti prouve quelque chose.**
+
+Vérifié de bout en bout en `npm run start` : `/`, `/manquants` et `/edition/<slug>/tomes` en
+307 vers `/acces` sans cookie ; manifeste et icônes en 200 ; mauvais mot de passe refusé avec
+le message ; bon mot de passe menant à la Collection ; les couvertures servies depuis Blob en
+200 ; un tome décoché puis recoché sur `burn-the-witch`, base à 1 147 puis 1 148.
+
 ### Reste à faire
 
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : les résultats
@@ -910,8 +955,8 @@ fonctionnel** : cliquer pour de vrai, puis regarder l'écran et la base.
   détaillés ci-dessus, dont 36 exclus volontairement.
 - **Alignement des genres sur AniList** : décidé, pas fait. Touche `import_sheet.py`,
   `data/collection.json` et la base.
-- **Premier déploiement Vercel**, jamais fait. Vercel Authentication en portée
-  `All Deployments` à activer avant toute donnée réelle en ligne.
+- **Déclarer `ACCESS_PASSWORD` dans les variables du projet Vercel.** Sans elle la garde
+  refuse tout, ce qui est le bon échec mais rend l'application inutilisable.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
   en cache, et l'installation attend le déploiement HTTPS.
 - **Test sur téléphone** : la mise en page est validée (grille à 2 colonnes, largeur), et le
