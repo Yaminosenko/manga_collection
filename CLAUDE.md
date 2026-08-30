@@ -1715,8 +1715,9 @@ pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'e
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 657 sur 1 693, déposées dans Vercel Blob. Restent 36 tomes parus —
-  `ippo-s4-la-loi-du-ring` 3 à 27 et `les-legendaires-saga` 2 à 12 — et l'annonce `radiant` 20. Le remplissage reste
+- **Couvertures** : 1 674 sur 1 710, déposées dans Vercel Blob. Restent 36 tomes parus —
+  `ippo-s4-la-loi-du-ring` 25 et `les-legendaires-saga` 11 — et deux annonces,
+  `radiant` 20 et `les-legendaires-saga`. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
   n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de
@@ -1769,8 +1770,13 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   non plus — il faudrait les déduire des titres, ou les saisir.
 - **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
   peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
-- **Scan EAN-13 (§9)** : la chaîne photo → ISBN → édition est prouvée, et `Volume.isbn` est
-  amorcé sur 127 tomes. `BarcodeDetector` limite le scan à Android.
+- **Mise au point de la caméra du scanner.** Le scan décode, mais l'autofocus ne converge pas
+  quand le tome est tenu trop près : l'appareil principal d'un téléphone ne fait pas le point
+  sous une dizaine de centimètres. Contournement : éloigner à 20-25 cm, la détection travaillant
+  sur les frames natives en 1920 × 1080 et non sur l'aperçu à 240 px. Pistes non essayées —
+  agrandir l'aperçu pour juger la netteté, choisir explicitement la caméra plutôt que de laisser
+  `facingMode: "environment"` attraper l'ultra grand-angle, et une contrainte de zoom.
+  **Rien n'est vérifiable depuis le poste** ; la saisie manuelle de l'ISBN, elle, est testée.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
