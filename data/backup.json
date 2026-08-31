@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-08-31T12:52:32.412Z",
+  "exporteeLe": "2026-08-31T13:17:48.322Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
@@ -11235,7 +11235,7 @@
           "nom": "Édition double",
           "editeur": "Kurokawa",
           "tomesParus": 13,
-          "editionTerminee": null,
+          "editionTerminee": true,
           "prixDefautCentimes": 1000,
           "statut": "EN_COURS",
           "termineeForcee": false,
@@ -12760,7 +12760,7 @@
     {
       "id": "1ab34903-9695-4aa0-a5ac-b99292a61046",
       "slug": "itchi-the-witch",
-      "titre": "ITCHI THE WITCH",
+      "titre": "Ichi the Witch",
       "titreVo": "魔男のイチ",
       "auteur": "Nishi Osamu & Usazaki Shiro",
       "genres": [
@@ -15057,7 +15057,7 @@
     {
       "id": "8f6b0745-b58d-47e9-b6b0-a7cdb89ec0f6",
       "slug": "les-legendaires-saga",
-      "titre": "LES LEGENDAIRES Saga",
+      "titre": "Les Légendaires - Saga",
       "titreVo": null,
       "auteur": "Patrick Sobral & Guillaume Lapeyre",
       "genres": [
@@ -16257,7 +16257,7 @@
     {
       "id": "afdcb9b8-c4da-4a76-b930-0dc6725e2c45",
       "slug": "marimashita-iruma-kun",
-      "titre": "MARIMASHITA ! IRUMA-KUN !",
+      "titre": "Iruma à l'école des démons",
       "titreVo": "魔入りました！入間くん",
       "auteur": "Nishi Osamu",
       "genres": [
@@ -21376,7 +21376,7 @@
     {
       "id": "cc91fdac-6859-4ba4-b608-5f2938cc3f5c",
       "slug": "nier-automata-op-pearl-harbor",
-      "titre": "NIER AUTOMATA - OP PEARL HARBOR",
+      "titre": "Nier: Automata - Opération Pearl Harbor",
       "titreVo": "ヨルハ 真珠湾降下作戦記録",
       "auteur": "Yoko Taro & Soramichi Megumu",
       "genres": [
@@ -21745,7 +21745,7 @@
     {
       "id": "e934d262-7285-4767-b5c5-7b53e4a9ee69",
       "slug": "one-puch-man",
-      "titre": "ONE PUCH MAN",
+      "titre": "One-Punch Man",
       "titreVo": "ワンパンマン",
       "auteur": "ONE & YUSUKE MURATA",
       "genres": [
@@ -22378,7 +22378,7 @@
     {
       "id": "3e4af589-40c8-44b7-9c16-6328c162d950",
       "slug": "oriant-samurai-quest",
-      "titre": "ORIANT - SAMURAI QUEST",
+      "titre": "Orient - Samurai Quest",
       "titreVo": "オリエント",
       "auteur": "Ohtaka Shinobu",
       "genres": [
@@ -23102,7 +23102,7 @@
     {
       "id": "f7f66f75-5394-4d6a-bef1-896ece5416ef",
       "slug": "pandora-heart",
-      "titre": "PANDORA HEART",
+      "titre": "Pandora Hearts",
       "titreVo": "パンドラハーツ",
       "auteur": "Jun Mochizuki",
       "genres": [
@@ -25918,7 +25918,7 @@
     {
       "id": "2d92a2c9-a2b7-4299-bd1d-f02a441134a4",
       "slug": "saga-of-tany-the-evil-youjo-senki",
-      "titre": "SAGA OF TANY THE EVIL: YOUJO SENKI",
+      "titre": "Tanya, the evil",
       "titreVo": "幼女戦記",
       "auteur": "Carlo Zen & Tojo Chika",
       "genres": [
@@ -28332,7 +28332,7 @@
     {
       "id": "c7b4d0a3-41b3-4144-8b46-7587add5379e",
       "slug": "smoking-behind-the-supermarket",
-      "titre": "SMOKING BEHIND THE SUPERMARKET",
+      "titre": "Smoking behind the Supermarket with You",
       "titreVo": "スーパーの裏でヤニ吸うふたり",
       "auteur": "Jinushi",
       "genres": [
@@ -31655,7 +31655,7 @@
     {
       "id": "bc3b57b0-0c7c-420b-822b-8ea1b64e000e",
       "slug": "the-unwanted-unded-adventurer",
-      "titre": "THE UNWANTED UNDED ADVENTURER",
+      "titre": "The Unwanted Undead Adventurer",
       "titreVo": "望まぬ不死の冒険者",
       "auteur": "Yu Okano & Haji Nakasone",
       "genres": [
@@ -32215,7 +32215,7 @@
     {
       "id": "3b582afd-989c-4e0f-bfbf-ce7dc0db4dff",
       "slug": "uqholder",
-      "titre": "UQHOLDER",
+      "titre": "UQ Holder !",
       "titreVo": "UQ HOLDER！",
       "auteur": "Ken Akamatsu",
       "genres": [
@@ -32732,7 +32732,7 @@
     {
       "id": "d845cefe-9dd2-46bd-9ae0-111a41395221",
       "slug": "why-nobody-remember-my-world",
-      "titre": "WHY NOBODY REMEMBER MY WORLD",
+      "titre": "Why Nobody Remembers My World ?",
       "titreVo": "なぜ僕の世界を誰も覚えていないのか？",
       "auteur": "Sazane Kei & Arikan",
       "genres": [
@@ -33445,7 +33445,7 @@
     {
       "id": "c4314295-290a-41d2-a6ed-d980bd6a739b",
       "slug": "yusei-no-last-boss",
-      "titre": "YUSEI NO LAST BOSS",
+      "titre": "Yasei no Last Boss",
       "titreVo": "野生のラスボスが現れた！",
       "auteur": "Firehead & Haduki Tsubasa",
       "genres": [

@@ -1,5 +1,6 @@
 import collections
 import json
+import os
 import re
 import subprocess
 import sys
@@ -9,6 +10,7 @@ import urllib.parse
 
 USER_AGENT = "manga-collection/0.1 (application personnelle)"
 SRU_ENDPOINT = "https://catalogue.bnf.fr/api/SRU"
+SOURCE_BASE = "data/backup.json"
 NOTICES_MAX = 50
 DELAI_ENTRE_REQUETES = 0.4
 RETENUES_MINIMUM = 3
@@ -122,7 +124,13 @@ def deduire_editeur(titre, auteur):
 
 
 def main():
-    source = json.load(open("data/collection.json", encoding="utf-8"))
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+    if not os.path.exists(SOURCE_BASE):
+        sys.exit(f"{SOURCE_BASE} absent : lancer npm run db:backup d'abord")
+
+    source = json.load(open(SOURCE_BASE, encoding="utf-8"))
     cibles = [
         (edition["slug"], serie["titre"], serie["auteur"])
         for serie in source["series"]

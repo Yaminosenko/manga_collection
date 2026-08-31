@@ -20,6 +20,8 @@
     "publication:apply": "tsx scripts/apply-publication.ts",
     "planning:import": "python scripts/import_planning.py",
     "planning:apply": "tsx scripts/apply-planning.ts",
+    "publishers:fetch": "python scripts/fetch_publishers.py",
+    "publishers:apply": "tsx scripts/apply-publishers.ts",
     "titles:fetch": "python scripts/fetch_titles.py",
     "titles:apply": "tsx scripts/apply-titles.ts"
   },
