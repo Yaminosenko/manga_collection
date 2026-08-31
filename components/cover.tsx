@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 type CoverProps = {
   couvertureUrl: string | null;
   numero: number | null;
@@ -13,7 +17,9 @@ export function Cover({
   afficherNumero = true,
   placeholderClassName = "p-[6px] text-neutral-600",
 }: CoverProps) {
-  if (couvertureUrl) {
+  const [urlEnEchec, setUrlEnEchec] = useState<string | null>(null);
+
+  if (couvertureUrl && couvertureUrl !== urlEnEchec) {
     return (
       <img
         src={couvertureUrl}
@@ -21,6 +27,12 @@ export function Cover({
         loading="lazy"
         decoding="async"
         className="h-full w-full object-cover"
+        ref={(image) => {
+          if (image && image.complete && image.naturalWidth === 0) {
+            setUrlEnEchec(couvertureUrl);
+          }
+        }}
+        onError={() => setUrlEnEchec(couvertureUrl)}
       />
     );
   }

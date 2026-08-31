@@ -17,6 +17,10 @@ const CONCURRENCE = 8;
 const PAGE_LISTE = 1000;
 const RETOUR_ARRIERE = "--revert";
 const FORCER = "--force";
+const PLAFOND = "--max";
+const SEPARATEUR_CIBLE = ":";
+const ENVOIS_MAX_PAR_DEFAUT = 150;
+const QUOTA_MENSUEL_AVANCEES = 2000;
 
 type Manifeste = Record<string, number[]>;
 
@@ -25,6 +29,13 @@ type Couverture = {
   numero: number;
   chemin: string;
   cheminLocal: string;
+};
+
+type Options = {
+  retourArriere: boolean;
+  plafond: number;
+  slugsForces: Set<string>;
+  ciblesForcees: Set<string>;
 };
 
 function charger(chemin: string): Manifeste {
@@ -42,19 +53,65 @@ function inventorier(manifeste: Manifeste): Couverture[] {
   );
 }
 
-async function listerBlobsExistants(): Promise<Map<string, string>> {
+function lireOptions(argv: string[]): Options {
+  const slugsForces = new Set<string>();
+  const ciblesForcees = new Set<string>();
+  let plafond = ENVOIS_MAX_PAR_DEFAUT;
+  let index = 0;
+
+  while (index < argv.length) {
+    if (argv[index] === PLAFOND) {
+      const valeur = Number(argv[index + 1]);
+      if (!Number.isInteger(valeur) || valeur <= 0) {
+        throw new Error(`${PLAFOND} attend un entier positif`);
+      }
+      plafond = valeur;
+      index += 2;
+      continue;
+    }
+
+    if (argv[index] === FORCER) {
+      index += 1;
+      while (index < argv.length && !argv[index].startsWith("--")) {
+        const [slug, numero] = argv[index].split(SEPARATEUR_CIBLE);
+        if (numero === undefined) {
+          slugsForces.add(slug);
+        } else {
+          ciblesForcees.add(`${slug}${SEPARATEUR_CIBLE}${numero}`);
+        }
+        index += 1;
+      }
+      continue;
+    }
+
+    index += 1;
+  }
+
+  return { retourArriere: argv.includes(RETOUR_ARRIERE), plafond, slugsForces, ciblesForcees };
+}
+
+function estForcee(couverture: Couverture, options: Options): boolean {
+  return (
+    options.slugsForces.has(couverture.slug) ||
+    options.ciblesForcees.has(`${couverture.slug}${SEPARATEUR_CIBLE}${couverture.numero}`)
+  );
+}
+
+async function listerBlobsExistants(): Promise<{ existants: Map<string, string>; pages: number }> {
   const existants = new Map<string, string>();
   let cursor: string | undefined;
+  let pages = 0;
 
   do {
     const page = await list({ prefix: `${PREFIXE_BLOB}/`, limit: PAGE_LISTE, cursor });
+    pages += 1;
     for (const blob of page.blobs) {
       existants.set(blob.pathname, blob.url);
     }
     cursor = page.hasMore ? page.cursor : undefined;
   } while (cursor);
 
-  return existants;
+  return { existants, pages };
 }
 
 async function envoyer(couverture: Couverture): Promise<string> {
@@ -148,40 +205,52 @@ async function effacerEnBase(couvertures: Couverture[]) {
 }
 
 async function main() {
+  const options = lireOptions(process.argv.slice(2));
   const couvertures = inventorier(charger(SOURCE));
   const annonces = inventorier(charger(SOURCE_ANNONCES));
   const toutes = [...couvertures, ...annonces];
 
-  if (process.argv.includes(RETOUR_ARRIERE)) {
+  if (options.retourArriere) {
     const remisesANull = await effacerEnBase(couvertures);
     console.log(`${remisesANull} volumes remis a null, les blobs sont conserves`);
     return;
   }
 
-  const forces = new Set(
-    process.argv.slice(process.argv.indexOf(FORCER) + 1).filter((valeur) => !valeur.startsWith("--")),
-  );
-  if (process.argv.includes(FORCER)) {
-    console.log(`renvoi force : ${[...forces].join(", ") || "(aucun slug donne)"}`);
+  const forcees = [...options.slugsForces, ...options.ciblesForcees];
+  if (forcees.length > 0) {
+    console.log(`renvoi force : ${forcees.join(", ")}`);
   }
 
-  const existants = await listerBlobsExistants();
+  const { existants, pages } = await listerBlobsExistants();
   console.log(`${existants.size} couvertures deja dans Blob`);
 
   const urls = new Map<string, string>();
   const echecs: string[] = [];
   const introuvables: string[] = [];
 
-  const aEnvoyer = toutes.filter((couverture) => {
+  const candidates = toutes.filter((couverture) => {
     const deja = existants.get(couverture.chemin);
-    if (deja && !forces.has(couverture.slug)) {
+    if (deja && !estForcee(couverture, options)) {
       urls.set(couverture.chemin, deja);
       return false;
     }
     return true;
   });
 
-  console.log(`${aEnvoyer.length} a envoyer sur ${toutes.length} du manifeste`);
+  const aEnvoyer = candidates.slice(0, options.plafond);
+  const reportees = candidates.length - aEnvoyer.length;
+
+  console.log(`${candidates.length} a envoyer sur ${toutes.length} du manifeste`);
+  console.log(
+    `cout de ce passage : ${pages + aEnvoyer.length} operations avancees ` +
+      `(${pages} liste + ${aEnvoyer.length} envois) sur ${QUOTA_MENSUEL_AVANCEES} par mois`,
+  );
+  if (reportees > 0) {
+    console.log(
+      `${reportees} reportees par le plafond de ${options.plafond} : ` +
+        `relancer pour la suite, ou ${PLAFOND} <n> pour relever le plafond`,
+    );
+  }
 
   await enFile(
     aEnvoyer.map((couverture) => async () => {

@@ -489,7 +489,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 30 août 2026.
+Dernière mise à jour : 31 août 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -1701,6 +1701,54 @@ et l'appui la relance.
 **Ce que ça n'adresse pas encore** : créer une seconde édition depuis un scan. La notice donne
 pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'est la suite naturelle.
 
+### Fait — le garde-fou du quota Blob (31 août 2026)
+
+Le plan Hobby plafonne les **opérations avancées de Vercel Blob à 2 000 par mois**, et le
+remplissage initial en avait déjà consommé ~1 800. En sont : `put()`, `copy()`, `list()`, **et
+toute consultation du store depuis le tableau de bord Vercel**. `del()` est gratuit ; servir une
+image est une opération *simple* (10 000/mois) et seulement en cache MISS. En cas de
+dépassement, Hobby ne facture rien mais **rend le store inaccessible pendant 30 jours** — les
+1 674 couvertures cesseraient de s'afficher.
+
+`covers:upload` envoyait d'un bloc tout ce qui manquait, sans plafond ni annonce : un manifeste
+de 500 couvertures aurait brûlé un quart du quota mensuel sans prévenir.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/upload-covers.ts` | plafond `--max`, coût annoncé avant envoi, `--force <slug>:<numero>` |
+| `components/cover.tsx` | repli sur le placeholder numéroté quand l'image ne charge pas |
+
+- **`--max <n>`, 150 par défaut.** Le surplus est reporté et annoncé ; la reprise sur incident le
+  rend gratuit. Rien ne part en masse sans que le plafond ait été relevé à la main.
+- **Le coût est annoncé avant le premier envoi** —
+  `cout de ce passage : 7 operations avancees (2 liste + 5 envois) sur 2000 par mois`. Le `list()`
+  compte ses pages : 2 pour 1 688 blobs.
+- **`--force <slug>:<numero>`** en plus de `--force <slug>` : corriger une seule couverture de
+  Chainsaw Man coûtait 23 opérations, elle en coûte 1.
+- **`Cover` passe client** pour porter `onError`. Le repli mémorise **l'URL en échec**, pas un
+  booléen : une ligne qui reçoit ensuite une autre couverture la réaffiche, là où un booléen
+  l'aurait condamnée.
+- **Le `ref` rattrape l'échec survenu avant l'hydratation** (`complete && naturalWidth === 0`),
+  qu'`onError` manquerait — sans effet, donc sans heurter `react-hooks/set-state-in-effect`.
+
+**Vérifié fonctionnellement, pour 4 opérations avancées et aucun `put()`.** Le poste n'ayant pas
+`public/covers/`, tout envoi échoue en ENOENT : `--force chainsaw-man:1` n'a produit qu'un
+candidat au lieu de 23, et `--force chainsaw-man --max 5` a annoncé « 18 reportees par le plafond
+de 5 ». Aucune couverture n'a été perdue en base — les tomes sautés ne sont pas remis à null,
+`1674 / 1710` avant comme après. Pour le repli, cinq `src` cassées dans le navigateur sur la
+Collection : 109 images → 104, cinq placeholders numérotés apparus, **aucun `<img>` cassé dans le
+DOM**.
+
+**Trois pièges de reprise sur ce poste, rencontrés le même jour :**
+
+- **Le client Prisma généré était périmé.** `lib/generated/` ne connaissait pas `Sortie`, ajouté
+  par la migration du 30 août : tout accès à la table plantait. Le dossier est gitignoré, donc
+  `npx prisma generate` après tout `git pull` qui touche au schéma.
+- **`@vercel/blob` et `@prisma/adapter-pg` n'étaient pas installés** alors qu'ils figurent dans
+  `package.json`. `npm install` avant de lancer un script.
+- **Purger `.next` pendant qu'un serveur de développement tourne le casse** : il sert ensuite un
+  404 nu, et un `next build` par-dessus ne le répare pas. Le redémarrer.
+
 ### Reste à faire
 
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
@@ -1777,7 +1825,7 @@ pourtant tout — éditeur, année, marqueur d'édition dans le titre, prix. C'e
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
 | `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
-| `npm run covers:upload` | dépose dans Blob et écrit `couvertureUrl`. `-- --force <slug>` pour corriger |
+| `npm run covers:upload` | dépose dans Blob et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
 | `npm run anilist:fetch` puis `anilist:apply` | genres et titres VO |
 | `npm run publication:fetch` puis `publication:apply` | tomes parus BnF et état de parution |
 | `npm run db:migrate` | applique les migrations à Neon sur le 443 |
@@ -1808,6 +1856,13 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   agrandir l'aperçu pour juger la netteté, choisir explicitement la caméra plutôt que de laisser
   `facingMode: "environment"` attraper l'ultra grand-angle, et une contrainte de zoom.
   **Rien n'est vérifiable depuis le poste** ; la saisie manuelle de l'ISBN, elle, est testée.
+- **Sortir Blob du chemin des couvertures**, le jour où une campagne de masse redeviendrait
+  nécessaire : retraiter les 1 674 images coûterait presque un mois de quota avancé. Deux pistes
+  — les servir depuis `public/` du dépôt, soit zéro opération Blob mais 38 Mo dans git et autant
+  par déploiement retenu dans *Deployment Storage* ; ou **Cloudflare R2**, dont le palier gratuit
+  donne 10 Go, 1 million d'écritures par mois et l'egress gratuit, **sous réserve qu'il n'exige
+  pas de carte bancaire**, ce qui heurterait §7. **Un second store Blob ne sert à rien** : la
+  documentation est explicite, le quota est au compte, pas au store.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
