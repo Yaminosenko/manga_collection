@@ -1833,6 +1833,53 @@ ses 34 couvertures, `uqholder` ses 28, le total reste à 1 674, les sept compteu
 **Ce que ça devrait débloquer** : les 13 éditions sans éditeur butaient sur ces mêmes fautes.
 Relancer `publishers` après coup vaut le coup — **pas encore fait**.
 
+### Fait — le lot issu du point design (31 août 2026)
+
+Un canevas Claude Design a servi à comparer l'état actuel et les variantes proposées, écran par
+écran, aux cotes et couleurs réelles et avec les vraies couvertures. Quatre propositions sur cinq
+ont été validées ; le nombre de colonnes de « Mes tomes » reste ouvert.
+
+**La ligne de collection rend l'éditeur.** Le sous-titre disait l'état sur 66 lignes sur 109 —
+« Complète » 43 fois, « À jour » 23 — c'est-à-dire exactement ce que la barre pleine et le
+compteur `17 / 17` disent déjà, et l'éditeur disparaissait sur 84 lignes. Le sous-titre porte
+désormais `Nom · Éditeur`, la complétion devient une pastille accolée au compteur, et un état
+anormal — abandonné, en pause — devient une puce sur la ligne de titre, dans le vocabulaire du
+badge « À vérifier » qui existait déjà. `sousTitreLigne` se réduit à une ligne ; `etatLigne`
+disparaît au profit de `etiquetteStatutLigne` et `estComplete`.
+
+**Les cases à paraître se calent sur les colonnes.** `CASES_A_PARAITRE = 3` était hérité de la
+grille à 4 colonnes ; à 2 colonnes la troisième tombait seule et ouvrait un trou de 271 px.
+`nombreCasesAParaitre` complète la rangée : Chainsaw Man affiche 22 tomes, le tome 23 annoncé et
+une seule case générique, soit 24 cases en 12 rangées pleines. La constante est supprimée.
+
+**La page Édition remplit son bas d'écran.** « Couvertures possédées » devient « Tomes
+possédés ». Un bloc « Prochaine sortie » affiche le tome annoncé, sa couverture et sa date
+complète. Le pied gagne « Prix du tome ». « Autres éditions » devient une vraie ligne tapable —
+couverture, éditeur, barre, chevron — là où c'était un lien que rien ne signalait. Le statut
+quitte le pied pour un bouton « Modifier l'état » en bas d'écran, à contour neutre pour ne pas
+concurrencer le `X / Y TOMES`.
+
+**Le lien sortant devient une recherche.** `slugMangaNews` étant nul sur les 113 éditions, le
+lien ne s'affichait jamais. `URL_RECHERCHE_MANGA_NEWS` interroge `?q=<titre>` : aucun slug à
+renseigner, et un titre approximatif tombe quand même juste. **Nautiljon a été écarté pour une
+raison de forme, pas de droit** — lier n'est pas récupérer, mais leur URL adresse une fiche par
+son titre exact (`/mangas/one+piece.html`) et un titre fautif donne un 404. Le passage sur les
+noms rend ce lien direct viable si on le veut un jour.
+
+**La ligne de planning remonte le tome dans le titre.** Le numéro était la donnée la plus utile
+de l'écran et la moins visible, en pastille dans le coin de la couverture ; l'éditeur occupait
+une ligne entière. Le titre porte maintenant « Tome 10 », la date passe en 13,5 px et l'éditeur
+la rejoint. Une ligne de texte en moins.
+
+**Vérifié à l'écran** : les deux éditions de Berserk se distinguent enfin par leur sous-titre et
+portent leur puce « En pause » ; Chainsaw Man montre sa prochaine sortie au 14 octobre 2026, son
+prix de 7,30 € et son bouton d'état ; le lien manga-news pointe bien sur la recherche ; la
+dernière rangée de la grille est pleine ; le Planning affiche « RAI RAI RAI · Tome 3 · jeu 3 ».
+
+**Reste ouvert : 2, 3 ou 4 colonnes.** Le canevas les montre côte à côte, même écran, mêmes
+tomes, vraies couvertures — 4 tomes visibles à 2 colonnes, 9 à 3, 16 à 4. La décision du 29 août
+avait été prise sur des cases vides ; elle se rejuge sur téléphone.
+
 ### Reste à faire
 
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on

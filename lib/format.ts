@@ -31,6 +31,17 @@ export function formaterJour(iso: string): string {
   return JOUR_COURT.format(new Date(iso)).replace(".", "");
 }
 
+const DATE_COMPLETE = new Intl.DateTimeFormat("fr-FR", {
+  weekday: "short",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+export function formaterDateComplete(iso: string): string {
+  return DATE_COMPLETE.format(new Date(iso)).replace(".", "");
+}
+
 export function cleMois(iso: string): string {
   return iso.slice(0, 7);
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
-import { ArrowLeft, ArrowUpRight, WarningCircle } from "@/components/icons";
+import { ArrowLeft, ArrowUpRight, CaretRight, WarningCircle } from "@/components/icons";
 import { chargerEdition } from "@/lib/editions";
 import { estProprietaire } from "@/lib/guard";
 import {
@@ -11,8 +11,17 @@ import {
   libelleStatut,
   valeurCentimes,
 } from "@/lib/domain";
-import { LIBELLE_A_VERIFIER, URL_FICHE_MANGA_NEWS } from "@/lib/constants";
-import { formaterPrix } from "@/lib/format";
+import {
+  LIBELLE_A_VERIFIER,
+  LIBELLE_AUTRES_EDITIONS,
+  LIBELLE_FICHE_MANGA_NEWS,
+  LIBELLE_MODIFIER_ETAT,
+  LIBELLE_PRIX_TOME,
+  LIBELLE_PROCHAINE_SORTIE,
+  LIBELLE_TOMES_POSSEDES,
+  URL_RECHERCHE_MANGA_NEWS,
+} from "@/lib/constants";
+import { formaterDateComplete, formaterPrix } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +43,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
   const aParaitre = aDesTomesAParaitre(edition.editionTerminee);
   const valeur = formaterPrix(valeurCentimes(edition));
   const compteur = `${possedes.length} / ${edition.tomesParus}`;
+  const prochaine = edition.sorties.at(0) ?? null;
 
   return (
     <main className="flex min-h-dvh flex-col">
@@ -91,7 +101,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
         {possedes.length > 0 ? (
           <section className="flex flex-col gap-[9px]">
             <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
-              Couvertures possédées
+              {LIBELLE_TOMES_POSSEDES}
             </h2>
             <div className="flex gap-[9px] overflow-x-auto">
               {possedes.map((tome) => (
@@ -113,20 +123,34 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
         {edition.autresEditions.length > 0 ? (
           <section className="flex flex-col gap-[9px]">
             <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
-              Autres éditions
+              {LIBELLE_AUTRES_EDITIONS}
             </h2>
             <div className="flex flex-col">
               {edition.autresEditions.map((autre) => (
                 <Link
                   key={autre.slug}
                   href={`/edition/${autre.slug}`}
-                  className="border-row-divider flex min-h-11 items-center gap-[12px] border-b py-[13px] last:border-b-0"
+                  className="border-row-divider flex min-h-11 items-center gap-[12px] border-b py-[9px] transition-colors last:border-b-0 hover:bg-text/2"
                 >
+                  <span
+                    className={`shadow-edge h-[74px] w-[52px] flex-none overflow-hidden rounded-cover text-[11px] ${
+                      autre.statut === "EN_COURS" ? "" : "opacity-50"
+                    }`}
+                  >
+                    <Cover
+                      couvertureUrl={autre.couvertureUrl}
+                      numero={autre.dernierNumeroPossede}
+                      titre={edition.titre}
+                    />
+                  </span>
                   <span className="flex min-w-0 flex-1 flex-col gap-[4px]">
-                    <span className="truncate text-[13px] font-medium text-text">
-                      {sousTitre(autre.nom, autre.editeur)}
-                    </span>
-                    <span className="flex items-center gap-[8px]">
+                    <span className="truncate text-[13px] font-medium text-text">{autre.nom}</span>
+                    {autre.editeur ? (
+                      <span className="truncate text-[11.5px] text-neutral-600">
+                        {autre.editeur}
+                      </span>
+                    ) : null}
+                    <span className="mt-[3px] flex items-center gap-[8px]">
                       <ProgressBar
                         possedes={autre.possedes}
                         tomesParus={autre.tomesParus}
@@ -138,8 +162,35 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
                       </span>
                     </span>
                   </span>
+                  <CaretRight className="size-[14px] flex-none text-neutral-600" />
                 </Link>
               ))}
+            </div>
+          </section>
+        ) : null}
+
+        {prochaine ? (
+          <section className="flex flex-col gap-[9px]">
+            <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
+              {LIBELLE_PROCHAINE_SORTIE}
+            </h2>
+            <div className="border-row-divider flex items-center gap-[12px] border-b py-[9px]">
+              <span className="shadow-edge h-[74px] w-[52px] flex-none overflow-hidden rounded-cover text-[11px]">
+                <Cover
+                  couvertureUrl={prochaine.couvertureUrl}
+                  numero={prochaine.numero}
+                  titre={edition.titre}
+                />
+              </span>
+              <span className="flex min-w-0 flex-1 flex-col gap-[4px]">
+                <span className="text-[13px] font-medium text-text">Tome {prochaine.numero}</span>
+                {edition.editeur ? (
+                  <span className="truncate text-[11.5px] text-neutral-600">{edition.editeur}</span>
+                ) : null}
+                <span className="text-accent mt-[2px] text-[12.5px] font-medium">
+                  {formaterDateComplete(prochaine.date)}
+                </span>
+              </span>
             </div>
           </section>
         ) : null}
@@ -147,34 +198,30 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
         <footer className="border-divider flex flex-col border-t pt-[12px] text-[12px]">
           <Ligne cle="Auteur" valeur={edition.auteur} />
           <Ligne cle="Genres" valeur={edition.genres.join(" · ")} />
-          {proprietaire ? (
-            <Link
-              href={`/edition/${edition.slug}/etat`}
-              className="flex items-center justify-between gap-[12px] py-[7px] text-[12px]"
-            >
-              <span className="flex-none text-neutral-600">Statut</span>
-              <span className="flex items-center gap-[6px] text-right text-accent">
-                {libelleStatut(edition, possedes.length)}
-                <ArrowUpRight className="size-[11px]" />
-              </span>
-            </Link>
-          ) : (
-            <Ligne cle="Statut" valeur={libelleStatut(edition, possedes.length)} />
-          )}
+          <Ligne cle="Statut" valeur={libelleStatut(edition, possedes.length)} />
+          <Ligne cle={LIBELLE_PRIX_TOME} valeur={formaterPrix(edition.prixDefautCentimes)} />
           <Ligne cle="Valeur" valeur={valeur} />
 
-          {edition.slugMangaNews ? (
-            <a
-              href={`${URL_FICHE_MANGA_NEWS}${edition.slugMangaNews}`}
-              target="_blank"
-              rel="noreferrer"
-              className="flex min-h-11 items-center gap-[6px] text-[12px] font-medium text-accent"
-            >
-              Fiche manga-news
-              <ArrowUpRight className="size-[12px]" />
-            </a>
-          ) : null}
+          <a
+            href={`${URL_RECHERCHE_MANGA_NEWS}${encodeURIComponent(edition.titre)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="flex min-h-11 items-center gap-[6px] text-[12px] font-medium text-accent"
+          >
+            {LIBELLE_FICHE_MANGA_NEWS}
+            <ArrowUpRight className="size-[12px]" />
+          </a>
         </footer>
+
+        {proprietaire ? (
+          <Link
+            href={`/edition/${edition.slug}/etat`}
+            className="flex min-h-11 w-full items-center justify-center gap-[8px] rounded-md border border-neutral-800 text-[13px] font-medium tracking-[0.06em] text-neutral-300 uppercase transition-colors hover:border-accent-600 hover:text-accent-200"
+          >
+            {LIBELLE_MODIFIER_ETAT}
+            <CaretRight className="size-[12px]" />
+          </Link>
+        ) : null}
       </div>
     </main>
   );

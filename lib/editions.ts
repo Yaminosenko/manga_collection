@@ -29,7 +29,14 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
               tomesParus: true,
               editionTerminee: true,
               statut: true,
-              volumes: { select: { possession: { select: { possede: true } } } },
+              volumes: {
+                orderBy: { numero: "asc" },
+                select: {
+                  numero: true,
+                  couvertureUrl: true,
+                  possession: { select: { possede: true } },
+                },
+              },
             },
           },
         },
@@ -70,15 +77,21 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     })),
     autresEditions: edition.serie.editions
       .filter((autre) => autre.slug !== edition.slug)
-      .map((autre) => ({
-        slug: autre.slug,
-        nom: autre.nom,
-        editeur: autre.editeur,
-        tomesParus: autre.tomesParus,
-        possedes: autre.volumes.filter((volume) => volume.possession?.possede).length,
-        editionTerminee: autre.editionTerminee,
-        statut: autre.statut,
-      })),
+      .map((autre) => {
+        const possedes = autre.volumes.filter((volume) => volume.possession?.possede);
+        const dernier = possedes.at(-1) ?? null;
+        return {
+          slug: autre.slug,
+          nom: autre.nom,
+          editeur: autre.editeur,
+          tomesParus: autre.tomesParus,
+          possedes: possedes.length,
+          editionTerminee: autre.editionTerminee,
+          statut: autre.statut,
+          couvertureUrl: dernier?.couvertureUrl ?? null,
+          dernierNumeroPossede: dernier?.numero ?? null,
+        };
+      }),
   };
 }
 

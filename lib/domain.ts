@@ -1,7 +1,6 @@
 import {
   LIBELLES_STATUT,
   LIBELLE_A_JOUR,
-  LIBELLE_A_VERIFIER,
   LIBELLE_COMPLETE,
   LIBELLE_EDITION_TERMINEE,
   LIBELLE_TERMINEE_FORCEE,
@@ -65,6 +64,8 @@ export type AutreEdition = {
   possedes: number;
   editionTerminee: boolean | null;
   statut: StatutEdition;
+  couvertureUrl: string | null;
+  dernierNumeroPossede: number | null;
 };
 
 export type Edition = {
@@ -187,30 +188,37 @@ export function libelleStatut(
     : LIBELLE_EDITION_TERMINEE;
 }
 
-function etatLigne(ligne: LigneCollection): string | null {
-  if (ligne.statut !== "EN_COURS") {
-    return LIBELLES_STATUT[ligne.statut];
-  }
-  if (ligne.termineeForcee) {
-    return LIBELLE_TERMINEE_FORCEE;
-  }
-  if (ligne.aVerifier) {
-    return LIBELLE_A_VERIFIER;
-  }
-  if (ligne.possedes === ligne.tomesParus) {
-    return ligne.editionTerminee === true ? LIBELLE_COMPLETE : LIBELLE_A_JOUR;
-  }
-  return null;
+export function sousTitreLigne(ligne: LigneCollection): string {
+  return ligne.editeur ? `${ligne.nom} · ${ligne.editeur}` : ligne.nom;
 }
 
-export function sousTitreLigne(ligne: LigneCollection): string {
-  const etat = etatLigne(ligne);
-  const edition = ligne.editeur ? `${ligne.nom} · ${ligne.editeur}` : ligne.nom;
+export function etiquetteStatutLigne(ligne: LigneCollection): string | null {
+  return ligne.statut === "EN_COURS" || ligne.statut === "VENDUE"
+    ? null
+    : LIBELLES_STATUT[ligne.statut];
+}
 
-  if (ligne.editionsDeLaSerie > 1) {
-    return etat === null ? edition : `${ligne.nom} · ${etat}`;
+export function estComplete(ligne: LigneCollection): boolean {
+  return (
+    ligne.statut === "EN_COURS" &&
+    !ligne.termineeForcee &&
+    ligne.tomesParus > 0 &&
+    ligne.possedes === ligne.tomesParus &&
+    ligne.editionTerminee === true
+  );
+}
+
+export function nombreCasesAParaitre(
+  tomesParus: number,
+  sortiesAnnoncees: number,
+  colonnes: number,
+): number {
+  const posees = tomesParus + sortiesAnnoncees;
+  const pourRemplirLaRangee = (colonnes - (posees % colonnes)) % colonnes;
+  if (pourRemplirLaRangee > 0) {
+    return pourRemplirLaRangee;
   }
-  return etat ?? edition;
+  return sortiesAnnoncees > 0 ? 0 : colonnes;
 }
 
 export function valeurCentimes(edition: Pick<Edition, "prixDefautCentimes" | "tomes">): number | null {

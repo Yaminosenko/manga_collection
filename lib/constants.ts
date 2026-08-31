@@ -1,4 +1,3 @@
-export const CASES_A_PARAITRE = 3;
 export const LIBELLE_A_PARAITRE = "À paraître";
 
 export const COLONNES_GRILLE = 2;
@@ -18,7 +17,8 @@ export const LIBELLE_A_JOUR = "À jour";
 export const LIBELLE_TERMINEE_FORCEE = "Terminée par choix";
 export const LIBELLE_A_VERIFIER = "À vérifier";
 
-export const URL_FICHE_MANGA_NEWS = "https://www.manga-news.com/index.php/serie/";
+export const URL_RECHERCHE_MANGA_NEWS = "https://www.manga-news.com/index.php/recherche/?q=";
+export const LIBELLE_FICHE_MANGA_NEWS = "Fiche manga-news";
 
 export const TRIS = [
   { cle: "alphabetique", libelle: "Alphabétique" },
@@ -87,6 +87,12 @@ export const LIBELLE_DEVERROUILLER = "Entrer";
 export const LIBELLE_ACCES_REFUSE = "Mot de passe incorrect.";
 export const LIBELLE_ACCES_NON_CONFIGURE =
   "Aucun mot de passe n’est configuré : renseignez ACCESS_PASSWORD dans l’environnement.";
+
+export const LIBELLE_TOMES_POSSEDES = "Tomes possédés";
+export const LIBELLE_AUTRES_EDITIONS = "Autres éditions";
+export const LIBELLE_PROCHAINE_SORTIE = "Prochaine sortie";
+export const LIBELLE_PRIX_TOME = "Prix du tome";
+export const LIBELLE_MODIFIER_ETAT = "Modifier l’état";
 
 export const TITRE_ETAT = "État";
 export const LIBELLE_STATUT_PERSONNEL = "Où j’en suis";

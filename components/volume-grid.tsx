@@ -4,9 +4,9 @@ import { useOptimistic, useTransition } from "react";
 import { basculerTome, definirTousLesTomes } from "@/lib/actions";
 import { Cover } from "@/components/cover";
 import { Check } from "@/components/icons";
-import { CASES_A_PARAITRE, COLONNES_GRILLE } from "@/lib/constants";
+import { COLONNES_GRILLE } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
-import type { SortieAnnoncee } from "@/lib/domain";
+import { nombreCasesAParaitre, type SortieAnnoncee } from "@/lib/domain";
 import { useEnLigne } from "@/lib/use-online";
 import type { Tome } from "@/lib/domain";
 
@@ -167,7 +167,7 @@ export function VolumeGrid({
 
           {aParaitre
             ? Array.from(
-                { length: Math.max(0, CASES_A_PARAITRE - sorties.length) },
+                { length: nombreCasesAParaitre(tomesParus, sorties.length, COLONNES_GRILLE) },
                 (_, index) => (
                   <div
                     key={`a-paraitre-${index}`}
