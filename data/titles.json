@@ -1,0 +1,1981 @@
+{
+  "itchi-the-witch": {
+    "actuel": "ITCHI THE WITCH",
+    "propose": "Ichi the Witch",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Ichi the Witch",
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Madan no Ichi"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "les-legendaires-saga": {
+    "actuel": "LES LEGENDAIRES Saga",
+    "propose": "Les Légendaires - Saga",
+    "source": "relecture",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Légendaires (les) - Saga",
+      "bnf": "Les légendaires",
+      "bnfComplet": "Les légendaires : saga",
+      "anilist": null
+    },
+    "notices": 13,
+    "part": 0.92,
+    "exemples": [
+      "Saga. T12, Les légendaires",
+      "Les légendaires : saga. 10 / scénario, Patrick Sobral ; dessin, Guillaume Lapeyre...",
+      "Les légendaires : saga. 11 / scénario, Patrick Sobral ; dessin, Guillaume Lapeyre..."
+    ]
+  },
+  "marimashita-iruma-kun": {
+    "actuel": "MARIMASHITA ! IRUMA-KUN !",
+    "propose": "Iruma à l'école des démons",
+    "source": "relecture",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Iruma à l'école des démons",
+      "bnfComplet": "Iruma à l'école des démons",
+      "anilist": "Mairimashita! Iruma-kun"
+    },
+    "notices": 35,
+    "part": 0.94,
+    "exemples": [
+      "Iruma à l'école des démons. vol. 19",
+      "Iruma à l'école des démons. T32, Iruma à l'école des démons",
+      "Iruma à l'école des démons. Vol. 31"
+    ]
+  },
+  "nier-automata-op-pearl-harbor": {
+    "actuel": "NIER AUTOMATA - OP PEARL HARBOR",
+    "propose": "Nier: Automata - Opération Pearl Harbor",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Nier: Automata - Opération Pearl Harbor",
+      "bnf": "NieR, automata",
+      "bnfComplet": "NieR, automata : opération Pearl Harbor",
+      "anilist": "Yorha: Shinjuwan Kouka Sakusen Kiroku"
+    },
+    "notices": 9,
+    "part": 0.67,
+    "exemples": [
+      "NieR, automata : opération Pearl Harbor. 3 / manga, Megumu Soramichi ; oeuvre originale & supervision, Yoko Taro",
+      "NieR, automata : opération Pearl Harbor. 2 / manga, Megumu Soramichi ; oeuvre originale & supervision, Yoko Taro",
+      "NieR, automata : opération Pearl Harbor. 4 / manga, Megumu Soramichi ; oeuvre originale & supervision, Yoko Taro"
+    ]
+  },
+  "one-puch-man": {
+    "actuel": "ONE PUCH MAN",
+    "propose": "One-Punch Man",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "One-Punch Man",
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "One Punch-Man"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "oriant-samurai-quest": {
+    "actuel": "ORIANT - SAMURAI QUEST",
+    "propose": "Orient - Samurai Quest",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Orient - Samurai Quest",
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "ORIENT"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "pandora-heart": {
+    "actuel": "PANDORA HEART",
+    "propose": "Pandora Hearts",
+    "source": "bnf",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Pandora hearts",
+      "bnfComplet": "Pandora hearts",
+      "anilist": "Pandora Hearts"
+    },
+    "notices": 15,
+    "part": 1,
+    "exemples": [
+      "Pandora hearts. 23 / Jun Mochizuki",
+      "Pandora hearts. 14 / Jun Mochizuki",
+      "Pandora hearts. 11 / Jun Mochizuki"
+    ]
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "actuel": "SAGA OF TANY THE EVIL: YOUJO SENKI",
+    "propose": "Tanya, the evil",
+    "source": "relecture",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Tanya, the evil",
+      "bnfComplet": "Tanya, the evil",
+      "anilist": "Youjo Senki"
+    },
+    "notices": 23,
+    "part": 0.78,
+    "exemples": [
+      "Tanya, the evil. 12 / auteur, Carlo Zen ; dessin, Chika Tôjô...",
+      "Tanya, the evil. 06 / auteur, Carlo Zen ; dessin, Chika Tôjô...",
+      "Tanya, the evil. 15 / auteur, Carlo Zen ; dessin, Chika Tôjô..."
+    ]
+  },
+  "smoking-behind-the-supermarket": {
+    "actuel": "SMOKING BEHIND THE SUPERMARKET",
+    "propose": "Smoking behind the Supermarket with You",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Smoking behind the Supermarket with You",
+      "bnf": "Smoking behind the supermarket with you",
+      "bnfComplet": "Smoking behind the supermarket with you",
+      "anilist": "Super no Ura de Yani Suu Futari"
+    },
+    "notices": 7,
+    "part": 0.86,
+    "exemples": [
+      "Smoking behind the supermarket with you. 6",
+      "Smoking behind the supermarket with you. 5",
+      "Smoking behind the supermarket with you. 4 / Jinushi"
+    ]
+  },
+  "the-unwanted-unded-adventurer": {
+    "actuel": "THE UNWANTED UNDED ADVENTURER",
+    "propose": "The Unwanted Undead Adventurer",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "The Unwanted Undead Adventurer",
+      "bnf": "The unwanted undead adventurer",
+      "bnfComplet": "The unwanted undead adventurer",
+      "anilist": "Nozomanu Fushi no Boukensha"
+    },
+    "notices": 13,
+    "part": 0.92,
+    "exemples": [
+      "The unwanted undead adventurer. 11 / illustration, Haiji Nakasone ; scénario original, Yu Okano...",
+      "The unwanted undead adventurer. 12 / illustration, Haiji Nakasone ; scénario original, Yu Okano...",
+      "The unwanted undead adventurer. 5 / dessin, Haiji Nakasone ; scénario, Yu Okano..."
+    ]
+  },
+  "uqholder": {
+    "actuel": "UQHOLDER",
+    "propose": "UQ Holder !",
+    "source": "bnf+recherche",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": null,
+      "bnf": "UQ Holder !",
+      "bnfComplet": "UQ Holder !. Volume 14 / Ken Akamatsu",
+      "anilist": "UQ HOLDER!"
+    },
+    "notices": 29,
+    "part": 0.97,
+    "exemples": [
+      "UQ Holder !. Volume 14 / Ken Akamatsu",
+      "UQ Holder !. Volume 7 / Ken Akamatsu",
+      "UQ Holder !. Volume 15 / Ken Akamatsu"
+    ]
+  },
+  "why-nobody-remember-my-world": {
+    "actuel": "WHY NOBODY REMEMBER MY WORLD",
+    "propose": "Why Nobody Remembers My World ?",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Why Nobody Remembers My World ?",
+      "bnf": "Why nobody remembers my world ?",
+      "bnfComplet": "Why nobody remembers my world ?",
+      "anilist": "Naze Boku no Sekai wo Daremo Oboeteinai no ka?"
+    },
+    "notices": 14,
+    "part": 0.93,
+    "exemples": [
+      "Why nobody remembers my world ?. 13",
+      "Why nobody remembers my world ?. 12 / Arikan ; oeuvre originale, Sazane Kei...",
+      "Why nobody remembers my world ?. 10 / Arikan ; oeuvre originale, Sazane Kei..."
+    ]
+  },
+  "yusei-no-last-boss": {
+    "actuel": "YUSEI NO LAST BOSS",
+    "propose": "Yasei no Last Boss",
+    "source": "manuel",
+    "changementOrthographe": true,
+    "candidats": {
+      "manuel": "Yasei no Last Boss",
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Yasei no Last Boss ga Arawareta!"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "act-age": {
+    "actuel": "ACT-AGE",
+    "propose": "ACT-AGE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "act-age"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "air-gear": {
+    "actuel": "AIR GEAR",
+    "propose": "AIR GEAR",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Air gear",
+      "bnfComplet": "Air gear",
+      "anilist": "Air Gear"
+    },
+    "notices": 42,
+    "part": 0.95,
+    "exemples": [
+      "Air gear. 10 / Oh ! Great",
+      "Air gear. 11 / Oh ! Great",
+      "Air gear. 12 / Oh ! Great"
+    ]
+  },
+  "ajin": {
+    "actuel": "AJIN",
+    "propose": "AJIN",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Ajin",
+      "bnfComplet": "Ajin : semi-humain",
+      "anilist": "Ajin"
+    },
+    "notices": 18,
+    "part": 1,
+    "exemples": [
+      "Ajin : semi-humain. 15 / Gamon Sakurai",
+      "Ajin : semi-humain. 13 / Gamon Sakurai",
+      "Ajin : semi-humain. 10 / Gamon Sakurai"
+    ]
+  },
+  "all-you-need-is-kill": {
+    "actuel": "ALL YOU NEED IS KILL",
+    "propose": "ALL YOU NEED IS KILL",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "All you need is kill",
+      "bnfComplet": "All you need is kill",
+      "anilist": "All You Need Is Kill"
+    },
+    "notices": 6,
+    "part": 0.5,
+    "exemples": [
+      "All you need is kill / Hiroshi Sakurazaka ; illustrations, Yoshitoshi Abe",
+      "All you need is kill. 2 / scénario original, Hiroshi Sakurazaka ; storyboard, Ryosuke Takeuchi ; design des personnages, Yoshitoshi Abe ; dessin par Takeshi Obata",
+      "All you need is kill. 1 / scénario original, Hiroshi Sakurazaka ; storyboard, Ryosuke Takeuchi ; design des personnages, Yoshitoshi Abe ; dessin par Takeshi Obata"
+    ]
+  },
+  "alma": {
+    "actuel": "ALMA",
+    "propose": "ALMA",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Alma",
+      "bnfComplet": "Alma",
+      "anilist": "Alma"
+    },
+    "notices": 7,
+    "part": 0.86,
+    "exemples": [
+      "Alma. 4 / Shinji Mito",
+      "Alma. 3 / Shinji Mito",
+      "Alma. 1 / Shinji Mito"
+    ]
+  },
+  "assassination-classroom": {
+    "actuel": "ASSASSINATION CLASSROOM",
+    "propose": "ASSASSINATION CLASSROOM",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Assassination classroom",
+      "bnfComplet": "Assassination classroom",
+      "anilist": "Ansatsu Kyoushitsu"
+    },
+    "notices": 20,
+    "part": 0.95,
+    "exemples": [
+      "Assassination classroom. 13 / Yusei Matsui",
+      "Assassination classroom. 18 / Yusei Matsui",
+      "Assassination classroom. 21 / Yusei Matsui"
+    ]
+  },
+  "beastars": {
+    "actuel": "BEASTARS",
+    "propose": "BEASTARS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Beastars",
+      "bnfComplet": "Beastars",
+      "anilist": "BEASTARS"
+    },
+    "notices": 23,
+    "part": 0.96,
+    "exemples": [
+      "Beastars. Vol. 20 / Paru Itagaki",
+      "Beastars. Vol. 18 / Paru Itagaki",
+      "Beastars. Vol. 8 / Paru Itagaki"
+    ]
+  },
+  "berserk": {
+    "actuel": "BERSERK",
+    "propose": "BERSERK",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Berserk",
+      "bnfComplet": "Berserk",
+      "anilist": "Berserk"
+    },
+    "notices": 50,
+    "part": 0.98,
+    "exemples": [
+      "Berserk. 43 (collector)",
+      "Berserk. 24 / Kentaro Miura",
+      "Berserk. 37 / Kentaro Miura"
+    ]
+  },
+  "black-clover": {
+    "actuel": "BLACK CLOVER",
+    "propose": "BLACK CLOVER",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Black Clover"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "black-lagoon": {
+    "actuel": "BLACK LAGOON",
+    "propose": "BLACK LAGOON",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Black lagoon",
+      "bnfComplet": "Black lagoon",
+      "anilist": "BLACK LAGOON"
+    },
+    "notices": 21,
+    "part": 0.9,
+    "exemples": [
+      "Black lagoon. 6 / Rei Hiroe",
+      "Black lagoon. 001 / Rei Hiroe ; [trad. du japonais par Jérôme Roy]",
+      "Black lagoon. 002 / Rei Hiroe ; [trad. du japonais par Jérôme Roy]"
+    ]
+  },
+  "black-torch": {
+    "actuel": "BLACK TORCH",
+    "propose": "BLACK TORCH",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Black torch",
+      "bnfComplet": "Black torch",
+      "anilist": "BLACK TORCH"
+    },
+    "notices": 6,
+    "part": 0.83,
+    "exemples": [
+      "Black torch. 4 / Tsuyoshi Takaki",
+      "Black torch. 2 / Tsuyoshi Takaki",
+      "Black torch. 3 / Tsuyoshi Takaki"
+    ]
+  },
+  "blackrock-shooter-innocent-soul": {
+    "actuel": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
+    "propose": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Black Rock shooter",
+      "bnfComplet": "Black Rock shooter : innocent soul",
+      "anilist": "Black★Rock Shooter: Innocent Soul"
+    },
+    "notices": 5,
+    "part": 1,
+    "exemples": [
+      "Black Rock shooter : innocent soul. 03 / scénario et dessin, Sanami Suzuki ; histoire originale, Huke",
+      "Black Rock shooter : innocent soul. 02 / scénario et dessin, Sanami Suzuki ; histoire originale, Huke",
+      "Black Rock shooter : innocent soul. 01 / scénario et dessin, Sanami Suzuki ; histoire originale, Huke"
+    ]
+  },
+  "blackrock-shooter-the-game": {
+    "actuel": "BLACK★ROCK SHOOTER – THE GAME",
+    "propose": "BLACK★ROCK SHOOTER – THE GAME",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Black Rock shooter",
+      "bnfComplet": "Black Rock shooter : innocent soul",
+      "anilist": "Black★RockShooter: The Game"
+    },
+    "notices": 5,
+    "part": 1,
+    "exemples": [
+      "Black Rock shooter : innocent soul. 03 / scénario et dessin, Sanami Suzuki ; histoire originale, Huke",
+      "Black Rock shooter : innocent soul. 02 / scénario et dessin, Sanami Suzuki ; histoire originale, Huke",
+      "Black Rock shooter : innocent soul. 01 / scénario et dessin, Sanami Suzuki ; histoire originale, Huke"
+    ]
+  },
+  "blame": {
+    "actuel": "BLAME!",
+    "propose": "BLAME!",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Blame",
+      "bnfComplet": "Blame",
+      "anilist": "BLAME!"
+    },
+    "notices": 21,
+    "part": 0.48,
+    "exemples": [
+      "Blame. Tome 7 / Tsutomu Nihei ; [trad. par Vincent Zouzoulkovsky]",
+      "Blame. Tome 8 / Tsutomu Nihei ; [trad. par Vincent Zouzoulkovsky]",
+      "Blame. Tome 9 / Tsutomu Nihei ; [trad. par Vincent Zouzoulkovsky]"
+    ]
+  },
+  "blazer-drive": {
+    "actuel": "BLAZER DRIVE",
+    "propose": "BLAZER DRIVE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Blazer drive",
+      "bnfComplet": "Blazer drive",
+      "anilist": "Blazer Drive"
+    },
+    "notices": 10,
+    "part": 0.9,
+    "exemples": [
+      "Blazer drive. 007 / Seishi Kishimoto",
+      "Blazer drive. 008 / Seishi Kishimoto",
+      "Blazer drive. 004 / Seishi Kishimoto"
+    ]
+  },
+  "bleach": {
+    "actuel": "BLEACH",
+    "propose": "BLEACH",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "BLEACH"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "bleach-13-blades": {
+    "actuel": "BLEACH – 13 BLADES",
+    "propose": "BLEACH – 13 BLADES",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": null
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "blue-exorcist": {
+    "actuel": "BLUE EXORCIST",
+    "propose": "BLUE EXORCIST",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Blue exorcist",
+      "bnfComplet": "Blue exorcist",
+      "anilist": "Ao no Exorcist"
+    },
+    "notices": 40,
+    "part": 0.93,
+    "exemples": [
+      "Blue exorcist. 23 / Kazue Kato",
+      "Blue exorcist. 16 / Kazue Kato",
+      "Blue exorcist. 18 / Kazue Kato"
+    ]
+  },
+  "blue-eyes-sword": {
+    "actuel": "BLUE EYES SWORD",
+    "propose": "BLUE EYES SWORD",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Blue eyes sword",
+      "bnfComplet": "Blue eyes sword : Hinowa ga crush !",
+      "anilist": "Hinowa ga Yuku!"
+    },
+    "notices": 9,
+    "part": 1,
+    "exemples": [
+      "Blue eyes sword : Hinowa ga crush !. 8 / scénario, Takahiro ; manga, Strelka",
+      "Blue eyes sword : Hinowa ga crush !. 6 / scénario, Takahiro ; manga, Strelka",
+      "Blue eyes sword : Hinowa ga crush !. 7 / scénario, Takahiro ; manga, Strelka"
+    ]
+  },
+  "burn-the-witch": {
+    "actuel": "BURN THE WITCH",
+    "propose": "BURN THE WITCH",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "BURN THE WITCH"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "call-of-the-night": {
+    "actuel": "CALL OF THE NIGHT",
+    "propose": "CALL OF THE NIGHT",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Call of the night",
+      "bnfComplet": "Call of the night",
+      "anilist": "Yofukashi no Uta"
+    },
+    "notices": 19,
+    "part": 0.95,
+    "exemples": [
+      "Call of the night. 17",
+      "Call of the night - Tome 17",
+      "Call of the night - Tome 6"
+    ]
+  },
+  "chainsaw-man": {
+    "actuel": "CHAINSAW MAN",
+    "propose": "CHAINSAW MAN",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Chainsaw Man"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "chastity-reverse-world": {
+    "actuel": "CHASTITY REVERSE WORLD",
+    "propose": "CHASTITY REVERSE WORLD",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Chastity reverse world",
+      "bnfComplet": "Chastity reverse world",
+      "anilist": "Teisou Gyakuten Sekai"
+    },
+    "notices": 5,
+    "part": 0.8,
+    "exemples": [
+      "Chastity reverse world. 01 / histoire, Amahara ; dessin, Mantaro",
+      "Chastity reverse world. 02 / histoire, Amahara ; dessin, Mantaro",
+      "Chastity reverse world. 03 / histoire, Amahara ; dessin, Mantaro"
+    ]
+  },
+  "classroom-for-heroes": {
+    "actuel": "CLASSROOM FOR HEROES",
+    "propose": "CLASSROOM FOR HEROES",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Classroom for heroes",
+      "bnfComplet": "Classroom for heroes : the return of the former brave",
+      "anilist": "Eiyuu Kyoushitsu"
+    },
+    "notices": 22,
+    "part": 1,
+    "exemples": [
+      "Classroom for heroes : the return of the former brave. 08 / oeuvre originale, Shin Araki ; dessins, Koara Kishida,...",
+      "Classroom for heroes : the return of the former brave. 14 / oeuvre originale, Shin Araki ; dessins, Koara Kishida...",
+      "Classroom for heroes : the return of the former brave. 18 / oeuvre originale, Shin Araki ; dessins, Koara Kishida..."
+    ]
+  },
+  "claymore": {
+    "actuel": "CLAYMORE",
+    "propose": "CLAYMORE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "CLAYMORE"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "d-gray-man": {
+    "actuel": "D.GRAY-MAN",
+    "propose": "D.GRAY-MAN",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "D.Gray-man"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "demon-slave": {
+    "actuel": "DEMON SLAVE",
+    "propose": "DEMON SLAVE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Demon slave",
+      "bnfComplet": "Demon slave",
+      "anilist": "Mato Seihei no Slave"
+    },
+    "notices": 20,
+    "part": 0.85,
+    "exemples": [
+      "Demon Slave. T.11",
+      "Demon Slave. Tome 19",
+      "Demon slave. 15"
+    ]
+  },
+  "doubt": {
+    "actuel": "DOUBT",
+    "propose": "DOUBT",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Doubt",
+      "bnfComplet": "Doubt",
+      "anilist": "Doubt"
+    },
+    "notices": 5,
+    "part": 0.8,
+    "exemples": [
+      "Doubt. 2 / Yoshiki Tonogai",
+      "Doubt. 3 / Yoshiki Tonogai",
+      "Doubt. 4 / Yoshiki Tonogai"
+    ]
+  },
+  "dragon-ball": {
+    "actuel": "DRAGON BALL",
+    "propose": "DRAGON BALL",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Dragon Ball",
+      "bnfComplet": "Dragon Ball : l'intégrale",
+      "anilist": "Dragon Ball"
+    },
+    "notices": 38,
+    "part": 0.47,
+    "exemples": [
+      "Le super art book de Dragon Ball / Akira Toriyama ; [traduit du japonais par Fédoua Lamodière]",
+      "Dragon Ball. 20 / Akira Toriyama ; [trad. du japonais par Kyoko, i.e. Kiyoko Chappe]",
+      "Dragon Ball. 21 / Akira Toriyama ; [trad. du japonais par Kyoko, i.e. Kiyoko Chappe]"
+    ]
+  },
+  "fire-force": {
+    "actuel": "FIRE FORCE",
+    "propose": "FIRE FORCE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Fire force",
+      "bnfComplet": "Fire force",
+      "anilist": "Enen no Shouboutai"
+    },
+    "notices": 35,
+    "part": 0.97,
+    "exemples": [
+      "Fire force. 24 / Atsushi Ohkubo",
+      "Fire force. 18 / Atsushi Ohkubo",
+      "Fire force. 14 / Atsushi Ohkubo"
+    ]
+  },
+  "fire-punch": {
+    "actuel": "FIRE PUNCH",
+    "propose": "FIRE PUNCH",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Fire punch",
+      "bnfComplet": "Fire punch",
+      "anilist": "Fire Punch"
+    },
+    "notices": 17,
+    "part": 0.71,
+    "exemples": [
+      "Fire punch. 1 / Tatsuki Fujimoto",
+      "Fire punch. 1 / Tatsuki Fujimoto",
+      "Fire punch. 8 / Tatsuki Fujimoto"
+    ]
+  },
+  "fullmetal-alchemist": {
+    "actuel": "FULLMETAL ALCHEMIST",
+    "propose": "FULLMETAL ALCHEMIST",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Fullmetal alchemist",
+      "bnfComplet": "Fullmetal alchemist",
+      "anilist": "Hagane no Renkinjutsushi"
+    },
+    "notices": 50,
+    "part": 0.8,
+    "exemples": [
+      "Fullmetal Alchemist (Coffret 20e anniversaire)",
+      "Fullmetal alchemist, romans / roman, Makoto Inoué ; oeuvre originale, Hiromu Arakawa",
+      "Fullmetal Alchemist - tome 1 - Edition 20 ans"
+    ]
+  },
+  "gantz": {
+    "actuel": "GANTZ",
+    "propose": "GANTZ",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Gantz",
+      "bnfComplet": "Gantz",
+      "anilist": "GANTZ"
+    },
+    "notices": 50,
+    "part": 0.88,
+    "exemples": [
+      "Gantz. 27 / Hiroya Oku",
+      "Gantz. 5 / Oku Hiroya ; [trad. et adapté du japonais par Laurent Latrille]",
+      "Gantz. 6 / Hiroya Oku ; [trad. et adapté du japonais par Laurent Latrille]"
+    ]
+  },
+  "goodnight-punpun": {
+    "actuel": "Goodnight Punpun",
+    "propose": "Goodnight Punpun",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": null
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "hellsing": {
+    "actuel": "HELLSING",
+    "propose": "HELLSING",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Hellsing",
+      "bnfComplet": "Hellsing",
+      "anilist": "HELLSING"
+    },
+    "notices": 15,
+    "part": 0.87,
+    "exemples": [
+      "Hellsing. 9 / Kohta Hirano",
+      "Hellsing. Tome 2 (Perfect ed.) Kohta Hirano",
+      "Hellsing. Tome 3 (Perfect ed.) Kohta Hirano"
+    ]
+  },
+  "hideout": {
+    "actuel": "HIDEOUT",
+    "propose": "HIDEOUT",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "HIDEOUT"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "actuel": "IPPO – S4 LA LOI DU RING",
+    "propose": "IPPO – S4 LA LOI DU RING",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Ippo, saison 4",
+      "bnfComplet": "Ippo, saison 4 : la loi du ring",
+      "anilist": "Hajime no Ippo"
+    },
+    "notices": 22,
+    "part": 1,
+    "exemples": [
+      "Ippo, saison 4 : la loi du ring / George Morikawa",
+      "Ippo, saison 4 : la loi du ring. 3 / George Morikawa",
+      "Ippo, saison 4 : la loi du ring. 15 / George Morikawa"
+    ]
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "actuel": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "propose": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Je suis un assassin",
+      "bnfComplet": "Je suis un assassin : et je surpasse le héros",
+      "anilist": "Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga"
+    },
+    "notices": 9,
+    "part": 0.89,
+    "exemples": [
+      "Je suis un assassin : et je surpasse le héros. 3 / manga, Aigamo Hiroyuki ; oeuvre originale, Akai Matsuri...",
+      "Je suis un assassin : et je surpasse le héros. 1 / Aigamo Hiroyuki ; oeuvre originale, Akai Matsuri...",
+      "Je suis un assassin : et je surpasse le héros. 2 / manga, Aigamo Hiroyuki ; oeuvre originale, Akai Matsuri..."
+    ]
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "actuel": "JK HARU - SEX WORKER IN ANOTHER WORLD",
+    "propose": "JK HARU - SEX WORKER IN ANOTHER WORLD",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "JK Haru",
+      "bnfComplet": "JK Haru : sex worker in another world",
+      "anilist": "JK Haru wa Isekai de Shoufu ni Natta"
+    },
+    "notices": 8,
+    "part": 0.88,
+    "exemples": [
+      "JK Haru : sex worker in another world / manga, J-Ta Yamada ; oeuvre originale, Ko Hiratori",
+      "JK Haru: Sex Worker in Another World. Tome 5",
+      "JK Haru : sex worker in another world. 3 / manga, J-Ta Yamada ; oeuvre originale, Ko Hiratori"
+    ]
+  },
+  "judge": {
+    "actuel": "JUDGE",
+    "propose": "JUDGE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Judge",
+      "bnfComplet": "Judge",
+      "anilist": "JUDGE"
+    },
+    "notices": 8,
+    "part": 0.75,
+    "exemples": [
+      "Judge / Yoshiki Tonogai",
+      "Judge. 5 / Yoshiki Tonogai",
+      "Judge. 3 / Yoshiki Tonogai"
+    ]
+  },
+  "kagurabachi": {
+    "actuel": "KAGURABACHI",
+    "propose": "KAGURABACHI",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Kagurabachi"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "kaijin-reijoh": {
+    "actuel": "KAIJIN REIJOH",
+    "propose": "KAIJIN REIJOH",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Kaijin reijoh",
+      "bnfComplet": "Kaijin reijoh",
+      "anilist": "Kaijin Reijou"
+    },
+    "notices": 15,
+    "part": 0.87,
+    "exemples": [
+      "Kaijin Reijoh. 14",
+      "Kaijin reijoh. 13 / Tetsuya Tashiro",
+      "Kaijin reijoh. 11 / Tetsuya Tashiro"
+    ]
+  },
+  "kaiju-n8": {
+    "actuel": "KAIJU N°8",
+    "propose": "KAIJU N°8",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Kaiju n° 8",
+      "bnfComplet": "Kaiju n° 8",
+      "anilist": "Kaijuu 8-gou"
+    },
+    "notices": 28,
+    "part": 0.82,
+    "exemples": [
+      "Kaiju n° 8. 16",
+      "Kaiju n°8 : Relax. 3",
+      "Kaiju n° 8 (Éd. limitée) Naoya Matsumoto"
+    ]
+  },
+  "kemono-incidents": {
+    "actuel": "KEMONO INCIDENTS",
+    "propose": "KEMONO INCIDENTS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Kemono incidents",
+      "bnfComplet": "Kemono incidents",
+      "anilist": "Kemono Jihen"
+    },
+    "notices": 27,
+    "part": 0.93,
+    "exemples": [
+      "Kemono incidents. 24",
+      "Kemono incidents. 23 / Shô Aimoto",
+      "Kemono incidents. 14 / Shô Aimoto"
+    ]
+  },
+  "kindergarten-wars": {
+    "actuel": "KINDERGARTEN WARS",
+    "propose": "KINDERGARTEN WARS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Kindergarten wars",
+      "bnfComplet": "Kindergarten wars",
+      "anilist": "Youchien WARS"
+    },
+    "notices": 17,
+    "part": 0.94,
+    "exemples": [
+      "Kindergarten wars. 13 / You Chiba",
+      "Kindergarten wars. 02 / You Chiba",
+      "Kindergarten wars. 05 / You Chiba"
+    ]
+  },
+  "les-chroniques-d-azfareo": {
+    "actuel": "LES CHRONIQUES D'AZFAREO",
+    "propose": "LES CHRONIQUES D'AZFAREO",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Les chroniques d'Azfaréo",
+      "bnfComplet": "Les chroniques d'Azfaréo",
+      "anilist": "Azufareo no Sobayounin"
+    },
+    "notices": 11,
+    "part": 0.91,
+    "exemples": [
+      "Les chroniques d'Azfaréo. 6 / Shiki Chitose",
+      "Les chroniques d'Azfaréo. 8 / Shiki Chitose",
+      "Les chroniques d'Azfaréo. 3 / Shiki Chitose"
+    ]
+  },
+  "leviathan": {
+    "actuel": "LEVIATHAN",
+    "propose": "LEVIATHAN",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Léviathan",
+      "bnfComplet": "Léviathan",
+      "anilist": "LEVIATHAN"
+    },
+    "notices": 3,
+    "part": 1,
+    "exemples": [
+      "Léviathan. 3 / Shiro Kuroi",
+      "Léviathan. 2 / Shiro Kuroi",
+      "Léviathan. 1 / Shiro Kuroi"
+    ]
+  },
+  "magi-the-labyrinth-of-magic": {
+    "actuel": "MAGI - THE LABYRINTH OF MAGIC",
+    "propose": "MAGI - THE LABYRINTH OF MAGIC",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Magi",
+      "bnfComplet": "Magi : the labyrinth of magic",
+      "anilist": "Magi"
+    },
+    "notices": 38,
+    "part": 1,
+    "exemples": [
+      "Magi : the labyrinth of magic / Shinobu Ohtaka",
+      "Magi : the labyrinth of magic. 17 / Shinobu Ohtaka",
+      "Magi : the labyrinth of magic. 19 / Shinobu Ohtaka"
+    ]
+  },
+  "magus-of-the-library": {
+    "actuel": "MAGUS OF THE LIBRARY",
+    "propose": "MAGUS OF THE LIBRARY",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Magus of the library",
+      "bnfComplet": "Magus of the library",
+      "anilist": "Toshokan no Daimajutsushi"
+    },
+    "notices": 11,
+    "part": 0.91,
+    "exemples": [
+      "Magus of the library. 9",
+      "Magus of the library. 2 / Mitsu Izumi",
+      "Magus of the library. 8 / Mitsu Izumi"
+    ]
+  },
+  "mashle": {
+    "actuel": "MASHLE",
+    "propose": "MASHLE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "MASHLE"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "actuel": "MIRAI NIKKI - LE JOURNAL DU FUTUR",
+    "propose": "MIRAI NIKKI - LE JOURNAL DU FUTUR",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mirai Nikki",
+      "bnfComplet": "Mirai Nikki",
+      "anilist": "Mirai Nikki"
+    },
+    "notices": 16,
+    "part": 0.81,
+    "exemples": [
+      "Mirai Nikki / Sakae Esuno",
+      "Mirai Nikki. 12 / Sakae Esuno ; traduction, Sakura Saku et Sébastien Kimbergt...",
+      "Mirai Nikki. 10 / Sakae Esuno ; traduction, Sakura Saku et Sébastien Kimbergt..."
+    ]
+  },
+  "mirai-nikki-mosaic": {
+    "actuel": "MIRAI NIKKI – MOSAIC",
+    "propose": "MIRAI NIKKI – MOSAIC",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mirai Nikki",
+      "bnfComplet": "Mirai Nikki",
+      "anilist": "Mirai Nikki: Mosaic"
+    },
+    "notices": 16,
+    "part": 0.81,
+    "exemples": [
+      "Mirai Nikki / Sakae Esuno",
+      "Mirai Nikki. 12 / Sakae Esuno ; traduction, Sakura Saku et Sébastien Kimbergt...",
+      "Mirai Nikki. 10 / Sakae Esuno ; traduction, Sakura Saku et Sébastien Kimbergt..."
+    ]
+  },
+  "mirai-nikki-paradox": {
+    "actuel": "MIRAI NIKKI – PARADOX",
+    "propose": "MIRAI NIKKI – PARADOX",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mirai Nikki",
+      "bnfComplet": "Mirai Nikki",
+      "anilist": "Mirai Nikki: Paradox"
+    },
+    "notices": 16,
+    "part": 0.81,
+    "exemples": [
+      "Mirai Nikki / Sakae Esuno",
+      "Mirai Nikki. 12 / Sakae Esuno ; traduction, Sakura Saku et Sébastien Kimbergt...",
+      "Mirai Nikki. 10 / Sakae Esuno ; traduction, Sakura Saku et Sébastien Kimbergt..."
+    ]
+  },
+  "mission-in-the-apocalypse": {
+    "actuel": "MISSION IN THE APOCALYPSE",
+    "propose": "MISSION IN THE APOCALYPSE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mission in the apocalypse",
+      "bnfComplet": "Mission in the apocalypse",
+      "anilist": "Usuzumi no Hate"
+    },
+    "notices": 5,
+    "part": 0.8,
+    "exemples": [
+      "Mission in the apocalypse. 2 / Haruo Iwamune",
+      "Mission in the apocalypse. 4 / Haruo Iwamune",
+      "Mission in the apocalypse. 3 / Haruo Iwamune"
+    ]
+  },
+  "monster-hunter-orage": {
+    "actuel": "MONSTER HUNTER ORAGE",
+    "propose": "MONSTER HUNTER ORAGE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Monster hunter orage",
+      "bnfComplet": "Monster hunter orage",
+      "anilist": "Monster Hunter Orage"
+    },
+    "notices": 9,
+    "part": 0.78,
+    "exemples": [
+      "Monster hunter orage / Hiro Mashima ; supervisé par Capcom",
+      "Monster hunter orage. 3 / Hiro Mashima ; supervisé par Capcom",
+      "Monster hunter orage. 1 / Hiro Mashima ; supervisé par Capcom"
+    ]
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "actuel": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
+    "propose": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Monster musume",
+      "bnfComplet": "Monster musume : everyday life with monster girls",
+      "anilist": "Monster Musume no Iru Nichijou"
+    },
+    "notices": 19,
+    "part": 1,
+    "exemples": [
+      "Monster musume : everyday life with monster girls / presented by Okayado",
+      "Monster musume : everyday life with monster girls. 17 / présenté par Okayado",
+      "Monster musume : everyday life with monster girls. 15 / presented by Okayado"
+    ]
+  },
+  "mushoku-tensei": {
+    "actuel": "MUSHOKU TENSEI",
+    "propose": "MUSHOKU TENSEI",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mushoku tensei",
+      "bnfComplet": "Mushoku tensei : nouvelle vie, nouvelle chance",
+      "anilist": "Mushoku Tensei: Dasoku-hen"
+    },
+    "notices": 37,
+    "part": 0.97,
+    "exemples": [
+      "Mushoku tensei : nouvelle vie, nouvelle chance. 14 / Fujikawa Yuka ; d'après l'oeuvre de Rifujin na Magonote...",
+      "Mushoku tensei : nouvelle vie, nouvelle chance. 12 / Fujikawa Yuka ; d'après l'oeuvre de Rifujin na Magonote ; character design, Shirotaka",
+      "Mushoku tensei : nouvelle vie, nouvelle chance. 21 / Fujikawa Yuka ; d'après l'oeuvre de Rifujin na Magonote..."
+    ]
+  },
+  "mushoku-tensei-l-epee-d-iris": {
+    "actuel": "MUSHOKU TENSEI – L'épée d'Iris",
+    "propose": "MUSHOKU TENSEI – L'épée d'Iris",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mushoku tensei",
+      "bnfComplet": "Mushoku tensei : nouvelle vie, nouvelle chance",
+      "anilist": "Mushoku Tensei: Isekai Ittara Honki Dasu"
+    },
+    "notices": 35,
+    "part": 0.97,
+    "exemples": [
+      "Mushoku tensei : nouvelle vie, nouvelle chance. 14 / Fujikawa Yuka ; d'après l'oeuvre de Rifujin na Magonote...",
+      "Mushoku tensei : nouvelle vie, nouvelle chance. 12 / Fujikawa Yuka ; d'après l'oeuvre de Rifujin na Magonote ; character design, Shirotaka",
+      "Mushoku tensei : nouvelle vie, nouvelle chance. 21 / Fujikawa Yuka ; d'après l'oeuvre de Rifujin na Magonote..."
+    ]
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "actuel": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "propose": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Mushoku tensei",
+      "bnfComplet": "Mushoku tensei : les aventures de Roxy",
+      "anilist": "Mushoku Tensei: Roxy datte Honki desu"
+    },
+    "notices": 13,
+    "part": 0.92,
+    "exemples": [
+      "Mushoku tensei : les aventures de Roxy / Shôko Iwami ; d'après l'oeuvre de Rifujin na Magonote",
+      "Mushoku tensei : les aventures de Roxy. 10 / Shôko Iwami ; d'après l'oeuvre de Rifujin na Magonote...",
+      "Mushoku tensei : les aventures de Roxy. 11 / Shôko Iwami ; d'après l'oeuvre de Rifujin na Magonote..."
+    ]
+  },
+  "my-elder-sister": {
+    "actuel": "MY ELDER SISTER",
+    "propose": "MY ELDER SISTER",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "My elder sister",
+      "bnfComplet": "My elder sister : the sister of the woods with a thousand young",
+      "anilist": "Wo De Jiejie Shi Da Mingxing"
+    },
+    "notices": 7,
+    "part": 1,
+    "exemples": [
+      "My elder sister : the sister of the woods with a thousand young. 2 / Iida Pochi",
+      "My elder sister : the sister of the woods with a thousand young. 4 / Iida Pochi",
+      "My elder sister : the sister of the woods with a thousand young. 3 / Iida Pochi"
+    ]
+  },
+  "my-hero-academia": {
+    "actuel": "MY HERO ACADEMIA",
+    "propose": "MY HERO ACADEMIA",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Boku no Hero Academia: Yuuei Hakusho"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "my-hero-academia-smash": {
+    "actuel": "MY HERO ACADEMIA - Smash",
+    "propose": "MY HERO ACADEMIA - Smash",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "My hero academia smash",
+      "bnfComplet": "My hero academia smash",
+      "anilist": "Boku no Hero Academia Smash!!"
+    },
+    "notices": 6,
+    "part": 0.83,
+    "exemples": [
+      "My hero academia smash. Vol. 01 / Hirofumi Neda ; concept original, Kohei Horikoshi",
+      "My hero academia smash. Vol. 02 / Hirofumi Neda ; concept original, Kohei Horikoshi",
+      "My hero academia smash. Vol. 04 / Hirofumi Neda ; concept original, Kohei Horikoshi"
+    ]
+  },
+  "my-hero-academia-ultra-archive": {
+    "actuel": "MY HERO ACADEMIA – ULTRA ARCHIVE",
+    "propose": "MY HERO ACADEMIA – ULTRA ARCHIVE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": null
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "naruto": {
+    "actuel": "NARUTO",
+    "propose": "NARUTO",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Naruto",
+      "bnfComplet": "Naruto",
+      "anilist": "NARUTO"
+    },
+    "notices": 50,
+    "part": 0.82,
+    "exemples": [
+      "Naruto vs Hitachi !! / Masashi Kishimoto",
+      "Naruto uzumaki !! / Masashi Kishimoto",
+      "Naruto. 22 (Éd. Hokage) Masashi Kishimoto"
+    ]
+  },
+  "neon-genesis-evangelion": {
+    "actuel": "NEON GENESIS EVANGELION",
+    "propose": "NEON GENESIS EVANGELION",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Neon genesis evangelion",
+      "bnfComplet": "Neon genesis evangelion : perfect edition",
+      "anilist": "Shin Seiki Evangelion"
+    },
+    "notices": 9,
+    "part": 0.89,
+    "exemples": [
+      "Evangelion : neon genesis / Yoshiyuki Sadamoto ; [d'après le dessin animé des Studios] Gainax",
+      "Neon genesis evangelion : perfect edition. 07 / manga, Yoshiyuki Sadamoto ; oeuvre originale, Khara",
+      "Neon genesis evangelion : perfect edition. 04 / manga, Yoshiyuki Sadamoto ; oeuvre originale, Khara"
+    ]
+  },
+  "nozokiana": {
+    "actuel": "NOZOKIANA",
+    "propose": "NOZOKIANA",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Nozokiana",
+      "bnfComplet": "Nozokiana",
+      "anilist": "No Zo Ki A Na"
+    },
+    "notices": 14,
+    "part": 0.93,
+    "exemples": [
+      "Nozokiana. 10 / de Wakoh Honna",
+      "Nozokiana. 12 / de Wakoh Honna",
+      "Nozokiana. 6 / de Wakoh Honna"
+    ]
+  },
+  "oshi-no-ko": {
+    "actuel": "OSHI NO KO",
+    "propose": "OSHI NO KO",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Oshi no ko",
+      "bnfComplet": "Oshi no ko",
+      "anilist": "[Oshi no Ko]"
+    },
+    "notices": 22,
+    "part": 0.86,
+    "exemples": [
+      "Oshi no ko : coffret. 1-2-3",
+      "Oshi no ko. 16",
+      "Oshi no ko. 15"
+    ]
+  },
+  "pandora-heart-8-5": {
+    "actuel": "PANDORA HEART – 8,5",
+    "propose": "PANDORA HEART – 8,5",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Pandora hearts",
+      "bnfComplet": "Pandora hearts",
+      "anilist": "Pandora Hearts"
+    },
+    "notices": 15,
+    "part": 1,
+    "exemples": [
+      "Pandora hearts. 23 / Jun Mochizuki",
+      "Pandora hearts. 14 / Jun Mochizuki",
+      "Pandora hearts. 11 / Jun Mochizuki"
+    ]
+  },
+  "pokemon-la-grande-aventure": {
+    "actuel": "POKEMON - LA GRANDE AVENTURE",
+    "propose": "POKEMON - LA GRANDE AVENTURE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Pokémon",
+      "bnfComplet": "Pokémon : la grande aventure !",
+      "anilist": "Pocket Monsters SPECIAL"
+    },
+    "notices": 47,
+    "part": 0.91,
+    "exemples": [
+      "Pokémon : la grande aventure, noir et blanc. 1",
+      "Pokémon : la grande aventure, noir et blanc. 2",
+      "Pokémon : la grande aventure : Rouge feu et Vert feuille / scénario, Hidenori Kusaka ; dessin, Satoshi Yamamoto"
+    ]
+  },
+  "pokemon-zoroark-le-maitre-des-illusion": {
+    "actuel": "POKEMON – ZOROARK LE MAITRE DES ILLUSION",
+    "propose": "POKEMON – ZOROARK LE MAITRE DES ILLUSION",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Pocket Monsters Diamond & Pearl: Genei no Hasha Zoroark"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "prophecy-the-copycat": {
+    "actuel": "PROPHECY – THE COPYCAT",
+    "propose": "PROPHECY – THE COPYCAT",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Prophecy, the copycat",
+      "bnfComplet": "Prophecy, the copycat",
+      "anilist": "Yokokuhan: The Copycat"
+    },
+    "notices": 5,
+    "part": 0.6,
+    "exemples": [
+      "Prophecy, the copycat. 2 / scénario original, Tetsuya Tsutsui ; dessin, Fumio Obata ; co-scénariste, Hitomi Houjo",
+      "Prophecy, the copycat. 1 / scénario original, Tetsuya Tsutsui ; dessin, Fumio Obata ; co-scénariste, Hitomi Houjo",
+      "Prophecy, the copycat. 3 / scénario original, Tetsuya Tsutsui ; dessin, Fumio Obata ; co-scénariste, Hitomi Houjo"
+    ]
+  },
+  "radiant": {
+    "actuel": "RADIANT",
+    "propose": "RADIANT",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Radiant",
+      "bnfComplet": "Radiant",
+      "anilist": "Ikujitsu"
+    },
+    "notices": 30,
+    "part": 0.93,
+    "exemples": [
+      "Radiant. 14 / Tony Valente",
+      "Radiant. 12 / Tony Valente",
+      "Radiant : coffret collector / Tony Valente"
+    ]
+  },
+  "ragna-crimson": {
+    "actuel": "RAGNA CRIMSON",
+    "propose": "RAGNA CRIMSON",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Ragna Crimson",
+      "bnfComplet": "Ragna Crimson",
+      "anilist": "Ragna Crimson"
+    },
+    "notices": 17,
+    "part": 0.94,
+    "exemples": [
+      "Ragna Crimson. 13",
+      "Ragna Crimson. 16",
+      "Ragna Crimson. 14 / Daiki Kobayashi"
+    ]
+  },
+  "rai-rai-rai": {
+    "actuel": "RAI RAI RAI",
+    "propose": "RAI RAI RAI",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Rai rai rai",
+      "bnfComplet": "Rai rai rai",
+      "anilist": "Rai Rai Rai"
+    },
+    "notices": 4,
+    "part": 0.75,
+    "exemples": [
+      "Rai rai rai. 1",
+      "Rai rai rai. 1 / Yoshiaki",
+      "Rai rai rai. 2 / Yoshiaki"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill": {
+    "actuel": "RED EYES SWORD Akame Ga Kill",
+    "propose": "RED EYES SWORD Akame Ga Kill",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Red eyes sword",
+      "bnfComplet": "Red eyes sword : akame ga kill !",
+      "anilist": "Akame ga Kill!"
+    },
+    "notices": 27,
+    "part": 0.96,
+    "exemples": [
+      "Red eyes sword : akame ga kill !. 11 / scénario, Takahiro ; manga, Tetsuya Tashiro",
+      "Red eyes sword : akame ga kill !. 12 / scénario, Takahiro ; manga, Tetsuya Tashiro",
+      "Red eyes sword : akame ga kill !. 15 / scénario, Takahiro ; manga, Tetsuya Tashiro"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill-zero": {
+    "actuel": "RED EYES SWORD Akame Ga Kill – ZERO",
+    "propose": "RED EYES SWORD Akame Ga Kill – ZERO",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Red eyes sword",
+      "bnfComplet": "Red eyes sword : Akame ga kill ! Zero",
+      "anilist": "Akame ga Kill! Zero"
+    },
+    "notices": 11,
+    "part": 0.91,
+    "exemples": [
+      "Red eyes sword : Akame ga kill ! Zero. 10 / scénario, Takahiro ; manga, Kei Toru",
+      "Red eyes sword : Akame ga kill ! Zero. 7 / scénario, Takahiro ; manga, Kei Toru",
+      "Red eyes sword : Akame ga kill ! Zero. 9 / scénario, Takahiro ; manga, Kei Toru"
+    ]
+  },
+  "relife": {
+    "actuel": "RELIFE",
+    "propose": "RELIFE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Relife",
+      "bnfComplet": "Relife",
+      "anilist": "ReLife"
+    },
+    "notices": 16,
+    "part": 0.94,
+    "exemples": [
+      "Relife. 11 / Yayoiso",
+      "Relife. 12 / Yayoiso",
+      "Relife. 15 / Yayoiso"
+    ]
+  },
+  "remember": {
+    "actuel": "REMEMBER",
+    "propose": "REMEMBER",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "ReMember"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "ruridragon": {
+    "actuel": "RURIDRAGON",
+    "propose": "RURIDRAGON",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Ruridragon",
+      "bnfComplet": "Ruridragon",
+      "anilist": "Ruri Dragon"
+    },
+    "notices": 7,
+    "part": 0.57,
+    "exemples": [
+      "Ruridragon. 4",
+      "Il paraît que je suis un dragon / Masaoki Shindo",
+      "Ruridragon (Éd. collector) Masaoki Shindo"
+    ]
+  },
+  "saint-seiya-the-lost-canvas": {
+    "actuel": "SAINT SEIYA - THE LOST CANVAS",
+    "propose": "SAINT SEIYA - THE LOST CANVAS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Saint Seiya",
+      "bnfComplet": "Saint-Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès",
+      "anilist": "Saint Seiya: THE LOST CANVAS - Meiou Shinwa"
+    },
+    "notices": 45,
+    "part": 0.56,
+    "exemples": [
+      "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi",
+      "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès : chronicles / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi",
+      "Saint Seiya : les chevaliers du zodiaque : the lost canvas, la légende d'Hadès. 1 / Masami Kurumada ; illustrations Shiori Teshirogi ; traduit du japonais par Pierre Giner"
+    ]
+  },
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "actuel": "SAINT SEIYA - THE LOST CANVAS - CHRONICLES",
+    "propose": "SAINT SEIYA - THE LOST CANVAS - CHRONICLES",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Saint Seiya",
+      "bnfComplet": "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès : chronicles",
+      "anilist": "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden"
+    },
+    "notices": 17,
+    "part": 1,
+    "exemples": [
+      "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès : chronicles / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi",
+      "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès : chronicles. 15 / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi",
+      "Saint Seiya : les chevaliers du zodiaque : the lost canvas : la légende d'Hadès : chronicles. 14 / auteur original, Masami Kurumada ; dessins, Shiori Teshirogi"
+    ]
+  },
+  "saotome-love-boxing": {
+    "actuel": "SAOTOME LOVE & BOXING",
+    "propose": "SAOTOME LOVE & BOXING",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Saotome",
+      "bnfComplet": "Saotome : love & boxing",
+      "anilist": "Saotome-Senshu, Hitakakusu"
+    },
+    "notices": 11,
+    "part": 1,
+    "exemples": [
+      "Saotome : love & boxing / scénario & dessins, Naoki Mizuguchi",
+      "Saotome : love & boxing. 10 / scénario & dessins, Naoki Mizuguchi",
+      "Saotome : love & boxing. 9 / scénario & dessins, Naoki Mizuguchi"
+    ]
+  },
+  "servamp": {
+    "actuel": "SERVAMP",
+    "propose": "SERVAMP",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Servamp",
+      "bnfComplet": "Servamp",
+      "anilist": "SERVAMP"
+    },
+    "notices": 27,
+    "part": 0.93,
+    "exemples": [
+      "Servamp. 23",
+      "Servamp. 16 / Tanaka Strike",
+      "Servamp. 17 / Tanaka Strike"
+    ]
+  },
+  "shaman-king": {
+    "actuel": "SHAMAN KING",
+    "propose": "SHAMAN KING",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Shaman king",
+      "bnfComplet": "Shaman king",
+      "anilist": "Shaman King"
+    },
+    "notices": 50,
+    "part": 0.86,
+    "exemples": [
+      "Shaman king 0 / Hiroyuki Taikei",
+      "Shaman King. 17 / Hiroyuki Takei",
+      "Shaman king. 21 / Hiroyuki Takei ; [trad. et adapté du japonais par Sébastien Gesell]"
+    ]
+  },
+  "solo-leveling": {
+    "actuel": "SOLO LEVELING",
+    "propose": "SOLO LEVELING",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Solo leveling",
+      "bnfComplet": "Solo leveling",
+      "anilist": "Na Honjaman Level Up"
+    },
+    "notices": 30,
+    "part": 0.9,
+    "exemples": [
+      "Solo leveling. 17 / Chugong",
+      "Solo leveling / [dessin], Dubu,... ; [scénario], Chugong",
+      "Solo leveling. 17 / [dessin], Disciples,... ; [scénario], Chugong, H-goon"
+    ]
+  },
+  "soul-eater": {
+    "actuel": "SOUL EATER",
+    "propose": "SOUL EATER",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Soul eater",
+      "bnfComplet": "Soul eater",
+      "anilist": "Soul Eater"
+    },
+    "notices": 49,
+    "part": 0.73,
+    "exemples": [
+      "Soul eater / Atsushi Ohkubo",
+      "Soul Eater Perfect Edition - Tome 14",
+      "Soul Eater Perfect Edition -. Tome 14"
+    ]
+  },
+  "spy-x-family": {
+    "actuel": "SPY X FAMILY",
+    "propose": "SPY X FAMILY",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Spy x family",
+      "bnfComplet": "Spy x family",
+      "anilist": "SPY×FAMILY"
+    },
+    "notices": 24,
+    "part": 0.75,
+    "exemples": [
+      "Spy x Family - Tome 16",
+      "Spy x family. 1 / Tatsuya Endo",
+      "Spy x family. 3 / Tatsuya Endo"
+    ]
+  },
+  "talentless": {
+    "actuel": "TALENTLESS",
+    "propose": "TALENTLESS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Talentless",
+      "bnfComplet": "Talentless",
+      "anilist": "Munou na Nana"
+    },
+    "notices": 15,
+    "part": 0.93,
+    "exemples": [
+      "Talentless. 14",
+      "Talentless. 12 / dessins, Furuya Iori ; scénario, Looseboy",
+      "Talentless. 11 / dessins, Furuya Iori ; scénario, Looseboy"
+    ]
+  },
+  "terraformars": {
+    "actuel": "TERRAFORMARS",
+    "propose": "TERRAFORMARS",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Terra formars Asimov",
+      "bnfComplet": "Terra formars Asimov",
+      "anilist": "Terra Formars"
+    },
+    "notices": 5,
+    "part": 0.4,
+    "exemples": [
+      "Terra formars Asimov / oeuvre originale, Yu Sasuga & Ken-Ichi Tachibana ; scénario, Ken-Ichi Fujiwara ; dessin, Boichi",
+      "Terra formars : rain hard / Satoshi Kimura ; oeuvre originale, Yu Sasuga & Ken-Ichi Tachibana",
+      "Terra formars Asimov (Éd. intégrale limitée) oeuvre originale, Yu Sasuga & Ken-Ichi Tachibana ; scénario, Ken-Ichi Fujiwara ; dessin, Boichi"
+    ]
+  },
+  "the-ancient-magus-bride": {
+    "actuel": "THE ANCIENT MAGUS BRIDE",
+    "propose": "THE ANCIENT MAGUS BRIDE",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "The ancient magus bride",
+      "bnfComplet": "The ancient magus bride",
+      "anilist": "Mahoutsukai no Yome"
+    },
+    "notices": 19,
+    "part": 0.79,
+    "exemples": [
+      "The ancient magus bride. 23",
+      "The ancient magus bride. 6 / Koré Yamazaki",
+      "The ancient magus bride. 4 / Koré Yamazaki"
+    ]
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "actuel": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "propose": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "The ancient magus bride",
+      "bnfComplet": "The ancient magus bride : psaume 108 : le bleu du magicien",
+      "anilist": "Mahoutsukai no Yome: Shihen.108 - Majutsushi no Ao"
+    },
+    "notices": 10,
+    "part": 1,
+    "exemples": [
+      "The ancient magus bride : psaume 108 : le bleu du magicien / scénario, Makoto Sanda ; dessin, Isuo Tsukumo",
+      "The ancient magus bride : psaume 108 : le bleu du magicien. 8 / scénario, Makoto Sanda ; dessin, Isuo Tsukumo...",
+      "The ancient magus bride : psaume 108 : le bleu du magicien. 7 / scénario, Makoto Sanda ; dessin, Isuo Tsukumo"
+    ]
+  },
+  "the-ancient-magus-bride-supplement-2": {
+    "actuel": "THE ANCIENT MAGUS BRIDE – Supplément 2",
+    "propose": "THE ANCIENT MAGUS BRIDE – Supplément 2",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Mahoutsukai no Yome"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "the-promised-neverland": {
+    "actuel": "THE PROMISED NEVERLAND",
+    "propose": "THE PROMISED NEVERLAND",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": "Yakusoku no Neverland"
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "to-a-new-you": {
+    "actuel": "TO A NEW YOU",
+    "propose": "TO A NEW YOU",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "To a new you",
+      "bnfComplet": "To a new you",
+      "anilist": "Atarashii Kimi e"
+    },
+    "notices": 7,
+    "part": 0.86,
+    "exemples": [
+      "To a new you. 6 / Shinji Mito",
+      "To a new you. 4 / Shinji Mito",
+      "To a new you. 3 / Shinji Mito"
+    ]
+  },
+  "tsugumi-project": {
+    "actuel": "TSUGUMI PROJECT",
+    "propose": "TSUGUMI PROJECT",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": null,
+      "bnfComplet": null,
+      "anilist": null
+    },
+    "notices": 0,
+    "part": null,
+    "exemples": []
+  },
+  "yuna-de-la-pension-yuragi": {
+    "actuel": "YUNA DE LA PENSION YURAGI",
+    "propose": "YUNA DE LA PENSION YURAGI",
+    "source": "actuel",
+    "changementOrthographe": false,
+    "candidats": {
+      "manuel": null,
+      "bnf": "Yûna de la pension Yuragi",
+      "bnfComplet": "Yûna de la pension Yuragi",
+      "anilist": "Yuragi-sou no Yuuna-san"
+    },
+    "notices": 25,
+    "part": 0.56,
+    "exemples": [
+      "Ouverture du tournoi de la pension Yuragi ! / Tadahiro Miura",
+      "Yûna de la pension Yuragi. 14 / Tadahiro Miura",
+      "Yûna de la pension Yuragi. 12 / Tadahiro Miura"
+    ]
+  }
+}

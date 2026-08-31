@@ -37,7 +37,7 @@ export function MissingGroup({ edition }: { edition: EditionManquante }) {
 
         <div className="flex min-w-0 flex-1 flex-col gap-[4px]">
           <div className="flex items-center gap-[5px]">
-            <span className="truncate text-[14px] font-medium text-text">{edition.titre}</span>
+            <span className="titre-serie truncate text-[14px] font-medium text-text">{edition.titre}</span>
             <IconeEtat edition={edition} />
           </div>
           <span className="truncate text-[11.5px] text-neutral-600">{sousTitre}</span>

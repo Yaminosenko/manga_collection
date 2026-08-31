@@ -56,6 +56,10 @@
 }
 
 @layer components {
+  .titre-serie {
+    text-transform: uppercase;
+  }
+
   .cover-placeholder {
     background: linear-gradient(160deg, var(--color-neutral-900), var(--color-surface));
   }

@@ -19,7 +19,9 @@
     "publication:fetch": "python scripts/fetch_publication.py",
     "publication:apply": "tsx scripts/apply-publication.ts",
     "planning:import": "python scripts/import_planning.py",
-    "planning:apply": "tsx scripts/apply-planning.ts"
+    "planning:apply": "tsx scripts/apply-planning.ts",
+    "titles:fetch": "python scripts/fetch_titles.py",
+    "titles:apply": "tsx scripts/apply-titles.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

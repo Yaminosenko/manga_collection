@@ -1776,6 +1776,63 @@ native n'a rien de stable à quoi s'accrocher.
 
 Vérifié à 1 000 px sur les trois chemins de retour, capture identique avant et après le clic.
 
+### Fait — les titres alignés sur leur nom français (31 août 2026)
+
+Demandé à l'usage : rendre les titres conformes au vrai nom de l'édition française, pour en
+finir avec les fautes de frappe du Sheet, et les afficher en capitales.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/fetch_titles.py` | `npm run titles:fetch` — interroge la BnF, n'écrit qu'un manifeste |
+| `scripts/apply-titles.ts` | `npm run titles:apply` — écrit, `--revert` pour annuler |
+| `data/titles.json` | le manifeste, relu et corrigé à la main |
+| `data/series-avant-titres.json` | l'état des 109 titres avant écriture |
+| `app/globals.css` | `.titre-serie`, l'affichage en capitales |
+
+**Résultat : 13 titres corrigés, 96 intacts, aucun doublon.**
+
+**La donnée et l'affichage sont séparés, et c'est tout le sujet.** La base porte le vrai nom —
+« One-Punch Man », « Iruma à l'école des démons » — et les écrans le rendent en capitales par
+`text-transform`. Mettre les capitales *en base* aurait détruit l'information et cassé les
+recherches sur les API externes, où le titre sert de clé.
+
+**Les slugs ne changent jamais.** Ils joignent tous les manifestes — couvertures, planning,
+AniList — et les chemins dans Blob. Vérifié après écriture : `one-puch-man` garde son slug et
+ses 34 couvertures, `uqholder` ses 28, le total reste à 1 674, les sept compteurs sont intacts.
+
+- **La BnF corrige l'orthographe, elle ne retitre pas.** Première version : sa tête de notice
+  était prise telle quelle. Elle proposait alors « Neon Genesis Evangelion : Perfect Edition »
+  — un nom d'édition entrant dans le titre d'une série —, « Terra Formars **Asimov** » pour
+  `TERRAFORMARS`, qui est un spin-off, et « Pokémon » tout court pour
+  `POKEMON - LA GRANDE AVENTURE`, alors que la collection compte un second Pokémon. Un seuil de
+  similarité de 0,85 entre le titre BnF et le nôtre ramène la source à ce qu'on lui demande.
+- **Ce seuil n'est pas celui que §12 déconseille.** L'avertissement du 30 août vise la
+  similarité employée pour *trouver* la bonne fiche, là où le titre VF s'éloigne légitimement du
+  romaji. Ici la notice est déjà tenue par le garde-fou de l'auteur ; la similarité ne fait
+  qu'écarter un titre qui désigne autre chose.
+- **Les hors-séries héritaient du titre de leur mère.** `MIRAI NIKKI – MOSAIC` et `– PARADOX`
+  devenaient tous deux « Mirai Nikki », `PANDORA HEART – 8,5` prenait « Pandora Hearts ». Pire,
+  dans une version intermédiaire c'est le hors-série qui gagnait et la mère qui était écartée.
+  Le seuil de similarité fait disparaître le cas ; un garde-fou de collision reste en filet.
+- **La recasse automatique est retirée.** Elle transformait `BLAME!` en « Blame » — la BnF ne
+  porte pas le point d'exclamation stylisé — et `MUSHOKU TENSEI – Les aventures de Roxy` en
+  « MUSHOKU TENSEI – les Aventures de Roxy ». Sans correction d'orthographe, le titre n'est pas
+  touché, au caractère près.
+- **AniList est écarté du choix.** Son romaji stylise : `ACT-AGE` devenait « act-age », et son
+  `ORIENT` est en capitales. Il reste au manifeste comme point de comparaison.
+- **`RECHERCHES_MANUELLES`, le motif qui marche, pour la troisième fois.** Trois titres sont trop
+  corrompus pour que la BnF les trouve ; un terme écrit à la main débloque
+  `MARIMASHITA ! IRUMA-KUN !` → *Iruma à l'école des démons* (10 notices sur 12),
+  `SAGA OF TANY` → *Tanya, the evil*, `UQHOLDER` → *UQ Holder !*. Le seuil y est court-circuité :
+  écrire le terme, c'est déjà affirmer l'identité.
+- **La relecture a servi trois fois**, ce qui est sa raison d'être. « Légendaires (les) - Saga »
+  est la forme de catalogue de manga-news, corrigée à la main en « Les Légendaires - Saga ».
+- **Piège d'encodage** : la console Windows en cp1252 fait planter le script sur
+  `BLACK★ROCK SHOOTER`. La sortie est forcée en UTF-8.
+
+**Ce que ça devrait débloquer** : les 13 éditions sans éditeur butaient sur ces mêmes fautes.
+Relancer `publishers` après coup vaut le coup — **pas encore fait**.
+
 ### Reste à faire
 
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
@@ -1855,6 +1912,7 @@ Vérifié à 1 000 px sur les trois chemins de retour, capture identique avant e
 | `npm run covers:upload` | dépose dans Blob et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
 | `npm run anilist:fetch` puis `anilist:apply` | genres et titres VO |
 | `npm run publication:fetch` puis `publication:apply` | tomes parus BnF et état de parution |
+| `npm run titles:fetch` puis `titles:apply` | noms de séries alignés sur la BnF |
 | `npm run db:migrate` | applique les migrations à Neon sur le 443 |
 
 **Toujours relire le manifeste entre le `fetch` et le `apply`** — c'est la raison d'être du

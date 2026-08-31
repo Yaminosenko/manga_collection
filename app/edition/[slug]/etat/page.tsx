@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/etat">
           <ArrowLeft className="size-[18px]" />
         </Link>
         <div className="flex min-w-0 flex-1 flex-col">
-          <span className="truncate text-[14px] font-medium text-text">{edition.titre}</span>
+          <span className="titre-serie truncate text-[14px] font-medium text-text">{edition.titre}</span>
           <span className="truncate text-[11px] text-neutral-600">
             {edition.nom} · {TITRE_ETAT}
           </span>

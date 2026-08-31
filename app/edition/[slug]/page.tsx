@@ -54,7 +54,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
           </div>
 
           <div className="flex min-w-0 flex-1 flex-col gap-[5px]">
-            <h1 className="text-[16px]/[1.2] font-medium text-text">{edition.titre}</h1>
+            <h1 className="titre-serie text-[16px]/[1.2] font-medium text-text">{edition.titre}</h1>
             <p className="truncate text-[11.5px] text-neutral-600">
               {sousTitre(edition.nom, edition.editeur)}
             </p>

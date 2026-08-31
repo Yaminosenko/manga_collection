@@ -47,7 +47,7 @@ export function CollectionRow({ ligne }: { ligne: LigneCollection }) {
       <div className="flex min-w-0 flex-1 flex-col gap-[6px]">
         <div className="flex items-center gap-[5px]">
           <span
-            className={`truncate text-[15.5px] font-medium ${
+            className={`titre-serie truncate text-[15.5px] font-medium ${
               desature ? "text-neutral-500" : "text-text"
             }`}
           >

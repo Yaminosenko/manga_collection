@@ -37,7 +37,7 @@ export function PlanningMonth({ sorties }: { sorties: SortiePlanning[] }) {
           </span>
 
           <span className="flex min-w-0 flex-1 flex-col gap-[4px]">
-            <span className="text-text truncate text-[14.5px] font-medium">{sortie.titre}</span>
+            <span className="titre-serie text-text truncate text-[14.5px] font-medium">{sortie.titre}</span>
             {sousTitre(sortie) ? (
               <span className="truncate text-[12px] text-neutral-600">{sousTitre(sortie)}</span>
             ) : null}
