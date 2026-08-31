@@ -8,7 +8,7 @@ import {
   PREFIXES_ISBN,
 } from "@/lib/constants";
 import type { SerieDistante } from "@/lib/anilist";
-import type { StatutEdition } from "@/lib/generated/prisma/enums";
+import type { StatutEdition, TypeLienSerie } from "@/lib/generated/prisma/enums";
 
 export type ResultatScan =
   | {
@@ -68,6 +68,19 @@ export type AutreEdition = {
   dernierNumeroPossede: number | null;
 };
 
+export type SerieLiee = {
+  slug: string;
+  titre: string;
+  type: TypeLienSerie;
+  nom: string;
+  tomesParus: number;
+  possedes: number;
+  editionTerminee: boolean | null;
+  statut: StatutEdition;
+  couvertureUrl: string | null;
+  dernierNumeroPossede: number | null;
+};
+
 export type Edition = {
   slug: string;
   nom: string;
@@ -87,6 +100,7 @@ export type Edition = {
   tomes: Tome[];
   sorties: SortieAnnoncee[];
   autresEditions: AutreEdition[];
+  seriesLiees: SerieLiee[];
 };
 
 export type LigneCollection = {

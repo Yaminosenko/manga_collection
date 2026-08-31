@@ -1,0 +1,124 @@
+{
+  "bleach": [
+    {
+      "slug": "burn-the-witch",
+      "type": "AUTRE",
+      "romaji": "BURN THE WITCH"
+    }
+  ],
+  "blue-eyes-sword": [
+    {
+      "slug": "red-eyes-sword-akame-ga-kill",
+      "type": "PREQUELLE",
+      "romaji": "Akame ga Kill!"
+    }
+  ],
+  "burn-the-witch": [
+    {
+      "slug": "bleach",
+      "type": "AUTRE",
+      "romaji": "BLEACH"
+    }
+  ],
+  "doubt": [
+    {
+      "slug": "judge",
+      "type": "SUITE",
+      "romaji": "JUDGE"
+    }
+  ],
+  "fire-force": [
+    {
+      "slug": "soul-eater",
+      "type": "AUTRE",
+      "romaji": "Soul Eater"
+    }
+  ],
+  "judge": [
+    {
+      "slug": "doubt",
+      "type": "PREQUELLE",
+      "romaji": "Doubt"
+    }
+  ],
+  "pandora-heart": [
+    {
+      "slug": "pandora-heart-8-5",
+      "type": "GUIDE",
+      "romaji": null
+    }
+  ],
+  "pandora-heart-8-5": [
+    {
+      "slug": "pandora-heart",
+      "type": "SERIE_MERE",
+      "romaji": null
+    }
+  ],
+  "red-eyes-sword-akame-ga-kill": [
+    {
+      "slug": "red-eyes-sword-akame-ga-kill-zero",
+      "type": "PREQUELLE",
+      "romaji": "Akame ga Kill! Zero"
+    },
+    {
+      "slug": "blue-eyes-sword",
+      "type": "SUITE",
+      "romaji": "Hinowa ga Yuku!"
+    }
+  ],
+  "red-eyes-sword-akame-ga-kill-zero": [
+    {
+      "slug": "red-eyes-sword-akame-ga-kill",
+      "type": "SUITE",
+      "romaji": "Akame ga Kill!"
+    }
+  ],
+  "saint-seiya-the-lost-canvas": [
+    {
+      "slug": "saint-seiya-the-lost-canvas-chronicles",
+      "type": "HORS_SERIE",
+      "romaji": "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden"
+    }
+  ],
+  "saint-seiya-the-lost-canvas-chronicles": [
+    {
+      "slug": "saint-seiya-the-lost-canvas",
+      "type": "SERIE_MERE",
+      "romaji": "Saint Seiya: THE LOST CANVAS - Meiou Shinwa"
+    }
+  ],
+  "soul-eater": [
+    {
+      "slug": "fire-force",
+      "type": "AUTRE",
+      "romaji": "Enen no Shouboutai"
+    }
+  ],
+  "the-ancient-magus-bride": [
+    {
+      "slug": "the-ancient-magus-bride-le-bleu-du-magicien",
+      "type": "SPIN_OFF",
+      "romaji": "Mahoutsukai no Yome: Shihen.108 - Majutsushi no Ao"
+    },
+    {
+      "slug": "the-ancient-magus-bride-supplement-2",
+      "type": "GUIDE",
+      "romaji": null
+    }
+  ],
+  "the-ancient-magus-bride-le-bleu-du-magicien": [
+    {
+      "slug": "the-ancient-magus-bride",
+      "type": "SERIE_MERE",
+      "romaji": "Mahoutsukai no Yome"
+    }
+  ],
+  "the-ancient-magus-bride-supplement-2": [
+    {
+      "slug": "the-ancient-magus-bride",
+      "type": "SERIE_MERE",
+      "romaji": null
+    }
+  ]
+}

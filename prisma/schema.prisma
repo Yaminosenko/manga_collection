@@ -14,9 +14,19 @@ enum StatutEdition {
   VENDUE
 }
 
+enum TypeLienSerie {
+  PREQUELLE
+  SUITE
+  SERIE_MERE
+  HORS_SERIE
+  SPIN_OFF
+  GUIDE
+  AUTRE
+}
+
 model Serie {
-  id            String    @id @default(uuid())
-  slug          String    @unique
+  id            String      @id @default(uuid())
+  slug          String      @unique
   titre         String
   titreVo       String?
   auteur        String
@@ -25,8 +35,22 @@ model Serie {
   cible         String?
   couvertureUrl String?
   editions      Edition[]
+  liens         LienSerie[] @relation("liensSortants")
+  liensEntrants LienSerie[] @relation("liensEntrants")
 
   @@index([titre])
+}
+
+model LienSerie {
+  id          String        @id @default(uuid())
+  serie       Serie         @relation("liensSortants", fields: [serieId], references: [id], onDelete: Cascade)
+  serieId     String
+  serieLiee   Serie         @relation("liensEntrants", fields: [serieLieeId], references: [id], onDelete: Cascade)
+  serieLieeId String
+  type        TypeLienSerie
+
+  @@unique([serieId, serieLieeId])
+  @@index([serieId])
 }
 
 model Edition {

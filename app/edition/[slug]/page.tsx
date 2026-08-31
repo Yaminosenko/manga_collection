@@ -12,8 +12,10 @@ import {
   valeurCentimes,
 } from "@/lib/domain";
 import {
+  LIBELLES_LIEN_SERIE,
   LIBELLE_A_VERIFIER,
   LIBELLE_AUTRES_EDITIONS,
+  LIBELLE_SERIES_LIEES,
   LIBELLE_FICHE_MANGA_NEWS,
   LIBELLE_MODIFIER_ETAT,
   LIBELLE_PRIX_TOME,
@@ -159,6 +161,55 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
                       />
                       <span className="text-[11.5px] font-medium whitespace-nowrap text-neutral-300">
                         {autre.possedes} / {autre.tomesParus}
+                      </span>
+                    </span>
+                  </span>
+                  <CaretRight className="size-[14px] flex-none text-neutral-600" />
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {edition.seriesLiees.length > 0 ? (
+          <section className="flex flex-col gap-[9px]">
+            <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
+              {LIBELLE_SERIES_LIEES}
+            </h2>
+            <div className="flex flex-col">
+              {edition.seriesLiees.map((liee) => (
+                <Link
+                  key={liee.slug}
+                  href={`/edition/${liee.slug}`}
+                  className="border-row-divider flex min-h-11 items-center gap-[12px] border-b py-[9px] transition-colors last:border-b-0 hover:bg-text/2"
+                >
+                  <span
+                    className={`shadow-edge h-[74px] w-[52px] flex-none overflow-hidden rounded-cover text-[11px] ${
+                      liee.statut === "EN_COURS" ? "" : "opacity-50"
+                    }`}
+                  >
+                    <Cover
+                      couvertureUrl={liee.couvertureUrl}
+                      numero={liee.dernierNumeroPossede}
+                      titre={liee.titre}
+                    />
+                  </span>
+                  <span className="flex min-w-0 flex-1 flex-col gap-[4px]">
+                    <span className="titre-serie truncate text-[13px] font-medium text-text">
+                      {liee.titre}
+                    </span>
+                    <span className="truncate text-[11.5px] text-neutral-600">
+                      {LIBELLES_LIEN_SERIE[liee.type]}
+                    </span>
+                    <span className="mt-[3px] flex items-center gap-[8px]">
+                      <ProgressBar
+                        possedes={liee.possedes}
+                        tomesParus={liee.tomesParus}
+                        aParaitre={aDesTomesAParaitre(liee.editionTerminee)}
+                        desature={liee.statut !== "EN_COURS"}
+                      />
+                      <span className="text-[11.5px] font-medium whitespace-nowrap text-neutral-300">
+                        {liee.possedes} / {liee.tomesParus}
                       </span>
                     </span>
                   </span>

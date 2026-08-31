@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-08-31T13:17:48.322Z",
+  "exporteeLe": "2026-08-31T14:03:18.110Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
@@ -7,8 +7,119 @@
     "possedes": 1153,
     "aVerifier": 13,
     "forcees": 2,
-    "couvertures": 1674
+    "couvertures": 1674,
+    "liens": 18
   },
+  "liens": [
+    {
+      "id": "bf7aed28-436d-4b7a-a038-208dfad55c4c",
+      "serieId": "03e39511-c6d1-4290-aa7e-64e844333ab7",
+      "serieLieeId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
+      "type": "SUITE"
+    },
+    {
+      "id": "02e008f4-3f6b-4fc9-93b3-31c5b2ac790a",
+      "serieId": "08b69bb0-b658-449f-b0e5-209f865c10fa",
+      "serieLieeId": "7df44ae4-4b07-4ebe-9a6c-6305ad68667f",
+      "type": "AUTRE"
+    },
+    {
+      "id": "6a512d0e-d400-4fea-8e2c-692bb5d35577",
+      "serieId": "0d829e02-434a-4a14-befc-b0461b8270aa",
+      "serieLieeId": "f7f66f75-5394-4d6a-bef1-896ece5416ef",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "dabc4e67-a7e7-45b4-bab1-6ea4d287a26b",
+      "serieId": "27cccb9f-b7f1-4db6-9b51-0689ff4ef396",
+      "serieLieeId": "7319a911-92d3-4e1f-82da-5bb7f7e2ed60",
+      "type": "AUTRE"
+    },
+    {
+      "id": "32615afe-b67f-4dc1-b9b3-235234c9cbcb",
+      "serieId": "4070cc42-8d70-4dd0-ae63-ba35b77bd737",
+      "serieLieeId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
+      "type": "PREQUELLE"
+    },
+    {
+      "id": "27fff978-b3d1-4007-9182-700789681f14",
+      "serieId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
+      "serieLieeId": "7e24a177-3cb0-4ee4-8592-43e93fcc60ef",
+      "type": "GUIDE"
+    },
+    {
+      "id": "4d78a92e-19c1-448a-828d-11e3a7d24a16",
+      "serieId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
+      "serieLieeId": "8a37795c-cc65-421f-a61a-bd1090576550",
+      "type": "SPIN_OFF"
+    },
+    {
+      "id": "45601415-3dd8-4501-b165-43efedb784da",
+      "serieId": "70822b1e-37b3-4014-bb30-aee10c227778",
+      "serieLieeId": "a75feded-103b-4bb1-9e14-478ce72590a1",
+      "type": "HORS_SERIE"
+    },
+    {
+      "id": "90225716-1a62-4bc9-8f70-8ea854a9947a",
+      "serieId": "7319a911-92d3-4e1f-82da-5bb7f7e2ed60",
+      "serieLieeId": "27cccb9f-b7f1-4db6-9b51-0689ff4ef396",
+      "type": "AUTRE"
+    },
+    {
+      "id": "22852b20-505d-4b7e-970f-4d7cb35a05b5",
+      "serieId": "7df44ae4-4b07-4ebe-9a6c-6305ad68667f",
+      "serieLieeId": "08b69bb0-b658-449f-b0e5-209f865c10fa",
+      "type": "AUTRE"
+    },
+    {
+      "id": "eba91279-76eb-49a6-85c3-580197492d33",
+      "serieId": "7e24a177-3cb0-4ee4-8592-43e93fcc60ef",
+      "serieLieeId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "066115a7-b3dc-49c3-8d2c-9ff07b85ae2c",
+      "serieId": "8a37795c-cc65-421f-a61a-bd1090576550",
+      "serieLieeId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "2ed2d2ff-2ff6-4267-bd66-060d20585131",
+      "serieId": "a75feded-103b-4bb1-9e14-478ce72590a1",
+      "serieLieeId": "70822b1e-37b3-4014-bb30-aee10c227778",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "343ee5a1-e330-4f39-9203-b619d0a1df90",
+      "serieId": "ceaf4e09-9658-47e2-b6ef-5885e3827ab4",
+      "serieLieeId": "ff323d4a-3882-47a4-ab62-caae77236832",
+      "type": "PREQUELLE"
+    },
+    {
+      "id": "f07a7dd1-9a94-43e0-a056-0cb89cec83f3",
+      "serieId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
+      "serieLieeId": "03e39511-c6d1-4290-aa7e-64e844333ab7",
+      "type": "PREQUELLE"
+    },
+    {
+      "id": "e051805e-e991-48b7-813d-84a78e66f66d",
+      "serieId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
+      "serieLieeId": "4070cc42-8d70-4dd0-ae63-ba35b77bd737",
+      "type": "SUITE"
+    },
+    {
+      "id": "38c8d0fb-925b-4f9b-8095-1f67c0e7f4bb",
+      "serieId": "f7f66f75-5394-4d6a-bef1-896ece5416ef",
+      "serieLieeId": "0d829e02-434a-4a14-befc-b0461b8270aa",
+      "type": "GUIDE"
+    },
+    {
+      "id": "f40ee7e5-d8ac-4c00-a644-d7e69cb2c85c",
+      "serieId": "ff323d4a-3882-47a4-ab62-caae77236832",
+      "serieLieeId": "ceaf4e09-9658-47e2-b6ef-5885e3827ab4",
+      "type": "SUITE"
+    }
+  ],
   "series": [
     {
       "id": "5dd12ba4-6bba-4e6d-b424-1abc1d5060d6",
@@ -6637,7 +6748,7 @@
           "id": "39676607-5354-4ea3-add3-2c1160d28597",
           "slug": "burn-the-witch",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Glénat",
           "tomesParus": 1,
           "editionTerminee": true,
           "prixDefautCentimes": 690,
@@ -11838,7 +11949,7 @@
           "id": "de900589-3839-41dd-8ad1-e855408537b3",
           "slug": "goodnight-punpun",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Kana",
           "tomesParus": 13,
           "editionTerminee": null,
           "prixDefautCentimes": null,
@@ -12222,7 +12333,7 @@
           "id": "fa72912e-b948-4dc4-9324-1ebd115df1cd",
           "slug": "hideout",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Ki-oon",
           "tomesParus": 1,
           "editionTerminee": true,
           "prixDefautCentimes": 765,
@@ -16276,7 +16387,7 @@
           "id": "914bfe57-eea6-4dd2-b960-26400891b3ea",
           "slug": "marimashita-iruma-kun",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Nobi nobi !",
           "tomesParus": 34,
           "editionTerminee": false,
           "prixDefautCentimes": 720,
@@ -21772,7 +21883,7 @@
           "id": "6daad833-a254-4a0c-89be-933d4c028e5e",
           "slug": "one-puch-man",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Kurokawa",
           "tomesParus": 34,
           "editionTerminee": false,
           "prixDefautCentimes": 680,
@@ -22395,7 +22506,7 @@
           "id": "ce59b05b-2a35-407f-9c19-476460f7877b",
           "slug": "oriant-samurai-quest",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Pika Édition",
           "tomesParus": 22,
           "editionTerminee": false,
           "prixDefautCentimes": 720,
@@ -23774,7 +23885,7 @@
           "id": "db1c7d5f-ae91-4381-83fc-e37eb9d79e75",
           "slug": "pokemon-zoroark-le-maitre-des-illusion",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Kurokawa",
           "tomesParus": 1,
           "editionTerminee": true,
           "prixDefautCentimes": 690,
@@ -25493,7 +25604,7 @@
           "id": "cad99e27-b752-477a-90db-d9d098946fde",
           "slug": "remember",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Ki-oon",
           "tomesParus": 17,
           "editionTerminee": true,
           "prixDefautCentimes": 765,
@@ -25933,7 +26044,7 @@
           "id": "fe65f415-d170-4c07-b96c-5f737e83e973",
           "slug": "saga-of-tany-the-evil-youjo-senki",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Delcourt-Tonkam",
           "tomesParus": 22,
           "editionTerminee": false,
           "prixDefautCentimes": 850,
@@ -31236,7 +31347,7 @@
           "id": "2f0a94ad-aa6b-4631-a599-5c3b645e26f8",
           "slug": "the-ancient-magus-bride-supplement-2",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Komikku",
           "tomesParus": 1,
           "editionTerminee": true,
           "prixDefautCentimes": 750,
@@ -32076,7 +32187,7 @@
           "id": "b8b19090-fbed-4f68-bb17-be37f166194e",
           "slug": "tsugumi-project",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Ki-oon",
           "tomesParus": 7,
           "editionTerminee": true,
           "prixDefautCentimes": 790,
@@ -32236,7 +32347,7 @@
           "id": "81c57303-13fa-41fd-a405-6a8055ea2ea7",
           "slug": "uqholder",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Pika Édition",
           "tomesParus": 28,
           "editionTerminee": true,
           "prixDefautCentimes": 695,
@@ -33465,7 +33576,7 @@
           "id": "ee3c670c-3160-4e1f-a4cf-bb5f675a5247",
           "slug": "yusei-no-last-boss",
           "nom": "Édition simple",
-          "editeur": null,
+          "editeur": "Bamboo Édition",
           "tomesParus": 10,
           "editionTerminee": false,
           "prixDefautCentimes": 750,

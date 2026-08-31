@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { prisma as prismaNeon } from "../lib/prisma";
 import { PrismaClient } from "../lib/generated/prisma/client";
-import type { StatutEdition } from "../lib/generated/prisma/enums";
+import type { StatutEdition, TypeLienSerie } from "../lib/generated/prisma/enums";
 
 const urlLocale = process.env["LOCAL_DATABASE_URL"];
 
@@ -85,12 +85,21 @@ type Compteurs = {
   aVerifier: number;
   forcees: number;
   couvertures: number;
+  liens: number;
+};
+
+type LienSauve = {
+  id: string;
+  serieId: string;
+  serieLieeId: string;
+  type: TypeLienSerie;
 };
 
 type Sauvegarde = {
   exporteeLe: string;
   compteurs: Compteurs;
   series: SerieSauvee[];
+  liens: LienSauve[];
 };
 
 function enISO(valeur: Date | null): string | null {
@@ -110,6 +119,7 @@ async function compter(): Promise<Compteurs> {
     aVerifier: await prisma.edition.count({ where: { aVerifier: true } }),
     forcees: await prisma.edition.count({ where: { termineeForcee: true } }),
     couvertures: await prisma.volume.count({ where: { couvertureUrl: { not: null } } }),
+    liens: await prisma.lienSerie.count(),
   };
 }
 
@@ -127,9 +137,14 @@ async function exporter() {
     },
   });
 
+  const liens = await prisma.lienSerie.findMany({
+    orderBy: [{ serieId: "asc" }, { serieLieeId: "asc" }],
+  });
+
   const sauvegarde: Sauvegarde = {
     exporteeLe: new Date().toISOString(),
     compteurs: await compter(),
+    liens,
     series: series.map((serie) => ({
       id: serie.id,
       slug: serie.slug,
@@ -313,6 +328,9 @@ async function restaurer() {
   await ecrireParLots("sorties annoncees", sorties, (lot) =>
     prisma.sortie.createMany({ data: lot }),
   );
+  await ecrireParLots("liens de series", sauvegarde.liens ?? [], (lot) =>
+    prisma.lienSerie.createMany({ data: lot }),
+  );
 
   const obtenus = await compter();
   console.log(`obtenu  : ${JSON.stringify(obtenus)}`);
@@ -323,7 +341,7 @@ async function restaurer() {
   if (ecarts.length > 0) {
     throw new Error(`compteurs divergents : ${ecarts.map(([cle]) => cle).join(", ")}`);
   }
-  console.log("les sept compteurs correspondent");
+  console.log("les compteurs correspondent");
 }
 
 async function main() {

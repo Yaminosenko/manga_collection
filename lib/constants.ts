@@ -90,6 +90,27 @@ export const LIBELLE_ACCES_NON_CONFIGURE =
 
 export const LIBELLE_TOMES_POSSEDES = "Tomes possédés";
 export const LIBELLE_AUTRES_EDITIONS = "Autres éditions";
+export const LIBELLE_SERIES_LIEES = "Séries liées";
+
+export const LIBELLES_LIEN_SERIE = {
+  PREQUELLE: "Préquelle",
+  SERIE_MERE: "Série principale",
+  SUITE: "Suite",
+  SPIN_OFF: "Spin-off",
+  HORS_SERIE: "Hors-série",
+  GUIDE: "Guide",
+  AUTRE: "Même univers",
+} as const;
+
+export const ORDRE_LIENS_SERIE = [
+  "SERIE_MERE",
+  "PREQUELLE",
+  "SUITE",
+  "SPIN_OFF",
+  "HORS_SERIE",
+  "GUIDE",
+  "AUTRE",
+] as const;
 export const LIBELLE_PROCHAINE_SORTIE = "Prochaine sortie";
 export const LIBELLE_PRIX_TOME = "Prix du tome";
 export const LIBELLE_MODIFIER_ETAT = "Modifier l’état";

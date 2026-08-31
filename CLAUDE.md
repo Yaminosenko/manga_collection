@@ -1876,9 +1876,55 @@ portent leur puce « En pause » ; Chainsaw Man montre sa prochaine sortie au 14
 prix de 7,30 € et son bouton d'état ; le lien manga-news pointe bien sur la recherche ; la
 dernière rangée de la grille est pleine ; le Planning affiche « RAI RAI RAI · Tome 3 · jeu 3 ».
 
-**Reste ouvert : 2, 3 ou 4 colonnes.** Le canevas les montre côte à côte, même écran, mêmes
-tomes, vraies couvertures — 4 tomes visibles à 2 colonnes, 9 à 3, 16 à 4. La décision du 29 août
-avait été prise sur des cases vides ; elle se rejuge sur téléphone.
+**Tranché — la grille reste à 2 colonnes (31 août 2026).** Le canevas les a montrées côte à
+côte, même écran, mêmes tomes, vraies couvertures — 4 tomes visibles à 2 colonnes, 9 à 3, 16 à 4.
+La décision du 29 août avait été prise sur des cases vides ; revue avec les couvertures, elle
+tient. `COLONNES_GRILLE` reste à 2, et la question est close.
+
+### Fait — les séries liées (31 août 2026)
+
+Demandé à l'usage : afficher sur la page Édition les **autres séries possédées** qui se
+rattachent à celle-ci — préquelle, suite, hors-série, guide — comme le bloc « Autres éditions »
+le fait déjà pour les éditions d'une même œuvre. Exemple donné : Akame ga Kill est la base,
+Zero la préquelle, Hinowa ga Crush la suite.
+
+| Fichier | Rôle |
+|---|---|
+| `prisma/schema.prisma` | `LienSerie` et l'énumération `TypeLienSerie` |
+| `prisma/migrations/20260831120000_liens_series/` | la migration, écrite à la main |
+| `scripts/fetch-relations.ts` | `npm run relations:fetch` — lit les relations AniList, n'écrit qu'un manifeste |
+| `scripts/apply-relations.ts` | `npm run relations:apply` — écrit, `--revert` vide la table |
+| `data/relations.json` | le manifeste, relu avant écriture |
+
+**AniList porte la donnée, et bien.** `Media.relations` rend `PREQUEL`, `SEQUEL`, `SIDE_STORY`,
+`PARENT`, `SPIN_OFF` ; sur Akame ga Kill il donne exactement la préquelle et la suite attendues.
+Seules les séries **possédées** sont retenues — l'adaptation animée et le `SIDE_STORY`
+*Akame ga Kill! 1.5*, non possédé, tombent au relevé et non à l'affichage.
+
+**Résultat : 18 liens sur 16 séries.** Les liens sont stockés dans les deux sens, ce qu'AniList
+fournit de chaque côté ; chaque page lit ses liens sortants.
+
+- **Deux hors-séries empruntent l'identifiant AniList de leur mère** — `pandora-heart-8-5` et
+  `the-ancient-magus-bride-supplement-2`, pointés là à la main le 30 août pour hériter des
+  genres. Dérivées telles quelles, leurs relations étaient celles de la mère : le Supplément 2
+  devenait la « série mère » du spin-off. `IDENTIFIANTS_EMPRUNTES` les écarte de la dérivation
+  **et** des cibles ; leurs vrais liens passent par la table manuelle. Première version du
+  garde-fou : écarter tout identifiant partagé — trop large, elle faisait perdre le spin-off
+  légitime de Magus Bride. Ce n'est pas le partage qui est fautif, c'est l'emprunt.
+- **Deux séries Mushoku Tensei sont inversées dans `data/anilist.json`**, et ça se voit
+  seulement maintenant : `mushoku-tensei` pointe sur *Dasoku-hen*, qui est un hors-série, et
+  `mushoku-tensei-l-epee-d-iris` sur *Isekai Ittara Honki Dasu*, qui est la série principale.
+  Les relations sorties étaient donc inversées, fidèlement. `RESOLUTIONS_DOUTEUSES` les écarte.
+  **La résolution AniList reste à corriger à la source** — elle affecte aussi les genres et le
+  `titreVo` de la série principale.
+- **Une série liée peut avoir plusieurs éditions** : le lien pointe vers celle où le plus de
+  tomes sont possédés. Vérifié — Fire Force renvoie vers `soul-eater-edition-double`, 12/12.
+- **La sauvegarde couvre la nouvelle table**, comme pour `Sortie` le 30 août : `backup-db.ts`
+  exporte les liens et les compte. Sans quoi une restauration les aurait perdus en silence.
+
+Vérifié à l'écran : la page d'Akame ga Kill affiche « RED EYES SWORD AKAME GA KILL – ZERO ·
+Préquelle · 10/10 » et « BLUE EYES SWORD · Suite · 8/8 », couvertures et chevrons compris ; la
+réciproque tient depuis Blue Eyes Sword.
 
 ### Reste à faire
 

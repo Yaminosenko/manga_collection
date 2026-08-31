@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { ORDRE_LIENS_SERIE } from "@/lib/constants";
 import type { Collection, Edition, Manquants, SortiePlanning } from "@/lib/domain";
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
@@ -20,6 +21,34 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
       },
       serie: {
         include: {
+          liens: {
+            select: {
+              type: true,
+              serieLiee: {
+                select: {
+                  titre: true,
+                  editions: {
+                    orderBy: { nom: "asc" },
+                    select: {
+                      slug: true,
+                      nom: true,
+                      tomesParus: true,
+                      editionTerminee: true,
+                      statut: true,
+                      volumes: {
+                        orderBy: { numero: "asc" },
+                        select: {
+                          numero: true,
+                          couvertureUrl: true,
+                          possession: { select: { possede: true } },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
           editions: {
             orderBy: { nom: "asc" },
             select: {
@@ -92,6 +121,36 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
           dernierNumeroPossede: dernier?.numero ?? null,
         };
       }),
+    seriesLiees: edition.serie.liens
+      .map((lien) => {
+        const principale = lien.serieLiee.editions
+          .map((autre) => ({
+            edition: autre,
+            possedes: autre.volumes.filter((volume) => volume.possession?.possede),
+          }))
+          .sort((a, b) => b.possedes.length - a.possedes.length)
+          .at(0);
+        if (!principale) {
+          return null;
+        }
+        const dernier = principale.possedes.at(-1) ?? null;
+        return {
+          slug: principale.edition.slug,
+          titre: lien.serieLiee.titre,
+          type: lien.type,
+          nom: principale.edition.nom,
+          tomesParus: principale.edition.tomesParus,
+          possedes: principale.possedes.length,
+          editionTerminee: principale.edition.editionTerminee,
+          statut: principale.edition.statut,
+          couvertureUrl: dernier?.couvertureUrl ?? null,
+          dernierNumeroPossede: dernier?.numero ?? null,
+        };
+      })
+      .filter((liee): liee is NonNullable<typeof liee> => liee !== null)
+      .sort(
+        (a, b) => ORDRE_LIENS_SERIE.indexOf(a.type) - ORDRE_LIENS_SERIE.indexOf(b.type),
+      ),
   };
 }
 
