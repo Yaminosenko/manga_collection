@@ -32,6 +32,7 @@ export type CleTri = (typeof TRIS)[number]["cle"];
 
 export const TRI_PAR_DEFAUT: CleTri = "alphabetique";
 export const CLE_STOCKAGE_TRI = "collection.tri";
+export const CLE_STOCKAGE_DEFILEMENT = "collection.defilement";
 
 export const PLACEHOLDER_RECHERCHE = "Rechercher";
 export const LIBELLE_VENDUES = "Vendues";

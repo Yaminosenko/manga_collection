@@ -5,6 +5,7 @@ import { CollapsibleSection } from "@/components/collapsible-section";
 import { CollectionRow } from "@/components/collection-row";
 import { Check, MagnifyingGlass, SortAscending } from "@/components/icons";
 import {
+  CLE_STOCKAGE_DEFILEMENT,
   CROISSANT_PAR_DEFAUT,
   LIBELLE_AUCUN_RESULTAT,
   LIBELLE_COLLECTION_VIDE,
@@ -17,6 +18,7 @@ import {
   type CleTri,
 } from "@/lib/constants";
 import { formaterNombre, formaterPrix } from "@/lib/format";
+import { useMemoireDefilement } from "@/lib/use-scroll-memory";
 import { usePreferenceTri } from "@/lib/use-sort-preference";
 import type { Collection, LigneCollection } from "@/lib/domain";
 
@@ -61,6 +63,8 @@ export function CollectionList({ collection }: { collection: Collection }) {
   const [recherche, setRecherche] = useState("");
   const [preference, appliquerPreference] = usePreferenceTri();
   const [menuOuvert, setMenuOuvert] = useState(false);
+
+  useMemoireDefilement(CLE_STOCKAGE_DEFILEMENT);
 
   const lignes = useMemo(() => {
     const filtrees = collection.lignes.filter((ligne) => correspond(ligne, recherche));

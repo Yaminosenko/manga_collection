@@ -1749,6 +1749,33 @@ DOM**.
 - **Purger `.next` pendant qu'un serveur de développement tourne le casse** : il sert ensuite un
   404 nu, et un `next build` par-dessus ne le répare pas. Le redémarrer.
 
+### Fait — la position dans la Collection est conservée (31 août 2026)
+
+Signalé à l'usage : revenir d'une page Édition ramenait en haut de la liste. La cause n'est pas
+un défaut de Next mais la nature du geste — la flèche « Retour » est un `<Link href="/">`, donc
+une navigation **avant**, et Next remonte alors en haut par construction. L'onglet Collection
+fait de même. Le retour système aurait pu restaurer nativement, mais `/` est en `force-dynamic`
+derrière un `loading.tsx` : le contenu arrive après l'écran de chargement, la restauration
+native n'a rien de stable à quoi s'accrocher.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/use-scroll-memory.ts` | `useMemoireDefilement` — écrit la position au défilement, la restaure au montage |
+| `components/collection-list.tsx` | l'appelle avec `CLE_STOCKAGE_DEFILEMENT` |
+
+- **`sessionStorage` plutôt que l'historique du routeur.** La position revient quel que soit le
+  chemin — flèche, retour système, onglet — là où s'appuyer sur l'historique n'aurait couvert que
+  le geste système.
+- **L'écouteur est retiré au démontage avant que Next ne remonte en haut**, sinon le zéro de la
+  page suivante écrasait la position mémorisée. C'était le risque principal de l'approche :
+  vérifié, la valeur reste à 1 000 pendant toute la visite de la page Édition.
+- **L'onglet Collection restaure lui aussi la position** au lieu de remonter en haut. Cohérent
+  avec une application à onglets ; à distinguer si l'usage le demande.
+- **La restauration a lieu après le premier rendu** : l'écran se peint en haut puis saute. Non
+  perçu sur le poste, **pas mesuré sur téléphone**.
+
+Vérifié à 1 000 px sur les trois chemins de retour, capture identique avant et après le clic.
+
 ### Reste à faire
 
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
