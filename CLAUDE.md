@@ -53,8 +53,15 @@ Tout autre suffixe est une œuvre distincte : `MY HERO ACADEMIA - Smash` et
 - `aVerifier` — `true` sur les éditions incomplètes issues de la migration, dont la répartition
   des tomes est devinée. Passe à `false` dès la première validation manuelle.
 
+> **Révision programmée — voir §13.1.** Quatre champs de `Edition` (`statut`, `termineeForcee`,
+> `raisonCompletion`, `aVerifier`) sont des données **personnelles** rangées dans une table de
+> **catalogue**. Tant qu'il n'y a qu'un utilisateur, personne ne s'en aperçoit ; au second
+> compte, ils s'écrasent. Ils déménagent dans `SuiviEdition`. **À faire tant que la base ne
+> porte qu'un utilisateur** — le coût double à chaque compte créé.
+
 ### Volume
-Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date, couverture).
+Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date,
+couverture, `sourceCouverture`).
 
 ### Possession
 Le lien avec la collection réelle. En V1 seul `possede` est écrit ; les autres champs existent
@@ -184,11 +191,12 @@ l'ouverture d'un écran. Tout écran lit la base locale.
 | Source | Usage | État mesuré |
 |---|---|---|
 | AniList (GraphQL) | Métadonnées série, couverture série, pont vers les titres romaji | 12/12 · sans clé, sans quota gênant |
-| MangaDex | Couvertures de tome | **93 % en `ja` · en attente d'autorisation** |
-| BnF (SRU) | Éditeur, ISBN, date de parution VF, **prix en UNIMARC `010$d`** | **éditeur : 100/112 · sans clé** |
+| BnF (SRU) | Éditeur, ISBN, date de parution VF, **prix en UNIMARC `010$d`** | **éditeur : 106/113 · sans clé**, les 7 derniers saisis à la main |
+| BnF (Service Couvertures) | **Couvertures VF par ISBN/EAN** | sans clé · réutilisation documentée · URL en bêta |
+| MangaDex | Couvertures de tome, **dernier recours** | **93 % en `ja` · en attente d'autorisation** |
 | Google Books | Tomes VF par ISBN, date de parution, couverture tome | **bloqué sans clé d'API, couverture jamais mesurée** |
 | Open Library | Complément ISBN, couverture par ISBN | 0/11 sur des ISBN français |
-| manga-news | Planning des sorties VF | **En attente d'autorisation** |
+| manga-news | Planning des sorties VF | **Export mensuel offert aux visiteurs, archives qualifiées jusqu'à 2000** · l'usage *programmatique* reste en attente d'autorisation |
 
 ### Ce que la sonde du 28 août 2026 a établi (échantillon de 12 séries)
 
@@ -256,6 +264,41 @@ manga-news n'a pas d'API. Une demande d'autorisation doit être envoyée avant t
 utilisation programmatique. En attendant, `slugMangaNews` ne sert qu'à construire un
 lien sortant vers la fiche officielle.
 
+### Ordre des sources de couverture (31 août 2026)
+
+Décidé après recherche. **La couverture japonaise sur une édition française est un pis-aller,
+plus le chemin principal.**
+
+1. **BnF, service Couvertures.** Interrogeable **directement par ISBN ou EAN**, sans passer par
+   l'ARK : `openapi.bnf.fr/couverture/image/image/recupererImage?ISBN=<isbn>&couverture=1`.
+   Trois tailles. **Seule source dont le statut juridique est écrit** : réutilisation possible
+   avec mention de la source et de la date de récupération — la seule tenable le jour d'une
+   ouverture ou d'une monétisation. Toutes les notices ne portent pas d'image ; URL en bêta.
+2. **Open Library.** `covers.openlibrary.org/b/isbn/<isbn>-L.jpg`, avec `?default=false` pour
+   obtenir un 404 plutôt qu'une image vide. Faible sur le manga français, gratuite à essayer.
+3. **MangaDex.** Dernier recours assumé.
+4. **Dépôt manuel**, déjà en place.
+
+**Le vrai verrou n'est pas la source, c'est l'ISBN.** Toutes les bonnes sources s'interrogent
+par ISBN ; MangaDex n'a été retenu que faute d'ISBN, d'où le sélecteur d'appariement par titre
+et ses ratés. Le planning manga-news porte un EAN sur 306 lignes sur 307 : **l'import des
+archives supprime l'appariement par similarité** — planning → EAN → BnF. C'est le même chantier
+que la construction du catalogue (§13.2), pas un chantier de couvertures.
+**L'archive est qualifiée jusqu'à septembre 2000, EAN-13 compris** (2 septembre 2026) : le
+verrou n'attend plus qu'un lot de CSV.
+
+**Champ `sourceCouverture` sur `Volume`, à ajouter.** Sans lui, les 1 674 images actuelles sont
+un sac indistinct : impossible de savoir lesquelles viennent de MangaDex et méritent d'être
+remplacées par la version française, ni de fournir l'attribution exigée par la BnF.
+
+**Scrapers par éditeur : V3, conditionnel.** L'éditeur venu de la BnF permet de router un tome
+vers le bon site. Mais un scraper s'écrit en une heure et se maintient éternellement, et rien
+ne dit lesquels valent le coup avant que la chaîne planning → EAN → BnF ait tourné. Trois
+règles si on y va : compter les tomes par éditeur d'abord et n'écrire que pour les trois ou
+quatre premiers ; chaque scraper déclare ce qu'il attend et **échoue bruyamment** ; un scraper
+cassé ne bloque jamais les autres. Demander d'abord aux éditeurs s'ils exposent un flux ONIX —
+une réponse positive remplace le scraper par un import propre.
+
 ### Images
 Téléchargées une fois, redimensionnées **à l'import sur le poste local**, déposées dans
 Vercel Blob et servies telles quelles.
@@ -286,6 +329,11 @@ récupération des couvertures manquantes. Jamais déclenchée par la navigation
 
 ## 6. Mode hors ligne
 
+> **NON IMPLÉMENTÉ au 31 août 2026.** Le service worker n'existe pas, rien n'est mis en cache.
+> Cette section décrit la cible, pas l'état. Relevé en revue : l'usage en librairie — celui qui
+> justifie l'application — ne fonctionne pas hors réseau. À construire ou à assumer
+> explicitement, mais la spec ne doit pas décrire une fonctionnalité absente.
+
 Consultation seule.
 
 - Les données texte (~300 Ko) sont mises en cache et restent consultables sans réseau
@@ -302,6 +350,15 @@ Synchronisation bidirectionnelle : hors périmètre, V2 au plus tôt.
 
 **Arrêtée.** Contrainte fondatrice : **coût zéro, sans carte bancaire**, et aucune machine
 allumée en permanence. Tout ce qui suit découle de là.
+
+> **Amendement du 1er septembre 2026 — la carte est admise, le débit ne l'est pas.** Cloudflare
+> R2 exige une carte enregistrée à l'activation, sans débit sous les paliers gratuits (§13.2).
+> La contrainte devient donc : **coût zéro, et aucun débit possible sans franchir un palier hors
+> d'atteinte.** C'est une phrase plus faible que l'originale, et elle est écrite comme telle
+> plutôt que glissée en silence : « sans carte » était un garde-fou mécanique — impossible de
+> payer —, « sans débit » est un garde-fou arithmétique, qui suppose qu'on mesure la marge.
+> Elle ne vaut que pour un service dont le palier gratuit est à deux ordres de grandeur du
+> besoin, marge chiffrée à l'appui. Tout autre service reste soumis à la règle d'origine.
 
 | Rôle | Choix | Plan |
 |---|---|---|
@@ -489,7 +546,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 31 août 2026.
+Dernière mise à jour : 2 septembre 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -1070,6 +1127,8 @@ l'utilisateur et que rien ne puisse reconstituer — n'étaient couvertes par ri
   qui est le point zéro de l'import : ni `titreVo`, ni `couvertureUrl`, ni les dates, ni les
   identifiants. Restaurer par le seed aurait perdu les 1 426 couvertures et les 104 titres VO.
   La sauvegarde est donc un vidage fidèle des quatre tables, identifiants compris.
+  **Elle a cessé d'être un vidage total le 2 septembre** : `ParutionCatalogue` en est exclu
+  volontairement — voir « Tranché — le catalogue est hors sauvegarde ».
 - **Le tour complet est prouvé, pas supposé.** Restauration dans un Postgres local, réexport,
   comparaison au fichier d'origine : **identique au caractère près**, hors horodatage. Les sept
   compteurs concordent. Une sauvegarde jamais restaurée n'est pas une sauvegarde.
@@ -1830,8 +1889,31 @@ ses 34 couvertures, `uqholder` ses 28, le total reste à 1 674, les sept compteu
 - **Piège d'encodage** : la console Windows en cp1252 fait planter le script sur
   `BLACK★ROCK SHOOTER`. La sortie est forcée en UTF-8.
 
-**Ce que ça devrait débloquer** : les 13 éditions sans éditeur butaient sur ces mêmes fautes.
-Relancer `publishers` après coup vaut le coup — **pas encore fait**.
+**Ce que ça a débloqué** : les 13 éditions sans éditeur butaient sur ces mêmes fautes. Voir
+« Fait — les éditeurs au complet » ci-dessous.
+
+### Fait — les éditeurs au complet (31 août 2026)
+
+`Edition.editeur` était nul sur 13 éditions ; il est désormais renseigné sur **113 / 113**.
+
+- **La cause du blocage n'était qu'à moitié les fautes de frappe.** `fetch_publishers.py` lisait
+  `data/collection.json`, figé au point zéro de l'import : il ne voyait ni les titres corrigés,
+  ni les séries ajoutées depuis l'application. **Même faute que celle corrigée le 30 août sur
+  `fetch_covers.py`, et même remède** — il lit `data/backup.json`. Troisième script pris au même
+  piège : tout script qui parle de la collection lit la sauvegarde, jamais `collection.json`.
+- **Relance sur les titres corrigés : 106 éditeurs sur 113**, et **zéro divergence sur les 100
+  déjà renseignés** — passe purement additive, donc sans risque de régression.
+- **`apply-publishers.ts` n'existait pas.** Les 100 éditeurs du 29 août avaient été écrits par un
+  moyen qui n'a pas survécu. Il suit le modèle des autres : sauvegarde préalable dans
+  `data/editions-avant-editeurs.json`, et `--revert`.
+- **Les 7 derniers ont été saisis à la main**, et le titre n'y était pour rien : quatre one-shots,
+  sur lesquels le garde-fou par auteur ne peut pas réunir les trois notices qu'il exige, une série
+  ajoutée depuis l'application sans éditeur saisi, et deux que la BnF ne rend pas.
+
+**Ce que ça débloque, sans que ce fût le but** : l'éditeur devient un **discriminant** utilisable
+par les scripts d'import. C'est exactement ce qui a permis, le 2 septembre, d'écarter une
+collision de titres que rien d'autre ne voyait — voir « Établi — les archives de planning »
+ci-dessous.
 
 ### Fait — le lot issu du point design (31 août 2026)
 
@@ -1926,8 +2008,361 @@ Vérifié à l'écran : la page d'Akame ga Kill affiche « RED EYES SWORD AKAME 
 Préquelle · 10/10 » et « BLUE EYES SWORD · Suite · 8/8 », couvertures et chevrons compris ; la
 réciproque tient depuis Blue Eyes Sword.
 
+### Revue du 31 août 2026 — à traiter avant la séparation catalogue/suivi
+
+Cinq points relevés en revue d'architecture. Les deux premiers sont bloquants.
+
+1. **Quota Blob — urgent, irréversible.** ~1 800 opérations avancées consommées sur les 2 000
+   du mois. Dépassement ⇒ **store inaccessible 30 jours**, les 1 674 couvertures disparaissent.
+   Le garde-fou de `covers:upload` ne couvre pas le vrai risque : **toute consultation du store
+   depuis le tableau de bord Vercel compte aussi**, et rien ne l'empêche. Migrer vers
+   **Cloudflare R2** — 10 Go, 1 million d'écritures par mois, egress toujours gratuit,
+   compatible S3, donc changement limité au client et aux variables d'environnement — ou ne
+   plus jamais ouvrir le navigateur de blobs. **Tranché le 1er septembre : R2, la carte étant
+   admise** — voir « Tranché — Cloudflare R2 » ci-dessous. Le point reste bloquant jusqu'à la
+   migration : d'ici là, **ne pas ouvrir le navigateur de blobs**.
+
+2. **§6 décrit une fonctionnalité absente.** Pas de service worker, rien en cache. Construire,
+   ou descendre §6 en « Reste à faire ». Le statu quo fait perdre son autorité au document.
+
+3. **Correspondance d'affichage des genres.** Les 19 genres sont en anglais (liste fermée
+   AniList), l'interface est en français. Le filtre par genre afficherait « Slice of Life » et
+   « Supernatural » dans une UI française. Poser la table de correspondance **avant** de
+   construire le filtre, pas après. **Filtrer sur les genres, jamais sur les thèmes** : 99
+   valeurs françaises avec les coupures d'import (`Post` + `apo`, `Super` + `héros`,
+   `Combats` / `Combat`) — un filtre « apo » exposé à un tiers est indéfendable.
+
+4. **`aVerifier` effacé par un basculement neutre.** Cocher puis décocher détruit
+   définitivement l'information (constat du 28 août, comportement conservé le 29). Tenable en
+   mono-utilisateur ; plus du tout quand le drapeau passera dans `SuiviEdition` et que d'autres
+   tâtonneront sur leur propre collection — l'indicateur de fiabilité du catalogue serait effacé
+   par des gestes sans rapport. N'effacer que sur **validation explicite**. À corriger **avant**
+   la migration du schéma, sinon le défaut migre avec la colonne.
+
+5. **Circuit de migration à revérifier.** Le double temps `prisma dev` + `apply-migrations.ts`
+   existe parce que **le port 5432 était bloqué par le réseau du poste professionnel** (§7). Le
+   développement est passé sur la machine personnelle. Si la contrainte a disparu, c'est un
+   contournement complexe pour un problème qui n'existe plus.
+
+**Non comptés comme dette** : les 29 éditions sans numéros BnF — qualité de données connue,
+tracée, avec une cause identifiée ; c'est du travail restant. Les éditions sans éditeur y
+figuraient aussi : il n'en reste aucune depuis le 31 août. Le dépôt public
+exposant les prix — décision assumée, avec sa vraie conséquence (aucun secret dans le dépôt)
+correctement identifiée.
+
+### Tranché — Cloudflare R2 (1er septembre 2026)
+
+Le point 1 de la revue est arbitré. **R2 exige une carte enregistrée à l'activation**, écran
+d'abonnement relu : `Total Due Now $0.00`, `Due Monthly $0.00 + additional usage`, débit
+uniquement au franchissement d'un palier. §7 est amendé — « sans carte » devient « sans débit ».
+
+**Ce qui justifie l'amendement, ce sont les marges, pas le confort.** Mesurées sur nos chiffres
+réels :
+
+| | Besoin réel | Palier gratuit R2 | Marge |
+|---|---|---|---|
+| Stockage | 39 Mo (1 674 × 23,4 Ko) | 10 Go | **×256** |
+| Class A — écritures, `list` | ~1 700 par remplissage complet | 1 M / mois | **~590 remplissages par mois** |
+| Class B — lectures hors cache | quelques milliers | 10 M / mois | sans objet |
+| Egress | 38 Mo par remplissage | gratuit, sans plafond | — |
+
+Le catalogue V3 de §13.2 — 36 000 tomes, ~840 Mo — tient encore dans les 10 Go. **Le dépassement
+n'est pas un risque d'usage, il est hors d'atteinte par l'arithmétique.** C'est l'inverse exact de
+Vercel Blob, où 1 800 opérations sur 2 000 sont déjà consommées et où *ouvrir le navigateur de
+blobs* en consomme.
+
+**Le risque résiduel n'est pas l'usage, c'est l'accident.** Cloudflare n'offre pas de plafond de
+dépense dur : un débit ne pourrait venir que d'un script en boucle ou d'une URL publique
+massivement sollicitée. Trois garde-fous, à poser **pendant** la migration et non après :
+
+- **Servir derrière le cache Cloudflare**, par un domaine plutôt que l'URL `r2.dev` nue — un hit
+  de cache ne compte pas en Class B, et l'egress est de toute façon gratuit.
+- **Activer les notifications d'usage R2** — c'est le seul avertisseur, faute de plafond dur.
+- **Garder le plafond `--max` de `covers:upload`**, écrit le 31 août contre le quota Blob. Il
+  devient surdimensionné, il ne devient pas inutile : il protège de la boucle, pas du quota.
+
+**La migration ne coûte aucune opération avancée Blob, à une condition** : ne pas énumérer le
+store. `Volume.couvertureUrl` et `Sortie.couvertureUrl` portent déjà les 1 674 URL absolues — on
+énumère depuis Postgres, on télécharge par les URL publiques (opérations *simples*, 10 000/mois,
+et servies par le CDN), on dépose dans R2, on réécrit les URL. Un `list()` sur le store coûterait
+2 opérations avancées ; il n'y a aucune raison de les payer. **`del()` étant gratuit**, le store
+Vercel se supprime ensuite sans frais.
+
+**Aucun code n'est écrit à cette date** : la décision est actée, la migration reste à faire.
+
+### Établi — les archives de planning remontent à 2000 (2 septembre 2026)
+
+§13.2 posait une question sans y répondre : « jusqu'où remontent les archives téléchargeables ».
+Quatre sondes — septembre 2000, 2005, 2010 et 2015 — y répondent.
+
+**L'archive existe depuis 2000 et le format ne bouge jamais.** Même en-tête
+`,Date,Titre,Editeur,Ean` aux quatre dates, et **l'EAN-13 est présent dès 2000** : manga-news
+stocke la forme `978…`, qui est exactement le code-barres imprimé au dos. La crainte de
+l'ISBN-10 avant 2007 ne se matérialise à aucune date.
+
+| | 2000 | 2005 | 2010 | 2015 | fenêtre 2024-2026 |
+|---|---|---|---|---|---|
+| Lignes du mois | **31** | 142 | 168 | 201 | ~300 |
+| EAN-13 valide | 31/31 | 137/142 | 161/168 | 190/201 | 306/307 |
+| ISBN gagnés sur la collection | 1 | 4 | 6 | 5 | 6,2/mois |
+
+**Le rendement ne se dégrade pas avec l'ancienneté**, et c'est la vraie information : la valeur
+de l'archive est proportionnelle au nombre de mois récupérés, sans rendement décroissant. Le seul
+facteur limitant est la taille du marché français — 31 sorties en septembre 2000 contre 300
+aujourd'hui.
+
+**Ce que ça vaut.** Aujourd'hui **156 ISBN sur 1 710 volumes**, **69 éditions sur 113 sans aucun
+ISBN**, et les dates de sortie ne couvrent que 2024-2026. Un scan de code-barres a donc **9,2 %**
+de chance de tomber sur un tome déjà identifié (106 sur 1 153 possédés). À 5 ISBN par mois sur
+~260 mois, un plancher à **janvier 2005** porterait la couverture à environ **70 %** — c'est ce
+qui fait passer le scanner de démonstration à outil.
+
+**Rendement par fichier téléchargé**, seule métrique qui compte puisque le coût est le clic :
+2010→2026 vaut ~5,5 ISBN par fichier, 2005→2009 ~4, 2001→2004 ~2, avant 2001 ~1. **Plancher
+recommandé : janvier 2005**, soit ~260 fichiers. Descendre à 2000 ne vaut le coup que si l'URL
+de téléchargement est paramétrable par mois, auquel cas le coût devient nul. Les séries d'avant
+2000 resteront hors de portée quoi qu'il arrive — Dragon Ball a été publié en France de 1993 à
+2000.
+
+#### Le piège : une collision de titres que l'égalité stricte ne voit pas
+
+La sonde de 2005 a retenu `Leviathan Vol.4` (Asuka) pour notre `leviathan`, qui est le
+**Leviathan de Kuroi Shiro chez Ki-oon**, 3 tomes, terminé. Deux œuvres différentes, même titre,
+quinze ans d'écart. Appliqué tel quel, `planning:apply` aurait porté `tomesParus` de 3 à 4, créé
+un tome fantôme et lui aurait collé l'ISBN d'un livre absent de la collection.
+
+**C'est la même classe de faute qu'Akame ga Kill Zero et Dragon Ball, mais l'égalité stricte des
+titres ne la voit pas** : sur 25 mois les collisions de titres sont rares, sur 25 ans elles sont
+inévitables. La leçon générale : **le filtre qui suffit sur une fenêtre courte ne suffit pas sur
+une archive longue**, et rien ne le signale — il échoue en silence, en écrivant.
+
+**Le garde-fou est l'éditeur, et il vient juste de devenir disponible** : la base porte un
+éditeur sur les 113 éditions depuis le 31 août, et le CSV porte la colonne `Editeur`.
+Ki-oon ≠ Asuka rejette la ligne sans hésitation. Même motif que le garde-fou par auteur de
+`fetch_publishers.py`.
+
+#### Trois corrections apportées à `import_planning.py`
+
+- **`meme_editeur` compare l'éditeur de la base à celui du planning.** La comparaison est
+  tolérante — égalité, inclusion, ou appartenance au même groupe d'équivalence — parce qu'un
+  éditeur est renommé ou racheté : **`GROUPES_EDITEURS` porte `kaze`/`crunchyroll`** (Crunchyroll
+  a absorbé Kazé) **et `bambooedition`/`dokidoki`** (Doki Doki est le label manga de Bamboo).
+  Ces deux cas ne sont pas théoriques : ils couvrent **11 des 44 éditions déjà appariées**, qu'un
+  garde-fou strict aurait détruites. `Pika Édition` / `Pika` et `Delcourt-Tonkam` / `Tonkam`
+  passent par la simple inclusion, sans entrée dédiée.
+- **La ligne divergente est écartée du manifeste, pas acceptée ni perdue.** Elle part dans
+  `data/planning-divergences.json` avec son contexte complet — éditeur attendu, éditeur trouvé,
+  titre du planning, ISBN — et le script l'annonce en fin de passage. Le dispositif en deux temps
+  de §12 veut une relecture humaine ; une ligne suspecte doit lui arriver, pas disparaître.
+  `planning.json` garde exactement sa forme, `apply-planning.ts` n'est pas touché.
+- **`TITRES_MANUELS` gagne `ippo-s4-la-loi-du-ring` → `Ippo - Saison 4 - La loi du ring`.**
+  manga-news écrit « Saison 4 » là où le Sheet écrit `S4` : similarité 0,81, égalité non.
+  Dixième entrée de la table, quatrième fois que ce motif est le bon.
+- **`MARQUEURS_AUTRE_EDITION` gagne « edition reliee » et « edition souple »**, vues toutes deux
+  dans ces seuls quatre fichiers. Sans danger tant que l'appariement est strict —
+  `Fullmetal Alchemist - Edition reliée` est refusé par l'égalité — mais indispensable avant
+  toute tentative d'assouplissement.
+
+**Ce qu'il ne faut surtout pas faire : passer à la similarité pour rattraper Ippo.** Le balayage
+des presque-appariements sur les quatre mois remonte cinq candidats au-dessus de 0,62 et
+**quatre sont faux** : `Hakaiju` → KAIJU N°8, `Monster Hunter Epic` → MONSTER HUNTER ORAGE,
+`Life` → RELIFE, et `Légendaires (les)` → notre *Saga* qui est un objet distinct. Le cinquième,
+`Fullmetal Alchemist - Edition reliée` à 0,72, injecterait les ISBN d'une autre édition dans
+l'édition simple. **Quatrième confirmation de l'avertissement du 30 août** : la table écrite à
+la main marche, le seuil ne marche pas.
+
+**Vérifié**, sur les quatre mois passés au script corrigé : 12 éditions appariées, 16 tomes datés
+tous avec ISBN, `leviathan` écarté et journalisé, **« 0 éditions où le planning dépasse la base »**
+— l'élargissement fantôme a disparu. Et le garde-fou ne coûte rien sur l'acquis : les **44 paires
+(édition, éditeur) du manifeste de production passent toutes**, aucune refusée.
+
+**Piège de test à retenir** : `import_planning.py` écrit dans `data/planning.json`, qui est
+versionné et porte le résultat des 27 fichiers réels. Un essai l'écrase. Sauvegarder avant, et
+`git checkout -- data/planning.json` après — c'est ce qui a été fait ici.
+
+### Fait — la table de catalogue (2 septembre 2026)
+
+Jusqu'ici l'import de planning ne gardait que les séries **possédées** : les ~59 000 autres
+lignes de l'archive étaient lues puis jetées. `ParutionCatalogue` les garde. Migration
+`20260902120000_catalogue_parutions`, appliquée à Neon.
+
+```
+ParutionCatalogue (id, ean, titreBrut, serieTitre, serieNormalise,
+                   marqueurEdition, numero, editeur, date)
+```
+
+**Ce que ça débloque, mesuré sur les quatre mois de sonde :**
+
+- **Connaître une série avant de l'ajouter.** Le « catalogue de séries » n'est pas une table à
+  construire, c'est un `GROUP BY serieNormalise` qui rend le nom FR, l'éditeur, le tome maximum
+  et la plage de dates. **Conséquence : on ne paie pas la déduplication d'avance** — §13.2 la
+  donnait comme une des deux difficultés de l'amorçage, elle ne bloque plus rien. On importe
+  tout, on interroge, et on ne consolide en `Serie` / `Edition` qu'au moment où une série entre
+  réellement dans une collection, un cas à la fois, sous supervision.
+- **ISBN → série, exact et non approximatif.** 517 EAN distincts sur 542 lignes, **2 doublons
+  seulement**. Le scanner passerait de 9,2 % de reconnaissance à une résolution locale complète
+  — titre, numéro, marqueur d'édition, éditeur, date — **y compris sur une série non possédée**,
+  ce qui est précisément la porte d'entrée qui manquait pour créer une seconde édition.
+- **Le vrai nom FR de la série *et* de l'édition.** manga-news écrit `Racine - Marqueur Vol.N`,
+  donc la racine donne le nom commercial français et le marqueur nomme l'édition (`Deluxe`,
+  `1re Edition`, `Collector`, `Édition Spéciale`). **Aucune source ne donnait ce couple** : la
+  BnF a cinq formats et des marqueurs instables (§ ISBN, 30 août), AniList ne connaît pas les
+  éditions françaises. 4,3 % des lignes portent un marqueur, soit de l'ordre de 2 500 éditions
+  alternatives nommées proprement sur l'archive complète.
+
+**Trois règles de lecture établies sur la sonde, à appliquer à l'import :**
+
+- **Filtrer sur les préfixes `978` et `979`.** La distribution mesurée est `978` : 507,
+  `979` : 9, `379` : 3 — et les trois `379` sont un **code de périodique** partagé par trois
+  numéros d'*Animeland*. Sans ce filtre, un EAN de magazine devient une clé qui désigne trois
+  choses. Le second doublon, `9782351800133` sur `Monsieur est servi ! - Collector Vol.3` et
+  `Monsieur est servi Vol.3`, est un vrai doublon de saisie chez la source.
+- **La désinversion de l'article opère par segment, pas sur la chaîne entière.** manga-news
+  catalogue à la française — `Légendaires (les)`, `Rose de Versailles (la)` — sur **5,9 % des
+  lignes**. Appliquée globalement la règle rend bien « Les Légendaires », mais
+  `Mobile Suit Gundam - Ecole du Ciel (l')` devient `L'Mobile Suit Gundam - Ecole du Ciel` au
+  lieu de `Mobile Suit Gundam - L'École du Ciel`. Faute qui passerait une relecture, puisqu'elle
+  ne touche qu'une poignée de lignes.
+- **`titreBrut` garde la ligne au caractère près, les champs dérivés sont recalculables.** Si la
+  désinversion ou la découpe du marqueur s'améliorent, on recalcule `serieTitre` depuis
+  `titreBrut` sans retélécharger un seul CSV. C'est la raison d'être du champ.
+
+**Pourquoi Neon et rien d'autre.** Mesuré : la base fait **9,6 Mo** aujourd'hui, et `Volume`
+coûte 441 octets par ligne index compris. 59 000 lignes de catalogue pèsent **18 à 24 Mo**, soit
+**~6 % du demi-Go gratuit**, marge ×17. Les lectures sont des recherches d'index, l'import un
+`createMany` par lots : négligeable sur les 100 CU-h. Et surtout il faut **joindre** le catalogue
+à `Edition` pour marquer « déjà en collection » sur l'écran Ajouter — un JSON statique dans R2
+ferait 4 à 6 Mo mais ne se joint à rien. À garder en tête pour le hors-ligne de §6, pas pour ça.
+
+**`ean` est indexé mais pas unique, et `(titreBrut, date)` l'est.** L'unicité sur l'EAN aurait
+obligé à arbitrer les doublons de la source à l'écriture ; la table est une **copie fidèle de
+l'archive**, elle accepte ce que la source contient. L'unicité sur `(titreBrut, date)` donne la
+propriété qui compte vraiment : **relancer l'import ne duplique rien**, même sur des mois qui se
+recouvrent.
+
+**C'est de la donnée de catalogue au sens de §13.1** — aucun champ personnel, rien à déménager
+vers `SuiviEdition` le jour de la séparation.
+
+#### Tranché — le catalogue est hors sauvegarde
+
+`data/backup.json` fait 1,2 Mo et **est versionné dans un dépôt public**. Y ajouter le catalogue
+le porterait à 6-8 Mo réécrits en entier à chaque passage, donc autant ajouté à l'historique git
+chaque fois — et surtout cela **republierait le catalogue de manga-news dans un dépôt public**,
+ce qui sort du cadre posé le 30 août : « l'export est offert par le site, obtenu par
+l'utilisateur, pour sa propre collection ».
+
+**La sauvegarde existe pour protéger ce que rien ne peut reconstituer**, c'est-à-dire les
+possessions. Le catalogue se reconstruit des CSV en une commande. Il est donc exclu.
+
+- **La restauration ne l'emporte pas**, et c'est vérifié structurellement, pas supposé :
+  `restaurer()` fait `serie.deleteMany()` et compte sur la cascade, or `ParutionCatalogue` a
+  **zéro clé étrangère dans les deux sens** — la cascade ne peut pas l'atteindre. Le garde-fou
+  « base non vide » compte les `Edition`, donc il n'est pas faussé non plus.
+- **Le catalogue n'entre pas dans `Compteurs`.** La restauration compare les compteurs et échoue
+  s'ils divergent ; un compteur de catalogue non restauré aurait fait échouer toute restauration.
+- **`db:backup` l'annonce quand même**, à l'export comme à la restauration :
+  `catalogue : N parutions volontairement hors sauvegarde, rederivables des CSV manga-news`.
+  Une exclusion silencieuse se lit comme un oubli.
+
+**Vérifié** : une ligne d'essai insérée dans la table, `npm run db:backup` relancé, **aucune
+trace dans `data/backup.json`** — le fichier est identique à celui du 31 août à l'horodatage
+près — puis la ligne supprimée. `npm run lint` et `npm run build` passent.
+
+### Fait — l'archive de planning triée (2 septembre 2026)
+
+291 CSV téléchargés, tous nommés `PlanningManga_02-09-2026 (n).csv` — manga-news les nomme à la
+date de téléchargement. Rangés sous la convention `planning_AAAA-MM.csv` dans
+**`~/Documents/planning_manga/`**, **par copie** : les trois dossiers d'origine restent intacts.
+
+| | |
+|---|---|
+| Fichiers rangés | **288** |
+| Lignes | **41 941** |
+| Couverture | **janvier 2000 → janvier 2024** |
+| Trou | **2000-09** seulement |
+| En-tête | `,Date,Titre,Editeur,Ean` sur les 291, sans exception |
+| EAN livre (978/979) | **95,4 %** des lignes |
+
+- **Le mois vient du contenu, jamais du nom**, et le nom obtenu est **reverifié contre le
+  contenu** après copie : 288 sur 288 concordent. Aucun fichier ne mélange deux mois, aucun
+  n'est illisible.
+- **3 collisions, toutes des doublons de téléchargement** — 2008-10, 2013-04, 2022-04 — vérifiées
+  **identiques au MD5** avant d'en ignorer une copie. 291 − 3 = 288.
+- **Le trou de 2000-09** est le fichier de sonde, qui était dans `Downloads` et a disparu au
+  rangement. C'est le plus petit mois de toute l'archive (31 lignes) ; à retélécharger ou à
+  laisser.
+- **Il manque aussi février 2024 → octobre 2026**, soit 33 mois : les 27 CSV du premier lot ne
+  sont plus sur ce poste. Sans conséquence sur ce qui est déjà en base — `tomesParus` n'est
+  jamais abaissé, donc les deux lots s'importent dans n'importe quel ordre — mais c'est la
+  fenêtre la plus utile pour le catalogue et l'écran Planning.
+
+#### Corrigé — les rééditions auraient été écrasées par l'archive
+
+Défaut trouvé en mesurant le gain sur les 288 mois, **avant d'écrire quoi que ce soit**. Cinq
+éditions voyaient le planning dépasser leur `tomesParus`, et quatre étaient des pièges :
+
+| Édition | En base | Planning | Ce que le planning décrit |
+|---|---|---|---|
+| `blame` | 6 | 10 | l'édition d'origine, possédée en 新装版 |
+| `dragon-ball` | 21 | 42 | l'édition simple, possédée en édition double |
+| `gantz` | 18 | 37 | l'édition d'origine, possédée en bunko |
+| `neon-genesis-evangelion` | 7 | 14 | l'édition d'origine, possédée en Perfect Edition |
+| `blackrock-shooter-innocent-soul` | 1 | 3 | **vrai gain** : Panini a publié 1 à 3 en 2013 |
+
+**`REEDITIONS` existait, mais dans `apply-publication.ts` seulement** ; le circuit du planning
+n'avait aucun garde-fou, et `dragon-ball` n'y figurait même pas — la BnF ne l'atteignait pas.
+
+**Et le danger n'était pas `tomesParus`, il était l'ISBN.** `Neon Genesis Evangelion Vol.7` de
+2002 porte `9782723440097` : c'est le tome 7 de l'édition d'origine, un autre livre que le tome 7
+de la Perfect Edition possédée. Plafonner le dénominateur n'aurait rien réglé — il aurait fallu
+plafonner *et* refuser les ISBN. **Pour une réédition, le planning décrit un objet physique
+différent : l'édition entière est écartée**, pas seulement bornée. `REEDITIONS` est donc dans
+`import_planning.py` et retire ces quatre slugs de l'index, avec une ligne à l'écran pour que
+l'exclusion ne soit pas silencieuse.
+
+**Troisième instance de la même leçon en une journée** — après LEVIATHAN et après les marqueurs
+d'édition : *le filtre qui suffit sur 25 mois échoue en silence sur 25 ans*. Ces quatre séries
+avaient cessé de paraître avant 2010, donc la fenêtre récente n'en contenait aucun volume.
+
+**Le garde-fou par éditeur, lui, rapporte bien plus que la sonde ne le laissait croire.** Il
+écarte **12 lignes, et ce sont les douze volumes du Leviathan d'Asuka** paru de 2005 à 2008 —
+la sonde de septembre 2005 n'en avait montré qu'un. Sans lui, notre Leviathan de Ki-oon en
+3 tomes passait à **12**, avec onze tomes fantômes et onze ISBN étrangers.
+
+#### Ce que l'archive rapporte, mesuré et non extrapolé
+
+Passage à blanc sur les 288 fichiers, **1,7 seconde** :
+
+```
+288 fichiers, 41941 lignes, 106 editions simples en base
+4 editions ecartees car possedees en reedition
+1849 lignes ecartees par un marqueur d'autre edition
+83 editions appariees, 1333 tomes dates, 1333 avec ISBN
+12 lignes ecartees sur divergence d'editeur
+1 editions ou le planning depasse la base : blackrock-shooter-innocent-soul 1 -> 3
+```
+
+| | |
+|---|---|
+| Couples (édition, tome) recevant un ISBN | **1 333** |
+| Éditions de la collection touchées | **83 / 106** |
+| Couverture ISBN projetée | **156 → 1 489 sur 1 710, soit 87,1 %** (contre 9,1 %) |
+| Séries distinctes pour le catalogue | **5 892** |
+| dont portant un marqueur d'édition | **383** |
+
+L'estimation du matin donnait ~70 % et 260 fichiers ; le réel est **87 %** avec 288 fichiers.
+Le compte a été fait **deux fois par deux chemins indépendants** — un script de mesure écrit à
+part, et le passage à blanc du vrai script — et les deux donnent 83 / 1333 / 12 / 1.
+
 ### Reste à faire
 
+- **Migrer les couvertures vers Cloudflare R2** (tranché le 1er septembre, voir ci-dessus).
+  **Le point le plus urgent du backlog** : jusqu'à la migration, le quota Blob reste à ~200
+  opérations de la panne de 30 jours, et **il ne faut pas ouvrir le navigateur de blobs**. Le
+  travail : un client S3 en remplacement de `@vercel/blob`, un script de migration qui énumère
+  depuis Postgres, la réécriture des `couvertureUrl` et `Sortie.couvertureUrl`, les trois
+  garde-fous ci-dessus, puis la suppression du store Vercel. `scripts/upload-covers.ts` est le
+  seul auteur de `couvertureUrl` et reste le seul point d'écriture à reprendre.
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
   compte acheter. Distinct des Manquants, qui ne parle que de tomes absents d'éditions déjà
   possédées. Demande sans doute un `statut` supplémentaire ou un drapeau sur `Edition`, et de
@@ -1952,12 +2387,17 @@ réciproque tient depuis Blue Eyes Sword.
   en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
-- **13 éditions sans éditeur** (§ BnF) : les fautes de frappe du Sheet les bloquent.
-  **Ne pas transposer la similarité de `fetch_covers.py`** : l'enrichissement AniList a montré
-  que le seuil rejette les bonnes réponses dès que le titre VF s'éloigne. La table
-  `RECHERCHES_MANUELLES` est le motif qui marche, et `titreVo` (104/108) donne un second terme
-  à essayer contre la BnF. **Le planning manga-news ne les couvre pas** — vérifié le 30 août :
-  aucune des 13 n'y figure, elles n'ont rien publié dans la fenêtre de 25 mois.
+- **Appliquer l'archive de planning.** Les 288 CSV sont rangés dans
+  `~/Documents/planning_manga/` et le passage à blanc est propre (1 333 ISBN, une seule hausse
+  de `tomesParus`, voir ci-dessus). Il reste à lancer `planning:import` puis `planning:apply`
+  pour de vrai — **`npm run db:backup` d'abord**.
+- **Alimenter `ParutionCatalogue`** : la table est en place, rien ne l'écrit encore. Les trois
+  règles de lecture (préfixes 978/979, désinversion de l'article **par segment**, découpe du
+  marqueur d'édition) sont établies et mesurées. Le manifeste intermédiaire ne doit **pas**
+  être versionné, pour la même raison que le catalogue est hors sauvegarde.
+- **Deux trous dans l'archive** : `2000-09` (31 lignes, le plus petit mois) et
+  **février 2024 → octobre 2026**, 33 mois, la fenêtre la plus utile pour le catalogue et
+  l'écran Planning. À retélécharger.
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
   `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
   `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.
@@ -1998,7 +2438,7 @@ réciproque tient depuis Blue Eyes Sword.
 | Commande | Rôle |
 |---|---|
 | `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout |
-| `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste |
+| `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste — **relire aussi `data/planning-divergences.json`** |
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
 | `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
@@ -2006,6 +2446,8 @@ réciproque tient depuis Blue Eyes Sword.
 | `npm run anilist:fetch` puis `anilist:apply` | genres et titres VO |
 | `npm run publication:fetch` puis `publication:apply` | tomes parus BnF et état de parution |
 | `npm run titles:fetch` puis `titles:apply` | noms de séries alignés sur la BnF |
+| `npm run publishers:fetch` puis `publishers:apply` | éditeurs depuis la BnF |
+| `npm run relations:fetch` puis `relations:apply` | séries liées depuis AniList |
 | `npm run db:migrate` | applique les migrations à Neon sur le 443 |
 
 **Toujours relire le manifeste entre le `fetch` et le `apply`** — c'est la raison d'être du
@@ -2034,13 +2476,285 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   agrandir l'aperçu pour juger la netteté, choisir explicitement la caméra plutôt que de laisser
   `facingMode: "environment"` attraper l'ultra grand-angle, et une contrainte de zoom.
   **Rien n'est vérifiable depuis le poste** ; la saisie manuelle de l'ISBN, elle, est testée.
-- **Sortir Blob du chemin des couvertures**, le jour où une campagne de masse redeviendrait
-  nécessaire : retraiter les 1 674 images coûterait presque un mois de quota avancé. Deux pistes
-  — les servir depuis `public/` du dépôt, soit zéro opération Blob mais 38 Mo dans git et autant
-  par déploiement retenu dans *Deployment Storage* ; ou **Cloudflare R2**, dont le palier gratuit
-  donne 10 Go, 1 million d'écritures par mois et l'egress gratuit, **sous réserve qu'il n'exige
-  pas de carte bancaire**, ce qui heurterait §7. **Un second store Blob ne sert à rien** : la
-  documentation est explicite, le quota est au compte, pas au store.
+- ~~**Sortir Blob du chemin des couvertures**~~ — **tranché le 1er septembre 2026 : Cloudflare
+  R2.** La piste `public/` du dépôt est écartée : zéro opération Blob, mais 38 Mo dans git et
+  autant retenu par déploiement dans *Deployment Storage*. Voir « Tranché — Cloudflare R2 »
+  ci-dessus ; la migration est passée dans « Reste à faire ». **Un second store Blob ne sert à
+  rien** : la documentation est explicite, le quota est au compte, pas au store.
+
+---
+
+## 13. Trajectoire V2 — V3
+
+Décisions d'architecture prises en amont, pour ne pas les découvrir en chemin.
+Ce qui est ici est **tranché**. Ce qui est encore ouvert vit dans `IDEES.md`, jamais ici.
+
+---
+
+### 13.1 À faire maintenant, pendant qu'il n'y a qu'un utilisateur
+
+Deux modifications de schéma. Elles déplacent des colonnes existantes, donc leur coût
+double à chaque compte créé. Tout le reste de cette section peut attendre sans pénalité.
+
+#### La séparation catalogue / suivi
+
+Quatre colonnes de `Edition` sont des données **personnelles** rangées dans une table de
+**catalogue**. Tant qu'il y a un utilisateur, personne ne s'en aperçoit. Au second compte,
+un ami qui marque Servamp « en cours » écrase le « abandonnée » du premier : il n'y a
+qu'une ligne `Edition`.
+
+Les rôles ne règlent pas ça. Ils disent *qui a le droit d'écrire*, pas *dans quelle ligne*.
+
+**Catalogue — partagé, écriture réservée**
+
+| Table | Champs |
+|---|---|
+| `Serie` | tout, plus `alias` (voir 13.1.2) |
+| `Edition` | `nom`, `editeur`, `tomesParus`, `editionTerminee`, `slugMangaNews`, `couvertureUrl`, `prixDefautCentimes`, `creeePar` |
+| `Volume` | tout |
+
+Des faits objectifs, identiques pour tout le monde.
+
+**Suivi — une ligne par utilisateur**
+
+```
+SuiviEdition (id, utilisateurId, editionId,
+              statut, termineeForcee, raisonCompletion, aVerifier)
+Possession   (id, utilisateurId, volumeId, possede, dateAchat,
+              prixPayeCentimes, etat, lu, note, varianteId)
+```
+
+`statut`, `termineeForcee`, `raisonCompletion` et `aVerifier` **quittent `Edition`**.
+
+La wishlist (§ Reste à faire) est une donnée de suivi, pas de catalogue : une série
+convoitée par l'un et possédée par l'autre est la même `Edition` avec deux `SuiviEdition`.
+**La construire avant la séparation reviendrait à la coder deux fois.**
+
+En V1, `SuiviEdition` existe avec un `utilisateurId` en dur. Aucun écran ne bouge.
+
+#### `Serie.alias`
+
+Liste de chaînes indexée : titre VF, titre VO, romanisations, abréviations connues.
+Amorcée avec `titreVo`, déjà renseigné sur 104 séries.
+
+Coût nul aujourd'hui. C'est la brique sur laquelle repose toute la recherche V3 — sans elle,
+« JJK » ou « aot » ne trouvent rien, et **aucune distance de chaînes ne rattrape ça**.
+
+---
+
+### 13.2 V2 — les autres utilisateurs
+
+#### L'identité, en premier
+
+Le système actuel distingue des **rôles**, pas des **personnes** : un seul mot de passe,
+deux jetons HMAC du même secret. Les comparaisons entre utilisateurs, prévues plus loin en
+V2, supposent que les utilisateurs existent — donc l'identité ouvre la V2, elle ne la clôt pas.
+
+Lien magique par email ou OAuth Google, tous deux gratuits à cette échelle. `utilisateurId`
+sort du jeton.
+
+Ça referme au passage le trou assumé du 30 août : aujourd'hui quiconque connaît l'URL
+consulte la collection, prix et valeur totale compris.
+
+#### Les trois rôles
+
+| | Invité | Utilisateur | Propriétaire |
+|---|---|---|---|
+| Consulter | oui | oui | oui |
+| Cocher ses tomes, changer son statut | non | oui | oui |
+| Ajouter une série au catalogue | non | oui, marquée | oui |
+| Modifier nom, éditeur, tomes parus, parution | non | non | oui |
+| Importer le planning, lancer les scripts | non | non | oui |
+| Relire les ajouts marqués | non | non | oui |
+
+Le motif existe déjà et il est prouvé : `roleDuJeton`, `exigerAcces` pour lire,
+`exigerProprietaire` pour écrire. Ajouter un rôle est une extension, pas une refonte.
+
+**La frontière reste dans les Server Actions**, jamais dans l'interface — vérifié le
+30 août en appelant `definirParution` avec un cookie invité : 500 et aucune écriture.
+L'interface qui masque les contrôles est un confort, pas la protection.
+
+#### La règle d'ajout : libre, mais marqué
+
+Un utilisateur peut créer une série. C'est une écriture dans le catalogue partagé —
+`creerSerieAvecEdition` crée `Serie`, `Edition` et les `Volume`.
+
+L'ajout est **libre et immédiatement visible de tous**, avec `creeePar` renseigné et
+`aVerifier` levé jusqu'à relecture par le propriétaire.
+
+Écarté : l'ajout privé jusqu'à validation (deux visibilités, donc une condition dans
+toutes les requêtes du catalogue) et l'ajout libre sans garde-fou (dégradation silencieuse).
+
+`aVerifier` sert déjà exactement à ça depuis la migration. L'écran de relecture donne au
+rôle propriétaire un contenu concret.
+
+**Limite connue** : un utilisateur ne peut pas encore ajouter une seconde édition à une
+série existante (§ Reste à faire — `creerSerieAvecEdition` crée toujours une `Serie` neuve).
+Ce défaut devient plus visible à plusieurs. La porte d'entrée est l'ISBN, pas AniList.
+
+#### Le catalogue ne s'amorce pas par accumulation
+
+Erreur de raisonnement à éviter : attendre que les utilisateurs remplissent la base.
+C'est le modèle de l'application de référence, et il lui a pris vingt ans.
+
+**Les archives de planning manga-news donnent le catalogue d'un coup.** Format validé le
+30 août : 267 titres sur 307 parsés, EAN sur 306 lignes sur 307, deux correspondances
+exactes trouvées dans la collection existante. Le script existe déjà.
+
+À raison d'environ 300 sorties mensuelles, dix ans d'archives font de l'ordre de
+36 000 lignes, soit quelques milliers de séries — le catalogue du manga français. Chaque
+ligne porte son EAN, donc chaque tome est enrichissable à la BnF.
+
+Deux difficultés, connues :
+
+- **La déduplication.** « Berserk », « Berserk - Édition Prestige » et « Berserk Glénat »
+  sortiront comme des séries distinctes si le parsing hésite. Importer tout, marquer tout,
+  relire les cas ambigus au fil de l'eau. **Résolue par la forme de la table (2 septembre)** :
+  `ParutionCatalogue` garde les lignes brutes et le catalogue de séries est une requête
+  d'agrégation, donc la consolidation n'a lieu qu'à l'entrée d'une série dans une collection.
+- **Les couvertures.** Ne pas enrichir les ~59 000 tomes d'avance : à 23,4 Ko la couverture cela
+  ferait **1,4 Go**, plus que le Go de Vercel Blob, pour des images que personne ne regarde.
+  **Récupérer la couverture quand une série entre dans une collection.** Le stockage reste
+  proportionnel à l'usage réel.
+
+Conséquence : les ajouts libres ne portent plus le catalogue, ils comblent ses trous — les
+titres épuisés, les éditions confidentielles, ce que le planning n'a pas indexé.
+
+**Question tranchée le 2 septembre 2026** : les archives remontent à **septembre 2000**, format
+et EAN-13 inclus, et le rendement ne se dégrade pas avec l'ancienneté. Voir « Établi — les
+archives de planning » (§12) pour les mesures et le plancher recommandé. Un ordre de grandeur
+à corriger au passage : le marché faisait 31 sorties par mois en 2000 contre 292 aujourd'hui,
+et l'interpolation sur les cinq points mesurés (31 · 142 · 168 · 201 · 292) donne **~59 000
+lignes pour 26 ans**, pas 36 000 pour dix ans.
+
+#### Les variantes de tome
+
+Un tome collector n'est pas « le même avec une autre couverture » : c'est un objet
+physique distinct, avec son ISBN, son prix et sa date. C'est le problème des éditions,
+un cran plus bas.
+
+```
+VarianteVolume (id, volumeId, nom, isbn, couvertureUrl, prixCentimes)
+Possession.varianteId → nullable
+```
+
+Écarté : un simple `Volume.couverturePersoUrl`. Une demi-heure de travail, mais une impasse —
+personne d'autre n'en profite et **on ne peut jamais savoir qu'une variante existe**.
+
+L'angle collection recherché n'est pas « ma couverture s'affiche », c'est *« il existe une
+jaquette alternative du tome 5 et je ne l'ai pas »*. Le manque est le moteur ; le
+remplacement d'image ne l'exprime pas.
+
+Contrairement à 13.1, **cette table peut arriver plus tard sans douleur** : c'est un ajout,
+pas un déplacement de colonnes.
+
+#### Cloudflare R2
+
+Non pas une optimisation, mais **le seul chemin vers la V3**. Vercel Blob accorde 2 000
+opérations avancées par mois sur Hobby ; retraiter les 1 674 couvertures actuelles coûte
+déjà presque un mois de quota. Avec dix fois plus de séries, Blob est disqualifié.
+
+Palier gratuit R2, mensuel et permanent : 10 Go, 1 million d'écritures (Class A), 10 millions
+de lectures (Class B), **egress toujours gratuit**. Compatible S3 — le changement se limite au
+client et aux variables d'environnement.
+
+**La carte est exigée, le débit ne survient qu'au dépassement. Tranché le 1er septembre 2026 :
+on y va**, §7 amendé en conséquence. Les marges mesurées et les trois garde-fous sont dans
+« Tranché — Cloudflare R2 » (§12).
+
+#### Filtres : genres seulement
+
+Les genres viennent de la liste fermée d'AniList depuis le 30 août — normalisés, filtrables.
+Les **thèmes ne sont pas filtrables** : 99 valeurs françaises avec les coupures d'import
+documentées (`Post` + `apo`, `Super` + `héros`, `Combats` / `Combat`).
+
+Un filtre « apo » exposé à un utilisateur tiers est indéfendable. Le nettoyage des thèmes
+attend un écran qui les affiche.
+
+---
+
+### 13.3 V3 — la recherche et l'ouverture
+
+#### La recherche : des données, pas un algorithme
+
+Trois échecs d'appariement par similarité sont déjà documentés : le seuil AniList rejette
+les bonnes réponses dès que le titre VF s'éloigne, une série mère battait son propre
+spin-off, et `RECHERCHES_MANUELLES` est le motif qui marche.
+
+L'application de référence n'a pas un meilleur algorithme, **elle a de meilleures données** :
+vingt ans de saisie communautaire.
+
+Avec un catalogue pré-construit (13.2), le problème change de nature : l'utilisateur ne
+cherche plus « dehors » mais **dans la base**. Par ordre de rendement :
+
+1. **`Serie.alias`** — posé en 13.1, c'est ce qui rapporte le plus
+2. **Recherche plein texte PostgreSQL** — normalisation des accents, trigrammes, natif sur Neon
+3. **L'ISBN comme chemin privilégié** — le scan court-circuite entièrement la recherche ;
+   chaque scan est un appariement exact
+4. **Les alias appris** — « JJK » suivi de l'ouverture de Jujutsu Kaisen enregistre
+   l'association. C'est ainsi que se constituent les vingt ans de l'autre.
+
+L'appariement difficile ne subsiste qu'à l'import du catalogue : **une fois, hors ligne,
+sous supervision**, jamais pendant qu'un utilisateur attend.
+
+#### Diffusion Android
+
+Bubblewrap, déjà exploré (§ Reste à faire) : `/.well-known/` est ouvert côté garde, restent
+le keystore et `assetlinks.json`. Pas de store obligatoire pour une poignée de personnes —
+la PWA s'installe depuis le navigateur.
+
+#### Monétisation
+
+Principe : **le hub de collection reste entièrement fonctionnel gratuitement.** Le paiement
+ne débride que le communautaire, la gamification et le confort.
+
+Suggestion retenue : paiement **unique**, de l'ordre de 5 €, porté par une colonne sur
+`Utilisateur`. Un abonnement — expiration, relances, échecs de prélèvement, remboursements —
+est disproportionné à ce montant.
+
+Prévoir l'état de paiement **dès la création de la table `Utilisateur` en V2**. Une colonne
+de plus coûte zéro ; l'ajouter après coup demande une migration sur des comptes existants.
+
+**Le planning reste gratuit.** C'est la fonctionnalité qui rend l'application utile en
+librairie, donc celle qui donne envie de payer pour le reste. Derrière le mur : stats
+partagées, comparaison, suivi d'autres utilisateurs, badges.
+
+---
+
+### 13.4 Les trois échéances externes
+
+Elles ne dépendent pas du code et ont le **même déclencheur : le premier euro encaissé**.
+Tout ce qui précède est réversible ; à partir de là, non.
+
+**Vercel Hobby devient interdit.** Le plan gratuit ne peut pas servir un projet générant du
+revenu, et Vercel l'applique. Pro à 20 $/mois, soit environ 50 utilisateurs payants pour
+l'équilibre. Effet de bord positif : `Vercel Authentication` en portée *All Deployments*
+redevient disponible, ce que §7 croyait à tort inclus sur Hobby.
+
+**La clause d'exclusivité du contrat de travail.** L'article L1222-5 la rend inopposable
+**un an** à compter de la déclaration de début d'activité, même en présence de stipulation
+contraire. C'est un sursis, pas une sortie : passé l'année elle redevient applicable, sous
+peine de licenciement pour faute grave. La vraie sortie est un **accord écrit de
+l'employeur**, à obtenir avant de créer la structure. Dossier favorable : projet personnel,
+sans rapport avec l'activité de l'employeur, hors temps de travail.
+*Ceci n'est pas un avis juridique — faire valider la rédaction exacte de la clause.*
+
+**Les droits sur les couvertures.** Les stocker pour un usage personnel ne pose pas de
+problème pratique. Les rediffuser sur un service payant change la nature de la situation :
+les jaquettes appartiennent aux éditeurs et aux auteurs. Relire les conditions de
+réutilisation de la BnF **avant** d'ouvrir le paiement.
+
+---
+
+### 13.5 Ce que ce document n'est pas
+
+`IDEES.md` porte les envies non tranchées. Une idée n'entre ici **qu'une fois arbitrée**,
+avec ce qui a été écarté et pourquoi.
+
+Mélanger les deux donnerait à une intuition le même poids qu'à une décision, et une session
+future ne saurait plus ce qui fait foi.
+
+---
 
 <!-- BEGIN:nextjs-agent-rules -->
 
