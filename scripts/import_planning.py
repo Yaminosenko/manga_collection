@@ -11,6 +11,7 @@ import unicodedata
 DOSSIER_DEFAUT = os.environ.get("PLANNING_DIR", "data/planning")
 SOURCE_BASE = "data/backup.json"
 FICHIER_MANIFESTE = "data/planning.json"
+FICHIER_DIVERGENCES = "data/planning-divergences.json"
 NOM_EDITION_SIMPLE = "editionsimple"
 
 MOIS = {
@@ -27,6 +28,8 @@ MARQUEURS_AUTRE_EDITION = (
     "prestige",
     "edition double",
     "edition speciale",
+    "edition reliee",
+    "edition souple",
     "deluxe",
     "artbook",
     "fanbook",
@@ -38,6 +41,7 @@ MARQUEURS_AUTRE_EDITION = (
 )
 
 TITRES_MANUELS = {
+    "ippo-s4-la-loi-du-ring": "Ippo - Saison 4 - La loi du ring",
     "itchi-the-witch": "Ichi the Witch",
     "les-legendaires-saga": "Légendaires (les) - Saga",
     "nier-automata-op-pearl-harbor": "Nier: Automata - Opération Pearl Harbor",
@@ -48,6 +52,18 @@ TITRES_MANUELS = {
     "why-nobody-remember-my-world": "Why Nobody Remembers My World ?",
     "yusei-no-last-boss": "Yasei no Last Boss",
 }
+
+GROUPES_EDITEURS = (
+    ("kaze", "crunchyroll"),
+    ("bambooedition", "dokidoki"),
+)
+
+REEDITIONS = (
+    "blame",
+    "dragon-ball",
+    "gantz",
+    "neon-genesis-evangelion",
+)
 
 MOTIF_VOLUME = re.compile(r"\bVol\.\s*(\d{1,3})\b")
 LONGUEUR_EAN = 13
@@ -80,16 +96,31 @@ def porte_autre_edition(titre):
     return any(normaliser(marqueur) in reduit for marqueur in MARQUEURS_AUTRE_EDITION)
 
 
+def meme_editeur(attendu, source):
+    a, b = normaliser(attendu), normaliser(source)
+    if not a or not b:
+        return True
+    if a == b or a in b or b in a:
+        return True
+    return any(
+        any(m in a or a in m for m in groupe) and any(m in b or b in m for m in groupe)
+        for groupe in GROUPES_EDITEURS
+    )
+
+
 def editions_simples():
     base = json.load(io.open(SOURCE_BASE, encoding="utf-8"))
     index = {}
     for serie in base["series"]:
         for edition in serie["editions"]:
+            if edition["slug"] in REEDITIONS:
+                continue
             if normaliser(edition["nom"]) == NOM_EDITION_SIMPLE:
                 fiche = {
                     "slug": edition["slug"],
                     "titre": serie["titre"],
                     "tomesParusEnBase": edition["tomesParus"],
+                    "editeur": edition["editeur"],
                 }
                 index[normaliser(serie["titre"])] = fiche
                 manuel = TITRES_MANUELS.get(edition["slug"])
@@ -119,10 +150,12 @@ def main():
     index = editions_simples()
     fichiers, lignes = lire_planning(dossier)
     print(f"{len(fichiers)} fichiers, {len(lignes)} lignes, {len(index)} editions simples en base")
+    print(f"{len(REEDITIONS)} editions ecartees car possedees en reedition : {', '.join(REEDITIONS)}")
 
     manifeste = {}
     a_paraitre = {}
     ignores_marqueur = 0
+    divergences = []
 
     for ligne in lignes:
         titre = ligne.get("Titre") or ""
@@ -147,6 +180,19 @@ def main():
             "isbn": ean if len(ean) == LONGUEUR_EAN and ean.isdigit() else None,
             "editeur": (ligne.get("Editeur") or "").strip() or None,
         }
+
+        if not meme_editeur(cible["editeur"], entree["editeur"]):
+            divergences.append({
+                "slug": cible["slug"],
+                "titre": cible["titre"],
+                "numero": numero,
+                "editeurEnBase": cible["editeur"],
+                "editeurDuPlanning": entree["editeur"],
+                "titreDuPlanning": titre,
+                "date": entree["date"],
+                "isbn": entree["isbn"],
+            })
+            continue
 
         if date <= aujourd_hui:
             fiche = manifeste.setdefault(cible["slug"], {
@@ -175,6 +221,8 @@ def main():
 
     json.dump(manifeste, io.open(FICHIER_MANIFESTE, "w", encoding="utf-8"),
               ensure_ascii=False, indent=2, sort_keys=True)
+    json.dump(divergences, io.open(FICHIER_DIVERGENCES, "w", encoding="utf-8"),
+              ensure_ascii=False, indent=2, sort_keys=True)
 
     tomes = sum(len(f["tomes"]) for f in manifeste.values())
     avec_isbn = sum(1 for f in manifeste.values() for t in f["tomes"].values() if t["isbn"])
@@ -185,6 +233,14 @@ def main():
     print(f"{ignores_marqueur} lignes ecartees par un marqueur d'autre edition")
     print(f"{len(manifeste)} editions appariees, {tomes} tomes dates, {avec_isbn} avec ISBN")
     print(f"{futurs} sorties a venir")
+
+    if divergences:
+        print(f"\n{len(divergences)} lignes ecartees sur divergence d'editeur "
+              f"-- a relire dans {FICHIER_DIVERGENCES} :")
+        for cas in divergences:
+            print(f"  {cas['slug'][:30]:30} t{cas['numero']:<4} "
+                  f"base={str(cas['editeurEnBase'])[:16]:16} "
+                  f"planning={cas['editeurDuPlanning']}")
     print(f"\n{len(hausses)} editions ou le planning depasse la base :")
     for slug, base_, maximum in sorted(hausses, key=lambda x: x[1] - x[2]):
         print(f"  {slug[:34]:34} {base_:>3} -> {maximum:>3}  (+{maximum - base_})")
