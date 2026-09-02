@@ -117,3 +117,19 @@ model Possession {
 
   @@index([possede])
 }
+
+model ParutionCatalogue {
+  id              String   @id @default(uuid())
+  ean             String?
+  titreBrut       String
+  serieTitre      String
+  serieNormalise  String
+  marqueurEdition String?
+  numero          Int?
+  editeur         String?
+  date            DateTime
+
+  @@unique([titreBrut, date])
+  @@index([ean])
+  @@index([serieNormalise])
+}

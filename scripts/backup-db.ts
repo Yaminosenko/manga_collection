@@ -209,6 +209,16 @@ async function exporter() {
       `${compteurs.possedes} possedes · ${compteurs.aVerifier} a verifier · ` +
       `${compteurs.forcees} forcees · ${compteurs.couvertures} couvertures`,
   );
+  await annoncerCatalogueHorsSauvegarde();
+}
+
+async function annoncerCatalogueHorsSauvegarde() {
+  const parutions = await prisma.parutionCatalogue.count();
+  if (parutions === 0) return;
+  console.log(
+    `catalogue : ${parutions} parutions volontairement hors sauvegarde, ` +
+      "rederivables des CSV manga-news",
+  );
 }
 
 async function ecrireParLots<T>(nom: string, lignes: T[], ecrire: (lot: T[]) => Promise<unknown>) {
@@ -342,6 +352,7 @@ async function restaurer() {
     throw new Error(`compteurs divergents : ${ecarts.map(([cle]) => cle).join(", ")}`);
   }
   console.log("les compteurs correspondent");
+  await annoncerCatalogueHorsSauvegarde();
 }
 
 async function main() {
