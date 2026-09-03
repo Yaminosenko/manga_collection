@@ -2426,6 +2426,11 @@ original Blob, servie en `200` avec `Content-Type: image/webp` et
 25 URL tirées dans la base, 25 répondent `200 image/webp`. Le bucket porte 1 688 objets, soit le
 compte exact. Les sept compteurs sont intacts.
 
+**Et confirmé à l'écran** : les couvertures s'affichent bien dans l'application, vérifié par
+l'utilisateur le 3 septembre. Ce contrôle-là n'est pas une formalité — trois pièges de
+diagnostic recensés dans ce document rappellent que seul un test fonctionnel abouti prouve
+quelque chose.
+
 - **L'envoi s'est fait en deux temps, volontairement.** Cinq couvertures d'abord, vérifiées à
   l'octet et à l'en-tête, puis les 1 683 autres. Un mauvais `Content-Type` ou un bucket non
   exposé se serait sinon découvert après 1 688 envois **et** autant de réécritures.
@@ -2467,9 +2472,6 @@ dans le viewport, quelques images à la fois et non les 109 lignes de la Collect
   un palier hors d'atteinte, donc l'amendement du 1er septembre ne le couvre pas.
 - **Supprimer le store Vercel Blob**, gardé quelques jours par prudence (décidé le 3 septembre).
   `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota.
-- **Régénérer le jeton S3 R2.** Celui en service a transité par une conversation le
-  3 septembre 2026. Portée Object Read & Write sur le seul bucket, donc le risque est borné,
-  mais il n'a rien à faire ailleurs que dans `.env`.
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
   compte acheter. Distinct des Manquants, qui ne parle que de tomes absents d'éditions déjà
   possédées. Demande sans doute un `statut` supplémentaire ou un drapeau sur `Edition`, et de
