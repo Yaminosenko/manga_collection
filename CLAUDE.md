@@ -836,8 +836,9 @@ Décisions prises en chemin :
 
 **L'installation exige HTTPS.** Chrome ne propose « Installer » que dans un contexte sécurisé ;
 `localhost` y échappe, une adresse IP de réseau local en HTTP non. **Le test sur téléphone via
-`http://192.168.1.13:3000` valide donc la mise en page, jamais l'installation** — celle-ci
-attend le déploiement Vercel.
+`http://192.168.1.13:3000` valide donc la mise en page, jamais l'installation.** Celle-ci
+attendait le déploiement Vercel : **c'est fait, la PWA est installée depuis la production** —
+voir « Fait — le déploiement ».
 
 **Pas de service worker.** §6 (données texte en cache, images volontairement hors cache) reste
 entier : aujourd'hui le hors-ligne se limite au bandeau et à l'inertie des pastilles. À noter :
@@ -2460,6 +2461,33 @@ réserve au développement, limite en débit et **ne met pas en cache**. Le risq
 par le `loading="lazy"` de `components/cover.tsx:27` — le navigateur ne demande que ce qui entre
 dans le viewport, quelques images à la fois et non les 109 lignes de la Collection. Voir « Reste
 à faire ».
+
+### Fait — le déploiement (consigné le 3 septembre 2026)
+
+**L'application tourne en production sur Vercel**, et la PWA y est installée depuis Chrome.
+Ce fait n'avait jamais été écrit : les sections « Fait » ne parlent que de vérifications en
+`npm run dev`, en `npm run start` ou via l'IP du réseau local. **Une session de septembre a
+relu ce document et en a conclu que rien n'était déployé.** D'où cette section — l'omission
+coûtait plus cher que la ligne qui la répare.
+
+- **Le dépôt pilote le déploiement** : `github.com/Yaminosenko/manga_collection`, branche `main`.
+  Pousser déclenche un rebuild.
+- **Le build de production applique les migrations.** `npm run build` enchaîne
+  `prisma generate`, `npm run db:migrate` puis `next build` : Vercel emprunte le même script
+  que le poste, sur le 443, comme §7 le prévoit. Une migration déjà appliquée est sans effet.
+- **`vercel.json` ne porte que `"regions": ["fra1"]`**, ce qui règle le point de §7 sur les
+  fonctions placées à Washington par défaut.
+- **Les variables sont dans Vercel, pas dans le dépôt** : `DATABASE_URL`, `DIRECT_URL` et
+  `ACCESS_PASSWORD` — ce dernier **doit être identique à celui du poste**, sinon les deux
+  divergent. **Aucune variable `R2_*` n'y a sa place** : l'application ne fait que lire les URL
+  absolues stockées en base.
+- **Les couvertures n'ont demandé aucun redéploiement lors de la migration R2 du 3 septembre.**
+  Les URL vivent dans Neon, que les deux environnements partagent : la base a basculé, le code
+  déployé n'avait pas besoin de changer. C'est la même propriété qui rendra gratuit le passage
+  à un domaine personnalisé.
+- **`localhost` n'est pas un déploiement.** Chrome le traite comme un contexte sécurisé, donc
+  l'installation PWA y fonctionne — mais l'application installée pointe vers le poste, ne vit
+  que serveur de développement allumé, et reste hors de portée du téléphone.
 
 ### Reste à faire
 
