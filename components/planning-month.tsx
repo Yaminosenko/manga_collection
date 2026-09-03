@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Cover } from "@/components/cover";
+import { PlanningClaim } from "@/components/planning-claim";
 import { formaterJour, formaterMoisLong } from "@/lib/format";
+import { sortieEstParue } from "@/lib/domain";
 import type { SortiePlanning } from "@/lib/domain";
 
 function sousTitre(sortie: SortiePlanning): string {
@@ -11,7 +13,17 @@ function sousTitre(sortie: SortiePlanning): string {
   return parties.join(" · ");
 }
 
-export function PlanningMonth({ sorties }: { sorties: SortiePlanning[] }) {
+export function PlanningMonth({
+  sorties,
+  proprietaire,
+  instant,
+}: {
+  sorties: SortiePlanning[];
+  proprietaire: boolean;
+  instant: string;
+}) {
+  const maintenant = new Date(instant);
+
   return (
     <section className="flex flex-col gap-[4px]">
       <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
@@ -19,10 +31,13 @@ export function PlanningMonth({ sorties }: { sorties: SortiePlanning[] }) {
       </h2>
 
       {sorties.map((sortie) => (
-        <Link
+        <div
           key={`${sortie.slug}-${sortie.numero}`}
+          className="border-row-divider flex items-center gap-[12px] border-b py-[9px]"
+        >
+        <Link
           href={`/edition/${sortie.slug}`}
-          className="border-row-divider flex items-center gap-[12px] border-b py-[9px] transition-colors hover:bg-text/2"
+          className="flex min-w-0 flex-1 items-center gap-[12px] transition-colors hover:bg-text/2"
         >
           <span className="shadow-edge h-[120px] w-[84px] flex-none overflow-hidden rounded-cover">
             <Cover
@@ -54,6 +69,11 @@ export function PlanningMonth({ sorties }: { sorties: SortiePlanning[] }) {
             </span>
           </span>
         </Link>
+
+          {proprietaire && sortieEstParue(sortie.date, maintenant) ? (
+            <PlanningClaim slug={sortie.slug} numero={sortie.numero} />
+          ) : null}
+        </div>
       ))}
     </section>
   );

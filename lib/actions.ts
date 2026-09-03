@@ -7,6 +7,7 @@ import { rechercherSurAniList } from "@/lib/anilist";
 import { chercherParIsbn, chercherPrixDefautCentimes } from "@/lib/bnf";
 import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
+import { promouvoirSortie } from "@/lib/promotion";
 import { exigerProprietaire } from "@/lib/guard";
 import { LONGUEUR_RECHERCHE_MIN, RESULTATS_RECHERCHE_MAX } from "@/lib/constants";
 import { isbnValide } from "@/lib/domain";
@@ -26,6 +27,13 @@ function revaliderEdition(slug: string): void {
   revalidatePath(`/edition/${slug}/etat`);
   revalidatePath("/");
   revalidatePath("/manquants");
+}
+
+export async function marquerSortieObtenue(slug: string, numero: number): Promise<void> {
+  await exigerProprietaire();
+  await promouvoirSortie(slug, numero, true, new Date());
+  revaliderEdition(slug);
+  revalidatePath("/planning");
 }
 
 export async function definirStatut(slug: string, statut: StatutEdition): Promise<void> {

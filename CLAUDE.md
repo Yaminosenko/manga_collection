@@ -2489,6 +2489,80 @@ coûtait plus cher que la ligne qui la répare.
   l'installation PWA y fonctionne — mais l'application installée pointe vers le poste, ne vit
   que serveur de développement allumé, et reste hors de portée du téléphone.
 
+**Première vérification de la production, le 3 septembre 2026.** Toutes les autres campagnes de
+ce document sont locales ; celle-ci porte sur le domaine déployé.
+
+| Chemin | Réponse |
+|---|---|
+| `/`, `/manquants`, `/planning`, `/edition/…/tomes` | **307 vers `/acces`** |
+| `/manifest.webmanifest`, `/icon-192.png` | 200, hors garde comme prévu |
+| `/.well-known/assetlinks.json` | **404, pas 307** — bien exclu du `matcher` |
+| `/acces` | 200 |
+
+Avec un jeton **invité**, l'en-tête rend « 1 153 tomes · 109 éditions », la valeur
+« ≥ 8 772,91 € » et la section « Vendues 4 » — conformes à la base. **218 références d'images
+sur `r2.dev`, zéro sur `blob.vercel-storage.com`**, idem sur la page Édition (48) et la grille
+(46) : la migration R2 est donc confirmée en production, pas seulement en local. Le bandeau
+« Mode invité » est présent et la barre ne montre que trois onglets, Ajouter étant masqué.
+
+- **Le jeton se calcule, il ne se saisit pas.** `createHmac("sha256", ACCESS_PASSWORD)` sur le
+  message `invite` suffit à un contrôle visuel, sans manipuler le mot de passe réel — la méthode
+  que §12 recommandait déjà après un test raté le 30 août.
+
+### Fait — les sorties annoncées deviennent des tomes (3 septembre 2026)
+
+Signalé à l'usage : une sortie annoncée dont la date arrive **ne devenait jamais un tome**.
+`chargerPlanning` (`lib/editions.ts:291`) ne filtre pas sur la date, donc RAI RAI RAI tome 3,
+paru le 3 septembre, serait resté au Planning indéfiniment — sans compter dans `tomesParus`,
+sans apparaître dans « Mes tomes » ni dans Manquants, et **sans pouvoir être coché**. Seule la
+moitié du mécanisme avait été écrite le 30 août.
+
+**La règle de §12 ne s'y opposait pas, elle l'appelait.** Elle justifiait d'isoler les sorties
+ainsi : « un tome non paru gonflerait le dénominateur et remonterait dans Manquants, **où il n'a
+rien à faire puisqu'on ne peut pas l'acheter** ». La date passée, on peut l'acheter : la
+justification tombe, et la conversion devient la suite logique.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/promotion.ts` | `promouvoirSortie`, `promouvoirSortiesEchues` — la conversion, en transaction |
+| `lib/actions.ts` | `marquerSortieObtenue`, réservée au propriétaire |
+| `app/api/cron/route.ts` | la tâche quotidienne, hors garde, protégée par `CRON_SECRET` |
+| `components/planning-claim.tsx` | le bouton « Je l'ai » |
+| `vercel.json` | `crons`, une fois par jour à 4 h |
+
+**Deux chemins, un seul résultat.** Un bouton « Je l'ai » sur les lignes dont la date est passée
+crée le tome **possédé** et la sortie disparaît ; sans geste, elle reste au Planning tout le mois
+puis le cron la promeut en tome **non possédé**, qui rejoint alors Manquants. Le seuil est le
+premier jour du mois courant, pas la date exacte : les dates manga-news glissent, et un tome
+annoncé le 3 peut arriver le 12.
+
+- **Le tome hérite de l'ISBN, de la date et de la couverture de l'annonce.** C'est ce qui rend la
+  promotion préférable à une simple hausse de `tomesParus` : les 14 couvertures de sorties déjà
+  dans R2 ne sont pas perdues, et l'ISBN alimente le scanner.
+- **`tomesParus` est relu dans la transaction, pas avant.** Première version : le compte était
+  lu avec la sortie, donc deux sorties d'une même édition promues à la suite travaillaient sur
+  une valeur périmée et la seconde tentait de recréer un volume existant.
+- **Les helpers purs sont dans `lib/domain.ts`, pas dans `lib/promotion.ts`.** Ce dernier importe
+  Prisma ; `components/planning-claim.tsx` étant client, l'importer aurait cassé le build —
+  le piège documenté à l'étape 3.
+- **Le bouton est sorti du `<Link>`** qui enveloppait toute la ligne : un contrôle imbriqué dans
+  un lien ne se comporte correctement ni au clavier ni au tap.
+- **Le refus d'une sortie future est côté serveur**, pas seulement masqué dans l'interface —
+  vérifié, `promouvoirSortie` sur `radiant` 20 évalué au 1er janvier rend `null`.
+- **`/api/cron` est hors du `matcher` de `proxy.ts`**, sinon la garde le renverrait vers `/acces`.
+  Il se protège donc seul : sans `CRON_SECRET`, il répond 401 à tout. Échec fermé, comme
+  `ACCESS_PASSWORD`.
+
+**Vérifié de bout en bout, avec restauration à l'identique** : `rai-rai-rai` passe de
+`tomesParus=2, sorties=[3]` à `tomesParus=3` avec le tome 3 possédé portant l'ISBN
+`9791032723579`, sa date et sa couverture, puis revient exactement à son état initial. Les
+compteurs globaux sont intacts — 109 / 113 / 1 712 / 1 153 / 16 sorties / 1 674 couvertures. Et
+**0 sortie échue au 3 septembre** : le cron ne promeut rien aujourd'hui, ce qui est le
+comportement attendu six jours sur sept.
+
+**C'est la première brique du rafraîchissement de fond de §5**, qui n'existait pas. Restent à y
+ajouter les nouveaux tomes parus, `editionTerminee` et les couvertures manquantes.
+
 ### Reste à faire
 
 - **Brancher un domaine personnalisé sur le bucket R2.** La base publique est aujourd'hui
@@ -2500,6 +2574,14 @@ coûtait plus cher que la ligne qui la répare.
   un palier hors d'atteinte, donc l'amendement du 1er septembre ne le couvre pas.
 - **Supprimer le store Vercel Blob**, gardé quelques jours par prudence (décidé le 3 septembre).
   `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota.
+- **Définir `CRON_SECRET` dans les variables d'environnement Vercel.** Sans elle, `/api/cron`
+  répond 401 à tout et la promotion automatique des sorties échues ne tourne jamais — échec
+  fermé volontaire, ce chemin étant hors de la garde d'accès. N'importe quelle chaîne aléatoire
+  longue convient ; Vercel l'envoie ensuite en `Authorization: Bearer`. **Tant que ce n'est pas
+  fait, seul le bouton « Je l'ai » promeut une sortie.**
+- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` existe depuis le
+  3 septembre et ne fait qu'une chose : promouvoir les sorties dont le mois est clos. Restent
+  les nouveaux tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
   compte acheter. Distinct des Manquants, qui ne parle que de tomes absents d'éditions déjà
   possédées. Demande sans doute un `statut` supplémentaire ou un drapeau sur `Edition`, et de
@@ -2516,8 +2598,9 @@ coûtait plus cher que la ligne qui la répare.
   `ippo-s4-la-loi-du-ring` 25 et `les-legendaires-saga` 11 — et deux annonces,
   `radiant` 20 et `les-legendaires-saga`. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
-  §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes — il
-  n'existe pas. Le porter demande de réécrire en TypeScript le sélecteur MangaDex de
+  §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes ; la tâche
+  quotidienne existe depuis le 3 septembre mais ne fait encore que promouvoir les sorties
+  échues. Y porter les couvertures demande de réécrire en TypeScript le sélecteur MangaDex de
   `fetch_covers.py`, celui qui pénalise les fiches satellites : sans lui, un appariement naïf
   fait repartir Bleach avec 1 tome sur 74 (§ couvertures, 29 août).
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis

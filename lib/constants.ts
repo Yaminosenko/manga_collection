@@ -156,3 +156,6 @@ export const LONGUEUR_ISBN = 13;
 export const PREFIXES_ISBN = ["978", "979"];
 
 export const LIBELLE_REFAIRE_MISE_AU_POINT = "Touchez l’image pour refaire la mise au point.";
+
+export const LIBELLE_SORTIE_OBTENUE = "Je l’ai";
+export const LIBELLE_SORTIE_EN_COURS = "…";

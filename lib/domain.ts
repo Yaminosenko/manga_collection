@@ -261,3 +261,11 @@ export function isbnValide(brut: string): boolean {
   );
   return (10 - (somme % 10)) % 10 === Number(chiffres[12]);
 }
+
+export function debutDuMois(instant: Date): Date {
+  return new Date(Date.UTC(instant.getUTCFullYear(), instant.getUTCMonth(), 1));
+}
+
+export function sortieEstParue(date: string, instant: Date): boolean {
+  return new Date(date).getTime() <= instant.getTime();
+}
