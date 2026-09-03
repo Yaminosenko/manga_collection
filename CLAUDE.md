@@ -301,7 +301,7 @@ une réponse positive remplace le scraper par un import propre.
 
 ### Images
 Téléchargées une fois, redimensionnées **à l'import sur le poste local**, déposées dans
-Vercel Blob et servies telles quelles.
+Cloudflare R2 et servies telles quelles.
 **Jamais de référence directe à une URL d'API externe** — elles expirent.
 **Jamais l'optimiseur d'images de Next.js** — le plan Hobby le plafonne à 1 000 images
 sources par mois et renvoie une erreur 402 au-delà.
@@ -366,7 +366,7 @@ allumée en permanence. Tout ce qui suit découle de là.
 | ORM | Prisma | — |
 | Base | PostgreSQL sur Neon | Free — 0,5 Go, 100 CU-h/mois, veille après 5 min |
 | Hébergement | Vercel | Hobby — usage personnel, sans carte, non facturable |
-| Couvertures | Vercel Blob | Hobby — 1 Go inclus, ~30 Mo nécessaires |
+| Couvertures | Cloudflare R2 | Free — 10 Go, 1 M écritures/mois, egress gratuit, ~39 Mo nécessaires |
 | Accès privé | Garde applicative : mot de passe pour écrire, bouton invité pour consulter | Hobby ne sait pas protéger la production |
 | Mobile | PWA installable | — |
 
@@ -379,7 +379,7 @@ neutre. Changer de stack ne le remet pas en cause.
 ### Conséquences du gratuit, à ne pas découvrir plus tard
 
 - **Pas de système de fichiers persistant.** §5 dit « stockées et servies par le serveur » :
-  en pratique, servies depuis Vercel Blob. Aucune écriture disque ne survit.
+  en pratique, servies depuis Cloudflare R2. Aucune écriture disque ne survit.
 - **La base s'endort au bout de 5 minutes d'inactivité.** Premier écran après une pause :
   ~1 s de réveil. Prévoir un état de chargement, jamais un écran figé.
 - **Le domaine de production est public, et Hobby ne sait pas le fermer.** Vérifié dans la
@@ -2019,8 +2019,8 @@ Cinq points relevés en revue d'architecture. Les deux premiers sont bloquants.
    **Cloudflare R2** — 10 Go, 1 million d'écritures par mois, egress toujours gratuit,
    compatible S3, donc changement limité au client et aux variables d'environnement — ou ne
    plus jamais ouvrir le navigateur de blobs. **Tranché le 1er septembre : R2, la carte étant
-   admise** — voir « Tranché — Cloudflare R2 » ci-dessous. Le point reste bloquant jusqu'à la
-   migration : d'ici là, **ne pas ouvrir le navigateur de blobs**.
+   admise** — voir « Tranché — Cloudflare R2 » ci-dessous. **Clos le 3 septembre 2026** : les
+   1 688 images sont dans R2, plus aucune `couvertureUrl` ne pointe vers Blob.
 
 2. **§6 décrit une fonctionnalité absente.** Pas de service worker, rien en cache. Construire,
    ou descendre §6 en « Reste à faire ». Le statu quo fait perdre son autorité au document.
@@ -2401,15 +2401,75 @@ longue.*
 La sauvegarde est désormais **complétée sans écrasement** — chaque édition garde son plus ancien
 état connu, et la couverture s'étend. 35 → **88 éditions**.
 
+### Fait — les couvertures sur Cloudflare R2 (3 septembre 2026)
+
+Le point 1 de la revue du 31 août est clos. Les **1 688 images sont dans R2** — 1 674 couvertures
+de volume et 14 de sorties annoncées — et plus une seule `couvertureUrl` ne pointe vers Vercel
+Blob. Le quota Blob, qui était à ~200 opérations d'une panne de 30 jours, ne menace plus rien.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/r2.ts` | le client S3, `deposer`, `listerObjets`, la base publique |
+| `lib/queue.ts` | `enFile`, extrait de `upload-covers.ts` et partagé |
+| `scripts/migrate-covers-r2.ts` | `npm run covers:migrate` — `--dry-run`, `--max <n>` |
+| `scripts/upload-covers.ts` | bascule vers R2, plafond et `--force` intacts |
+| `data/storage.json` | la base publique en service, remplace `data/blob.json` |
+
+**La migration n'a coûté aucune opération avancée Blob**, comme le 1er septembre l'exigeait :
+elle énumère depuis Postgres, télécharge par les URL publiques — opérations *simples*, servies
+par le CDN — dépose dans R2 et réécrit les URL. Le store Vercel n'a jamais été listé.
+Coût côté R2 : **1 689 opérations Class A sur le million mensuel**, marge ×590.
+
+Vérifié, et pas seulement compté : une couverture tirée au hasard est **identique au MD5** à son
+original Blob, servie en `200` avec `Content-Type: image/webp` et
+`Cache-Control: public, max-age=31536000` — parité exacte avec Blob, l'année immuable de §5. Sur
+25 URL tirées dans la base, 25 répondent `200 image/webp`. Le bucket porte 1 688 objets, soit le
+compte exact. Les sept compteurs sont intacts.
+
+- **L'envoi s'est fait en deux temps, volontairement.** Cinq couvertures d'abord, vérifiées à
+  l'octet et à l'en-tête, puis les 1 683 autres. Un mauvais `Content-Type` ou un bucket non
+  exposé se serait sinon découvert après 1 688 envois **et** autant de réécritures.
+- **L'endpoint ne se déduit pas de l'identifiant de compte.** Première tentative avec l'URL de
+  juridiction `….eu.r2.cloudflarestorage.com`, que l'écran de création du jeton propose à côté
+  de la Default : `NoSuchBucket`. Le bucket avait un *emplacement* Europe, pas une *juridiction*
+  EU — deux réglages distincts, et la différence est invisible jusqu'à l'échec. D'où
+  `R2_ENDPOINT` recopié tel quel plutôt que reconstruit.
+- **`requestChecksumCalculation: "WHEN_REQUIRED"`** sur le client : les versions récentes du SDK
+  AWS activent des sommes de contrôle que R2 n'accepte pas toujours.
+- **Un échec de téléchargement laisse l'URL sur l'ancien store** au lieu de la casser. Il n'y en
+  a eu aucun, mais c'est ce qui rendait la migration sûre à lancer.
+- **`@vercel/blob` est désinstallé**, plus rien ne l'importe. `data/blob.json` est supprimé ; son
+  origine, `https://rxcktbmfxnyzkayd.public.blob.vercel-storage.com`, reste dans l'historique git
+  et dans `data/backup.json` du commit précédent, ce qui suffirait à un retour arrière.
+- **La sauvegarde est réexportée après la migration** : elle portait les 1 688 anciennes URL.
+
+**Les trois garde-fous de §12 sont posés**, avec une correction sur le troisième : *Event
+Notifications* est une fonction payante qui déclenche des Workers, pas un avertisseur d'usage.
+L'alerte vit au niveau du compte, **Manage Account › Notifications › Billing Budget Alert**,
+gratuite, réglée au seuil le plus bas — le garde-fou étant arithmétique, il doit se déclencher au
+premier centime, pas à un montant « raisonnable ». Cloudflare avertit par ailleurs
+automatiquement à 80 % des quotas gratuits.
+
+**Ce qui n'est pas fait : le domaine personnalisé.** La base est l'URL `r2.dev`, que Cloudflare
+réserve au développement, limite en débit et **ne met pas en cache**. Le risque réel est atténué
+par le `loading="lazy"` de `components/cover.tsx:27` — le navigateur ne demande que ce qui entre
+dans le viewport, quelques images à la fois et non les 109 lignes de la Collection. Voir « Reste
+à faire ».
+
 ### Reste à faire
 
-- **Migrer les couvertures vers Cloudflare R2** (tranché le 1er septembre, voir ci-dessus).
-  **Le point le plus urgent du backlog** : jusqu'à la migration, le quota Blob reste à ~200
-  opérations de la panne de 30 jours, et **il ne faut pas ouvrir le navigateur de blobs**. Le
-  travail : un client S3 en remplacement de `@vercel/blob`, un script de migration qui énumère
-  depuis Postgres, la réécriture des `couvertureUrl` et `Sortie.couvertureUrl`, les trois
-  garde-fous ci-dessus, puis la suppression du store Vercel. `scripts/upload-covers.ts` est le
-  seul auteur de `couvertureUrl` et reste le seul point d'écriture à reprendre.
+- **Brancher un domaine personnalisé sur le bucket R2.** La base publique est aujourd'hui
+  l'URL `r2.dev`, que Cloudflare **limite en débit et ne met pas en cache** — vérifié dans leur
+  documentation le 3 septembre, c'est plus restrictif que ce que supposait §12. Le basculement
+  est **gratuit et sans réenvoi** : les objets ne bougent pas, `covers:migrate` liste le bucket,
+  ne trouve rien à envoyer et se contente de réécrire les 1 688 URL. Le frein est §7 — un
+  domaine est une dépense **certaine et récurrente** (~10 $/an chez Cloudflare Registrar), pas
+  un palier hors d'atteinte, donc l'amendement du 1er septembre ne le couvre pas.
+- **Supprimer le store Vercel Blob**, gardé quelques jours par prudence (décidé le 3 septembre).
+  `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota.
+- **Régénérer le jeton S3 R2.** Celui en service a transité par une conversation le
+  3 septembre 2026. Portée Object Read & Write sur le seul bucket, donc le risque est borné,
+  mais il n'a rien à faire ailleurs que dans `.env`.
 - **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
   compte acheter. Distinct des Manquants, qui ne parle que de tomes absents d'éditions déjà
   possédées. Demande sans doute un `statut` supplémentaire ou un drapeau sur `Edition`, et de
@@ -2422,7 +2482,7 @@ La sauvegarde est désormais **complétée sans écrasement** — chaque éditio
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir la sonde du
   30 août ci-dessus.
-- **Couvertures** : 1 674 sur 1 710, déposées dans Vercel Blob. Restent 36 tomes parus —
+- **Couvertures** : 1 674 sur 1 712, déposées dans Cloudflare R2. Restent 36 tomes parus —
   `ippo-s4-la-loi-du-ring` 25 et `les-legendaires-saga` 11 — et deux annonces,
   `radiant` 20 et `les-legendaires-saga`. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
@@ -2464,9 +2524,11 @@ La sauvegarde est désormais **complétée sans écrasement** — chaque éditio
    | `DIRECT_URL` | le même, **sans** le pooling. Sert aux migrations |
    | `ACCESS_PASSWORD` | le mot de passe de la garde. **Le même que dans Vercel**, sinon les deux divergent |
 
-   Deux autres sont facultatives : `BLOB_READ_WRITE_TOKEN` (Vercel → Storage → le store, onglet
-   `.env.local`) pour déposer des couvertures, et `LOCAL_DATABASE_URL` pour exercer un script
-   destructif sur un Postgres local. **Aucun secret n'est dans le dépôt et n'y sera jamais.**
+   Les autres sont facultatives : les cinq variables `R2_*` pour déposer des couvertures — voir
+   `.env.example`, et **recopier `R2_ENDPOINT` tel qu'affiché, ne pas le reconstruire** — et
+   `LOCAL_DATABASE_URL` pour exercer un script destructif sur un Postgres local. **Aucune
+   variable `R2_*` n'est à renseigner dans Vercel** : l'application ne fait que lire les URL
+   absolues stockées en base. **Aucun secret n'est dans le dépôt et n'y sera jamais.**
 4. `npm run dev`. **Ne pas relancer le seed** : la base Neon est remplie et fait foi, pas
    `data/collection.json` qui est figé au point zéro de l'import.
 
@@ -2489,7 +2551,8 @@ La sauvegarde est désormais **complétée sans écrasement** — chaque éditio
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
 | `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
-| `npm run covers:upload` | dépose dans Blob et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
+| `npm run covers:upload` | dépose dans R2 et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
+| `npm run covers:migrate` | rebascule toutes les `couvertureUrl` vers `R2_PUBLIC_BASE`. `-- --dry-run` d'abord. Sert au jour du domaine personnalisé : sans rien à envoyer, il ne fait que réécrire |
 | `npm run anilist:fetch` puis `anilist:apply` | genres et titres VO |
 | `npm run publication:fetch` puis `publication:apply` | tomes parus BnF et état de parution |
 | `npm run titles:fetch` puis `titles:apply` | noms de séries alignés sur la BnF |

@@ -13,6 +13,7 @@
     "db:backup": "tsx scripts/backup-db.ts",
     "covers:fetch": "python scripts/fetch_covers.py",
     "covers:upload": "tsx scripts/upload-covers.ts",
+    "covers:migrate": "tsx scripts/migrate-covers-r2.ts",
     "covers:manuelles": "python scripts/import_covers_manuelles.py",
     "anilist:fetch": "tsx scripts/fetch-anilist.ts",
     "anilist:apply": "tsx scripts/apply-anilist.ts",
@@ -37,6 +38,7 @@
     "ws": "^8.21.3"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1125.0",
     "@prisma/adapter-pg": "^7.10.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -44,7 +46,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/ws": "^8.18.1",
-    "@vercel/blob": "^2.8.0",
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",

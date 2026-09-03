@@ -2,25 +2,23 @@ import "dotenv/config";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { list, put } from "@vercel/blob";
+import { basePublique, deposer, listerObjets } from "../lib/r2";
+import { enFile } from "../lib/queue";
 import { prisma } from "../lib/prisma";
 
 const SOURCE = join(process.cwd(), "data", "covers.json");
 const SOURCE_ANNONCES = join(process.cwd(), "data", "covers-annonces.json");
-const MANIFESTE_BLOB = join(process.cwd(), "data", "blob.json");
+const MANIFESTE_STOCKAGE = join(process.cwd(), "data", "storage.json");
 const DOSSIER_LOCAL = join(process.cwd(), "public", "covers");
-const PREFIXE_BLOB = "covers";
+const PREFIXE_OBJETS = "covers";
 const EXTENSION = ".webp";
-const TYPE_IMAGE = "image/webp";
-const CACHE_UN_AN_SECONDES = 31_536_000;
 const CONCURRENCE = 8;
-const PAGE_LISTE = 1000;
 const RETOUR_ARRIERE = "--revert";
 const FORCER = "--force";
 const PLAFOND = "--max";
 const SEPARATEUR_CIBLE = ":";
 const ENVOIS_MAX_PAR_DEFAUT = 150;
-const QUOTA_MENSUEL_AVANCEES = 2000;
+const QUOTA_MENSUEL_CLASSE_A = 1_000_000;
 
 type Manifeste = Record<string, number[]>;
 
@@ -47,7 +45,7 @@ function inventorier(manifeste: Manifeste): Couverture[] {
     numeros.map((numero) => ({
       slug,
       numero,
-      chemin: `${PREFIXE_BLOB}/${slug}/${numero}${EXTENSION}`,
+      chemin: `${PREFIXE_OBJETS}/${slug}/${numero}${EXTENSION}`,
       cheminLocal: join(DOSSIER_LOCAL, slug, `${numero}${EXTENSION}`),
     })),
   );
@@ -97,49 +95,8 @@ function estForcee(couverture: Couverture, options: Options): boolean {
   );
 }
 
-async function listerBlobsExistants(): Promise<{ existants: Map<string, string>; pages: number }> {
-  const existants = new Map<string, string>();
-  let cursor: string | undefined;
-  let pages = 0;
-
-  do {
-    const page = await list({ prefix: `${PREFIXE_BLOB}/`, limit: PAGE_LISTE, cursor });
-    pages += 1;
-    for (const blob of page.blobs) {
-      existants.set(blob.pathname, blob.url);
-    }
-    cursor = page.hasMore ? page.cursor : undefined;
-  } while (cursor);
-
-  return { existants, pages };
-}
-
 async function envoyer(couverture: Couverture): Promise<string> {
-  const contenu = await readFile(couverture.cheminLocal);
-  const blob = await put(couverture.chemin, contenu, {
-    access: "public",
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    contentType: TYPE_IMAGE,
-    cacheControlMaxAge: CACHE_UN_AN_SECONDES,
-  });
-  return blob.url;
-}
-
-async function enFile<T>(taches: (() => Promise<T>)[], concurrence: number) {
-  const resultats: T[] = [];
-  let index = 0;
-
-  async function ouvrier() {
-    while (index < taches.length) {
-      const rang = index;
-      index += 1;
-      resultats[rang] = await taches[rang]();
-    }
-  }
-
-  await Promise.all(Array.from({ length: Math.min(concurrence, taches.length) }, ouvrier));
-  return resultats;
+  return deposer(couverture.chemin, await readFile(couverture.cheminLocal));
 }
 
 async function ecrireSorties(urls: Map<string, string>, annonces: Couverture[]) {
@@ -212,7 +169,7 @@ async function main() {
 
   if (options.retourArriere) {
     const remisesANull = await effacerEnBase(couvertures);
-    console.log(`${remisesANull} volumes remis a null, les blobs sont conserves`);
+    console.log(`${remisesANull} volumes remis a null, les objets sont conserves`);
     return;
   }
 
@@ -221,17 +178,17 @@ async function main() {
     console.log(`renvoi force : ${forcees.join(", ")}`);
   }
 
-  const { existants, pages } = await listerBlobsExistants();
-  console.log(`${existants.size} couvertures deja dans Blob`);
+  const base = basePublique();
+  const { chemins, pages } = await listerObjets(`${PREFIXE_OBJETS}/`);
+  console.log(`${chemins.size} couvertures deja dans le bucket`);
 
   const urls = new Map<string, string>();
   const echecs: string[] = [];
   const introuvables: string[] = [];
 
   const candidates = toutes.filter((couverture) => {
-    const deja = existants.get(couverture.chemin);
-    if (deja && !estForcee(couverture, options)) {
-      urls.set(couverture.chemin, deja);
+    if (chemins.has(couverture.chemin) && !estForcee(couverture, options)) {
+      urls.set(couverture.chemin, `${base}/${couverture.chemin}`);
       return false;
     }
     return true;
@@ -242,8 +199,9 @@ async function main() {
 
   console.log(`${candidates.length} a envoyer sur ${toutes.length} du manifeste`);
   console.log(
-    `cout de ce passage : ${pages + aEnvoyer.length} operations avancees ` +
-      `(${pages} liste + ${aEnvoyer.length} envois) sur ${QUOTA_MENSUEL_AVANCEES} par mois`,
+    `cout de ce passage : ${pages + aEnvoyer.length} operations Class A ` +
+      `(${pages} liste + ${aEnvoyer.length} envois) sur ` +
+      `${QUOTA_MENSUEL_CLASSE_A.toLocaleString("fr-FR")} par mois`,
   );
   if (reportees > 0) {
     console.log(
@@ -270,15 +228,12 @@ async function main() {
 
   const { ecrits, absents } = await ecrireEnBase(urls, couvertures);
   const sortiesEcrites = await ecrireSorties(urls, annonces);
-  const premiere = urls.values().next().value;
-  if (premiere) {
-    writeFileSync(MANIFESTE_BLOB, `${JSON.stringify({ base: new URL(premiere).origin }, null, 2)}\n`);
-  }
+  writeFileSync(MANIFESTE_STOCKAGE, `${JSON.stringify({ base }, null, 2)}\n`);
 
   const avecCouverture = await prisma.volume.count({ where: { couvertureUrl: { not: null } } });
   const tomes = await prisma.volume.count();
 
-  console.log(`${urls.size} couvertures dans Blob, ${ecrits} volumes mis a jour`);
+  console.log(`${urls.size} couvertures dans le bucket, ${ecrits} volumes mis a jour`);
   console.log(`${sortiesEcrites} tomes annonces pourvus d'une couverture`);
   console.log(`volumes avec couverture : ${avecCouverture} / ${tomes}`);
   if (introuvables.length > 0) {
