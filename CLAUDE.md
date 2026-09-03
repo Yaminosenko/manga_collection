@@ -2354,6 +2354,53 @@ L'estimation du matin donnait ~70 % et 260 fichiers ; le réel est **87 %** avec
 Le compte a été fait **deux fois par deux chemins indépendants** — un script de mesure écrit à
 part, et le passage à blanc du vrai script — et les deux donnent 83 / 1333 / 12 / 1.
 
+### Fait — l'archive de planning appliquée (3 septembre 2026)
+
+Les 288 CSV de `~/Documents/planning_manga/` sont écrits en base. Le réel est conforme au passage
+à blanc de la veille, au chiffre près.
+
+| | avant | après |
+|---|---|---|
+| Volumes portant un ISBN | 156 | **1 489 sur 1 712, soit 87,0 %** |
+| Volumes portant une date de sortie | 156 | **1 489** |
+| Éditions sans aucun ISBN | 69 | **23 sur 113** |
+
+`blackrock-shooter-innocent-soul` passe de 1 à 3 tomes — seule hausse, et un vrai gain : Panini a
+publié les tomes 1 à 3 en 2013. Les 12 lignes du Leviathan d'Asuka sont écartées, notre Leviathan
+de Ki-oon garde ses 3 tomes et zéro ISBN. Les sept compteurs sont intacts : 109 séries,
+113 éditions, 1 153 possédés, 1 674 couvertures.
+
+**Le scan de code-barres change de nature** : la reconnaissance locale passe de 9,2 % à 87 %.
+
+#### Corrigé — l'application aurait détruit 10 sorties annoncées
+
+Défaut trouvé **à la relecture, avant d'écrire**. `apply-planning.ts` purgeait les `Sortie` de
+chaque édition du manifeste puis les recréait depuis `aParaitre`. Ce lot s'arrêtant en janvier
+2024, il ne porte aucune annonce : les 16 sorties de septembre-octobre 2026 issues du premier lot
+tombaient, **10 d'entre elles étant sur une édition du manifeste, dont 8 portant une
+`couvertureUrl` déjà déposée dans Blob**. Les recréer plus tard depuis le lot 2024-2026 aurait
+rendu les lignes mais pas les couvertures, et les réacquérir aurait coûté le quota Blob qu'il ne
+faut précisément pas dépenser.
+
+**La règle : le silence d'un import ne vaut pas suppression.** Un manifeste ne dit rien après sa
+dernière ligne datée, donc la purge est bornée à la fenêtre qu'il couvre — `finDeFenetre` dérive
+cette borne du manifeste lui-même, sans rien changer au script Python. Sur une réimportation de
+la fenêtre récente le comportement est inchangé, toutes les annonces y étant antérieures à sa
+borne ; sur une archive ancienne, plus rien n'est touché. Le script annonce la borne et le nombre
+de sorties conservées, une exclusion silencieuse se lisant comme un oubli.
+
+**Quatrième instance de la même leçon** — après LEVIATHAN, les marqueurs d'édition et les
+rééditions : *le traitement qui suffit sur une fenêtre courte échoue en silence sur une archive
+longue.*
+
+#### Corrigé — la sauvegarde de reprise ne couvrait que le premier lot
+
+`data/editions-avant-planning.json` n'était écrit que s'il n'existait pas, pour ne pas figer un
+état déjà modifié. Conséquence non vue : il portait les 35 éditions du premier lot, donc un
+`--revert` après ce passage aurait laissé en place les ISBN des 53 éditions propres à l'archive.
+La sauvegarde est désormais **complétée sans écrasement** — chaque édition garde son plus ancien
+état connu, et la couverture s'étend. 35 → **88 éditions**.
+
 ### Reste à faire
 
 - **Migrer les couvertures vers Cloudflare R2** (tranché le 1er septembre, voir ci-dessus).
@@ -2387,17 +2434,17 @@ part, et le passage à blanc du vrai script — et les deux donnent 83 / 1333 / 
   en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
-- **Appliquer l'archive de planning.** Les 288 CSV sont rangés dans
-  `~/Documents/planning_manga/` et le passage à blanc est propre (1 333 ISBN, une seule hausse
-  de `tomesParus`, voir ci-dessus). Il reste à lancer `planning:import` puis `planning:apply`
-  pour de vrai — **`npm run db:backup` d'abord**.
+- ~~**Appliquer l'archive de planning**~~ — **fait le 3 septembre 2026**, voir ci-dessus.
 - **Alimenter `ParutionCatalogue`** : la table est en place, rien ne l'écrit encore. Les trois
   règles de lecture (préfixes 978/979, désinversion de l'article **par segment**, découpe du
   marqueur d'édition) sont établies et mesurées. Le manifeste intermédiaire ne doit **pas**
   être versionné, pour la même raison que le catalogue est hors sauvegarde.
 - **Deux trous dans l'archive** : `2000-09` (31 lignes, le plus petit mois) et
   **février 2024 → octobre 2026**, 33 mois, la fenêtre la plus utile pour le catalogue et
-  l'écran Planning. À retélécharger.
+  l'écran Planning. Les CSV de cette seconde fenêtre **ne sont pas sur cette machine** (3 septembre
+  2026) ; à retélécharger et à importer plus tard. Sans urgence : `tomesParus` n'est jamais
+  abaissé, les deux lots s'importent dans n'importe quel ordre, et la borne de fenêtre protège
+  désormais les sorties annoncées d'un import qui ne les couvre pas.
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
   `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
   `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.

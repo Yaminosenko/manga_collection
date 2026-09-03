@@ -1,1228 +1,7329 @@
 {
+  "act-age": {
+    "aParaitre": {},
+    "maximum": 2,
+    "titre": "ACT-AGE",
+    "tomes": {
+      "1": {
+        "date": "2020-06-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706145"
+      },
+      "2": {
+        "date": "2020-06-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706138"
+      }
+    },
+    "tomesParusEnBase": 2
+  },
+  "air-gear": {
+    "aParaitre": {},
+    "maximum": 37,
+    "titre": "AIR GEAR",
+    "tomes": {
+      "1": {
+        "date": "2006-11-15",
+        "editeur": "Pika",
+        "isbn": "9782845996687"
+      },
+      "10": {
+        "date": "2008-06-04",
+        "editeur": "Pika",
+        "isbn": "9782845998742"
+      },
+      "11": {
+        "date": "2008-09-10",
+        "editeur": "Pika",
+        "isbn": "9782845999121"
+      },
+      "12": {
+        "date": "2008-11-05",
+        "editeur": "Pika",
+        "isbn": "9782845999435"
+      },
+      "13": {
+        "date": "2009-01-21",
+        "editeur": "Pika",
+        "isbn": "9782845999855"
+      },
+      "14": {
+        "date": "2009-03-18",
+        "editeur": "Pika",
+        "isbn": "9782811600143"
+      },
+      "15": {
+        "date": "2009-05-06",
+        "editeur": "Pika",
+        "isbn": "9782811600433"
+      },
+      "16": {
+        "date": "2009-07-01",
+        "editeur": "Pika",
+        "isbn": "9782811600761"
+      },
+      "17": {
+        "date": "2009-09-09",
+        "editeur": "Pika",
+        "isbn": "9782811601041"
+      },
+      "18": {
+        "date": "2009-11-04",
+        "editeur": "Pika",
+        "isbn": "9782811601348"
+      },
+      "19": {
+        "date": "2010-01-06",
+        "editeur": "Pika",
+        "isbn": "9782811601980"
+      },
+      "2": {
+        "date": "2007-01-24",
+        "editeur": "Pika",
+        "isbn": "9782845996892"
+      },
+      "20": {
+        "date": "2010-03-03",
+        "editeur": "Pika",
+        "isbn": "9782811602307"
+      },
+      "21": {
+        "date": "2010-05-05",
+        "editeur": "Pika",
+        "isbn": "9782811602680"
+      },
+      "22": {
+        "date": "2010-07-07",
+        "editeur": "Pika",
+        "isbn": "9782811603038"
+      },
+      "23": {
+        "date": "2010-09-01",
+        "editeur": "Pika",
+        "isbn": "9782811603342"
+      },
+      "24": {
+        "date": "2010-11-03",
+        "editeur": "Pika",
+        "isbn": "9782811603717"
+      },
+      "25": {
+        "date": "2011-01-05",
+        "editeur": "Pika",
+        "isbn": "9782811604035"
+      },
+      "26": {
+        "date": "2011-03-02",
+        "editeur": "Pika",
+        "isbn": "9782811604295"
+      },
+      "27": {
+        "date": "2011-05-04",
+        "editeur": "Pika",
+        "isbn": "9782811604592"
+      },
+      "28": {
+        "date": "2011-06-29",
+        "editeur": "Pika",
+        "isbn": "9782811604981"
+      },
+      "29": {
+        "date": "2011-09-07",
+        "editeur": "Pika",
+        "isbn": "9782811605278"
+      },
+      "3": {
+        "date": "2007-03-21",
+        "editeur": "Pika",
+        "isbn": "9782845997042"
+      },
+      "30": {
+        "date": "2011-11-02",
+        "editeur": "Pika",
+        "isbn": "9782811605605"
+      },
+      "31": {
+        "date": "2012-01-04",
+        "editeur": "Pika",
+        "isbn": "9782811606008"
+      },
+      "32": {
+        "date": "2012-02-09",
+        "editeur": "Pika",
+        "isbn": "9782811606312"
+      },
+      "33": {
+        "date": "2012-05-30",
+        "editeur": "Pika",
+        "isbn": "9782811606978"
+      },
+      "34": {
+        "date": "2012-09-05",
+        "editeur": "Pika",
+        "isbn": "9782811609436"
+      },
+      "35": {
+        "date": "2012-12-05",
+        "editeur": "Pika",
+        "isbn": "9782811610166"
+      },
+      "36": {
+        "date": "2013-01-30",
+        "editeur": "Pika",
+        "isbn": "9782811610739"
+      },
+      "37": {
+        "date": "2013-04-03",
+        "editeur": "Pika",
+        "isbn": "9782811610333"
+      },
+      "4": {
+        "date": "2007-05-16",
+        "editeur": "Pika",
+        "isbn": "9782845997257"
+      },
+      "5": {
+        "date": "2007-07-11",
+        "editeur": "Pika",
+        "isbn": "9782845997479"
+      },
+      "6": {
+        "date": "2007-10-17",
+        "editeur": "Pika",
+        "isbn": "9782845997738"
+      },
+      "7": {
+        "date": "2007-12-12",
+        "editeur": "Pika",
+        "isbn": "9782845997950"
+      },
+      "8": {
+        "date": "2008-02-06",
+        "editeur": "Pika",
+        "isbn": "9782845998247"
+      },
+      "9": {
+        "date": "2008-04-09",
+        "editeur": "Pika",
+        "isbn": "9782845998476"
+      }
+    },
+    "tomesParusEnBase": 37
+  },
+  "ajin": {
+    "aParaitre": {},
+    "maximum": 17,
+    "titre": "AJIN",
+    "tomes": {
+      "1": {
+        "date": "2015-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782344007440"
+      },
+      "10": {
+        "date": "2017-11-22",
+        "editeur": "Glénat",
+        "isbn": "9782344024188"
+      },
+      "11": {
+        "date": "2018-04-18",
+        "editeur": "Glénat",
+        "isbn": "9782344028766"
+      },
+      "12": {
+        "date": "2018-11-07",
+        "editeur": "Glénat",
+        "isbn": "9782344028773"
+      },
+      "13": {
+        "date": "2019-05-01",
+        "editeur": "Glénat",
+        "isbn": "9782344036273"
+      },
+      "14": {
+        "date": "2020-01-15",
+        "editeur": "Glénat",
+        "isbn": "9782344040393"
+      },
+      "15": {
+        "date": "2020-10-21",
+        "editeur": "Glénat",
+        "isbn": "9782344042984"
+      },
+      "16": {
+        "date": "2021-02-17",
+        "editeur": "Glénat",
+        "isbn": "9782344045381"
+      },
+      "17": {
+        "date": "2021-10-20",
+        "editeur": "Glénat",
+        "isbn": "9782344047057"
+      },
+      "2": {
+        "date": "2015-09-02",
+        "editeur": "Glénat",
+        "isbn": "9782344007457"
+      },
+      "3": {
+        "date": "2015-11-18",
+        "editeur": "Glénat",
+        "isbn": "9782344007464"
+      },
+      "4": {
+        "date": "2016-02-03",
+        "editeur": "Glénat",
+        "isbn": "9782344012796"
+      },
+      "5": {
+        "date": "2016-05-11",
+        "editeur": "Glénat",
+        "isbn": "9782344012802"
+      },
+      "6": {
+        "date": "2016-07-06",
+        "editeur": "Glénat",
+        "isbn": "9782344012819"
+      },
+      "7": {
+        "date": "2016-10-05",
+        "editeur": "Glénat",
+        "isbn": "9782344017494"
+      },
+      "8": {
+        "date": "2017-02-15",
+        "editeur": "Glénat",
+        "isbn": "9782344017500"
+      },
+      "9": {
+        "date": "2017-07-05",
+        "editeur": "Glénat",
+        "isbn": "9782344023167"
+      }
+    },
+    "tomesParusEnBase": 17
+  },
+  "all-you-need-is-kill": {
+    "aParaitre": {},
+    "maximum": 2,
+    "titre": "ALL YOU NEED IS KILL",
+    "tomes": {
+      "1": {
+        "date": "2014-06-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820317193"
+      },
+      "2": {
+        "date": "2014-07-16",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820317209"
+      }
+    },
+    "tomesParusEnBase": 2
+  },
+  "alma": {
+    "aParaitre": {},
+    "maximum": 4,
+    "titre": "ALMA",
+    "tomes": {
+      "1": {
+        "date": "2021-04-07",
+        "editeur": "Panini",
+        "isbn": "9782809495881"
+      },
+      "2": {
+        "date": "2021-06-09",
+        "editeur": "Panini",
+        "isbn": "9782809497090"
+      },
+      "3": {
+        "date": "2021-08-25",
+        "editeur": "Panini",
+        "isbn": "9782809498530"
+      },
+      "4": {
+        "date": "2021-11-10",
+        "editeur": "Panini",
+        "isbn": "9791039101493"
+      }
+    },
+    "tomesParusEnBase": 4
+  },
+  "assassination-classroom": {
+    "aParaitre": {},
+    "maximum": 21,
+    "titre": "ASSASSINATION CLASSROOM",
+    "tomes": {
+      "1": {
+        "date": "2013-10-04",
+        "editeur": "Kana",
+        "isbn": "9782505019442"
+      },
+      "10": {
+        "date": "2015-10-02",
+        "editeur": "Kana",
+        "isbn": "9782505062653"
+      },
+      "11": {
+        "date": "2016-01-08",
+        "editeur": "Kana",
+        "isbn": "9782505064374"
+      },
+      "12": {
+        "date": "2016-04-08",
+        "editeur": "Kana",
+        "isbn": "9782505064381"
+      },
+      "13": {
+        "date": "2016-07-08",
+        "editeur": "Kana",
+        "isbn": "9782505064893"
+      },
+      "14": {
+        "date": "2016-10-07",
+        "editeur": "Kana",
+        "isbn": "9782505064909"
+      },
+      "15": {
+        "date": "2017-01-06",
+        "editeur": "Kana",
+        "isbn": "9782505065449"
+      },
+      "16": {
+        "date": "2017-04-07",
+        "editeur": "Kana",
+        "isbn": "9782505068839"
+      },
+      "17": {
+        "date": "2017-07-07",
+        "editeur": "Kana",
+        "isbn": "9782505068846"
+      },
+      "18": {
+        "date": "2017-10-27",
+        "editeur": "Kana",
+        "isbn": "9782505068853"
+      },
+      "19": {
+        "date": "2018-02-02",
+        "editeur": "Kana",
+        "isbn": "9782505069157"
+      },
+      "2": {
+        "date": "2013-10-04",
+        "editeur": "Kana",
+        "isbn": "9782505019459"
+      },
+      "20": {
+        "date": "2018-05-04",
+        "editeur": "Kana",
+        "isbn": "9782505069164"
+      },
+      "21": {
+        "date": "2018-07-06",
+        "editeur": "Kana",
+        "isbn": "9782505069577"
+      },
+      "3": {
+        "date": "2014-02-07",
+        "editeur": "Kana",
+        "isbn": "9782505060055"
+      },
+      "4": {
+        "date": "2014-05-23",
+        "editeur": "Kana",
+        "isbn": "9782505060413"
+      },
+      "5": {
+        "date": "2014-07-04",
+        "editeur": "Kana",
+        "isbn": "9782505060420"
+      },
+      "6": {
+        "date": "2014-10-03",
+        "editeur": "Kana",
+        "isbn": "9782505060437"
+      },
+      "7": {
+        "date": "2015-01-30",
+        "editeur": "Kana",
+        "isbn": "9782505061724"
+      },
+      "8": {
+        "date": "2015-04-03",
+        "editeur": "Kana",
+        "isbn": "9782505063216"
+      },
+      "9": {
+        "date": "2015-07-03",
+        "editeur": "Kana",
+        "isbn": "9782505063322"
+      }
+    },
+    "tomesParusEnBase": 21
+  },
+  "beastars": {
+    "aParaitre": {},
+    "maximum": 22,
+    "titre": "BEASTARS",
+    "tomes": {
+      "1": {
+        "date": "2019-01-24",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703793"
+      },
+      "10": {
+        "date": "2020-05-28",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706268"
+      },
+      "11": {
+        "date": "2020-07-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706411"
+      },
+      "12": {
+        "date": "2020-09-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706572"
+      },
+      "13": {
+        "date": "2020-11-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706732"
+      },
+      "14": {
+        "date": "2021-01-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032707494"
+      },
+      "15": {
+        "date": "2021-03-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032707692"
+      },
+      "16": {
+        "date": "2021-05-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032708002"
+      },
+      "17": {
+        "date": "2021-07-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032708224"
+      },
+      "18": {
+        "date": "2021-09-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032708286"
+      },
+      "19": {
+        "date": "2021-11-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032710296"
+      },
+      "2": {
+        "date": "2019-01-24",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703786"
+      },
+      "20": {
+        "date": "2022-01-13",
+        "editeur": "Ki-oon",
+        "isbn": "9791032710791"
+      },
+      "21": {
+        "date": "2022-03-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711132"
+      },
+      "22": {
+        "date": "2022-06-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711392"
+      },
+      "3": {
+        "date": "2019-03-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703977"
+      },
+      "4": {
+        "date": "2019-05-09",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704127"
+      },
+      "5": {
+        "date": "2019-07-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704264"
+      },
+      "6": {
+        "date": "2019-09-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704875"
+      },
+      "7": {
+        "date": "2019-11-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705056"
+      },
+      "8": {
+        "date": "2020-01-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705766"
+      },
+      "9": {
+        "date": "2020-03-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705865"
+      }
+    },
+    "tomesParusEnBase": 22
+  },
   "berserk": {
     "aParaitre": {},
-    "maximum": 43,
+    "maximum": 41,
     "titre": "BERSERK",
     "tomes": {
-      "43": {
-        "date": "2026-07-01",
+      "1": {
+        "date": "2004-10-06",
         "editeur": "Glénat",
-        "isbn": "9782344074879"
+        "isbn": "9782723448123"
+      },
+      "10": {
+        "date": "2005-10-19",
+        "editeur": "Glénat",
+        "isbn": "9782723451000"
+      },
+      "11": {
+        "date": "2006-01-18",
+        "editeur": "Glénat",
+        "isbn": "9782723451017"
+      },
+      "12": {
+        "date": "2006-03-15",
+        "editeur": "Glénat",
+        "isbn": "9782723451024"
+      },
+      "13": {
+        "date": "2005-05-03",
+        "editeur": "Glénat",
+        "isbn": "9782723454124"
+      },
+      "14": {
+        "date": "2006-07-11",
+        "editeur": "Glénat",
+        "isbn": "9782723454377"
+      },
+      "15": {
+        "date": "2006-09-05",
+        "editeur": "Glénat",
+        "isbn": "9782723454384"
+      },
+      "16": {
+        "date": "2006-11-08",
+        "editeur": "Glénat",
+        "isbn": "9782723454391"
+      },
+      "17": {
+        "date": "2007-01-03",
+        "editeur": "Glénat",
+        "isbn": "9782723454407"
+      },
+      "18": {
+        "date": "2007-03-07",
+        "editeur": "Glénat",
+        "isbn": "9782723454414"
+      },
+      "19": {
+        "date": "2007-06-06",
+        "editeur": "Glénat",
+        "isbn": "9782723457989"
+      },
+      "2": {
+        "date": "2004-10-20",
+        "editeur": "Glénat",
+        "isbn": "9782723448147"
+      },
+      "20": {
+        "date": "2007-07-11",
+        "editeur": "Glénat",
+        "isbn": "9782723458108"
+      },
+      "21": {
+        "date": "2007-09-19",
+        "editeur": "Glénat",
+        "isbn": "9782723458191"
+      },
+      "22": {
+        "date": "2007-11-28",
+        "editeur": "Glénat",
+        "isbn": "9782723458283"
+      },
+      "23": {
+        "date": "2008-01-30",
+        "editeur": "Glénat",
+        "isbn": "9782723459631"
+      },
+      "24": {
+        "date": "2008-03-19",
+        "editeur": "Glénat",
+        "isbn": "9782723459648"
+      },
+      "25": {
+        "date": "2008-06-04",
+        "editeur": "Glénat",
+        "isbn": "9782723459617"
+      },
+      "26": {
+        "date": "2008-07-09",
+        "editeur": "Glénat",
+        "isbn": "9782723459624"
+      },
+      "27": {
+        "date": "2008-09-24",
+        "editeur": "Glénat",
+        "isbn": "9782723464727"
+      },
+      "28": {
+        "date": "2008-11-18",
+        "editeur": "Glénat",
+        "isbn": "9782723464734"
+      },
+      "29": {
+        "date": "2009-01-27",
+        "editeur": "Glénat",
+        "isbn": "9782723464741"
+      },
+      "3": {
+        "date": "2004-11-27",
+        "editeur": "Glénat",
+        "isbn": "9782723449021"
+      },
+      "30": {
+        "date": "2009-03-11",
+        "editeur": "Glénat",
+        "isbn": "9782723464758"
+      },
+      "31": {
+        "date": "2009-05-20",
+        "editeur": "Glénat",
+        "isbn": "9782723467223"
+      },
+      "32": {
+        "date": "2009-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782723467230"
+      },
+      "33": {
+        "date": "2011-01-26",
+        "editeur": "Glénat",
+        "isbn": "9782723477123"
+      },
+      "34": {
+        "date": "2011-04-20",
+        "editeur": "Glénat",
+        "isbn": "9782723480741"
+      },
+      "35": {
+        "date": "2011-06-29",
+        "editeur": "Glénat",
+        "isbn": "9782723484077"
+      },
+      "36": {
+        "date": "2013-01-02",
+        "editeur": "Glénat",
+        "isbn": "9782723491129"
+      },
+      "37": {
+        "date": "2014-07-02",
+        "editeur": "Glénat",
+        "isbn": "9782723495943"
+      },
+      "38": {
+        "date": "2017-01-18",
+        "editeur": "Glénat",
+        "isbn": "9782344009420"
+      },
+      "39": {
+        "date": "2018-01-17",
+        "editeur": "Glénat",
+        "isbn": "9782344027417"
+      },
+      "4": {
+        "date": "2005-02-02",
+        "editeur": "Glénat",
+        "isbn": "9782723449038"
+      },
+      "40": {
+        "date": "2019-04-17",
+        "editeur": "Glénat",
+        "isbn": "9782344033845"
+      },
+      "41": {
+        "date": "2022-07-06",
+        "editeur": "Glénat",
+        "isbn": "9782344053416"
+      },
+      "5": {
+        "date": "2005-02-23",
+        "editeur": "Glénat",
+        "isbn": "9782723449045"
+      },
+      "6": {
+        "date": "2005-03-16",
+        "editeur": "Glénat",
+        "isbn": "9782723449052"
+      },
+      "7": {
+        "date": "2005-04-06",
+        "editeur": "Glénat",
+        "isbn": "9782723450973"
+      },
+      "8": {
+        "date": "2005-06-15",
+        "editeur": "Glénat",
+        "isbn": "9782723450980"
+      },
+      "9": {
+        "date": "2005-06-24",
+        "editeur": "Glénat",
+        "isbn": "9782723450997"
       }
     },
     "tomesParusEnBase": 43
   },
   "black-clover": {
     "aParaitre": {},
-    "maximum": 37,
+    "maximum": 35,
     "titre": "BLACK CLOVER",
     "tomes": {
-      "37": {
-        "date": "2026-02-25",
+      "1": {
+        "date": "2016-09-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820325006"
+      },
+      "10": {
+        "date": "2018-01-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820331908"
+      },
+      "11": {
+        "date": "2018-03-14",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332110"
+      },
+      "12": {
+        "date": "2018-05-16",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332295"
+      },
+      "13": {
+        "date": "2018-07-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332479"
+      },
+      "14": {
+        "date": "2018-09-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332745"
+      },
+      "15": {
+        "date": "2018-11-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332929"
+      },
+      "16": {
+        "date": "2019-01-09",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335197"
+      },
+      "17": {
+        "date": "2019-03-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335333"
+      },
+      "18": {
+        "date": "2019-05-15",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335487"
+      },
+      "19": {
+        "date": "2019-07-03",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335661"
+      },
+      "2": {
+        "date": "2016-09-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820325013"
+      },
+      "20": {
+        "date": "2019-09-11",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335777"
+      },
+      "21": {
+        "date": "2019-11-13",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335944"
+      },
+      "22": {
+        "date": "2020-02-12",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820337726"
+      },
+      "23": {
+        "date": "2020-06-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820337863"
+      },
+      "24": {
+        "date": "2020-08-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338068"
+      },
+      "25": {
+        "date": "2020-11-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338235"
+      },
+      "26": {
+        "date": "2021-02-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340641"
+      },
+      "27": {
+        "date": "2021-05-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340825"
+      },
+      "28": {
+        "date": "2021-08-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341051"
+      },
+      "29": {
+        "date": "2021-11-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341266"
+      },
+      "3": {
+        "date": "2016-11-09",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820325303"
+      },
+      "30": {
+        "date": "2022-02-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343451"
+      },
+      "31": {
+        "date": "2022-05-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343659"
+      },
+      "32": {
+        "date": "2022-08-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343857"
+      },
+      "33": {
+        "date": "2023-03-15",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820355119"
+        "isbn": "9782820343987"
+      },
+      "34": {
+        "date": "2023-08-30",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820347282"
+      },
+      "35": {
+        "date": "2023-12-06",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820347299"
+      },
+      "4": {
+        "date": "2017-01-18",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820327888"
+      },
+      "5": {
+        "date": "2017-03-22",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328229"
+      },
+      "6": {
+        "date": "2017-05-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328496"
+      },
+      "7": {
+        "date": "2017-07-05",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328700"
+      },
+      "8": {
+        "date": "2017-09-27",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820329042"
+      },
+      "9": {
+        "date": "2017-11-01",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820329271"
       }
     },
     "tomesParusEnBase": 37
   },
   "black-lagoon": {
     "aParaitre": {},
-    "maximum": 13,
+    "maximum": 12,
     "titre": "BLACK LAGOON",
     "tomes": {
-      "13": {
-        "date": "2024-08-14",
+      "1": {
+        "date": "2010-01-28",
         "editeur": "Kaze Manga",
-        "isbn": "9782820347251"
+        "isbn": "9782849657300"
+      },
+      "10": {
+        "date": "2014-09-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820317780"
+      },
+      "11": {
+        "date": "2019-06-26",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820336071"
+      },
+      "12": {
+        "date": "2022-03-23",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343529"
+      },
+      "2": {
+        "date": "2010-02-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849657317"
+      },
+      "3": {
+        "date": "2010-03-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849657324"
+      },
+      "4": {
+        "date": "2010-04-29",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849657331"
+      },
+      "5": {
+        "date": "2010-05-27",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849657348"
+      },
+      "6": {
+        "date": "2010-01-28",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849657355"
+      },
+      "7": {
+        "date": "2010-04-29",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849657898"
+      },
+      "8": {
+        "date": "2010-07-08",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849658772"
+      },
+      "9": {
+        "date": "2010-10-28",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849659700"
       }
     },
     "tomesParusEnBase": 13
   },
-  "blue-exorcist": {
-    "aParaitre": {
-      "33": {
-        "date": "2026-10-21",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820356574"
+  "black-torch": {
+    "aParaitre": {},
+    "maximum": 5,
+    "titre": "BLACK TORCH",
+    "tomes": {
+      "1": {
+        "date": "2018-02-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032701881"
+      },
+      "2": {
+        "date": "2018-04-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702468"
+      },
+      "3": {
+        "date": "2018-07-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702734"
+      },
+      "4": {
+        "date": "2019-01-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703199"
+      },
+      "5": {
+        "date": "2019-03-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704004"
       }
     },
-    "maximum": 32,
-    "titre": "BLUE EXORCIST",
+    "tomesParusEnBase": 5
+  },
+  "blackrock-shooter-innocent-soul": {
+    "aParaitre": {},
+    "maximum": 3,
+    "titre": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
     "tomes": {
+      "1": {
+        "date": "2013-05-15",
+        "editeur": "Panini",
+        "isbn": "9782809431193"
+      },
+      "2": {
+        "date": "2013-07-17",
+        "editeur": "Panini",
+        "isbn": "9782809431919"
+      },
+      "3": {
+        "date": "2013-09-18",
+        "editeur": "Panini",
+        "isbn": "9782809433104"
+      }
+    },
+    "tomesParusEnBase": 1
+  },
+  "blackrock-shooter-the-game": {
+    "aParaitre": {},
+    "maximum": 2,
+    "titre": "BLACK★ROCK SHOOTER – THE GAME",
+    "tomes": {
+      "1": {
+        "date": "2013-11-13",
+        "editeur": "Panini",
+        "isbn": "9782809434484"
+      },
+      "2": {
+        "date": "2014-02-05",
+        "editeur": "Panini",
+        "isbn": "9782809436426"
+      }
+    },
+    "tomesParusEnBase": 2
+  },
+  "blazer-drive": {
+    "aParaitre": {},
+    "maximum": 9,
+    "titre": "BLAZER DRIVE",
+    "tomes": {
+      "1": {
+        "date": "2010-03-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351424360"
+      },
+      "2": {
+        "date": "2010-03-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351424377"
+      },
+      "3": {
+        "date": "2010-05-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425329"
+      },
+      "4": {
+        "date": "2010-08-19",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425336"
+      },
+      "5": {
+        "date": "2010-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425343"
+      },
+      "6": {
+        "date": "2011-02-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426029"
+      },
+      "7": {
+        "date": "2011-05-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426036"
+      },
+      "8": {
+        "date": "2011-08-18",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426593"
+      },
+      "9": {
+        "date": "2011-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426852"
+      }
+    },
+    "tomesParusEnBase": 9
+  },
+  "bleach": {
+    "aParaitre": {},
+    "maximum": 74,
+    "titre": "BLEACH",
+    "tomes": {
+      "1": {
+        "date": "2003-07-11",
+        "editeur": "Glénat",
+        "isbn": "9782723442275"
+      },
+      "10": {
+        "date": "2005-04-20",
+        "editeur": "Glénat",
+        "isbn": "9782723448529"
+      },
+      "11": {
+        "date": "2005-06-15",
+        "editeur": "Glénat",
+        "isbn": "9782723451291"
+      },
+      "12": {
+        "date": "2004-08-24",
+        "editeur": "Glénat",
+        "isbn": "9782723451307"
+      },
+      "13": {
+        "date": "2005-10-19",
+        "editeur": "Glénat",
+        "isbn": "9782723451314"
+      },
+      "14": {
+        "date": "2006-01-18",
+        "editeur": "Glénat",
+        "isbn": "9782723451321"
+      },
+      "15": {
+        "date": "2006-03-01",
+        "editeur": "Glénat",
+        "isbn": "9782723453844"
+      },
+      "16": {
+        "date": "2006-05-17",
+        "editeur": "Glénat",
+        "isbn": "9782723453851"
+      },
+      "17": {
+        "date": "2006-07-11",
+        "editeur": "Glénat",
+        "isbn": "9782723453868"
+      },
+      "18": {
+        "date": "2006-09-05",
+        "editeur": "Glénat",
+        "isbn": "9782723455046"
+      },
+      "19": {
+        "date": "2006-11-22",
+        "editeur": "Glénat",
+        "isbn": "9782723455961"
+      },
+      "2": {
+        "date": "2003-09-25",
+        "editeur": "Glénat",
+        "isbn": "9782723442282"
+      },
+      "20": {
+        "date": "2007-02-21",
+        "editeur": "Glénat",
+        "isbn": "9782723456272"
+      },
+      "21": {
+        "date": "2007-04-17",
+        "editeur": "Glénat",
+        "isbn": "9782723458061"
+      },
+      "22": {
+        "date": "2007-06-20",
+        "editeur": "Glénat",
+        "isbn": "9782723458023"
+      },
+      "23": {
+        "date": "2007-08-14",
+        "editeur": "Glénat",
+        "isbn": "9782723458139"
+      },
+      "24": {
+        "date": "2007-11-28",
+        "editeur": "Glénat",
+        "isbn": "9782723459532"
+      },
+      "25": {
+        "date": "2008-01-30",
+        "editeur": "Glénat",
+        "isbn": "9782723461641"
+      },
+      "26": {
+        "date": "2008-03-19",
+        "editeur": "Glénat",
+        "isbn": "9782723461658"
+      },
+      "27": {
+        "date": "2008-05-21",
+        "editeur": "Glénat",
+        "isbn": "9782723463805"
+      },
+      "28": {
+        "date": "2008-07-09",
+        "editeur": "Glénat",
+        "isbn": "9782723464390"
+      },
+      "29": {
+        "date": "2008-09-24",
+        "editeur": "Glénat",
+        "isbn": "9782723464437"
+      },
+      "3": {
+        "date": "2003-11-21",
+        "editeur": "Glénat",
+        "isbn": "9782723442299"
+      },
       "30": {
-        "date": "2024-11-13",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820350381"
+        "date": "2009-01-06",
+        "editeur": "Glénat",
+        "isbn": "9782723466196"
       },
       "31": {
-        "date": "2025-04-16",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820352514"
+        "date": "2009-03-25",
+        "editeur": "Glénat",
+        "isbn": "9782723466226"
       },
       "32": {
-        "date": "2026-04-22",
+        "date": "2009-05-20",
+        "editeur": "Glénat",
+        "isbn": "9782723466240"
+      },
+      "33": {
+        "date": "2009-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782723470216"
+      },
+      "34": {
+        "date": "2009-09-23",
+        "editeur": "Glénat",
+        "isbn": "9782723470223"
+      },
+      "35": {
+        "date": "2010-02-17",
+        "editeur": "Glénat",
+        "isbn": "9782723472647"
+      },
+      "36": {
+        "date": "2010-04-21",
+        "editeur": "Glénat",
+        "isbn": "9782723472654"
+      },
+      "37": {
+        "date": "2010-06-16",
+        "editeur": "Glénat",
+        "isbn": "9782723472661"
+      },
+      "38": {
+        "date": "2010-08-25",
+        "editeur": "Glénat",
+        "isbn": "9782723474559"
+      },
+      "39": {
+        "date": "2010-10-20",
+        "editeur": "Glénat",
+        "isbn": "9782723474566"
+      },
+      "4": {
+        "date": "2004-02-15",
+        "editeur": "Glénat",
+        "isbn": "9782723445696"
+      },
+      "40": {
+        "date": "2011-01-05",
+        "editeur": "Glénat",
+        "isbn": "9782723474573"
+      },
+      "41": {
+        "date": "2011-03-02",
+        "editeur": "Glénat",
+        "isbn": "9782723478762"
+      },
+      "42": {
+        "date": "2011-05-04",
+        "editeur": "Glénat",
+        "isbn": "9782723478779"
+      },
+      "43": {
+        "date": "2011-06-29",
+        "editeur": "Glénat",
+        "isbn": "9782723481632"
+      },
+      "44": {
+        "date": "2011-09-21",
+        "editeur": "Glénat",
+        "isbn": "9782723481649"
+      },
+      "45": {
+        "date": "2011-11-30",
+        "editeur": "Glénat",
+        "isbn": "9782723481656"
+      },
+      "46": {
+        "date": "2012-01-04",
+        "editeur": "Glénat",
+        "isbn": "9782723486637"
+      },
+      "47": {
+        "date": "2012-03-07",
+        "editeur": "Glénat",
+        "isbn": "9782723486644"
+      },
+      "48": {
+        "date": "2012-05-09",
+        "editeur": "Glénat",
+        "isbn": "9782723486651"
+      },
+      "49": {
+        "date": "2012-09-05",
+        "editeur": "Glénat",
+        "isbn": "9782723486668"
+      },
+      "5": {
+        "date": "2004-04-25",
+        "editeur": "Glénat",
+        "isbn": "9782723446082"
+      },
+      "50": {
+        "date": "2012-11-07",
+        "editeur": "Glénat",
+        "isbn": "9782723491068"
+      },
+      "51": {
+        "date": "2013-01-02",
+        "editeur": "Glénat",
+        "isbn": "9782723492218"
+      },
+      "52": {
+        "date": "2013-03-06",
+        "editeur": "Glénat",
+        "isbn": "9782723493079"
+      },
+      "53": {
+        "date": "2013-05-08",
+        "editeur": "Glénat",
+        "isbn": "9782723493086"
+      },
+      "54": {
+        "date": "2013-07-03",
+        "editeur": "Glénat",
+        "isbn": "9782723493093"
+      },
+      "55": {
+        "date": "2013-10-09",
+        "editeur": "Glénat",
+        "isbn": "9782723493246"
+      },
+      "56": {
+        "date": "2014-01-22",
+        "editeur": "Glénat",
+        "isbn": "9782723498197"
+      },
+      "57": {
+        "date": "2014-03-05",
+        "editeur": "Glénat",
+        "isbn": "9782723498203"
+      },
+      "58": {
+        "date": "2014-05-07",
+        "editeur": "Glénat",
+        "isbn": "9782723499088"
+      },
+      "59": {
+        "date": "2014-07-02",
+        "editeur": "Glénat",
+        "isbn": "9782723499262"
+      },
+      "6": {
+        "date": "2004-06-16",
+        "editeur": "Glénat",
+        "isbn": "9782723446297"
+      },
+      "60": {
+        "date": "2014-09-03",
+        "editeur": "Glénat",
+        "isbn": "9782344000717"
+      },
+      "61": {
+        "date": "2015-01-07",
+        "editeur": "Glénat",
+        "isbn": "9782344004883"
+      },
+      "62": {
+        "date": "2015-03-04",
+        "editeur": "Glénat",
+        "isbn": "9782344006429"
+      },
+      "63": {
+        "date": "2015-05-06",
+        "editeur": "Glénat",
+        "isbn": "9782344006740"
+      },
+      "64": {
+        "date": "2015-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782344009413"
+      },
+      "65": {
+        "date": "2015-10-14",
+        "editeur": "Glénat",
+        "isbn": "9782344010280"
+      },
+      "66": {
+        "date": "2016-01-06",
+        "editeur": "Glénat",
+        "isbn": "9782344012888"
+      },
+      "67": {
+        "date": "2016-03-02",
+        "editeur": "Glénat",
+        "isbn": "9782344012895"
+      },
+      "68": {
+        "date": "2016-05-04",
+        "editeur": "Glénat",
+        "isbn": "9782344012901"
+      },
+      "69": {
+        "date": "2016-07-06",
+        "editeur": "Glénat",
+        "isbn": "9782344012918"
+      },
+      "7": {
+        "date": "2004-11-23",
+        "editeur": "Glénat",
+        "isbn": "9782723448116"
+      },
+      "70": {
+        "date": "2016-09-07",
+        "editeur": "Glénat",
+        "isbn": "9782344017425"
+      },
+      "71": {
+        "date": "2016-11-02",
+        "editeur": "Glénat",
+        "isbn": "9782344017432"
+      },
+      "72": {
+        "date": "2017-02-01",
+        "editeur": "Glénat",
+        "isbn": "9782344019863"
+      },
+      "73": {
+        "date": "2017-05-03",
+        "editeur": "Glénat",
+        "isbn": "9782344020388"
+      },
+      "74": {
+        "date": "2017-09-06",
+        "editeur": "Glénat",
+        "isbn": "9782344021910"
+      },
+      "8": {
+        "date": "2004-11-21",
+        "editeur": "Glénat",
+        "isbn": "9782723448505"
+      },
+      "9": {
+        "date": "2005-02-16",
+        "editeur": "Glénat",
+        "isbn": "9782723448512"
+      }
+    },
+    "tomesParusEnBase": 74
+  },
+  "blue-exorcist": {
+    "aParaitre": {},
+    "maximum": 28,
+    "titre": "BLUE EXORCIST",
+    "tomes": {
+      "1": {
+        "date": "2010-05-27",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849658307"
+      },
+      "10": {
+        "date": "2013-03-13",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820306487"
+      },
+      "11": {
+        "date": "2013-10-09",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820307163"
+      },
+      "12": {
+        "date": "2014-02-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820315717"
+      },
+      "13": {
+        "date": "2014-11-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820318916"
+      },
+      "14": {
+        "date": "2015-04-22",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820320001"
+      },
+      "15": {
+        "date": "2015-11-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820322203"
+      },
+      "16": {
+        "date": "2016-04-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820323590"
+      },
+      "17": {
+        "date": "2016-11-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820325297"
+      },
+      "18": {
+        "date": "2017-04-26",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328373"
+      },
+      "19": {
+        "date": "2017-11-22",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820329349"
+      },
+      "2": {
+        "date": "2010-08-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849659267"
+      },
+      "20": {
+        "date": "2018-04-11",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332202"
+      },
+      "21": {
+        "date": "2018-11-21",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332943"
+      },
+      "22": {
+        "date": "2019-04-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335456"
+      },
+      "23": {
+        "date": "2019-11-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335951"
+      },
+      "24": {
+        "date": "2020-06-03",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820337924"
+      },
+      "25": {
+        "date": "2020-11-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338594"
+      },
+      "26": {
+        "date": "2021-04-28",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340771"
+      },
+      "27": {
+        "date": "2021-11-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341327"
+      },
+      "28": {
+        "date": "2023-04-26",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820354488"
+        "isbn": "9782820344045"
+      },
+      "3": {
+        "date": "2010-11-18",
+        "editeur": "Kaze Manga",
+        "isbn": "9782849659816"
+      },
+      "4": {
+        "date": "2011-02-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820300263"
+      },
+      "5": {
+        "date": "2011-05-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820301222"
+      },
+      "6": {
+        "date": "2011-09-15",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820302045"
+      },
+      "7": {
+        "date": "2012-01-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820302823"
+      },
+      "8": {
+        "date": "2012-05-16",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820303356"
+      },
+      "9": {
+        "date": "2012-11-14",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820305367"
       }
     },
     "tomesParusEnBase": 32
   },
+  "blue-eyes-sword": {
+    "aParaitre": {},
+    "maximum": 8,
+    "titre": "BLUE EYES SWORD",
+    "tomes": {
+      "1": {
+        "date": "2019-04-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527894"
+      },
+      "2": {
+        "date": "2019-07-04",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527948"
+      },
+      "3": {
+        "date": "2019-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368528662"
+      },
+      "4": {
+        "date": "2020-05-28",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529409"
+      },
+      "5": {
+        "date": "2021-01-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529416"
+      },
+      "6": {
+        "date": "2021-09-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711035"
+      },
+      "7": {
+        "date": "2022-08-18",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712995"
+      },
+      "8": {
+        "date": "2023-06-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715125"
+      }
+    },
+    "tomesParusEnBase": 8
+  },
+  "burn-the-witch": {
+    "aParaitre": {},
+    "maximum": 1,
+    "titre": "BURN THE WITCH",
+    "tomes": {
+      "1": {
+        "date": "2021-02-17",
+        "editeur": "Glénat",
+        "isbn": "9782344044865"
+      }
+    },
+    "tomesParusEnBase": 1
+  },
   "call-of-the-night": {
     "aParaitre": {},
-    "maximum": 18,
+    "maximum": 7,
     "titre": "CALL OF THE NIGHT",
     "tomes": {
-      "10": {
-        "date": "2024-08-14",
+      "1": {
+        "date": "2022-10-06",
         "editeur": "Kurokawa",
-        "isbn": "9791042014469"
+        "isbn": "9782380713268"
       },
-      "11": {
-        "date": "2024-11-14",
+      "2": {
+        "date": "2022-10-06",
         "editeur": "Kurokawa",
-        "isbn": "9791042014759"
+        "isbn": "9782380713275"
       },
-      "12": {
-        "date": "2025-02-13",
+      "3": {
+        "date": "2022-12-08",
         "editeur": "Kurokawa",
-        "isbn": "9791042018412"
+        "isbn": "9782380713282"
       },
-      "13": {
-        "date": "2025-05-15",
+      "4": {
+        "date": "2023-02-09",
         "editeur": "Kurokawa",
-        "isbn": "9791042018429"
+        "isbn": "9782380714784"
       },
-      "14": {
-        "date": "2025-08-14",
+      "5": {
+        "date": "2023-05-11",
         "editeur": "Kurokawa",
-        "isbn": "9791042018436"
+        "isbn": "9782380715002"
       },
-      "15": {
-        "date": "2025-11-13",
+      "6": {
+        "date": "2023-08-17",
         "editeur": "Kurokawa",
-        "isbn": "9791042018443"
+        "isbn": "9782380715323"
       },
-      "16": {
-        "date": "2026-02-12",
+      "7": {
+        "date": "2023-11-09",
         "editeur": "Kurokawa",
-        "isbn": "9791042021191"
-      },
-      "17": {
-        "date": "2026-05-13",
-        "editeur": "Kurokawa",
-        "isbn": "9791042021207"
-      },
-      "18": {
-        "date": "2026-08-20",
-        "editeur": "Kurokawa",
-        "isbn": "9791042021214"
+        "isbn": "9782380715521"
       }
     },
     "tomesParusEnBase": 18
   },
   "chainsaw-man": {
-    "aParaitre": {
-      "23": {
-        "date": "2026-10-14",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820300348"
-      }
-    },
-    "maximum": 22,
+    "aParaitre": {},
+    "maximum": 15,
     "titre": "CHAINSAW MAN",
     "tomes": {
-      "17": {
-        "date": "2024-09-18",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820348517"
+      "1": {
+        "date": "2020-03-11",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820337825"
       },
-      "18": {
-        "date": "2025-01-22",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820348814"
+      "10": {
+        "date": "2021-09-08",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341167"
       },
-      "19": {
-        "date": "2025-05-21",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820351661"
+      "11": {
+        "date": "2021-11-10",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341280"
       },
-      "20": {
-        "date": "2025-10-22",
+      "12": {
+        "date": "2023-04-05",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820351678"
+        "isbn": "9782820343697"
       },
-      "21": {
-        "date": "2026-02-04",
+      "13": {
+        "date": "2023-07-05",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820353597"
+        "isbn": "9782820343772"
       },
-      "22": {
-        "date": "2026-06-10",
+      "14": {
+        "date": "2023-10-11",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820354464"
+        "isbn": "9782820343949"
+      },
+      "15": {
+        "date": "2024-01-17",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820348043"
+      },
+      "2": {
+        "date": "2020-06-03",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338013"
+      },
+      "3": {
+        "date": "2020-07-01",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338150"
+      },
+      "4": {
+        "date": "2020-09-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338358"
+      },
+      "5": {
+        "date": "2020-11-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338549"
+      },
+      "6": {
+        "date": "2021-01-13",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340542"
+      },
+      "7": {
+        "date": "2021-03-10",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340672"
+      },
+      "8": {
+        "date": "2021-05-05",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340849"
+      },
+      "9": {
+        "date": "2021-07-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340986"
       }
     },
     "tomesParusEnBase": 22
   },
+  "chastity-reverse-world": {
+    "aParaitre": {},
+    "maximum": 4,
+    "titre": "CHASTITY REVERSE WORLD",
+    "tomes": {
+      "1": {
+        "date": "2021-07-16",
+        "editeur": "Meian",
+        "isbn": "9782368779903"
+      },
+      "2": {
+        "date": "2021-11-30",
+        "editeur": "Meian",
+        "isbn": "9782382751206"
+      },
+      "3": {
+        "date": "2022-04-26",
+        "editeur": "Meian",
+        "isbn": "9782382751541"
+      },
+      "4": {
+        "date": "2023-10-24",
+        "editeur": "Meian",
+        "isbn": "9782385031022"
+      }
+    },
+    "tomesParusEnBase": 4
+  },
   "classroom-for-heroes": {
     "aParaitre": {},
-    "maximum": 21,
+    "maximum": 16,
     "titre": "CLASSROOM FOR HEROES",
     "tomes": {
-      "19": {
-        "date": "2024-10-02",
+      "1": {
+        "date": "2019-02-06",
         "editeur": "Doki Doki",
-        "isbn": "9791041110704"
+        "isbn": "9782818966259"
       },
-      "20": {
-        "date": "2025-05-07",
+      "10": {
+        "date": "2021-06-09",
         "editeur": "Doki Doki",
-        "isbn": "9791041113392"
+        "isbn": "9782818985663"
       },
-      "21": {
-        "date": "2026-02-04",
+      "11": {
+        "date": "2021-09-08",
         "editeur": "Doki Doki",
-        "isbn": "9791041117376"
+        "isbn": "9782818988039"
+      },
+      "12": {
+        "date": "2022-02-02",
+        "editeur": "Doki Doki",
+        "isbn": "9782818991947"
+      },
+      "13": {
+        "date": "2022-06-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818994023"
+      },
+      "14": {
+        "date": "2022-10-05",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996478"
+      },
+      "15": {
+        "date": "2023-03-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818999141"
+      },
+      "16": {
+        "date": "2023-11-08",
+        "editeur": "Doki Doki",
+        "isbn": "9791041102945"
+      },
+      "2": {
+        "date": "2019-02-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818966266"
+      },
+      "3": {
+        "date": "2019-04-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818967607"
+      },
+      "4": {
+        "date": "2019-07-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818968161"
+      },
+      "5": {
+        "date": "2019-11-27",
+        "editeur": "Doki Doki",
+        "isbn": "9782818975695"
+      },
+      "6": {
+        "date": "2020-02-05",
+        "editeur": "Doki Doki",
+        "isbn": "9782818975701"
+      },
+      "7": {
+        "date": "2020-06-10",
+        "editeur": "Doki Doki",
+        "isbn": "9782818977392"
+      },
+      "8": {
+        "date": "2020-10-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979280"
+      },
+      "9": {
+        "date": "2021-02-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818983744"
       }
     },
     "tomesParusEnBase": 21
   },
+  "claymore": {
+    "aParaitre": {},
+    "maximum": 27,
+    "titre": "CLAYMORE",
+    "tomes": {
+      "1": {
+        "date": "2006-11-22",
+        "editeur": "Glénat",
+        "isbn": "9782723456364"
+      },
+      "10": {
+        "date": "2008-10-15",
+        "editeur": "Glénat",
+        "isbn": "9782723464512"
+      },
+      "11": {
+        "date": "2008-12-03",
+        "editeur": "Glénat",
+        "isbn": "9782723464529"
+      },
+      "12": {
+        "date": "2009-02-10",
+        "editeur": "Glénat",
+        "isbn": "9782723466288"
+      },
+      "13": {
+        "date": "2009-04-08",
+        "editeur": "Glénat",
+        "isbn": "9782723466295"
+      },
+      "14": {
+        "date": "2009-06-10",
+        "editeur": "Glénat",
+        "isbn": "9782723469906"
+      },
+      "15": {
+        "date": "2009-08-26",
+        "editeur": "Glénat",
+        "isbn": "9782723471930"
+      },
+      "16": {
+        "date": "2009-10-21",
+        "editeur": "Glénat",
+        "isbn": "9782723472258"
+      },
+      "17": {
+        "date": "2011-04-20",
+        "editeur": "Glénat",
+        "isbn": "9782723478793"
+      },
+      "18": {
+        "date": "2011-06-29",
+        "editeur": "Glénat",
+        "isbn": "9782723482639"
+      },
+      "19": {
+        "date": "2011-10-05",
+        "editeur": "Glénat",
+        "isbn": "9782723482646"
+      },
+      "2": {
+        "date": "2007-02-21",
+        "editeur": "Glénat",
+        "isbn": "9782723457545"
+      },
+      "20": {
+        "date": "2012-07-04",
+        "editeur": "Glénat",
+        "isbn": "9782723490016"
+      },
+      "21": {
+        "date": "2012-09-05",
+        "editeur": "Glénat",
+        "isbn": "9782723490023"
+      },
+      "22": {
+        "date": "2013-01-02",
+        "editeur": "Glénat",
+        "isbn": "9782723493208"
+      },
+      "23": {
+        "date": "2013-07-03",
+        "editeur": "Glénat",
+        "isbn": "9782723495929"
+      },
+      "24": {
+        "date": "2014-07-02",
+        "editeur": "Glénat",
+        "isbn": "9782344000571"
+      },
+      "25": {
+        "date": "2015-02-18",
+        "editeur": "Glénat",
+        "isbn": "9782344004890"
+      },
+      "26": {
+        "date": "2015-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782344008294"
+      },
+      "27": {
+        "date": "2015-10-14",
+        "editeur": "Glénat",
+        "isbn": "9782344008690"
+      },
+      "3": {
+        "date": "2007-04-18",
+        "editeur": "Glénat",
+        "isbn": "9782723457552"
+      },
+      "4": {
+        "date": "2007-06-20",
+        "editeur": "Glénat",
+        "isbn": "9782723457569"
+      },
+      "5": {
+        "date": "2007-08-14",
+        "editeur": "Glénat",
+        "isbn": "9782723457583"
+      },
+      "6": {
+        "date": "2007-11-07",
+        "editeur": "Glénat",
+        "isbn": "9782723457590"
+      },
+      "7": {
+        "date": "2008-04-02",
+        "editeur": "Glénat",
+        "isbn": "9782723461382"
+      },
+      "8": {
+        "date": "2008-06-04",
+        "editeur": "Glénat",
+        "isbn": "9782723463348"
+      },
+      "9": {
+        "date": "2008-08-27",
+        "editeur": "Glénat",
+        "isbn": "9782723464444"
+      }
+    },
+    "tomesParusEnBase": 27
+  },
   "d-gray-man": {
     "aParaitre": {},
-    "maximum": 29,
+    "maximum": 28,
     "titre": "D.GRAY-MAN",
     "tomes": {
-      "29": {
-        "date": "2026-07-01",
+      "1": {
+        "date": "2006-09-05",
         "editeur": "Glénat",
-        "isbn": "9782344064924"
+        "isbn": "9782723455848"
+      },
+      "10": {
+        "date": "2008-05-07",
+        "editeur": "Glénat",
+        "isbn": "9782723461689"
+      },
+      "11": {
+        "date": "2008-07-09",
+        "editeur": "Glénat",
+        "isbn": "9782723464406"
+      },
+      "12": {
+        "date": "2008-09-10",
+        "editeur": "Glénat",
+        "isbn": "9782723464536"
+      },
+      "13": {
+        "date": "2008-11-05",
+        "editeur": "Glénat",
+        "isbn": "9782723466141"
+      },
+      "14": {
+        "date": "2009-02-10",
+        "editeur": "Glénat",
+        "isbn": "9782723467995"
+      },
+      "15": {
+        "date": "2009-04-08",
+        "editeur": "Glénat",
+        "isbn": "9782723468008"
+      },
+      "16": {
+        "date": "2009-07-01",
+        "editeur": "Glénat",
+        "isbn": "9782723471183"
+      },
+      "17": {
+        "date": "2009-09-09",
+        "editeur": "Glénat",
+        "isbn": "9782723471190"
+      },
+      "18": {
+        "date": "2010-02-03",
+        "editeur": "Glénat",
+        "isbn": "9782723474634"
+      },
+      "19": {
+        "date": "2010-05-19",
+        "editeur": "Glénat",
+        "isbn": "9782723474641"
+      },
+      "2": {
+        "date": "2006-11-08",
+        "editeur": "Glénat",
+        "isbn": "9782723455855"
+      },
+      "20": {
+        "date": "2011-06-29",
+        "editeur": "Glénat",
+        "isbn": "9782723474658"
+      },
+      "21": {
+        "date": "2011-09-07",
+        "editeur": "Glénat",
+        "isbn": "9782723482653"
+      },
+      "22": {
+        "date": "2012-07-04",
+        "editeur": "Glénat",
+        "isbn": "9782723487634"
+      },
+      "23": {
+        "date": "2013-07-03",
+        "editeur": "Glénat",
+        "isbn": "9782723487641"
+      },
+      "24": {
+        "date": "2014-07-02",
+        "editeur": "Glénat",
+        "isbn": "9782344002865"
+      },
+      "25": {
+        "date": "2017-02-01",
+        "editeur": "Glénat",
+        "isbn": "9782344019870"
+      },
+      "26": {
+        "date": "2019-10-02",
+        "editeur": "Glénat",
+        "isbn": "9782344038369"
+      },
+      "27": {
+        "date": "2021-06-02",
+        "editeur": "Glénat",
+        "isbn": "9782344047040"
+      },
+      "28": {
+        "date": "2023-08-23",
+        "editeur": "Glénat",
+        "isbn": "9782344058886"
+      },
+      "3": {
+        "date": "2007-02-14",
+        "editeur": "Glénat",
+        "isbn": "9782723457507"
+      },
+      "4": {
+        "date": "2007-04-04",
+        "editeur": "Glénat",
+        "isbn": "9782723457514"
+      },
+      "5": {
+        "date": "2007-06-20",
+        "editeur": "Glénat",
+        "isbn": "9782723457521"
+      },
+      "6": {
+        "date": "2007-08-22",
+        "editeur": "Glénat",
+        "isbn": "9782723457538"
+      },
+      "7": {
+        "date": "2007-11-07",
+        "editeur": "Glénat",
+        "isbn": "9782723458207"
+      },
+      "8": {
+        "date": "2008-01-23",
+        "editeur": "Glénat",
+        "isbn": "9782723461665"
+      },
+      "9": {
+        "date": "2008-03-05",
+        "editeur": "Glénat",
+        "isbn": "9782723461672"
       }
     },
     "tomesParusEnBase": 29
   },
   "demon-slave": {
     "aParaitre": {},
-    "maximum": 20,
+    "maximum": 12,
     "titre": "DEMON SLAVE",
     "tomes": {
-      "14": {
-        "date": "2024-08-14",
+      "1": {
+        "date": "2021-02-11",
         "editeur": "Kurokawa",
-        "isbn": "9791042014476"
+        "isbn": "9782368529980"
       },
-      "15": {
-        "date": "2024-12-05",
+      "10": {
+        "date": "2023-06-08",
         "editeur": "Kurokawa",
-        "isbn": "9791042014841"
+        "isbn": "9782380714920"
       },
-      "16": {
-        "date": "2025-04-10",
+      "11": {
+        "date": "2023-09-14",
         "editeur": "Kurokawa",
-        "isbn": "9791042018450"
+        "isbn": "9782380715279"
       },
-      "17": {
-        "date": "2025-08-14",
+      "12": {
+        "date": "2023-12-07",
         "editeur": "Kurokawa",
-        "isbn": "9791042018467"
+        "isbn": "9782380715408"
       },
-      "18": {
-        "date": "2025-12-04",
+      "2": {
+        "date": "2021-04-08",
         "editeur": "Kurokawa",
-        "isbn": "9791042018474"
+        "isbn": "9782368529997"
       },
-      "19": {
-        "date": "2026-04-09",
+      "3": {
+        "date": "2021-07-08",
         "editeur": "Kurokawa",
-        "isbn": "9791042021375"
+        "isbn": "9782380711059"
       },
-      "20": {
-        "date": "2026-08-20",
+      "4": {
+        "date": "2021-10-14",
         "editeur": "Kurokawa",
-        "isbn": "9791042021382"
+        "isbn": "9782380711066"
+      },
+      "5": {
+        "date": "2022-01-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712568"
+      },
+      "6": {
+        "date": "2022-04-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712674"
+      },
+      "7": {
+        "date": "2022-07-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712681"
+      },
+      "8": {
+        "date": "2022-10-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712698"
+      },
+      "9": {
+        "date": "2023-03-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380714708"
       }
     },
     "tomesParusEnBase": 20
   },
-  "itchi-the-witch": {
-    "aParaitre": {
-      "5": {
-        "date": "2026-09-03",
-        "editeur": "Ki-oon",
-        "isbn": "9791032723524"
-      }
-    },
+  "doubt": {
+    "aParaitre": {},
     "maximum": 4,
-    "titre": "ITCHI THE WITCH",
+    "titre": "DOUBT",
     "tomes": {
       "1": {
-        "date": "2026-02-12",
+        "date": "2009-08-27",
         "editeur": "Ki-oon",
-        "isbn": "9791032724699"
+        "isbn": "9782355920851"
       },
       "2": {
-        "date": "2026-02-12",
+        "date": "2009-11-12",
         "editeur": "Ki-oon",
-        "isbn": "9791032724484"
+        "isbn": "9782355921100"
       },
       "3": {
-        "date": "2026-04-02",
+        "date": "2010-02-11",
         "editeur": "Ki-oon",
-        "isbn": "9791032724217"
+        "isbn": "9782355921285"
       },
       "4": {
-        "date": "2026-06-04",
+        "date": "2010-06-10",
         "editeur": "Ki-oon",
-        "isbn": "9791032723944"
+        "isbn": "9782355921681"
       }
     },
     "tomesParusEnBase": 4
   },
+  "fire-force": {
+    "aParaitre": {},
+    "maximum": 32,
+    "titre": "FIRE FORCE",
+    "tomes": {
+      "1": {
+        "date": "2017-05-19",
+        "editeur": "Kana",
+        "isbn": "9782505069263"
+      },
+      "10": {
+        "date": "2019-04-05",
+        "editeur": "Kana",
+        "isbn": "9782505074243"
+      },
+      "11": {
+        "date": "2019-06-07",
+        "editeur": "Kana",
+        "isbn": "9782505074267"
+      },
+      "12": {
+        "date": "2019-10-11",
+        "editeur": "Kana",
+        "isbn": "9782505074274"
+      },
+      "13": {
+        "date": "2020-01-31",
+        "editeur": "Kana",
+        "isbn": "9782505074281"
+      },
+      "14": {
+        "date": "2020-06-12",
+        "editeur": "Kana",
+        "isbn": "9782505080664"
+      },
+      "15": {
+        "date": "2020-08-21",
+        "editeur": "Kana",
+        "isbn": "9782505082606"
+      },
+      "16": {
+        "date": "2020-11-06",
+        "editeur": "Kana",
+        "isbn": "9782505084426"
+      },
+      "17": {
+        "date": "2021-01-08",
+        "editeur": "Kana",
+        "isbn": "9782505086253"
+      },
+      "18": {
+        "date": "2021-04-09",
+        "editeur": "Kana",
+        "isbn": "9782505086437"
+      },
+      "19": {
+        "date": "2021-06-18",
+        "editeur": "Kana",
+        "isbn": "9782505088295"
+      },
+      "2": {
+        "date": "2017-07-07",
+        "editeur": "Kana",
+        "isbn": "9782505069270"
+      },
+      "20": {
+        "date": "2021-10-01",
+        "editeur": "Kana",
+        "isbn": "9782505088301"
+      },
+      "21": {
+        "date": "2022-01-21",
+        "editeur": "Kana",
+        "isbn": "9782505088677"
+      },
+      "22": {
+        "date": "2022-03-18",
+        "editeur": "Kana",
+        "isbn": "9782505111351"
+      },
+      "23": {
+        "date": "2022-05-20",
+        "editeur": "Kana",
+        "isbn": "9782505113478"
+      },
+      "24": {
+        "date": "2022-07-08",
+        "editeur": "Kana",
+        "isbn": "9782505113454"
+      },
+      "25": {
+        "date": "2022-09-16",
+        "editeur": "Kana",
+        "isbn": "9782505114307"
+      },
+      "26": {
+        "date": "2022-12-02",
+        "editeur": "Kana",
+        "isbn": "9782505114314"
+      },
+      "27": {
+        "date": "2023-01-27",
+        "editeur": "Kana",
+        "isbn": "9782505117223"
+      },
+      "28": {
+        "date": "2023-03-31",
+        "editeur": "Kana",
+        "isbn": "9782505119906"
+      },
+      "29": {
+        "date": "2023-05-26",
+        "editeur": "Kana",
+        "isbn": "9782505119913"
+      },
+      "3": {
+        "date": "2017-09-08",
+        "editeur": "Kana",
+        "isbn": "9782505069287"
+      },
+      "30": {
+        "date": "2023-07-13",
+        "editeur": "Kana",
+        "isbn": "9782505119920"
+      },
+      "31": {
+        "date": "2023-09-01",
+        "editeur": "Kana",
+        "isbn": "9782505119937"
+      },
+      "32": {
+        "date": "2023-12-01",
+        "editeur": "Kana",
+        "isbn": "9782505119944"
+      },
+      "4": {
+        "date": "2017-11-03",
+        "editeur": "Kana",
+        "isbn": "9782505069294"
+      },
+      "5": {
+        "date": "2018-01-05",
+        "editeur": "Kana",
+        "isbn": "9782505071099"
+      },
+      "6": {
+        "date": "2018-04-20",
+        "editeur": "Kana",
+        "isbn": "9782505071105"
+      },
+      "7": {
+        "date": "2018-07-06",
+        "editeur": "Kana",
+        "isbn": "9782505071112"
+      },
+      "8": {
+        "date": "2018-10-05",
+        "editeur": "Kana",
+        "isbn": "9782505071129"
+      },
+      "9": {
+        "date": "2019-01-18",
+        "editeur": "Kana",
+        "isbn": "9782505071136"
+      }
+    },
+    "tomesParusEnBase": 34
+  },
+  "fire-punch": {
+    "aParaitre": {},
+    "maximum": 8,
+    "titre": "FIRE PUNCH",
+    "tomes": {
+      "1": {
+        "date": "2017-06-21",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328649"
+      },
+      "2": {
+        "date": "2017-08-23",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328830"
+      },
+      "3": {
+        "date": "2017-10-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820329189"
+      },
+      "4": {
+        "date": "2017-12-13",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820329424"
+      },
+      "5": {
+        "date": "2018-03-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332066"
+      },
+      "6": {
+        "date": "2018-06-06",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332356"
+      },
+      "7": {
+        "date": "2018-09-05",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332677"
+      },
+      "8": {
+        "date": "2018-11-28",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332998"
+      }
+    },
+    "tomesParusEnBase": 8
+  },
+  "fullmetal-alchemist": {
+    "aParaitre": {},
+    "maximum": 27,
+    "titre": "FULLMETAL ALCHEMIST",
+    "tomes": {
+      "1": {
+        "date": "2005-09-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420171"
+      },
+      "10": {
+        "date": "2007-01-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351421475"
+      },
+      "11": {
+        "date": "2007-03-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351421512"
+      },
+      "12": {
+        "date": "2007-05-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351421567"
+      },
+      "13": {
+        "date": "2007-07-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351421574"
+      },
+      "14": {
+        "date": "2007-09-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351421581"
+      },
+      "15": {
+        "date": "2007-11-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351421598"
+      },
+      "16": {
+        "date": "2008-03-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351422656"
+      },
+      "17": {
+        "date": "2008-05-15",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423189"
+      },
+      "18": {
+        "date": "2008-09-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423257"
+      },
+      "19": {
+        "date": "2008-12-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423356"
+      },
+      "2": {
+        "date": "2005-09-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420188"
+      },
+      "20": {
+        "date": "2009-04-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351424117"
+      },
+      "21": {
+        "date": "2009-07-02",
+        "editeur": "Kurokawa",
+        "isbn": "9782351424285"
+      },
+      "22": {
+        "date": "2009-11-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351424483"
+      },
+      "23": {
+        "date": "2010-04-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425077"
+      },
+      "24": {
+        "date": "2010-09-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425497"
+      },
+      "25": {
+        "date": "2011-01-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425732"
+      },
+      "26": {
+        "date": "2011-04-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426319"
+      },
+      "27": {
+        "date": "2011-07-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426517"
+      },
+      "3": {
+        "date": "2005-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420195"
+      },
+      "4": {
+        "date": "2006-01-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420416"
+      },
+      "5": {
+        "date": "2006-03-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420454"
+      },
+      "6": {
+        "date": "2006-05-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420461"
+      },
+      "7": {
+        "date": "2006-07-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420478"
+      },
+      "8": {
+        "date": "2006-09-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420485"
+      },
+      "9": {
+        "date": "2006-11-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420492"
+      }
+    },
+    "tomesParusEnBase": 27
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "aParaitre": {},
+    "maximum": 21,
+    "titre": "IPPO – S4 LA LOI DU RING",
+    "tomes": {
+      "1": {
+        "date": "2014-10-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520239"
+      },
+      "10": {
+        "date": "2015-07-02",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520673"
+      },
+      "11": {
+        "date": "2015-08-27",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520680"
+      },
+      "12": {
+        "date": "2015-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520697"
+      },
+      "13": {
+        "date": "2015-10-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520703"
+      },
+      "14": {
+        "date": "2015-11-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520710"
+      },
+      "15": {
+        "date": "2015-12-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520727"
+      },
+      "16": {
+        "date": "2016-01-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520734"
+      },
+      "17": {
+        "date": "2016-02-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520741"
+      },
+      "18": {
+        "date": "2016-03-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520758"
+      },
+      "19": {
+        "date": "2016-04-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520765"
+      },
+      "2": {
+        "date": "2014-11-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520246"
+      },
+      "20": {
+        "date": "2016-05-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520772"
+      },
+      "21": {
+        "date": "2016-06-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520789"
+      },
+      "3": {
+        "date": "2014-12-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520253"
+      },
+      "4": {
+        "date": "2015-01-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520260"
+      },
+      "5": {
+        "date": "2015-02-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520628"
+      },
+      "6": {
+        "date": "2015-03-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520635"
+      },
+      "7": {
+        "date": "2015-04-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520642"
+      },
+      "8": {
+        "date": "2015-05-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520659"
+      },
+      "9": {
+        "date": "2015-06-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520666"
+      }
+    },
+    "tomesParusEnBase": 27
+  },
   "je-suis-un-assassin-et-je-surpasse-le-heros": {
     "aParaitre": {},
-    "maximum": 6,
+    "maximum": 4,
     "titre": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
     "tomes": {
-      "6": {
-        "date": "2025-10-01",
+      "1": {
+        "date": "2020-10-14",
         "editeur": "Doki Doki",
-        "isbn": "9791041114351"
+        "isbn": "9782818978429"
+      },
+      "2": {
+        "date": "2020-12-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818978436"
+      },
+      "3": {
+        "date": "2021-02-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818983737"
+      },
+      "4": {
+        "date": "2023-02-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996263"
       }
     },
     "tomesParusEnBase": 6
   },
   "jk-haru-sex-worker-in-another-world": {
     "aParaitre": {},
-    "maximum": 7,
+    "maximum": 5,
     "titre": "JK HARU - SEX WORKER IN ANOTHER WORLD",
     "tomes": {
-      "6": {
-        "date": "2024-10-25",
+      "1": {
+        "date": "2020-11-23",
         "editeur": "Meian",
-        "isbn": "9782385033651"
+        "isbn": "9782368779545"
       },
-      "7": {
-        "date": "2025-01-17",
+      "2": {
+        "date": "2021-04-30",
         "editeur": "Meian",
-        "isbn": "9782385033668"
+        "isbn": "9782368779552"
+      },
+      "3": {
+        "date": "2021-11-16",
+        "editeur": "Meian",
+        "isbn": "9782382750995"
+      },
+      "4": {
+        "date": "2022-06-07",
+        "editeur": "Meian",
+        "isbn": "9782382753415"
+      },
+      "5": {
+        "date": "2023-07-25",
+        "editeur": "Meian",
+        "isbn": "9782385033644"
       }
     },
     "tomesParusEnBase": 7
   },
-  "kagurabachi": {
-    "aParaitre": {
-      "10": {
-        "date": "2026-09-11",
-        "editeur": "Kana",
-        "isbn": "9782505142829"
-      }
-    },
-    "maximum": 9,
-    "titre": "KAGURABACHI",
+  "judge": {
+    "aParaitre": {},
+    "maximum": 6,
+    "titre": "JUDGE",
     "tomes": {
       "1": {
-        "date": "2025-02-14",
-        "editeur": "Kana",
-        "isbn": "9782505132912"
+        "date": "2011-06-30",
+        "editeur": "Ki-oon",
+        "isbn": "9782355922824"
       },
       "2": {
-        "date": "2025-04-18",
-        "editeur": "Kana",
-        "isbn": "9782505133285"
+        "date": "2011-09-08",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923067"
       },
       "3": {
-        "date": "2025-07-04",
-        "editeur": "Kana",
-        "isbn": "9782505133797"
+        "date": "2011-12-08",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923357"
       },
       "4": {
-        "date": "2025-08-29",
-        "editeur": "Kana",
-        "isbn": "9782505133803"
+        "date": "2012-04-12",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923746"
       },
       "5": {
-        "date": "2025-10-03",
-        "editeur": "Kana",
-        "isbn": "9782505133810"
+        "date": "2012-07-05",
+        "editeur": "Ki-oon",
+        "isbn": "9782355924156"
       },
       "6": {
-        "date": "2025-12-05",
-        "editeur": "Kana",
-        "isbn": "9782505133957"
-      },
-      "7": {
-        "date": "2026-02-27",
-        "editeur": "Kana",
-        "isbn": "9782505140429"
-      },
-      "8": {
-        "date": "2026-04-10",
-        "editeur": "Kana",
-        "isbn": "9782505140597"
-      },
-      "9": {
-        "date": "2026-07-10",
-        "editeur": "Kana",
-        "isbn": "9782505141938"
+        "date": "2013-01-24",
+        "editeur": "Ki-oon",
+        "isbn": "9782355924774"
       }
     },
-    "tomesParusEnBase": 9
+    "tomesParusEnBase": 6
   },
   "kaijin-reijoh": {
-    "aParaitre": {
-      "15": {
-        "date": "2026-10-08",
-        "editeur": "Kurokawa",
-        "isbn": "9791042021528"
-      }
-    },
-    "maximum": 14,
+    "aParaitre": {},
+    "maximum": 9,
     "titre": "KAIJIN REIJOH",
     "tomes": {
-      "11": {
-        "date": "2024-10-10",
+      "1": {
+        "date": "2020-07-09",
         "editeur": "Kurokawa",
-        "isbn": "9791042014735"
+        "isbn": "9782368529867"
       },
-      "12": {
-        "date": "2025-03-13",
+      "2": {
+        "date": "2020-09-10",
         "editeur": "Kurokawa",
-        "isbn": "9791042018870"
+        "isbn": "9782368529874"
       },
-      "13": {
-        "date": "2025-11-13",
+      "3": {
+        "date": "2020-11-12",
         "editeur": "Kurokawa",
-        "isbn": "9791042018887"
+        "isbn": "9782368529881"
       },
-      "14": {
-        "date": "2026-04-09",
+      "4": {
+        "date": "2021-02-11",
         "editeur": "Kurokawa",
-        "isbn": "9791042021511"
+        "isbn": "9782380711141"
+      },
+      "5": {
+        "date": "2021-09-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711158"
+      },
+      "6": {
+        "date": "2022-07-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711165"
+      },
+      "7": {
+        "date": "2023-01-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711172"
+      },
+      "8": {
+        "date": "2023-06-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715149"
+      },
+      "9": {
+        "date": "2023-12-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715620"
       }
     },
     "tomesParusEnBase": 14
   },
   "kaiju-n8": {
     "aParaitre": {},
-    "maximum": 16,
+    "maximum": 10,
     "titre": "KAIJU N°8",
     "tomes": {
-      "12": {
-        "date": "2024-09-11",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820348654"
+      "1": {
+        "date": "2021-10-06",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341075"
       },
-      "13": {
-        "date": "2025-01-08",
+      "10": {
+        "date": "2023-11-22",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820348937"
+        "isbn": "9782820346483"
       },
-      "14": {
-        "date": "2025-03-26",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820351814"
+      "2": {
+        "date": "2021-12-08",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820342348"
       },
-      "15": {
-        "date": "2025-09-17",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820351821"
+      "3": {
+        "date": "2022-02-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343093"
       },
-      "16": {
-        "date": "2026-03-25",
+      "4": {
+        "date": "2022-04-06",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343109"
+      },
+      "5": {
+        "date": "2022-06-08",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343116"
+      },
+      "6": {
+        "date": "2022-08-31",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343888"
+      },
+      "7": {
+        "date": "2022-12-07",
         "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820353443"
+        "isbn": "9782820344076"
+      },
+      "8": {
+        "date": "2023-03-29",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346018"
+      },
+      "9": {
+        "date": "2023-06-28",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346216"
       }
     },
     "tomesParusEnBase": 16
   },
   "kemono-incidents": {
     "aParaitre": {},
-    "maximum": 24,
+    "maximum": 17,
     "titre": "KEMONO INCIDENTS",
     "tomes": {
-      "19": {
-        "date": "2024-08-14",
+      "1": {
+        "date": "2019-06-13",
         "editeur": "Kurokawa",
-        "isbn": "9791042014490"
+        "isbn": "9782368526675"
       },
-      "20": {
-        "date": "2024-12-05",
+      "10": {
+        "date": "2021-07-08",
         "editeur": "Kurokawa",
-        "isbn": "9791042014865"
+        "isbn": "9782380711196"
       },
-      "21": {
-        "date": "2025-04-10",
+      "11": {
+        "date": "2021-11-11",
         "editeur": "Kurokawa",
-        "isbn": "9791042018528"
+        "isbn": "9782380711202"
       },
-      "22": {
-        "date": "2025-08-14",
+      "12": {
+        "date": "2022-03-10",
         "editeur": "Kurokawa",
-        "isbn": "9791042018535"
+        "isbn": "9782380712759"
       },
-      "23": {
-        "date": "2025-12-04",
+      "13": {
+        "date": "2022-07-14",
         "editeur": "Kurokawa",
-        "isbn": "9791042018542"
+        "isbn": "9782380712766"
       },
-      "24": {
-        "date": "2026-06-11",
+      "14": {
+        "date": "2022-11-10",
         "editeur": "Kurokawa",
-        "isbn": "9791042021535"
+        "isbn": "9782380712773"
+      },
+      "15": {
+        "date": "2023-04-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782380714944"
+      },
+      "16": {
+        "date": "2023-08-17",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715293"
+      },
+      "17": {
+        "date": "2023-12-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715590"
+      },
+      "2": {
+        "date": "2019-07-04",
+        "editeur": "Kurokawa",
+        "isbn": "9782368526682"
+      },
+      "3": {
+        "date": "2019-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527504"
+      },
+      "4": {
+        "date": "2019-12-05",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527511"
+      },
+      "5": {
+        "date": "2020-03-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529058"
+      },
+      "6": {
+        "date": "2020-06-18",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529065"
+      },
+      "7": {
+        "date": "2020-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529072"
+      },
+      "8": {
+        "date": "2020-12-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529089"
+      },
+      "9": {
+        "date": "2021-03-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711189"
       }
     },
     "tomesParusEnBase": 24
   },
-  "kindergarten-wars": {
-    "aParaitre": {
-      "16": {
-        "date": "2026-10-01",
-        "editeur": "Ki-oon",
-        "isbn": "9791032723395"
-      }
-    },
-    "maximum": 15,
-    "titre": "KINDERGARTEN WARS",
+  "les-legendaires-saga": {
+    "aParaitre": {},
+    "maximum": 8,
+    "titre": "Les Légendaires - Saga",
     "tomes": {
-      "10": {
-        "date": "2025-09-04",
-        "editeur": "Ki-oon",
-        "isbn": "9791032721391"
+      "1": {
+        "date": "2020-03-18",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413016632"
       },
-      "11": {
-        "date": "2025-11-06",
-        "editeur": "Ki-oon",
-        "isbn": "9791032720479"
+      "2": {
+        "date": "2020-08-19",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413016649"
       },
-      "12": {
-        "date": "2026-01-08",
-        "editeur": "Ki-oon",
-        "isbn": "9791032724637"
-      },
-      "13": {
-        "date": "2026-03-05",
-        "editeur": "Ki-oon",
-        "isbn": "9791032724323"
-      },
-      "14": {
-        "date": "2026-05-07",
-        "editeur": "Ki-oon",
-        "isbn": "9791032724033"
-      },
-      "15": {
-        "date": "2026-07-02",
-        "editeur": "Ki-oon",
-        "isbn": "9791032723791"
+      "3": {
+        "date": "2020-12-02",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413016656"
       },
       "4": {
-        "date": "2024-09-05",
-        "editeur": "Ki-oon",
-        "isbn": "9791032718117"
+        "date": "2021-06-23",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030133"
       },
       "5": {
-        "date": "2024-11-07",
-        "editeur": "Ki-oon",
-        "isbn": "9791032718131"
+        "date": "2021-12-01",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030140"
       },
       "6": {
-        "date": "2025-01-02",
-        "editeur": "Ki-oon",
-        "isbn": "9791032719176"
+        "date": "2022-03-16",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413040262"
       },
       "7": {
-        "date": "2025-03-06",
-        "editeur": "Ki-oon",
-        "isbn": "9791032719183"
+        "date": "2022-06-29",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413044628"
       },
       "8": {
-        "date": "2025-05-07",
-        "editeur": "Ki-oon",
-        "isbn": "9791032719190"
-      },
-      "9": {
-        "date": "2025-07-03",
-        "editeur": "Ki-oon",
-        "isbn": "9791032719206"
-      }
-    },
-    "tomesParusEnBase": 15
-  },
-  "les-legendaires-saga": {
-    "aParaitre": {
-      "13": {
-        "date": "2026-09-17",
+        "date": "2023-04-26",
         "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413093466"
-      }
-    },
-    "maximum": 12,
-    "titre": "LES LEGENDAIRES Saga",
-    "tomes": {
-      "10": {
-        "date": "2025-02-19",
-        "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413076162"
-      },
-      "11": {
-        "date": "2025-06-25",
-        "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413088639"
-      },
-      "12": {
-        "date": "2026-01-29",
-        "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413088646"
+        "isbn": "9782413044635"
       }
     },
     "tomesParusEnBase": 12
   },
-  "magus-of-the-library": {
+  "magi-the-labyrinth-of-magic": {
     "aParaitre": {},
-    "maximum": 9,
-    "titre": "MAGUS OF THE LIBRARY",
+    "maximum": 37,
+    "titre": "MAGI - THE LABYRINTH OF MAGIC",
     "tomes": {
+      "1": {
+        "date": "2011-07-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425848"
+      },
+      "10": {
+        "date": "2012-12-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428061"
+      },
+      "11": {
+        "date": "2013-03-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428078"
+      },
+      "12": {
+        "date": "2013-06-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428726"
+      },
+      "13": {
+        "date": "2013-08-22",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428733"
+      },
+      "14": {
+        "date": "2013-12-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429396"
+      },
+      "15": {
+        "date": "2014-02-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429556"
+      },
+      "16": {
+        "date": "2014-07-03",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429631"
+      },
+      "17": {
+        "date": "2014-11-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429648"
+      },
+      "18": {
+        "date": "2015-02-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521021"
+      },
+      "19": {
+        "date": "2015-05-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521038"
+      },
+      "2": {
+        "date": "2011-07-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425855"
+      },
+      "20": {
+        "date": "2015-08-27",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521045"
+      },
+      "21": {
+        "date": "2015-12-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521052"
+      },
+      "22": {
+        "date": "2016-04-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522523"
+      },
+      "23": {
+        "date": "2016-08-25",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522530"
+      },
+      "24": {
+        "date": "2016-12-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522547"
+      },
+      "25": {
+        "date": "2017-04-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524596"
+      },
+      "26": {
+        "date": "2017-08-24",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524602"
+      },
+      "27": {
+        "date": "2017-12-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524619"
+      },
+      "28": {
+        "date": "2018-04-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368526064"
+      },
+      "29": {
+        "date": "2018-08-23",
+        "editeur": "Kurokawa",
+        "isbn": "9782368526071"
+      },
+      "3": {
+        "date": "2011-09-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425862"
+      },
+      "30": {
+        "date": "2018-12-06",
+        "editeur": "Kurokawa",
+        "isbn": "9782368526088"
+      },
+      "31": {
+        "date": "2019-03-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527207"
+      },
+      "32": {
+        "date": "2019-06-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527399"
+      },
+      "33": {
+        "date": "2019-09-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527573"
+      },
+      "34": {
+        "date": "2019-12-05",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527580"
+      },
+      "35": {
+        "date": "2020-03-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529133"
+      },
+      "36": {
+        "date": "2020-07-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529140"
+      },
+      "37": {
+        "date": "2020-07-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529157"
+      },
+      "4": {
+        "date": "2011-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426777"
+      },
+      "5": {
+        "date": "2012-01-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426784"
+      },
+      "6": {
+        "date": "2012-03-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426791"
+      },
+      "7": {
+        "date": "2012-05-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426807"
+      },
       "8": {
-        "date": "2025-03-06",
-        "editeur": "Ki-oon",
-        "isbn": "9791032719497"
+        "date": "2012-07-05",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427736"
       },
       "9": {
-        "date": "2026-04-02",
+        "date": "2012-09-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428054"
+      }
+    },
+    "tomesParusEnBase": 37
+  },
+  "magus-of-the-library": {
+    "aParaitre": {},
+    "maximum": 6,
+    "titre": "MAGUS OF THE LIBRARY",
+    "tomes": {
+      "1": {
+        "date": "2019-03-07",
         "editeur": "Ki-oon",
-        "isbn": "9791032724187"
+        "isbn": "9791032704677"
+      },
+      "2": {
+        "date": "2019-06-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704684"
+      },
+      "3": {
+        "date": "2019-10-17",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704936"
+      },
+      "4": {
+        "date": "2020-11-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706602"
+      },
+      "5": {
+        "date": "2022-03-17",
+        "editeur": "Ki-oon",
+        "isbn": "9791032708125"
+      },
+      "6": {
+        "date": "2023-02-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711880"
       }
     },
     "tomesParusEnBase": 9
   },
-  "mission-in-the-apocalypse": {
+  "marimashita-iruma-kun": {
     "aParaitre": {},
-    "maximum": 4,
-    "titre": "MISSION IN THE APOCALYPSE",
+    "maximum": 20,
+    "titre": "Iruma à l'école des démons",
     "tomes": {
+      "1": {
+        "date": "2020-09-16",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373493863"
+      },
+      "10": {
+        "date": "2021-11-17",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495386"
+      },
+      "11": {
+        "date": "2022-01-05",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495645"
+      },
+      "12": {
+        "date": "2022-03-02",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495652"
+      },
+      "13": {
+        "date": "2022-05-11",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495669"
+      },
+      "14": {
+        "date": "2022-07-13",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495690"
+      },
+      "15": {
+        "date": "2022-09-14",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373497144"
+      },
+      "16": {
+        "date": "2022-11-02",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373497168"
+      },
+      "17": {
+        "date": "2023-01-18",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373499162"
+      },
+      "18": {
+        "date": "2023-04-05",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373499285"
+      },
+      "19": {
+        "date": "2023-07-05",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373499292"
+      },
       "2": {
-        "date": "2024-11-06",
-        "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413084679"
+        "date": "2020-10-14",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373493870"
+      },
+      "20": {
+        "date": "2023-10-18",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373499308"
       },
       "3": {
-        "date": "2025-04-23",
-        "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413088219"
+        "date": "2020-11-18",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495003"
       },
       "4": {
-        "date": "2025-09-10",
-        "editeur": "Delcourt / Tonkam",
-        "isbn": "9782413090991"
+        "date": "2020-12-09",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495010"
+      },
+      "5": {
+        "date": "2021-01-27",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495331"
+      },
+      "6": {
+        "date": "2021-03-17",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495348"
+      },
+      "7": {
+        "date": "2021-05-26",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495355"
+      },
+      "8": {
+        "date": "2021-07-14",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495362"
+      },
+      "9": {
+        "date": "2021-09-08",
+        "editeur": "nobi nobi!",
+        "isbn": "9782373495379"
+      }
+    },
+    "tomesParusEnBase": 34
+  },
+  "mashle": {
+    "aParaitre": {},
+    "maximum": 17,
+    "titre": "MASHLE",
+    "tomes": {
+      "1": {
+        "date": "2021-04-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340801"
+      },
+      "10": {
+        "date": "2022-08-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343833"
+      },
+      "11": {
+        "date": "2022-10-26",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820343963"
+      },
+      "12": {
+        "date": "2023-01-11",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820344113"
+      },
+      "13": {
+        "date": "2023-03-08",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346001"
+      },
+      "14": {
+        "date": "2023-05-10",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346124"
+      },
+      "15": {
+        "date": "2023-07-05",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346247"
+      },
+      "16": {
+        "date": "2023-09-06",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346391"
+      },
+      "17": {
+        "date": "2023-11-08",
+        "editeur": "Crunchyroll - Editions",
+        "isbn": "9782820346506"
+      },
+      "2": {
+        "date": "2021-04-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340818"
+      },
+      "3": {
+        "date": "2021-06-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340979"
+      },
+      "4": {
+        "date": "2021-08-18",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341136"
+      },
+      "5": {
+        "date": "2021-10-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343000"
+      },
+      "6": {
+        "date": "2021-12-08",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820341273"
+      },
+      "7": {
+        "date": "2022-02-16",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343468"
+      },
+      "8": {
+        "date": "2022-04-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343543"
+      },
+      "9": {
+        "date": "2022-06-22",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820343734"
+      }
+    },
+    "tomesParusEnBase": 18
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "aParaitre": {},
+    "maximum": 12,
+    "titre": "MIRAI NIKKI - LE JOURNAL DU FUTUR",
+    "tomes": {
+      "1": {
+        "date": "2009-06-17",
+        "editeur": "Casterman",
+        "isbn": "9782203022584"
+      },
+      "10": {
+        "date": "2011-02-09",
+        "editeur": "Casterman",
+        "isbn": "9782203038011"
+      },
+      "11": {
+        "date": "2011-06-29",
+        "editeur": "Casterman",
+        "isbn": "9782203038424"
+      },
+      "12": {
+        "date": "2011-10-19",
+        "editeur": "Casterman",
+        "isbn": "9782203038431"
+      },
+      "2": {
+        "date": "2009-06-17",
+        "editeur": "Casterman",
+        "isbn": "9782203024502"
+      },
+      "3": {
+        "date": "2009-09-09",
+        "editeur": "Casterman",
+        "isbn": "9782203022393"
+      },
+      "4": {
+        "date": "2009-11-04",
+        "editeur": "Casterman",
+        "isbn": "9782203028616"
+      },
+      "5": {
+        "date": "2010-02-10",
+        "editeur": "Casterman",
+        "isbn": "9782203029651"
+      },
+      "6": {
+        "date": "2010-04-21",
+        "editeur": "Casterman",
+        "isbn": "9782203030169"
+      },
+      "7": {
+        "date": "2010-06-30",
+        "editeur": "Casterman",
+        "isbn": "9782203030183"
+      },
+      "8": {
+        "date": "2010-09-08",
+        "editeur": "Casterman",
+        "isbn": "9782203035201"
+      },
+      "9": {
+        "date": "2011-01-05",
+        "editeur": "Casterman",
+        "isbn": "9782203035218"
+      }
+    },
+    "tomesParusEnBase": 12
+  },
+  "monster-hunter-orage": {
+    "aParaitre": {},
+    "maximum": 4,
+    "titre": "MONSTER HUNTER ORAGE",
+    "tomes": {
+      "1": {
+        "date": "2010-06-23",
+        "editeur": "Pika",
+        "isbn": "9782811603199"
+      },
+      "2": {
+        "date": "2010-08-18",
+        "editeur": "Pika",
+        "isbn": "9782811603250"
+      },
+      "3": {
+        "date": "2010-10-06",
+        "editeur": "Pika",
+        "isbn": "9782811603625"
+      },
+      "4": {
+        "date": "2010-12-01",
+        "editeur": "Pika",
+        "isbn": "9782811603953"
       }
     },
     "tomesParusEnBase": 4
   },
   "monster-musume-everyday-life-with-monster-girls": {
-    "aParaitre": {
-      "19": {
-        "date": "2026-09-25",
-        "editeur": "Ototo Manga",
-        "isbn": "9782377176465"
-      }
-    },
-    "maximum": 18,
+    "aParaitre": {},
+    "maximum": 15,
     "titre": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
     "tomes": {
-      "17": {
-        "date": "2024-09-27",
+      "1": {
+        "date": "2017-11-03",
         "editeur": "Ototo Manga",
-        "isbn": "9782377176199"
+        "isbn": "9782377170760"
       },
-      "18": {
-        "date": "2024-11-22",
+      "10": {
+        "date": "2020-01-31",
         "editeur": "Ototo Manga",
-        "isbn": "9782377176298"
+        "isbn": "9782377172696"
+      },
+      "11": {
+        "date": "2020-06-05",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377172993"
+      },
+      "12": {
+        "date": "2020-08-28",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377173297"
+      },
+      "13": {
+        "date": "2020-11-20",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377173334"
+      },
+      "14": {
+        "date": "2021-02-26",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377173860"
+      },
+      "15": {
+        "date": "2021-05-28",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377174003"
+      },
+      "2": {
+        "date": "2017-11-03",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377170777"
+      },
+      "3": {
+        "date": "2018-02-23",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377170937"
+      },
+      "4": {
+        "date": "2018-05-18",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377171187"
+      },
+      "5": {
+        "date": "2018-08-24",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377171576"
+      },
+      "6": {
+        "date": "2018-10-19",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377171569"
+      },
+      "7": {
+        "date": "2019-03-22",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377171989"
+      },
+      "8": {
+        "date": "2019-06-21",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377172221"
+      },
+      "9": {
+        "date": "2019-09-27",
+        "editeur": "Ototo Manga",
+        "isbn": "9782377172412"
       }
     },
     "tomesParusEnBase": 18
   },
   "mushoku-tensei": {
     "aParaitre": {},
-    "maximum": 23,
+    "maximum": 19,
     "titre": "MUSHOKU TENSEI",
     "tomes": {
-      "20": {
-        "date": "2024-08-21",
+      "1": {
+        "date": "2017-06-07",
         "editeur": "Doki Doki",
-        "isbn": "9791041107957"
+        "isbn": "9782818941751"
       },
-      "21": {
-        "date": "2025-03-05",
+      "10": {
+        "date": "2019-10-30",
         "editeur": "Doki Doki",
-        "isbn": "9791041111817"
+        "isbn": "9782818975398"
       },
-      "22": {
-        "date": "2025-08-20",
+      "11": {
+        "date": "2020-06-10",
         "editeur": "Doki Doki",
-        "isbn": "9791041114344"
+        "isbn": "9782818977446"
       },
-      "23": {
-        "date": "2026-04-01",
+      "12": {
+        "date": "2020-11-04",
         "editeur": "Doki Doki",
-        "isbn": "9791041119349"
+        "isbn": "9782818979488"
+      },
+      "13": {
+        "date": "2021-04-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818984574"
+      },
+      "14": {
+        "date": "2021-10-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818987889"
+      },
+      "15": {
+        "date": "2022-02-02",
+        "editeur": "Doki Doki",
+        "isbn": "9782818991954"
+      },
+      "16": {
+        "date": "2022-06-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818994030"
+      },
+      "17": {
+        "date": "2022-12-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996508"
+      },
+      "18": {
+        "date": "2023-06-07",
+        "editeur": "Doki Doki",
+        "isbn": "9791041100774"
+      },
+      "19": {
+        "date": "2024-01-10",
+        "editeur": "Doki Doki",
+        "isbn": "9791041105397"
+      },
+      "2": {
+        "date": "2017-07-05",
+        "editeur": "Doki Doki",
+        "isbn": "9782818941812"
+      },
+      "3": {
+        "date": "2017-09-20",
+        "editeur": "Doki Doki",
+        "isbn": "9782818942833"
+      },
+      "4": {
+        "date": "2017-11-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818943700"
+      },
+      "5": {
+        "date": "2018-01-10",
+        "editeur": "Doki Doki",
+        "isbn": "9782818944165"
+      },
+      "6": {
+        "date": "2018-05-02",
+        "editeur": "Doki Doki",
+        "isbn": "9782818945063"
+      },
+      "7": {
+        "date": "2018-07-04",
+        "editeur": "Doki Doki",
+        "isbn": "9782818946787"
+      },
+      "8": {
+        "date": "2018-10-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818947135"
+      },
+      "9": {
+        "date": "2019-03-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818967539"
       }
     },
     "tomesParusEnBase": 23
   },
   "mushoku-tensei-les-aventures-de-roxy": {
     "aParaitre": {},
-    "maximum": 12,
+    "maximum": 10,
     "titre": "MUSHOKU TENSEI – Les aventures de Roxy",
     "tomes": {
-      "11": {
-        "date": "2024-08-21",
+      "1": {
+        "date": "2019-01-09",
         "editeur": "Doki Doki",
-        "isbn": "9791041105267"
+        "isbn": "9782818966112"
       },
-      "12": {
-        "date": "2025-03-05",
+      "10": {
+        "date": "2024-01-10",
         "editeur": "Doki Doki",
-        "isbn": "9791041107001"
+        "isbn": "9791041102747"
+      },
+      "2": {
+        "date": "2019-05-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818967690"
+      },
+      "3": {
+        "date": "2019-10-30",
+        "editeur": "Doki Doki",
+        "isbn": "9782818975404"
+      },
+      "4": {
+        "date": "2020-08-19",
+        "editeur": "Doki Doki",
+        "isbn": "9782818977415"
+      },
+      "5": {
+        "date": "2021-02-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979617"
+      },
+      "6": {
+        "date": "2021-08-18",
+        "editeur": "Doki Doki",
+        "isbn": "9782818984581"
+      },
+      "7": {
+        "date": "2021-12-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818987872"
+      },
+      "8": {
+        "date": "2022-12-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818994047"
+      },
+      "9": {
+        "date": "2023-06-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818999370"
       }
     },
     "tomesParusEnBase": 12
   },
+  "my-elder-sister": {
+    "aParaitre": {},
+    "maximum": 6,
+    "titre": "MY ELDER SISTER",
+    "tomes": {
+      "1": {
+        "date": "2021-09-28",
+        "editeur": "Meian",
+        "isbn": "9782382751404"
+      },
+      "2": {
+        "date": "2021-09-28",
+        "editeur": "Meian",
+        "isbn": "9782382751411"
+      },
+      "3": {
+        "date": "2021-12-21",
+        "editeur": "Meian",
+        "isbn": "9782382751428"
+      },
+      "4": {
+        "date": "2022-02-21",
+        "editeur": "Meian",
+        "isbn": "9782382751435"
+      },
+      "5": {
+        "date": "2022-07-12",
+        "editeur": "Meian",
+        "isbn": "9782382751442"
+      },
+      "6": {
+        "date": "2023-07-11",
+        "editeur": "Meian",
+        "isbn": "9782382754023"
+      }
+    },
+    "tomesParusEnBase": 6
+  },
   "my-hero-academia": {
     "aParaitre": {},
-    "maximum": 42,
+    "maximum": 37,
     "titre": "MY HERO ACADEMIA",
     "tomes": {
-      "40": {
-        "date": "2024-11-07",
+      "1": {
+        "date": "2016-04-14",
         "editeur": "Ki-oon",
-        "isbn": "9791032716946"
+        "isbn": "9782355929489"
       },
-      "41": {
-        "date": "2025-02-06",
+      "10": {
+        "date": "2017-09-07",
         "editeur": "Ki-oon",
-        "isbn": "9791032719640"
+        "isbn": "9791032701317"
       },
-      "42": {
-        "date": "2025-06-05",
+      "11": {
+        "date": "2017-11-09",
         "editeur": "Ki-oon",
-        "isbn": "9791032719657"
+        "isbn": "9791032701508"
+      },
+      "12": {
+        "date": "2018-01-11",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702253"
+      },
+      "13": {
+        "date": "2018-04-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702451"
+      },
+      "14": {
+        "date": "2018-07-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702727"
+      },
+      "15": {
+        "date": "2018-09-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703120"
+      },
+      "16": {
+        "date": "2018-11-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703281"
+      },
+      "17": {
+        "date": "2019-01-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703755"
+      },
+      "18": {
+        "date": "2019-04-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704028"
+      },
+      "19": {
+        "date": "2019-07-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704257"
+      },
+      "2": {
+        "date": "2016-04-14",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929472"
+      },
+      "20": {
+        "date": "2019-09-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704820"
+      },
+      "21": {
+        "date": "2019-11-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705018"
+      },
+      "22": {
+        "date": "2020-01-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705780"
+      },
+      "23": {
+        "date": "2020-06-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706084"
+      },
+      "24": {
+        "date": "2020-07-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706473"
+      },
+      "25": {
+        "date": "2020-09-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706619"
+      },
+      "26": {
+        "date": "2020-11-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706770"
+      },
+      "27": {
+        "date": "2021-01-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032707470"
+      },
+      "28": {
+        "date": "2021-04-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032707647"
+      },
+      "29": {
+        "date": "2021-07-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032707838"
+      },
+      "3": {
+        "date": "2016-06-09",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929724"
+      },
+      "30": {
+        "date": "2021-09-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032707869"
+      },
+      "31": {
+        "date": "2022-01-27",
+        "editeur": "Ki-oon",
+        "isbn": "9791032710814"
+      },
+      "32": {
+        "date": "2022-04-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711491"
+      },
+      "33": {
+        "date": "2022-07-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711446"
+      },
+      "34": {
+        "date": "2022-10-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711859"
+      },
+      "35": {
+        "date": "2023-04-20",
+        "editeur": "Ki-oon",
+        "isbn": "9791032713006"
+      },
+      "36": {
+        "date": "2023-07-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032713334"
+      },
+      "37": {
+        "date": "2023-11-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032713792"
+      },
+      "4": {
+        "date": "2016-07-07",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929885"
+      },
+      "5": {
+        "date": "2016-09-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700068"
+      },
+      "6": {
+        "date": "2016-11-10",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700051"
+      },
+      "7": {
+        "date": "2017-01-12",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700525"
+      },
+      "8": {
+        "date": "2017-04-13",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700754"
+      },
+      "9": {
+        "date": "2017-07-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700921"
       }
     },
     "tomesParusEnBase": 42
   },
+  "my-hero-academia-smash": {
+    "aParaitre": {},
+    "maximum": 5,
+    "titre": "MY HERO ACADEMIA - Smash",
+    "tomes": {
+      "1": {
+        "date": "2022-01-27",
+        "editeur": "Ki-oon",
+        "isbn": "9791032710821"
+      },
+      "2": {
+        "date": "2022-04-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711200"
+      },
+      "3": {
+        "date": "2022-09-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032711781"
+      },
+      "4": {
+        "date": "2022-12-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032712085"
+      },
+      "5": {
+        "date": "2023-03-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032713082"
+      }
+    },
+    "tomesParusEnBase": 5
+  },
+  "naruto": {
+    "aParaitre": {},
+    "maximum": 72,
+    "titre": "NARUTO",
+    "tomes": {
+      "1": {
+        "date": "2002-03-09",
+        "editeur": "Kana",
+        "isbn": "9782871294146"
+      },
+      "10": {
+        "date": "2004-03-20",
+        "editeur": "Kana",
+        "isbn": "9782871296140"
+      },
+      "11": {
+        "date": "2004-05-04",
+        "editeur": "Kana",
+        "isbn": "9782871296249"
+      },
+      "12": {
+        "date": "2004-07-05",
+        "editeur": "Kana",
+        "isbn": "9782871296355"
+      },
+      "13": {
+        "date": "2004-09-28",
+        "editeur": "Kana",
+        "isbn": "9782871296461"
+      },
+      "14": {
+        "date": "2004-11-21",
+        "editeur": "Kana",
+        "isbn": "9782871296577"
+      },
+      "15": {
+        "date": "2005-01-21",
+        "editeur": "Kana",
+        "isbn": "9782871297048"
+      },
+      "16": {
+        "date": "2005-03-04",
+        "editeur": "Kana",
+        "isbn": "9782871297239"
+      },
+      "17": {
+        "date": "2005-05-06",
+        "editeur": "Kana",
+        "isbn": "9782871297765"
+      },
+      "18": {
+        "date": "2005-07-01",
+        "editeur": "Kana",
+        "isbn": "9782871297970"
+      },
+      "19": {
+        "date": "2005-09-02",
+        "editeur": "Kana",
+        "isbn": "9782871298168"
+      },
+      "2": {
+        "date": "2002-04-13",
+        "editeur": "Kana",
+        "isbn": "9782871294177"
+      },
+      "20": {
+        "date": "2005-11-04",
+        "editeur": "Kana",
+        "isbn": "9782871298342"
+      },
+      "21": {
+        "date": "2006-01-20",
+        "editeur": "Kana",
+        "isbn": "9782871298908"
+      },
+      "22": {
+        "date": "2006-03-03",
+        "editeur": "Kana",
+        "isbn": "9782871299110"
+      },
+      "23": {
+        "date": "2006-05-05",
+        "editeur": "Kana",
+        "isbn": "9782871299318"
+      },
+      "24": {
+        "date": "2006-07-07",
+        "editeur": "Kana",
+        "isbn": "9782871299615"
+      },
+      "25": {
+        "date": "2006-09-22",
+        "editeur": "Kana",
+        "isbn": "9782871299776"
+      },
+      "26": {
+        "date": "2006-11-17",
+        "editeur": "Kana",
+        "isbn": "9782871299875"
+      },
+      "27": {
+        "date": "2007-01-19",
+        "editeur": "Kana",
+        "isbn": "9782505000310"
+      },
+      "28": {
+        "date": "2007-03-02",
+        "editeur": "Kana",
+        "isbn": "9782505000921"
+      },
+      "29": {
+        "date": "2007-05-04",
+        "editeur": "Kana",
+        "isbn": "9782505000976"
+      },
+      "3": {
+        "date": "2002-07-06",
+        "editeur": "Kana",
+        "isbn": "9782871294276"
+      },
+      "30": {
+        "date": "2007-07-06",
+        "editeur": "Kana",
+        "isbn": "9782505001522"
+      },
+      "31": {
+        "date": "2007-09-07",
+        "editeur": "Kana",
+        "isbn": "9782505001676"
+      },
+      "32": {
+        "date": "2007-10-19",
+        "editeur": "Kana",
+        "isbn": "9782505001928"
+      },
+      "33": {
+        "date": "2007-12-07",
+        "editeur": "Kana",
+        "isbn": "9782505002420"
+      },
+      "34": {
+        "date": "2008-02-01",
+        "editeur": "Kana",
+        "isbn": "9782505002796"
+      },
+      "35": {
+        "date": "2008-04-04",
+        "editeur": "Kana",
+        "isbn": "9782505002963"
+      },
+      "36": {
+        "date": "2008-06-06",
+        "editeur": "Kana",
+        "isbn": "9782505003236"
+      },
+      "37": {
+        "date": "2008-07-04",
+        "editeur": "Kana",
+        "isbn": "9782505003786"
+      },
+      "38": {
+        "date": "2008-09-19",
+        "editeur": "Kana",
+        "isbn": "9782505004325"
+      },
+      "39": {
+        "date": "2008-11-28",
+        "editeur": "Kana",
+        "isbn": "9782505004172"
+      },
+      "4": {
+        "date": "2002-10-19",
+        "editeur": "Kana",
+        "isbn": "9782871294412"
+      },
+      "40": {
+        "date": "2009-02-06",
+        "editeur": "Kana",
+        "isbn": "9782505005285"
+      },
+      "41": {
+        "date": "2009-04-17",
+        "editeur": "Kana",
+        "isbn": "9782505005582"
+      },
+      "42": {
+        "date": "2009-07-03",
+        "editeur": "Kana",
+        "isbn": "9782505005995"
+      },
+      "43": {
+        "date": "2009-08-21",
+        "editeur": "Kana",
+        "isbn": "9782505006701"
+      },
+      "44": {
+        "date": "2009-10-23",
+        "editeur": "Kana",
+        "isbn": "9782505007111"
+      },
+      "45": {
+        "date": "2009-12-04",
+        "editeur": "Kana",
+        "isbn": "9782505007548"
+      },
+      "46": {
+        "date": "2010-01-15",
+        "editeur": "Kana",
+        "isbn": "9782505007883"
+      },
+      "47": {
+        "date": "2010-03-05",
+        "editeur": "Kana",
+        "isbn": "9782505008699"
+      },
+      "48": {
+        "date": "2010-05-07",
+        "editeur": "Kana",
+        "isbn": "9782505008705"
+      },
+      "49": {
+        "date": "2010-07-02",
+        "editeur": "Kana",
+        "isbn": "9782505008712"
+      },
+      "5": {
+        "date": "2003-01-25",
+        "editeur": "Kana",
+        "isbn": "9782871294917"
+      },
+      "50": {
+        "date": "2010-09-03",
+        "editeur": "Kana",
+        "isbn": "9782505009566"
+      },
+      "51": {
+        "date": "2010-11-05",
+        "editeur": "Kana",
+        "isbn": "9782505009924"
+      },
+      "52": {
+        "date": "2011-03-04",
+        "editeur": "Kana",
+        "isbn": "9782505010616"
+      },
+      "53": {
+        "date": "2011-07-01",
+        "editeur": "Kana",
+        "isbn": "9782505011156"
+      },
+      "54": {
+        "date": "2011-11-04",
+        "editeur": "Kana",
+        "isbn": "9782505012894"
+      },
+      "55": {
+        "date": "2012-07-06",
+        "editeur": "Kana",
+        "isbn": "9782505014287"
+      },
+      "56": {
+        "date": "2012-09-07",
+        "editeur": "Kana",
+        "isbn": "9782505014867"
+      },
+      "57": {
+        "date": "2012-11-02",
+        "editeur": "Kana",
+        "isbn": "9782505015529"
+      },
+      "58": {
+        "date": "2013-03-01",
+        "editeur": "Kana",
+        "isbn": "9782505017653"
+      },
+      "59": {
+        "date": "2013-06-21",
+        "editeur": "Kana",
+        "isbn": "9782505018421"
+      },
+      "6": {
+        "date": "2003-03-01",
+        "editeur": "Kana",
+        "isbn": "9782871295112"
+      },
+      "60": {
+        "date": "2013-09-06",
+        "editeur": "Kana",
+        "isbn": "9782505018438"
+      },
+      "61": {
+        "date": "2013-12-06",
+        "editeur": "Kana",
+        "isbn": "9782505019596"
+      },
+      "62": {
+        "date": "2014-03-07",
+        "editeur": "Kana",
+        "isbn": "9782505060192"
+      },
+      "63": {
+        "date": "2014-07-04",
+        "editeur": "Kana",
+        "isbn": "9782505060833"
+      },
+      "64": {
+        "date": "2014-09-05",
+        "editeur": "Kana",
+        "isbn": "9782505060840"
+      },
+      "65": {
+        "date": "2014-11-21",
+        "editeur": "Kana",
+        "isbn": "9782505061267"
+      },
+      "66": {
+        "date": "2015-03-06",
+        "editeur": "Kana",
+        "isbn": "9782505061656"
+      },
+      "67": {
+        "date": "2015-07-03",
+        "editeur": "Kana",
+        "isbn": "9782505061663"
+      },
+      "68": {
+        "date": "2015-09-11",
+        "editeur": "Kana",
+        "isbn": "9782505061670"
+      },
+      "69": {
+        "date": "2015-11-06",
+        "editeur": "Kana",
+        "isbn": "9782505061908"
+      },
+      "7": {
+        "date": "2003-07-05",
+        "editeur": "Kana",
+        "isbn": "9782871295358"
+      },
+      "70": {
+        "date": "2016-03-04",
+        "editeur": "Kana",
+        "isbn": "9782505063568"
+      },
+      "71": {
+        "date": "2016-07-08",
+        "editeur": "Kana",
+        "isbn": "9782505065050"
+      },
+      "72": {
+        "date": "2016-11-04",
+        "editeur": "Kana",
+        "isbn": "9782505065067"
+      },
+      "8": {
+        "date": "2003-10-12",
+        "editeur": "Kana",
+        "isbn": "9782871295525"
+      },
+      "9": {
+        "date": "2004-01-08",
+        "editeur": "Kana",
+        "isbn": "9782871295990"
+      }
+    },
+    "tomesParusEnBase": 72
+  },
   "nier-automata-op-pearl-harbor": {
     "aParaitre": {},
-    "maximum": 4,
-    "titre": "NIER AUTOMATA - OP PEARL HARBOR",
+    "maximum": 3,
+    "titre": "Nier: Automata - Opération Pearl Harbor",
     "tomes": {
-      "4": {
-        "date": "2025-01-09",
+      "1": {
+        "date": "2022-09-15",
         "editeur": "Kurokawa",
-        "isbn": "9791042014391"
+        "isbn": "9782380714289"
+      },
+      "2": {
+        "date": "2022-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782380714296"
+      },
+      "3": {
+        "date": "2023-06-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715163"
       }
     },
     "tomesParusEnBase": 4
   },
-  "one-puch-man": {
-    "aParaitre": {
-      "35": {
-        "date": "2026-10-08",
+  "nozokiana": {
+    "aParaitre": {},
+    "maximum": 13,
+    "titre": "NOZOKIANA",
+    "tomes": {
+      "1": {
+        "date": "2012-09-13",
         "editeur": "Kurokawa",
-        "isbn": "9791042021672"
+        "isbn": "9782351427248"
+      },
+      "10": {
+        "date": "2014-10-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429679"
+      },
+      "11": {
+        "date": "2015-01-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429624"
+      },
+      "12": {
+        "date": "2015-05-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521069"
+      },
+      "13": {
+        "date": "2015-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521076"
+      },
+      "2": {
+        "date": "2012-11-15",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427255"
+      },
+      "3": {
+        "date": "2013-01-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427262"
+      },
+      "4": {
+        "date": "2013-04-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427279"
+      },
+      "5": {
+        "date": "2013-07-04",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427286"
+      },
+      "6": {
+        "date": "2013-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427293"
+      },
+      "7": {
+        "date": "2014-01-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429471"
+      },
+      "8": {
+        "date": "2014-04-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429655"
+      },
+      "9": {
+        "date": "2014-07-03",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429662"
       }
     },
-    "maximum": 34,
-    "titre": "ONE PUCH MAN",
+    "tomesParusEnBase": 13
+  },
+  "one-puch-man": {
+    "aParaitre": {},
+    "maximum": 28,
+    "titre": "One-Punch Man",
     "tomes": {
-      "30": {
-        "date": "2024-12-05",
+      "1": {
+        "date": "2016-01-14",
         "editeur": "Kurokawa",
-        "isbn": "9791042014889"
+        "isbn": "9782368522257"
       },
-      "31": {
-        "date": "2025-04-10",
+      "10": {
+        "date": "2018-03-08",
         "editeur": "Kurokawa",
-        "isbn": "9791042018627"
+        "isbn": "9782368525555"
       },
-      "32": {
-        "date": "2025-09-11",
+      "11": {
+        "date": "2018-06-14",
         "editeur": "Kurokawa",
-        "isbn": "9791042018634"
+        "isbn": "9782368525562"
       },
-      "33": {
-        "date": "2026-02-12",
+      "12": {
+        "date": "2018-09-13",
         "editeur": "Kurokawa",
-        "isbn": "9791042021658"
+        "isbn": "9782368525579"
       },
-      "34": {
-        "date": "2026-06-11",
+      "13": {
+        "date": "2018-12-06",
         "editeur": "Kurokawa",
-        "isbn": "9791042021665"
+        "isbn": "9782368525586"
+      },
+      "14": {
+        "date": "2019-02-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527177"
+      },
+      "15": {
+        "date": "2019-05-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527344"
+      },
+      "16": {
+        "date": "2019-07-04",
+        "editeur": "Kurokawa",
+        "isbn": "9782368527429"
+      },
+      "17": {
+        "date": "2019-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368528143"
+      },
+      "18": {
+        "date": "2019-12-05",
+        "editeur": "Kurokawa",
+        "isbn": "9782368528730"
+      },
+      "19": {
+        "date": "2020-03-05",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529249"
+      },
+      "2": {
+        "date": "2016-03-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522646"
+      },
+      "20": {
+        "date": "2020-06-18",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529256"
+      },
+      "21": {
+        "date": "2020-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529263"
+      },
+      "22": {
+        "date": "2021-01-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368529270"
+      },
+      "23": {
+        "date": "2021-09-16",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711271"
+      },
+      "24": {
+        "date": "2022-03-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711288"
+      },
+      "25": {
+        "date": "2022-12-15",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711295"
+      },
+      "26": {
+        "date": "2023-03-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711301"
+      },
+      "27": {
+        "date": "2023-07-06",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715187"
+      },
+      "28": {
+        "date": "2023-11-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715491"
+      },
+      "3": {
+        "date": "2016-06-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522653"
+      },
+      "4": {
+        "date": "2016-09-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368523766"
+      },
+      "5": {
+        "date": "2016-12-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368523773"
+      },
+      "6": {
+        "date": "2017-03-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368523780"
+      },
+      "7": {
+        "date": "2017-06-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368523797"
+      },
+      "8": {
+        "date": "2017-09-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368523803"
+      },
+      "9": {
+        "date": "2017-12-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524787"
       }
     },
     "tomesParusEnBase": 34
   },
   "oriant-samurai-quest": {
     "aParaitre": {},
-    "maximum": 22,
-    "titre": "ORIANT - SAMURAI QUEST",
+    "maximum": 19,
+    "titre": "Orient - Samurai Quest",
     "tomes": {
-      "20": {
-        "date": "2024-09-18",
+      "1": {
+        "date": "2020-06-24",
         "editeur": "Pika",
-        "isbn": "9782811690564"
+        "isbn": "9782811650575"
       },
-      "21": {
-        "date": "2024-12-04",
+      "10": {
+        "date": "2021-10-06",
         "editeur": "Pika",
-        "isbn": "9782811694944"
+        "isbn": "9782811664800"
       },
-      "22": {
-        "date": "2025-08-27",
+      "11": {
+        "date": "2021-11-24",
         "editeur": "Pika",
-        "isbn": "9791043302039"
+        "isbn": "9782811664824"
+      },
+      "12": {
+        "date": "2022-02-02",
+        "editeur": "Pika",
+        "isbn": "9782811667764"
+      },
+      "13": {
+        "date": "2022-05-04",
+        "editeur": "Pika",
+        "isbn": "9782811669751"
+      },
+      "14": {
+        "date": "2022-09-07",
+        "editeur": "Pika",
+        "isbn": "9782811671273"
+      },
+      "15": {
+        "date": "2022-12-07",
+        "editeur": "Pika",
+        "isbn": "9782811673741"
+      },
+      "16": {
+        "date": "2023-03-01",
+        "editeur": "Pika",
+        "isbn": "9782811677695"
+      },
+      "17": {
+        "date": "2023-06-07",
+        "editeur": "Pika",
+        "isbn": "9782811680121"
+      },
+      "18": {
+        "date": "2023-09-06",
+        "editeur": "Pika",
+        "isbn": "9782811682866"
+      },
+      "19": {
+        "date": "2024-01-17",
+        "editeur": "Pika",
+        "isbn": "9782811684822"
+      },
+      "2": {
+        "date": "2020-06-24",
+        "editeur": "Pika",
+        "isbn": "9782811654856"
+      },
+      "3": {
+        "date": "2020-09-02",
+        "editeur": "Pika",
+        "isbn": "9782811657420"
+      },
+      "4": {
+        "date": "2020-10-14",
+        "editeur": "Pika",
+        "isbn": "9782811658205"
+      },
+      "5": {
+        "date": "2020-11-25",
+        "editeur": "Pika",
+        "isbn": "9782811659271"
+      },
+      "6": {
+        "date": "2021-02-10",
+        "editeur": "Pika",
+        "isbn": "9782811660390"
+      },
+      "7": {
+        "date": "2021-04-07",
+        "editeur": "Pika",
+        "isbn": "9782811660703"
+      },
+      "8": {
+        "date": "2021-06-02",
+        "editeur": "Pika",
+        "isbn": "9782811660727"
+      },
+      "9": {
+        "date": "2021-08-25",
+        "editeur": "Pika",
+        "isbn": "9782811660741"
       }
     },
     "tomesParusEnBase": 22
   },
   "oshi-no-ko": {
     "aParaitre": {},
-    "maximum": 16,
+    "maximum": 9,
     "titre": "OSHI NO KO",
     "tomes": {
-      "12": {
-        "date": "2024-08-14",
+      "1": {
+        "date": "2022-01-13",
         "editeur": "Kurokawa",
-        "isbn": "9791042014551"
+        "isbn": "9782380712308"
       },
-      "13": {
-        "date": "2024-11-14",
+      "2": {
+        "date": "2022-01-13",
         "editeur": "Kurokawa",
-        "isbn": "9791042014773"
+        "isbn": "9782380712315"
       },
-      "14": {
-        "date": "2025-03-13",
+      "3": {
+        "date": "2022-05-12",
         "editeur": "Kurokawa",
-        "isbn": "9791042018948"
+        "isbn": "9782380713060"
       },
-      "15": {
-        "date": "2025-07-03",
+      "4": {
+        "date": "2022-09-22",
         "editeur": "Kurokawa",
-        "isbn": "9791042018955"
+        "isbn": "9782380713077"
       },
-      "16": {
-        "date": "2025-12-04",
+      "5": {
+        "date": "2022-11-10",
         "editeur": "Kurokawa",
-        "isbn": "9791042018962"
+        "isbn": "9782380713084"
+      },
+      "6": {
+        "date": "2023-02-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380714838"
+      },
+      "7": {
+        "date": "2023-05-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715019"
+      },
+      "8": {
+        "date": "2023-08-17",
+        "editeur": "Kurokawa",
+        "isbn": "9782380713091"
+      },
+      "9": {
+        "date": "2023-11-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782380713107"
       }
     },
     "tomesParusEnBase": 16
   },
-  "radiant": {
-    "aParaitre": {
+  "pandora-heart": {
+    "aParaitre": {},
+    "maximum": 24,
+    "titre": "Pandora Hearts",
+    "tomes": {
+      "1": {
+        "date": "2010-07-01",
+        "editeur": "Ki-oon",
+        "isbn": "9782355921759"
+      },
+      "10": {
+        "date": "2011-11-10",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923289"
+      },
+      "11": {
+        "date": "2012-01-12",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923432"
+      },
+      "12": {
+        "date": "2012-03-08",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923661"
+      },
+      "13": {
+        "date": "2012-05-10",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923920"
+      },
+      "14": {
+        "date": "2012-07-05",
+        "editeur": "Ki-oon",
+        "isbn": "9782355924163"
+      },
+      "15": {
+        "date": "2012-09-13",
+        "editeur": "Ki-oon",
+        "isbn": "9782355924330"
+      },
+      "16": {
+        "date": "2012-12-13",
+        "editeur": "Ki-oon",
+        "isbn": "9782355924705"
+      },
+      "17": {
+        "date": "2013-03-14",
+        "editeur": "Ki-oon",
+        "isbn": "9782355925030"
+      },
+      "18": {
+        "date": "2013-06-13",
+        "editeur": "Ki-oon",
+        "isbn": "9782355925399"
+      },
+      "19": {
+        "date": "2013-09-12",
+        "editeur": "Ki-oon",
+        "isbn": "9782355925757"
+      },
+      "2": {
+        "date": "2010-07-01",
+        "editeur": "Ki-oon",
+        "isbn": "9782355921766"
+      },
       "20": {
-        "date": "2026-10-30",
-        "editeur": "Ankama Editions",
-        "isbn": "9791033570103"
+        "date": "2013-11-28",
+        "editeur": "Ki-oon",
+        "isbn": "9782355926006"
+      },
+      "21": {
+        "date": "2014-03-13",
+        "editeur": "Ki-oon",
+        "isbn": "9782355926457"
+      },
+      "22": {
+        "date": "2014-09-11",
+        "editeur": "Ki-oon",
+        "isbn": "9782355927201"
+      },
+      "23": {
+        "date": "2015-11-19",
+        "editeur": "Ki-oon",
+        "isbn": "9782355928024"
+      },
+      "24": {
+        "date": "2016-04-14",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929304"
+      },
+      "3": {
+        "date": "2010-09-09",
+        "editeur": "Ki-oon",
+        "isbn": "9782355921964"
+      },
+      "4": {
+        "date": "2010-11-10",
+        "editeur": "Ki-oon",
+        "isbn": "9782355922138"
+      },
+      "5": {
+        "date": "2011-01-13",
+        "editeur": "Ki-oon",
+        "isbn": "9782355922268"
+      },
+      "6": {
+        "date": "2011-03-10",
+        "editeur": "Ki-oon",
+        "isbn": "9782355922466"
+      },
+      "7": {
+        "date": "2011-05-12",
+        "editeur": "Ki-oon",
+        "isbn": "9782355922664"
+      },
+      "8": {
+        "date": "2011-06-30",
+        "editeur": "Ki-oon",
+        "isbn": "9782355922831"
+      },
+      "9": {
+        "date": "2011-09-08",
+        "editeur": "Ki-oon",
+        "isbn": "9782355923074"
       }
     },
-    "maximum": 19,
+    "tomesParusEnBase": 24
+  },
+  "pokemon-la-grande-aventure": {
+    "aParaitre": {},
+    "maximum": 3,
+    "titre": "POKEMON - LA GRANDE AVENTURE",
+    "tomes": {
+      "1": {
+        "date": "2014-06-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520130"
+      },
+      "2": {
+        "date": "2014-08-28",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520147"
+      },
+      "3": {
+        "date": "2014-11-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520154"
+      }
+    },
+    "tomesParusEnBase": 6
+  },
+  "prophecy-the-copycat": {
+    "aParaitre": {},
+    "maximum": 3,
+    "titre": "PROPHECY – THE COPYCAT",
+    "tomes": {
+      "1": {
+        "date": "2016-09-08",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929878"
+      },
+      "2": {
+        "date": "2016-12-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700143"
+      },
+      "3": {
+        "date": "2017-03-09",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700662"
+      }
+    },
+    "tomesParusEnBase": 3
+  },
+  "radiant": {
+    "aParaitre": {},
+    "maximum": 18,
     "titre": "RADIANT",
     "tomes": {
-      "19": {
-        "date": "2024-11-22",
+      "1": {
+        "date": "2013-07-04",
         "editeur": "Ankama Editions",
-        "isbn": "9791033517207"
+        "isbn": "9782359103915"
+      },
+      "10": {
+        "date": "2018-09-21",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033505556"
+      },
+      "11": {
+        "date": "2019-02-22",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033509295"
+      },
+      "12": {
+        "date": "2019-08-30",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033509646"
+      },
+      "13": {
+        "date": "2020-01-31",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033509769"
+      },
+      "14": {
+        "date": "2020-08-28",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033509837"
+      },
+      "15": {
+        "date": "2021-10-01",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033512486"
+      },
+      "16": {
+        "date": "2022-04-01",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033511878"
+      },
+      "17": {
+        "date": "2022-12-02",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033514084"
+      },
+      "18": {
+        "date": "2023-12-08",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033514060"
+      },
+      "2": {
+        "date": "2014-03-07",
+        "editeur": "Ankama Editions",
+        "isbn": "9782359104868"
+      },
+      "3": {
+        "date": "2015-02-27",
+        "editeur": "Ankama Editions",
+        "isbn": "9782359105056"
+      },
+      "4": {
+        "date": "2015-11-20",
+        "editeur": "Ankama Editions",
+        "isbn": "9782359108620"
+      },
+      "5": {
+        "date": "2016-07-08",
+        "editeur": "Ankama Editions",
+        "isbn": "9782359109665"
+      },
+      "6": {
+        "date": "2016-12-02",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033500964"
+      },
+      "7": {
+        "date": "2017-07-07",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033504504"
+      },
+      "8": {
+        "date": "2017-12-01",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033504870"
+      },
+      "9": {
+        "date": "2018-05-25",
+        "editeur": "Ankama Editions",
+        "isbn": "9791033505457"
       }
     },
     "tomesParusEnBase": 19
   },
   "ragna-crimson": {
-    "aParaitre": {
-      "17": {
-        "date": "2026-10-09",
-        "editeur": "Kana",
-        "isbn": "9782505144649"
-      }
-    },
-    "maximum": 16,
+    "aParaitre": {},
+    "maximum": 12,
     "titre": "RAGNA CRIMSON",
     "tomes": {
-      "13": {
-        "date": "2024-08-23",
+      "1": {
+        "date": "2019-02-15",
         "editeur": "Kana",
-        "isbn": "9782505125181"
+        "isbn": "9782505073826"
       },
-      "14": {
-        "date": "2025-04-11",
+      "10": {
+        "date": "2022-11-04",
         "editeur": "Kana",
-        "isbn": "9782505133827"
+        "isbn": "9782505115151"
       },
-      "15": {
-        "date": "2025-10-24",
+      "11": {
+        "date": "2023-07-07",
         "editeur": "Kana",
-        "isbn": "9782505133834"
+        "isbn": "9782505120315"
       },
-      "16": {
-        "date": "2026-04-17",
+      "12": {
+        "date": "2023-12-08",
         "editeur": "Kana",
-        "isbn": "9782505144632"
+        "isbn": "9782505120322"
+      },
+      "2": {
+        "date": "2019-04-19",
+        "editeur": "Kana",
+        "isbn": "9782505073833"
+      },
+      "3": {
+        "date": "2019-07-05",
+        "editeur": "Kana",
+        "isbn": "9782505076001"
+      },
+      "4": {
+        "date": "2019-10-25",
+        "editeur": "Kana",
+        "isbn": "9782505076094"
+      },
+      "5": {
+        "date": "2020-02-14",
+        "editeur": "Kana",
+        "isbn": "9782505084204"
+      },
+      "6": {
+        "date": "2020-11-06",
+        "editeur": "Kana",
+        "isbn": "9782505084259"
+      },
+      "7": {
+        "date": "2021-04-09",
+        "editeur": "Kana",
+        "isbn": "9782505089070"
+      },
+      "8": {
+        "date": "2021-09-24",
+        "editeur": "Kana",
+        "isbn": "9782505089087"
+      },
+      "9": {
+        "date": "2022-04-01",
+        "editeur": "Kana",
+        "isbn": "9782505115144"
       }
     },
     "tomesParusEnBase": 16
   },
-  "rai-rai-rai": {
-    "aParaitre": {
-      "3": {
-        "date": "2026-09-03",
-        "editeur": "Ki-oon",
-        "isbn": "9791032723579"
-      }
-    },
-    "maximum": 2,
-    "titre": "RAI RAI RAI",
+  "red-eyes-sword-akame-ga-kill": {
+    "aParaitre": {},
+    "maximum": 15,
+    "titre": "RED EYES SWORD Akame Ga Kill",
     "tomes": {
       "1": {
-        "date": "2026-03-05",
-        "editeur": "Ki-oon",
-        "isbn": "9791032724316"
+        "date": "2014-09-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520444"
+      },
+      "10": {
+        "date": "2016-08-25",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522448"
+      },
+      "11": {
+        "date": "2016-12-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522455"
+      },
+      "12": {
+        "date": "2017-04-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522462"
+      },
+      "13": {
+        "date": "2017-08-24",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524480"
+      },
+      "14": {
+        "date": "2017-12-07",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524497"
+      },
+      "15": {
+        "date": "2018-04-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368526156"
       },
       "2": {
-        "date": "2026-06-04",
-        "editeur": "Ki-oon",
-        "isbn": "9791032723968"
-      }
-    },
-    "tomesParusEnBase": 2
-  },
-  "ruridragon": {
-    "aParaitre": {
-      "5": {
-        "date": "2026-10-21",
-        "editeur": "Glénat",
-        "isbn": "9782344071717"
-      }
-    },
-    "maximum": 4,
-    "titre": "RURIDRAGON",
-    "tomes": {
-      "1": {
-        "date": "2025-07-02",
-        "editeur": "Glénat",
-        "isbn": "9782344067949"
-      },
-      "2": {
-        "date": "2025-10-22",
-        "editeur": "Glénat",
-        "isbn": "9782344070215"
+        "date": "2014-11-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520512"
       },
       "3": {
-        "date": "2026-02-18",
-        "editeur": "Glénat",
-        "isbn": "9782344071397"
+        "date": "2015-01-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520529"
       },
       "4": {
-        "date": "2026-06-17",
-        "editeur": "Glénat",
-        "isbn": "9782344071700"
+        "date": "2015-03-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520536"
+      },
+      "5": {
+        "date": "2015-06-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520543"
+      },
+      "6": {
+        "date": "2015-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520550"
+      },
+      "7": {
+        "date": "2015-12-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520567"
+      },
+      "8": {
+        "date": "2016-02-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520574"
+      },
+      "9": {
+        "date": "2016-05-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520581"
       }
     },
-    "tomesParusEnBase": 4
+    "tomesParusEnBase": 15
+  },
+  "relife": {
+    "aParaitre": {},
+    "maximum": 15,
+    "titre": "RELIFE",
+    "tomes": {
+      "1": {
+        "date": "2016-05-12",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929458"
+      },
+      "10": {
+        "date": "2019-05-23",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704141"
+      },
+      "11": {
+        "date": "2019-08-15",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704394"
+      },
+      "12": {
+        "date": "2019-11-21",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705100"
+      },
+      "13": {
+        "date": "2020-02-20",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705650"
+      },
+      "14": {
+        "date": "2020-10-15",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706381"
+      },
+      "15": {
+        "date": "2021-04-15",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706725"
+      },
+      "2": {
+        "date": "2016-08-18",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929670"
+      },
+      "3": {
+        "date": "2016-12-08",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929816"
+      },
+      "4": {
+        "date": "2017-03-09",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700020"
+      },
+      "5": {
+        "date": "2017-07-06",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700198"
+      },
+      "6": {
+        "date": "2017-10-26",
+        "editeur": "Ki-oon",
+        "isbn": "9791032701416"
+      },
+      "7": {
+        "date": "2018-03-22",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702437"
+      },
+      "8": {
+        "date": "2018-08-16",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703069"
+      },
+      "9": {
+        "date": "2018-11-22",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703342"
+      }
+    },
+    "tomesParusEnBase": 15
+  },
+  "remember": {
+    "aParaitre": {},
+    "maximum": 17,
+    "titre": "REMEMBER",
+    "tomes": {
+      "1": {
+        "date": "2016-02-11",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929403"
+      },
+      "10": {
+        "date": "2017-12-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032701591"
+      },
+      "11": {
+        "date": "2018-03-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702352"
+      },
+      "12": {
+        "date": "2018-06-21",
+        "editeur": "Ki-oon",
+        "isbn": "9791032702680"
+      },
+      "13": {
+        "date": "2018-09-20",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703182"
+      },
+      "14": {
+        "date": "2018-11-08",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703311"
+      },
+      "15": {
+        "date": "2019-01-03",
+        "editeur": "Ki-oon",
+        "isbn": "9791032703779"
+      },
+      "16": {
+        "date": "2019-05-09",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704134"
+      },
+      "17": {
+        "date": "2019-11-21",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705094"
+      },
+      "2": {
+        "date": "2016-04-14",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929465"
+      },
+      "3": {
+        "date": "2016-06-23",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929663"
+      },
+      "4": {
+        "date": "2016-08-25",
+        "editeur": "Ki-oon",
+        "isbn": "9782355929847"
+      },
+      "5": {
+        "date": "2016-11-10",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700082"
+      },
+      "6": {
+        "date": "2017-02-09",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700587"
+      },
+      "7": {
+        "date": "2017-04-13",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700761"
+      },
+      "8": {
+        "date": "2017-06-22",
+        "editeur": "Ki-oon",
+        "isbn": "9791032700907"
+      },
+      "9": {
+        "date": "2017-09-21",
+        "editeur": "Ki-oon",
+        "isbn": "9791032701362"
+      }
+    },
+    "tomesParusEnBase": 17
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "aParaitre": {},
+    "maximum": 20,
+    "titre": "Tanya, the evil",
+    "tomes": {
+      "1": {
+        "date": "2017-11-01",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413002710"
+      },
+      "10": {
+        "date": "2020-02-19",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413026532"
+      },
+      "11": {
+        "date": "2020-07-08",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030232"
+      },
+      "12": {
+        "date": "2020-10-07",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030249"
+      },
+      "13": {
+        "date": "2021-01-20",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030256"
+      },
+      "14": {
+        "date": "2021-04-21",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030263"
+      },
+      "15": {
+        "date": "2021-06-30",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030270"
+      },
+      "16": {
+        "date": "2022-02-02",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413030379"
+      },
+      "17": {
+        "date": "2022-04-20",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413045342"
+      },
+      "18": {
+        "date": "2022-08-31",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413046974"
+      },
+      "19": {
+        "date": "2023-04-12",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413046981"
+      },
+      "2": {
+        "date": "2018-03-14",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413002727"
+      },
+      "20": {
+        "date": "2023-08-23",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413046998"
+      },
+      "3": {
+        "date": "2018-05-09",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413004097"
+      },
+      "4": {
+        "date": "2018-08-22",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413010777"
+      },
+      "5": {
+        "date": "2018-11-07",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413013211"
+      },
+      "6": {
+        "date": "2019-01-30",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413015246"
+      },
+      "7": {
+        "date": "2019-05-15",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413020295"
+      },
+      "8": {
+        "date": "2019-08-21",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413022343"
+      },
+      "9": {
+        "date": "2019-11-20",
+        "editeur": "Delcourt / Tonkam",
+        "isbn": "9782413024279"
+      }
+    },
+    "tomesParusEnBase": 22
+  },
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "aParaitre": {},
+    "maximum": 16,
+    "titre": "SAINT SEIYA - THE LOST CANVAS - CHRONICLES",
+    "tomes": {
+      "1": {
+        "date": "2013-05-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427804"
+      },
+      "10": {
+        "date": "2015-07-02",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521328"
+      },
+      "11": {
+        "date": "2015-12-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522110"
+      },
+      "12": {
+        "date": "2016-04-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782368522714"
+      },
+      "13": {
+        "date": "2016-08-25",
+        "editeur": "Kurokawa",
+        "isbn": "9782368523735"
+      },
+      "14": {
+        "date": "2016-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524039"
+      },
+      "15": {
+        "date": "2017-04-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524848"
+      },
+      "16": {
+        "date": "2017-08-24",
+        "editeur": "Kurokawa",
+        "isbn": "9782368524855"
+      },
+      "2": {
+        "date": "2013-07-04",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427811"
+      },
+      "3": {
+        "date": "2013-10-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429228"
+      },
+      "4": {
+        "date": "2014-01-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429488"
+      },
+      "5": {
+        "date": "2014-04-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429570"
+      },
+      "6": {
+        "date": "2014-07-03",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429587"
+      },
+      "7": {
+        "date": "2014-10-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429594"
+      },
+      "8": {
+        "date": "2015-01-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521212"
+      },
+      "9": {
+        "date": "2015-04-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782368521311"
+      }
+    },
+    "tomesParusEnBase": 16
+  },
+  "saotome-love-boxing": {
+    "aParaitre": {},
+    "maximum": 10,
+    "titre": "SAOTOME LOVE & BOXING",
+    "tomes": {
+      "1": {
+        "date": "2021-06-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979648"
+      },
+      "10": {
+        "date": "2023-02-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979730"
+      },
+      "2": {
+        "date": "2021-06-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979655"
+      },
+      "3": {
+        "date": "2021-08-18",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979662"
+      },
+      "4": {
+        "date": "2021-10-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979679"
+      },
+      "5": {
+        "date": "2021-12-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979686"
+      },
+      "6": {
+        "date": "2022-02-02",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979693"
+      },
+      "7": {
+        "date": "2022-04-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979709"
+      },
+      "8": {
+        "date": "2022-06-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979716"
+      },
+      "9": {
+        "date": "2022-10-05",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979723"
+      }
+    },
+    "tomesParusEnBase": 10
   },
   "servamp": {
     "aParaitre": {},
-    "maximum": 23,
+    "maximum": 19,
     "titre": "SERVAMP",
     "tomes": {
-      "21": {
-        "date": "2024-10-02",
+      "1": {
+        "date": "2013-04-10",
         "editeur": "Doki Doki",
-        "isbn": "9791041109043"
+        "isbn": "9782818923115"
       },
-      "22": {
-        "date": "2025-09-10",
+      "10": {
+        "date": "2017-03-01",
         "editeur": "Doki Doki",
-        "isbn": "9791041113873"
+        "isbn": "9782818941034"
       },
-      "23": {
-        "date": "2026-06-03",
+      "11": {
+        "date": "2018-06-06",
         "editeur": "Doki Doki",
-        "isbn": "9791041114429"
+        "isbn": "9782818945261"
+      },
+      "12": {
+        "date": "2018-11-28",
+        "editeur": "Doki Doki",
+        "isbn": "9782818947289"
+      },
+      "13": {
+        "date": "2019-05-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818967713"
+      },
+      "14": {
+        "date": "2020-03-04",
+        "editeur": "Doki Doki",
+        "isbn": "9782818977279"
+      },
+      "15": {
+        "date": "2021-01-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818983676"
+      },
+      "16": {
+        "date": "2021-10-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818989319"
+      },
+      "17": {
+        "date": "2022-08-17",
+        "editeur": "Doki Doki",
+        "isbn": "9782818994054"
+      },
+      "18": {
+        "date": "2023-03-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818999158"
+      },
+      "19": {
+        "date": "2023-12-06",
+        "editeur": "Doki Doki",
+        "isbn": "9791041102730"
+      },
+      "2": {
+        "date": "2013-06-12",
+        "editeur": "Doki Doki",
+        "isbn": "9782818924136"
+      },
+      "3": {
+        "date": "2013-09-11",
+        "editeur": "Doki Doki",
+        "isbn": "9782818924594"
+      },
+      "4": {
+        "date": "2013-11-20",
+        "editeur": "Doki Doki",
+        "isbn": "9782818925423"
+      },
+      "5": {
+        "date": "2014-05-21",
+        "editeur": "Doki Doki",
+        "isbn": "9782818926697"
+      },
+      "6": {
+        "date": "2015-02-11",
+        "editeur": "Doki Doki",
+        "isbn": "9782818932698"
+      },
+      "7": {
+        "date": "2015-07-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818933831"
+      },
+      "8": {
+        "date": "2016-01-13",
+        "editeur": "Doki Doki",
+        "isbn": "9782818935217"
+      },
+      "9": {
+        "date": "2016-07-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818936337"
       }
     },
     "tomesParusEnBase": 23
   },
-  "smoking-behind-the-supermarket": {
-    "aParaitre": {
-      "7": {
-        "date": "2026-10-30",
-        "editeur": "Kana",
-        "isbn": "9782505144434"
-      }
-    },
-    "maximum": 6,
-    "titre": "SMOKING BEHIND THE SUPERMARKET",
+  "shaman-king": {
+    "aParaitre": {},
+    "maximum": 32,
+    "titre": "SHAMAN KING",
     "tomes": {
       "1": {
-        "date": "2024-09-06",
+        "date": "2000-04-01",
         "editeur": "Kana",
-        "isbn": "9782505123545"
+        "isbn": "9782871292777"
+      },
+      "10": {
+        "date": "2001-12-01",
+        "editeur": "Kana",
+        "isbn": "9782871293309"
+      },
+      "11": {
+        "date": "2002-03-02",
+        "editeur": "Kana",
+        "isbn": "9782871294108"
+      },
+      "12": {
+        "date": "2002-06-01",
+        "editeur": "Kana",
+        "isbn": "9782871294245"
+      },
+      "13": {
+        "date": "2002-10-05",
+        "editeur": "Kana",
+        "isbn": "9782871294382"
+      },
+      "14": {
+        "date": "2003-01-25",
+        "editeur": "Kana",
+        "isbn": "9782871294894"
+      },
+      "15": {
+        "date": "2003-04-05",
+        "editeur": "Kana",
+        "isbn": "9782871295136"
+      },
+      "16": {
+        "date": "2003-07-05",
+        "editeur": "Kana",
+        "isbn": "9782871295334"
+      },
+      "17": {
+        "date": "2003-11-04",
+        "editeur": "Kana",
+        "isbn": "9782871295563"
+      },
+      "18": {
+        "date": "2004-02-08",
+        "editeur": "Kana",
+        "isbn": "9782871296058"
+      },
+      "19": {
+        "date": "2004-04-12",
+        "editeur": "Kana",
+        "isbn": "9782871296171"
       },
       "2": {
-        "date": "2025-02-14",
+        "date": "2000-05-01",
         "editeur": "Kana",
-        "isbn": "9782505129080"
+        "isbn": "9782871292784"
+      },
+      "20": {
+        "date": "2004-06-22",
+        "editeur": "Kana",
+        "isbn": "9782871296287"
+      },
+      "21": {
+        "date": "2004-08-29",
+        "editeur": "Kana",
+        "isbn": "9782871296386"
+      },
+      "22": {
+        "date": "2004-10-02",
+        "editeur": "Kana",
+        "isbn": "9782871296508"
+      },
+      "23": {
+        "date": "2004-12-04",
+        "editeur": "Kana",
+        "isbn": "9782871296614"
+      },
+      "24": {
+        "date": "2005-02-04",
+        "editeur": "Kana",
+        "isbn": "9782871297116"
+      },
+      "25": {
+        "date": "2005-04-01",
+        "editeur": "Kana",
+        "isbn": "9782871297642"
+      },
+      "26": {
+        "date": "2005-06-10",
+        "editeur": "Kana",
+        "isbn": "9782871297857"
+      },
+      "27": {
+        "date": "2005-08-26",
+        "editeur": "Kana",
+        "isbn": "9782871298052"
+      },
+      "28": {
+        "date": "2005-10-28",
+        "editeur": "Kana",
+        "isbn": "9782871298236"
+      },
+      "29": {
+        "date": "2005-12-02",
+        "editeur": "Kana",
+        "isbn": "9782871298427"
       },
       "3": {
-        "date": "2025-05-30",
+        "date": "2000-07-01",
         "editeur": "Kana",
-        "isbn": "9782505130024"
+        "isbn": "9782871292791"
       },
-      "4": {
-        "date": "2025-09-19",
+      "30": {
+        "date": "2006-02-03",
         "editeur": "Kana",
-        "isbn": "9782505133889"
+        "isbn": "9782871299004"
+      },
+      "31": {
+        "date": "2006-04-07",
+        "editeur": "Kana",
+        "isbn": "9782871299196"
+      },
+      "32": {
+        "date": "2006-06-16",
+        "editeur": "Kana",
+        "isbn": "9782871299394"
       },
       "5": {
-        "date": "2026-02-06",
+        "date": "2000-12-01",
         "editeur": "Kana",
-        "isbn": "9782505135791"
+        "isbn": "9782871292814"
       },
       "6": {
-        "date": "2026-05-15",
+        "date": "2001-01-20",
         "editeur": "Kana",
-        "isbn": "9782505144427"
+        "isbn": "9782871293262"
+      },
+      "7": {
+        "date": "2001-04-01",
+        "editeur": "Kana",
+        "isbn": "9782871293279"
+      },
+      "8": {
+        "date": "2001-07-07",
+        "editeur": "Kana",
+        "isbn": "9782871293286"
+      },
+      "9": {
+        "date": "2001-10-06",
+        "editeur": "Kana",
+        "isbn": "9782871293293"
       }
     },
-    "tomesParusEnBase": 6
+    "tomesParusEnBase": 32
   },
   "solo-leveling": {
     "aParaitre": {},
-    "maximum": 19,
+    "maximum": 12,
     "titre": "SOLO LEVELING",
     "tomes": {
-      "14": {
-        "date": "2024-08-21",
+      "1": {
+        "date": "2021-04-07",
         "editeur": "Kbooks",
-        "isbn": "9782382882917"
+        "isbn": "9782382880296"
       },
-      "15": {
-        "date": "2024-10-23",
+      "10": {
+        "date": "2023-06-14",
         "editeur": "Kbooks",
-        "isbn": "9782382882931"
+        "isbn": "9782382882108"
       },
-      "16": {
-        "date": "2024-12-04",
+      "11": {
+        "date": "2023-09-20",
         "editeur": "Kbooks",
-        "isbn": "9782382882924"
+        "isbn": "9782382882528"
       },
-      "17": {
-        "date": "2025-03-26",
+      "12": {
+        "date": "2024-01-10",
         "editeur": "Kbooks",
-        "isbn": "9782382883228"
+        "isbn": "9782382882542"
       },
-      "18": {
-        "date": "2025-07-02",
+      "2": {
+        "date": "2021-06-09",
         "editeur": "Kbooks",
-        "isbn": "9782382883235"
+        "isbn": "9782382880302"
       },
-      "19": {
-        "date": "2025-09-05",
+      "3": {
+        "date": "2021-09-08",
         "editeur": "Kbooks",
-        "isbn": "9782382884164"
+        "isbn": "9782382880319"
+      },
+      "4": {
+        "date": "2021-11-10",
+        "editeur": "Kbooks",
+        "isbn": "9782382880326"
+      },
+      "5": {
+        "date": "2022-02-09",
+        "editeur": "Kbooks",
+        "isbn": "9782382880333"
+      },
+      "6": {
+        "date": "2022-05-04",
+        "editeur": "Kbooks",
+        "isbn": "9782382880791"
+      },
+      "7": {
+        "date": "2022-09-21",
+        "editeur": "Kbooks",
+        "isbn": "9782382880913"
+      },
+      "8": {
+        "date": "2022-11-09",
+        "editeur": "Kbooks",
+        "isbn": "9782413075424"
+      },
+      "9": {
+        "date": "2023-03-01",
+        "editeur": "Kbooks",
+        "isbn": "9782413076469"
       }
     },
     "tomesParusEnBase": 19
   },
-  "spy-x-family": {
+  "soul-eater": {
     "aParaitre": {},
-    "maximum": 16,
-    "titre": "SPY X FAMILY",
+    "maximum": 25,
+    "titre": "SOUL EATER",
     "tomes": {
-      "13": {
-        "date": "2024-10-10",
+      "1": {
+        "date": "2009-03-12",
         "editeur": "Kurokawa",
-        "isbn": "9791042014704"
+        "isbn": "9782351420553"
+      },
+      "10": {
+        "date": "2010-07-01",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423998"
+      },
+      "11": {
+        "date": "2010-09-09",
+        "editeur": "Kurokawa",
+        "isbn": "9782351424001"
+      },
+      "12": {
+        "date": "2010-11-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425749"
+      },
+      "13": {
+        "date": "2011-01-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351425756"
       },
       "14": {
-        "date": "2025-03-13",
+        "date": "2011-03-10",
         "editeur": "Kurokawa",
-        "isbn": "9791042018726"
+        "isbn": "9782351425763"
       },
       "15": {
-        "date": "2025-10-09",
+        "date": "2011-05-12",
         "editeur": "Kurokawa",
-        "isbn": "9791042018733"
+        "isbn": "9782351425770"
       },
       "16": {
-        "date": "2026-04-23",
+        "date": "2011-07-07",
         "editeur": "Kurokawa",
-        "isbn": "9791042021030"
+        "isbn": "9782351425787"
+      },
+      "17": {
+        "date": "2011-10-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426043"
+      },
+      "18": {
+        "date": "2011-12-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426906"
+      },
+      "19": {
+        "date": "2012-03-08",
+        "editeur": "Kurokawa",
+        "isbn": "9782351426913"
+      },
+      "2": {
+        "date": "2009-03-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420560"
+      },
+      "20": {
+        "date": "2012-07-05",
+        "editeur": "Kurokawa",
+        "isbn": "9782351427743"
+      },
+      "21": {
+        "date": "2012-10-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428290"
+      },
+      "22": {
+        "date": "2013-03-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428764"
+      },
+      "23": {
+        "date": "2013-07-04",
+        "editeur": "Kurokawa",
+        "isbn": "9782351428849"
+      },
+      "24": {
+        "date": "2013-11-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351429303"
+      },
+      "25": {
+        "date": "2014-07-03",
+        "editeur": "Kurokawa",
+        "isbn": "9782368520215"
+      },
+      "3": {
+        "date": "2009-05-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351420577"
+      },
+      "4": {
+        "date": "2009-07-02",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423684"
+      },
+      "5": {
+        "date": "2009-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423691"
+      },
+      "6": {
+        "date": "2009-11-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423707"
+      },
+      "7": {
+        "date": "2010-01-14",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423967"
+      },
+      "8": {
+        "date": "2010-03-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423974"
+      },
+      "9": {
+        "date": "2010-05-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782351423981"
+      }
+    },
+    "tomesParusEnBase": 25
+  },
+  "spy-x-family": {
+    "aParaitre": {},
+    "maximum": 11,
+    "titre": "SPY X FAMILY",
+    "tomes": {
+      "1": {
+        "date": "2020-09-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782380710243"
+      },
+      "10": {
+        "date": "2022-12-01",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712971"
+      },
+      "11": {
+        "date": "2023-10-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782380715378"
+      },
+      "2": {
+        "date": "2020-11-12",
+        "editeur": "Kurokawa",
+        "isbn": "9782380710250"
+      },
+      "3": {
+        "date": "2021-02-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711479"
+      },
+      "4": {
+        "date": "2021-05-13",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711486"
+      },
+      "5": {
+        "date": "2021-08-19",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711493"
+      },
+      "6": {
+        "date": "2021-11-11",
+        "editeur": "Kurokawa",
+        "isbn": "9782380711509"
+      },
+      "7": {
+        "date": "2022-02-10",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712605"
+      },
+      "8": {
+        "date": "2022-06-30",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712957"
+      },
+      "9": {
+        "date": "2022-09-01",
+        "editeur": "Kurokawa",
+        "isbn": "9782380712964"
       }
     },
     "tomesParusEnBase": 16
   },
   "talentless": {
     "aParaitre": {},
-    "maximum": 14,
+    "maximum": 10,
     "titre": "TALENTLESS",
     "tomes": {
-      "12": {
-        "date": "2025-02-05",
+      "1": {
+        "date": "2018-06-06",
         "editeur": "Doki Doki",
-        "isbn": "9791041111466"
+        "isbn": "9782818945223"
       },
-      "13": {
-        "date": "2026-01-07",
+      "10": {
+        "date": "2023-08-16",
         "editeur": "Doki Doki",
-        "isbn": "9791041115877"
+        "isbn": "9791041100804"
       },
-      "14": {
-        "date": "2026-07-01",
+      "2": {
+        "date": "2018-07-04",
         "editeur": "Doki Doki",
-        "isbn": "9791041120703"
+        "isbn": "9782818948910"
+      },
+      "3": {
+        "date": "2018-09-12",
+        "editeur": "Doki Doki",
+        "isbn": "9782818947036"
+      },
+      "4": {
+        "date": "2019-04-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818947234"
+      },
+      "5": {
+        "date": "2020-01-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818976319"
+      },
+      "6": {
+        "date": "2020-10-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979600"
+      },
+      "7": {
+        "date": "2021-06-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818985588"
+      },
+      "8": {
+        "date": "2021-12-08",
+        "editeur": "Doki Doki",
+        "isbn": "9782818989388"
+      },
+      "9": {
+        "date": "2022-11-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996492"
       }
     },
     "tomesParusEnBase": 14
   },
   "terraformars": {
     "aParaitre": {},
-    "maximum": 23,
+    "maximum": 22,
     "titre": "TERRAFORMARS",
     "tomes": {
-      "23": {
-        "date": "2025-06-25",
-        "editeur": "Crunchyroll - Editions",
-        "isbn": "9782820352521"
+      "1": {
+        "date": "2013-01-30",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820306159"
+      },
+      "10": {
+        "date": "2015-05-13",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820320148"
+      },
+      "11": {
+        "date": "2015-08-26",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820321671"
+      },
+      "12": {
+        "date": "2015-11-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820322210"
+      },
+      "13": {
+        "date": "2016-02-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820323088"
+      },
+      "14": {
+        "date": "2016-05-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820324511"
+      },
+      "15": {
+        "date": "2016-08-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820324900"
+      },
+      "16": {
+        "date": "2016-11-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820325280"
+      },
+      "17": {
+        "date": "2017-03-01",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328076"
+      },
+      "18": {
+        "date": "2017-05-17",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328465"
+      },
+      "19": {
+        "date": "2017-08-23",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820328915"
+      },
+      "2": {
+        "date": "2013-05-15",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820306807"
+      },
+      "20": {
+        "date": "2017-11-08",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820329288"
+      },
+      "21": {
+        "date": "2018-11-28",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820331991"
+      },
+      "22": {
+        "date": "2019-02-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332301"
+      },
+      "3": {
+        "date": "2013-08-21",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820307415"
+      },
+      "4": {
+        "date": "2013-10-30",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820315434"
+      },
+      "5": {
+        "date": "2014-02-12",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820315786"
+      },
+      "6": {
+        "date": "2014-05-21",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820315984"
+      },
+      "7": {
+        "date": "2014-08-20",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820317629"
+      },
+      "8": {
+        "date": "2014-10-29",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820318879"
+      },
+      "9": {
+        "date": "2015-02-04",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820327130"
       }
     },
     "tomesParusEnBase": 23
   },
   "the-ancient-magus-bride": {
-    "aParaitre": {
-      "24": {
-        "date": "2026-09-17",
-        "editeur": "Komikku Editions",
-        "isbn": "9782372876308"
-      }
-    },
-    "maximum": 23,
+    "aParaitre": {},
+    "maximum": 19,
     "titre": "THE ANCIENT MAGUS BRIDE",
     "tomes": {
-      "20": {
-        "date": "2024-09-26",
+      "1": {
+        "date": "2015-05-14",
         "editeur": "Komikku Editions",
-        "isbn": "9782372878043"
+        "isbn": "9782372870276"
       },
-      "21": {
-        "date": "2025-03-06",
+      "10": {
+        "date": "2019-03-28",
         "editeur": "Komikku Editions",
-        "isbn": "9782372878487"
+        "isbn": "9782372874250"
       },
-      "22": {
-        "date": "2025-09-25",
+      "11": {
+        "date": "2020-07-09",
         "editeur": "Komikku Editions",
-        "isbn": "9782372879026"
+        "isbn": "9782372874533"
       },
-      "23": {
-        "date": "2026-04-30",
+      "12": {
+        "date": "2020-10-15",
         "editeur": "Komikku Editions",
-        "isbn": "9782372879552"
+        "isbn": "9782372874960"
+      },
+      "13": {
+        "date": "2021-03-18",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372875127"
+      },
+      "14": {
+        "date": "2021-07-01",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372875226"
+      },
+      "15": {
+        "date": "2021-09-30",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372875639"
+      },
+      "16": {
+        "date": "2022-05-12",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876100"
+      },
+      "17": {
+        "date": "2022-08-25",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876117"
+      },
+      "18": {
+        "date": "2022-12-08",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876407"
+      },
+      "19": {
+        "date": "2023-08-31",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372877107"
+      },
+      "2": {
+        "date": "2015-07-02",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372870337"
+      },
+      "3": {
+        "date": "2015-10-22",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372870528"
+      },
+      "4": {
+        "date": "2016-01-28",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372870733"
+      },
+      "5": {
+        "date": "2016-09-22",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372871174"
+      },
+      "6": {
+        "date": "2017-03-09",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372872355"
+      },
+      "7": {
+        "date": "2017-09-28",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372872362"
+      },
+      "8": {
+        "date": "2018-03-15",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372873352"
+      },
+      "9": {
+        "date": "2018-09-20",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372873802"
       }
     },
     "tomesParusEnBase": 23
   },
   "the-ancient-magus-bride-le-bleu-du-magicien": {
     "aParaitre": {},
-    "maximum": 10,
+    "maximum": 8,
     "titre": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
     "tomes": {
-      "10": {
-        "date": "2025-12-04",
+      "1": {
+        "date": "2020-07-09",
         "editeur": "Komikku Editions",
-        "isbn": "9782372879316"
+        "isbn": "9782372875295"
       },
-      "9": {
-        "date": "2025-06-26",
+      "2": {
+        "date": "2020-10-15",
         "editeur": "Komikku Editions",
-        "isbn": "9782372877756"
+        "isbn": "9782372875394"
+      },
+      "3": {
+        "date": "2021-04-01",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372875653"
+      },
+      "4": {
+        "date": "2021-11-25",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876049"
+      },
+      "5": {
+        "date": "2022-05-12",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876438"
+      },
+      "6": {
+        "date": "2023-01-26",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372876650"
+      },
+      "7": {
+        "date": "2023-06-08",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372877022"
+      },
+      "8": {
+        "date": "2023-12-07",
+        "editeur": "Komikku Editions",
+        "isbn": "9782372877312"
       }
     },
     "tomesParusEnBase": 10
   },
-  "the-unwanted-unded-adventurer": {
+  "the-promised-neverland": {
     "aParaitre": {},
-    "maximum": 13,
-    "titre": "THE UNWANTED UNDED ADVENTURER",
+    "maximum": 20,
+    "titre": "THE PROMISED NEVERLAND",
     "tomes": {
+      "1": {
+        "date": "2018-04-25",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332233"
+      },
+      "10": {
+        "date": "2019-10-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335814"
+      },
+      "11": {
+        "date": "2019-11-27",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335982"
+      },
       "12": {
-        "date": "2024-09-13",
-        "editeur": "Meian",
-        "isbn": "9782385031077"
+        "date": "2020-02-05",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820337795"
       },
       "13": {
-        "date": "2026-07-22",
+        "date": "2020-05-27",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820337955"
+      },
+      "14": {
+        "date": "2020-06-10",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338129"
+      },
+      "15": {
+        "date": "2020-08-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338297"
+      },
+      "16": {
+        "date": "2020-10-07",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338501"
+      },
+      "17": {
+        "date": "2020-12-09",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820338679"
+      },
+      "18": {
+        "date": "2021-02-10",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340597"
+      },
+      "19": {
+        "date": "2021-03-31",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340764"
+      },
+      "2": {
+        "date": "2018-06-27",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332431"
+      },
+      "20": {
+        "date": "2021-06-02",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820340887"
+      },
+      "3": {
+        "date": "2018-08-22",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332615"
+      },
+      "4": {
+        "date": "2018-10-24",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332844"
+      },
+      "5": {
+        "date": "2018-11-28",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820332950"
+      },
+      "6": {
+        "date": "2019-02-06",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335234"
+      },
+      "7": {
+        "date": "2019-04-03",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335371"
+      },
+      "8": {
+        "date": "2019-06-19",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335517"
+      },
+      "9": {
+        "date": "2019-08-21",
+        "editeur": "Kaze Manga",
+        "isbn": "9782820335715"
+      }
+    },
+    "tomesParusEnBase": 20
+  },
+  "the-unwanted-unded-adventurer": {
+    "aParaitre": {},
+    "maximum": 11,
+    "titre": "The Unwanted Undead Adventurer",
+    "tomes": {
+      "1": {
+        "date": "2020-08-24",
         "editeur": "Meian",
-        "isbn": "9782386585838"
+        "isbn": "9782368779491"
+      },
+      "10": {
+        "date": "2023-10-24",
+        "editeur": "Meian",
+        "isbn": "9782385031053"
+      },
+      "11": {
+        "date": "2024-01-09",
+        "editeur": "Meian",
+        "isbn": "9782385031060"
+      },
+      "2": {
+        "date": "2020-10-12",
+        "editeur": "Meian",
+        "isbn": "9782368779507"
+      },
+      "3": {
+        "date": "2021-01-11",
+        "editeur": "Meian",
+        "isbn": "9782368779514"
+      },
+      "4": {
+        "date": "2021-02-23",
+        "editeur": "Meian",
+        "isbn": "9782368779521"
+      },
+      "5": {
+        "date": "2021-05-11",
+        "editeur": "Meian",
+        "isbn": "9782368779538"
+      },
+      "6": {
+        "date": "2021-08-17",
+        "editeur": "Meian",
+        "isbn": "9782382751145"
+      },
+      "7": {
+        "date": "2022-03-15",
+        "editeur": "Meian",
+        "isbn": "9782382751152"
+      },
+      "8": {
+        "date": "2022-07-22",
+        "editeur": "Meian",
+        "isbn": "9782382751169"
+      },
+      "9": {
+        "date": "2023-03-14",
+        "editeur": "Meian",
+        "isbn": "9782385031046"
       }
     },
     "tomesParusEnBase": 13
   },
   "to-a-new-you": {
     "aParaitre": {},
-    "maximum": 6,
+    "maximum": 3,
     "titre": "TO A NEW YOU",
     "tomes": {
-      "6": {
-        "date": "2024-10-16",
+      "1": {
+        "date": "2023-11-02",
         "editeur": "Panini",
-        "isbn": "9791039130165"
+        "isbn": "9791039120029"
+      },
+      "2": {
+        "date": "2023-11-02",
+        "editeur": "Panini",
+        "isbn": "9791039121118"
+      },
+      "3": {
+        "date": "2024-01-24",
+        "editeur": "Panini",
+        "isbn": "9791039122627"
       }
     },
     "tomesParusEnBase": 6
   },
-  "why-nobody-remember-my-world": {
-    "aParaitre": {
-      "14": {
-        "date": "2026-10-07",
-        "editeur": "Doki Doki",
-        "isbn": "9791041119974"
+  "tsugumi-project": {
+    "aParaitre": {},
+    "maximum": 6,
+    "titre": "TSUGUMI PROJECT",
+    "tomes": {
+      "1": {
+        "date": "2019-07-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704721"
+      },
+      "2": {
+        "date": "2019-09-05",
+        "editeur": "Ki-oon",
+        "isbn": "9791032704868"
+      },
+      "3": {
+        "date": "2020-01-02",
+        "editeur": "Ki-oon",
+        "isbn": "9791032705025"
+      },
+      "4": {
+        "date": "2022-07-07",
+        "editeur": "Ki-oon",
+        "isbn": "9791032706589"
+      },
+      "5": {
+        "date": "2022-12-01",
+        "editeur": "Ki-oon",
+        "isbn": "9791032712603"
+      },
+      "6": {
+        "date": "2023-05-04",
+        "editeur": "Ki-oon",
+        "isbn": "9791032713150"
       }
     },
-    "maximum": 13,
-    "titre": "WHY NOBODY REMEMBER MY WORLD",
+    "tomesParusEnBase": 7
+  },
+  "uqholder": {
+    "aParaitre": {},
+    "maximum": 28,
+    "titre": "UQ Holder !",
     "tomes": {
+      "1": {
+        "date": "2014-10-01",
+        "editeur": "Pika",
+        "isbn": "9782811616045"
+      },
+      "10": {
+        "date": "2016-09-21",
+        "editeur": "Pika",
+        "isbn": "9782811628932"
+      },
       "11": {
-        "date": "2024-11-06",
-        "editeur": "Doki Doki",
-        "isbn": "9791041110674"
+        "date": "2016-12-14",
+        "editeur": "Pika",
+        "isbn": "9782811630799"
       },
       "12": {
-        "date": "2025-04-02",
-        "editeur": "Doki Doki",
-        "isbn": "9791041112999"
+        "date": "2017-03-15",
+        "editeur": "Pika",
+        "isbn": "9782811632694"
       },
       "13": {
-        "date": "2026-03-04",
+        "date": "2017-07-05",
+        "editeur": "Pika",
+        "isbn": "9782811633318"
+      },
+      "14": {
+        "date": "2017-12-13",
+        "editeur": "Pika",
+        "isbn": "9782811637408"
+      },
+      "15": {
+        "date": "2018-03-21",
+        "editeur": "Pika",
+        "isbn": "9782811639327"
+      },
+      "16": {
+        "date": "2018-07-11",
+        "editeur": "Pika",
+        "isbn": "9782811641382"
+      },
+      "17": {
+        "date": "2018-11-21",
+        "editeur": "Pika",
+        "isbn": "9782811643997"
+      },
+      "18": {
+        "date": "2019-03-20",
+        "editeur": "Pika",
+        "isbn": "9782811646028"
+      },
+      "19": {
+        "date": "2019-07-03",
+        "editeur": "Pika",
+        "isbn": "9782811648695"
+      },
+      "2": {
+        "date": "2014-10-01",
+        "editeur": "Pika",
+        "isbn": "9782811616052"
+      },
+      "20": {
+        "date": "2019-11-20",
+        "editeur": "Pika",
+        "isbn": "9782811650308"
+      },
+      "21": {
+        "date": "2020-03-18",
+        "editeur": "Pika",
+        "isbn": "9782811653194"
+      },
+      "22": {
+        "date": "2020-09-02",
+        "editeur": "Pika",
+        "isbn": "9782811655488"
+      },
+      "23": {
+        "date": "2021-02-17",
+        "editeur": "Pika",
+        "isbn": "9782811657697"
+      },
+      "24": {
+        "date": "2021-06-16",
+        "editeur": "Pika",
+        "isbn": "9782811660581"
+      },
+      "25": {
+        "date": "2021-10-20",
+        "editeur": "Pika",
+        "isbn": "9782811663766"
+      },
+      "26": {
+        "date": "2022-03-16",
+        "editeur": "Pika",
+        "isbn": "9782811665319"
+      },
+      "27": {
+        "date": "2022-07-13",
+        "editeur": "Pika",
+        "isbn": "9782811667306"
+      },
+      "28": {
+        "date": "2022-11-16",
+        "editeur": "Pika",
+        "isbn": "9782811669645"
+      },
+      "3": {
+        "date": "2014-12-03",
+        "editeur": "Pika",
+        "isbn": "9782811616144"
+      },
+      "4": {
+        "date": "2015-03-04",
+        "editeur": "Pika",
+        "isbn": "9782811618414"
+      },
+      "5": {
+        "date": "2015-06-03",
+        "editeur": "Pika",
+        "isbn": "9782811622794"
+      },
+      "6": {
+        "date": "2015-09-16",
+        "editeur": "Pika",
+        "isbn": "9782811625467"
+      },
+      "7": {
+        "date": "2015-12-16",
+        "editeur": "Pika",
+        "isbn": "9782811627003"
+      },
+      "8": {
+        "date": "2016-03-16",
+        "editeur": "Pika",
+        "isbn": "9782811626341"
+      },
+      "9": {
+        "date": "2016-06-15",
+        "editeur": "Pika",
+        "isbn": "9782811626358"
+      }
+    },
+    "tomesParusEnBase": 28
+  },
+  "why-nobody-remember-my-world": {
+    "aParaitre": {},
+    "maximum": 9,
+    "titre": "Why Nobody Remembers My World ?",
+    "tomes": {
+      "1": {
+        "date": "2020-03-04",
         "editeur": "Doki Doki",
-        "isbn": "9791041117383"
+        "isbn": "9782818976685"
+      },
+      "2": {
+        "date": "2020-06-10",
+        "editeur": "Doki Doki",
+        "isbn": "9782818976692"
+      },
+      "3": {
+        "date": "2020-07-01",
+        "editeur": "Doki Doki",
+        "isbn": "9782818978009"
+      },
+      "4": {
+        "date": "2020-09-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818978016"
+      },
+      "5": {
+        "date": "2020-11-04",
+        "editeur": "Doki Doki",
+        "isbn": "9782818979471"
+      },
+      "6": {
+        "date": "2021-03-03",
+        "editeur": "Doki Doki",
+        "isbn": "9782818983751"
+      },
+      "7": {
+        "date": "2021-10-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818989371"
+      },
+      "8": {
+        "date": "2022-04-06",
+        "editeur": "Doki Doki",
+        "isbn": "9782818994320"
+      },
+      "9": {
+        "date": "2023-08-23",
+        "editeur": "Doki Doki",
+        "isbn": "9791041102792"
       }
     },
     "tomesParusEnBase": 13
   },
-  "yusei-no-last-boss": {
+  "yuna-de-la-pension-yuragi": {
     "aParaitre": {},
-    "maximum": 10,
-    "titre": "YUSEI NO LAST BOSS",
+    "maximum": 24,
+    "titre": "YUNA DE LA PENSION YURAGI",
     "tomes": {
+      "1": {
+        "date": "2018-02-07",
+        "editeur": "Pika",
+        "isbn": "9782811634438"
+      },
       "10": {
-        "date": "2026-06-03",
-        "editeur": "Doki Doki",
-        "isbn": "9791041119530"
+        "date": "2019-08-21",
+        "editeur": "Pika",
+        "isbn": "9782811649791"
+      },
+      "11": {
+        "date": "2019-10-09",
+        "editeur": "Pika",
+        "isbn": "9782811651497"
+      },
+      "12": {
+        "date": "2019-11-27",
+        "editeur": "Pika",
+        "isbn": "9782811651503"
+      },
+      "13": {
+        "date": "2020-02-05",
+        "editeur": "Pika",
+        "isbn": "9782811653699"
+      },
+      "14": {
+        "date": "2020-05-27",
+        "editeur": "Pika",
+        "isbn": "9782811653705"
+      },
+      "15": {
+        "date": "2020-08-19",
+        "editeur": "Pika",
+        "isbn": "9782811653712"
+      },
+      "16": {
+        "date": "2020-10-07",
+        "editeur": "Pika",
+        "isbn": "9782811658250"
+      },
+      "17": {
+        "date": "2020-11-25",
+        "editeur": "Pika",
+        "isbn": "9782811658359"
+      },
+      "18": {
+        "date": "2021-02-03",
+        "editeur": "Pika",
+        "isbn": "9782811660000"
+      },
+      "19": {
+        "date": "2021-04-07",
+        "editeur": "Pika",
+        "isbn": "9782811660765"
+      },
+      "2": {
+        "date": "2018-04-04",
+        "editeur": "Pika",
+        "isbn": "9782811641030"
+      },
+      "20": {
+        "date": "2021-06-09",
+        "editeur": "Pika",
+        "isbn": "9782811660772"
+      },
+      "21": {
+        "date": "2021-08-25",
+        "editeur": "Pika",
+        "isbn": "9782811660789"
+      },
+      "22": {
+        "date": "2021-10-13",
+        "editeur": "Pika",
+        "isbn": "9782811660796"
+      },
+      "23": {
+        "date": "2021-11-24",
+        "editeur": "Pika",
+        "isbn": "9782811660802"
+      },
+      "24": {
+        "date": "2022-02-02",
+        "editeur": "Pika",
+        "isbn": "9782811667801"
+      },
+      "3": {
+        "date": "2018-06-06",
+        "editeur": "Pika",
+        "isbn": "9782811641047"
+      },
+      "4": {
+        "date": "2018-08-22",
+        "editeur": "Pika",
+        "isbn": "9782811641054"
+      },
+      "5": {
+        "date": "2018-10-03",
+        "editeur": "Pika",
+        "isbn": "9782811644697"
+      },
+      "6": {
+        "date": "2018-12-12",
+        "editeur": "Pika",
+        "isbn": "9782811644703"
+      },
+      "7": {
+        "date": "2019-02-06",
+        "editeur": "Pika",
+        "isbn": "9782811647407"
+      },
+      "8": {
+        "date": "2019-04-03",
+        "editeur": "Pika",
+        "isbn": "9782811647520"
       },
       "9": {
-        "date": "2025-04-02",
+        "date": "2019-06-05",
+        "editeur": "Pika",
+        "isbn": "9782811647537"
+      }
+    },
+    "tomesParusEnBase": 24
+  },
+  "yusei-no-last-boss": {
+    "aParaitre": {},
+    "maximum": 7,
+    "titre": "Yasei no Last Boss",
+    "tomes": {
+      "1": {
+        "date": "2022-07-13",
         "editeur": "Doki Doki",
-        "isbn": "9791041110667"
+        "isbn": "9782818996300"
+      },
+      "2": {
+        "date": "2022-09-07",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996317"
+      },
+      "3": {
+        "date": "2022-11-09",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996324"
+      },
+      "4": {
+        "date": "2023-05-10",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996331"
+      },
+      "5": {
+        "date": "2023-08-16",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996409"
+      },
+      "6": {
+        "date": "2023-10-04",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996416"
+      },
+      "7": {
+        "date": "2024-01-10",
+        "editeur": "Doki Doki",
+        "isbn": "9782818996423"
       }
     },
     "tomesParusEnBase": 10

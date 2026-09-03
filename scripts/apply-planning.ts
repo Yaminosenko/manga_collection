@@ -28,6 +28,14 @@ function charger<T>(chemin: string, defaut: T): T {
   return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as T) : defaut;
 }
 
+function finDeFenetre(manifeste: Manifeste): Date | null {
+  const dates = Object.values(manifeste)
+    .flatMap((fiche) => [...Object.values(fiche.tomes), ...Object.values(fiche.aParaitre ?? {})])
+    .map((tome) => tome.date);
+  if (dates.length === 0) return null;
+  return new Date(dates.reduce((plusTardive, date) => (date > plusTardive ? date : plusTardive)));
+}
+
 async function restaurer() {
   const avant = charger<EtatAvant | null>(SAUVEGARDE, null);
   if (!avant) {
@@ -71,20 +79,31 @@ async function main() {
     select: { id: true, slug: true, tomesParus: true },
   });
 
-  if (!existsSync(SAUVEGARDE)) {
-    const avant: EtatAvant = {};
-    for (const edition of editions) {
-      avant[edition.slug] = { tomesParus: edition.tomesParus };
-    }
-    writeFileSync(SAUVEGARDE, `${JSON.stringify(avant, null, 2)}\n`);
-    console.log(`sauvegarde de ${editions.length} editions ecrite dans ${SAUVEGARDE}`);
+  const avant = charger<EtatAvant>(SAUVEGARDE, {});
+  const ajoutees = editions.filter((edition) => !(edition.slug in avant));
+  for (const edition of ajoutees) {
+    avant[edition.slug] = { tomesParus: edition.tomesParus };
   }
+  if (ajoutees.length > 0) {
+    writeFileSync(SAUVEGARDE, `${JSON.stringify(avant, null, 2)}\n`);
+  }
+  console.log(
+    `sauvegarde : ${ajoutees.length} editions ajoutees, ${Object.keys(avant).length} au total dans ${SAUVEGARDE}`,
+  );
 
   let tomesCrees = 0;
   let isbnEcrits = 0;
   let datesEcrites = 0;
   let sortiesEcrites = 0;
+  let sortiesRemplacees = 0;
   const elargies: string[] = [];
+
+  const fin = finDeFenetre(manifeste);
+  const horsFenetre = fin
+    ? await prisma.sortie.count({
+        where: { editionId: { in: editions.map((edition) => edition.id) }, date: { gt: fin } },
+      })
+    : 0;
 
   for (const edition of editions) {
     const fiche = manifeste[edition.slug];
@@ -114,7 +133,12 @@ async function main() {
       }
     }
 
-    await prisma.sortie.deleteMany({ where: { editionId: edition.id } });
+    if (fin) {
+      const { count } = await prisma.sortie.deleteMany({
+        where: { editionId: edition.id, date: { lte: fin } },
+      });
+      sortiesRemplacees += count;
+    }
     for (const [brut, annonce] of Object.entries(fiche.aParaitre ?? {})) {
       const numero = Number(brut);
       if (numero <= cible) continue;
@@ -136,7 +160,14 @@ async function main() {
   console.log(`${elargies.length} editions elargies, ${tomesCrees} tomes crees`);
   for (const ligne of elargies) console.log(`  ${ligne}`);
   console.log(`${isbnEcrits} ISBN et ${datesEcrites} dates de sortie ecrits`);
-  console.log(`${sortiesEcrites} sorties annoncees enregistrees`);
+  console.log(
+    `${sortiesEcrites} sorties annoncees enregistrees, ${sortiesRemplacees} remplacees dans la fenetre du manifeste`,
+  );
+  if (fin) {
+    console.log(
+      `fenetre couverte jusqu'au ${fin.toISOString().slice(0, 10)} : ${horsFenetre} sorties posterieures conservees`,
+    );
+  }
   console.log(`compteurs : ${JSON.stringify(compteurs)}`);
 }
 
