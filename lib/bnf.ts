@@ -1,4 +1,4 @@
-import { URL_SRU_BNF } from "@/lib/constants";
+import { DELAI_APPEL_EXTERNE_MS, URL_SRU_BNF } from "@/lib/constants";
 
 const NOTICES_MAX = 50;
 const LONGUEUR_MOT_SIGNIFIANT = 3;
@@ -40,6 +40,10 @@ function porteAutreEdition(titreNotice: string): boolean {
   );
 }
 
+function litteralCql(valeur: string): string {
+  return valeur.replace(/["\\]/g, " ").replace(/\s+/g, " ").trim();
+}
+
 function centimes(brut: string): number | null {
   const trouve = brut.match(/(\d+)[,.](\d{2})/);
   return trouve ? Number(trouve[1]) * 100 + Number(trouve[2]) : null;
@@ -60,17 +64,25 @@ export async function chercherPrixDefautCentimes(
   titre: string,
   auteur: string,
 ): Promise<number | null> {
+  const recherche = litteralCql(titre);
+  if (recherche === "") {
+    return null;
+  }
+
   const requete = new URLSearchParams({
     version: "1.2",
     operation: "searchRetrieve",
-    query: `bib.title all "${titre}" and bib.doctype any "a"`,
+    query: `bib.title all "${recherche}" and bib.doctype any "a"`,
     recordSchema: "unimarcxchange",
     maximumRecords: String(NOTICES_MAX),
   });
 
   let xml: string;
   try {
-    const reponse = await fetch(`${URL_SRU_BNF}?${requete}`, { cache: "no-store" });
+    const reponse = await fetch(`${URL_SRU_BNF}?${requete}`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(DELAI_APPEL_EXTERNE_MS),
+    });
     if (!reponse.ok) return null;
     xml = await reponse.text();
   } catch {
@@ -125,7 +137,10 @@ export async function chercherParIsbn(isbn: string): Promise<NoticeBnf | null> {
 
   let xml: string;
   try {
-    const reponse = await fetch(`${URL_SRU_BNF}?${requete}`, { cache: "no-store" });
+    const reponse = await fetch(`${URL_SRU_BNF}?${requete}`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(DELAI_APPEL_EXTERNE_MS),
+    });
     if (!reponse.ok) return null;
     xml = await reponse.text();
   } catch {

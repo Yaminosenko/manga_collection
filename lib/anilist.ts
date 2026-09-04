@@ -1,4 +1,4 @@
-import { RESULTATS_RECHERCHE_MAX, URL_ANILIST } from "@/lib/constants";
+import { DELAI_APPEL_EXTERNE_MS, RESULTATS_RECHERCHE_MAX, URL_ANILIST } from "@/lib/constants";
 
 export type SerieDistante = {
   id: number;
@@ -73,6 +73,7 @@ export async function rechercherSurAniList(terme: string): Promise<RechercheDist
         variables: { recherche: terme, parPage: RESULTATS_RECHERCHE_MAX },
       }),
       cache: "no-store",
+      signal: AbortSignal.timeout(DELAI_APPEL_EXTERNE_MS),
     });
 
     if (!reponse.ok) {

@@ -19,6 +19,7 @@ import {
   PLACEHOLDER_RECHERCHE,
   TITRE_AJOUTER,
   TITRE_SCANNER,
+  TOMES_PARUS_MAX,
 } from "@/lib/constants";
 import type { EtatCreation, ResultatDistant, ResultatRecherche } from "@/lib/domain";
 
@@ -39,12 +40,19 @@ export function AddSeries() {
     if (requete.length < LONGUEUR_RECHERCHE_MIN) {
       return;
     }
+    let courante = true;
     const minuteur = setTimeout(() => {
       demarrerRecherche(async () => {
-        setRecherche(await rechercherSeries(requete));
+        const trouvees = await rechercherSeries(requete);
+        if (courante) {
+          setRecherche(trouvees);
+        }
       });
     }, DELAI_RECHERCHE_MS);
-    return () => clearTimeout(minuteur);
+    return () => {
+      courante = false;
+      clearTimeout(minuteur);
+    };
   }, [terme]);
 
   if (choisie) {
@@ -232,6 +240,7 @@ function Confirmation({
             name="tomesParus"
             type="number"
             min={1}
+            max={TOMES_PARUS_MAX}
             step={1}
             defaultValue={serie.volumesJaponais ?? 1}
             required

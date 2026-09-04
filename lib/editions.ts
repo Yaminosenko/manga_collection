@@ -1,6 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { ORDRE_LIENS_SERIE } from "@/lib/constants";
-import type { Collection, Edition, Manquants, SortiePlanning } from "@/lib/domain";
+import type {
+  Collection,
+  Edition,
+  EtatEdition,
+  Manquants,
+  SortiePlanning,
+} from "@/lib/domain";
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
   const edition = await prisma.edition.findUnique({
@@ -151,6 +157,33 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
       .sort(
         (a, b) => ORDRE_LIENS_SERIE.indexOf(a.type) - ORDRE_LIENS_SERIE.indexOf(b.type),
       ),
+  };
+}
+
+export async function chargerEtatEdition(slug: string): Promise<EtatEdition | null> {
+  const edition = await prisma.edition.findUnique({
+    where: { slug },
+    select: {
+      slug: true,
+      nom: true,
+      statut: true,
+      editionTerminee: true,
+      termineeForcee: true,
+      serie: { select: { titre: true } },
+    },
+  });
+
+  if (!edition) {
+    return null;
+  }
+
+  return {
+    slug: edition.slug,
+    nom: edition.nom,
+    titre: edition.serie.titre,
+    statut: edition.statut,
+    editionTerminee: edition.editionTerminee,
+    termineeForcee: edition.termineeForcee,
   };
 }
 

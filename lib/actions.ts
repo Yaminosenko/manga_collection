@@ -9,17 +9,17 @@ import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
 import { promouvoirSortie } from "@/lib/promotion";
 import { exigerProprietaire } from "@/lib/guard";
-import { LONGUEUR_RECHERCHE_MIN, RESULTATS_RECHERCHE_MAX } from "@/lib/constants";
+import {
+  LIBELLE_STATUT_INVALIDE,
+  LIBELLE_TOMES_PARUS_INVALIDE,
+  LONGUEUR_RECHERCHE_MIN,
+  RESULTATS_RECHERCHE_MAX,
+  STATUTS_EDITION,
+  TOMES_PARUS_MAX,
+} from "@/lib/constants";
 import { isbnValide } from "@/lib/domain";
 import type { EtatCreation, ResultatRecherche, ResultatScan } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
-
-async function marquerVerifiee(slug: string): Promise<void> {
-  await prisma.edition.updateMany({
-    where: { slug, aVerifier: true },
-    data: { aVerifier: false },
-  });
-}
 
 function revaliderEdition(slug: string): void {
   revalidatePath(`/edition/${slug}`);
@@ -79,7 +79,15 @@ export async function basculerTome(
     update: { possede },
   });
 
-  await marquerVerifiee(slug);
+  revaliderEdition(slug);
+}
+
+export async function marquerRepartitionVerifiee(slug: string): Promise<void> {
+  await exigerProprietaire();
+  await prisma.edition.updateMany({
+    where: { slug, aVerifier: true },
+    data: { aVerifier: false },
+  });
   revaliderEdition(slug);
 }
 
@@ -99,12 +107,15 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
     .filter((volume) => volume.numero <= edition.tomesParus)
     .map((volume) => volume.id);
 
+  await prisma.possession.createMany({
+    data: identifiants.map((volumeId) => ({ volumeId, possede })),
+    skipDuplicates: true,
+  });
   await prisma.possession.updateMany({
     where: { volumeId: { in: identifiants } },
     data: { possede },
   });
 
-  await marquerVerifiee(slug);
   revaliderEdition(slug);
 }
 
@@ -160,6 +171,10 @@ export async function rechercherSeries(terme: string): Promise<ResultatRecherche
     })),
     indisponible: distante.indisponible,
   };
+}
+
+function estStatutEdition(valeur: string): valeur is StatutEdition {
+  return (STATUTS_EDITION as readonly string[]).includes(valeur);
 }
 
 function lireTexte(donnees: FormData, champ: string): string {
@@ -278,14 +293,17 @@ export async function creerEdition(
   const editeur = lireTexte(donnees, "editeur");
   const prixBrut = lireTexte(donnees, "prixDefaut");
   const tomesParus = Number(lireTexte(donnees, "tomesParus"));
-  const statut = lireTexte(donnees, "statut") as StatutEdition;
+  const statut = lireTexte(donnees, "statut");
   const editionTerminee = donnees.get("editionTerminee") === "on";
 
   if (titre === "" || auteur === "" || nom === "") {
     return { erreur: "Titre, auteur et nom d’édition sont obligatoires." };
   }
-  if (!Number.isInteger(tomesParus) || tomesParus < 1) {
-    return { erreur: "Le nombre de tomes parus doit être un entier supérieur à zéro." };
+  if (!estStatutEdition(statut)) {
+    return { erreur: LIBELLE_STATUT_INVALIDE };
+  }
+  if (!Number.isInteger(tomesParus) || tomesParus < 1 || tomesParus > TOMES_PARUS_MAX) {
+    return { erreur: LIBELLE_TOMES_PARUS_INVALIDE };
   }
   if (prixBrut !== "" && lireCentimes(prixBrut) === null) {
     return { erreur: "Le prix par défaut n’est pas un nombre valide." };

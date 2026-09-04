@@ -12,6 +12,7 @@ import {
   LIBELLE_STATUT_PERSONNEL,
   MENTION_COLLECTION_FORCEE,
   MENTION_PARUTION,
+  STATUTS_EDITION,
 } from "@/lib/constants";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
@@ -23,7 +24,7 @@ type Etat = {
 
 type EditionStateProps = Etat & { slug: string };
 
-const STATUTS: StatutEdition[] = ["EN_COURS", "ABANDONNEE", "EN_PAUSE", "VENDUE"];
+const STATUTS: readonly StatutEdition[] = STATUTS_EDITION;
 
 const PARUTIONS: { valeur: boolean | null; libelle: string }[] = [
   { valeur: true, libelle: LIBELLE_PARUTION_TERMINEE },

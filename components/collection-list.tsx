@@ -47,7 +47,7 @@ function tauxCompletion(ligne: LigneCollection): number {
 function comparer(a: LigneCollection, b: LigneCollection, tri: CleTri): number {
   switch (tri) {
     case "alphabetique":
-      return 0;
+      return a.titre.localeCompare(b.titre, "fr");
     case "tomesPossedes":
       return a.possedes - b.possedes;
     case "completion":

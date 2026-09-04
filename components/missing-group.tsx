@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Cover } from "@/components/cover";
-import { PauseCircle, WarningCircle } from "@/components/icons";
+import { PauseCircle, Prohibit, WarningCircle } from "@/components/icons";
 import type { EditionManquante } from "@/lib/domain";
 
 const PLACEHOLDER_MANQUANTS = "p-[3px] text-[9px] text-neutral-700";
@@ -11,7 +11,10 @@ function IconeEtat({ edition }: { edition: EditionManquante }) {
   if (edition.aVerifier) {
     return <WarningCircle className={className} />;
   }
-  if (edition.statut === "ABANDONNEE" || edition.statut === "EN_PAUSE") {
+  if (edition.statut === "ABANDONNEE") {
+    return <Prohibit className={className} />;
+  }
+  if (edition.statut === "EN_PAUSE") {
     return <PauseCircle className={className} />;
   }
   return null;

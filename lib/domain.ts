@@ -103,6 +103,15 @@ export type Edition = {
   seriesLiees: SerieLiee[];
 };
 
+export type EtatEdition = {
+  slug: string;
+  nom: string;
+  titre: string;
+  statut: StatutEdition;
+  editionTerminee: boolean | null;
+  termineeForcee: boolean;
+};
+
 export type LigneCollection = {
   slug: string;
   titre: string;

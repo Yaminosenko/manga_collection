@@ -201,7 +201,7 @@ export function Scanner() {
         </p>
       ) : null}
 
-      {resultat ? <Resultat resultat={resultat} /> : null}
+      {resultat ? <Resultat key={resultat.isbn} resultat={resultat} /> : null}
     </div>
   );
 }

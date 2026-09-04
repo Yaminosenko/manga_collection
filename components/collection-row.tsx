@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
-import { Check, FlagCheckered, PauseCircle, WarningCircle } from "@/components/icons";
+import { Check, FlagCheckered, PauseCircle, Prohibit, WarningCircle } from "@/components/icons";
 import {
   aDesTomesAParaitre,
   estComplete,
@@ -25,10 +25,11 @@ function IconeEtat({ ligne }: { ligne: LigneCollection }) {
   return null;
 }
 
-function EtiquetteStatut({ libelle }: { libelle: string }) {
+function EtiquetteStatut({ ligne, libelle }: { ligne: LigneCollection; libelle: string }) {
+  const Icone = ligne.statut === "ABANDONNEE" ? Prohibit : PauseCircle;
   return (
     <span className="flex flex-none items-center gap-[5px] rounded-sm border border-neutral-800 px-[7px] py-[2px] text-[10px] font-medium text-neutral-400">
-      <PauseCircle className="size-[11px]" />
+      <Icone className="size-[11px]" />
       {libelle}
     </span>
   );
@@ -68,7 +69,7 @@ export function CollectionRow({ ligne }: { ligne: LigneCollection }) {
             {ligne.titre}
           </span>
           <IconeEtat ligne={ligne} />
-          {statut ? <EtiquetteStatut libelle={statut} /> : null}
+          {statut ? <EtiquetteStatut ligne={ligne} libelle={statut} /> : null}
         </div>
 
         <span className="truncate text-[12.5px] text-neutral-600">{sousTitreLigne(ligne)}</span>

@@ -95,6 +95,23 @@ export function PauseCircle({ className }: IconProps) {
   );
 }
 
+export function Prohibit({ className }: IconProps) {
+  return (
+    <Icon className={className}>
+      <circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" strokeWidth="16" />
+      <line
+        x1="60.12"
+        y1="60.12"
+        x2="195.88"
+        y2="195.88"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
 export function FlagCheckered({ className }: IconProps) {
   return (
     <Icon className={className}>

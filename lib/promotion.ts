@@ -36,12 +36,14 @@ async function promouvoir(sortie: SortieChargee, possede: boolean): Promise<Sort
     const cible = Math.max(edition.tomesParus, sortie.numero);
 
     for (let numero = edition.tomesParus + 1; numero <= sortie.numero; numero += 1) {
-      await tx.volume.create({
-        data: {
+      await tx.volume.upsert({
+        where: { editionId_numero: { editionId: sortie.editionId, numero } },
+        create: {
           editionId: sortie.editionId,
           numero,
           possession: { create: { possede: false } },
         },
+        update: {},
       });
     }
 
@@ -55,7 +57,11 @@ async function promouvoir(sortie: SortieChargee, possede: boolean): Promise<Sort
       select: { id: true },
     });
 
-    await tx.possession.updateMany({ where: { volumeId: volume.id }, data: { possede } });
+    await tx.possession.upsert({
+      where: { volumeId: volume.id },
+      create: { volumeId: volume.id, possede },
+      update: { possede },
+    });
 
     if (cible > edition.tomesParus) {
       await tx.edition.update({ where: { id: sortie.editionId }, data: { tomesParus: cible } });

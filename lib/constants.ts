@@ -16,6 +16,9 @@ export const LIBELLE_COMPLETE = "Complète";
 export const LIBELLE_A_JOUR = "À jour";
 export const LIBELLE_TERMINEE_FORCEE = "Terminée par choix";
 export const LIBELLE_A_VERIFIER = "À vérifier";
+export const LIBELLE_REPARTITION_VERIFIEE = "Répartition vérifiée";
+export const MENTION_REPARTITION_DEVINEE =
+  "L’import du Sheet a attribué les premiers tomes sans savoir lesquels étaient possédés. Confirmez la répartition une fois relue.";
 
 export const URL_RECHERCHE_MANGA_NEWS = "https://www.manga-news.com/index.php/recherche/?q=";
 export const LIBELLE_FICHE_MANGA_NEWS = "Fiche manga-news";
@@ -56,6 +59,8 @@ export const LIBELLE_COLLECTION_ERREUR = "La collection n’a pas pu être charg
 
 export const LIBELLE_ARRETEES = "Abandonnées et en pause";
 
+export const DELAI_APPEL_EXTERNE_MS = 8_000;
+
 export const URL_ANILIST = "https://graphql.anilist.co";
 export const RESULTATS_RECHERCHE_MAX = 10;
 export const DELAI_RECHERCHE_MS = 350;
@@ -63,6 +68,10 @@ export const LONGUEUR_RECHERCHE_MIN = 2;
 
 export const TITRE_AJOUTER = "Ajouter";
 export const NOM_EDITION_PAR_DEFAUT = "Édition simple";
+export const TOMES_PARUS_MAX = 500;
+export const STATUTS_EDITION = ["EN_COURS", "ABANDONNEE", "EN_PAUSE", "VENDUE"] as const;
+export const LIBELLE_STATUT_INVALIDE = "Le statut choisi n’existe pas.";
+export const LIBELLE_TOMES_PARUS_INVALIDE = `Le nombre de tomes parus doit être un entier entre 1 et ${TOMES_PARUS_MAX}.`;
 export const LIBELLE_DEJA_EN_COLLECTION = "Déjà dans la collection";
 export const LIBELLE_ANILIST_INDISPONIBLE =
   "La recherche externe est indisponible. La collection locale reste consultable.";
