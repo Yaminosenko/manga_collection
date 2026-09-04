@@ -546,7 +546,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 2 septembre 2026.
+Dernière mise à jour : 4 septembre 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -1628,6 +1628,12 @@ qui s'apparient à une édition possédée. Montrer les 598 aurait demandé une 
 lien avec `Edition` et un rafraîchissement mensuel — l'application suit une collection, pas un
 catalogue.
 
+> **Révisé le 4 septembre 2026.** Cette « seconde table sans lien avec `Edition` » existe
+> désormais : c'est `ParutionCatalogue`, créée le 2 septembre. L'import garde toute l'archive et
+> c'est l'écran qui filtre sur la collection de celui qui regarde — sans quoi, à plusieurs
+> comptes, un ajout de série donnerait un planning vide jusqu'au prochain import manuel.
+> Voir §13.1 « Le Planning et les sorties ».
+
 **Corrigé — les fautes de frappe du Sheet faisaient rater 9 éditions (30 août).** Signalé sur
 `ITCHI THE WITCH`, dont le tome 5 manquait : l'appariement se faisait par **égalité stricte**
 des titres normalisés, et `itchithewitch` ne vaut pas `ichithewitch`. Une table
@@ -1648,6 +1654,10 @@ Gain : **44 éditions appariées au lieu de 35**, 156 tomes datés avec ISBN au 
 **Le planning est une photographie, pas un flux.** Ajouter une série ne fait pas apparaître ses
 sorties : il faut relancer `npm run db:backup`, `planning:import` puis `planning:apply`, et
 l'appariement ne joue que si le titre correspond. À retenir avant de s'étonner d'un écran vide.
+**Défaut levé par le chantier multi-compte (4 septembre)** : l'archive complète entre dans
+`ParutionCatalogue` et les `Sortie` s'en dérivent à l'ajout d'une série. Le périmètre « séries
+possédées seulement », tranché ici le 30 août, est révisé — voir §13.1 « Le Planning et les
+sorties » et §13.2.
 
 **Visible en mode invité** : l'écran ne porte aucune écriture. La barre passe à quatre onglets
 pour le propriétaire, trois pour l'invité.
@@ -2009,6 +2019,40 @@ Vérifié à l'écran : la page d'Akame ga Kill affiche « RED EYES SWORD AKAME 
 Préquelle · 10/10 » et « BLUE EYES SWORD · Suite · 8/8 », couvertures et chevrons compris ; la
 réciproque tient depuis Blue Eyes Sword.
 
+### Fait — la validation explicite de la répartition (4 septembre 2026)
+
+Point 4 de la revue du 31 août. Cocher puis décocher un tome, geste rigoureusement neutre,
+effaçait définitivement `aVerifier`. **Le drapeau était déjà tombé de 37 à 12** : les trois
+quarts de l'information avaient disparu depuis l'import.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/actions.ts` | `marquerVerifiee` retiré de `basculerTome` et `definirTousLesTomes`, devient l'action `marquerRepartitionVerifiee` |
+| `components/volume-grid.tsx` | le bloc « À vérifier » et son bouton, en pied de grille |
+
+- **Un geste explicite devait exister, sinon le drapeau ne pouvait plus jamais être levé.** Le
+  bouton est en bas de « Mes tomes », c'est-à-dire là où l'on regarde justement les couvertures
+  pour confirmer ce qu'on possède. Visible seulement si le drapeau est levé, et jamais en invité.
+- **Le drapeau est condamné**, la migration multi-compte le supprime (§13.1). Le corriger
+  maintenant n'est pas du travail perdu : sans ça les 12 derniers se seraient effacés d'ici là,
+  et l'information n'est pas reconstituable.
+
+**Vérifié par un vrai clic dans Chrome, pas par une sonde.** Le premier essai — appel de la
+Server Action en curl — a rendu **400 sur les trois appels sans jamais atteindre l'application**,
+et le drapeau « survivant » ne prouvait donc rien : quatrième fois qu'une sonde ment dans ce
+projet. Le test valable a été mené sur NARUTO, drapeau levé : un tap sur le tome 2 rend
+`POST /edition/naruto/tomes 200`, la base passe à 1 154 possédés **et `aVerifier` reste vrai** ;
+le décochage ramène à 1 153, toujours vrai ; le bouton « Répartition vérifiée » le passe à faux
+sans toucher aux possessions. Drapeau remis ensuite : **12 / 1 153 / 109 / 113 / 1 712**,
+identique au départ.
+
+- **Le serveur de développement a été lancé avec `ACCESS_PASSWORD` jetable** plutôt que de faire
+  transiter le vrai. Vérifié que l'override prenait — 200 avec le jeton dérivé du jetable, 307
+  avec celui du vrai — donc le secret de production n'a jamais servi ni circulé.
+- **Piège d'automatisation** : cliquer une case par sa référence sans qu'elle soit à l'écran ne
+  déclenche rien, et **rien ne le signale** — ni erreur, ni log. Le seul contrôle fiable est
+  l'absence de `POST` dans le journal du serveur. Cliquer par coordonnées sur un élément visible.
+
 ### Revue du 31 août 2026 — à traiter avant la séparation catalogue/suivi
 
 Cinq points relevés en revue d'architecture. Les deux premiers sont bloquants.
@@ -2039,11 +2083,17 @@ Cinq points relevés en revue d'architecture. Les deux premiers sont bloquants.
    tâtonneront sur leur propre collection — l'indicateur de fiabilité du catalogue serait effacé
    par des gestes sans rapport. N'effacer que sur **validation explicite**. À corriger **avant**
    la migration du schéma, sinon le défaut migre avec la colonne.
+   **Clos le 4 septembre 2026** — voir « Fait — la validation explicite de la répartition ».
+   Le drapeau ne passe finalement pas dans `SuiviEdition` : il est supprimé (§13.1).
 
 5. **Circuit de migration à revérifier.** Le double temps `prisma dev` + `apply-migrations.ts`
    existe parce que **le port 5432 était bloqué par le réseau du poste professionnel** (§7). Le
    développement est passé sur la machine personnelle. Si la contrainte a disparu, c'est un
    contournement complexe pour un problème qui n'existe plus.
+   **Mesuré le 4 septembre 2026 : la contrainte tient toujours sur ce poste.** Une connexion
+   TCP directe à l'hôte Neon sur le 5432 rend `Network is unreachable`, le 443 s'ouvre. Le
+   double temps reste donc obligatoire **ici**. Sur un poste au réseau ordinaire il tombe, et
+   `npm run db:migrate` reste valable dans les deux cas.
 
 **Non comptés comme dette** : les 29 éditions sans numéros BnF — qualité de données connue,
 tracée, avec une cause identifiée ; c'est du travail restant. Les éditions sans éditeur y
@@ -2742,12 +2792,14 @@ Des faits objectifs, identiques pour tout le monde.
 
 ```
 SuiviEdition (id, utilisateurId, editionId,
-              statut, termineeForcee, raisonCompletion, aVerifier)
+              statut, termineeForcee, raisonCompletion, ajouteeLe)
 Possession   (id, utilisateurId, volumeId, possede, dateAchat,
               prixPayeCentimes, etat, lu, note, varianteId)
 ```
 
-`statut`, `termineeForcee`, `raisonCompletion` et `aVerifier` **quittent `Edition`**.
+`statut`, `termineeForcee`, `raisonCompletion` et `ajouteeLe` **quittent `Edition`**.
+`aVerifier` n'y entre pas : il est **supprimé**, pas déménagé — voir « Le plan d'exécution »
+ci-dessous. `ajouteeLe` ne figurait dans aucune des deux listes ; c'est un oubli, corrigé ici.
 
 La wishlist (§ Reste à faire) est une donnée de suivi, pas de catalogue : une série
 convoitée par l'un et possédée par l'autre est la même `Edition` avec deux `SuiviEdition`.
@@ -2762,6 +2814,267 @@ Amorcée avec `titreVo`, déjà renseigné sur 104 séries.
 
 Coût nul aujourd'hui. C'est la brique sur laquelle repose toute la recherche V3 — sans elle,
 « JJK » ou « aot » ne trouvent rien, et **aucune distance de chaînes ne rattrape ça**.
+
+#### Le plan d'exécution, arrêté le 4 septembre 2026
+
+Rédigé sur un poste où **les migrations ne seront pas jouées** : elles le seront ailleurs. Ce
+qui suit est donc écrit pour être exécuté par une session qui n'aura pas assisté à la
+discussion. Les chiffres sont mesurés sur la base réelle le 4 septembre, pas repris du document.
+
+**`aVerifier` ne déménage pas : il disparaît.** §13.1 le rangeait dans `SuiviEdition`, §13.2
+s'en servait comme drapeau de catalogue — les deux ne pouvaient pas être la même colonne.
+L'arbitrage supprime la question : le drapeau est un **artefact de l'import du Sheet de 2026**,
+qui attribuait les N premiers tomes faute de savoir lesquels étaient possédés. Un nouvel
+utilisateur saisit ses séries à la main par l'écran Ajouter et coche ses propres tomes : il n'a
+aucune répartition devinée. Le concept n'a donc pas à exister pour tout le monde.
+
+Conséquences à tenir :
+- **`SuiviEdition` ne porte pas de `aVerifier`** ni d'équivalent renommé.
+- **Les 12 éditions encore marquées sont un reliquat du propriétaire**, à relire avant la
+  migration par le bouton « Répartition vérifiée » de la sous-page « Mes tomes ». La colonne
+  meurt avec la migration.
+- **Le critère de tri « À vérifier en premier » disparaît** avec elle, ainsi que le badge de la
+  page Édition et l'icône de la Collection et des Manquants. C'est le seul effet visible.
+- Le besoin de §13.2 — relire une fiche ajoutée par un tiers — survit, mais sous un autre nom
+  et sur `Edition`, adossé à `creeePar`. **Ne pas le rappeler `aVerifier`** : c'est ce nom
+  unique pour deux sens qui a produit la contradiction.
+
+**`ajouteeLe` est une cinquième colonne personnelle**, absente des deux listes de §13.1. Le tri
+« Ajout récent » veut dire *ajoutée à ma collection*, pas *entrée au catalogue*. Elle part dans
+`SuiviEdition`.
+
+**`SuiviEdition` est la table d'appartenance, pas un sac de colonnes.** Aujourd'hui « ma
+collection » = les 113 `Edition`, parce qu'il n'y en a qu'une. Après, `Edition` est un catalogue
+partagé et ma collection est **ce pour quoi j'ai une ligne `SuiviEdition`**. Sans ça,
+`chargerCollection` rend le catalogue entier à tout le monde et la séparation est cosmétique.
+Donc `chargerCollection` et `chargerManquants` s'inversent : on part de `SuiviEdition` et on
+joint `Edition`. La wishlist en découle gratuitement — un `SuiviEdition` sans possession — et
+c'est pourquoi **elle se construit après, jamais avant**.
+
+**L'invité n'a pas de compte**, donc pas de `SuiviEdition` : sans décision son écran serait
+vide. `utilisateurCourant()` doit le résoudre vers **l'id du propriétaire, en lecture seule**.
+Une ligne, mais l'oublier casse l'écran invité en silence.
+
+**`Possession` : la contrainte `volumeId @unique` est l'hypothèse mono-utilisateur rendue
+physique.** Elle saute pour `@@unique([utilisateurId, volumeId])`, et `Volume.possession` (1-1)
+devient `Volume.possessions` (1-N) — **19 sites de lecture** dans `lib/editions.ts`,
+`lib/actions.ts`, `lib/creation.ts`, `lib/promotion.ts`. C'est là qu'est le risque, pas dans le
+SQL.
+
+**Les lignes deviennent creuses.** Aujourd'hui 1 712 possessions pour 1 712 volumes, dont 559 à
+`possede=false` : du remplissage. Les pré-créer par compte ferait 1 712 lignes par utilisateur et
+obligerait `apply-planning.ts` et `apply-publication.ts` à ventiler chaque nouveau tome sur tous
+les comptes. Une ligne signifiera « j'ai dit quelque chose sur ce tome ».
+**Piège à tenir : absence et `possede=false` deviennent deux écritures du même fait.** On garde
+`possede` — il faut pouvoir dire `lu=true, possede=false`, ce qui est exactement le cas AIR GEAR /
+JUDGE / NOZOKIANA — mais la lecture doit traiter les deux à l'identique, par un seul helper.
+**Ne pas supprimer les 559 lignes existantes** : la lecture doit gérer l'absence de toute façon
+pour les nouveaux comptes, donc les effacer n'achète rien et ajoute une étape destructive.
+
+**`Utilisateur` se crée maintenant, pas en V2.** §13.4 dit déjà « prévoir l'état de paiement dès
+la création de la table ; une colonne de plus coûte zéro ». Le même raisonnement vaut un cran
+plus haut : la créer plus tard obligerait à réécrire 1 712 `utilisateurId` et 113 `SuiviEdition`
+d'une chaîne magique vers une vraie clé étrangère — précisément le coût que §13.1 veut éviter.
+L'authentification, elle, ne bouge pas : mot de passe partagé, jetons HMAC inchangés.
+**L'invité n'est pas une ligne `Utilisateur`** : il reste un rôle de jeton.
+
+##### Le schéma cible
+
+```prisma
+enum RoleUtilisateur { PROPRIETAIRE  UTILISATEUR }
+
+model Utilisateur {
+  id     String   @id @default(uuid())
+  email  String?  @unique          // nullable : voir plus bas, le depot est public
+  nom    String?
+  role   RoleUtilisateur @default(UTILISATEUR)
+  aPaye  Boolean  @default(false)  // §13.4
+  creeLe DateTime @default(now())
+}
+
+model SuiviEdition {
+  id               String   @id @default(uuid())
+  utilisateurId    String   // FK Utilisateur, onDelete: Cascade
+  editionId        String   // FK Edition,     onDelete: Cascade
+  statut           StatutEdition
+  termineeForcee   Boolean  @default(false)
+  raisonCompletion String?
+  ajouteeLe        DateTime @default(now())
+
+  @@unique([utilisateurId, editionId])
+  @@index([utilisateurId])
+}
+```
+
+`Edition` **perd** `statut`, `termineeForcee`, `raisonCompletion`, `aVerifier`, `ajouteeLe`, et
+**gagne** `creeeParId String?` (`onDelete: SetNull`, null = venu de l'import).
+`Possession` **gagne** `utilisateurId`, **perd** `volumeId @unique`, **gagne**
+`@@unique([utilisateurId, volumeId])` et `@@index([utilisateurId, possede])` — l'index sur
+`possede` seul ne sert plus à rien.
+`Serie` **gagne** `alias String[] @default([])`, amorcé depuis `titreVo` (**105** séries, pas 104).
+
+##### Les trois migrations
+
+Écrites **à la main** : le port 5432 est toujours bloqué sur le poste professionnel (vérifié le
+4 septembre, le 443 passe), donc `prisma migrate dev` ne peut pas atteindre Neon. Sur un poste
+au réseau ordinaire la contrainte tombe — mais `apply-migrations.ts` reste valable partout, et
+il joue **chaque fichier dans une transaction** : backfill et `DROP COLUMN` sont donc atomiques
+ensemble, ce qui évite toute fenêtre où les deux emplacements coexistent.
+
+L'id du propriétaire est **un UUID littéral figé dans le SQL**, généré une fois : c'est une
+migration ponctuelle, elle doit être déterministe. `gen_random_uuid()` est natif (Neon est en
+PostgreSQL 18.6), aucune extension à activer.
+
+**Ne pas écrire l'email dans la migration.** Le dépôt est public (§7) ; la ligne `Utilisateur`
+se crée avec `email` nul, la vraie adresse arrive avec l'identité en V2 et n'entre jamais dans
+le dépôt.
+
+1. `..._utilisateurs_et_alias` — `Utilisateur`, l'enum, la ligne du propriétaire, `Serie.alias`
+   + son index GIN en SQL brut. **Purement additive, l'application n'y touche pas.**
+2. `..._suivi_edition` — création, backfill depuis `Edition`, puis `DROP` des 5 colonnes.
+3. `..._possession_par_compte` — `utilisateurId` ajouté, rempli, passé `NOT NULL`, échange des
+   index (`Possession_volumeId_key` → `Possession_utilisateurId_volumeId_key`), FK posée.
+
+**Trois migrations séparées, un seul déploiement.** Chacune s'écrit et s'éprouve isolément ; les
+trois partent ensemble avec le code. Sinon la production lit des colonnes disparues entre deux
+poussées.
+
+**Piège de dépôt** : `npm run build` enchaîne `db:migrate`. Des fichiers déposés dans
+`prisma/migrations/` sont appliqués **au prochain déploiement Vercel**, sans le code
+correspondant. Tant que le code n'est pas prêt, les garder hors de ce dossier.
+
+##### L'ordre d'exécution
+
+**Phase 0 — prérequis, avant toute migration**
+1. ~~Corriger l'effacement d'`aVerifier`~~ — **fait le 4 septembre**, voir §12.
+2. **Trancher AIR GEAR** : la base dit `termineeForcee=false` alors que §3 le compte parmi les
+   3 forcées, et il garde sa `raisonCompletion`. Ses 5 tomes manquants remontent donc dans
+   Manquants contre la spec. Reforcer, ou effacer la raison — mais ne pas figer l'incohérence.
+3. `npm run db:backup`, commit, **et taguer ce commit** : c'est le seul chemin de retour, et il
+   faut l'ancien `backup-db.ts` pour relire l'ancien `backup.json`.
+
+**Phase 1 — la répétition sur données réelles.** Le banc existe depuis le 30 août :
+`npx prisma dev`, `LOCAL_DATABASE_URL`, `db:backup -- --restore --reset` pour y verser la copie
+fidèle, puis les trois migrations. Contrôles à l'arrivée :
+
+| Attendu après migration |
+|---|
+| `SuiviEdition` = 113, toutes sur l'id propriétaire |
+| statuts préservés : `EN_COURS=86 ABANDONNEE=18 EN_PAUSE=5 VENDUE=4` |
+| `termineeForcee` = 2 (ou 3 après 0.2) · `raisonCompletion` = 3 |
+| `Possession` = 1 712, toutes sur l'id propriétaire, 1 153 à `possede=true` |
+| `Serie.alias` renseigné sur 105 · `Edition` sans les 5 colonnes |
+
+**Phase 2 — le code**, dans cet ordre :
+1. `lib/utilisateur.ts` — `utilisateurCourant()`, **invité résolu vers le propriétaire en
+   lecture**. Posé seul d'abord, sans changer un écran.
+2. `lib/editions.ts` — l'inversion `Edition` → `SuiviEdition`, et `possession` → `possessions[0]`
+   derrière un helper unique.
+3. `lib/actions.ts`, `lib/creation.ts`, `lib/promotion.ts` — `upsert` sur
+   `utilisateurId_volumeId` ; `creerSerieAvecEdition` crée aussi le `SuiviEdition`.
+4. `scripts/backup-db.ts` — **le filet doit couvrir la nouvelle forme avant qu'on en ait
+   besoin.** L'export ne peut plus nicher la possession sous le volume, et `compter()` lit
+   `aVerifier` et `forcees` sur `Edition`.
+5. `prisma/seed.ts` et les `apply-*.ts` — les scripts de catalogue cessent de créer des
+   possessions.
+
+**Phase 3 — vérification fonctionnelle**, pas seulement des compteurs. Le document en a la
+leçon quatre fois : cliquer pour de vrai, puis regarder l'écran **et** la base.
+
+##### Le Planning et les sorties — arrêté le 4 septembre 2026
+
+Manquait au premier jet de ce plan, relevé à la relecture : `chargerPlanning()`
+(`lib/editions.ts`) fait un `prisma.sortie.findMany()` **sans aucun filtre**. Ça tenait parce
+qu'il n'y a qu'une collection ; à plusieurs, chacun verrait les sorties des séries des autres.
+Il subit donc la même inversion que la Collection et les Manquants : les sorties **des éditions
+pour lesquelles j'ai un `SuiviEdition`**.
+
+**Deux tables, deux rôles, aucune redondance.**
+
+| | `ParutionCatalogue` | `Sortie` |
+|---|---|---|
+| Contenu | toute l'archive manga-news, 2000 → aujourd'hui | les annonces d'une édition qui existe |
+| Clé étrangère | aucune | `editionId` |
+| Rétention | **jamais purgée** | **glissante, M-1 → M+6** |
+| Porte | EAN, titre brut, éditeur, date | + la couverture, + la promotion en tome |
+| Volumétrie visée | ~59 000 lignes, ~25 Mo | quelques centaines |
+
+**L'import cesse de se limiter aux séries possédées** — révision de la décision du 30 août,
+voir §13.2. Le circuit devient : CSV → `ParutionCatalogue` en entier → **dérivation** des
+`Sortie` pour les éditions qui existent, dans la fenêtre.
+
+**La fenêtre de 7 mois porte sur `Sortie`, jamais sur `ParutionCatalogue`.** Purger l'archive
+supprimerait la résolution ISBN → série, c'est-à-dire ce qui a fait passer le scanner de 9,2 %
+à 87 % le 3 septembre. L'archive garde tout ; c'est la fenêtre de travail qui glisse. Le chiffre
+de 6 mois d'avance est un point de départ, à relever si les annonces lointaines se révèlent
+fiables.
+
+**Conséquence sur le cron, à assumer.** Il promeut aujourd'hui dès que le mois est clos ; garder
+un mois de retard veut dire qu'un tome sorti le mois dernier reste au Planning au lieu de
+basculer dans Manquants. C'est le bon compromis : il y est avec son bouton « Je l'ai », et le
+motif du 30 août le justifie — « les dates manga-news glissent, un tome annoncé le 3 peut
+arriver le 12 ». Le mois de grâce sert exactement à ça.
+
+**Ce que la dérivation débloque** : quand quelqu'un ajoute une série, ses `Sortie` se calculent
+**sur-le-champ** depuis `ParutionCatalogue`, sans attendre le prochain import. C'est ce qui
+règle le défaut noté le 30 août — « le planning est une photographie, pas un flux ».
+
+**« Je l'ai » est à cheval sur les deux mondes, et l'autorisation vient de la date, pas du
+rôle.** `promouvoir()` crée le `Volume`, incrémente `tomesParus` et supprime la `Sortie` — du
+catalogue, visible de tous — puis pose *ma* possession. §13.2 réserve pourtant « modifier les
+tomes parus » au propriétaire. La contradiction se lève en voyant que **ce n'est pas une
+modification éditoriale mais l'enregistrement d'un fait** : le tome est paru. `promouvoirSortie`
+refuse déjà une date future côté serveur, et le cron fait la même chose sans personne derrière.
+Effet assumé : quand l'un clique, la sortie quitte le Planning de l'autre et le tome entre dans
+ses Manquants — ce qui est correct, le tome est bien sorti.
+
+##### Une décision d'écran que le schéma force
+
+Une page `/edition/<slug>` **hors de ma collection** devient possible — le cas n'existe pas
+aujourd'hui. 404, ou affichage catalogue avec un bouton « Ajouter à ma collection » ? Le second
+est la porte d'entrée dont §13.2 a besoin, mais rien ne presse tant qu'il y a un compte.
+
+##### Hors périmètre de ce chantier
+
+L'identité réelle (lien magique, OAuth) reste l'ouverture de la V2 : ce plan pose seulement la
+table pour qu'elle arrive sans migration de données. `VarianteVolume` est un ajout, pas un
+déplacement de colonnes, donc sans pénalité plus tard. Le rôle `UTILISATEUR` est porté par la
+table mais `exigerProprietaire` ne change pas tant qu'il n'y a qu'un compte.
+
+##### Le critère : anticiper ce qui déplace, jamais ce qui ajoute
+
+Question posée le 4 septembre — faut-il faire entrer les prochaines fonctionnalités dans ce
+rework, ou l'ajout au fil de l'eau suffit-il ? Le critère est déjà en tête de §13.1 et il est le
+bon : **ce qui déplace ou réinterprète des lignes existantes coûte de plus en plus cher ; ce qui
+ajoute une table ou une colonne coûte pareil aujourd'hui et dans un an.**
+
+Entre donc dans ce chantier, et rien d'autre :
+
+| | Pourquoi maintenant |
+|---|---|
+| `SuiviEdition`, `Possession.utilisateurId` | déplacent des colonnes et une contrainte d'unicité |
+| La table `Utilisateur` | créée plus tard, elle obligerait à réécrire 1 712 + 113 clés étrangères depuis une chaîne magique |
+| `Utilisateur.aPaye` | §13.4 : une colonne de plus coûte zéro, une migration sur des comptes existants non |
+| `Edition.creeeParId` | ajoutée plus tard, `null` ne voudrait plus dire « venu de l'import » — on ne saurait plus distinguer l'import d'un ajout antérieur à la colonne |
+| `Serie.alias` | amorcé depuis `titreVo`, qui est renseigné maintenant |
+
+Attend, sans pénalité : `VarianteVolume`, la wishlist, l'identité réelle, le drapeau de
+relecture de catalogue de §13.2, les statistiques, le nettoyage des thèmes.
+
+**La wishlist mérite une nuance** : elle est *cheap* en schéma mais §13.1 dit de la construire
+**après** la séparation, sinon elle se code deux fois. Ce n'est pas une exception au critère,
+c'est le même critère vu du code.
+
+**Piège concret sur les enums, à connaître avant d'y toucher.** Si la wishlist passe par une
+valeur `SOUHAITEE` de `StatutEdition`, `apply-migrations.ts` enveloppe chaque fichier dans une
+transaction, or PostgreSQL interdit d'**utiliser** une valeur d'enum dans la transaction qui
+l'ajoute. Une migration qui ferait `ALTER TYPE … ADD VALUE` puis un `UPDATE` s'en servant
+échouerait. Il faut deux migrations, ou une colonne booléenne.
+
+**Et le vrai coût de ce chantier n'est pas le schéma, ce sont les 19 sites de lecture.** Une fois
+`possessions` passé en 1-N et les écrans partis de `SuiviEdition`, ajouter une fonctionnalité
+redevient bon marché. C'est précisément ce rework qui rend l'ajout au fil de l'eau viable —
+raison de plus pour ne pas y empiler ce qui peut attendre.
 
 ---
 
@@ -2849,6 +3162,50 @@ archives de planning » (§12) pour les mesures et le plancher recommandé. Un o
 à corriger au passage : le marché faisait 31 sorties par mois en 2000 contre 292 aujourd'hui,
 et l'interpolation sur les cinq points mesurés (31 · 142 · 168 · 201 · 292) donne **~59 000
 lignes pour 26 ans**, pas 36 000 pour dix ans.
+
+##### Confirmé le 4 septembre 2026 : le catalogue reste dans `ParutionCatalogue`
+
+Deux décisions prises ce jour-là, l'une révisant le 30 août.
+
+**L'import ne se limite plus aux séries possédées.** Le 30 août avait tranché l'inverse —
+« `import_planning.py` n'en retient que celles qui s'apparient à une édition possédée…
+l'application suit une collection, pas un catalogue ». À plusieurs comptes, « la collection »
+n'existe plus au singulier : un ami ajoute une série et son planning resterait vide jusqu'au
+prochain import manuel. L'import garde donc **toute** ligne de l'archive, et c'est l'écran qui
+filtre sur la collection de celui qui regarde.
+
+**« Toutes les séries en base » veut dire `ParutionCatalogue`, pas 5 892 `Serie`.** La question
+s'est reposée le 4 septembre ; la décision du 2 septembre tient, et pour des raisons mesurées,
+pas de principe.
+
+Le stockage ne départage pas : la base fait **9,7 Mo** et une ligne `Volume` coûte **459 octets**
+index compris (mesuré le 4 septembre). Consolider les 5 892 séries pèserait ~29 Mo, les garder
+en parutions ~25 Mo — les deux tiennent dans le demi-Go, avec la même marge. Ce qui départage
+est ailleurs, et il y a un obstacle bloquant :
+
+- **`Serie.auteur` est `NOT NULL` et le CSV manga-news ne porte pas d'auteur** — seulement
+  `Titre, Éditeur, EAN, Date`. Créer 5 892 séries demanderait un auteur factice sur chacune, ou
+  de rendre la colonne nullable, ce qui casserait le garde-fou par auteur dont dépendent
+  `fetch_publishers.py` et `fetch_titles.py`.
+- **L'enrichissement ne suit pas.** AniList plafonne à 28 requêtes/minute, soit ~3 h 30 pour
+  5 892 séries — mais surtout, sur 108 séries il a fallu **22 entrées manuelles** dans
+  `RECHERCHES_MANUELLES` plus 4 abandons. Au prorata, de l'ordre de **1 200 corrections à la
+  main**. Ce n'est pas faisable.
+- **La déduplication se paierait d'avance et mal**, alors que la forme de la table permet
+  justement de ne la payer qu'à l'adoption d'une série, un cas à la fois.
+
+Ce n'est pas un renoncement : `ParutionCatalogue` **est** « toutes les séries en base » —
+interrogeables, avec leur EAN, leur nom FR et leur marqueur d'édition. La consolidation en
+`Serie` / `Edition` / `Volume` reste possible plus tard, l'archive étant une copie fidèle
+recalculable.
+
+**Ce que ça impose au chantier multi-compte.** Trois requêtes tiennent aujourd'hui parce que la
+base est petite et ne tiendraient plus face à un vrai catalogue :
+`chargerCollection` (`findMany` sur toutes les éditions avec tous leurs volumes),
+l'anti-doublon de `rechercherSeries` (charge tous les titres de série),
+et `resoudreIsbn` (charge toutes les éditions pour apparier un titre).
+L'inversion par `SuiviEdition` borne la première quoi qu'il arrive ; **les deux autres doivent
+passer par un index** et ne peuvent pas rester en l'état.
 
 #### Les variantes de tome
 
