@@ -2615,6 +2615,13 @@ ajouter les nouveaux tomes parus, `editionTerminee` et les couvertures manquante
 
 ### Reste à faire
 
+- **Le Planning ne filtre sur aucun statut** (mesuré le 4 septembre) : `chargerPlanning`
+  (`lib/editions.ts`) fait un `findMany` sur toutes les `Sortie`, donc **4 des 16 sorties portent
+  sur des séries abandonnées** — `one-puch-man`, `les-legendaires-saga`,
+  `why-nobody-remember-my-world`, `blue-exorcist`. L'écran annonce des tomes à venir de séries
+  qu'on a arrêté d'acheter. Le correctif tombe tout seul si `suivie` est adopté (`IDEES.md`) ;
+  sinon il faut exclure au moins `VENDUE`, `ABANDONNEE` et les complétions forcées, comme
+  `chargerManquants` le fait déjà.
 - **Brancher un domaine personnalisé sur le bucket R2.** La base publique est aujourd'hui
   l'URL `r2.dev`, que Cloudflare **limite en débit et ne met pas en cache** — vérifié dans leur
   documentation le 3 septembre, c'est plus restrictif que ce que supposait §12. Le basculement
@@ -2932,6 +2939,9 @@ le dépôt.
 1. `..._utilisateurs_et_alias` — `Utilisateur`, l'enum, la ligne du propriétaire, `Serie.alias`
    + son index GIN en SQL brut. **Purement additive, l'application n'y touche pas.**
 2. `..._suivi_edition` — création, backfill depuis `Edition`, puis `DROP` des 5 colonnes.
+   **Lire `IDEES.md` avant d'écrire celle-ci** : le remplacement de `termineeForcee` par un
+   booléen `suivie` y est en discussion, et il se ferait dans ce backfill. L'écrire d'abord avec
+   `termineeForcee` imposerait une seconde migration sur la même colonne.
 3. `..._possession_par_compte` — `utilisateurId` ajouté, rempli, passé `NOT NULL`, échange des
    index (`Possession_volumeId_key` → `Possession_utilisateurId_volumeId_key`), FK posée.
 
@@ -2947,9 +2957,13 @@ correspondant. Tant que le code n'est pas prêt, les garder hors de ce dossier.
 
 **Phase 0 — prérequis, avant toute migration**
 1. ~~Corriger l'effacement d'`aVerifier`~~ — **fait le 4 septembre**, voir §12.
-2. **Trancher AIR GEAR** : la base dit `termineeForcee=false` alors que §3 le compte parmi les
-   3 forcées, et il garde sa `raisonCompletion`. Ses 5 tomes manquants remontent donc dans
-   Manquants contre la spec. Reforcer, ou effacer la raison — mais ne pas figer l'incohérence.
+2. ~~Trancher AIR GEAR~~ — **il n'y a rien à trancher (4 septembre)**. La base dit
+   `termineeForcee=false` là où §3 le compte parmi les 3 forcées, et j'ai d'abord cru à une
+   écriture accidentelle pendant le test de `/etat` fin août. **C'est volontaire** : le drapeau
+   a été retiré pour retrouver les 5 tomes manquants dans Manquants. La donnée est juste, c'est
+   le modèle qui ne sait pas exprimer « je considère la série finie **et** je veux ces tomes ».
+   Seule sa `raisonCompletion` est périmée, et elle n'est affichée par aucun écran.
+   **Ce constat a ouvert le remplacement de `termineeForcee` par `suivie` — voir `IDEES.md`.**
 3. `npm run db:backup`, commit, **et taguer ce commit** : c'est le seul chemin de retour, et il
    faut l'ancien `backup-db.ts` pour relire l'ancien `backup.json`.
 
