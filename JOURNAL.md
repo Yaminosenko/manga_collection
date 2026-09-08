@@ -2083,3 +2083,97 @@ comportement attendu six jours sur sept.
 
 **C'est la première brique du rafraîchissement de fond de §5**, qui n'existait pas. Restent à y
 ajouter les nouveaux tomes parus, `editionTerminee` et les couvertures manquantes.
+
+### Fait — `ParutionCatalogue` alimentée (8 septembre 2026)
+
+La table existait depuis le 2 septembre et **rien ne l'écrivait**. Elle porte désormais
+**8 296 parutions**, d'août 2024 à décembre 2026.
+
+| Fichier | Rôle |
+|---|---|
+| `scripts/import_catalogue.py` | `npm run catalogue:import <dossier>` — lit les CSV, n'écrit que des manifestes |
+| `scripts/apply-catalogue.ts` | `npm run catalogue:apply` — écrit ; `--dry-run`, `--recalculer` |
+| `data/catalogue.json` | le manifeste, **non versionné** |
+| `data/catalogue-controles.json` | les cas à relire, **non versionné** |
+
+**Aucun garde-fou d'`import_planning.py` n'est repris, et c'est le point de départ.** Ce script
+écarte les rééditions, les marqueurs d'autre édition, les divergences d'éditeur, et n'apparie que
+les séries possédées — parce qu'il protège **la collection** de mauvais appariements. Le
+catalogue, lui, est une *copie fidèle de l'archive* : y appliquer ces filtres reviendrait à
+amputer la source de tout ce qui n'est pas déjà en collection, c'est-à-dire de sa raison d'être.
+Les deux scripts lisent les mêmes CSV et n'ont donc volontairement aucun code commun.
+
+**Les trois règles de lecture du 2 septembre sont implémentées et vérifiées** sur les exemples
+que la spécification donnait comme pièges :
+
+| Entrée | `serieTitre` | `marqueurEdition` |
+|---|---|---|
+| `Mobile Suit Gundam - Ecole du Ciel (l')` | `Mobile Suit Gundam - L'Ecole du Ciel` | — |
+| `Légendaires (les)` | `Les Légendaires` | — |
+| `Légendaires (les) - Saga` | `Les Légendaires - Saga` | — |
+| `Fullmetal Alchemist - Edition reliée` | `Fullmetal Alchemist` | `Edition reliée` |
+| `Ippo - Saison 4 - La loi du ring` | inchangé | — |
+| `Übel Blatt II` | inchangé | — |
+
+La désinversion **par segment** est donc bien celle qui tourne : globale, elle aurait rendu
+`L'Mobile Suit Gundam - Ecole du Ciel`. Et `Légendaires (les) - Saga` reste un objet distinct de
+la série de base, ce qui est exact. L'accent n'est pas restauré — `L'Ecole` et non `L'École` —
+la source n'en portant pas et `titreBrut` gardant la ligne au caractère près.
+
+- **Le marqueur ne s'extrait qu'à partir de deux segments.** Sans cette garde, un titre d'un
+  seul segment contenant un mot de la liste perdrait sa racine entière : `Romantique Vol.1`
+  n'aurait plus de série. Avec elle, `Naruto - Roman Vol.1` se découpe correctement.
+- **Un EAN non livre est mis à `null`, la ligne est gardée.** Les 7 cas sont des préfixes `370`
+  de coffrets et d'éditions collector. La règle du 2 septembre visait la clé, pas la ligne :
+  supprimer la ligne aurait retiré du catalogue un objet qui existe.
+- **Les lignes sans `Vol.N` sont gardées, `numero` à `null`** — 809 sur 8 296, soit les artbooks,
+  guides, coffrets et one-shots.
+
+**Résultat mesuré : 8 296 parutions, 2 702 séries distinctes, 8 195 avec EAN (98,8 %),
+771 marqueurs d'édition.** Les 2 702 séries sont moins que les 2 988 racines brutes comptées le
+matin : c'est la consolidation qui opère, `Vampire Knight - Edition Perfect` et `Vampire Knight`
+étant désormais la même série avec deux marqueurs.
+
+**Ce que ça débloque, vérifié en base** : `berserk` rend `Berserk`, tome maximum 43, marqueurs
+`Collector` et `Edition Prestige` ; `chainsawman` rend `Collector` et `Edition Limitée`. **Aucune
+autre source ne donnait le couple nom FR + nom d'édition française** — la BnF a cinq formats et
+des marqueurs instables, AniList ne connaît pas les éditions françaises. C'est la porte d'entrée
+qui manquait pour créer une seconde édition.
+
+**L'import est rejouable, et c'est prouvé** : second passage, `0 inserées, 8 296 déjà présentes`.
+La clé `(titreBrut, date)` fait le travail, comme le 2 septembre l'avait prévu.
+
+#### Quatre limites trouvées en vérifiant, toutes petites et toutes à connaître
+
+- **La clé `(titreBrut, date)` perd les objets multiples du même jour.** Doki Doki a sorti
+  **trois coffrets Sun-Ken Rock le 5 novembre 2025**, même titre, trois EAN — `…16300`, `…16317`,
+  `…16324`. Un seul entre, deux EAN sont perdus. C'est le prix de la propriété qui compte
+  davantage — un import rejouable sur des mois qui se recouvrent — mais un scan des deux autres
+  coffrets ne résoudra pas. 2 lignes sur 8 298.
+- **5 EAN sont portés par plusieurs lignes, pour quatre causes distinctes.** Une sortie
+  **repoussée** et donc annoncée deux fois (`Nights With a Cat Vol.8` en octobre puis novembre
+  2026) ; un même livre sous **deux éditeurs et deux graphies** (`Magnum Opus - La malédiction
+  dorée Vol.3` chez H2T contre `Malédiction dorée (La)` chez Nouvelle Hydre) ; un **Deluxe et son
+  édition simple partageant un EAN** (`Veil Vol.5`), ce qui est impossible et donc fautif à la
+  source ; et un EAN **manifestement mal saisi**, partagé par `Martial Universe Vol.10` et
+  `Berserk of Gluttony Vol.12` à sept mois d'écart. **Conséquence pour le scanner : une
+  résolution par EAN doit rendre la ligne la plus récente, pas la première.**
+- **`ORDER BY numero DESC` place les `NULL` en tête sous PostgreSQL.** Avec 809 lignes sans
+  numéro, « le dernier tome d'une série » remonte un coffret : la requête sur `kagurabachi` rend
+  `Kagurabachi - Coffret` avant le tome 11. Exclure les `null` ou demander `NULLS LAST`.
+- **La liste des marqueurs n'est pas exhaustive et le restera.** `L'Attaque Des Titans - Grand
+  Format - Hachette Collection` n'en porte aucun, faute de `grand format` dans la liste, et
+  `Edition Limitée` / `Edition limitée` coexistent sans être unifiées. Sans gravité : `--recalculer`
+  réécrit `serieTitre`, `marqueurEdition` et `numero` depuis `titreBrut` **sans retélécharger un
+  CSV**, ce qui est exactement la raison d'être de ce champ.
+
+**Ce qui manque : les 288 fichiers de janvier 2000 à janvier 2024**, qui sont sur une autre
+machine. Le catalogue est donc à **8 296 lignes sur les ~50 000** de l'archive complète, et à
+2 702 séries sur ~5 900. L'ordre d'import n'a aucune importance — la clé rend chaque passage
+idempotent, et rien dans ce circuit ne touche `Edition`, `Volume` ni `Sortie`.
+
+**Aucune sauvegarde n'a été prise avant l'écriture, volontairement.** `ParutionCatalogue` n'a
+aucune clé étrangère dans les deux sens, elle est hors de `data/backup.json` depuis le
+2 septembre et hors des compteurs de restauration : une sauvegarde ne l'aurait pas protégée, et
+un `createMany` sur ce seul modèle ne peut rien atteindre d'autre. Les compteurs de la collection
+sont intacts après écriture.

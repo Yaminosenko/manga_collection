@@ -38,3 +38,7 @@ coverage/
 !CLAUDE.md
 
 tsconfig.tsbuildinfo
+
+# manifestes de catalogue : donnees manga-news, jamais republiees dans un depot public
+data/catalogue.json
+data/catalogue-controles.json

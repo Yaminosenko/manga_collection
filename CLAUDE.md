@@ -550,7 +550,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 7 septembre 2026.
+Dernière mise à jour : 8 septembre 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -584,7 +584,7 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 | `raisonCompletion` · `aVerifier` | **3** · **12** — reliquats de l'import du Sheet, **supprimés** par la migration de §13.1 |
 | Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
-| `ParutionCatalogue` | **0 — la table est en place, rien ne l'écrit encore** |
+| `ParutionCatalogue` | **8 296** parutions, **2 702 séries**, août 2024 → décembre 2026 — sur ~50 000 lignes et ~5 900 séries pour l'archive complète |
 
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
 élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
@@ -628,6 +628,10 @@ détail et les cas réels sont dans `JOURNAL.md`.
 - **Après un `git pull` touchant au schéma, `npx prisma generate`** — `lib/generated/` est
   ignoré par git. Après un déplacement de route, purger `.next`, et le redémarrer si un serveur
   de développement tournait.
+- **`next-env.d.ts` est généré et bascule tout seul.** `next build` y écrit
+  `./.next/types/…`, `next dev` y écrit `./.next/dev/types/…` : le fichier apparaît donc modifié
+  après chaque build, et le commiter le fait rebasculer au prochain `npm run dev`. Le laisser
+  hors des commits, sauf si c'est le seul objet du changement.
 
 ### Reste à faire
 
@@ -681,17 +685,25 @@ détail et les cas réels sont dans `JOURNAL.md`.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
 - ~~**Appliquer l'archive de planning**~~ — **fait le 3 septembre 2026**, voir `JOURNAL.md`.
-- **Alimenter `ParutionCatalogue`** : la table est en place, rien ne l'écrit encore. Les trois
-  règles de lecture (préfixes 978/979, désinversion de l'article **par segment**, découpe du
-  marqueur d'édition) sont établies et mesurées. Le manifeste intermédiaire ne doit **pas**
-  être versionné, pour la même raison que le catalogue est hors sauvegarde.
-  **Ce que le lot disponible rapporte à lui seul**, mesuré le 8 septembre sur les 29 fichiers :
-  8 298 lignes, **2 988 séries distinctes** dont 501 portant un marqueur d'édition, 8 186 EAN
-  livre distincts, 9,8 % de lignes sans `Vol.N` et 11,2 % à article inversé. La moitié des
-  5 892 séries de l'archive complète, pour 10 % de ses fichiers — la fenêtre récente est dense
-  parce qu'elle décrit le marché courant, et c'est celle dont `/ajouter` a besoin.
-  **L'écriture est indépendante de M2** : table déjà en place, aucune colonne partagée, donc ça
-  peut tourner sans élargir le périmètre de la migration.
+- ~~**Alimenter `ParutionCatalogue`**~~ — **fait le 8 septembre 2026** pour le lot disponible :
+  8 296 parutions, 2 702 séries, août 2024 → décembre 2026. Voir `JOURNAL.md`. **Reste à y verser
+  les 288 fichiers de janvier 2000 à janvier 2024**, qui sont sur une autre machine ; l'ordre
+  n'importe pas, la clé `(titreBrut, date)` rend chaque passage idempotent.
+- **Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`.** C'est ce que la table sert et
+  rien ne le fait encore. Aujourd'hui l'ajout passe par AniList seul : `tomesParus` pré-rempli
+  avec le **compte japonais**, aucune couverture, aucun ISBN, aucune date, aucun thème, et
+  l'éditeur comme le prix arrivent plus tard par des scripts — `goodnight-punpun`, seule série
+  jamais ajoutée depuis l'application, est encore la seule sans prix, ce qui suffit à faire
+  afficher `≥` devant la valeur de la collection. Le catalogue donne le nom FR, le marqueur
+  d'édition, l'éditeur, la date et l'EAN, et l'EAN donne ensuite couverture et prix par la BnF.
+  **Deux règles de requête établies le 8 septembre** : une résolution par EAN rend la ligne **la
+  plus récente** et non la première (5 EAN sont portés par plusieurs lignes), et tout classement
+  par `numero` doit écarter les `NULL` ou demander `NULLS LAST`, 809 lignes n'ayant pas de numéro.
+  **Ordre décidé le 8 septembre : après les changements de suivi et la migration**, pas avant.
+- **Dériver les `Sortie` depuis `ParutionCatalogue`** au lieu de les écrire depuis le manifeste
+  de planning — le circuit visé par le plan de §13.1. Ça règle le défaut du 30 août, « le
+  planning est une photographie, pas un flux » : ajouter une série calculerait ses sorties
+  sur-le-champ. Demande le filtre `suivie`, donc M2 d'abord.
 - **Deux trous dans l'archive, et ils sont plus petits qu'annoncé** (corrigé le 8 septembre) :
   `2000-09` (31 lignes, le plus petit mois) et **février → juillet 2024, 6 mois**. Le chiffre de
   33 mois du 3 septembre supposait le premier lot perdu ; il a été retrouvé et étendu — 29
@@ -752,6 +764,8 @@ détail et les cas réels sont dans `JOURNAL.md`.
 | `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout |
 | `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste — **relire aussi `data/planning-divergences.json`** |
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
+| `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
+| `npm run catalogue:apply` | écrit `ParutionCatalogue`. `-- --dry-run` d'abord ; `-- --recalculer` réécrit les champs dérivés depuis `titreBrut` sans retélécharger un CSV |
 | `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
 | `npm run covers:upload` | dépose dans R2 et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
