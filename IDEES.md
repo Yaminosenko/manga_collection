@@ -39,69 +39,6 @@ L'arbitrage vient après.
 
 ## En attente d'arbitrage
 
-### Remplacer « terminé par choix » par « suivre » — 4 septembre 2026
-
-**Le reproche fait à `termineeForcee` est qu'il mélange deux choses.** C'est un *jugement sur la
-collection* — « je considère cette série finie » — dont l'effet est de *masquer une liste de
-courses*. Or on peut vouloir considérer une série finie **et** continuer à voir les tomes qui
-manquent. AIR GEAR est le cas : le drapeau a été retiré volontairement, pour retrouver les cinq
-tomes manquants dans Manquants — au prix du libellé « Terminée par choix ». Le modèle ne savait
-pas exprimer l'intention, il a fallu le détourner.
-
-D.Gray-man est l'autre face du même problème : 25/29, trous aux tomes 9, 10, 13 et 18, parution
-en cours. Suivi de près côté nouveautés, troué au milieu.
-
-**La proposition : un booléen `suivie` sur `SuiviEdition`, qui ne répond qu'à une question —
-est-ce que je veux être rappelé de ce qui manque ?** Il ne prétend rien sur l'état de la
-collection, et c'est ce qui le rend lisible.
-
-| Possédés | Suivie | Manquants | Planning | Où la série vit |
-|---|---|---|---|---|
-| ≥ 1 | oui | les trous | les sorties | Collection |
-| ≥ 1 | non | rien | rien | Collection |
-| 0 | oui | **rien** | **rien** | **Wish list** |
-| 0 | non | rien | rien | nulle part |
-
-`suivie` ne remplace pas `statut`, qui reste le rapport personnel et continue de piloter le
-libellé et la désaturation. Deux axes, comme `editionTerminee` et `statut` le sont déjà.
-
-**L'appartenance à la wish list est déduite, jamais stockée** :
-`possédés = 0 ET suivie ET statut ≠ VENDUE`. Cocher un tome fait basculer en collection,
-décocher le dernier ramène en wish list. Aucun champ à maintenir, aucun état à désynchroniser,
-et l'« instantanément » tombe tout seul puisque c'est une conséquence de la requête. L'exclusion
-des vendues est nécessaire : les 4 éditions vendues sont justement à zéro tome possédé.
-
-**Ce que ça unifie.** Trois mécanismes cachent aujourd'hui des choses de Manquants —
-`termineeForcee`, `statut = VENDUE`, et la section repliée « Abandonnées et en pause ». Aucun ne
-touche le Planning, d'où un défaut mesuré le 4 septembre : **4 des 16 sorties portent sur des
-séries abandonnées** — `one-puch-man`, `les-legendaires-saga`, `why-nobody-remember-my-world`,
-`blue-exorcist`. Un seul filtre les remplace, sur les deux écrans.
-
-**Reprise recommandée : `suivie = (statut = 'EN_COURS' AND termineeForcee = false)`.**
-
-| | |
-|---|---|
-| `EN_COURS` non forcée → suivie | **84** |
-| `EN_COURS` forcée — `judge`, `nozokiana` → non suivie | 2 |
-| `ABANDONNEE` → non suivie | 18 |
-| `EN_PAUSE` → non suivie | 5 |
-| `VENDUE` → non suivie | 4 |
-
-Cette formule a la propriété qu'on cherche : **elle ne change rien à Manquants**, dont la liste
-principale correspond déjà à « EN_COURS non forcée » — 16 éditions, 116 tomes. Le seul
-changement visible est le Planning qui perd ses 4 sorties fantômes, c'est-à-dire la correction
-du défaut. Une reprise qui ne casse rien, ajustable ensuite d'un tap. Et AIR GEAR devient
-`suivie = true`, ce qui est exactement l'intention d'origine, obtenue sans détourner un drapeau.
-
-La section repliée « Abandonnées et en pause » de Manquants disparaît : si on ne veut pas les
-voir, on ne les suit pas. Ça retire `Manquants.arretees` du domaine et libère le motif
-`CollapsibleSection` sur cet écran.
-
-**À trancher avant que M2 soit écrite.** `termineeForcee` déménage déjà vers `SuiviEdition` :
-le renommer et l'inverser dans le même backfill ne coûte rien, alors que le faire après
-imposerait une seconde migration sur la même colonne — exactement ce que le critère
-« anticiper ce qui déplace » de CLAUDE.md §13.1 dit d'éviter.
-
 ### Refonte de la Collection en panneaux glissants — 4 septembre 2026
 
 Référence fournie en capture : l'application de référence pose une **bande de pastilles
@@ -157,9 +94,6 @@ les requêtes deux fois.
 - **Les compteurs d'en-tête restent-ils globaux ou suivent-ils le panneau ?**
 - **Que devient l'onglet Manquants de la barre du bas** une fois « Compléter » dans la bande ?
   Deux navigations désigneraient la même chose.
-- **Que devient `raisonCompletion` ?** Elle porte encore le texte d'import sur `judge`,
-  `nozokiana` et `air-gear`, et aucun écran ne l'affiche. Note libre « pourquoi j'ai arrêté de
-  suivre », ou suppression avec `termineeForcee` ?
 - **Le vocabulaire de « À jour ».** D.Gray-man est dit « à jour dans la parution » alors que
   l'application le montre 25/29 en « Édition en cours », le libellé exigeant
   `possédés == tomesParus`. Deux idées distinctes que le modèle fond en une : *je suis la
@@ -169,3 +103,14 @@ les requêtes deux fois.
 ## Écarté
 
 _(à remplir — garder le motif, il évite de reproposer)_
+
+---
+
+## Arbitré — parti dans `CLAUDE.md`
+
+Trace de sortie, pour qu'une session qui se souvient de la discussion sache où elle a fini.
+
+- **Remplacer « terminé par choix » par « suivre »** — proposé le 4 septembre, **arbitré le
+  8 septembre 2026**. `suivie` remplace `termineeForcee`, `@default(true)`, backfill
+  `statut = 'EN_COURS' AND termineeForcee = false` → 84 suivies. `raisonCompletion` supprimée
+  avec elle. Voir §13.1, « `suivie` remplace `termineeForcee` ».

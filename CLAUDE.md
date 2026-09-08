@@ -53,11 +53,13 @@ Tout autre suffixe est une œuvre distincte : `MY HERO ACADEMIA - Smash` et
 - `aVerifier` — `true` sur les éditions incomplètes issues de la migration, dont la répartition
   des tomes est devinée. Passe à `false` dès la première validation manuelle.
 
-> **Révision programmée — voir §13.1.** Quatre champs de `Edition` (`statut`, `termineeForcee`,
-> `raisonCompletion`, `aVerifier`) sont des données **personnelles** rangées dans une table de
-> **catalogue**. Tant qu'il n'y a qu'un utilisateur, personne ne s'en aperçoit ; au second
-> compte, ils s'écrasent. Ils déménagent dans `SuiviEdition`. **À faire tant que la base ne
-> porte qu'un utilisateur** — le coût double à chaque compte créé.
+> **Révision programmée — voir §13.1.** Cinq champs de `Edition` (`statut`, `termineeForcee`,
+> `raisonCompletion`, `aVerifier`, `ajouteeLe`) sont des données **personnelles** rangées dans
+> une table de **catalogue**. Tant qu'il n'y a qu'un utilisateur, personne ne s'en aperçoit ; au
+> second compte, ils s'écrasent. **Tous quittent `Edition`, mais pas au même sort** : `statut` et
+> `ajouteeLe` déménagent tels quels dans `SuiviEdition`, `termineeForcee` y déménage inversé sous
+> le nom **`suivie`**, et `raisonCompletion` comme `aVerifier` sont **supprimés**. **À faire tant
+> que la base ne porte qu'un utilisateur** — le coût double à chaque compte créé.
 
 ### Volume
 Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date,
@@ -578,8 +580,10 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 | Éditeur · `titreVo` | **113 / 113** · **105 / 109** |
 | Sorties annoncées (`Sortie`) | **14** |
 | Liens entre séries (`LienSerie`) | **18** sur 16 séries |
-| `termineeForcee` | **2** |
-| `aVerifier` | **12** — reliquat de l'import du Sheet, supprimé par la migration de §13.1 |
+| `termineeForcee` | **2** — devient `suivie`, inversé, par la migration de §13.1 |
+| `raisonCompletion` · `aVerifier` | **3** · **12** — reliquats de l'import du Sheet, **supprimés** par la migration de §13.1 |
+| Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
+| Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **0 — la table est en place, rien ne l'écrit encore** |
 
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
@@ -631,9 +635,9 @@ détail et les cas réels sont dans `JOURNAL.md`.
   (`lib/editions.ts`) fait un `findMany` sur toutes les `Sortie`, donc **4 des 16 sorties portent
   sur des séries abandonnées** — `one-puch-man`, `les-legendaires-saga`,
   `why-nobody-remember-my-world`, `blue-exorcist`. L'écran annonce des tomes à venir de séries
-  qu'on a arrêté d'acheter. Le correctif tombe tout seul si `suivie` est adopté (`IDEES.md`) ;
-  sinon il faut exclure au moins `VENDUE`, `ABANDONNEE` et les complétions forcées, comme
-  `chargerManquants` le fait déjà.
+  qu'on a arrêté d'acheter. **`suivie` étant adopté le 8 septembre, le correctif arrive avec M2**
+  et non séparément : le filtre est `suivie`, sur cet écran comme sur Manquants. Ne pas coder
+  d'exclusion par statut entre-temps, elle serait à défaire.
 - **Brancher un domaine personnalisé sur le bucket R2.** La base publique est aujourd'hui
   l'URL `r2.dev`, que Cloudflare **limite en débit et ne met pas en cache** — vérifié dans leur
   documentation le 3 septembre, c'est plus restrictif que ce que supposait le journal. Le basculement
@@ -681,12 +685,28 @@ détail et les cas réels sont dans `JOURNAL.md`.
   règles de lecture (préfixes 978/979, désinversion de l'article **par segment**, découpe du
   marqueur d'édition) sont établies et mesurées. Le manifeste intermédiaire ne doit **pas**
   être versionné, pour la même raison que le catalogue est hors sauvegarde.
-- **Deux trous dans l'archive** : `2000-09` (31 lignes, le plus petit mois) et
-  **février 2024 → octobre 2026**, 33 mois, la fenêtre la plus utile pour le catalogue et
-  l'écran Planning. Les CSV de cette seconde fenêtre **ne sont pas sur cette machine** (3 septembre
-  2026) ; à retélécharger et à importer plus tard. Sans urgence : `tomesParus` n'est jamais
-  abaissé, les deux lots s'importent dans n'importe quel ordre, et la borne de fenêtre protège
-  désormais les sorties annoncées d'un import qui ne les couvre pas.
+  **Ce que le lot disponible rapporte à lui seul**, mesuré le 8 septembre sur les 29 fichiers :
+  8 298 lignes, **2 988 séries distinctes** dont 501 portant un marqueur d'édition, 8 186 EAN
+  livre distincts, 9,8 % de lignes sans `Vol.N` et 11,2 % à article inversé. La moitié des
+  5 892 séries de l'archive complète, pour 10 % de ses fichiers — la fenêtre récente est dense
+  parce qu'elle décrit le marché courant, et c'est celle dont `/ajouter` a besoin.
+  **L'écriture est indépendante de M2** : table déjà en place, aucune colonne partagée, donc ça
+  peut tourner sans élargir le périmètre de la migration.
+- **Deux trous dans l'archive, et ils sont plus petits qu'annoncé** (corrigé le 8 septembre) :
+  `2000-09` (31 lignes, le plus petit mois) et **février → juillet 2024, 6 mois**. Le chiffre de
+  33 mois du 3 septembre supposait le premier lot perdu ; il a été retrouvé et étendu — 29
+  fichiers d'`2024-08` à `2026-12`, 8 298 lignes, mois du nom concordant avec le contenu sur les
+  29, 98,8 % d'EAN livre. Sans urgence : `tomesParus` n'est jamais abaissé, les lots s'importent
+  dans n'importe quel ordre, et la borne de fenêtre protège les sorties annoncées d'un import qui
+  ne les couvre pas.
+- **Où sont les CSV de planning** (8 septembre 2026). Ils ne sont pas dans le dépôt et ne le
+  seront pas. Les **29 fichiers d'août 2024 à décembre 2026** sont sur cette machine ; les **288
+  fichiers de janvier 2000 à janvier 2024** sont sur **une autre machine**. Conséquence directe
+  sur l'amorçage du catalogue : depuis ce poste, `ParutionCatalogue` ne peut être alimentée que
+  des 8 298 lignes récentes, pas des 41 941 anciennes.
+  **La casse du nom de fichier varie** — `Planning_2026-11.csv` contre `planning_2024-08.csv` :
+  tout parcours du dossier doit être insensible à la casse, ce que `glob` ne garantit pas selon
+  la plateforme.
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
   `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
   `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.
@@ -812,14 +832,16 @@ Des faits objectifs, identiques pour tout le monde.
 
 ```
 SuiviEdition (id, utilisateurId, editionId,
-              statut, termineeForcee, raisonCompletion, ajouteeLe)
+              statut, suivie, ajouteeLe)
 Possession   (id, utilisateurId, volumeId, possede, dateAchat,
               prixPayeCentimes, etat, lu, note, varianteId)
 ```
 
-`statut`, `termineeForcee`, `raisonCompletion` et `ajouteeLe` **quittent `Edition`**.
-`aVerifier` n'y entre pas : il est **supprimé**, pas déménagé — voir « Le plan d'exécution »
-ci-dessous. `ajouteeLe` ne figurait dans aucune des deux listes ; c'est un oubli, corrigé ici.
+`statut` et `ajouteeLe` **quittent `Edition`**, et `termineeForcee` la quitte aussi mais sous un
+autre nom et en sens inverse : il devient **`suivie`** — voir « `suivie` remplace
+`termineeForcee` » ci-dessous. `aVerifier` et `raisonCompletion` n'entrent dans la table ni sous
+leur nom ni sous un autre : ils sont **supprimés**, pas déménagés. `ajouteeLe` ne figurait dans
+aucune des deux listes ; c'est un oubli, corrigé ici.
 
 La wishlist (§ Reste à faire) est une donnée de suivi, pas de catalogue : une série
 convoitée par l'un et possédée par l'autre est la même `Edition` avec deux `SuiviEdition`.
@@ -858,6 +880,87 @@ Conséquences à tenir :
 - Le besoin de §13.2 — relire une fiche ajoutée par un tiers — survit, mais sous un autre nom
   et sur `Edition`, adossé à `creeePar`. **Ne pas le rappeler `aVerifier`** : c'est ce nom
   unique pour deux sens qui a produit la contradiction.
+
+##### `suivie` remplace `termineeForcee` — arbitré le 8 septembre 2026
+
+Proposé le 4 septembre dans `IDEES.md`, tranché ici — la section y a donc été retirée, seule sa
+trace de sortie y reste. Les chiffres sont mesurés sur la base réelle le 8 septembre.
+
+**Le reproche fait à `termineeForcee` est qu'il mélange deux choses** : c'est un *jugement sur
+la collection* — « je considère cette série finie » — dont l'effet est de *masquer une liste de
+courses*. Or on peut vouloir les deux séparément. AIR GEAR est le cas : le drapeau a été retiré
+volontairement pour retrouver ses 5 tomes manquants dans Manquants, au prix du libellé
+« Terminée par choix ». Le modèle ne savait pas dire « je considère la série finie **et** je veux
+ces tomes », il a fallu le détourner. D.Gray-man est l'autre face : 25/29, trous aux tomes 9, 10,
+13 et 18, parution en cours — suivi de près côté nouveautés, troué au milieu.
+
+**`suivie` ne répond qu'à une question : est-ce que je veux être rappelé de ce qui manque ?** Il
+ne prétend rien sur l'état de la collection, et c'est ce qui le rend lisible. Il ne remplace pas
+`statut`, qui reste le rapport personnel et continue de piloter le libellé et la désaturation.
+
+| Possédés | `suivie` | Manquants | Planning | Où la série vit |
+|---|---|---|---|---|
+| ≥ 1 | oui | les trous | les sorties | Collection |
+| ≥ 1 | non | rien | rien | Collection |
+| 0 et `statut = VENDUE` | non | rien | rien | Collection, section « Vendues » |
+| 0 | oui | **rien** | **rien** | **Wish list** |
+
+**Une série possédée est suivie par défaut**, donc `@default(true)` : c'est l'état d'une série
+qu'on vient d'ajouter, et ajouter une série veut dire qu'on la suit. **Une série reste dans la
+Collection tant qu'elle a des tomes possédés ou en a eu** — la troisième ligne du tableau est
+cette règle, et `statut = VENDUE` en est aujourd'hui le seul porteur.
+
+**Résidu connu, laissé ouvert** : « en a eu » n'est enregistré nulle part. Mesuré le 8 septembre,
+**aucune des 1 714 possessions ne porte `dateAchat` ni `prixPayeCentimes`**, et les 559 lignes à
+`possede=false` ne distinguent pas « jamais eu » de « revendu ». Ça ne gêne pas aujourd'hui — les
+**4 seules éditions à zéro tome possédé sont exactement les 4 `VENDUE`** — mais le jour où une
+édition tombe à zéro sans être marquée vendue, rien ne la sépare d'une entrée de wish list, et la
+trace ne se reconstitue pas après coup. Une colonne `aDejaPossede` sur `SuiviEdition` la
+capturerait, backfillée `possédés ≥ 1 OR statut = VENDUE` ; c'est un **ajout**, donc sans
+pénalité plus tard au sens du critère de fin de §13.1 — mais son backfill n'est exact
+qu'aujourd'hui.
+
+**L'appartenance à la wish list est déduite, jamais stockée** :
+`possédés = 0 ET suivie ET statut ≠ VENDUE`. Cocher un tome fait basculer en Collection,
+décocher le dernier ramène en wish list. Aucun champ à maintenir, aucun état à désynchroniser.
+Conséquence mécanique à connaître : **une série créée par `/ajouter` atterrit en wish list**,
+puisqu'elle naît à zéro tome possédé, et n'entre en Collection qu'au premier tome coché. Par
+`/scanner` elle entre directement en Collection, le tome scanné étant marqué possédé.
+
+**Backfill : `suivie = (statut = 'EN_COURS' AND termineeForcee = false)`.**
+
+| | |
+|---|---|
+| `EN_COURS` non forcée → suivie | **84** |
+| `EN_COURS` forcée — `judge`, `nozokiana` → non suivie | 2 |
+| `ABANDONNEE` → non suivie | 18 |
+| `EN_PAUSE` → non suivie | 5 |
+| `VENDUE` → non suivie | 4 |
+
+Cette formule a la propriété qu'on cherche : **elle ne change rien à Manquants**, dont la liste
+principale correspond déjà à « `EN_COURS` non forcée ». Le seul changement visible est le
+**Planning qui perd ses 4 sorties fantômes** — `one-puch-man`, `les-legendaires-saga`,
+`why-nobody-remember-my-world`, `blue-exorcist` — c'est-à-dire la correction du défaut relevé le
+4 septembre. Une reprise qui ne casse rien, ajustable ensuite d'un tap. Et AIR GEAR devient
+`suivie = true`, ce qui est exactement l'intention d'origine, obtenue sans détourner un drapeau.
+
+**Écartée : `suivie = true` sur les 109 éditions non vendues.** C'est la lecture littérale de
+« une série possédée est suivie », mais appliquée au backfill elle remet 19 éditions et 320 tomes
+dans Manquants — l'état que le 4 septembre a jugé mauvais, où 72 % de l'écran était des séries
+qu'on a arrêté d'acheter — et imposerait 23 dé-suivis à la main.
+
+**Ce que ça unifie.** Trois mécanismes cachent aujourd'hui des choses de Manquants —
+`termineeForcee`, `statut = VENDUE`, et la section repliée « Abandonnées et en pause » — et aucun
+ne touche le Planning. Un seul filtre les remplace, **sur les deux écrans**. La section repliée
+disparaît : si on ne veut pas les voir, on ne les suit pas. Ça retire `Manquants.arretees` du
+domaine et libère le motif `CollapsibleSection` sur cet écran.
+
+**`raisonCompletion` meurt avec `termineeForcee`.** Elle n'entre pas dans `SuiviEdition`. Mesuré
+le 8 septembre : **3 éditions la portent — `judge`, `nozokiana`, `air-gear` — avec le même texte
+d'import** (« Reprise du Google Sheet : marquee FINI malgre des tomes manquants »), aucun écran
+ne l'affiche, et celle d'AIR GEAR est périmée depuis que son drapeau a été retiré. Un champ
+libre « pourquoi j'ai arrêté de suivre » reste possible plus tard ; ce serait une colonne neuve,
+pas celle-là. Le texte survit dans `data/backup.json` et le commit tagué de la Phase 0.
 
 **`ajouteeLe` est une cinquième colonne personnelle**, absente des deux listes de §13.1. Le tri
 « Ajout récent » veut dire *ajoutée à ma collection*, pas *entrée au catalogue*. Elle part dans
@@ -913,18 +1016,22 @@ model Utilisateur {
 }
 
 model SuiviEdition {
-  id               String   @id @default(uuid())
-  utilisateurId    String   // FK Utilisateur, onDelete: Cascade
-  editionId        String   // FK Edition,     onDelete: Cascade
-  statut           StatutEdition
-  termineeForcee   Boolean  @default(false)
-  raisonCompletion String?
-  ajouteeLe        DateTime @default(now())
+  id            String   @id @default(uuid())
+  utilisateurId String   // FK Utilisateur, onDelete: Cascade
+  editionId     String   // FK Edition,     onDelete: Cascade
+  statut        StatutEdition
+  suivie        Boolean  @default(true)
+  ajouteeLe     DateTime @default(now())
 
   @@unique([utilisateurId, editionId])
   @@index([utilisateurId])
+  @@index([utilisateurId, suivie])
 }
 ```
+
+L'index `[utilisateurId, suivie]` par le même raisonnement que `[utilisateurId, possede]` sur
+`Possession` : Manquants et Planning filtrent tous deux sur `suivie`, et ils partent désormais de
+`SuiviEdition`.
 
 `Edition` **perd** `statut`, `termineeForcee`, `raisonCompletion`, `aVerifier`, `ajouteeLe`, et
 **gagne** `creeeParId String?` (`onDelete: SetNull`, null = venu de l'import).
@@ -952,9 +1059,10 @@ le dépôt.
 1. `..._utilisateurs_et_alias` — `Utilisateur`, l'enum, la ligne du propriétaire, `Serie.alias`
    + son index GIN en SQL brut. **Purement additive, l'application n'y touche pas.**
 2. `..._suivi_edition` — création, backfill depuis `Edition`, puis `DROP` des 5 colonnes.
-   **Lire `IDEES.md` avant d'écrire celle-ci** : le remplacement de `termineeForcee` par un
-   booléen `suivie` y est en discussion, et il se ferait dans ce backfill. L'écrire d'abord avec
-   `termineeForcee` imposerait une seconde migration sur la même colonne.
+   **Le backfill inverse `termineeForcee` en `suivie`** — `statut = 'EN_COURS' AND
+   termineeForcee = false`, arbitré le 8 septembre, voir ci-dessus. C'est le seul instant où les
+   deux colonnes coexistent, d'où l'obligation de le faire ici : après le `DROP`, il faudrait une
+   seconde migration sur la même colonne. `raisonCompletion` et `aVerifier` ne sont pas reprises.
 3. `..._possession_par_compte` — `utilisateurId` ajouté, rempli, passé `NOT NULL`, échange des
    index (`Possession_volumeId_key` → `Possession_utilisateurId_volumeId_key`), FK posée.
 
@@ -976,7 +1084,8 @@ correspondant. Tant que le code n'est pas prêt, les garder hors de ce dossier.
    a été retiré pour retrouver les 5 tomes manquants dans Manquants. La donnée est juste, c'est
    le modèle qui ne sait pas exprimer « je considère la série finie **et** je veux ces tomes ».
    Seule sa `raisonCompletion` est périmée, et elle n'est affichée par aucun écran.
-   **Ce constat a ouvert le remplacement de `termineeForcee` par `suivie` — voir `IDEES.md`.**
+   **Ce constat a ouvert le remplacement de `termineeForcee` par `suivie`, arbitré le
+   8 septembre — voir « `suivie` remplace `termineeForcee` » ci-dessus.**
 3. `npm run db:backup`, commit, **et taguer ce commit** : c'est le seul chemin de retour, et il
    faut l'ancien `backup-db.ts` pour relire l'ancien `backup.json`.
 
@@ -988,7 +1097,8 @@ fidèle, puis les trois migrations. Contrôles à l'arrivée :
 |---|
 | `SuiviEdition` = 113, toutes sur l'id propriétaire |
 | statuts préservés : `EN_COURS=86 ABANDONNEE=18 EN_PAUSE=5 VENDUE=4` |
-| `termineeForcee` = 2 (ou 3 après 0.2) · `raisonCompletion` = 3 |
+| `suivie=true` = **84**, et aucune sur un `statut` ≠ `EN_COURS` |
+| `SuiviEdition` sans colonne `raisonCompletion` ni `aVerifier` |
 | `Possession` = 1 712, toutes sur l'id propriétaire, 1 153 à `possede=true` |
 | `Serie.alias` renseigné sur 105 · `Edition` sans les 5 colonnes |
 
@@ -1001,7 +1111,11 @@ fidèle, puis les trois migrations. Contrôles à l'arrivée :
    `utilisateurId_volumeId` ; `creerSerieAvecEdition` crée aussi le `SuiviEdition`.
 4. `scripts/backup-db.ts` — **le filet doit couvrir la nouvelle forme avant qu'on en ait
    besoin.** L'export ne peut plus nicher la possession sous le volume, et `compter()` lit
-   `aVerifier` et `forcees` sur `Edition`.
+   `aVerifier` et `forcees` sur `Edition`. **Les compteurs passent de 8 à 7** : `aVerifier`
+   disparaît et `forcees` devient `suivies`, qui s'inverse — donc l'ancien `backup.json` ne se
+   relit **qu'avec l'ancien script**, ce que la Phase 0 prévoit en taguant son commit. Le
+   contrôle de restauration échoue sur toute divergence de compteur : le mettre à jour dans le
+   même geste, sinon plus aucune restauration ne passe.
 5. `prisma/seed.ts` et les `apply-*.ts` — les scripts de catalogue cessent de créer des
    possessions.
 
@@ -1142,14 +1256,23 @@ L'interface qui masque les contrôles est un confort, pas la protection.
 Un utilisateur peut créer une série. C'est une écriture dans le catalogue partagé —
 `creerSerieAvecEdition` crée `Serie`, `Edition` et les `Volume`.
 
-L'ajout est **libre et immédiatement visible de tous**, avec `creeePar` renseigné et
-`aVerifier` levé jusqu'à relecture par le propriétaire.
+L'ajout est **libre et immédiatement visible de tous**, avec `creeePar` renseigné et un drapeau
+de relecture levé jusqu'à validation par le propriétaire.
 
 Écarté : l'ajout privé jusqu'à validation (deux visibilités, donc une condition dans
 toutes les requêtes du catalogue) et l'ajout libre sans garde-fou (dégradation silencieuse).
 
-`aVerifier` sert déjà exactement à ça depuis la migration. L'écran de relecture donne au
-rôle propriétaire un contenu concret.
+**Ce drapeau n'est pas `aVerifier` et ne doit pas en reprendre le nom** (arbitré le 4 septembre,
+voir §13.1). `aVerifier` disait « la répartition de mes tomes a été devinée » — une donnée
+personnelle, issue de l'import du Sheet, dont la source est morte le 8 septembre avec la décision
+qu'il n'y aura plus d'import de collection. Le drapeau dont §13.2 a besoin dit « cette fiche de
+**catalogue** n'a pas été relue » : il est partagé, il vit sur `Edition` aux côtés de `creeePar`,
+et c'est un champ **neuf**. C'est ce nom unique pour deux sens qui avait produit la contradiction.
+
+**Et il est moins nécessaire qu'il n'y paraît.** La qualité d'une fiche se joue à la saisie, pas
+à la relecture : la porte d'ajout est `/ajouter` et `/scanner`, adossés à `ParutionCatalogue`, qui
+portent le vrai nom FR, le marqueur d'édition, l'éditeur et l'EAN. Améliorer la porte vaut mieux
+que marquer ce qui passe. À rouvrir quand il y aura un second compte, pas avant.
 
 **Limite connue** : un utilisateur ne peut pas encore ajouter une seconde édition à une
 série existante (§ Reste à faire — `creerSerieAvecEdition` crée toujours une `Serie` neuve).
