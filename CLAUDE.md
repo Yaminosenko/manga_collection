@@ -267,7 +267,15 @@ qui remplit la même barre.
 | 2 | `Sortie.isbn` | sortie annoncée → bouton « Je l'ai » |
 | 3 | `ParutionCatalogue.ean` | **la ligne la plus récente**, jamais la première |
 | 4 | BnF par ISBN | notice seule → candidat manuel |
-| 5 | rien | saisie manuelle |
+| 5 | rien | l'écran le dit et s'arrête — **pas de saisie manuelle**, voir ci-dessous |
+
+**Pas de saisie manuelle, tranché le 9 septembre 2026.** Un tome que ni le catalogue ni la BnF
+ne connaissent ne s'ajoute pas : l'écran le dit et s'arrête. `creerEdition`,
+`creerSerieAvecEdition` et la recherche de prix par titre ont été **supprimés**, pas laissés en
+dormance. Le motif est net : un formulaire vide fabrique des fiches sans ISBN, sans date et
+sans couverture — exactement les 23 éditions que l'audit ne peut pas juger, et exactement ce
+que le catalogue vient de rendre inutile. **L'effort va à l'amélioration du chemin
+automatique**, pas à une porte de secours qui dégrade la base.
 
 **Résolution par texte** : le local d'abord, par index sur `Serie.slug`, `Serie.titre` et
 `Serie.alias` — un résultat local est un **lien** vers la fiche, jamais une création. Puis le
@@ -946,11 +954,22 @@ détail et les cas réels sont dans `JOURNAL.md`.
   leur ISBN et leur date, les sorties futures deviennent des `Sortie`, et une seconde édition
   se rattache à la série existante au lieu de créer un fantôme.
 
-  **Ce qui reste de ce chantier** : la **saisie entièrement manuelle**, rang 5 de la
-  résolution, n'a pas d'écran — `creerEdition` et `creerSerieAvecEdition` sont en place mais
-  inatteignables depuis l'interface. Et la recherche ne connaît **pas les abréviations** :
-  « jjk » ne rend rien, le catalogue n'ayant pas d'alias. C'est `Serie.alias` et les alias
-  appris de §13.3 qui rattraperont ça.
+  **La saisie manuelle est écartée** (9 septembre 2026) et son code supprimé — voir §4. Ce qui
+  reste est donc du travail sur le chemin automatique, par valeur décroissante :
+
+  1. **Combler les deux trous de l'archive** — `2000-09` et février → juillet 2024. C'est le
+     meilleur rapport : sept CSV à retélécharger sur manga-news, et ça remplit directement des
+     EAN manquants. Les cinq écarts de `tomesParus` que l'audit signale encore viennent de là.
+  2. **Les abréviations** : « jjk » ne rend rien, le catalogue n'ayant pas d'alias.
+     `Serie.alias` est en base et renseigné sur 105 séries ; les alias appris de §13.3 sont la
+     suite, et c'est ce qui rapporte le plus sur la recherche au quotidien.
+  3. **Unifier la casse des marqueurs d'édition à la source** — `Edition Limitée` contre
+     `Edition limitée` — par `catalogue:apply -- --recalculer`, ce qui supprimerait le
+     regroupement en minuscules fait à la requête.
+  4. **Une liste noire de magazines**, dans l'esprit de `RECHERCHES_MANUELLES` : Animeland,
+     Les Inrocks, Made in Japan, Dream Team. Aucune règle automatique ne les distingue.
+  5. **Les couvertures d'une série ajoutée** : porter le sélecteur MangaDex en TypeScript, ou
+     laisser la tâche quotidienne les ramasser.
 - **Dériver les `Sortie` depuis `ParutionCatalogue`** au lieu de les écrire depuis le manifeste
   de planning — le circuit visé par le plan de §13.1. Ça règle le défaut du 30 août, « le
   planning est une photographie, pas un flux » : ajouter une série calculerait ses sorties

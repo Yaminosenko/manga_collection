@@ -2990,3 +2990,28 @@ Les garder est un choix : ils servent le cas où ni le catalogue ni la BnF ne co
 Et la recherche **ne connaît pas les abréviations** : « jjk » ne rend rien. Le catalogue n'a pas
 d'alias, et c'est `Serie.alias` — déjà en base depuis la migration, renseigné sur 105 séries —
 plus les alias appris de §13.3 qui rattraperont ça.
+
+### Tranché — pas de saisie manuelle (9 septembre 2026)
+
+Le rang 5 de la résolution de §4 — « saisie entièrement manuelle » — est **écarté**, et son code
+**supprimé** plutôt que laissé en dormance : `creerEdition`, `creerSerieAvecEdition`,
+`ChampsEdition`, `chercherPrix` et `chercherPrixDefautCentimes`, plus les cinq aides que cette
+dernière était seule à utiliser.
+
+**Le motif est celui que l'audit avait mis au jour.** Un formulaire vide fabrique des fiches sans
+ISBN, sans date et sans couverture — c'est-à-dire exactement les 23 éditions que
+`editions:audit` ne peut pas juger, et dont GANTZ montre le coût : compte juste, nom et éditeur
+faux, invisibles à tout contrôle. Le catalogue rend cette porte inutile dans 99 % des cas
+mesurés ; la garder aurait été garder le moyen de dégrader la base.
+
+Conséquence assumée : **un tome que ni le catalogue ni la BnF ne connaissent ne s'ajoute pas.**
+L'écran le dit et s'arrête. Si le cas se présente vraiment, la réponse n'est pas un formulaire
+mais un trou d'archive à combler.
+
+Disparaît au passage la recherche de prix **par titre**, celle qui rendait `null` pour
+Goodnight Punpun. Le prix vient désormais de `010$d` **par ISBN**, ce qui est à la fois plus
+juste et plus simple.
+
+**Build de production vérifié** avant de pousser, puisque c'est lui qui aurait bloqué un test
+sur téléphone : `next build` passe, les quatorze routes sont dynamiques, et `useSearchParams`
+ne réclame pas de frontière `Suspense` — la page portant `force-dynamic`.

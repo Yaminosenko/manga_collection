@@ -5,8 +5,8 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { candidatParEan, candidatParGroupe, rechercherCandidats, tomesDuGroupe } from "@/lib/catalogue";
 import { enrichirDepuisTomes } from "@/lib/enrichissement";
-import { chercherParIsbn, chercherPrixDefautCentimes } from "@/lib/bnf";
-import { creerDepuisCandidat, creerSerieAvecEdition } from "@/lib/creation";
+import { chercherParIsbn } from "@/lib/bnf";
+import { creerDepuisCandidat } from "@/lib/creation";
 import { promouvoirSortie } from "@/lib/promotion";
 import { exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
@@ -383,64 +383,4 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     annee: notice.annee,
     candidats: await rechercherCandidats(racineDuTitre(notice.titre)),
   };
-}
-
-export async function chercherPrix(titre: string, auteur: string): Promise<number | null> {
-  await exigerProprietaire();
-
-  if (titre.trim() === "") {
-    return null;
-  }
-
-  return chercherPrixDefautCentimes(titre.trim(), auteur.trim());
-}
-
-export async function creerEdition(
-  _precedent: EtatCreation,
-  donnees: FormData,
-): Promise<EtatCreation> {
-  await exigerProprietaire();
-
-  const titre = lireTexte(donnees, "titre");
-  const auteur = lireTexte(donnees, "auteur");
-  const nom = lireTexte(donnees, "nom");
-  const editeur = lireTexte(donnees, "editeur");
-  const prixBrut = lireTexte(donnees, "prixDefaut");
-  const tomesParus = Number(lireTexte(donnees, "tomesParus"));
-  const statut = lireTexte(donnees, "statut");
-  const editionTerminee = donnees.get("editionTerminee") === "on";
-
-  if (titre === "" || auteur === "" || nom === "") {
-    return { erreur: "Titre, auteur et nom d’édition sont obligatoires." };
-  }
-  if (!estStatutEdition(statut)) {
-    return { erreur: LIBELLE_STATUT_INVALIDE };
-  }
-  if (!Number.isInteger(tomesParus) || tomesParus < 1 || tomesParus > TOMES_PARUS_MAX) {
-    return { erreur: LIBELLE_TOMES_PARUS_INVALIDE };
-  }
-  if (prixBrut !== "" && lireCentimes(prixBrut) === null) {
-    return { erreur: "Le prix par défaut n’est pas un nombre valide." };
-  }
-
-  const editionSlug = await creerSerieAvecEdition({
-    titre,
-    titreVo: lireTexte(donnees, "titreVo") || null,
-    auteur,
-    genres: lireTexte(donnees, "genres")
-      .split(",")
-      .map((genre) => genre.trim())
-      .filter(Boolean),
-    nom,
-    editeur: editeur || null,
-    tomesParus,
-    prixDefautCentimes: lireCentimes(prixBrut),
-    statut,
-    editionTerminee,
-  });
-
-  revalidatePath("/");
-  revalidatePath("/manquants");
-  revalidatePath("/wishlist");
-  redirect(`/edition/${editionSlug}`);
 }
