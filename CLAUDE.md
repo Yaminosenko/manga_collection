@@ -129,7 +129,18 @@ et ses sorties reviennent au Planning dans le même geste : c'est un paquet, pas
 | ≥ 1 | oui | les trous | les sorties | Collection |
 | ≥ 1 | non | rien | rien | Collection |
 | 0 et `statut = VENDUE` | non | rien | rien | Collection, section « Vendues » |
-| 0 | oui | rien | rien | Wish list — **pas encore construite**, voir §13.1 |
+| 0 | oui | **rien** | **rien** | **Wish list** |
+| 0, non suivie, non vendue | non | rien | rien | **Collection**, à `0 / N` |
+
+La dernière ligne manquait au tableau d'origine et a été trouvée à l'usage le 9 septembre 2026 :
+une édition abandonnée dont on décoche tous les tomes n'est **pas** une envie d'achat, donc elle
+reste en Collection. C'est cohérent avec la règle « une série reste en Collection tant qu'elle a
+des tomes possédés **ou en a eu** » — la wish list demande `suivie`, c'est-à-dire une intention.
+
+**Une entrée de wish list ne remonte ni dans Manquants ni dans le Planning**, et les deux écrans
+l'excluent par la même condition — *au moins un tome possédé*. Sans elle, mettre une série de
+40 tomes en wish list ajouterait 40 lignes à la liste de courses : Manquants sert à combler les
+trous d'une édition qu'on a, pas à acheter une série entière.
 
 2 éditions non suivies en `EN_COURS` : JUDGE (5/6) et NOZOKIANA (11/13). Motif : tomes lus
 ailleurs, volontairement non rachetés. **AIR GEAR (32/37) est suivie**, et c'est l'intention
@@ -216,8 +227,20 @@ de repli si la vue d'ensemble manque sur les séries longues — à 2 colonnes, 
 
 ### Manquants
 Tous les tomes non possédés et déjà parus, groupés par édition.
-**Ne montre que les éditions `suivie`** — un seul filtre, le même que le Planning. Pas de section
-repliée : ce qu'on ne veut pas voir, on ne le suit pas.
+**Ne montre que les éditions `suivie` dont on possède au moins un tome** — le même couple de
+conditions que le Planning. Pas de section repliée : ce qu'on ne veut pas voir, on ne le suit pas.
+
+### Wish list
+Les séries qu'on compte acheter et dont on ne possède encore aucun tome. **Cinquième onglet de
+la barre du bas**, entre Planning et Ajouter.
+
+**L'appartenance est déduite, jamais stockée** : `possédés = 0 ET suivie ET statut ≠ VENDUE`.
+Aucun champ à maintenir, aucun état à désynchroniser — cocher un tome fait basculer en
+Collection, décocher le dernier ramène ici. Une ligne porte la couverture du tome 1, le titre,
+`Nom d'édition · Éditeur` et `0 / Y` ; pas de barre de progression, elle serait toujours vide.
+
+Ces séries **ne comptent ni dans les compteurs d'en-tête de la Collection ni dans la valeur** —
+comme les vendues, et pour la même raison : on ne les possède pas.
 
 ### Ajout de série
 1. Recherche — résultats mêlant la collection locale (anti-doublon) et l'API externe
@@ -744,10 +767,10 @@ détail et les cas réels sont dans `JOURNAL.md`.
   choix » pour la même édition. Le rendu n'a pas bougé volontairement — la formule de backfill
   rend les mêmes lignes qu'avant — mais les deux mots désignent un seul drapeau, et l'un des deux
   doit céder.
-- **La wish list peut maintenant se construire**, la séparation étant faite : l'appartenance est
-  déduite — `possédés = 0 ET suivie ET statut ≠ VENDUE` — donc aucun champ à ajouter. Attention à
-  la conséquence mécanique : une série créée par `/ajouter` naît à zéro tome possédé et
-  atterrira en wish list, alors qu'aujourd'hui elle apparaît en Collection à `0 / N`.
+- ~~**La wish list peut maintenant se construire**~~ — **faite le 9 septembre 2026**, voir §4 et
+  `JOURNAL.md`. Conséquence mécanique à connaître : **une série créée par `/ajouter` atterrit en
+  wish list** et non plus en Collection à `0 / N`, puisqu'elle naît à zéro tome possédé. Par
+  `/scanner` elle entre directement en Collection, le tome scanné étant marqué possédé.
 - **`SuiviEdition.aDejaPossede` reste à trancher, et son backfill n'est exact qu'aujourd'hui.**
   « Une série reste en Collection tant qu'elle a des tomes possédés **ou en a eu** », et « en a
   eu » n'est enregistré nulle part : les 559 lignes à `possede=false` ne distinguent pas « jamais
@@ -781,11 +804,10 @@ détail et les cas réels sont dans `JOURNAL.md`.
 - **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` existe depuis le
   3 septembre et ne fait qu'une chose : promouvoir les sorties dont le mois est clos. Restent
   les nouveaux tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
-- **Écran « Wish list »** (demandé le 30 août) : les séries pas encore commencées mais qu'on
-  compte acheter. Distinct des Manquants, qui ne parle que de tomes absents d'éditions déjà
-  possédées. **Ne demande aucun champ** — l'appartenance est déduite, voir ci-dessus. Reste à
-  décider si ces séries comptent dans les compteurs d'en-tête et dans la valeur — a priori non,
-  comme les vendues.
+- ~~**Écran « Wish list »**~~ (demandé le 30 août) — **fait le 9 septembre 2026.** Cinquième
+  onglet, appartenance déduite, et ces séries **ne comptent ni dans les compteurs d'en-tête ni
+  dans la valeur**, comme les vendues. **Elle restera vide en pratique tant qu'`/ajouter` ne
+  fonctionne pas** : la seule autre porte est de décocher tous les tomes d'une édition suivie.
 - **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
   (`lib/creation.ts:33`) crée toujours une `Serie` neuve, et les résultats locaux de `/ajouter`
   sont de simples liens vers la fiche existante. Créer une Perfect Edition depuis le résultat

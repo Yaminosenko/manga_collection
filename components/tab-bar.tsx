@@ -2,13 +2,25 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BooksFill, CalendarBlank, PlusCircle, PuzzlePiece } from "@/components/icons";
-import { TITRE_AJOUTER, TITRE_MANQUANTS, TITRE_PLANNING } from "@/lib/constants";
+import {
+  BookmarkSimple,
+  BooksFill,
+  CalendarBlank,
+  PlusCircle,
+  PuzzlePiece,
+} from "@/components/icons";
+import {
+  TITRE_AJOUTER,
+  TITRE_MANQUANTS,
+  TITRE_PLANNING,
+  TITRE_WISHLIST,
+} from "@/lib/constants";
 
 const ONGLETS = [
   { href: "/", libelle: "Collection", Icone: BooksFill },
   { href: "/manquants", libelle: TITRE_MANQUANTS, Icone: PuzzlePiece },
   { href: "/planning", libelle: TITRE_PLANNING, Icone: CalendarBlank },
+  { href: "/wishlist", libelle: TITRE_WISHLIST, Icone: BookmarkSimple },
   { href: "/ajouter", libelle: TITRE_AJOUTER, Icone: PlusCircle },
 ] as const;
 

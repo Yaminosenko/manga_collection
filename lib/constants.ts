@@ -60,6 +60,13 @@ export const DELAI_RECHERCHE_MS = 350;
 export const LONGUEUR_RECHERCHE_MIN = 2;
 
 export const TITRE_AJOUTER = "Ajouter";
+
+export const TITRE_WISHLIST = "Wish list";
+export const LIBELLE_WISHLIST_VIDE =
+  "Aucune série en attente. Une série ajoutée sans cocher de tome atterrit ici, et rejoint la collection au premier tome coché.";
+export const LIBELLE_WISHLIST_ERREUR = "La wish list n’a pas pu être chargée.";
+export const LIBELLE_WISHLIST_COMPTEUR_SINGULIER = "série";
+export const LIBELLE_WISHLIST_COMPTEUR_PLURIEL = "séries";
 export const NOM_EDITION_PAR_DEFAUT = "Édition simple";
 export const TOMES_PARUS_MAX = 500;
 export const STATUTS_EDITION = ["EN_COURS", "ABANDONNEE", "EN_PAUSE", "VENDUE"] as const;

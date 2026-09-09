@@ -2425,3 +2425,61 @@ production a servi l'ancien code sur le nouveau schéma pendant quelques minutes
 `git push`. Sans utilisateur derrière, c'est sans conséquence ; avec, il faut pousser d'abord et
 migrer ensuite, ou accepter une fenêtre d'erreur. §13.1 disait « les trois partent ensemble avec
 le code » sans trancher lequel des deux part en premier.
+
+### Fait — la wish list (9 septembre 2026)
+
+Premier écran rendu bon marché par la séparation catalogue/suivi : **aucun champ ajouté**,
+l'appartenance est une requête. Deux arbitrages posés avant de coder — **cinquième onglet** de la
+barre du bas plutôt qu'une section repliée dans la Collection, parce qu'une wish list qu'il faut
+scroller jusqu'en bas est une wish list qu'on oublie, et elle sert justement debout dans un
+rayon ; et **la wish list avant** le branchement d'`/ajouter` sur `ParutionCatalogue`, en
+assumant qu'elle reste vide en pratique.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/domain.ts` | `LigneWishList`, `WishList`, et `estEnWishList()` — la règle, écrite une fois |
+| `lib/editions.ts` | `chargerWishList()`, plus `auMoinsUnTomePossede()` / `aucunTomePossede()` |
+| `components/wishlist-row.tsx` | la ligne : couverture du tome 1, titre, `Nom · Éditeur`, `0 / Y` |
+| `app/(tabs)/wishlist/` | `page.tsx` et `error.tsx` |
+| `components/tab-bar.tsx` · `components/icons.tsx` | le cinquième onglet et son signet |
+
+Pas de barre de progression sur la ligne : elle serait toujours vide. Et ces séries ne comptent
+ni dans les compteurs d'en-tête de la Collection ni dans la valeur — comme les vendues, et pour
+la même raison.
+
+#### Le défaut trouvé en éprouvant, et il était de fond
+
+`chargerManquants` et `chargerPlanning` ne filtraient que sur `suivie`. **Une entrée de wish list
+remontait donc dans Manquants avec tous ses tomes** : mesuré à l'écran, l'édition passée en wish
+list a fait monter Manquants de 116 à **117 tomes**, y apparaissant avec ses 2 tomes au lieu du 1
+qui manquait avant. Le tableau de §13.1 disait « rien » pour les deux écrans ; le code disait le
+contraire, et le tableau avait raison — **Manquants sert à combler les trous d'une édition qu'on
+a, pas à acheter une série entière.** Mettre une série de 40 tomes en wish list y aurait ajouté
+40 lignes.
+
+Corrigé par une condition partagée, *au moins un tome possédé*, sur les deux écrans. Après :
+**115 tomes · 15 éditions**, l'édition disparue de la liste de courses.
+
+**`revaliderEdition` ne revalidait pas `/wishlist`** — même classe d'oubli que le Planning le
+3 septembre. Ajouté là et dans `creerEdition`, puisque cocher un tome fait franchir la frontière.
+
+#### Une ligne manquait au tableau de §13.1
+
+Trouvée en cherchant pourquoi la wish list restait vide après avoir vidé `doubt` : cette édition
+est `ABANDONNEE` donc `suivie=false`, et le cas **« 0 possédé, non suivie, non vendue »** n'était
+décrit nulle part. Elle reste en **Collection à `0 / N`**, ce qui est cohérent avec « une série
+reste en Collection tant qu'elle a des tomes possédés ou en a eu » : la wish list demande
+`suivie`, c'est-à-dire une intention d'achat. Le tableau porte désormais cette cinquième ligne.
+
+**La sonde n'a rien prouvé une fois de plus, mais dans l'autre sens** : l'écran vide était
+*correct*, et j'ai d'abord soupçonné un cache. C'est la base qui a tranché — `doubt` est
+`ABANDONNEE, suivie=false`.
+
+#### Vérifié fonctionnellement, aller et retour
+
+Sur le banc, jamais en production. Décocher tous les tomes d'une édition suivie
+(`blackrock-shooter-the-game`, 1/2) : elle quitte la Collection — **1 153 tomes · 108 éditions ·
+≥ 8 771,67 €** contre 1 155 · 109 · ≥ 8 787,61 € — apparaît en wish list à `0 / 2` avec la
+mention « 1 série », et sort de Manquants. Recocher le tome 1 : tout revient, wish list vide,
+Manquants à **116 tomes · 16 éditions**. Le banc est à sa base exacte : 1 155 possédés,
+1 714 possessions, 84 suivies, et seules les 4 `VENDUE` à zéro tome.

@@ -136,6 +136,27 @@ export type Collection = {
   tomesSansPrix: number;
 };
 
+export type LigneWishList = {
+  slug: string;
+  titre: string;
+  nom: string;
+  editeur: string | null;
+  tomesParus: number;
+  editionTerminee: boolean | null;
+  couvertureUrl: string | null;
+  ajouteeLe: number;
+};
+
+export type WishList = {
+  lignes: LigneWishList[];
+};
+
+export function estEnWishList(
+  ligne: Pick<LigneCollection, "possedes" | "suivie" | "statut">,
+): boolean {
+  return ligne.possedes === 0 && ligne.suivie && ligne.statut !== "VENDUE";
+}
+
 export type EditionManquante = {
   slug: string;
   titre: string;

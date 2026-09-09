@@ -29,6 +29,7 @@ function revaliderEdition(slug: string): void {
   revalidatePath(`/edition/${slug}/etat`);
   revalidatePath("/");
   revalidatePath("/manquants");
+  revalidatePath("/wishlist");
 }
 
 export async function marquerSortieObtenue(slug: string, numero: number): Promise<void> {
@@ -346,5 +347,6 @@ export async function creerEdition(
 
   revalidatePath("/");
   revalidatePath("/manquants");
+  revalidatePath("/wishlist");
   redirect(`/edition/${editionSlug}`);
 }

@@ -2,12 +2,14 @@ import { prisma } from "@/lib/prisma";
 import { ORDRE_LIENS_SERIE } from "@/lib/constants";
 import { estPossede, selectionPossession, volumesPossedes } from "@/lib/possession";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
+import { estEnWishList } from "@/lib/domain";
 import type {
   Collection,
   Edition,
   EtatEdition,
   Manquants,
   SortiePlanning,
+  WishList,
 } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
@@ -15,6 +17,14 @@ type SuiviLu = { statut: StatutEdition; suivie: boolean };
 
 function estDesaturee(suivi: SuiviLu | undefined): boolean {
   return suivi !== undefined && suivi.statut !== "EN_COURS";
+}
+
+function auMoinsUnTomePossede(utilisateurId: string) {
+  return { volumes: { some: { possessions: { some: { utilisateurId, possede: true } } } } };
+}
+
+function aucunTomePossede(utilisateurId: string) {
+  return { volumes: { none: { possessions: { some: { utilisateurId, possede: true } } } } };
 }
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
@@ -284,7 +294,9 @@ export async function chargerCollection(): Promise<Collection> {
     };
   });
 
-  const lignes = toutes.filter((ligne) => ligne.statut !== "VENDUE");
+  const lignes = toutes.filter(
+    (ligne) => ligne.statut !== "VENDUE" && !estEnWishList(ligne),
+  );
 
   return {
     lignes,
@@ -300,7 +312,7 @@ export async function chargerManquants(): Promise<Manquants> {
   const utilisateurId = await idUtilisateurCourant();
 
   const suivis = await prisma.suiviEdition.findMany({
-    where: { utilisateurId, suivie: true },
+    where: { utilisateurId, suivie: true, edition: auMoinsUnTomePossede(utilisateurId) },
     select: {
       statut: true,
       edition: {
@@ -356,7 +368,12 @@ export async function chargerPlanning(): Promise<SortiePlanning[]> {
   const utilisateurId = await idUtilisateurCourant();
 
   const sorties = await prisma.sortie.findMany({
-    where: { edition: { suivis: { some: { utilisateurId, suivie: true } } } },
+    where: {
+      edition: {
+        suivis: { some: { utilisateurId, suivie: true } },
+        ...auMoinsUnTomePossede(utilisateurId),
+      },
+    },
     orderBy: [{ date: "asc" }, { numero: "asc" }],
     select: {
       numero: true,
@@ -383,4 +400,52 @@ export async function chargerPlanning(): Promise<SortiePlanning[]> {
     couvertureUrl: sortie.couvertureUrl,
     editionsDeLaSerie: sortie.edition.serie._count.editions,
   }));
+}
+
+export async function chargerWishList(): Promise<WishList> {
+  const utilisateurId = await idUtilisateurCourant();
+
+  const suivis = await prisma.suiviEdition.findMany({
+    where: {
+      utilisateurId,
+      suivie: true,
+      statut: { not: "VENDUE" },
+      edition: aucunTomePossede(utilisateurId),
+    },
+    select: {
+      ajouteeLe: true,
+      edition: {
+        select: {
+          slug: true,
+          nom: true,
+          editeur: true,
+          tomesParus: true,
+          editionTerminee: true,
+          couvertureUrl: true,
+          serie: { select: { titre: true } },
+          volumes: {
+            orderBy: { numero: "asc" },
+            take: 1,
+            select: { couvertureUrl: true },
+          },
+        },
+      },
+    },
+  });
+
+  return {
+    lignes: suivis
+      .map((suivi) => ({
+        slug: suivi.edition.slug,
+        titre: suivi.edition.serie.titre,
+        nom: suivi.edition.nom,
+        editeur: suivi.edition.editeur,
+        tomesParus: suivi.edition.tomesParus,
+        editionTerminee: suivi.edition.editionTerminee,
+        couvertureUrl:
+          suivi.edition.couvertureUrl ?? suivi.edition.volumes[0]?.couvertureUrl ?? null,
+        ajouteeLe: suivi.ajouteeLe.getTime(),
+      }))
+      .sort((a, b) => a.titre.localeCompare(b.titre, "fr")),
+  };
 }
