@@ -21,14 +21,14 @@ export type ResultatScan =
       possede: boolean;
     }
   | { type: "annonce"; isbn: string; slug: string; titre: string; numero: number; date: string }
+  | { type: "catalogue"; isbn: string; prepare: CandidatPrepare }
   | {
       type: "notice";
       isbn: string;
       titreNotice: string;
       editeur: string | null;
       annee: string | null;
-      slugProbable: string | null;
-      titreProbable: string | null;
+      candidats: CandidatEdition[];
     }
   | { type: "inconnu"; isbn: string };
 

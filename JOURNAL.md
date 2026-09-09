@@ -2866,3 +2866,50 @@ requête qui charge toute la base, et le dernier morceau du circuit de §4.
 `creerEdition` et `creerSerieAvecEdition` restent en place sans être atteignables depuis
 l'interface : ils servent la saisie entièrement manuelle, rang 5 de la résolution de §4, qui
 n'a pas encore d'écran.
+
+### Fait — le scanner sur le catalogue (9 septembre 2026)
+
+Dernier morceau du circuit de §4, et **dernière requête qui chargeait toute la base**.
+
+`resoudreIsbn` suit désormais l'échelle de §4 : `Volume.isbn`, puis `Sortie.isbn`, puis
+**`ParutionCatalogue` par EAN**, puis la BnF. Le rang 3 est neuf : il rend un `CandidatPrepare`
+complet, donc le scanner sait ce qu'est un tome dont l'édition n'est pas encore en collection.
+
+**Ce qui disparaît** : l'ancien rang final chargeait *toutes* les éditions
+(`prisma.edition.findMany` sans `where`) pour comparer un titre de notice BnF normalisé à celui
+de chaque série. §13.2 avait relevé cette requête ; à 11 315 séries de catalogue elle n'avait
+plus de sens. La notice BnF sert maintenant à **relancer la recherche du catalogue sur son
+titre**, ce qui réutilise du code déjà éprouvé au lieu d'un appariement maison.
+
+#### Vérifié à l'écran, sur le banc
+
+| EAN saisi | Rang atteint | Ce que la carte affiche | Temps |
+|---|---|---|---|
+| `9782820337825` | 1, `Volume.isbn` | « CHAINSAW MAN · tome 1 · Édition simple · Possédé · Ouvrir » | **26 ms** |
+| `9782375061909` | 3, catalogue | « Megumi & Tsugumi · Édition simple · Taifu comics · 4 tomes parus · 4 avec ISBN » puis « Cette édition n'est pas dans votre collection » et « Chercher pour ajouter » | **272 ms** |
+
+L'écart de temps dit exactement la bonne chose : un tome déjà connu ne coûte qu'une requête
+locale, un tome inconnu paie le catalogue et la BnF.
+
+Le banc est intact après les deux essais — 109 séries, 113 éditions, 1 716 tomes, 1 155
+possédés — la résolution étant en lecture seule.
+
+#### Comment la saisie a été pilotée, et pourquoi c'est dit
+
+**L'action `type` du pilote a laissé le champ vide**, comme sur l'écran Rechercher une heure
+plus tôt. Le contournement retenu n'est pas un événement fabriqué naïf — celui-là ne déclenche
+pas `onChange`, le document en a la trace depuis août — mais le **setter natif de
+`HTMLInputElement.prototype.value` suivi d'un événement `input` bouillonnant**, qui est la seule
+façon de faire voir une saisie à React. Contrôlé sur place : `champ.value` a 13 caractères et
+React a bien pris la valeur.
+
+C'est un pilotage légitime, pas une sonde : ce qui prouve le résultat reste la carte affichée et
+la trace serveur, pas le fait d'avoir tapé.
+
+#### Ce que le scanner ne fait toujours pas
+
+**Il ne crée rien.** Un tome dont l'édition est inconnue renvoie vers l'écran Rechercher au lieu
+d'ouvrir la confirmation avec le candidat déjà résolu — l'utilisateur doit retaper le titre. §4
+prévoit qu'un scan puisse créer l'édition **et marquer le tome scanné comme possédé**, ce qui
+est le seul chemin qui fait entrer une série directement en Collection plutôt qu'en wish list.
+C'est le prochain pas, et il demande de porter le candidat d'un écran à l'autre.

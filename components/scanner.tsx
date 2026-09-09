@@ -5,13 +5,18 @@ import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { Check, MagnifyingGlass, WarningCircle } from "@/components/icons";
 import { basculerTome, resoudreIsbn } from "@/lib/actions";
 import {
+  CANDIDATS_SCAN_MAX,
+  CHEMIN_RECHERCHE,
   LIBELLE_ISBN,
+  LIBELLE_REFAIRE_MISE_AU_POINT,
+  LIBELLE_SCAN_CANDIDATS_TITRE,
   LIBELLE_SCAN_HORS_COLLECTION,
   LIBELLE_SCAN_INCONNU,
   LIBELLE_SCAN_INDISPONIBLE,
   LIBELLE_SCAN_INVITE,
   LIBELLE_SCAN_ISBN_INVALIDE,
-  LIBELLE_REFAIRE_MISE_AU_POINT,
+  LIBELLE_SCAN_OUVRIR_EDITION,
+  LIBELLE_SCAN_VERS_RECHERCHE,
 } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
 import { isbnValide, type ResultatScan } from "@/lib/domain";
@@ -257,6 +262,38 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
     );
   }
 
+  if (resultat.type === "catalogue") {
+    const { candidat, tomesAvecEan } = resultat.prepare;
+    return (
+      <article className="bg-surface flex flex-col gap-[8px] rounded-md p-[14px]">
+        <span className="titre-serie text-text text-[15px] font-medium">{candidat.titre}</span>
+        <span className="text-[12px] text-neutral-500">
+          {[candidat.nom, resultat.prepare.editeur].filter(Boolean).join(" · ")}
+        </span>
+        <span className="text-[11.5px] text-neutral-500">
+          {candidat.tomesParus} tomes parus · {tomesAvecEan} avec ISBN
+        </span>
+        {candidat.slugEnCollection ? (
+          <Link
+            href={`/edition/${candidat.slugEnCollection}`}
+            className={`${BOUTON} mt-[4px]`}
+          >
+            {LIBELLE_SCAN_OUVRIR_EDITION}
+          </Link>
+        ) : (
+          <>
+            <span className="text-[11.5px]/[1.5] text-neutral-600">
+              {LIBELLE_SCAN_HORS_COLLECTION}
+            </span>
+            <Link href={CHEMIN_RECHERCHE} className={`${BOUTON} mt-[4px]`}>
+              {LIBELLE_SCAN_VERS_RECHERCHE}
+            </Link>
+          </>
+        )}
+      </article>
+    );
+  }
+
   if (resultat.type === "notice") {
     return (
       <article className="bg-surface flex flex-col gap-[8px] rounded-md p-[14px]">
@@ -267,10 +304,23 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
         <span className="text-[11px] text-neutral-600">
           {LIBELLE_ISBN} {resultat.isbn}
         </span>
-        {resultat.slugProbable ? (
-          <Link href={`/edition/${resultat.slugProbable}`} className={`${BOUTON} mt-[4px]`}>
-            Ouvrir {resultat.titreProbable}
-          </Link>
+        {resultat.candidats.length > 0 ? (
+          <>
+            <span className="text-[11.5px]/[1.5] text-neutral-600">
+              {LIBELLE_SCAN_CANDIDATS_TITRE}
+            </span>
+            {resultat.candidats.slice(0, CANDIDATS_SCAN_MAX).map((candidat) => (
+              <span
+                key={`${candidat.serieNormalise}-${candidat.marqueurNormalise ?? ""}`}
+                className="text-[12px] text-neutral-400"
+              >
+                {candidat.titre} · {candidat.nom} · {candidat.tomesParus} tomes
+              </span>
+            ))}
+            <Link href={CHEMIN_RECHERCHE} className={`${BOUTON} mt-[4px]`}>
+              {LIBELLE_SCAN_VERS_RECHERCHE}
+            </Link>
+          </>
         ) : (
           <span className="text-[12px] text-neutral-500">{LIBELLE_SCAN_HORS_COLLECTION}</span>
         )}

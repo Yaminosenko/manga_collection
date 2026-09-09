@@ -287,16 +287,9 @@ function lireCentimes(brut: string): number | null {
   return Number.isFinite(valeur) && valeur >= 0 ? Math.round(valeur * 100) : null;
 }
 
-function normaliserTitre(texte: string): string {
-  return texte
-    .normalize("NFKD")
-    .replace(/\p{Diacritic}/gu, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
-}
 
 function racineDuTitre(titreNotice: string): string {
-  return normaliserTitre(titreNotice.replace(/[\s.:,-]*\d{1,3}\s*$/, ""));
+  return titreNotice.replace(/[\s.:,-]*\d{1,3}\s*$/, "").trim();
 }
 
 export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
@@ -348,17 +341,18 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     };
   }
 
+  const candidat = await candidatParEan(isbn);
+  if (candidat) {
+    const prepare = await preparerCandidat(candidat.serieNormalise, candidat.marqueurNormalise);
+    if (prepare) {
+      return { type: "catalogue", isbn, prepare };
+    }
+  }
+
   const notice = await chercherParIsbn(isbn);
   if (!notice) {
     return { type: "inconnu", isbn };
   }
-
-  const racine = racineDuTitre(notice.titre);
-  const editions = await prisma.edition.findMany({
-    select: { slug: true, serie: { select: { titre: true } } },
-  });
-  const correspondance =
-    editions.find((edition) => normaliserTitre(edition.serie.titre) === racine) ?? null;
 
   return {
     type: "notice",
@@ -366,8 +360,7 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     titreNotice: notice.titre,
     editeur: notice.editeur,
     annee: notice.annee,
-    slugProbable: correspondance?.slug ?? null,
-    titreProbable: correspondance?.serie.titre ?? null,
+    candidats: await rechercherCandidats(racineDuTitre(notice.titre)),
   };
 }
 

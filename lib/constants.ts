@@ -181,7 +181,13 @@ export const LIBELLE_PRIX_RECHERCHE = "Recherche du prix…";
 export const TITRE_SCANNER = "Scanner";
 export const LIBELLE_SCAN_ISBN_INVALIDE = "Ce code-barres n’est pas un ISBN de livre.";
 export const LIBELLE_SCAN_INCONNU = "Aucune notice ne correspond à cet ISBN.";
-export const LIBELLE_SCAN_HORS_COLLECTION = "Aucune édition de la collection ne correspond.";
+export const LIBELLE_SCAN_HORS_COLLECTION =
+  "Cette édition n’est pas dans votre collection. Cherchez-la pour l’ajouter ou la suivre.";
+export const LIBELLE_SCAN_OUVRIR_EDITION = "Ouvrir l’édition";
+export const LIBELLE_SCAN_VERS_RECHERCHE = "Chercher pour ajouter";
+export const LIBELLE_SCAN_CANDIDATS_TITRE = "Séries du catalogue au titre proche :";
+export const CANDIDATS_SCAN_MAX = 3;
+export const CHEMIN_RECHERCHE = "/ajouter";
 export const LIBELLE_SCAN_INDISPONIBLE =
   "Le scan par la caméra n’est disponible que sur Android. Saisissez l’ISBN à la main.";
 export const LIBELLE_SCAN_INVITE = "Placez le code-barres du dos du tome dans le cadre.";
