@@ -871,161 +871,107 @@ détail et les cas réels sont dans `JOURNAL.md`.
 
 ### Reste à faire
 
-- ~~**Le Planning ne filtre sur aucun statut**~~ — **corrigé le 9 septembre 2026** par la
-  migration, comme prévu. `chargerPlanning` filtre sur `suivie` et l'écran est passé de 14 à
-  **10 sorties** : `one-puch-man`, `les-legendaires-saga`, `why-nobody-remember-my-world` et
-  `blue-exorcist` ont disparu.
-- **Un chemin de la Phase 2 reste non vérifié fonctionnellement : `creerSerieAvecEdition`** —
-  créer le `SuiviEdition`, renseigner `creeeParId`, ne plus créer de possessions. Il n'a pas pu
-  tourner : le formulaire de confirmation n'est rendu que depuis un résultat distant, et
-  **AniList a coupé son API** (voir §5). À reprendre dès qu'AniList revient, ou quand
-  `/ajouter` sera branché sur `ParutionCatalogue` — ce qui rend ce branchement plus urgent
-  qu'avant. Le mode invité, lui, **a été vérifié en production le 9 septembre** : le bouton
-  « Entrer en invité » rend bien la collection du propriétaire en lecture seule, sans bouton
-  « Je l'ai » ni actions de masse.
-- **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit désormais
-  « Suivie / Non suivie », mais la Collection et la page Édition disent toujours « Terminée par
-  choix » pour la même édition. Le rendu n'a pas bougé volontairement — la formule de backfill
-  rend les mêmes lignes qu'avant — mais les deux mots désignent un seul drapeau, et l'un des deux
-  doit céder.
-- ~~**La wish list peut maintenant se construire**~~ — **faite le 9 septembre 2026**, voir §4 et
-  `JOURNAL.md`. Conséquence mécanique à connaître : **une série créée par `/ajouter` atterrit en
-  wish list** et non plus en Collection à `0 / N`, puisqu'elle naît à zéro tome possédé. Par
-  `/scanner` elle entre directement en Collection, le tome scanné étant marqué possédé.
-- **`SuiviEdition.aDejaPossede` reste à trancher, et son backfill n'est exact qu'aujourd'hui.**
-  « Une série reste en Collection tant qu'elle a des tomes possédés **ou en a eu** », et « en a
-  eu » n'est enregistré nulle part : les 559 lignes à `possede=false` ne distinguent pas « jamais
-  eu » de « revendu », et aucune possession ne porte `dateAchat`. Ça ne gêne pas tant que les
-  **4 seules éditions à zéro tome possédé sont exactement les 4 `VENDUE`** ; le jour où une
-  édition tombe à zéro sans être vendue, rien ne la sépare d'une entrée de wish list. Le backfill
-  `possédés ≥ 1 OR statut = VENDUE` est juste maintenant et se dégradera.
-- **Brancher un domaine personnalisé sur le bucket R2.** La base publique est aujourd'hui
-  l'URL `r2.dev`, que Cloudflare **limite en débit et ne met pas en cache** — vérifié dans leur
-  documentation le 3 septembre, c'est plus restrictif que ce que supposait le journal. Le basculement
-  est **gratuit et sans réenvoi** : les objets ne bougent pas, `covers:migrate` liste le bucket,
-  ne trouve rien à envoyer et se contente de réécrire les 1 688 URL. Le frein est §7 — un
-  domaine est une dépense **certaine et récurrente** (~10 $/an chez Cloudflare Registrar), pas
-  un palier hors d'atteinte, donc l'amendement du 1er septembre ne le couvre pas.
-- **Supprimer le store Vercel Blob**, gardé quelques jours par prudence (décidé le 3 septembre).
-  `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota.
-- **`CRON_SECRET` : posé dans Vercel, à ne pas re-poser — et invérifiable depuis ce poste.**
-  Ce point était écrit « à faire » jusqu'au 9 septembre 2026 alors qu'il avait été posé le
-  3 septembre ; le propriétaire l'a confirmé. Sans elle, `/api/cron` répondrait 401 à tout et la
-  promotion automatique des sorties échues ne tournerait jamais — échec fermé volontaire, ce
-  chemin étant hors de la garde d'accès.
+> **Relu et purgé le 9 septembre 2026**, après vingt-six commits dans la journée. Les entrées
+> barrées ont été retirées — `JOURNAL.md` fait foi sur ce qui est fait — et deux entrées qui
+> parlaient encore de `creerSerieAvecEdition`, fonction **supprimée depuis**, sont tombées avec
+> elle. L'ordre est celui de la valeur décroissante, pas celui de l'ancienneté.
 
-  **Deux pièges à connaître avant d'y toucher.** D'abord, **l'endpoint ne peut pas dire si le
-  secret est posé** : `autorise()` (`app/api/cron/route.ts:11`) rend `false` aussi bien quand le
-  secret est absent que quand l'en-tête est faux, donc la production répond `401` dans les deux
-  cas — sonder `/api/cron` ne prouve rien, seul le tableau de bord Vercel tranche. Ensuite, **la
-  valeur jumelle est dans le `.env` de l'autre poste**, pas dans celui-ci : le `CRON_SECRET`
-  local ne vaut probablement pas celui de Vercel, donc **un appel local réussi ne dit rien de la
-  production**, et un appel local en échec ne dit rien non plus. C'est la même dispersion sur
-  deux machines que les CSV de planning.
-- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` existe depuis le
-  3 septembre et ne fait qu'une chose : promouvoir les sorties dont le mois est clos. Restent
-  les nouveaux tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
-- ~~**Écran « Wish list »**~~ (demandé le 30 août) — **fait le 9 septembre 2026.** Cinquième
-  onglet, appartenance déduite, et ces séries **ne comptent ni dans les compteurs d'en-tête ni
-  dans la valeur**, comme les vendues. **Elle restera vide en pratique tant qu'`/ajouter` ne
-  fonctionne pas** : la seule autre porte est de décocher tous les tomes d'une édition suivie.
-- **Ajouter une seconde édition à une série existante** n'est pas couvert : `creerSerieAvecEdition`
-  (`lib/creation.ts:33`) crée toujours une `Serie` neuve, et les résultats locaux de `/ajouter`
-  sont de simples liens vers la fiche existante. Créer une Perfect Edition depuis le résultat
-  AniList produirait une série fantôme `berserk-2` : bloc « Autres éditions » vide des deux
-  côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
-  `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir `JOURNAL.md`,
-  « Établi — l'ISBN est la clé des éditions françaises » (30 août).
-- **Couvertures** : 1 676 sur 1 714, déposées dans Cloudflare R2. Restent 38 tomes parus —
-  `ippo-s4-la-loi-du-ring` 25, `les-legendaires-saga` 11 et
-  `blackrock-shooter-innocent-soul` 2 et 3 — et deux annonces, `radiant` 20 et
-  `les-legendaires-saga` 13. **Les deux tomes de Black Rock Shooter viennent de la promotion
-  d'une sortie annoncée** : `promouvoir()` crée le `Volume` en reprenant la couverture de la
-  `Sortie`, et celle-ci était nulle — un tome promu sans couverture reste donc sans couverture
-  jusqu'au prochain remplissage manuel. Le remplissage reste
-  **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
-  §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes ; la tâche
-  quotidienne existe depuis le 3 septembre mais ne fait encore que promouvoir les sorties
-  échues. Y porter les couvertures demande de réécrire en TypeScript le sélecteur MangaDex de
-  `fetch_covers.py`, celui qui pénalise les fiches satellites : sans lui, un appariement naïf
-  fait repartir Bleach avec 1 tome sur 74 (`JOURNAL.md`, « Fait — les couvertures », 29 août).
-- **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis
-  en cache — mais l'installation, elle, n'attend que le HTTPS, pas le service worker.
-- **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
-  côté garde ; restent le keystore et `assetlinks.json`.
-- ~~**Appliquer l'archive de planning**~~ — **fait le 3 septembre 2026**, voir `JOURNAL.md`.
-- ~~**Alimenter `ParutionCatalogue`**~~ — **fait, et complet depuis le 9 septembre 2026** :
-  **50 232 parutions, 11 315 séries, janvier 2000 → décembre 2026**, dont 48 222 avec EAN. Les
-  288 fichiers anciens n'étaient pas sur une autre machine mais dans `~/Documents/planning_manga`.
-  Voir `JOURNAL.md`. Restent les deux trous connus, `2000-09` et février → juillet 2024.
-- ~~**Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`**~~ — **fait le 9 septembre
-  2026**, voir §4 « Rechercher — l'écran d'ajout » et `JOURNAL.md`. L'ajout ne passe plus par
-  AniList : le catalogue donne l'identité, la BnF l'auteur et le prix, les tomes naissent avec
-  leur ISBN et leur date, les sorties futures deviennent des `Sortie`, et une seconde édition
-  se rattache à la série existante au lieu de créer un fantôme.
+#### Ce qui améliore le chemin automatique
 
-  **La saisie manuelle est écartée** (9 septembre 2026) et son code supprimé — voir §4. Ce qui
-  reste est donc du travail sur le chemin automatique, par valeur décroissante :
-
-  1. **Combler les deux trous de l'archive** — `2000-09` et février → juillet 2024. C'est le
-     meilleur rapport : sept CSV à retélécharger sur manga-news, et ça remplit directement des
-     EAN manquants. Les cinq écarts de `tomesParus` que l'audit signale encore viennent de là.
-  2. **Les abréviations** : « jjk » ne rend rien, le catalogue n'ayant pas d'alias.
-     `Serie.alias` est en base et renseigné sur 105 séries ; les alias appris de §13.3 sont la
-     suite, et c'est ce qui rapporte le plus sur la recherche au quotidien.
-  3. **Unifier la casse des marqueurs d'édition à la source** — `Edition Limitée` contre
-     `Edition limitée` — par `catalogue:apply -- --recalculer`, ce qui supprimerait le
-     regroupement en minuscules fait à la requête.
-  4. **Une liste noire de magazines**, dans l'esprit de `RECHERCHES_MANUELLES` : Animeland,
-     Les Inrocks, Made in Japan, Dream Team. Aucune règle automatique ne les distingue.
-  5. **Les couvertures d'une série ajoutée** : porter le sélecteur MangaDex en TypeScript, ou
-     laisser la tâche quotidienne les ramasser.
-- **Dériver les `Sortie` depuis `ParutionCatalogue`** au lieu de les écrire depuis le manifeste
-  de planning — le circuit visé par le plan de §13.1. Ça règle le défaut du 30 août, « le
-  planning est une photographie, pas un flux » : ajouter une série calculerait ses sorties
-  sur-le-champ. Demande le filtre `suivie`, donc M2 d'abord.
-- ~~**Deux trous dans l'archive**~~ — **comblés le 9 septembre 2026.** `2000-09` (31 lignes,
-  le chiffre annoncé, exact) et **février → juillet 2024** ont été téléchargés et importés.
-  L'archive couvre désormais **janvier 2000 → décembre 2026 sans un mois manquant**, soit
-  324 mois et 52 009 parutions. Effet mesuré : **100 % de nos 1 493 ISBN y résolvent**, et les
-  écarts de `tomesParus` de l'audit passent de 5 à 2.
-- **Où sont les CSV de planning** (corrigé le 9 septembre 2026). Ils ne sont pas dans le dépôt et
-  ne le seront pas. **Tout est sur cette machine** : `~/Documents/planning_manga` porte les 288
-  fichiers datés de janvier 2000 à janvier 2024, en `planning_YYYY-MM.csv`. Les trois dossiers
-  voisins `2000-2008`, `2008-2017` et `2017-2024` sont les **téléchargements bruts** du
-  2 septembre, nommés `PlanningManga_02-09-2026 (N).csv` — 291 fichiers dont `planning_manga` est
-  la version renommée ; ils ne servent qu'à refaire ce renommage. Le 8 septembre les croyait sur
-  un autre poste, ce qui a fait conclure à tort que le catalogue ne pouvait pas être complété
-  **La casse du nom de fichier varie** — `Planning_2026-11.csv` contre `planning_2024-08.csv` :
-  tout parcours du dossier doit être insensible à la casse, ce que `glob` ne garantit pas selon
-  la plateforme.
+- **Les abréviations ne trouvent rien.** « jjk » ne rend aucun résultat : le catalogue n'a pas
+  d'alias. `Serie.alias` est en base et renseigné sur 105 séries depuis la migration ; la
+  recherche locale s'en sert déjà, mais le catalogue non. Les **alias appris** de §13.3 — « JJK »
+  suivi de l'ouverture de Jujutsu Kaisen enregistre l'association — sont ce qui rapporte le plus
+  au quotidien.
 - **Compléter la liste `MARQUEURS_EDITION` du script d'import, puis `--recalculer`** —
   **reporté par décision du 9 septembre 2026, à garder en mémoire.** Le problème n'est pas
   seulement la casse (`Edition Limitée` / `Edition limitée`, `Edition spéciale` /
   `Edition Speciale`) mais l'**absence de marqueurs** : « grimoire » n'y est pas, donc
   « L'Atelier des sorciers - Édition grimoire » sort comme une **série à part** au lieu d'une
-  édition de L'Atelier des sorciers. Même famille de cause que les deux écarts de `tomesParus`
-  qui subsistent — six « Pokémon - La Grande Aventure » distincts au catalogue, dont un
-  « (Glénat) » à 6 tomes qui est exactement notre compte.
+  édition. Même racine que les deux écarts de `tomesParus` qui subsistent à l'audit — six
+  « Pokémon - La Grande Aventure » distincts au catalogue, dont un « (Glénat) » à 6 tomes qui
+  est exactement notre compte.
 
-  Le corriger demande d'ajouter les marqueurs au Python puis
-  `npm run catalogue:apply -- --recalculer`, qui **réécrit les champs dérivés des 52 009 lignes**
-  depuis `titreBrut`, sans retélécharger un CSV. C'est une écriture large sur des données de
-  production : à faire délibérément, pas en passant. Rien n'est cassé entre-temps — le
-  regroupement en minuscules fait à la requête absorbe déjà la casse.
+  `npm run catalogue:apply -- --recalculer` **réécrit les champs dérivés des 52 009 lignes**
+  depuis `titreBrut`, sans retélécharger un CSV. Écriture large sur des données de production :
+  à faire délibérément. Rien n'est cassé entre-temps, le regroupement en minuscules fait à la
+  requête absorbe déjà la casse.
+- **Une liste noire de magazines**, dans l'esprit de `RECHERCHES_MANUELLES` : Animeland (257
+  « tomes »), Les Inrocks, Made in Japan, Dream Team. Aucune règle automatique ne les distingue
+  — l'éditeur ne suffit pas, Glénat en publie, et le nombre de tomes non plus, Détective Conan
+  en a 107.
+- **`creerDepuisCandidat` reste non vérifiée sur un cas sans aucun EAN.** Tous les essais ont
+  porté sur des groupes dont le catalogue connaît les ISBN. Un groupe à `tomesParus = 1` déduit
+  d'une absence de numéro et sans EAN créerait un tome nu ; le code le prévoit, personne ne l'a
+  vu tourner.
+
+#### Ce qui manque à l'application
+
 - **`nom` et `tomesParus` n'ont plus d'endroit où se corriger** depuis la suppression du
-  formulaire de confirmation (9 septembre 2026). L'écran État ne propose que statut, parution
-  et suivi. Le catalogue est juste dans 99 % des cas mesurés et `editions:audit` rattrape le
-  reste, mais le jour où un compte est faux, il est faux pour de bon. **Ces deux champs iront à
-  l'écran État** — pas à la création, ce serait revenir à la saisie manuelle écartée.
-
+  formulaire de confirmation (9 septembre 2026). L'écran État ne propose que statut, parution et
+  suivi. Le catalogue est juste dans 99 % des cas mesurés et `editions:audit` rattrape le reste,
+  mais le jour où un compte est faux, il l'est pour de bon. **Ces deux champs iront à l'écran
+  État** — pas à la création, ce serait revenir à la saisie manuelle écartée.
+- **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
+  suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
+  drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
+- **Les couvertures** : **1 676 / 1 716**. Restent 40 tomes — `ippo-s4-la-loi-du-ring` 25,
+  `les-legendaires-saga` 11, `blackrock-shooter-innocent-soul` 2, plus les deux tomes créés le
+  9 septembre pour Iruma-kun et Tanya — et **4 sorties annoncées sur 16**. Le remplissage reste
+  manuel et local : `db:backup`, puis `covers:fetch`, puis `covers:upload`. Y porter la tâche
+  quotidienne demande de réécrire en TypeScript le sélecteur MangaDex de `fetch_covers.py`,
+  celui qui pénalise les fiches satellites — sans lui, un appariement naïf fait repartir Bleach
+  avec 1 tome sur 74.
+- **Une série ajoutée n'a aucune couverture.** Conséquence directe du choix du 9 septembre : rien
+  n'est posé à la création. C'est le même chantier que la ligne précédente.
+- **`Edition.slugMangaNews` est nul sur les 113 éditions**, donc le lien sortant de la page
+  Édition ne s'affiche jamais. Le planning ne porte pas les slugs ; il faudrait les déduire des
+  titres ou les saisir.
+- **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis en
+  cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
+- **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
+  côté garde ; restent le keystore et `assetlinks.json`.
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
-  `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
-  `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.
-- **Automatiser la sauvegarde.** `npm run db:backup` existe et est prouvé, mais il se lance à
-  la main. Un cron Vercel quotidien ne peut pas écrire dans le dépôt ; le plus simple reste de
-  le lancer depuis le poste avant chaque manipulation de masse et de commiter le résultat.
+  `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et la création
+  les laisse vides : sans écran, le nettoyage ne rapporte rien.
 
+#### Ce qui tourne en arrière-plan, ou pas
+
+- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` ne fait qu'une chose
+  depuis le 3 septembre : promouvoir les sorties dont le mois est clos. Restent les nouveaux
+  tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
+- **Dériver les `Sortie` depuis `ParutionCatalogue`** plutôt que du manifeste de planning. C'est
+  déjà le cas **à la création** d'une série depuis le 9 septembre ; il reste à le faire pour les
+  éditions existantes, et à faire glisser la fenêtre M-1 → M+6 de §13.1.
+- **Automatiser la sauvegarde.** `npm run db:backup` est prouvé mais se lance à la main. Un cron
+  Vercel ne peut pas écrire dans le dépôt ; le plus simple reste de le lancer avant chaque
+  manipulation de masse et de commiter le résultat.
+- **`SuiviEdition.aDejaPossede` reste à trancher, et son backfill n'est exact qu'aujourd'hui.**
+  « Une série reste en Collection tant qu'elle a des tomes possédés **ou en a eu** », et « en a
+  eu » n'est enregistré nulle part. Les 4 seules éditions à zéro tome possédé sont encore
+  exactement les 4 `VENDUE` ; le jour où une édition tombe à zéro sans être vendue, rien ne la
+  sépare d'une entrée de wish list. Le backfill `possédés ≥ 1 OR statut = VENDUE` est juste
+  maintenant et se dégradera.
+
+#### Échéances et environnement
+
+- **Supprimer le store Vercel Blob**, décidé le 3 septembre, mûr depuis le **~10 septembre 2026**.
+  `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota
+  d'opérations avancées.
+- **Brancher un domaine personnalisé sur le bucket R2.** L'URL `r2.dev` est **limitée en débit et
+  non mise en cache** par Cloudflare. Le basculement est gratuit et sans réenvoi —
+  `covers:migrate` ne réécrit que les URL. Le frein est §7 : un domaine est une dépense
+  **certaine et récurrente** (~10 $/an), pas un palier hors d'atteinte, donc l'amendement du
+  1er septembre ne le couvre pas.
+- **`CRON_SECRET` est posé dans Vercel** (3 septembre, confirmé le 9), **à ne pas re-poser**.
+  Deux pièges : `autorise()` rend `false` aussi bien quand le secret est absent que quand
+  l'en-tête est faux, donc `/api/cron` répond `401` dans les deux cas et **le sonder ne prouve
+  rien** ; et la valeur jumelle est dans le `.env` **de l'autre poste**, donc un appel local ne
+  dit rien de la production.
+- **La mise au point de la caméra du scanner est vérifiée depuis le 9 septembre** : le
+  propriétaire a scanné un tome sur téléphone. Si la netteté redevient un problème de près, la
+  piste suivante n'est pas la mise au point mais **la lumière** — `torch` est largement supportée
+  sur Android et n'est pas implémentée.
 ### Reprendre sur un poste neuf
 
 1. `git clone`, puis `npm install` — le client Prisma se régénère tout seul.
