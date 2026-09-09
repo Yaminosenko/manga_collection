@@ -2716,3 +2716,74 @@ titre, donc ils échouent précisément sur les variantes — et les variantes s
 qu'un audit par ISBN ne peut pas juger.** L'angle mort de l'outil coïncide avec la zone de
 risque. GANTZ reste donc à corriger à la main, et rien ne dit combien de ses 22 voisines
 partagent son défaut.
+
+### Fait — la resolution du catalogue et l'ecriture depuis un candidat (9 septembre 2026)
+
+Deux tranches du chantier `/ajouter`, sans toucher aux ecrans. Le SQL et l'ecriture d'abord,
+eprouves sur le banc ; l'interface viendra dessus.
+
+| Fichier | Rôle |
+|---|---|
+| `prisma/migrations/…_recherche_catalogue/` | `CREATE EXTENSION pg_trgm` et l'index GIN trigramme sur `serieNormalise` |
+| `lib/normalisation.ts` | la normalisation du script Python, reproduite en TypeScript |
+| `lib/catalogue.ts` | `rechercherCandidats`, `candidatParEan`, `candidatParGroupe`, `tomesDuGroupe` |
+| `lib/enrichissement.ts` | auteur, éditeur et prix par la BnF, sur les derniers EAN du groupe |
+| `lib/bnf.ts` | `NoticeBnf` gagne `auteurs` — `700`/`701` filtrés sur le code de fonction `070` |
+| `lib/creation.ts` | `creerDepuisCandidat`, et son noyau `creerDepuisCandidatPour` |
+
+**La normalisation est verifiee, pas supposee** : identique à celle du Python sur **400 lignes
+sur 400** du catalogue. Sans ça les requêtes ne seraient jamais tombées sur `serieNormalise`.
+
+**Le noyau d'écriture est séparé du contexte de requête.** `creerDepuisCandidat` lit
+l'utilisateur par les cookies ; `creerDepuisCandidatPour` prend son id en argument. Ce n'est pas
+de l'abstraction gratuite : sans ça l'écriture n'était éprouvable que par l'interface, donc pas
+avant qu'elle existe.
+
+#### Ce que l'essai sur le banc a montré
+
+**`gantz` rend ses deux vraies éditions** — simple à 37 tomes chez Tonkam, Perfect Edition à 18
+chez Delcourt / Tonkam — ce qui est exactement ce qui manquait pour choisir. Créer la Perfect
+Edition **l'attache à la série `gantz` existante** au lieu de fabriquer `gantz-2` : le défaut
+ouvert de `creerSerieAvecEdition` est levé. Ses 18 tomes arrivent **tous avec ISBN et date**,
+l'auteur vient de la BnF, et aucune possession n'est créée — la série atterrit donc en wish
+list, conformément à §4.
+
+`berserk`, `chainsaw-man` et l'EAN d'Ajin sont marqués « en collection » par appariement EAN, pas
+par titre. De 94 à 304 ms par recherche.
+
+#### Trois défauts trouvés en éprouvant, tous corrigés
+
+- **La casse des marqueurs dédoublait les candidats.** « Chainsaw Man · Edition Limitée » à
+  21 tomes et « Edition limitée » à 22 sortaient comme deux éditions distinctes. Le groupement
+  se fait désormais sur le marqueur en minuscules, la forme affichée étant la plus récente, et
+  les deux fusionnent à 22. C'est le défaut de casse que §12 avait relevé à l'import, vu ici
+  par son effet.
+- **Les one-shots perdaient leur EAN.** Un groupe sans aucun `Vol.N` reçoit `tomesParus = 1`,
+  mais `tomesDuGroupe` ne rendait que les lignes numérotées : le tome créé n'avait ni ISBN ni
+  date, alors que la ligne du catalogue en portait un. **Ça touchait 5 361 groupes, soit 42 %
+  du catalogue.** Corrigé : sans ligne numérotée, la plus récente des lignes sans numéro
+  devient le tome 1. Hideout passe de `0 avec ISBN` à `1 avec ISBN`, et la BnF rend alors
+  auteur, éditeur et **prix 750**.
+- **Le prix abandonnait au premier échec.** Un seul EAN était interrogé ; désormais jusqu'à
+  `EAN_ESSAYES_POUR_ENRICHIR` (3), en partant du dernier tome paru, et on s'arrête dès que les
+  trois champs sont remplis.
+
+**Limite qui reste** : la Perfect Edition de Gantz n'a **pas de prix** même après trois ISBN —
+ces notices ne portent pas de `010$d`. Le champ reste vide dans le formulaire, à saisir.
+
+#### Une erreur de ma part, sur le banc, et ce qu'elle prouve
+
+Mon script d'essai listait `hideout` parmi les éditions à annuler, alors que `hideout` **existait
+déjà** en base et que l'essai n'avait créé que `hideout-2`. La série a donc été supprimée avec
+elle : le banc est passé de 109 séries à 108. **Restauré par `db:backup -- --restore --reset`,
+compteurs concordants**, et le second essai est reparti de 109 / 113 / 1 716 / 16 pour y revenir
+exactement après annulation.
+
+C'est précisément à ça que sert le banc, et c'est un argument de plus pour ne jamais éprouver
+une écriture sur Neon : la même erreur en production aurait supprimé une série réelle et ses
+possessions, récupérables seulement par une restauration complète.
+
+**Le banc est désormais équipé** : les migrations y sont, `pg_trgm` y fonctionne — le Postgres
+wasm de `prisma dev` la fournit —, et le catalogue y est chargé des 41 936 lignes anciennes.
+Il n'est pas dans la sauvegarde, donc `catalogue:apply` est à rejouer après chaque
+restauration.

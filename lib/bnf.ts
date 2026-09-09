@@ -115,11 +115,53 @@ export async function chercherPrixDefautCentimes(
 export type NoticeBnf = {
   isbn: string;
   titre: string;
+  auteurs: string[];
   editeur: string | null;
   annee: string | null;
   format: string | null;
   prixCentimes: number | null;
 };
+
+const CODE_FONCTION_AUTEUR = "070";
+const TAGS_AUTEUR = ["700", "701"];
+
+function champsRepetes(bloc: string, tag: string): string[] {
+  const ouverture = `<mxc:datafield tag="${tag}"`;
+  const fermeture = "</mxc:datafield>";
+  const trouves: string[] = [];
+  let position = 0;
+  for (;;) {
+    const debut = bloc.indexOf(ouverture, position);
+    if (debut === -1) break;
+    const fin = bloc.indexOf(fermeture, debut);
+    if (fin === -1) break;
+    trouves.push(bloc.slice(debut, fin));
+    position = fin + fermeture.length;
+  }
+  return trouves;
+}
+
+function valeurSousChamp(champ: string, code: string): string | null {
+  const ouverture = `<mxc:subfield code="${code}">`;
+  const debut = champ.indexOf(ouverture);
+  if (debut === -1) return null;
+  const fin = champ.indexOf("</mxc:subfield>", debut);
+  return fin === -1 ? null : champ.slice(debut + ouverture.length, fin).trim() || null;
+}
+
+function auteursDeLaNotice(bloc: string): string[] {
+  const noms: string[] = [];
+  for (const tag of TAGS_AUTEUR) {
+    for (const champ of champsRepetes(bloc, tag)) {
+      if (valeurSousChamp(champ, "4") !== CODE_FONCTION_AUTEUR) continue;
+      const nom = valeurSousChamp(champ, "a");
+      if (!nom) continue;
+      const prenom = valeurSousChamp(champ, "b");
+      noms.push(prenom ? `${prenom} ${nom}` : nom);
+    }
+  }
+  return [...new Set(noms)];
+}
 
 function nettoyerEditeur(brut: string | null): string | null {
   if (!brut) return null;
@@ -159,6 +201,7 @@ export async function chercherParIsbn(isbn: string): Promise<NoticeBnf | null> {
   return {
     isbn,
     titre: complement ? `${titre} ${complement}` : titre,
+    auteurs: auteursDeLaNotice(bloc),
     editeur: nettoyerEditeur(sousChamp(bloc, "214", "c") ?? sousChamp(bloc, "210", "c")),
     annee: (sousChamp(bloc, "214", "d") ?? sousChamp(bloc, "210", "d") ?? "").match(/\d{4}/)?.[0] ?? null,
     format: sousChamp(bloc, "215", "a"),

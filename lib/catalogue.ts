@@ -140,7 +140,35 @@ export async function tomesDuGroupe(
       annonces.push(entree);
     }
   }
+
+  if (lignes.length === 0) {
+    const unique = await ligneSansNumero(serieNormalise, marqueurNormalise);
+    if (unique !== null) {
+      const entree = { numero: 1, ean: unique.ean, date: unique.date.toISOString() };
+      if (unique.date <= instant) {
+        tomes.push(entree);
+      } else {
+        annonces.push(entree);
+      }
+    }
+  }
+
   return { tomes, annonces };
+}
+
+async function ligneSansNumero(
+  serieNormalise: string,
+  marqueurNormalise: string | null,
+): Promise<{ ean: string | null; date: Date } | null> {
+  const lignes = await prisma.$queryRaw<{ ean: string | null; date: Date }[]>`
+    SELECT "ean", "date"
+    FROM "ParutionCatalogue"
+    WHERE "serieNormalise" = ${serieNormalise}
+      AND ${MARQUEUR_NORMALISE} IS NOT DISTINCT FROM ${marqueurNormalise}
+      AND "numero" IS NULL
+    ORDER BY "date" DESC
+    LIMIT 1`;
+  return lignes[0] ?? null;
 }
 
 async function marquerCeuxEnCollection(
