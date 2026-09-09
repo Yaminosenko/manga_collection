@@ -68,6 +68,10 @@ export const LIBELLE_WISHLIST_ERREUR = "La wish list n’a pas pu être chargée
 export const LIBELLE_WISHLIST_COMPTEUR_SINGULIER = "série";
 export const LIBELLE_WISHLIST_COMPTEUR_PLURIEL = "séries";
 export const NOM_EDITION_PAR_DEFAUT = "Édition simple";
+
+export const CANDIDATS_RECHERCHE_MAX = 25;
+export const SIMILARITE_CATALOGUE_MIN = 0.35;
+export const MOIS_SANS_SORTIE_POUR_TERMINEE = 24;
 export const TOMES_PARUS_MAX = 500;
 export const STATUTS_EDITION = ["EN_COURS", "ABANDONNEE", "EN_PAUSE", "VENDUE"] as const;
 export const LIBELLE_STATUT_INVALIDE = "Le statut choisi n’existe pas.";

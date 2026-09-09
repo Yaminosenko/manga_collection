@@ -192,6 +192,28 @@ export type ResultatRecherche = {
   indisponible: boolean;
 };
 
+export type CandidatEdition = {
+  serieNormalise: string;
+  marqueurNormalise: string | null;
+  marqueurEdition: string | null;
+  titre: string;
+  nom: string;
+  editeur: string | null;
+  tomesParus: number;
+  lignes: number;
+  derniereParution: string | null;
+  editionTerminee: boolean;
+  slugEnCollection: string | null;
+};
+
+export type TomeCandidat = {
+  numero: number;
+  ean: string | null;
+  date: string;
+};
+
+export type AnnonceCandidat = TomeCandidat;
+
 export type EtatCreation = { erreur: string | null };
 
 export type EtatAcces = { erreur: string | null };

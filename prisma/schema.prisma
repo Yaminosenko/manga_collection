@@ -166,4 +166,5 @@ model ParutionCatalogue {
   @@unique([titreBrut, date])
   @@index([ean])
   @@index([serieNormalise])
+  @@index([serieNormalise(ops: raw("gin_trgm_ops"))], type: Gin, map: "ParutionCatalogue_serieNormalise_trgm_idx")
 }
