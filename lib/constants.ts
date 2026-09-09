@@ -60,21 +60,17 @@ export const DELAI_RECHERCHE_MS = 350;
 export const LONGUEUR_RECHERCHE_MIN = 2;
 
 export const TITRE_RECHERCHER = "Rechercher";
-export const ACTION_AJOUTER = "ajouter";
-export const ACTION_SUIVRE = "suivre";
-export const LIBELLE_ACTION_AJOUTER = "Ajouter";
-export const LIBELLE_ACTION_SUIVRE = "Suivre";
-export const LIBELLE_CANDIDAT_INCOMPLET = "Titre, auteur et nom d’édition sont obligatoires.";
-export const LIBELLE_PRIX_INVALIDE = "Le prix par défaut n’est pas un nombre valide.";
 export const LIBELLE_AU_CATALOGUE = "Au catalogue";
-export const LIBELLE_CANDIDAT_PREPARE = "Relevé du catalogue et de la BnF, à corriger si besoin.";
-export const LIBELLE_CANDIDAT_EN_PREPARATION = "Relevé en cours…";
+export const LIBELLE_AJOUT_EN_COURS = "Ajout de la série…";
+export const LIBELLE_AUTEUR_INCONNU = "Auteur inconnu";
+export const LIBELLE_CANDIDAT_INTROUVABLE =
+  "Cette édition n’est plus au catalogue. Relancez la recherche.";
+export const STATUT_A_LA_CREATION = "EN_COURS" as const;
+export const MENTION_AJOUT_DIRECT =
+  "Un tap ajoute la série et ouvre sa page : les tomes s’y cochent, et le suivi se règle depuis « Modifier l’état ».";
 export const LIBELLE_TOMES_DU_CATALOGUE = "tomes parus selon le catalogue";
 export const LIBELLE_TOME_DU_CATALOGUE = "tome paru selon le catalogue";
-export const LIBELLE_ONE_SHOT_DEDUIT =
-  "Aucun numéro de tome au catalogue : un tome unique est supposé. Corrigez si la série en compte plus.";
-export const MENTION_ACTIONS_CANDIDAT =
-  "« Ajouter » ouvre la grille des tomes pour cocher ce que vous avez. « Suivre » la met en wish list sans rien cocher.";
+
 
 export const TITRE_WISHLIST = "Wish list";
 export const LIBELLE_WISHLIST_VIDE =
@@ -88,7 +84,7 @@ export const CANDIDATS_RECHERCHE_MAX = 25;
 export const SIMILARITE_CATALOGUE_MIN = 0.35;
 export const MOIS_SANS_SORTIE_POUR_TERMINEE = 24;
 export const MOIS_FENETRE_SORTIE = 6;
-export const EAN_ESSAYES_POUR_ENRICHIR = 3;
+export const EAN_ESSAYES_POUR_ENRICHIR = 2;
 export const TOMES_PARUS_MAX = 500;
 export const STATUTS_EDITION = ["EN_COURS", "ABANDONNEE", "EN_PAUSE", "VENDUE"] as const;
 export const LIBELLE_STATUT_INVALIDE = "Le statut choisi n’existe pas.";
@@ -184,16 +180,14 @@ export const LIBELLE_SCAN_INCONNU = "Aucune notice ne correspond à cet ISBN.";
 export const LIBELLE_SCAN_HORS_COLLECTION =
   "Cette édition n’est pas dans votre collection. Cherchez-la pour l’ajouter ou la suivre.";
 export const LIBELLE_SCAN_OUVRIR_EDITION = "Ouvrir l’édition";
-export const LIBELLE_SCAN_VERS_RECHERCHE = "Chercher pour ajouter";
+export const MENTION_NOTICE_SANS_CATALOGUE =
+  "Cet ISBN n’est pas au catalogue : cherchez la série par son titre pour l’ajouter.";
 export const LIBELLE_SCAN_CANDIDATS_TITRE = "Séries du catalogue au titre proche :";
 export const CANDIDATS_SCAN_MAX = 3;
 export const CHEMIN_RECHERCHE = "/ajouter";
-export const PARAM_SERIE = "serie";
-export const PARAM_MARQUEUR = "marqueur";
-export const PARAM_ISBN = "isbn";
+
 export const LIBELLE_SCAN_AJOUTER_ET_COCHER = "Ajouter et cocher ce tome";
-export const MENTION_TOME_SCANNE =
-  "Le tome scanné sera coché : la série entre directement dans la collection, pas en wish list.";
+
 export const LIBELLE_SCAN_INDISPONIBLE =
   "Le scan par la caméra n’est disponible que sur Android. Saisissez l’ISBN à la main.";
 export const LIBELLE_SCAN_INVITE = "Placez le code-barres du dos du tome dans le cadre.";

@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { Check, MagnifyingGlass, WarningCircle } from "@/components/icons";
-import { basculerTome, resoudreIsbn } from "@/lib/actions";
+import { ajouterCandidatDirect, basculerTome, resoudreIsbn } from "@/lib/actions";
 import {
   CANDIDATS_SCAN_MAX,
-  CHEMIN_RECHERCHE,
   CLE_STOCKAGE_CAMERA,
   LIBELLE_CAMERA,
   LIBELLE_ISBN,
   LIBELLE_REFAIRE_MISE_AU_POINT,
+  LIBELLE_AJOUT_EN_COURS,
   LIBELLE_SCAN_AJOUTER_ET_COCHER,
   LIBELLE_SCAN_CANDIDATS_TITRE,
   LIBELLE_SCAN_HORS_COLLECTION,
@@ -19,11 +19,8 @@ import {
   LIBELLE_SCAN_INVITE,
   LIBELLE_SCAN_ISBN_INVALIDE,
   LIBELLE_SCAN_OUVRIR_EDITION,
-  LIBELLE_SCAN_VERS_RECHERCHE,
+  MENTION_NOTICE_SANS_CATALOGUE,
   MENTION_CHOIX_CAMERA,
-  PARAM_ISBN,
-  PARAM_MARQUEUR,
-  PARAM_SERIE,
   ZOOM_RAPPROCHE,
 } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
@@ -134,20 +131,6 @@ function nomDeCamera(appareil: MediaDeviceInfo, rang: number): string {
     return `${LIBELLE_CAMERA} ${rang + 1}`;
   }
   return brut.replace(/\s*\([0-9a-f]{4}:[0-9a-f]{4}\)\s*$/i, "");
-}
-
-function lienVersRecherche(
-  candidat: { serieNormalise: string; marqueurNormalise: string | null },
-  isbn: string,
-): string {
-  const parametres = new URLSearchParams({
-    [PARAM_SERIE]: candidat.serieNormalise,
-    [PARAM_ISBN]: isbn,
-  });
-  if (candidat.marqueurNormalise !== null) {
-    parametres.set(PARAM_MARQUEUR, candidat.marqueurNormalise);
-  }
-  return `${CHEMIN_RECHERCHE}?${parametres}`;
 }
 
 type Detecteur = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: string }[]> };
@@ -443,9 +426,22 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
             <span className="text-[11.5px]/[1.5] text-neutral-600">
               {LIBELLE_SCAN_HORS_COLLECTION}
             </span>
-            <Link href={lienVersRecherche(candidat, resultat.isbn)} className={`${BOUTON} mt-[4px]`}>
-              {LIBELLE_SCAN_AJOUTER_ET_COCHER}
-            </Link>
+            <button
+              type="button"
+              disabled={enCours}
+              onClick={() =>
+                demarrer(async () => {
+                  await ajouterCandidatDirect(
+                    candidat.serieNormalise,
+                    candidat.marqueurNormalise,
+                    resultat.isbn,
+                  );
+                })
+              }
+              className={`${BOUTON} mt-[4px] disabled:opacity-50`}
+            >
+              {enCours ? LIBELLE_AJOUT_EN_COURS : LIBELLE_SCAN_AJOUTER_ET_COCHER}
+            </button>
           </>
         )}
       </article>
@@ -475,9 +471,9 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
                 {candidat.titre} · {candidat.nom} · {candidat.tomesParus} tomes
               </span>
             ))}
-            <Link href={CHEMIN_RECHERCHE} className={`${BOUTON} mt-[4px]`}>
-              {LIBELLE_SCAN_VERS_RECHERCHE}
-            </Link>
+            <span className="text-[11.5px]/[1.5] text-neutral-600">
+              {MENTION_NOTICE_SANS_CATALOGUE}
+            </span>
           </>
         ) : (
           <span className="text-[12px] text-neutral-500">{LIBELLE_SCAN_HORS_COLLECTION}</span>

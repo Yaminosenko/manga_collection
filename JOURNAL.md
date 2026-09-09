@@ -3015,3 +3015,67 @@ juste et plus simple.
 **Build de production vérifié** avant de pousser, puisque c'est lui qui aurait bloqué un test
 sur téléphone : `next build` passe, les quatorze routes sont dynamiques, et `useSearchParams`
 ne réclame pas de frontière `Suspense` — la page portant `force-dynamic`.
+
+### Corrigé — l'ajout en un tap, et l'auteur des notices récentes (9 septembre 2026)
+
+Deux défauts remontés du **premier essai sur téléphone**, sur « L'Atelier des sorciers · Édition
+grimoire ». La caméra, elle, fonctionne : le tome 23 de Tanya a été scanné et coché — vérifié en
+base, `possede=true`. Les trois pistes de mise au point sortent donc du non-vérifié.
+
+#### L'auteur manquait sur l'édition récente
+
+Mesuré sur les cinq EAN de l'Édition grimoire, et la cause est nette :
+
+```
+t5 9791043301438 -> notice presente, auteurs=[]        prix=1995
+t4 9791043301421 -> notice presente, auteurs=[]        prix=1995
+t3 9791043303005 -> AUCUNE NOTICE
+t2 9791043300677 -> auteurs=["Kamome Shirahama"]       prix=1995
+t1 9782811698874 -> auteurs=["Kamome Shirahama"]       prix=1995
+```
+
+**Le dépôt légal catalogue en plusieurs temps** : la notice existe avant que le lien d'auteur
+y soit posé. `enrichirDepuisTomes` n'interrogeait que les **trois plus récents**, donc
+précisément les notices incomplètes.
+
+Corrigé par une distinction qui tient à la nature des champs : **le prix change d'un tome à
+l'autre, l'auteur non.** On interroge donc les deux plus récents *et* les deux plus anciens, en
+commençant par les récents ; le prix vient du premier qui en porte un, l'auteur de n'importe
+lequel. Résultat mesuré : Grimoire rend « Kamome Shirahama » et **19,95 €**, l'édition simple de
+la même série rend le même auteur et **7,70 €** — les deux prix sont justes, ce que l'ancienne
+recherche par titre n'aurait pas su faire.
+
+#### « Grimoire » n'est pas reconnu comme un marqueur d'édition
+
+Trouvé en cherchant le premier défaut. `latelierdessorcierseditiongrimoire` est une **série à
+part entière** au catalogue, et non une édition de `latelierdessorciers`, parce que
+« grimoire » n'est pas dans la liste `MARQUEURS_EDITION` du script d'import. La liste connaît
+coffret, collector, perfect, prestige, deluxe, artbook… mais pas celui-là.
+
+**Ce n'est donc pas seulement un problème de casse**, comme le 9 septembre le supposait : la
+liste est aussi incomplète. Le corriger demande d'ajouter le marqueur au Python puis
+`catalogue:apply -- --recalculer`, qui réécrit les champs dérivés des 50 232 lignes sans
+retélécharger un CSV. **Pas fait** : c'est une réécriture large de données de production, à
+décider séparément.
+
+#### Le formulaire de confirmation est supprimé
+
+Le propriétaire l'a écarté après essai : *« c'est bien pour une appli manuelle, mais là on vise
+de l'automatisme »*. **Un tap sur un résultat crée l'édition et ouvre sa page.**
+
+La page d'édition était déjà la bonne destination : bouton `X / Y TOMES` vers la grille de
+cochage, et « Modifier l'état » pour le statut, la parution et le suivi. Les deux gestes que le
+formulaire prétendait anticiper y étaient déjà, au bon endroit.
+
+Disparaissent avec lui : les deux boutons « Ajouter » / « Suivre », le passage du candidat par
+l'URL, la lecture de `FormData`, et six libellés. `ajouterCandidatDirect` remplace
+`ajouterCandidat` et prend trois arguments au lieu d'un formulaire.
+
+**Vérifié sur le banc** : un tap sur « L'Atelier des sorciers · Édition simple » mène à
+`/edition/l-atelier-des-sorciers`, qui affiche `0 / 12`, l'auteur **Kamome Shirahama**, le prix
+**7,70 €** et le bouton de cochage. En base : 12 tomes créés, **12 avec ISBN**, aucune
+possession, un `SuiviEdition` à `EN_COURS`, `creeeParId` renseigné. 110 séries, 114 éditions.
+
+**Ce qu'on perd, et c'est assumé** : `nom` et `tomesParus` n'ont plus d'endroit où se corriger.
+Le formulaire était le seul. Si le besoin se présente, ces deux champs iront à l'écran État — pas
+à la création.

@@ -295,19 +295,29 @@ de tomes sur la ligne de résultat, impossible de savoir laquelle on ajoute. C'e
 rend enfin soluble l'ajout d'une **seconde édition à une série existante** : le marqueur
 distingue ce que `creerSerieAvecEdition` confondait.
 
-#### Deux actions, un seul état
+#### Un tap ajoute, et ouvre la page de la série
 
-**« Ajouter » et « Suivre » écrivent exactement les mêmes lignes** — `Serie`, `Edition`,
-`SuiviEdition`, les `Volume`, et **aucune `Possession`**. La série atterrit donc en wish list
-dans les deux cas et n'entre en Collection qu'au premier tome coché : c'est l'appartenance
-déduite de §3, qui ne stocke rien et ne peut pas se désynchroniser.
+**Révisé le 9 septembre 2026, après essai sur téléphone.** La version précédente ouvrait un
+formulaire de confirmation avec deux boutons « Ajouter » et « Suivre ». Le propriétaire l'a
+écartée : *« c'est bien pour une appli manuelle, mais là on vise de l'automatisme »*.
 
-La seule différence est ce qui suit : **« Ajouter » emmène dans « Mes tomes »** pour cocher,
-**« Suivre » reste sur la recherche**. Se tromper de bouton n'a donc aucune conséquence.
+**Un tap sur un résultat de catalogue crée l'édition et ouvre sa page.** Rien à remplir, rien à
+confirmer. La page d'édition est déjà celle qu'il faut : elle porte le bouton `X / Y TOMES` qui
+mène à la grille de cochage, et « Modifier l'état » qui règle le statut, la parution et le
+**suivi**. Les deux gestes que l'ancien formulaire prétendait anticiper y sont, au bon endroit.
 
-**Le cochage reste manuel**, un tome à la fois ou d'un coup avec `Tout` : pas de champ
-« j'ai les tomes 1 à N » à la création.
+Ce que ça écrit reste ce que §4 décrivait : `Serie`, `Edition`, `SuiviEdition`, les `Volume`
+avec leur ISBN et leur date, les `Sortie` à venir, et **aucune `Possession`** — donc la série
+atterrit en wish list jusqu'au premier tome coché. Par `/scanner`, le tome scanné est coché et
+elle entre directement en Collection.
 
+**Taper une édition déjà présente n'en crée pas une seconde** : l'action reconnaît
+`slugEnCollection` et redirige vers la fiche existante.
+
+**Conséquence à connaître** : `nom` et `tomesParus` n'ont plus d'endroit où se corriger dans
+l'application. Le formulaire était le seul, et l'écran État ne propose que statut, parution et
+suivi. Le catalogue est juste dans 99 % des cas mesurés et l'audit rattrape le reste, mais si
+le besoin se présente, c'est à l'écran État que ces deux champs iront — **pas** à la création.
 #### Ce que le candidat porte, et d'où ça vient
 
 | Champ | Règle | Ce qui la justifie |
@@ -318,8 +328,8 @@ La seule différence est ce qui suit : **« Ajouter » emmène dans « Mes tomes
 | `tomesParus` | `max(numero)` **sur les lignes de date passée** | 722 groupes seraient gonflés sans ce filtre, 944 lignes étant datées du futur |
 | `tomesParus` sans aucun numéro | **1** | 5 361 groupes n'ont aucun `Vol.N` — one-shots, coffrets, artbooks |
 | `volumes` | `numero` → EAN + date ; **les trous restent vides** | Détective Conan : `max = 107` pour 87 numéros distincts |
-| `auteur` | BnF `700`/`701` filtrés sur le code de fonction `070` | les `702` sont traducteurs et illustrateurs ; Ajin rend bien ses deux auteurs |
-| `prixDefaut` | BnF `010$d` sur l'EAN du dernier tome paru | mesuré : Beastars 690, Ajin 760, Smoking 795 |
+| `auteur` | BnF `700`/`701` code `070`, interrogée sur **les tomes les plus anciens autant que les plus récents** | une notice récente est souvent incomplète : sur l'Édition grimoire de L'Atelier des sorciers, les tomes 4 et 5 rendent `auteurs=[]` et les tomes 1 et 2 rendent « Kamome Shirahama » |
+| `prixDefaut` | BnF `010$d`, **le tome le plus récent d'abord** — le prix monte avec le temps, l'auteur ne change pas | mesuré : 19,95 € pour l'Édition grimoire contre 7,70 € pour l'édition simple, sur la même série |
 | `editionTerminee` | **pré-cochée** si aucune sortie depuis `MOIS_SANS_SORTIE_POUR_TERMINEE` (24) | sinon une série finie en 2010 afficherait le hachuré « à paraître » et trois cases fantômes |
 | `genres` · `themes` | **vides** | AniList est coupée, et le catalogue n'en porte pas |
 | couvertures | **aucune à la création** | la BnF plafonne à 150 px ; la tâche quotidienne les ramassera |

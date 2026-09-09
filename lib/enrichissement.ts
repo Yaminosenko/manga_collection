@@ -16,12 +16,19 @@ const VIDE: Enrichissement = {
   isbnInterroges: [],
 };
 
-export async function enrichirDepuisTomes(tomes: TomeCandidat[]): Promise<Enrichissement> {
-  const candidats = [...tomes]
-    .reverse()
+function eansAInterroger(tomes: TomeCandidat[]): string[] {
+  const avecEan = tomes
     .map((tome) => tome.ean)
-    .filter((ean): ean is string => ean !== null)
-    .slice(0, EAN_ESSAYES_POUR_ENRICHIR);
+    .filter((ean): ean is string => ean !== null);
+
+  const recents = [...avecEan].reverse().slice(0, EAN_ESSAYES_POUR_ENRICHIR);
+  const anciens = avecEan.slice(0, EAN_ESSAYES_POUR_ENRICHIR);
+
+  return [...new Set([...recents, ...anciens])];
+}
+
+export async function enrichirDepuisTomes(tomes: TomeCandidat[]): Promise<Enrichissement> {
+  const candidats = eansAInterroger(tomes);
 
   if (candidats.length === 0) {
     return VIDE;

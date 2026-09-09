@@ -12,23 +12,14 @@ import { exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estPossede, selectionPossession } from "@/lib/possession";
 import {
-  ACTION_AJOUTER,
-  LIBELLE_CANDIDAT_INCOMPLET,
-  LIBELLE_PRIX_INVALIDE,
-  LIBELLE_STATUT_INVALIDE,
-  LIBELLE_TOMES_PARUS_INVALIDE,
+  LIBELLE_AUTEUR_INCONNU,
+  LIBELLE_CANDIDAT_INTROUVABLE,
   LONGUEUR_RECHERCHE_MIN,
   RESULTATS_RECHERCHE_MAX,
-  STATUTS_EDITION,
-  TOMES_PARUS_MAX,
+  STATUT_A_LA_CREATION,
 } from "@/lib/constants";
 import { isbnValide } from "@/lib/domain";
-import type {
-  CandidatPrepare,
-  EtatCreation,
-  ResultatRecherche,
-  ResultatScan,
-} from "@/lib/domain";
+import type { CandidatPrepare, ResultatRecherche, ResultatScan } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
 function revaliderEdition(slug: string): void {
@@ -235,80 +226,49 @@ async function marquerTomeParIsbn(editionSlug: string, isbn: string): Promise<vo
   });
 }
 
-export async function ajouterCandidat(
-  _precedent: EtatCreation,
-  donnees: FormData,
-): Promise<EtatCreation> {
+export async function ajouterCandidatDirect(
+  serieNormalise: string,
+  marqueurNormalise: string | null,
+  isbnPossede: string | null,
+): Promise<void> {
   await exigerProprietaire();
 
-  const serieNormalise = lireTexte(donnees, "serieNormalise");
-  const marqueurBrut = lireTexte(donnees, "marqueurNormalise");
-  const titre = lireTexte(donnees, "titre");
-  const auteur = lireTexte(donnees, "auteur");
-  const nom = lireTexte(donnees, "nom");
-  const editeur = lireTexte(donnees, "editeur");
-  const prixBrut = lireTexte(donnees, "prixDefaut");
-  const tomesParus = Number(lireTexte(donnees, "tomesParus"));
-  const statut = lireTexte(donnees, "statut");
-  const editionTerminee = donnees.get("editionTerminee") === "on";
-  const ouvrirLesTomes = donnees.get("action") === ACTION_AJOUTER;
-  const isbnScanne = lireTexte(donnees, "isbnPossede");
+  const prepare = await preparerCandidat(serieNormalise, marqueurNormalise);
+  if (!prepare) {
+    throw new Error(LIBELLE_CANDIDAT_INTROUVABLE);
+  }
 
-  if (serieNormalise === "" || titre === "" || auteur === "" || nom === "") {
-    return { erreur: LIBELLE_CANDIDAT_INCOMPLET };
-  }
-  if (!estStatutEdition(statut)) {
-    return { erreur: LIBELLE_STATUT_INVALIDE };
-  }
-  if (!Number.isInteger(tomesParus) || tomesParus < 1 || tomesParus > TOMES_PARUS_MAX) {
-    return { erreur: LIBELLE_TOMES_PARUS_INVALIDE };
-  }
-  if (prixBrut !== "" && lireCentimes(prixBrut) === null) {
-    return { erreur: LIBELLE_PRIX_INVALIDE };
+  const { candidat } = prepare;
+
+  if (candidat.slugEnCollection !== null) {
+    redirect(`/edition/${candidat.slugEnCollection}`);
   }
 
   const editionSlug = await creerDepuisCandidat({
     serieNormalise,
-    marqueurNormalise: marqueurBrut === "" ? null : marqueurBrut,
-    titre,
+    marqueurNormalise,
+    titre: candidat.titre,
     titreVo: null,
-    auteur,
+    auteur: prepare.auteur === "" ? LIBELLE_AUTEUR_INCONNU : prepare.auteur,
     genres: [],
-    nom,
-    editeur: editeur || null,
-    tomesParus,
-    prixDefautCentimes: lireCentimes(prixBrut),
-    editionTerminee,
-    statut,
+    nom: candidat.nom,
+    editeur: prepare.editeur,
+    tomesParus: candidat.tomesParus,
+    prixDefautCentimes: prepare.prixDefautCentimes,
+    editionTerminee: candidat.editionTerminee,
+    statut: STATUT_A_LA_CREATION,
   });
 
-  if (isbnScanne !== "") {
-    await marquerTomeParIsbn(editionSlug, isbnScanne);
+  if (isbnPossede !== null) {
+    await marquerTomeParIsbn(editionSlug, isbnPossede);
   }
 
   revalidatePath("/");
   revalidatePath("/manquants");
   revalidatePath("/wishlist");
   revalidatePath("/planning");
-  redirect(ouvrirLesTomes ? `/edition/${editionSlug}/tomes` : `/edition/${editionSlug}`);
+  redirect(`/edition/${editionSlug}`);
 }
-function estStatutEdition(valeur: string): valeur is StatutEdition {
-  return (STATUTS_EDITION as readonly string[]).includes(valeur);
-}
-
-function lireTexte(donnees: FormData, champ: string): string {
-  return String(donnees.get(champ) ?? "").trim();
-}
-
-function lireCentimes(brut: string): number | null {
-  if (brut === "") {
-    return null;
-  }
-  const valeur = Number(brut.replace(",", "."));
-  return Number.isFinite(valeur) && valeur >= 0 ? Math.round(valeur * 100) : null;
-}
-
-
 function racineDuTitre(titreNotice: string): string {
   return titreNotice.replace(/[\s.:,-]*\d{1,3}\s*$/, "").trim();
 }
@@ -384,3 +344,4 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     candidats: await rechercherCandidats(racineDuTitre(notice.titre)),
   };
 }
+
