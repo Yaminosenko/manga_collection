@@ -188,6 +188,12 @@ export const LIBELLE_SCAN_VERS_RECHERCHE = "Chercher pour ajouter";
 export const LIBELLE_SCAN_CANDIDATS_TITRE = "Séries du catalogue au titre proche :";
 export const CANDIDATS_SCAN_MAX = 3;
 export const CHEMIN_RECHERCHE = "/ajouter";
+export const PARAM_SERIE = "serie";
+export const PARAM_MARQUEUR = "marqueur";
+export const PARAM_ISBN = "isbn";
+export const LIBELLE_SCAN_AJOUTER_ET_COCHER = "Ajouter et cocher ce tome";
+export const MENTION_TOME_SCANNE =
+  "Le tome scanné sera coché : la série entre directement dans la collection, pas en wish list.";
 export const LIBELLE_SCAN_INDISPONIBLE =
   "Le scan par la caméra n’est disponible que sur Android. Saisissez l’ISBN à la main.";
 export const LIBELLE_SCAN_INVITE = "Placez le code-barres du dos du tome dans le cadre.";

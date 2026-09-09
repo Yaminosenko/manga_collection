@@ -11,6 +11,7 @@ import {
   LIBELLE_CAMERA,
   LIBELLE_ISBN,
   LIBELLE_REFAIRE_MISE_AU_POINT,
+  LIBELLE_SCAN_AJOUTER_ET_COCHER,
   LIBELLE_SCAN_CANDIDATS_TITRE,
   LIBELLE_SCAN_HORS_COLLECTION,
   LIBELLE_SCAN_INCONNU,
@@ -20,6 +21,9 @@ import {
   LIBELLE_SCAN_OUVRIR_EDITION,
   LIBELLE_SCAN_VERS_RECHERCHE,
   MENTION_CHOIX_CAMERA,
+  PARAM_ISBN,
+  PARAM_MARQUEUR,
+  PARAM_SERIE,
   ZOOM_RAPPROCHE,
 } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
@@ -130,6 +134,20 @@ function nomDeCamera(appareil: MediaDeviceInfo, rang: number): string {
     return `${LIBELLE_CAMERA} ${rang + 1}`;
   }
   return brut.replace(/\s*\([0-9a-f]{4}:[0-9a-f]{4}\)\s*$/i, "");
+}
+
+function lienVersRecherche(
+  candidat: { serieNormalise: string; marqueurNormalise: string | null },
+  isbn: string,
+): string {
+  const parametres = new URLSearchParams({
+    [PARAM_SERIE]: candidat.serieNormalise,
+    [PARAM_ISBN]: isbn,
+  });
+  if (candidat.marqueurNormalise !== null) {
+    parametres.set(PARAM_MARQUEUR, candidat.marqueurNormalise);
+  }
+  return `${CHEMIN_RECHERCHE}?${parametres}`;
 }
 
 type Detecteur = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: string }[]> };
@@ -425,8 +443,8 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
             <span className="text-[11.5px]/[1.5] text-neutral-600">
               {LIBELLE_SCAN_HORS_COLLECTION}
             </span>
-            <Link href={CHEMIN_RECHERCHE} className={`${BOUTON} mt-[4px]`}>
-              {LIBELLE_SCAN_VERS_RECHERCHE}
+            <Link href={lienVersRecherche(candidat, resultat.isbn)} className={`${BOUTON} mt-[4px]`}>
+              {LIBELLE_SCAN_AJOUTER_ET_COCHER}
             </Link>
           </>
         )}

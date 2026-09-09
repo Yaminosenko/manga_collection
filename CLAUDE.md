@@ -337,7 +337,9 @@ s'interrompent souvent 12 à 18 mois.
   immédiatement, sans attendre un import — c'est la fin du défaut « le planning est une
   photographie, pas un flux ».
 - **Aucune `Possession`**, sauf par `/scanner` : le tome scanné est marqué possédé, et la série
-  entre alors directement en Collection.
+  entre alors directement en Collection. Le candidat déjà résolu par le scan est porté à la
+  confirmation **par l'URL** — `?serie=…&marqueur=…&isbn=…` — pour ne pas faire retaper le
+  titre ; l'ISBN voyage en champ caché et le tome correspondant est coché après création.
 
 #### Deux préalables techniques
 
@@ -938,23 +940,17 @@ détail et les cas réels sont dans `JOURNAL.md`.
   **50 232 parutions, 11 315 séries, janvier 2000 → décembre 2026**, dont 48 222 avec EAN. Les
   288 fichiers anciens n'étaient pas sur une autre machine mais dans `~/Documents/planning_manga`.
   Voir `JOURNAL.md`. Restent les deux trous connus, `2000-09` et février → juillet 2024.
-- **Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`** — **l'algorithme est arbitré,
-  voir §4 « Rechercher — l'écran d'ajout ».** C'est le chantier suivant, et le seul qui reste
-  entre la collection et une version stable de l'ajout. Aujourd'hui l'ajout passe par AniList
-  seul : `tomesParus` pré-rempli
-  avec le **compte japonais**, aucune couverture, aucun ISBN, aucune date, aucun thème, et
-  l'éditeur comme le prix arrivent plus tard par des scripts — `goodnight-punpun`, seule série
-  jamais ajoutée depuis l'application, est encore la seule sans prix, ce qui suffit à faire
-  afficher `≥` devant la valeur de la collection. Le catalogue donne le nom FR, le marqueur
-  d'édition, l'éditeur, la date et l'EAN, et l'EAN donne ensuite le prix par la BnF.
-  **Deux règles de requête établies le 8 septembre** : une résolution par EAN rend la ligne **la
-  plus récente** et non la première (5 EAN sont portés par plusieurs lignes), et tout classement
-  par `numero` doit écarter les `NULL` ou demander `NULLS LAST`, 4 646 lignes de l'archive
-  ancienne n'ayant pas de numéro en plus des 809 récentes.
-  **La migration et le suivi étant faits, c'est le chantier suivant**, et le catalogue complété
-  le 9 septembre le rend praticable : **100 % de nos ISBN y résolvent, 99 % des EAN d'une série
-  possédée y sont mobilisables, et 6 023 séries y ont un tome 1 avec EAN** — voir `JOURNAL.md`,
-  « Fait — l'archive de catalogue complétée jusqu'à 2000 ».
+- ~~**Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`**~~ — **fait le 9 septembre
+  2026**, voir §4 « Rechercher — l'écran d'ajout » et `JOURNAL.md`. L'ajout ne passe plus par
+  AniList : le catalogue donne l'identité, la BnF l'auteur et le prix, les tomes naissent avec
+  leur ISBN et leur date, les sorties futures deviennent des `Sortie`, et une seconde édition
+  se rattache à la série existante au lieu de créer un fantôme.
+
+  **Ce qui reste de ce chantier** : la **saisie entièrement manuelle**, rang 5 de la
+  résolution, n'a pas d'écran — `creerEdition` et `creerSerieAvecEdition` sont en place mais
+  inatteignables depuis l'interface. Et la recherche ne connaît **pas les abréviations** :
+  « jjk » ne rend rien, le catalogue n'ayant pas d'alias. C'est `Serie.alias` et les alias
+  appris de §13.3 qui rattraperont ça.
 - **Dériver les `Sortie` depuis `ParutionCatalogue`** au lieu de les écrire depuis le manifeste
   de planning — le circuit visé par le plan de §13.1. Ça règle le défaut du 30 août, « le
   planning est une photographie, pas un flux » : ajouter une série calculerait ses sorties

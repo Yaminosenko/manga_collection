@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useActionState, useEffect, useState, useTransition } from "react";
 import { ajouterCandidat, preparerCandidat, rechercherAuCatalogue } from "@/lib/actions";
 import { ArrowLeft, CaretRight, MagnifyingGlass } from "@/components/icons";
@@ -21,6 +22,10 @@ import {
   LIBELLE_TOME_DU_CATALOGUE,
   LONGUEUR_RECHERCHE_MIN,
   MENTION_ACTIONS_CANDIDAT,
+  MENTION_TOME_SCANNE,
+  PARAM_ISBN,
+  PARAM_MARQUEUR,
+  PARAM_SERIE,
   PLACEHOLDER_RECHERCHE,
   TITRE_RECHERCHER,
   TITRE_SCANNER,
@@ -42,6 +47,10 @@ const ETIQUETTE = "flex flex-col gap-[5px] text-[11.5px] text-neutral-500";
 const SECTION = "text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase";
 
 export function SearchSeries() {
+  const parametres = useSearchParams();
+  const serieDemandee = parametres.get(PARAM_SERIE);
+  const marqueurDemande = parametres.get(PARAM_MARQUEUR);
+  const isbnScanne = parametres.get(PARAM_ISBN);
   const [terme, setTerme] = useState("");
   const [recherche, setRecherche] = useState<ResultatRecherche>(RECHERCHE_VIDE);
   const [chargement, demarrerRecherche] = useTransition();
@@ -68,6 +77,22 @@ export function SearchSeries() {
     };
   }, [terme]);
 
+  useEffect(() => {
+    if (serieDemandee === null) {
+      return;
+    }
+    let courant = true;
+    demarrerPreparation(async () => {
+      const complet = await preparerCandidat(serieDemandee, marqueurDemande);
+      if (courant && complet) {
+        setPrepare(complet);
+      }
+    });
+    return () => {
+      courant = false;
+    };
+  }, [serieDemandee, marqueurDemande]);
+
   function choisir(candidat: CandidatEdition) {
     demarrerPreparation(async () => {
       const complet = await preparerCandidat(candidat.serieNormalise, candidat.marqueurNormalise);
@@ -78,7 +103,13 @@ export function SearchSeries() {
   }
 
   if (prepare) {
-    return <Confirmation prepare={prepare} onRetour={() => setPrepare(null)} />;
+    return (
+      <Confirmation
+        prepare={prepare}
+        isbnScanne={isbnScanne}
+        onRetour={() => setPrepare(null)}
+      />
+    );
   }
 
   const requeteCourte = terme.trim().length < LONGUEUR_RECHERCHE_MIN;
@@ -189,9 +220,11 @@ export function SearchSeries() {
 
 function Confirmation({
   prepare,
+  isbnScanne,
   onRetour,
 }: {
   prepare: CandidatPrepare;
+  isbnScanne: string | null;
   onRetour: () => void;
 }) {
   const [etat, action, enCours] = useActionState<EtatCreation, FormData>(ajouterCandidat, {
@@ -226,6 +259,7 @@ function Confirmation({
           name="marqueurNormalise"
           value={candidat.marqueurNormalise ?? ""}
         />
+        <input type="hidden" name="isbnPossede" value={isbnScanne ?? ""} />
 
         <p className="text-[11px]/[1.5] text-neutral-600">
           {LIBELLE_CANDIDAT_PREPARE} {prepare.tomesAvecEan} tome
@@ -326,7 +360,9 @@ function Confirmation({
 
         {etat.erreur ? <p className="text-[11.5px] text-neutral-400">{etat.erreur}</p> : null}
 
-        <p className="mt-[4px] text-[11px]/[1.5] text-neutral-600">{MENTION_ACTIONS_CANDIDAT}</p>
+        <p className="mt-[4px] text-[11px]/[1.5] text-neutral-600">
+          {isbnScanne !== null ? MENTION_TOME_SCANNE : MENTION_ACTIONS_CANDIDAT}
+        </p>
 
         <div className="flex gap-[9px]">
           <button

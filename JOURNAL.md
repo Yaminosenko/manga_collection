@@ -2944,3 +2944,49 @@ valider les deux rangs de résolution le même jour.
 **Si la netteté ne s'améliore pas sur téléphone**, la piste suivante n'est pas la mise au point
 mais la lumière : un rayon de librairie est sombre, et `torch` est une contrainte largement
 supportée sur Android. Elle n'est pas implémentée.
+
+### Fait — l'enchaînement après un scan (9 septembre 2026)
+
+Dernier geste du circuit de §4. Un tome scanné dont l'édition n'existe pas renvoyait vers
+l'écran Rechercher **en perdant le candidat déjà résolu** : il fallait retaper le titre. Le
+candidat voyage maintenant par l'URL.
+
+`/ajouter?serie=<serieNormalise>&marqueur=<marqueurNormalise>&isbn=<ean>` — l'écran lit ces
+paramètres, prépare le candidat et **ouvre la confirmation directement**. L'ISBN scanné descend
+en champ caché, et `ajouterCandidat` coche le tome correspondant après création.
+
+Ni le nom d'une série ni un EAN ne sont des données personnelles, donc l'URL est un véhicule
+légitime — et elle a l'avantage de survivre à une navigation.
+
+#### Vérifié bout en bout sur le banc
+
+EAN `9782375061909` saisi au scanner : la carte rend « Megumi & Tsugumi · Édition simple ·
+Taifu comics · 4 tomes parus · 4 avec ISBN » et propose **« Ajouter et cocher ce tome »**. Le
+lien ouvre la confirmation, dont la mention devient « Le tome scanné sera coché : la série entre
+directement dans la collection, pas en wish list ». « Ajouter » redirige vers
+`/edition/megumi-tsugumi/tomes`, qui affiche **1 / 4 tomes**.
+
+En base, et c'est là que ça compte :
+
+```
+t1 isbn=9782375061909 possede=true      <- le tome scanne
+t2, t3, t4 : aucune ligne de possession <- lignes creuses
+en wish list : 0 · en collection : 110
+```
+
+**Les trois autres tomes n'ont aucune ligne de `Possession`**, pas une ligne à `false` : c'est la
+règle des lignes creuses de §2, et elle se vérifie ici pour la première fois sur une création
+par scan. Et la série entre **directement en Collection** — la wish list reste à zéro — ce qui
+est le seul chemin qui le fait, comme §4 le prescrit.
+
+Banc restauré : 109 séries, 113 éditions, 1 716 tomes, 1 155 possédés.
+
+#### Le chantier `/ajouter` est clos, sauf deux trous nommés
+
+La **saisie entièrement manuelle** — rang 5 de la résolution — n'a pas d'écran :
+`creerEdition` et `creerSerieAvecEdition` restent en place, inatteignables depuis l'interface.
+Les garder est un choix : ils servent le cas où ni le catalogue ni la BnF ne connaissent le tome.
+
+Et la recherche **ne connaît pas les abréviations** : « jjk » ne rend rien. Le catalogue n'a pas
+d'alias, et c'est `Serie.alias` — déjà en base depuis la migration, renseigné sur 105 séries —
+plus les alias appris de §13.3 qui rattraperont ça.

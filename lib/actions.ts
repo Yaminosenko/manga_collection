@@ -219,6 +219,22 @@ export async function preparerCandidat(
   };
 }
 
+async function marquerTomeParIsbn(editionSlug: string, isbn: string): Promise<void> {
+  const volume = await prisma.volume.findFirst({
+    where: { isbn, edition: { slug: editionSlug } },
+    select: { id: true },
+  });
+  if (!volume) {
+    return;
+  }
+  const utilisateurId = await idUtilisateurCourant();
+  await prisma.possession.upsert({
+    where: { utilisateurId_volumeId: { utilisateurId, volumeId: volume.id } },
+    create: { utilisateurId, volumeId: volume.id, possede: true },
+    update: { possede: true },
+  });
+}
+
 export async function ajouterCandidat(
   _precedent: EtatCreation,
   donnees: FormData,
@@ -236,6 +252,7 @@ export async function ajouterCandidat(
   const statut = lireTexte(donnees, "statut");
   const editionTerminee = donnees.get("editionTerminee") === "on";
   const ouvrirLesTomes = donnees.get("action") === ACTION_AJOUTER;
+  const isbnScanne = lireTexte(donnees, "isbnPossede");
 
   if (serieNormalise === "" || titre === "" || auteur === "" || nom === "") {
     return { erreur: LIBELLE_CANDIDAT_INCOMPLET };
@@ -264,6 +281,10 @@ export async function ajouterCandidat(
     editionTerminee,
     statut,
   });
+
+  if (isbnScanne !== "") {
+    await marquerTomeParIsbn(editionSlug, isbnScanne);
+  }
 
   revalidatePath("/");
   revalidatePath("/manquants");
