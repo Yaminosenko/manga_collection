@@ -1,13 +1,13 @@
 {
-  "exporteeLe": "2026-09-03T09:09:55.279Z",
+  "exporteeLe": "2026-09-09T07:46:38.885Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
-    "tomes": 1712,
-    "possedes": 1153,
-    "aVerifier": 13,
+    "tomes": 1714,
+    "possedes": 1155,
+    "aVerifier": 12,
     "forcees": 2,
-    "couvertures": 1674,
+    "couvertures": 1676,
     "liens": 18
   },
   "liens": [
@@ -12927,7 +12927,7 @@
           "slug": "itchi-the-witch",
           "nom": "Édition simple",
           "editeur": "Ki-oon",
-          "tomesParus": 4,
+          "tomesParus": 5,
           "editionTerminee": false,
           "prixDefautCentimes": 720,
           "statut": "EN_COURS",
@@ -12937,15 +12937,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [
-            {
-              "id": "6d4623c2-6483-4ec9-8fbb-16ecd18bc653",
-              "numero": 5,
-              "date": "2026-09-03T00:00:00.000Z",
-              "isbn": "9791032723524",
-              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/itchi-the-witch/5.webp"
-            }
-          ],
+          "sorties": [],
           "volumes": [
             {
               "id": "79c3336f-bb27-4dce-9706-b580df4a716a",
@@ -13007,6 +12999,23 @@
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/itchi-the-witch/4.webp",
               "possession": {
                 "id": "425432ef-a52d-431c-829f-c1aaba2870f6",
+                "possede": true,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "a284747a-a0c7-4ad2-81eb-1fd326b9019b",
+              "numero": 5,
+              "isbn": "9791032723524",
+              "dateSortie": "2026-09-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/itchi-the-witch/5.webp",
+              "possession": {
+                "id": "c5274b45-aee5-4b96-9891-5c9fc213269f",
                 "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
@@ -24755,7 +24764,7 @@
           "slug": "rai-rai-rai",
           "nom": "Édition simple",
           "editeur": "Ki-oon",
-          "tomesParus": 2,
+          "tomesParus": 3,
           "editionTerminee": false,
           "prixDefautCentimes": 750,
           "statut": "EN_COURS",
@@ -24765,15 +24774,7 @@
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
-          "sorties": [
-            {
-              "id": "acd032c2-c451-4591-9e97-c17fda7901b2",
-              "numero": 3,
-              "date": "2026-09-03T00:00:00.000Z",
-              "isbn": "9791032723579",
-              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/rai-rai-rai/3.webp"
-            }
-          ],
+          "sorties": [],
           "volumes": [
             {
               "id": "d8eaafa3-5a12-465c-9c10-a407e405e2af",
@@ -24801,6 +24802,23 @@
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/rai-rai-rai/2.webp",
               "possession": {
                 "id": "070e48cb-cc1e-40d6-acb0-f11f6a8c4365",
+                "possede": true,
+                "dateAchat": null,
+                "prixPayeCentimes": null,
+                "etat": null,
+                "lu": false,
+                "note": null
+              }
+            },
+            {
+              "id": "93347aa1-3c06-4e9c-806a-251513b8caa9",
+              "numero": 3,
+              "isbn": "9791032723579",
+              "dateSortie": "2026-09-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/rai-rai-rai/3.webp",
+              "possession": {
+                "id": "2abd5e15-be36-4fb9-bd15-b13e73c06630",
                 "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
@@ -27920,7 +27938,7 @@
           "statut": "ABANDONNEE",
           "termineeForcee": false,
           "raisonCompletion": null,
-          "aVerifier": true,
+          "aVerifier": false,
           "slugMangaNews": null,
           "couvertureUrl": null,
           "ajouteeLe": "2026-08-28T14:15:17.864Z",
@@ -27935,7 +27953,7 @@
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/shaman-king/1.webp",
               "possession": {
                 "id": "46ad9be7-ebe9-4625-b349-6726b6023d85",
-                "possede": true,
+                "possede": false,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
@@ -28411,7 +28429,7 @@
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/shaman-king/29.webp",
               "possession": {
                 "id": "bcdb2a1a-26ac-40af-a052-251851d333cb",
-                "possede": false,
+                "possede": true,
                 "dateAchat": null,
                 "prixPayeCentimes": null,
                 "etat": null,
