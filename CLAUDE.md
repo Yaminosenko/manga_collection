@@ -306,7 +306,7 @@ La seule différence est ce qui suit : **« Ajouter » emmène dans « Mes tomes
 |---|---|---|
 | `titre` | `serieTitre` de la ligne la plus récente | 57 groupes sur 12 619 ont un titre variable, et les écarts sont cosmétiques |
 | `nom` | `marqueurEdition`, sinon « Édition simple » | — |
-| `editeur` | le plus fréquent du groupe, départagé par récence | l'éditeur varie dans 141 groupes |
+| `editeur` | **BnF par ISBN**, le catalogue en repli | le catalogue nomme le **label**, la BnF l'éditeur légal : 9 éditions de la collection disent « Bamboo Édition » là où le catalogue dit « Doki Doki », son label manga — et c'est la BnF qui a rempli les 113 lignes existantes |
 | `tomesParus` | `max(numero)` **sur les lignes de date passée** | 722 groupes seraient gonflés sans ce filtre, 944 lignes étant datées du futur |
 | `tomesParus` sans aucun numéro | **1** | 5 361 groupes n'ont aucun `Vol.N` — one-shots, coffrets, artbooks |
 | `volumes` | `numero` → EAN + date ; **les trous restent vides** | Détective Conan : `max = 107` pour 87 numéros distincts |
@@ -1034,6 +1034,7 @@ détail et les cas réels sont dans `JOURNAL.md`.
 | `npm run titles:fetch` puis `titles:apply` | noms de séries alignés sur la BnF |
 | `npm run publishers:fetch` puis `publishers:apply` | éditeurs depuis la BnF |
 | `npm run relations:fetch` puis `relations:apply` | séries liées depuis AniList |
+| `npm run editions:audit` | **lecture seule** — apparie les 113 éditions au catalogue par les EAN de leurs tomes et liste les écarts de nom, d'éditeur et de tomes parus dans `data/audit-editions.json`. Aveugle sur les 23 éditions sans ISBN |
 | `npm run db:migrate` | applique les migrations à Neon sur le 443. `LOCAL_DATABASE_URL` la détourne vers un Postgres local, `MIGRATIONS_DIR` vers un autre dossier — les deux servent à répéter une migration avant de la livrer |
 
 **Toujours relire le manifeste entre le `fetch` et le `apply`** — c'est la raison d'être du

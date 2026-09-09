@@ -2646,3 +2646,73 @@ défaut** plutôt qu'un faux succès. La règle vaut dans les deux sens : **appe
 jamais une copie du code.** Constat utile obtenu en le faisant : `chercherPrixDefautCentimes`
 rend 690 pour Beastars et **`null` pour Goodnight Punpun**, ce qui explique enfin pourquoi
 c'est la seule série sans prix de la collection.
+
+### Fait — l'audit des 113 éditions contre le catalogue (9 septembre 2026)
+
+Déclenché par la découverte que notre ligne GANTZ porte le compte de la Perfect Edition et le
+nom de l'édition simple. Question : combien de lignes ont ce défaut ? `npm run editions:audit`,
+**lecture seule**, apparie chaque édition au catalogue **par les EAN de ses tomes** — jamais par
+similarité de titre — puis compare nom, éditeur et `tomesParus` au groupe dominant.
+
+```
+113 editions auditees, 74 conformes au catalogue
+39 portent au moins un ecart :
+   23  aucun tome ne porte d'ISBN
+    9  editeur
+    7  tomesParus
+```
+
+**Zéro écart de nom d'édition.** Sur les 90 éditions appariables, « Édition simple » est le bon
+nom partout. Le défaut GANTZ n'est donc pas répandu — mais voir la limite ci-dessous.
+
+#### Les 9 écarts d'éditeur n'en sont pas
+
+Les neuf sont **le même fait** : base « Bamboo Édition », catalogue « Doki Doki ». Interrogée
+comme troisième source sur les ISBN des tomes 1, **la BnF confirme notre base** — « Bamboo éd. »
+pour Servamp, « Bamboo édition » pour Mushoku Tensei et Talentless.
+
+**Doki Doki est le label manga de Bamboo Édition.** Le catalogue manga-news nomme le label, la
+BnF l'éditeur légal du dépôt. Rien à corriger, et **une règle de §4 corrigée dans la foulée** :
+`/ajouter` prend l'éditeur de la **BnF par ISBN**, pas du catalogue, sinon les nouvelles séries
+diraient « Doki Doki » quand les 113 anciennes, remplies par `publishers:fetch`, disent
+« Bamboo Édition ».
+
+#### Les 7 écarts de tomes parus se lisent par leur direction
+
+| Édition | Base | Catalogue | Lecture |
+|---|---|---|---|
+| `marimashita-iruma-kun` | 34 | **35** paru, 37 annoncé | **le catalogue a raison** |
+| `saga-of-tany-the-evil-youjo-senki` | 22 | **23** | **le catalogue a raison** |
+| `fire-force` | **34** | 32 | notre base a raison |
+| `mashle` | **18** | 17 | notre base a raison |
+| `tsugumi-project` | **7** | 6 | notre base a raison |
+| `ippo-s4-la-loi-du-ring` | **27** | 21 | notre base a raison |
+| `pokemon-la-grande-aventure` | **6** | 3 | notre base a raison |
+
+**La direction de l'écart dit quelle source croire, et c'est vérifiable.** Dans les cinq cas où
+notre base est devant, **nos tomes excédentaires ne portent ni ISBN ni date de sortie**, et le
+dernier tome que nous ayons *avec* ISBN correspond exactement au dernier que connaît le
+catalogue — Fire Force s'arrête à 32 en décembre 2023 des deux côtés, Mashle à 17 en novembre
+2023, Tsugumi à 6 en mai 2023. Leurs tomes suivants sont sortis **dans le trou de février à
+juillet 2024**, celui que l'archive n'a pas. Le catalogue est incomplet, pas notre base.
+
+Dans les deux cas où le catalogue est devant, ce sont **de vrais tomes que nous n'avons pas
+encore** — et c'est le seul travail que cet audit produit : deux `tomesParus` à relever, plus
+deux sorties annoncées à récupérer sur Iruma-kun.
+
+#### La limite, et elle porte exactement sur le cas qui a motivé l'audit
+
+**Les 23 éditions sans aucun ISBN sont invisibles à l'audit, et GANTZ est parmi elles.** Sa
+ligne dit `tomesAvecIsbn: 0`, donc aucun candidat ne peut lui être opposé.
+
+Ces 23 ne sont pas un échantillon au hasard : ce sont **les variantes d'édition et les
+hors-séries** — `berserk-prestige-edition`, `dragon-ball-tome-units`,
+`fullmetal-alchemist-edition-double`, `soul-eater-edition-double`, `hellsing-perfect-edition`,
+plus une dizaine de one-shots et de suppléments, plus quelques séries anciennes
+(`blame`, `neon-genesis-evangelion`, `goodnight-punpun`, `saint-seiya-the-lost-canvas`).
+
+**C'est mécanique et il faut le retenir : les scripts qui remplissent les ISBN apparient par
+titre, donc ils échouent précisément sur les variantes — et les variantes sont exactement ce
+qu'un audit par ISBN ne peut pas juger.** L'angle mort de l'outil coïncide avec la zone de
+risque. GANTZ reste donc à corriger à la main, et rien ne dit combien de ses 22 voisines
+partagent son défaut.

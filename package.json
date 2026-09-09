@@ -28,7 +28,8 @@
     "relations:fetch": "tsx scripts/fetch-relations.ts",
     "relations:apply": "tsx scripts/apply-relations.ts",
     "titles:fetch": "python scripts/fetch_titles.py",
-    "titles:apply": "tsx scripts/apply-titles.ts"
+    "titles:apply": "tsx scripts/apply-titles.ts",
+    "editions:audit": "tsx scripts/audit-editions.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

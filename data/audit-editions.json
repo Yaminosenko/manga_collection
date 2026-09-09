@@ -1,0 +1,736 @@
+{
+  "releveLe": "2026-09-09T14:14:11.035Z",
+  "editions": 113,
+  "conformes": 74,
+  "divergences": [
+    {
+      "slug": "berserk-prestige-edition",
+      "titre": "BERSERK",
+      "base": {
+        "nom": "Édition Prestige",
+        "editeur": "Glénat",
+        "tomesParus": 6,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "blame",
+      "titre": "BLAME!",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Glénat",
+        "tomesParus": 6,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "bleach-13-blades",
+      "titre": "BLEACH – 13 BLADES",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Glénat",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "classroom-for-heroes",
+      "titre": "CLASSROOM FOR HEROES",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 21,
+        "tomesAvecIsbn": 19
+      },
+      "candidat": {
+        "serieNormalise": "classroomforheroes",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Classroom for heroes",
+        "editeur": "Doki Doki",
+        "tomesParus": 21,
+        "lignes": 20,
+        "nosTomes": 19
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "dragon-ball",
+      "titre": "DRAGON BALL",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Glénat",
+        "tomesParus": 21,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "dragon-ball-tome-units",
+      "titre": "DRAGON BALL",
+      "base": {
+        "nom": "Tomes unitaires",
+        "editeur": "Glénat",
+        "tomesParus": 3,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "fire-force",
+      "titre": "FIRE FORCE",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kana",
+        "tomesParus": 34,
+        "tomesAvecIsbn": 32
+      },
+      "candidat": {
+        "serieNormalise": "fireforce",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Fire Force",
+        "editeur": "Kana",
+        "tomesParus": 32,
+        "lignes": 32,
+        "nosTomes": 32
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "fullmetal-alchemist-edition-double",
+      "titre": "FULLMETAL ALCHEMIST",
+      "base": {
+        "nom": "Édition double",
+        "editeur": "Kurokawa",
+        "tomesParus": 13,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "gantz",
+      "titre": "GANTZ",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Tonkam",
+        "tomesParus": 18,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "goodnight-punpun",
+      "titre": "Goodnight Punpun",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kana",
+        "tomesParus": 13,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "hellsing-perfect-edition",
+      "titre": "HELLSING",
+      "base": {
+        "nom": "Perfect Edition",
+        "editeur": "Tonkam",
+        "tomesParus": 5,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "hideout",
+      "titre": "HIDEOUT",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Ki-oon",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "ippo-s4-la-loi-du-ring",
+      "titre": "IPPO – S4 LA LOI DU RING",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kurokawa",
+        "tomesParus": 27,
+        "tomesAvecIsbn": 21
+      },
+      "candidat": {
+        "serieNormalise": "ipposaison4laloiduring",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Ippo - Saison 4 - La loi du ring",
+        "editeur": "Kurokawa",
+        "tomesParus": 21,
+        "lignes": 21,
+        "nosTomes": 21
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "je-suis-un-assassin-et-je-surpasse-le-heros",
+      "titre": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 6,
+        "tomesAvecIsbn": 5
+      },
+      "candidat": {
+        "serieNormalise": "jesuisunassassinetjesurpasseleheros",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Je suis un assassin (et je surpasse le héros)",
+        "editeur": "Doki Doki",
+        "tomesParus": 6,
+        "lignes": 6,
+        "nosTomes": 5
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "les-chroniques-d-azfareo",
+      "titre": "LES CHRONIQUES D'AZFAREO",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Akata",
+        "tomesParus": 9,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "leviathan",
+      "titre": "LEVIATHAN",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Ki-oon",
+        "tomesParus": 3,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "marimashita-iruma-kun",
+      "titre": "Iruma à l'école des démons",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Nobi nobi !",
+        "tomesParus": 34,
+        "tomesAvecIsbn": 20
+      },
+      "candidat": {
+        "serieNormalise": "irumaalecoledesdemons",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Iruma à l’école des démons",
+        "editeur": "nobi nobi!",
+        "tomesParus": 35,
+        "lignes": 34,
+        "nosTomes": 20
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "mashle",
+      "titre": "MASHLE",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kazé",
+        "tomesParus": 18,
+        "tomesAvecIsbn": 17
+      },
+      "candidat": {
+        "serieNormalise": "mashle",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Mashle",
+        "editeur": "Kaze Manga",
+        "tomesParus": 17,
+        "lignes": 17,
+        "nosTomes": 17
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "mirai-nikki-mosaic",
+      "titre": "MIRAI NIKKI – MOSAIC",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Casterman",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "mirai-nikki-paradox",
+      "titre": "MIRAI NIKKI – PARADOX",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Casterman",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "mushoku-tensei",
+      "titre": "MUSHOKU TENSEI",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 23,
+        "tomesAvecIsbn": 23
+      },
+      "candidat": {
+        "serieNormalise": "mushokutensei",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Mushoku Tensei",
+        "editeur": "Doki Doki",
+        "tomesParus": 23,
+        "lignes": 23,
+        "nosTomes": 23
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "mushoku-tensei-l-epee-d-iris",
+      "titre": "MUSHOKU TENSEI – L'épée d'Iris",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "mushoku-tensei-les-aventures-de-roxy",
+      "titre": "MUSHOKU TENSEI – Les aventures de Roxy",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 12,
+        "tomesAvecIsbn": 12
+      },
+      "candidat": {
+        "serieNormalise": "mushokutenseilesaventuresderoxy",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Mushoku Tensei - Les aventures de Roxy",
+        "editeur": "Doki Doki",
+        "tomesParus": 12,
+        "lignes": 12,
+        "nosTomes": 12
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "my-hero-academia-ultra-archive",
+      "titre": "MY HERO ACADEMIA – ULTRA ARCHIVE",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Ki-oon",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "neon-genesis-evangelion",
+      "titre": "NEON GENESIS EVANGELION",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Glénat",
+        "tomesParus": 7,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "pandora-heart-8-5",
+      "titre": "PANDORA HEART – 8,5",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Ki-oon",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "pokemon-la-grande-aventure",
+      "titre": "POKEMON - LA GRANDE AVENTURE",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kurokawa",
+        "tomesParus": 6,
+        "tomesAvecIsbn": 3
+      },
+      "candidat": {
+        "serieNormalise": "pokemonlagrandeaventure",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Pokémon - La Grande Aventure",
+        "editeur": "Kurokawa",
+        "tomesParus": 3,
+        "lignes": 3,
+        "nosTomes": 3
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "pokemon-zoroark-le-maitre-des-illusion",
+      "titre": "POKEMON – ZOROARK LE MAITRE DES ILLUSION",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kurokawa",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "red-eyes-sword-akame-ga-kill-zero",
+      "titre": "RED EYES SWORD Akame Ga Kill – ZERO",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kurokawa",
+        "tomesParus": 10,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "saga-of-tany-the-evil-youjo-senki",
+      "titre": "Tanya, the evil",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Delcourt-Tonkam",
+        "tomesParus": 22,
+        "tomesAvecIsbn": 20
+      },
+      "candidat": {
+        "serieNormalise": "tanyatheevil",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Tanya The Evil",
+        "editeur": "Delcourt / Tonkam",
+        "tomesParus": 23,
+        "lignes": 23,
+        "nosTomes": 20
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "saint-seiya-the-lost-canvas",
+      "titre": "SAINT SEIYA - THE LOST CANVAS",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Kurokawa",
+        "tomesParus": 25,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "saotome-love-boxing",
+      "titre": "SAOTOME LOVE & BOXING",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 10,
+        "tomesAvecIsbn": 10
+      },
+      "candidat": {
+        "serieNormalise": "saotomeloveboxing",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Saotome - Love & Boxing",
+        "editeur": "Doki Doki",
+        "tomesParus": 10,
+        "lignes": 10,
+        "nosTomes": 10
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "servamp",
+      "titre": "SERVAMP",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 23,
+        "tomesAvecIsbn": 22
+      },
+      "candidat": {
+        "serieNormalise": "servamp",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Servamp",
+        "editeur": "Doki Doki",
+        "tomesParus": 23,
+        "lignes": 22,
+        "nosTomes": 22
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "soul-eater-edition-double",
+      "titre": "SOUL EATER",
+      "base": {
+        "nom": "Édition double",
+        "editeur": "Kurokawa",
+        "tomesParus": 12,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "talentless",
+      "titre": "TALENTLESS",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 14,
+        "tomesAvecIsbn": 13
+      },
+      "candidat": {
+        "serieNormalise": "talentless",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Talentless",
+        "editeur": "Doki Doki",
+        "tomesParus": 14,
+        "lignes": 13,
+        "nosTomes": 13
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "the-ancient-magus-bride-supplement-2",
+      "titre": "THE ANCIENT MAGUS BRIDE – Supplément 2",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Komikku",
+        "tomesParus": 1,
+        "tomesAvecIsbn": 0
+      },
+      "candidat": null,
+      "autresCandidats": [],
+      "ecarts": [
+        "aucun tome ne porte d'ISBN"
+      ]
+    },
+    {
+      "slug": "tsugumi-project",
+      "titre": "TSUGUMI PROJECT",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Ki-oon",
+        "tomesParus": 7,
+        "tomesAvecIsbn": 6
+      },
+      "candidat": {
+        "serieNormalise": "tsugumiproject",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Tsugumi Project",
+        "editeur": "Ki-oon",
+        "tomesParus": 6,
+        "lignes": 6,
+        "nosTomes": 6
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "tomesParus"
+      ]
+    },
+    {
+      "slug": "why-nobody-remember-my-world",
+      "titre": "Why Nobody Remembers My World ?",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 13,
+        "tomesAvecIsbn": 12
+      },
+      "candidat": {
+        "serieNormalise": "whynobodyremembersmyworld",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Why Nobody Remembers My World ?",
+        "editeur": "Doki Doki",
+        "tomesParus": 13,
+        "lignes": 13,
+        "nosTomes": 12
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    },
+    {
+      "slug": "yusei-no-last-boss",
+      "titre": "Yasei no Last Boss",
+      "base": {
+        "nom": "Édition simple",
+        "editeur": "Bamboo Édition",
+        "tomesParus": 10,
+        "tomesAvecIsbn": 9
+      },
+      "candidat": {
+        "serieNormalise": "yaseinolastboss",
+        "marqueurEdition": null,
+        "nom": "Édition simple",
+        "serieTitre": "Yasei no Last Boss",
+        "editeur": "Doki Doki",
+        "tomesParus": 10,
+        "lignes": 9,
+        "nosTomes": 9
+      },
+      "autresCandidats": [],
+      "ecarts": [
+        "editeur"
+      ]
+    }
+  ]
+}
