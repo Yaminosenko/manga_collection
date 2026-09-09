@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { slugifier } from "@/lib/slug";
 import { NOM_EDITION_PAR_DEFAUT } from "@/lib/constants";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
@@ -31,6 +32,8 @@ async function slugUnique(
 }
 
 export async function creerSerieAvecEdition(champs: ChampsEdition): Promise<string> {
+  const utilisateurId = await idUtilisateurCourant();
+
   const serieSlug = await slugUnique(
     slugifier(champs.titre),
     async (slug) => (await prisma.serie.count({ where: { slug } })) > 0,
@@ -60,11 +63,11 @@ export async function creerSerieAvecEdition(champs: ChampsEdition): Promise<stri
           tomesParus: champs.tomesParus,
           editionTerminee: champs.editionTerminee,
           prixDefautCentimes: champs.prixDefautCentimes,
-          statut: champs.statut,
+          creeeParId: utilisateurId,
+          suivis: { create: { utilisateurId, statut: champs.statut } },
           volumes: {
             create: Array.from({ length: champs.tomesParus }, (_, index) => ({
               numero: index + 1,
-              possession: { create: { possede: false } },
             })),
           },
         },

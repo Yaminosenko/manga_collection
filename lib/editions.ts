@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { ORDRE_LIENS_SERIE } from "@/lib/constants";
+import { estPossede, selectionPossession, volumesPossedes } from "@/lib/possession";
+import { idUtilisateurCourant } from "@/lib/utilisateur";
 import type {
   Collection,
   Edition,
@@ -7,18 +9,29 @@ import type {
   Manquants,
   SortiePlanning,
 } from "@/lib/domain";
+import type { StatutEdition } from "@/lib/generated/prisma/enums";
+
+type SuiviLu = { statut: StatutEdition; suivie: boolean };
+
+function estDesaturee(suivi: SuiviLu | undefined): boolean {
+  return suivi !== undefined && suivi.statut !== "EN_COURS";
+}
 
 export async function chargerEdition(slug: string): Promise<Edition | null> {
+  const utilisateurId = await idUtilisateurCourant();
+  const possession = selectionPossession(utilisateurId);
+
   const edition = await prisma.edition.findUnique({
     where: { slug },
     include: {
+      suivis: { where: { utilisateurId }, select: { statut: true, suivie: true } },
       volumes: {
         orderBy: { numero: "asc" },
         select: {
           numero: true,
           couvertureUrl: true,
           prixCentimes: true,
-          possession: { select: { possede: true } },
+          possessions: possession,
         },
       },
       sorties: {
@@ -36,17 +49,21 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
                   editions: {
                     orderBy: { nom: "asc" },
                     select: {
+                      id: true,
                       slug: true,
                       nom: true,
                       tomesParus: true,
                       editionTerminee: true,
-                      statut: true,
+                      suivis: {
+                        where: { utilisateurId },
+                        select: { statut: true, suivie: true },
+                      },
                       volumes: {
                         orderBy: { numero: "asc" },
                         select: {
                           numero: true,
                           couvertureUrl: true,
-                          possession: { select: { possede: true } },
+                          possessions: possession,
                         },
                       },
                     },
@@ -63,13 +80,13 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
               editeur: true,
               tomesParus: true,
               editionTerminee: true,
-              statut: true,
+              suivis: { where: { utilisateurId }, select: { statut: true, suivie: true } },
               volumes: {
                 orderBy: { numero: "asc" },
                 select: {
                   numero: true,
                   couvertureUrl: true,
-                  possession: { select: { possede: true } },
+                  possessions: possession,
                 },
               },
             },
@@ -83,6 +100,12 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     return null;
   }
 
+  const suivi = edition.suivis[0];
+
+  if (!suivi) {
+    return null;
+  }
+
   return {
     slug: edition.slug,
     nom: edition.nom,
@@ -93,9 +116,8 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     cible: edition.serie.cible,
     tomesParus: edition.tomesParus,
     editionTerminee: edition.editionTerminee,
-    statut: edition.statut,
-    termineeForcee: edition.termineeForcee,
-    aVerifier: edition.aVerifier,
+    statut: suivi.statut,
+    suivie: suivi.suivie,
     slugMangaNews: edition.slugMangaNews,
     couvertureUrl: edition.couvertureUrl,
     prixDefautCentimes: edition.prixDefautCentimes,
@@ -106,14 +128,14 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     })),
     tomes: edition.volumes.map((volume) => ({
       numero: volume.numero,
-      possede: volume.possession?.possede ?? false,
+      possede: estPossede(volume),
       couvertureUrl: volume.couvertureUrl,
       prixCentimes: volume.prixCentimes,
     })),
     autresEditions: edition.serie.editions
       .filter((autre) => autre.slug !== edition.slug)
       .map((autre) => {
-        const possedes = autre.volumes.filter((volume) => volume.possession?.possede);
+        const possedes = volumesPossedes(autre.volumes);
         const dernier = possedes.at(-1) ?? null;
         return {
           slug: autre.slug,
@@ -122,7 +144,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
           tomesParus: autre.tomesParus,
           possedes: possedes.length,
           editionTerminee: autre.editionTerminee,
-          statut: autre.statut,
+          desaturee: estDesaturee(autre.suivis[0]),
           couvertureUrl: dernier?.couvertureUrl ?? null,
           dernierNumeroPossede: dernier?.numero ?? null,
         };
@@ -132,7 +154,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
         const principale = lien.serieLiee.editions
           .map((autre) => ({
             edition: autre,
-            possedes: autre.volumes.filter((volume) => volume.possession?.possede),
+            possedes: volumesPossedes(autre.volumes),
           }))
           .sort((a, b) => b.possedes.length - a.possedes.length)
           .at(0);
@@ -148,7 +170,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
           tomesParus: principale.edition.tomesParus,
           possedes: principale.possedes.length,
           editionTerminee: principale.edition.editionTerminee,
-          statut: principale.edition.statut,
+          desaturee: estDesaturee(principale.edition.suivis[0]),
           couvertureUrl: dernier?.couvertureUrl ?? null,
           dernierNumeroPossede: dernier?.numero ?? null,
         };
@@ -161,54 +183,66 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
 }
 
 export async function chargerEtatEdition(slug: string): Promise<EtatEdition | null> {
-  const edition = await prisma.edition.findUnique({
-    where: { slug },
+  const utilisateurId = await idUtilisateurCourant();
+
+  const suivi = await prisma.suiviEdition.findFirst({
+    where: { utilisateurId, edition: { slug } },
     select: {
-      slug: true,
-      nom: true,
       statut: true,
-      editionTerminee: true,
-      termineeForcee: true,
-      serie: { select: { titre: true } },
+      suivie: true,
+      edition: {
+        select: {
+          slug: true,
+          nom: true,
+          editionTerminee: true,
+          serie: { select: { titre: true } },
+        },
+      },
     },
   });
 
-  if (!edition) {
+  if (!suivi) {
     return null;
   }
 
   return {
-    slug: edition.slug,
-    nom: edition.nom,
-    titre: edition.serie.titre,
-    statut: edition.statut,
-    editionTerminee: edition.editionTerminee,
-    termineeForcee: edition.termineeForcee,
+    slug: suivi.edition.slug,
+    nom: suivi.edition.nom,
+    titre: suivi.edition.serie.titre,
+    statut: suivi.statut,
+    editionTerminee: suivi.edition.editionTerminee,
+    suivie: suivi.suivie,
   };
 }
 
 export async function chargerCollection(): Promise<Collection> {
-  const editions = await prisma.edition.findMany({
+  const utilisateurId = await idUtilisateurCourant();
+
+  const suivis = await prisma.suiviEdition.findMany({
+    where: { utilisateurId },
     select: {
-      slug: true,
-      nom: true,
-      editeur: true,
-      tomesParus: true,
-      editionTerminee: true,
       statut: true,
-      termineeForcee: true,
-      aVerifier: true,
+      suivie: true,
       ajouteeLe: true,
-      couvertureUrl: true,
-      prixDefautCentimes: true,
-      serie: { select: { titre: true, _count: { select: { editions: true } } } },
-      volumes: {
-        orderBy: { numero: "asc" },
+      edition: {
         select: {
-          numero: true,
+          slug: true,
+          nom: true,
+          editeur: true,
+          tomesParus: true,
+          editionTerminee: true,
           couvertureUrl: true,
-          prixCentimes: true,
-          possession: { select: { possede: true } },
+          prixDefautCentimes: true,
+          serie: { select: { titre: true, _count: { select: { editions: true } } } },
+          volumes: {
+            orderBy: { numero: "asc" },
+            select: {
+              numero: true,
+              couvertureUrl: true,
+              prixCentimes: true,
+              possessions: selectionPossession(utilisateurId),
+            },
+          },
         },
       },
     },
@@ -217,11 +251,12 @@ export async function chargerCollection(): Promise<Collection> {
   let valeurCentimes = 0;
   let tomesSansPrix = 0;
 
-  const toutes = editions.map((edition) => {
-    const possedes = edition.volumes.filter((volume) => volume.possession?.possede);
+  const toutes = suivis.map((suivi) => {
+    const edition = suivi.edition;
+    const possedes = volumesPossedes(edition.volumes);
     const dernier = possedes.at(-1) ?? null;
 
-    if (edition.statut !== "VENDUE") {
+    if (suivi.statut !== "VENDUE") {
       for (const volume of possedes) {
         const prix = volume.prixCentimes ?? edition.prixDefautCentimes;
         if (prix === null) {
@@ -240,10 +275,9 @@ export async function chargerCollection(): Promise<Collection> {
       tomesParus: edition.tomesParus,
       possedes: possedes.length,
       editionTerminee: edition.editionTerminee,
-      statut: edition.statut,
-      termineeForcee: edition.termineeForcee,
-      aVerifier: edition.aVerifier,
-      ajouteeLe: edition.ajouteeLe.getTime(),
+      statut: suivi.statut,
+      suivie: suivi.suivie,
+      ajouteeLe: suivi.ajouteeLe.getTime(),
       editionsDeLaSerie: edition.serie._count.editions,
       dernierNumeroPossede: dernier?.numero ?? null,
       couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
@@ -263,45 +297,48 @@ export async function chargerCollection(): Promise<Collection> {
 }
 
 export async function chargerManquants(): Promise<Manquants> {
-  const editions = await prisma.edition.findMany({
-    where: { statut: { not: "VENDUE" }, termineeForcee: false },
+  const utilisateurId = await idUtilisateurCourant();
+
+  const suivis = await prisma.suiviEdition.findMany({
+    where: { utilisateurId, suivie: true },
     select: {
-      slug: true,
-      nom: true,
-      editeur: true,
       statut: true,
-      aVerifier: true,
-      tomesParus: true,
-      couvertureUrl: true,
-      serie: { select: { titre: true } },
-      volumes: {
-        orderBy: { numero: "asc" },
+      edition: {
         select: {
-          numero: true,
+          slug: true,
+          nom: true,
+          editeur: true,
+          tomesParus: true,
           couvertureUrl: true,
-          possession: { select: { possede: true } },
+          serie: { select: { titre: true } },
+          volumes: {
+            orderBy: { numero: "asc" },
+            select: {
+              numero: true,
+              couvertureUrl: true,
+              possessions: selectionPossession(utilisateurId),
+            },
+          },
         },
       },
     },
   });
 
-  const avecManquants = editions
-    .map((edition) => {
+  const editions = suivis
+    .map((suivi) => {
+      const edition = suivi.edition;
       const parus = edition.volumes.filter((volume) => volume.numero <= edition.tomesParus);
-      const possedes = parus.filter((volume) => volume.possession?.possede);
+      const possedes = parus.filter(estPossede);
       const dernier = possedes.at(-1) ?? null;
       return {
         slug: edition.slug,
         titre: edition.serie.titre,
         nom: edition.nom,
         editeur: edition.editeur,
-        statut: edition.statut,
-        aVerifier: edition.aVerifier,
+        statut: suivi.statut,
         tomesParus: edition.tomesParus,
         possedes: possedes.length,
-        manquants: parus
-          .filter((volume) => !volume.possession?.possede)
-          .map((volume) => volume.numero),
+        manquants: parus.filter((volume) => !estPossede(volume)).map((volume) => volume.numero),
         dernierNumeroPossede: dernier?.numero ?? null,
         couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
       };
@@ -309,20 +346,17 @@ export async function chargerManquants(): Promise<Manquants> {
     .filter((edition) => edition.manquants.length > 0)
     .sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
 
-  const editionsActives = avecManquants.filter((edition) => edition.statut === "EN_COURS");
-
   return {
-    editions: editionsActives,
-    arretees: avecManquants.filter((edition) => edition.statut !== "EN_COURS"),
-    tomesManquants: editionsActives.reduce(
-      (total, edition) => total + edition.manquants.length,
-      0,
-    ),
+    editions,
+    tomesManquants: editions.reduce((total, edition) => total + edition.manquants.length, 0),
   };
 }
 
 export async function chargerPlanning(): Promise<SortiePlanning[]> {
+  const utilisateurId = await idUtilisateurCourant();
+
   const sorties = await prisma.sortie.findMany({
+    where: { edition: { suivis: { some: { utilisateurId, suivie: true } } } },
     orderBy: [{ date: "asc" }, { numero: "asc" }],
     select: {
       numero: true,

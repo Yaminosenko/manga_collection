@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
-import { ArrowLeft, ArrowUpRight, CaretRight, WarningCircle } from "@/components/icons";
+import { ArrowLeft, ArrowUpRight, CaretRight } from "@/components/icons";
 import { chargerEdition } from "@/lib/editions";
 import { estProprietaire } from "@/lib/guard";
 import {
@@ -13,7 +13,6 @@ import {
 } from "@/lib/domain";
 import {
   LIBELLES_LIEN_SERIE,
-  LIBELLE_A_VERIFIER,
   LIBELLE_AUTRES_EDITIONS,
   LIBELLE_SERIES_LIEES,
   LIBELLE_FICHE_MANGA_NEWS,
@@ -70,13 +69,6 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
             <p className="truncate text-[11.5px] text-neutral-600">
               {sousTitre(edition.nom, edition.editeur)}
             </p>
-
-            {edition.aVerifier ? (
-              <span className="mt-[2px] inline-flex items-center gap-[5px] self-start rounded-sm border border-neutral-800 px-[7px] py-[2px] text-[10px] font-medium text-neutral-400">
-                <WarningCircle className="size-[11px]" />
-                {LIBELLE_A_VERIFIER}
-              </span>
-            ) : null}
 
             <div className="mt-[7px] flex items-center gap-[9px]">
               <ProgressBar
@@ -136,7 +128,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
                 >
                   <span
                     className={`shadow-edge h-[74px] w-[52px] flex-none overflow-hidden rounded-cover text-[11px] ${
-                      autre.statut === "EN_COURS" ? "" : "opacity-50"
+                      autre.desaturee ? "opacity-50" : ""
                     }`}
                   >
                     <Cover
@@ -157,7 +149,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
                         possedes={autre.possedes}
                         tomesParus={autre.tomesParus}
                         aParaitre={aDesTomesAParaitre(autre.editionTerminee)}
-                        desature={autre.statut !== "EN_COURS"}
+                        desature={autre.desaturee}
                       />
                       <span className="text-[11.5px] font-medium whitespace-nowrap text-neutral-300">
                         {autre.possedes} / {autre.tomesParus}
@@ -185,7 +177,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
                 >
                   <span
                     className={`shadow-edge h-[74px] w-[52px] flex-none overflow-hidden rounded-cover text-[11px] ${
-                      liee.statut === "EN_COURS" ? "" : "opacity-50"
+                      liee.desaturee ? "opacity-50" : ""
                     }`}
                   >
                     <Cover
@@ -206,7 +198,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
                         possedes={liee.possedes}
                         tomesParus={liee.tomesParus}
                         aParaitre={aDesTomesAParaitre(liee.editionTerminee)}
-                        desature={liee.statut !== "EN_COURS"}
+                        desature={liee.desaturee}
                       />
                       <span className="text-[11.5px] font-medium whitespace-nowrap text-neutral-300">
                         {liee.possedes} / {liee.tomesParus}

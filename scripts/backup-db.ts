@@ -4,7 +4,11 @@ import { join } from "node:path";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { prisma as prismaNeon } from "../lib/prisma";
 import { PrismaClient } from "../lib/generated/prisma/client";
-import type { StatutEdition, TypeLienSerie } from "../lib/generated/prisma/enums";
+import type {
+  RoleUtilisateur,
+  StatutEdition,
+  TypeLienSerie,
+} from "../lib/generated/prisma/enums";
 
 const urlLocale = process.env["LOCAL_DATABASE_URL"];
 
@@ -17,8 +21,18 @@ const RESTAURATION = "--restore";
 const ECRASEMENT = "--reset";
 const LOT_ECRITURE = 500;
 
+type UtilisateurSauve = {
+  id: string;
+  email: string | null;
+  nom: string | null;
+  role: RoleUtilisateur;
+  aPaye: boolean;
+  creeLe: string;
+};
+
 type PossessionSauvee = {
   id: string;
+  utilisateurId: string;
   possede: boolean;
   dateAchat: string | null;
   prixPayeCentimes: number | null;
@@ -34,7 +48,7 @@ type VolumeSauve = {
   dateSortie: string | null;
   prixCentimes: number | null;
   couvertureUrl: string | null;
-  possession: PossessionSauvee | null;
+  possessions: PossessionSauvee[];
 };
 
 type SortieSauvee = {
@@ -45,6 +59,14 @@ type SortieSauvee = {
   couvertureUrl: string | null;
 };
 
+type SuiviSauve = {
+  id: string;
+  utilisateurId: string;
+  statut: StatutEdition;
+  suivie: boolean;
+  ajouteeLe: string;
+};
+
 type EditionSauvee = {
   id: string;
   slug: string;
@@ -53,13 +75,10 @@ type EditionSauvee = {
   tomesParus: number;
   editionTerminee: boolean | null;
   prixDefautCentimes: number | null;
-  statut: StatutEdition;
-  termineeForcee: boolean;
-  raisonCompletion: string | null;
-  aVerifier: boolean;
   slugMangaNews: string | null;
   couvertureUrl: string | null;
-  ajouteeLe: string;
+  creeeParId: string | null;
+  suivis: SuiviSauve[];
   volumes: VolumeSauve[];
   sorties: SortieSauvee[];
 };
@@ -72,6 +91,7 @@ type SerieSauvee = {
   auteur: string;
   genres: string[];
   themes: string[];
+  alias: string[];
   cible: string | null;
   couvertureUrl: string | null;
   editions: EditionSauvee[];
@@ -82,8 +102,7 @@ type Compteurs = {
   editions: number;
   tomes: number;
   possedes: number;
-  aVerifier: number;
-  forcees: number;
+  suivies: number;
   couvertures: number;
   liens: number;
 };
@@ -98,6 +117,7 @@ type LienSauve = {
 type Sauvegarde = {
   exporteeLe: string;
   compteurs: Compteurs;
+  utilisateurs: UtilisateurSauve[];
   series: SerieSauvee[];
   liens: LienSauve[];
 };
@@ -116,21 +136,26 @@ async function compter(): Promise<Compteurs> {
     editions: await prisma.edition.count(),
     tomes: await prisma.volume.count(),
     possedes: await prisma.possession.count({ where: { possede: true } }),
-    aVerifier: await prisma.edition.count({ where: { aVerifier: true } }),
-    forcees: await prisma.edition.count({ where: { termineeForcee: true } }),
+    suivies: await prisma.suiviEdition.count({ where: { suivie: true } }),
     couvertures: await prisma.volume.count({ where: { couvertureUrl: { not: null } } }),
     liens: await prisma.lienSerie.count(),
   };
 }
 
 async function exporter() {
+  const utilisateurs = await prisma.utilisateur.findMany({ orderBy: { creeLe: "asc" } });
+
   const series = await prisma.serie.findMany({
     orderBy: { slug: "asc" },
     include: {
       editions: {
         orderBy: { slug: "asc" },
         include: {
-          volumes: { orderBy: { numero: "asc" }, include: { possession: true } },
+          suivis: { orderBy: { utilisateurId: "asc" } },
+          volumes: {
+            orderBy: { numero: "asc" },
+            include: { possessions: { orderBy: { utilisateurId: "asc" } } },
+          },
           sorties: { orderBy: { numero: "asc" } },
         },
       },
@@ -144,6 +169,14 @@ async function exporter() {
   const sauvegarde: Sauvegarde = {
     exporteeLe: new Date().toISOString(),
     compteurs: await compter(),
+    utilisateurs: utilisateurs.map((utilisateur) => ({
+      id: utilisateur.id,
+      email: utilisateur.email,
+      nom: utilisateur.nom,
+      role: utilisateur.role,
+      aPaye: utilisateur.aPaye,
+      creeLe: utilisateur.creeLe.toISOString(),
+    })),
     liens,
     series: series.map((serie) => ({
       id: serie.id,
@@ -153,6 +186,7 @@ async function exporter() {
       auteur: serie.auteur,
       genres: serie.genres,
       themes: serie.themes,
+      alias: serie.alias,
       cible: serie.cible,
       couvertureUrl: serie.couvertureUrl,
       editions: serie.editions.map((edition) => ({
@@ -163,13 +197,16 @@ async function exporter() {
         tomesParus: edition.tomesParus,
         editionTerminee: edition.editionTerminee,
         prixDefautCentimes: edition.prixDefautCentimes,
-        statut: edition.statut,
-        termineeForcee: edition.termineeForcee,
-        raisonCompletion: edition.raisonCompletion,
-        aVerifier: edition.aVerifier,
         slugMangaNews: edition.slugMangaNews,
         couvertureUrl: edition.couvertureUrl,
-        ajouteeLe: edition.ajouteeLe.toISOString(),
+        creeeParId: edition.creeeParId,
+        suivis: edition.suivis.map((suivi) => ({
+          id: suivi.id,
+          utilisateurId: suivi.utilisateurId,
+          statut: suivi.statut,
+          suivie: suivi.suivie,
+          ajouteeLe: suivi.ajouteeLe.toISOString(),
+        })),
         sorties: edition.sorties.map((sortie) => ({
           id: sortie.id,
           numero: sortie.numero,
@@ -184,17 +221,16 @@ async function exporter() {
           dateSortie: enISO(volume.dateSortie),
           prixCentimes: volume.prixCentimes,
           couvertureUrl: volume.couvertureUrl,
-          possession: volume.possession
-            ? {
-                id: volume.possession.id,
-                possede: volume.possession.possede,
-                dateAchat: enISO(volume.possession.dateAchat),
-                prixPayeCentimes: volume.possession.prixPayeCentimes,
-                etat: volume.possession.etat,
-                lu: volume.possession.lu,
-                note: volume.possession.note,
-              }
-            : null,
+          possessions: volume.possessions.map((possession) => ({
+            id: possession.id,
+            utilisateurId: possession.utilisateurId,
+            possede: possession.possede,
+            dateAchat: enISO(possession.dateAchat),
+            prixPayeCentimes: possession.prixPayeCentimes,
+            etat: possession.etat,
+            lu: possession.lu,
+            note: possession.note,
+          })),
         })),
       })),
     })),
@@ -206,8 +242,8 @@ async function exporter() {
   console.log(`sauvegarde ecrite dans ${SAUVEGARDE}`);
   console.log(
     `${compteurs.series} series · ${compteurs.editions} editions · ${compteurs.tomes} tomes · ` +
-      `${compteurs.possedes} possedes · ${compteurs.aVerifier} a verifier · ` +
-      `${compteurs.forcees} forcees · ${compteurs.couvertures} couvertures`,
+      `${compteurs.possedes} possedes · ${compteurs.suivies} suivies · ` +
+      `${compteurs.couvertures} couvertures · ${sauvegarde.utilisateurs.length} utilisateurs`,
   );
   await annoncerCatalogueHorsSauvegarde();
 }
@@ -234,6 +270,13 @@ async function restaurer() {
   }
 
   const sauvegarde = JSON.parse(readFileSync(SAUVEGARDE, "utf-8")) as Sauvegarde;
+
+  if (!Array.isArray(sauvegarde.utilisateurs)) {
+    throw new Error(
+      "Cette sauvegarde precede la separation catalogue/suivi : la relire avec le backup-db.ts du tag avant-multi-compte.",
+    );
+  }
+
   const existantes = await prisma.edition.count();
 
   if (existantes > 0 && !process.argv.includes(ECRASEMENT)) {
@@ -247,7 +290,17 @@ async function restaurer() {
 
   if (existantes > 0) {
     await prisma.serie.deleteMany();
+    await prisma.utilisateur.deleteMany();
   }
+
+  const utilisateurs = sauvegarde.utilisateurs.map((utilisateur) => ({
+    id: utilisateur.id,
+    email: utilisateur.email,
+    nom: utilisateur.nom,
+    role: utilisateur.role,
+    aPaye: utilisateur.aPaye,
+    creeLe: new Date(utilisateur.creeLe),
+  }));
 
   const series = sauvegarde.series.map((serie) => ({
     id: serie.id,
@@ -257,6 +310,7 @@ async function restaurer() {
     auteur: serie.auteur,
     genres: serie.genres,
     themes: serie.themes,
+    alias: serie.alias ?? [],
     cible: serie.cible,
     couvertureUrl: serie.couvertureUrl,
   }));
@@ -271,14 +325,23 @@ async function restaurer() {
       tomesParus: edition.tomesParus,
       editionTerminee: edition.editionTerminee,
       prixDefautCentimes: edition.prixDefautCentimes,
-      statut: edition.statut,
-      termineeForcee: edition.termineeForcee,
-      raisonCompletion: edition.raisonCompletion,
-      aVerifier: edition.aVerifier,
       slugMangaNews: edition.slugMangaNews,
       couvertureUrl: edition.couvertureUrl,
-      ajouteeLe: new Date(edition.ajouteeLe),
+      creeeParId: edition.creeeParId,
     })),
+  );
+
+  const suivis = sauvegarde.series.flatMap((serie) =>
+    serie.editions.flatMap((edition) =>
+      edition.suivis.map((suivi) => ({
+        id: suivi.id,
+        utilisateurId: suivi.utilisateurId,
+        editionId: edition.id,
+        statut: suivi.statut,
+        suivie: suivi.suivie,
+        ajouteeLe: new Date(suivi.ajouteeLe),
+      })),
+    ),
   );
 
   const volumes = sauvegarde.series.flatMap((serie) =>
@@ -311,26 +374,29 @@ async function restaurer() {
   const possessions = sauvegarde.series.flatMap((serie) =>
     serie.editions.flatMap((edition) =>
       edition.volumes.flatMap((volume) =>
-        volume.possession
-          ? [
-              {
-                id: volume.possession.id,
-                volumeId: volume.id,
-                possede: volume.possession.possede,
-                dateAchat: enDate(volume.possession.dateAchat),
-                prixPayeCentimes: volume.possession.prixPayeCentimes,
-                etat: volume.possession.etat,
-                lu: volume.possession.lu,
-                note: volume.possession.note,
-              },
-            ]
-          : [],
+        volume.possessions.map((possession) => ({
+          id: possession.id,
+          utilisateurId: possession.utilisateurId,
+          volumeId: volume.id,
+          possede: possession.possede,
+          dateAchat: enDate(possession.dateAchat),
+          prixPayeCentimes: possession.prixPayeCentimes,
+          etat: possession.etat,
+          lu: possession.lu,
+          note: possession.note,
+        })),
       ),
     ),
   );
 
+  await ecrireParLots("utilisateurs", utilisateurs, (lot) =>
+    prisma.utilisateur.createMany({ data: lot }),
+  );
   await ecrireParLots("series", series, (lot) => prisma.serie.createMany({ data: lot }));
   await ecrireParLots("editions", editions, (lot) => prisma.edition.createMany({ data: lot }));
+  await ecrireParLots("suivis d'edition", suivis, (lot) =>
+    prisma.suiviEdition.createMany({ data: lot }),
+  );
   await ecrireParLots("tomes", volumes, (lot) => prisma.volume.createMany({ data: lot }));
   await ecrireParLots("possessions", possessions, (lot) =>
     prisma.possession.createMany({ data: lot }),

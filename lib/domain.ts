@@ -63,7 +63,7 @@ export type AutreEdition = {
   tomesParus: number;
   possedes: number;
   editionTerminee: boolean | null;
-  statut: StatutEdition;
+  desaturee: boolean;
   couvertureUrl: string | null;
   dernierNumeroPossede: number | null;
 };
@@ -76,7 +76,7 @@ export type SerieLiee = {
   tomesParus: number;
   possedes: number;
   editionTerminee: boolean | null;
-  statut: StatutEdition;
+  desaturee: boolean;
   couvertureUrl: string | null;
   dernierNumeroPossede: number | null;
 };
@@ -92,8 +92,7 @@ export type Edition = {
   tomesParus: number;
   editionTerminee: boolean | null;
   statut: StatutEdition;
-  termineeForcee: boolean;
-  aVerifier: boolean;
+  suivie: boolean;
   slugMangaNews: string | null;
   couvertureUrl: string | null;
   prixDefautCentimes: number | null;
@@ -109,7 +108,7 @@ export type EtatEdition = {
   titre: string;
   statut: StatutEdition;
   editionTerminee: boolean | null;
-  termineeForcee: boolean;
+  suivie: boolean;
 };
 
 export type LigneCollection = {
@@ -121,8 +120,7 @@ export type LigneCollection = {
   possedes: number;
   editionTerminee: boolean | null;
   statut: StatutEdition;
-  termineeForcee: boolean;
-  aVerifier: boolean;
+  suivie: boolean;
   ajouteeLe: number;
   editionsDeLaSerie: number;
   dernierNumeroPossede: number | null;
@@ -144,7 +142,6 @@ export type EditionManquante = {
   nom: string;
   editeur: string | null;
   statut: StatutEdition;
-  aVerifier: boolean;
   tomesParus: number;
   possedes: number;
   manquants: number[];
@@ -154,7 +151,6 @@ export type EditionManquante = {
 
 export type Manquants = {
   editions: EditionManquante[];
-  arretees: EditionManquante[];
   tomesManquants: number;
 };
 
@@ -194,13 +190,13 @@ export function aDesTomesAParaitre(editionTerminee: boolean | null): boolean {
 }
 
 export function libelleStatut(
-  edition: Pick<Edition, "statut" | "tomesParus" | "termineeForcee" | "editionTerminee">,
+  edition: Pick<Edition, "statut" | "tomesParus" | "suivie" | "editionTerminee">,
   possedes: number,
 ): string {
   if (edition.statut !== "EN_COURS") {
     return LIBELLES_STATUT[edition.statut];
   }
-  if (edition.termineeForcee) {
+  if (!edition.suivie) {
     return LIBELLE_TERMINEE_FORCEE;
   }
   if (possedes === edition.tomesParus) {
@@ -224,7 +220,7 @@ export function etiquetteStatutLigne(ligne: LigneCollection): string | null {
 export function estComplete(ligne: LigneCollection): boolean {
   return (
     ligne.statut === "EN_COURS" &&
-    !ligne.termineeForcee &&
+    ligne.suivie &&
     ligne.tomesParus > 0 &&
     ligne.possedes === ligne.tomesParus &&
     ligne.editionTerminee === true

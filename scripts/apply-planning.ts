@@ -111,9 +111,7 @@ async function main() {
 
     if (cible > edition.tomesParus) {
       for (let numero = edition.tomesParus + 1; numero <= cible; numero += 1) {
-        await prisma.volume.create({
-          data: { editionId: edition.id, numero, possession: { create: { possede: false } } },
-        });
+        await prisma.volume.create({ data: { editionId: edition.id, numero } });
         tomesCrees += 1;
       }
       await prisma.edition.update({ where: { id: edition.id }, data: { tomesParus: cible } });

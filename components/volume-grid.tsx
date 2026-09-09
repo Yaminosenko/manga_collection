@@ -1,20 +1,10 @@
 "use client";
 
-import { useOptimistic, useState, useTransition } from "react";
-import {
-  basculerTome,
-  definirTousLesTomes,
-  marquerRepartitionVerifiee,
-} from "@/lib/actions";
+import { useOptimistic, useTransition } from "react";
+import { basculerTome, definirTousLesTomes } from "@/lib/actions";
 import { Cover } from "@/components/cover";
-import { Check, WarningCircle } from "@/components/icons";
-import {
-  COLONNES_GRILLE,
-  LIBELLE_A_VERIFIER,
-  LIBELLE_REPARTITION_ERREUR,
-  LIBELLE_REPARTITION_VERIFIEE,
-  MENTION_REPARTITION_DEVINEE,
-} from "@/lib/constants";
+import { Check } from "@/components/icons";
+import { COLONNES_GRILLE } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
 import { nombreCasesAParaitre, type SortieAnnoncee } from "@/lib/domain";
 import { useEnLigne } from "@/lib/use-online";
@@ -28,7 +18,6 @@ type VolumeGridProps = {
   tomesParus: number;
   aParaitre: boolean;
   lectureSeule: boolean;
-  aVerifier: boolean;
   sorties: SortieAnnoncee[];
   tomes: Tome[];
 };
@@ -53,7 +42,6 @@ export function VolumeGrid({
   tomesParus,
   aParaitre,
   lectureSeule,
-  aVerifier,
   sorties,
   tomes,
 }: VolumeGridProps) {
@@ -207,47 +195,8 @@ export function VolumeGrid({
         </div>
 
         <span className="text-[11px]/[1.5] text-neutral-600">{MENTION_ENREGISTREMENT}</span>
-
-        {aVerifier && !lectureSeule ? (
-          <ValidationRepartition slug={slug} />
-        ) : null}
       </div>
     </>
-  );
-}
-
-function ValidationRepartition({ slug }: { slug: string }) {
-  const [echouee, setEchouee] = useState(false);
-  const [enCours, demarrer] = useTransition();
-
-  return (
-    <div className="border-divider flex flex-col gap-[9px] border-t pt-[14px]">
-      <span className="flex items-center gap-[6px] text-[11.5px] font-medium text-neutral-400">
-        <WarningCircle className="size-[13px] flex-none" />
-        {LIBELLE_A_VERIFIER}
-      </span>
-      <span className="text-[11px]/[1.5] text-neutral-600">{MENTION_REPARTITION_DEVINEE}</span>
-      <button
-        type="button"
-        disabled={enCours}
-        onClick={() =>
-          demarrer(async () => {
-            setEchouee(false);
-            try {
-              await marquerRepartitionVerifiee(slug);
-            } catch {
-              setEchouee(true);
-            }
-          })
-        }
-        className="min-h-11 self-start rounded-md border border-neutral-800 px-[12px] text-[12px] font-medium text-neutral-300 transition-colors hover:border-accent-600 hover:text-accent-200 disabled:opacity-50"
-      >
-        {LIBELLE_REPARTITION_VERIFIEE}
-      </button>
-      {echouee ? (
-        <span className="text-[11px]/[1.5] text-neutral-400">{LIBELLE_REPARTITION_ERREUR}</span>
-      ) : null}
-    </div>
   );
 }
 

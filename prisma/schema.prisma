@@ -24,6 +24,23 @@ enum TypeLienSerie {
   AUTRE
 }
 
+enum RoleUtilisateur {
+  PROPRIETAIRE
+  UTILISATEUR
+}
+
+model Utilisateur {
+  id             String          @id @default(uuid())
+  email          String?         @unique
+  nom            String?
+  role           RoleUtilisateur @default(UTILISATEUR)
+  aPaye          Boolean         @default(false)
+  creeLe         DateTime        @default(now())
+  suivis         SuiviEdition[]
+  possessions    Possession[]
+  editionsCreees Edition[]       @relation("editionsCreees")
+}
+
 model Serie {
   id            String      @id @default(uuid())
   slug          String      @unique
@@ -32,6 +49,7 @@ model Serie {
   auteur        String
   genres        String[]
   themes        String[]
+  alias         String[]    @default([])
   cible         String?
   couvertureUrl String?
   editions      Edition[]
@@ -39,6 +57,7 @@ model Serie {
   liensEntrants LienSerie[] @relation("liensEntrants")
 
   @@index([titre])
+  @@index([alias(ops: ArrayOps)], type: Gin)
 }
 
 model LienSerie {
@@ -54,27 +73,39 @@ model LienSerie {
 }
 
 model Edition {
-  id                 String        @id @default(uuid())
-  serie              Serie         @relation(fields: [serieId], references: [id], onDelete: Cascade)
+  id                 String         @id @default(uuid())
+  serie              Serie          @relation(fields: [serieId], references: [id], onDelete: Cascade)
   serieId            String
-  slug               String        @unique
+  slug               String         @unique
   nom                String
   editeur            String?
   tomesParus         Int
   editionTerminee    Boolean?
   prixDefautCentimes Int?
-  statut             StatutEdition
-  termineeForcee     Boolean       @default(false)
-  raisonCompletion   String?
-  aVerifier          Boolean       @default(false)
   slugMangaNews      String?
   couvertureUrl      String?
-  ajouteeLe          DateTime      @default(now())
+  creeePar           Utilisateur?   @relation("editionsCreees", fields: [creeeParId], references: [id], onDelete: SetNull)
+  creeeParId         String?
   volumes            Volume[]
   sorties            Sortie[]
+  suivis             SuiviEdition[]
 
   @@index([serieId])
-  @@index([statut])
+}
+
+model SuiviEdition {
+  id            String        @id @default(uuid())
+  utilisateur   Utilisateur   @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+  utilisateurId String
+  edition       Edition       @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  editionId     String
+  statut        StatutEdition
+  suivie        Boolean       @default(true)
+  ajouteeLe     DateTime      @default(now())
+
+  @@unique([utilisateurId, editionId])
+  @@index([utilisateurId])
+  @@index([utilisateurId, suivie])
 }
 
 model Sortie {
@@ -91,31 +122,34 @@ model Sortie {
 }
 
 model Volume {
-  id            String      @id @default(uuid())
-  edition       Edition     @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  id            String       @id @default(uuid())
+  edition       Edition      @relation(fields: [editionId], references: [id], onDelete: Cascade)
   editionId     String
   numero        Int
   isbn          String?
   dateSortie    DateTime?
   prixCentimes  Int?
   couvertureUrl String?
-  possession    Possession?
+  possessions   Possession[]
 
   @@unique([editionId, numero])
 }
 
 model Possession {
-  id               String    @id @default(uuid())
-  volume           Volume    @relation(fields: [volumeId], references: [id], onDelete: Cascade)
-  volumeId         String    @unique
-  possede          Boolean   @default(false)
+  id               String      @id @default(uuid())
+  utilisateur      Utilisateur @relation(fields: [utilisateurId], references: [id], onDelete: Cascade)
+  utilisateurId    String
+  volume           Volume      @relation(fields: [volumeId], references: [id], onDelete: Cascade)
+  volumeId         String
+  possede          Boolean     @default(false)
   dateAchat        DateTime?
   prixPayeCentimes Int?
   etat             String?
-  lu               Boolean   @default(false)
+  lu               Boolean     @default(false)
   note             Int?
 
-  @@index([possede])
+  @@unique([utilisateurId, volumeId])
+  @@index([utilisateurId, possede])
 }
 
 model ParutionCatalogue {

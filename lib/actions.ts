@@ -9,6 +9,8 @@ import { slugifier } from "@/lib/slug";
 import { creerSerieAvecEdition } from "@/lib/creation";
 import { promouvoirSortie } from "@/lib/promotion";
 import { exigerProprietaire } from "@/lib/guard";
+import { idUtilisateurCourant } from "@/lib/utilisateur";
+import { estPossede, selectionPossession } from "@/lib/possession";
 import {
   LIBELLE_STATUT_INVALIDE,
   LIBELLE_TOMES_PARUS_INVALIDE,
@@ -31,14 +33,27 @@ function revaliderEdition(slug: string): void {
 
 export async function marquerSortieObtenue(slug: string, numero: number): Promise<void> {
   await exigerProprietaire();
-  await promouvoirSortie(slug, numero, true, new Date());
+  await promouvoirSortie(slug, numero, await idUtilisateurCourant(), new Date());
   revaliderEdition(slug);
   revalidatePath("/planning");
 }
 
+async function editionSuivie(slug: string): Promise<{ utilisateurId: string; editionId: string }> {
+  const utilisateurId = await idUtilisateurCourant();
+  const edition = await prisma.edition.findUnique({ where: { slug }, select: { id: true } });
+  if (!edition) {
+    throw new Error(`Édition ${slug} introuvable`);
+  }
+  return { utilisateurId, editionId: edition.id };
+}
+
 export async function definirStatut(slug: string, statut: StatutEdition): Promise<void> {
   await exigerProprietaire();
-  await prisma.edition.update({ where: { slug }, data: { statut } });
+  const { utilisateurId, editionId } = await editionSuivie(slug);
+  await prisma.suiviEdition.update({
+    where: { utilisateurId_editionId: { utilisateurId, editionId } },
+    data: { statut },
+  });
   revaliderEdition(slug);
 }
 
@@ -51,10 +66,15 @@ export async function definirParution(
   revaliderEdition(slug);
 }
 
-export async function definirTermineeForcee(slug: string, forcee: boolean): Promise<void> {
+export async function definirSuivie(slug: string, suivie: boolean): Promise<void> {
   await exigerProprietaire();
-  await prisma.edition.update({ where: { slug }, data: { termineeForcee: forcee } });
+  const { utilisateurId, editionId } = await editionSuivie(slug);
+  await prisma.suiviEdition.update({
+    where: { utilisateurId_editionId: { utilisateurId, editionId } },
+    data: { suivie },
+  });
   revaliderEdition(slug);
+  revalidatePath("/planning");
 }
 
 export async function basculerTome(
@@ -73,21 +93,14 @@ export async function basculerTome(
     throw new Error(`Tome ${numero} introuvable pour l'édition ${slug}`);
   }
 
+  const utilisateurId = await idUtilisateurCourant();
+
   await prisma.possession.upsert({
-    where: { volumeId: volume.id },
-    create: { volumeId: volume.id, possede },
+    where: { utilisateurId_volumeId: { utilisateurId, volumeId: volume.id } },
+    create: { utilisateurId, volumeId: volume.id, possede },
     update: { possede },
   });
 
-  revaliderEdition(slug);
-}
-
-export async function marquerRepartitionVerifiee(slug: string): Promise<void> {
-  await exigerProprietaire();
-  await prisma.edition.updateMany({
-    where: { slug, aVerifier: true },
-    data: { aVerifier: false },
-  });
   revaliderEdition(slug);
 }
 
@@ -103,16 +116,18 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
     throw new Error(`Édition ${slug} introuvable`);
   }
 
+  const utilisateurId = await idUtilisateurCourant();
+
   const identifiants = edition.volumes
     .filter((volume) => volume.numero <= edition.tomesParus)
     .map((volume) => volume.id);
 
   await prisma.possession.createMany({
-    data: identifiants.map((volumeId) => ({ volumeId, possede })),
+    data: identifiants.map((volumeId) => ({ utilisateurId, volumeId, possede })),
     skipDuplicates: true,
   });
   await prisma.possession.updateMany({
-    where: { volumeId: { in: identifiants } },
+    where: { utilisateurId, volumeId: { in: identifiants } },
     data: { possede },
   });
 
@@ -126,6 +141,8 @@ export async function rechercherSeries(terme: string): Promise<ResultatRecherche
   if (requete.length < LONGUEUR_RECHERCHE_MIN) {
     return { locales: [], distantes: [], indisponible: false };
   }
+
+  const utilisateurId = await idUtilisateurCourant();
 
   const [editions, distante] = await Promise.all([
     prisma.edition.findMany({
@@ -142,7 +159,7 @@ export async function rechercherSeries(terme: string): Promise<ResultatRecherche
         editeur: true,
         tomesParus: true,
         serie: { select: { titre: true } },
-        volumes: { select: { possession: { select: { possede: true } } } },
+        volumes: { select: { possessions: selectionPossession(utilisateurId) } },
       },
     }),
     rechercherSurAniList(requete),
@@ -161,7 +178,7 @@ export async function rechercherSeries(terme: string): Promise<ResultatRecherche
       nom: edition.nom,
       editeur: edition.editeur,
       tomesParus: edition.tomesParus,
-      possedes: edition.volumes.filter((volume) => volume.possession?.possede).length,
+      possedes: edition.volumes.filter(estPossede).length,
     })),
     distantes: distante.resultats.map((resultat) => ({
       ...resultat,
@@ -209,11 +226,13 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     return null;
   }
 
+  const utilisateurId = await idUtilisateurCourant();
+
   const volume = await prisma.volume.findFirst({
     where: { isbn },
     select: {
       numero: true,
-      possession: { select: { possede: true } },
+      possessions: selectionPossession(utilisateurId),
       edition: { select: { slug: true, nom: true, serie: { select: { titre: true } } } },
     },
   });
@@ -225,7 +244,7 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
       titre: volume.edition.serie.titre,
       nom: volume.edition.nom,
       numero: volume.numero,
-      possede: volume.possession?.possede ?? false,
+      possede: estPossede(volume),
     };
   }
 

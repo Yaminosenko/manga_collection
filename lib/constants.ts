@@ -15,12 +15,6 @@ export const LIBELLE_EDITION_TERMINEE = "Édition terminée";
 export const LIBELLE_COMPLETE = "Complète";
 export const LIBELLE_A_JOUR = "À jour";
 export const LIBELLE_TERMINEE_FORCEE = "Terminée par choix";
-export const LIBELLE_A_VERIFIER = "À vérifier";
-export const LIBELLE_REPARTITION_VERIFIEE = "Répartition vérifiée";
-export const MENTION_REPARTITION_DEVINEE =
-  "L’import du Sheet a attribué les premiers tomes sans savoir lesquels étaient possédés. Confirmez la répartition une fois relue.";
-export const LIBELLE_REPARTITION_ERREUR =
-  "La validation n’a pas été enregistrée. Réessayez.";
 
 export const URL_RECHERCHE_MANGA_NEWS = "https://www.manga-news.com/index.php/recherche/?q=";
 export const LIBELLE_FICHE_MANGA_NEWS = "Fiche manga-news";
@@ -30,7 +24,6 @@ export const TRIS = [
   { cle: "tomesPossedes", libelle: "Tomes possédés" },
   { cle: "completion", libelle: "% de complétion" },
   { cle: "ajoutRecent", libelle: "Ajout récent" },
-  { cle: "aVerifier", libelle: "À vérifier en premier" },
 ] as const;
 
 export type CleTri = (typeof TRIS)[number]["cle"];
@@ -51,7 +44,6 @@ export const CROISSANT_PAR_DEFAUT: Record<CleTri, boolean> = {
   tomesPossedes: false,
   completion: false,
   ajoutRecent: false,
-  aVerifier: false,
 };
 
 export const TITRE_MANQUANTS = "Manquants";
@@ -59,7 +51,6 @@ export const LIBELLE_AUCUN_MANQUANT = "Aucun tome manquant.";
 export const LIBELLE_MANQUANTS_ERREUR = "Les tomes manquants n’ont pas pu être chargés.";
 export const LIBELLE_COLLECTION_ERREUR = "La collection n’a pas pu être chargée.";
 
-export const LIBELLE_ARRETEES = "Abandonnées et en pause";
 
 export const DELAI_APPEL_EXTERNE_MS = 8_000;
 
@@ -96,6 +87,8 @@ export const TITRE_ACCES = "Collection privée";
 export const LIBELLE_MOT_DE_PASSE = "Mot de passe";
 export const LIBELLE_DEVERROUILLER = "Entrer";
 export const LIBELLE_ACCES_REFUSE = "Mot de passe incorrect.";
+export const LIBELLE_PROPRIETAIRE_ABSENT =
+  "Aucun utilisateur propriétaire en base : la migration des comptes n’a pas été appliquée.";
 export const LIBELLE_ACCES_NON_CONFIGURE =
   "Aucun mot de passe n’est configuré : renseignez ACCESS_PASSWORD dans l’environnement.";
 
@@ -129,14 +122,16 @@ export const LIBELLE_MODIFIER_ETAT = "Modifier l’état";
 export const TITRE_ETAT = "État";
 export const LIBELLE_STATUT_PERSONNEL = "Où j’en suis";
 export const LIBELLE_PARUTION = "Parution en France";
-export const LIBELLE_COLLECTION_FORCEE = "Collection terminée par choix";
+export const LIBELLE_SUIVI = "Suivi";
+export const LIBELLE_SUIVIE = "Suivie";
+export const LIBELLE_NON_SUIVIE = "Non suivie";
 export const LIBELLE_PARUTION_TERMINEE = "Terminée";
 export const LIBELLE_PARUTION_EN_COURS = "En cours";
 export const LIBELLE_PARUTION_INCONNUE = "Inconnue";
 export const MENTION_PARUTION =
   "Une édition terminée n’affiche plus de tomes à paraître, et « À jour » y devient « Complète ».";
-export const MENTION_COLLECTION_FORCEE =
-  "Déclare la collection finie malgré des tomes manquants. Ils cessent de remonter dans Manquants ; la barre garde son compte réel.";
+export const MENTION_SUIVI =
+  "Une édition suivie rappelle ses tomes manquants dans Manquants et ses sorties dans Planning. Non suivie, elle reste dans la collection sans rien réclamer ; la barre garde son compte réel.";
 
 export const LIBELLE_ENTRER_INVITE = "Entrer en invité";
 export const LIBELLE_MODE_INVITE = "Mode invité · consultation seule";

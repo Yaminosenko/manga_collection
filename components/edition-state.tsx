@@ -1,17 +1,19 @@
 "use client";
 
 import { useOptimistic, useTransition } from "react";
-import { definirParution, definirStatut, definirTermineeForcee } from "@/lib/actions";
+import { definirParution, definirStatut, definirSuivie } from "@/lib/actions";
 import {
   LIBELLES_STATUT,
-  LIBELLE_COLLECTION_FORCEE,
+  LIBELLE_NON_SUIVIE,
   LIBELLE_PARUTION,
   LIBELLE_PARUTION_EN_COURS,
   LIBELLE_PARUTION_INCONNUE,
   LIBELLE_PARUTION_TERMINEE,
   LIBELLE_STATUT_PERSONNEL,
-  MENTION_COLLECTION_FORCEE,
+  LIBELLE_SUIVI,
+  LIBELLE_SUIVIE,
   MENTION_PARUTION,
+  MENTION_SUIVI,
   STATUTS_EDITION,
 } from "@/lib/constants";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
@@ -19,7 +21,7 @@ import type { StatutEdition } from "@/lib/generated/prisma/enums";
 type Etat = {
   statut: StatutEdition;
   editionTerminee: boolean | null;
-  termineeForcee: boolean;
+  suivie: boolean;
 };
 
 type EditionStateProps = Etat & { slug: string };
@@ -37,10 +39,10 @@ const CHOIX =
 const CHOIX_ACTIF = "border-accent bg-accent/12 text-accent";
 const CHOIX_INACTIF = "border-neutral-800 text-neutral-400 hover:border-neutral-700";
 
-export function EditionState({ slug, statut, editionTerminee, termineeForcee }: EditionStateProps) {
+export function EditionState({ slug, statut, editionTerminee, suivie }: EditionStateProps) {
   const [enCours, demarrer] = useTransition();
   const [etat, appliquer] = useOptimistic<Etat, Partial<Etat>>(
-    { statut, editionTerminee, termineeForcee },
+    { statut, editionTerminee, suivie },
     (precedent, modification) => ({ ...precedent, ...modification }),
   );
 
@@ -60,11 +62,11 @@ export function EditionState({ slug, statut, editionTerminee, termineeForcee }: 
     });
   }
 
-  function basculerForcee() {
-    const valeur = !etat.termineeForcee;
+  function basculerSuivi() {
+    const valeur = !etat.suivie;
     demarrer(async () => {
-      appliquer({ termineeForcee: valeur });
-      await definirTermineeForcee(slug, valeur);
+      appliquer({ suivie: valeur });
+      await definirSuivie(slug, valeur);
     });
   }
 
@@ -115,17 +117,17 @@ export function EditionState({ slug, statut, editionTerminee, termineeForcee }: 
 
       <section className="flex flex-col gap-[9px]">
         <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
-          {LIBELLE_COLLECTION_FORCEE}
+          {LIBELLE_SUIVI}
         </h2>
         <button
           type="button"
-          aria-pressed={etat.termineeForcee}
-          onClick={basculerForcee}
-          className={`${CHOIX} ${etat.termineeForcee ? CHOIX_ACTIF : CHOIX_INACTIF}`}
+          aria-pressed={etat.suivie}
+          onClick={basculerSuivi}
+          className={`${CHOIX} ${etat.suivie ? CHOIX_ACTIF : CHOIX_INACTIF}`}
         >
-          {etat.termineeForcee ? "Activée" : "Désactivée"}
+          {etat.suivie ? LIBELLE_SUIVIE : LIBELLE_NON_SUIVIE}
         </button>
-        <p className="text-[11px]/[1.5] text-neutral-600">{MENTION_COLLECTION_FORCEE}</p>
+        <p className="text-[11px]/[1.5] text-neutral-600">{MENTION_SUIVI}</p>
       </section>
     </div>
   );

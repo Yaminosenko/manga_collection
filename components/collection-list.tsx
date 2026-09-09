@@ -54,8 +54,6 @@ function comparer(a: LigneCollection, b: LigneCollection, tri: CleTri): number {
       return tauxCompletion(a) - tauxCompletion(b);
     case "ajoutRecent":
       return a.ajouteeLe - b.ajouteeLe;
-    case "aVerifier":
-      return Number(a.aVerifier) - Number(b.aVerifier);
   }
 }
 

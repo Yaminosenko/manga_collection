@@ -41,7 +41,6 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/tomes"
         tomesParus={edition.tomesParus}
         aParaitre={aDesTomesAParaitre(edition.editionTerminee)}
         lectureSeule={!proprietaire}
-        aVerifier={edition.aVerifier}
         sorties={edition.sorties}
         tomes={edition.tomes}
       />

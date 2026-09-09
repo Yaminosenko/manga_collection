@@ -43,7 +43,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/etat">
         slug={edition.slug}
         statut={edition.statut}
         editionTerminee={edition.editionTerminee}
-        termineeForcee={edition.termineeForcee}
+        suivie={edition.suivie}
       />
     </main>
   );

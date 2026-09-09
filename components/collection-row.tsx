@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
-import { Check, FlagCheckered, PauseCircle, Prohibit, WarningCircle } from "@/components/icons";
+import { Check, FlagCheckered, PauseCircle, Prohibit } from "@/components/icons";
 import {
   aDesTomesAParaitre,
   estComplete,
@@ -16,10 +16,7 @@ const PLACEHOLDER_LIGNE = "p-[6px] text-[12px] text-neutral-700";
 function IconeEtat({ ligne }: { ligne: LigneCollection }) {
   const className = "size-[14px] flex-none text-neutral-600";
 
-  if (ligne.aVerifier) {
-    return <WarningCircle className={className} />;
-  }
-  if (ligne.termineeForcee) {
+  if (!ligne.suivie && ligne.statut === "EN_COURS") {
     return <FlagCheckered className={className} />;
   }
   return null;

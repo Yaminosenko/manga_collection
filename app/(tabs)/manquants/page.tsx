@@ -1,13 +1,12 @@
-import { CollapsibleSection } from "@/components/collapsible-section";
 import { MissingGroup } from "@/components/missing-group";
 import { chargerManquants } from "@/lib/editions";
-import { LIBELLE_ARRETEES, LIBELLE_AUCUN_MANQUANT, TITRE_MANQUANTS } from "@/lib/constants";
+import { LIBELLE_AUCUN_MANQUANT, TITRE_MANQUANTS } from "@/lib/constants";
 import { formaterNombre } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const { editions, arretees, tomesManquants } = await chargerManquants();
+  const { editions, tomesManquants } = await chargerManquants();
 
   return (
     <main className="flex flex-1 flex-col">
@@ -28,16 +27,6 @@ export default async function Page() {
             ))}
           </ul>
         )}
-
-        {arretees.length > 0 ? (
-          <CollapsibleSection libelle={LIBELLE_ARRETEES} compteur={arretees.length}>
-            <ul className="flex flex-col">
-              {arretees.map((edition) => (
-                <MissingGroup key={edition.slug} edition={edition} />
-              ))}
-            </ul>
-          </CollapsibleSection>
-        ) : null}
       </div>
     </main>
   );

@@ -27,7 +27,10 @@ type SortieChargee = {
   edition: { slug: string };
 };
 
-async function promouvoir(sortie: SortieChargee, possede: boolean): Promise<SortiePromue> {
+async function promouvoir(
+  sortie: SortieChargee,
+  utilisateurId: string | null,
+): Promise<SortiePromue> {
   return prisma.$transaction(async (tx) => {
     const edition = await tx.edition.findUniqueOrThrow({
       where: { id: sortie.editionId },
@@ -38,11 +41,7 @@ async function promouvoir(sortie: SortieChargee, possede: boolean): Promise<Sort
     for (let numero = edition.tomesParus + 1; numero <= sortie.numero; numero += 1) {
       await tx.volume.upsert({
         where: { editionId_numero: { editionId: sortie.editionId, numero } },
-        create: {
-          editionId: sortie.editionId,
-          numero,
-          possession: { create: { possede: false } },
-        },
+        create: { editionId: sortie.editionId, numero },
         update: {},
       });
     }
@@ -57,11 +56,13 @@ async function promouvoir(sortie: SortieChargee, possede: boolean): Promise<Sort
       select: { id: true },
     });
 
-    await tx.possession.upsert({
-      where: { volumeId: volume.id },
-      create: { volumeId: volume.id, possede },
-      update: { possede },
-    });
+    if (utilisateurId !== null) {
+      await tx.possession.upsert({
+        where: { utilisateurId_volumeId: { utilisateurId, volumeId: volume.id } },
+        create: { utilisateurId, volumeId: volume.id, possede: true },
+        update: { possede: true },
+      });
+    }
 
     if (cible > edition.tomesParus) {
       await tx.edition.update({ where: { id: sortie.editionId }, data: { tomesParus: cible } });
@@ -76,7 +77,7 @@ async function promouvoir(sortie: SortieChargee, possede: boolean): Promise<Sort
 export async function promouvoirSortie(
   slug: string,
   numero: number,
-  possede: boolean,
+  utilisateurId: string,
   instant: Date,
 ): Promise<SortiePromue | null> {
   const sortie = await prisma.sortie.findFirst({
@@ -88,7 +89,7 @@ export async function promouvoirSortie(
     return null;
   }
 
-  return promouvoir(sortie, possede);
+  return promouvoir(sortie, utilisateurId);
 }
 
 export async function promouvoirSortiesEchues(instant: Date): Promise<SortiePromue[]> {
@@ -100,7 +101,7 @@ export async function promouvoirSortiesEchues(instant: Date): Promise<SortieProm
 
   const promues: SortiePromue[] = [];
   for (const sortie of echues) {
-    promues.push(await promouvoir(sortie, false));
+    promues.push(await promouvoir(sortie, null));
   }
   return promues;
 }

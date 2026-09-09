@@ -59,12 +59,28 @@ async function assertEmptyOrReset(): Promise<void> {
   await prisma.serie.deleteMany();
 }
 
+async function idProprietaire(): Promise<string> {
+  const proprietaire = await prisma.utilisateur.findFirst({
+    where: { role: "PROPRIETAIRE" },
+    select: { id: true },
+    orderBy: { creeLe: "asc" },
+  });
+  if (!proprietaire) {
+    throw new Error(
+      "Aucun utilisateur proprietaire : appliquer les migrations avant de semer (npm run db:migrate).",
+    );
+  }
+  return proprietaire.id;
+}
+
 async function main(): Promise<void> {
   await assertEmptyOrReset();
 
+  const utilisateurId = await idProprietaire();
   const series = readSource();
   const serieRows = [];
   const editionRows = [];
+  const suiviRows = [];
   const volumeRows = [];
   const possessionRows = [];
 
@@ -91,33 +107,42 @@ async function main(): Promise<void> {
         tomesParus: edition.tomesParus,
         editionTerminee: edition.editionTerminee,
         prixDefautCentimes: toCentimes(edition.prixDefaut),
-        statut: edition.statut,
-        termineeForcee: edition.termineeForcee,
-        raisonCompletion: edition.raisonCompletion,
-        aVerifier: edition.aVerifier,
         slugMangaNews: edition.slugMangaNews,
+      });
+
+      suiviRows.push({
+        id: randomUUID(),
+        utilisateurId,
+        editionId,
+        statut: edition.statut,
+        suivie: edition.statut === "EN_COURS" && !edition.termineeForcee,
       });
 
       for (const volume of edition.volumes) {
         const volumeId = randomUUID();
         volumeRows.push({ id: volumeId, editionId, numero: volume.numero });
-        possessionRows.push({ id: randomUUID(), volumeId, possede: volume.possede });
+        possessionRows.push({
+          id: randomUUID(),
+          utilisateurId,
+          volumeId,
+          possede: volume.possede,
+        });
       }
     }
   }
 
   await prisma.serie.createMany({ data: serieRows });
   await prisma.edition.createMany({ data: editionRows });
+  await prisma.suiviEdition.createMany({ data: suiviRows });
   await prisma.volume.createMany({ data: volumeRows });
   await prisma.possession.createMany({ data: possessionRows });
 
-  const [series_, editions, volumes, possedes, aVerifier, forcees] = await Promise.all([
+  const [series_, editions, volumes, possedes, suivies] = await Promise.all([
     prisma.serie.count(),
     prisma.edition.count(),
     prisma.volume.count(),
     prisma.possession.count({ where: { possede: true } }),
-    prisma.edition.count({ where: { aVerifier: true } }),
-    prisma.edition.count({ where: { termineeForcee: true } }),
+    prisma.suiviEdition.count({ where: { suivie: true } }),
   ]);
 
   const seriesMultiEditions = (
@@ -128,8 +153,7 @@ async function main(): Promise<void> {
   console.log(`Editions               : ${editions}`);
   console.log(`Tomes                  : ${volumes}`);
   console.log(`Tomes possedes         : ${possedes}`);
-  console.log(`Editions a verifier    : ${aVerifier}`);
-  console.log(`Completions forcees    : ${forcees}`);
+  console.log(`Editions suivies       : ${suivies}`);
   console.log(`Series multi-editions  : ${seriesMultiEditions}`);
 }
 

@@ -128,13 +128,7 @@ async function main() {
         nouveaux.push(numero);
       }
       for (const numero of nouveaux) {
-        await prisma.volume.create({
-          data: {
-            editionId: edition.id,
-            numero,
-            possession: { create: { possede: false } },
-          },
-        });
+        await prisma.volume.create({ data: { editionId: edition.id, numero } });
       }
       tomesAjoutes += nouveaux.length;
       elargies.push(`${edition.slug} ${edition.tomesParus} -> ${cible}`);
