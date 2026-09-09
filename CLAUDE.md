@@ -680,7 +680,7 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 | `Edition.slugMangaNews` | **0 / 113** — le lien sortant de la page Édition ne s'affiche donc jamais |
 | Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
-| `ParutionCatalogue` | **8 296** parutions, **2 702 séries**, août 2024 → décembre 2026 — sur ~50 000 lignes et ~5 900 séries pour l'archive complète |
+| `ParutionCatalogue` | **50 232** parutions, **11 315 séries**, janvier 2000 → décembre 2026, dont **48 222 avec EAN** — l'archive complète, hors les deux trous connus |
 
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
 élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
@@ -833,21 +833,25 @@ détail et les cas réels sont dans `JOURNAL.md`.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
 - ~~**Appliquer l'archive de planning**~~ — **fait le 3 septembre 2026**, voir `JOURNAL.md`.
-- ~~**Alimenter `ParutionCatalogue`**~~ — **fait le 8 septembre 2026** pour le lot disponible :
-  8 296 parutions, 2 702 séries, août 2024 → décembre 2026. Voir `JOURNAL.md`. **Reste à y verser
-  les 288 fichiers de janvier 2000 à janvier 2024**, qui sont sur une autre machine ; l'ordre
-  n'importe pas, la clé `(titreBrut, date)` rend chaque passage idempotent.
+- ~~**Alimenter `ParutionCatalogue`**~~ — **fait, et complet depuis le 9 septembre 2026** :
+  **50 232 parutions, 11 315 séries, janvier 2000 → décembre 2026**, dont 48 222 avec EAN. Les
+  288 fichiers anciens n'étaient pas sur une autre machine mais dans `~/Documents/planning_manga`.
+  Voir `JOURNAL.md`. Restent les deux trous connus, `2000-09` et février → juillet 2024.
 - **Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`.** C'est ce que la table sert et
   rien ne le fait encore. Aujourd'hui l'ajout passe par AniList seul : `tomesParus` pré-rempli
   avec le **compte japonais**, aucune couverture, aucun ISBN, aucune date, aucun thème, et
   l'éditeur comme le prix arrivent plus tard par des scripts — `goodnight-punpun`, seule série
   jamais ajoutée depuis l'application, est encore la seule sans prix, ce qui suffit à faire
   afficher `≥` devant la valeur de la collection. Le catalogue donne le nom FR, le marqueur
-  d'édition, l'éditeur, la date et l'EAN, et l'EAN donne ensuite couverture et prix par la BnF.
+  d'édition, l'éditeur, la date et l'EAN, et l'EAN donne ensuite le prix par la BnF.
   **Deux règles de requête établies le 8 septembre** : une résolution par EAN rend la ligne **la
   plus récente** et non la première (5 EAN sont portés par plusieurs lignes), et tout classement
-  par `numero` doit écarter les `NULL` ou demander `NULLS LAST`, 809 lignes n'ayant pas de numéro.
-  **Ordre décidé le 8 septembre : après les changements de suivi et la migration**, pas avant.
+  par `numero` doit écarter les `NULL` ou demander `NULLS LAST`, 4 646 lignes de l'archive
+  ancienne n'ayant pas de numéro en plus des 809 récentes.
+  **La migration et le suivi étant faits, c'est le chantier suivant**, et le catalogue complété
+  le 9 septembre le rend praticable : **100 % de nos ISBN y résolvent, 99 % des EAN d'une série
+  possédée y sont mobilisables, et 6 023 séries y ont un tome 1 avec EAN** — voir `JOURNAL.md`,
+  « Fait — l'archive de catalogue complétée jusqu'à 2000 ».
 - **Dériver les `Sortie` depuis `ParutionCatalogue`** au lieu de les écrire depuis le manifeste
   de planning — le circuit visé par le plan de §13.1. Ça règle le défaut du 30 août, « le
   planning est une photographie, pas un flux » : ajouter une série calculerait ses sorties
@@ -859,11 +863,13 @@ détail et les cas réels sont dans `JOURNAL.md`.
   29, 98,8 % d'EAN livre. Sans urgence : `tomesParus` n'est jamais abaissé, les lots s'importent
   dans n'importe quel ordre, et la borne de fenêtre protège les sorties annoncées d'un import qui
   ne les couvre pas.
-- **Où sont les CSV de planning** (8 septembre 2026). Ils ne sont pas dans le dépôt et ne le
-  seront pas. Les **29 fichiers d'août 2024 à décembre 2026** sont sur cette machine ; les **288
-  fichiers de janvier 2000 à janvier 2024** sont sur **une autre machine**. Conséquence directe
-  sur l'amorçage du catalogue : depuis ce poste, `ParutionCatalogue` ne peut être alimentée que
-  des 8 298 lignes récentes, pas des 41 941 anciennes.
+- **Où sont les CSV de planning** (corrigé le 9 septembre 2026). Ils ne sont pas dans le dépôt et
+  ne le seront pas. **Tout est sur cette machine** : `~/Documents/planning_manga` porte les 288
+  fichiers datés de janvier 2000 à janvier 2024, en `planning_YYYY-MM.csv`. Les trois dossiers
+  voisins `2000-2008`, `2008-2017` et `2017-2024` sont les **téléchargements bruts** du
+  2 septembre, nommés `PlanningManga_02-09-2026 (N).csv` — 291 fichiers dont `planning_manga` est
+  la version renommée ; ils ne servent qu'à refaire ce renommage. Le 8 septembre les croyait sur
+  un autre poste, ce qui a fait conclure à tort que le catalogue ne pouvait pas être complété
   **La casse du nom de fichier varie** — `Planning_2026-11.csv` contre `planning_2024-08.csv` :
   tout parcours du dossier doit être insensible à la casse, ce que `glob` ne garantit pas selon
   la plateforme.

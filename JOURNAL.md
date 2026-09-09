@@ -2483,3 +2483,61 @@ Sur le banc, jamais en production. Décocher tous les tomes d'une édition suivi
 mention « 1 série », et sort de Manquants. Recocher le tome 1 : tout revient, wish list vide,
 Manquants à **116 tomes · 16 éditions**. Le banc est à sa base exacte : 1 155 possédés,
 1 714 possessions, 84 suivies, et seules les 4 `VENDUE` à zéro tome.
+
+### Fait — l'archive de catalogue complétée jusqu'à 2000 (9 septembre 2026)
+
+Les 288 CSV de janvier 2000 à janvier 2024 n'étaient pas sur une autre machine : ils étaient
+dans `~/Documents/planning_manga`, déjà datés et rangés en `planning_YYYY-MM.csv`. Les trois
+dossiers voisins — `2000-2008`, `2008-2017`, `2017-2024`, 291 fichiers nommés
+`PlanningManga_02-09-2026 (N).csv` — sont les **téléchargements bruts** du 2 septembre, dont
+`planning_manga` est la version renommée. C'est celle-là qu'on importe ; les bruts ne servent à
+rien d'autre qu'à refaire le renommage.
+
+**`2000-09` manque bien**, comme la spec l'annonçait : le mois passe de `2000-08` à `2000-10`.
+Et le trou de février → juillet 2024 subsiste, `planning_manga` s'arrêtant à `2024-01` quand le
+lot déjà importé démarre à `2024-08`.
+
+```
+288 fichiers, 41941 lignes lues
+41936 parutions retenues, 9515 series distinctes
+couverture : 2000-01-01 -> 2024-01-31
+40027 avec EAN livre (95.4%), 164 EAN non livre mis a null
+4646 lignes sans Vol.N, 3657 titres desinverses, 2259 marqueurs detectes
+5 doublons (titreBrut, date) ecartes
+```
+
+Le chiffre de 41 941 lignes anciennes que §12 annonçait tombe exactement juste.
+
+**Manifeste relu avant d'appliquer**, comme la règle l'exige, et il est sain : les désinversions
+restaurent correctement l'article français — `Journal de mon père (le)` → `Le Journal de mon
+père` — les marqueurs séparent bien la série de son édition — `Dragon Ball - Deluxe` devient
+série « Dragon Ball » + marqueur « Deluxe » — et **les 164 EAN écartés sont des magazines**,
+Animeland portant un code de périodique identique sur des dizaines de numéros. Les 5 doublons
+sont légitimes, même titre et même date.
+
+**L'écriture est purement additive** : `apply-catalogue.ts` ne fait qu'un `createMany` avec
+`skipDuplicates`, aucune suppression, donc les 8 296 lignes récentes ne risquaient rien.
+Vérifié dans le code avant de lancer, et confirmé après : `41936 inserees, 0 deja presentes`.
+
+**Table : 50 232 parutions, 11 315 séries distinctes, 48 222 avec EAN**, du 1er janvier 2000 au
+31 décembre 2026.
+
+#### Ce que ça débloque, mesuré avant et après
+
+| | Avant | Après |
+|---|---|---|
+| Nos EAN de tomes résolus au catalogue | 158 / 1 491 — **10,6 %** | **1 491 / 1 491 — 100 %** |
+| Éditions de la collection appariées | 44 / 113 | **90 / 113** |
+| EAN mobilisables pour leurs tomes | 231 / 745 — **31 %** | **1 539 / 1 554 — 99 %** |
+| Séries dont le tome 1 porte un EAN | — | **6 023** |
+
+**100 % de nos ISBN se retrouvent au catalogue.** Le verrou du 31 août — « le vrai verrou n'est
+pas la source, c'est l'ISBN » — est levé pour tout ce qu'on possède, et les 6 023 tomes 1
+identifiés ouvrent le cas qui manquait : scanner le premier tome d'une série qu'on ne possède
+pas. Les 23 éditions encore non appariées sont celles dont aucun tome ne porte d'ISBN en base,
+donc sans EAN à apparier — ce n'est pas un défaut du catalogue.
+
+**La conséquence sur le chantier `/ajouter` est directe** : la récolte des EAN d'une série ne
+demande plus la recherche BnF par titre, mesurée le même jour à 95 % de notices avec code mais
+handicapée par la confusion entre éditions. Le catalogue donne la même chose avec le nom FR, le
+marqueur d'édition et l'éditeur déjà séparés.
