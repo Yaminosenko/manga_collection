@@ -1119,9 +1119,28 @@ correspondant. Tant que le code n'est pas prêt, les garder hors de ce dossier.
    répartition devinée ne se rattrape pas après coup, d'où l'insistance. Voir `JOURNAL.md`,
    « Fait — la Phase 0 du passage au multi-compte ».
 
-**Phase 1 — la répétition sur données réelles.** Le banc existe depuis le 30 août :
-`npx prisma dev`, `LOCAL_DATABASE_URL`, `db:backup -- --restore --reset` pour y verser la copie
-fidèle, puis les trois migrations. Contrôles à l'arrivée :
+**Phase 1 — la répétition sur données réelles.** ~~Le banc existe depuis le 30 août~~ —
+**répétition faite le 9 septembre 2026, les trois migrations passent et les contrôles ci-dessous
+tombent tous juste.** Voir `JOURNAL.md`, « Fait — les trois migrations répétées sur le banc ».
+
+Le SQL vit dans **`prisma/pending-migrations/`**, volontairement **hors de
+`prisma/migrations/`** : `npm run build` enchaîne `db:migrate`, donc un fichier déposé dans le
+dossier normal partirait au prochain déploiement Vercel sans le code de la Phase 2. Le
+déplacement des trois dossiers est le dernier geste du chantier, pas le premier.
+
+Le banc se remonte ainsi : `npx prisma dev -d -n manga` rend une URL, puis
+`LOCAL_DATABASE_URL` la porte pour `npm run db:migrate` (les 5 migrations existantes),
+`db:backup -- --restore --reset` (la copie fidèle) et enfin `MIGRATIONS_DIR=prisma/pending-migrations
+npm run db:migrate` (les trois nouvelles). **Ne pas mettre `LOCAL_DATABASE_URL` dans `.env`** —
+`backup-db.ts` s'en sert pour choisir sa cible, et une sauvegarde suivante irait silencieusement
+frapper le banc au lieu de Neon. La passer en préfixe de commande.
+
+Deux propriétés du banc à connaître : **`prisma dev` rend une URL sur `template1`**, donc toute
+base créée ensuite hérite du schéma et du `_prisma_migrations` d'un banc précédent — la
+répétition du 9 septembre n'a rejoué que 4 des 5 migrations existantes pour cette raison, sans
+conséquence. Et il tourne en **PostgreSQL 17.5 (wasm)** là où Neon est en 18.6.
+
+Contrôles à l'arrivée :
 
 | Attendu après migration |
 |---|
@@ -1137,6 +1156,20 @@ des tomes, donc des possessions. Ceux ci-dessus sont relevés le 9 septembre 202
 fait contre le `compteurs` de `data/backup.json` fraîchement écrit, pas contre ce tableau, sinon
 il échoue à faux. Les cinq autres lignes, elles, sont stables : rien n'ajoute ni ne retire une
 édition sans intervention.
+
+**Trois contrôles ajoutés le 9 septembre, parce qu'un compteur juste ne prouve pas une
+contrainte.** Ils sont passés sur le banc, dans une transaction annulée ensuite :
+
+| Attendu, éprouvé par écriture réelle |
+|---|
+| deux comptes possèdent le **même** `volumeId` — l'ancien `volumeId @unique` est bien mort |
+| un second `(utilisateurId, volumeId)` identique est **refusé** par la nouvelle contrainte |
+| supprimer un compte emporte ses `Possession` et ses `SuiviEdition`, et **laisse les 1 714 du propriétaire intactes** |
+
+Et le contrôle qui vaut pour l'écran : **4 sorties portent sur des éditions non suivies**, et ce
+sont exactement `blue-exorcist`, `les-legendaires-saga`, `one-puch-man` et
+`why-nobody-remember-my-world` — les quatre fantômes du Planning relevés le 4 septembre. La
+formule de backfill fait donc bien ce que §13.1 avait prédit.
 
 **Phase 2 — le code**, dans cet ordre :
 1. `lib/utilisateur.ts` — `utilisateurCourant()`, **invité résolu vers le propriétaire en

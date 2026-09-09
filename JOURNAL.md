@@ -2240,3 +2240,77 @@ disparaît, `aVerifier` passe de 1 à 0 en base et les possessions ne bougent pa
   changé entre la capture et le clic — 744 px puis 698 — et le bouton à y=722 était sorti de
   l'écran. Aucune erreur, aucun log, l'écran inchangé. **Recapturer juste avant de cliquer, et
   ne conclure que sur la base.**
+
+### Fait — les trois migrations répétées sur le banc (9 septembre 2026)
+
+Phase 1 de §13.1. Les trois migrations sont écrites, jouées sur une copie fidèle de la base et
+vérifiées par écriture réelle, pas seulement par des compteurs.
+
+| Fichier | Rôle |
+|---|---|
+| `prisma/pending-migrations/20260909120000_utilisateurs_et_alias/` | l'enum `RoleUtilisateur`, la table `Utilisateur`, la ligne du propriétaire, `Serie.alias` et son index GIN |
+| `prisma/pending-migrations/20260909120100_suivi_edition/` | `SuiviEdition`, le backfill, `Edition.creeeParId`, puis le `DROP` des 5 colonnes |
+| `prisma/pending-migrations/20260909120200_possession_par_compte/` | `Possession.utilisateurId`, l'échange des index, la clé étrangère |
+| `scripts/apply-migrations.ts` | accepte `LOCAL_DATABASE_URL` (pilote `pg`) et `MIGRATIONS_DIR` |
+
+**Le SQL est hors de `prisma/migrations/` et doit y rester** jusqu'à ce que le code de la Phase 2
+soit prêt : `npm run build` enchaîne `db:migrate`, donc un dossier posé au bon endroit part au
+prochain déploiement Vercel **sans le code qui va avec**. C'est le piège que §13.1 nomme, et le
+seul moyen de ne pas y tomber est que le chemin normal ne voie rien.
+
+**Le runner ne savait pas parler à un Postgres local.** Il n'ouvrait qu'un `Pool` Neon, qui parle
+le proxy WebSocket de Neon et pas le protocole Postgres : la répétition était impossible en
+l'état. Il choisit désormais `pg` quand `LOCAL_DATABASE_URL` est là, comme `backup-db.ts` le fait
+depuis le 30 août, et `MIGRATIONS_DIR` permet de viser le dossier en attente. Le chemin de
+production ne bouge pas — sans ces deux variables, c'est `DIRECT_URL` et `prisma/migrations`.
+
+L'id du propriétaire est un **UUID littéral figé dans le SQL**, `f087527f-…0169fe`, généré une
+fois : une migration ponctuelle doit être déterministe. L'email reste **nul**, le dépôt étant
+public.
+
+#### Les contrôles, tous passés
+
+| Attendu | Obtenu |
+|---|---|
+| `SuiviEdition` = 113, toutes sur le propriétaire | 113 / 113 |
+| statuts préservés | `EN_COURS=86 ABANDONNEE=18 EN_PAUSE=5 VENDUE=4` |
+| `suivie=true` = 84, aucune hors `EN_COURS` | 84, et 0 hors `EN_COURS` |
+| `ajouteeLe` reprise | 0 nulle, du 28 au 30 août |
+| `Possession` = 1 714 sur le propriétaire, 1 155 possédés | conforme |
+| `Serie.alias` renseigné | 105 sur 109, et 0 divergence avec `titreVo` |
+| `Edition` sans les 5 colonnes | « aucune » restante |
+| `SuiviEdition` sans `raisonCompletion` ni `aVerifier` | 6 colonnes, aucune des deux |
+| index échangés sur `Possession` | `utilisateurId_volumeId_key` et `utilisateurId_possede_idx`, l'ancien `volumeId_key` disparu |
+| `creeeParId` | nul sur les 113, ce qui veut dire « venu de l'import » |
+
+**Trois vérifications par écriture réelle, dans une transaction annulée ensuite**, parce qu'un
+`pg_indexes` qui affiche le bon nom ne prouve pas que la contrainte protège quelque chose :
+deux comptes sur le **même** `volumeId` sont acceptés — l'ancien `volumeId @unique` est bien
+mort ; un second `(utilisateurId, volumeId)` identique est refusé, `duplicate key value violates
+unique constraint "Possession_utilisateurId_volumeId_key"` ; et supprimer le compte emporte ses
+possessions et ses suivis en laissant **les 1 714 lignes du propriétaire intactes**. 1 714 avant,
+1 714 après annulation.
+
+**Le Planning perd ses 4 fantômes, et ce sont les bons.** Les sorties portées par une édition non
+suivie sont exactement `blue-exorcist`, `les-legendaires-saga`, `one-puch-man` et
+`why-nobody-remember-my-world` — les quatre relevés le 4 septembre. Le backfill
+`statut = 'EN_COURS' AND termineeForcee = false` fait donc ce que §13.1 avait prédit, sans rien
+changer à Manquants.
+
+#### Deux propriétés du banc, à connaître avant de le remonter
+
+- **`npx prisma dev` rend une URL sur `template1`.** Toute base créée ensuite en hérite : la
+  base `manga` de cette répétition est arrivée avec le schéma **et** le `_prisma_migrations` du
+  banc du 30 août, si bien que seules 4 des 5 migrations existantes ont été rejouées. Sans
+  conséquence ici — l'état d'arrivée était bon, 8 tables et 0 édition — mais un banc qu'on croit
+  vierge ne l'est pas.
+- **`LOCAL_DATABASE_URL` ne doit pas entrer dans `.env`.** `backup-db.ts` s'en sert pour choisir
+  sa cible : une sauvegarde lancée ensuite irait silencieusement frapper le banc au lieu de Neon,
+  et écraserait `data/backup.json` avec l'état du banc. Elle se passe en préfixe de commande.
+- Le banc tourne en **PostgreSQL 17.5 (wasm)** là où Neon est en **18.6**. `gen_random_uuid()` et
+  l'index GIN sur `text[]` sont natifs des deux côtés.
+
+**Ce que la Phase 1 ne couvre pas, et qui vient avec la Phase 2** : `backup-db.ts` lit encore
+`statut` et `aVerifier` sur `Edition` et niche la possession sous le volume. Après migration il
+ne sait donc ni sauvegarder ni restaurer le banc — c'est le point 4 de la Phase 2, et il doit
+être fait **avant** qu'on ait besoin du filet.
