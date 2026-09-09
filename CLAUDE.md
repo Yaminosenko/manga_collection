@@ -581,7 +581,7 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 | Sorties annoncées (`Sortie`) | **14** |
 | Liens entre séries (`LienSerie`) | **18** sur 16 séries |
 | `termineeForcee` | **2** — devient `suivie`, inversé, par la migration de §13.1 |
-| `raisonCompletion` · `aVerifier` | **3** · **12** — reliquats de l'import du Sheet, **supprimés** par la migration de §13.1 |
+| `raisonCompletion` · `aVerifier` | **3** · **0** — reliquats de l'import du Sheet, **supprimés** par la migration de §13.1 ; les 12 dernières éditions marquées ont été relues le 9 septembre 2026 |
 | Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **8 296** parutions, **2 702 séries**, août 2024 → décembre 2026 — sur ~50 000 lignes et ~5 900 séries pour l'archive complète |
@@ -591,8 +591,9 @@ Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal :
 tomes. `data/backup.json` datait du 3 septembre au moment de ce relevé et affichait donc deux
 tomes de moins — **la sauvegarde se relance avant de s'appuyer sur ses chiffres.** Relancée le
 9 septembre 2026, elle concorde désormais avec les compteurs ci-dessus ; elle portait encore
-1 712 tomes, 1 153 possédés, 1 674 couvertures et 13 `aVerifier`. Le commit est tagué
-`avant-multi-compte` — Phase 0 de §13.1.
+1 712 tomes, 1 153 possédés, 1 674 couvertures et 13 `aVerifier`. Elle a été reprise une seconde
+fois le même jour, après la relecture des 12 derniers drapeaux, et rend `0 a verifier`. Le commit
+est tagué `avant-multi-compte` — Phase 0 de §13.1.
 
 ### Pièges établis
 
@@ -893,9 +894,10 @@ aucune répartition devinée. Le concept n'a donc pas à exister pour tout le mo
 
 Conséquences à tenir :
 - **`SuiviEdition` ne porte pas de `aVerifier`** ni d'équivalent renommé.
-- **Les 12 éditions encore marquées sont un reliquat du propriétaire**, à relire avant la
-  migration par le bouton « Répartition vérifiée » de la sous-page « Mes tomes ». La colonne
-  meurt avec la migration.
+- ~~**Les 12 éditions encore marquées sont un reliquat du propriétaire**, à relire avant la
+  migration~~ — **relues le 9 septembre 2026**, `aVerifier` est à 0 et la colonne peut mourir
+  sans rien emporter. Le bouton « Répartition vérifiée » de la sous-page « Mes tomes » a servi à
+  ça et n'a plus d'emploi.
 - **Le critère de tri « À vérifier en premier » disparaît** avec elle, ainsi que le badge de la
   page Édition et l'icône de la Collection et des Manquants. C'est le seul effet visible.
 - Le besoin de §13.2 — relire une fiche ajoutée par un tiers — survit, mais sous un autre nom
@@ -1111,14 +1113,11 @@ correspondant. Tant que le code n'est pas prêt, les garder hors de ce dossier.
    **`avant-multi-compte`** sur le commit « Rafraichir la sauvegarde avant la migration
    multi-compte ». C'est le seul chemin de retour, et il porte l'ancien `backup-db.ts`, seul
    capable de relire ce `backup.json` — la Phase 2 fait passer ses compteurs de 8 à 7.
-4. **Relire les 12 éditions encore marquées `aVerifier`** par le bouton « Répartition vérifiée »
-   de la sous-page « Mes tomes ». La colonne meurt avec la migration 2 et **la répartition
-   devinée ne se rattrape pas après coup** : ce qui n'est pas relu devient indistinguable du
-   vérifié. Relevé le 9 septembre 2026 — `doubt` 4, `fire-punch` 8, `gantz` 18,
-   `ippo-s4-la-loi-du-ring` 27, `les-legendaires-saga` 12,
-   `mirai-nikki-le-journal-du-futur` 12, `mushoku-tensei-les-aventures-de-roxy` 12,
-   `my-hero-academia-smash` 5, `naruto` 72, `one-puch-man` 34, `prophecy-the-copycat` 3,
-   `terraformars` 23. Seul point de la Phase 0 qui demande l'écran et non le terminal.
+4. ~~Relire les 12 éditions encore marquées `aVerifier`~~ — **fait le 9 septembre 2026**,
+   `aVerifier` est à **0** sur les 113 éditions et aucune répartition n'a eu besoin d'être
+   corrigée : 1 155 possédés avant comme après. La colonne meurt avec la migration 2 et la
+   répartition devinée ne se rattrape pas après coup, d'où l'insistance. Voir `JOURNAL.md`,
+   « Fait — la Phase 0 du passage au multi-compte ».
 
 **Phase 1 — la répétition sur données réelles.** Le banc existe depuis le 30 août :
 `npx prisma dev`, `LOCAL_DATABASE_URL`, `db:backup -- --restore --reset` pour y verser la copie

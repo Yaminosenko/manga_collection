@@ -2177,3 +2177,66 @@ aucune clé étrangère dans les deux sens, elle est hors de `data/backup.json` 
 2 septembre et hors des compteurs de restauration : une sauvegarde ne l'aurait pas protégée, et
 un `createMany` sur ce seul modèle ne peut rien atteindre d'autre. Les compteurs de la collection
 sont intacts après écriture.
+
+---
+
+### Fait — la Phase 0 du passage au multi-compte (9 septembre 2026)
+
+Les prérequis de §13.1, avant d'écrire une seule migration.
+
+**La sauvegarde datait du 3 septembre et mentait de deux tomes.** Relevé sur Neon :
+109 séries, 113 éditions, 1 714 tomes, 1 155 possédés, 2 forcées, 1 676 couvertures — contre
+1 712 et 1 153 dans le fichier. L'écart vient de la promotion des sorties échues, qui crée des
+tomes : `data/backup.json` n'est jamais périmé par une erreur, seulement par le temps.
+
+**Le commit est tagué `avant-multi-compte`.** C'est le seul chemin de retour, et il porte
+l'ancien `scripts/backup-db.ts`, seul capable de relire ce `backup.json` : la Phase 2 fait passer
+ses compteurs de 8 à 7, `aVerifier` disparaissant et `forcees` devenant `suivies`, inversé.
+
+**Les 12 éditions `aVerifier` ont été relues et le drapeau est à zéro.** Onze par
+`updateMany`, sur la relecture du propriétaire ; la douzième — `doubt`, 4 tomes — gardée
+exprès pour éprouver le bouton, puis baissée par un vrai clic. Aucune répartition n'a eu besoin
+d'être corrigée : 1 155 possédés avant, 1 155 après. La colonne meurt avec la migration 2 et
+l'information n'était pas reconstituable après coup, d'où l'insistance.
+
+**Deux corrections de chiffres dans `CLAUDE.md`.** Le tableau de contrôle de la Phase 1
+attendait 1 712 possessions et 1 153 possédées ; comme ces deux compteurs bougent seuls, le
+contrôle se fait désormais contre le `compteurs` du `backup.json` fraîchement écrit, pas contre
+un tableau figé. Et les couvertures manquantes ont un troisième slug :
+`blackrock-shooter-innocent-soul` 2 et 3, nés de la promotion d'une sortie annoncée —
+`promouvoir()` recopie la couverture de la `Sortie` (`lib/promotion.ts:55`) et celle-ci était
+nulle, donc **un tome promu sans couverture le reste** jusqu'au prochain remplissage manuel.
+
+**La Phase 0 gagne un quatrième point.** Relire les 12 était écrit dans le corps de §13.1 mais
+absent de la liste d'exécution : un prérequis qu'une session pressée aurait sauté.
+
+### Corrigé — la validation de répartition confirmait avant d'écrire (9 septembre 2026)
+
+Trouvé en cherchant pourquoi les 12 drapeaux étaient toujours levés après une relecture que
+l'écran avait pourtant confirmée.
+
+`components/volume-grid.tsx` posait `setValidee(true)` **avant** le `await` de l'action. Le bloc
+« À vérifier » et son bouton disparaissaient donc dès le tap, que l'écriture atteigne Neon ou
+non, et rien ne les ramenait : un `useState` ordinaire, jamais réconcilié avec le serveur. À
+comparer aux cases de la grille juste au-dessus, qui passent par `useOptimistic` et se
+réalignent seules sur l'état serveur à la fin de la transition.
+
+L'état local disparaît. C'est `aVerifier`, lu en base, qui décide de l'affichage — le bloc est
+retiré par la revalidation, comme `PlanningClaim` le fait déjà pour « Je l'ai ». Un échec devient
+visible, `LIBELLE_REPARTITION_ERREUR` suivant la mise en forme des `error.tsx` existants.
+
+**C'était un défaut latent, pas la cause prouvée.** Le 4 septembre avait éprouvé ce bouton par un
+vrai clic et l'écriture passait ; le chemin serveur est intact, `marquerRepartitionVerifiee`
+n'a pas bougé. Pourquoi les 12 ont survécu à la relecture n'est pas établi et ne le sera pas :
+la trace n'existe plus. Ce qui est corrigé, c'est qu'un tel échec ne peut plus se déguiser en
+succès.
+
+**Vérifié fonctionnellement, sur `doubt`** : clic par coordonnées sur le bouton visible, le bloc
+disparaît, `aVerifier` passe de 1 à 0 en base et les possessions ne bougent pas — 113 éditions,
+1 714 tomes, 1 155 possédés, 1 676 couvertures, 2 forcées, `suivie` attendu toujours à 84.
+
+- **Le piège d'automatisation du 4 septembre s'est reproduit, sous une autre forme.** Le premier
+  clic, aux coordonnées lues sur une capture, n'a rien déclenché : la hauteur du viewport avait
+  changé entre la capture et le clic — 744 px puis 698 — et le bouton à y=722 était sorti de
+  l'écran. Aucune erreur, aucun log, l'écran inchangé. **Recapturer juste avant de cliquer, et
+  ne conclure que sur la base.**
