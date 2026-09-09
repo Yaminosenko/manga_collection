@@ -59,7 +59,22 @@ export const RESULTATS_RECHERCHE_MAX = 10;
 export const DELAI_RECHERCHE_MS = 350;
 export const LONGUEUR_RECHERCHE_MIN = 2;
 
-export const TITRE_AJOUTER = "Ajouter";
+export const TITRE_RECHERCHER = "Rechercher";
+export const ACTION_AJOUTER = "ajouter";
+export const ACTION_SUIVRE = "suivre";
+export const LIBELLE_ACTION_AJOUTER = "Ajouter";
+export const LIBELLE_ACTION_SUIVRE = "Suivre";
+export const LIBELLE_CANDIDAT_INCOMPLET = "Titre, auteur et nom d’édition sont obligatoires.";
+export const LIBELLE_PRIX_INVALIDE = "Le prix par défaut n’est pas un nombre valide.";
+export const LIBELLE_AU_CATALOGUE = "Au catalogue";
+export const LIBELLE_CANDIDAT_PREPARE = "Relevé du catalogue et de la BnF, à corriger si besoin.";
+export const LIBELLE_CANDIDAT_EN_PREPARATION = "Relevé en cours…";
+export const LIBELLE_TOMES_DU_CATALOGUE = "tomes parus selon le catalogue";
+export const LIBELLE_TOME_DU_CATALOGUE = "tome paru selon le catalogue";
+export const LIBELLE_ONE_SHOT_DEDUIT =
+  "Aucun numéro de tome au catalogue : un tome unique est supposé. Corrigez si la série en compte plus.";
+export const MENTION_ACTIONS_CANDIDAT =
+  "« Ajouter » ouvre la grille des tomes pour cocher ce que vous avez. « Suivre » la met en wish list sans rien cocher.";
 
 export const TITRE_WISHLIST = "Wish list";
 export const LIBELLE_WISHLIST_VIDE =

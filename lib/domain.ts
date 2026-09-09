@@ -188,8 +188,17 @@ export type ResultatDistant = SerieDistante & { dejaEnCollection: boolean };
 
 export type ResultatRecherche = {
   locales: ResultatLocal[];
-  distantes: ResultatDistant[];
-  indisponible: boolean;
+  candidats: CandidatEdition[];
+};
+
+export type CandidatPrepare = {
+  candidat: CandidatEdition;
+  auteur: string;
+  editeur: string | null;
+  prixDefautCentimes: number | null;
+  tomesConnus: number;
+  tomesAvecEan: number;
+  annonces: number;
 };
 
 export type CandidatEdition = {

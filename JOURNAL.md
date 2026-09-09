@@ -2787,3 +2787,82 @@ possessions, récupérables seulement par une restauration complète.
 wasm de `prisma dev` la fournit —, et le catalogue y est chargé des 41 936 lignes anciennes.
 Il n'est pas dans la sauvegarde, donc `catalogue:apply` est à rejouer après chaque
 restauration.
+
+### Fait — l'écran Rechercher (9 septembre 2026)
+
+L'ajout ne passe plus par AniList. §4 décrivait la cible ; elle tourne.
+
+| Fichier | Rôle |
+|---|---|
+| `components/search-series.tsx` | remplace `add-series.tsx` : recherche, candidats, confirmation |
+| `lib/actions.ts` | `rechercherAuCatalogue`, `preparerCandidat`, `ajouterCandidat` |
+| `components/tab-bar.tsx` | l'onglet devient « Rechercher », avec la loupe |
+
+**La route reste `/ajouter`**, comme §4 le prévoit : la changer casserait les raccourcis de la
+PWA installée pour rien. Seuls le libellé et le titre d'écran changent.
+
+#### Ce que l'écran fait, vérifié à l'écran et en base
+
+Une recherche sur `gantz` rend **la collection locale d'abord** — GANTZ · Édition simple · 2/18
+— puis **onze candidats de catalogue, un par édition** : Édition simple à 37 tomes chez Tonkam,
+**Perfect Édition à 18 tomes chez Delcourt / Tonkam**, le Coffret T1 à T3, puis Gantz E, G,
+Osaka. C'est exactement ce qui manquait pour choisir son édition, et c'est le cas qui a motivé
+la décision de §4.
+
+`rechercherAuCatalogue` en **220 ms**, `preparerCandidat` en **357 ms** — la seconde interroge
+la BnF, d'où l'écart.
+
+**Le formulaire arrive rempli** : auteur *Hiroya Oku* et éditeur *Delcourt-Tonkam* venus de la
+BnF, 18 tomes du catalogue, et **« Édition terminée » pré-cochée** par la règle des 24 mois.
+
+**« Suivre » écrit et reste, « Ajouter » écrit et ouvre la grille.** Les deux vérifiés :
+
+| | `gantz-perfect-edition` par « Suivre » | `megumi-tsugumi` par « Ajouter » |
+|---|---|---|
+| Série | **rattachée à `gantz` existante** | nouvelle série créée |
+| Tomes | 18, **tous avec ISBN et date** | 4, tous avec ISBN |
+| Auteur · éditeur | Hiroya Oku · Delcourt-Tonkam | Mitsuru Si · Taifu comics |
+| Prix BnF | **aucun** — cette notice n'a pas de `010$d` | **935** |
+| `editionTerminee` | true | true |
+| Possessions | **0** | **0** |
+| Après | reste sur la fiche, **1 série en wish list** | redirige vers `/tomes` |
+
+**Le rattachement à la série existante est le point qui compte** : 109 séries avant, 109 après
+la création de la Perfect Edition, et 114 éditions. Le défaut de la série fantôme `berserk-2`
+est levé, et c'est le marqueur d'édition du catalogue qui le permet.
+
+L'anti-doublon par EAN se voit aussi à l'écran : chercher `tsugumi` marque « Tsugumi Project ·
+Déjà dans la collection » sur la ligne de catalogue, et laisse « Megumi & Tsugumi » sans
+marque — deux séries différentes, correctement séparées.
+
+#### Un défaut d'affichage corrigé, un défaut supposé qui n'existait pas
+
+« 1 tomes parus » sur les coffrets et one-shots : un libellé singulier a été ajouté.
+
+**J'ai cru trouver un recouvrement de la barre d'onglets sur les boutons du formulaire.**
+`elementFromPoint` rendait bien le `NAV` à la place du bouton, et le `<nav>` est `sticky
+bottom-0`. Mais après défilement jusqu'en bas, le bouton est à y 617-661 et la barre commence à
+679 : **aucun recouvrement**, `elementFromPoint` rend le bouton. Le `sticky` reprend sa place
+naturelle en fin de conteneur. Rien à corriger — la page avait simplement besoin d'être défilée.
+
+#### Le piège d'automatisation, septième et huitième fois
+
+Deux clics par coordonnées sur le bouton de soumission n'ont **rien déclenché** — aucun `POST`
+dans le journal du serveur — alors que `elementFromPoint` rendait bien le bouton à ces
+coordonnées et que le bouton n'était pas désactivé. Et l'action `type` du pilote a laissé le
+champ de recherche **vide** au second essai, après avoir marché au premier.
+
+La chaîne a donc été éprouvée par un clic DOM sur le bouton, puis **contrôlée en base** — ce qui
+reste la seule preuve qui vaille. Ces deux échecs sont des limites de l'automatisation, pas de
+l'application : le même geste depuis un vrai navigateur passe. **Mais il faut le dire plutôt
+que de laisser croire que le clic réel a été fait.**
+
+#### Ce qui reste du chantier
+
+Le scanner lit encore l'ancien chemin : `resoudreIsbn` charge **toutes** les éditions pour
+apparier un titre de notice BnF, et ne consulte pas `ParutionCatalogue`. C'est la dernière
+requête qui charge toute la base, et le dernier morceau du circuit de §4.
+
+`creerEdition` et `creerSerieAvecEdition` restent en place sans être atteignables depuis
+l'interface : ils servent la saisie entièrement manuelle, rang 5 de la résolution de §4, qui
+n'a pas encore d'écran.

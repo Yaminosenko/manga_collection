@@ -3,15 +3,18 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { rechercherSurAniList } from "@/lib/anilist";
+import { candidatParEan, candidatParGroupe, rechercherCandidats, tomesDuGroupe } from "@/lib/catalogue";
+import { enrichirDepuisTomes } from "@/lib/enrichissement";
 import { chercherParIsbn, chercherPrixDefautCentimes } from "@/lib/bnf";
-import { slugifier } from "@/lib/slug";
-import { creerSerieAvecEdition } from "@/lib/creation";
+import { creerDepuisCandidat, creerSerieAvecEdition } from "@/lib/creation";
 import { promouvoirSortie } from "@/lib/promotion";
 import { exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estPossede, selectionPossession } from "@/lib/possession";
 import {
+  ACTION_AJOUTER,
+  LIBELLE_CANDIDAT_INCOMPLET,
+  LIBELLE_PRIX_INVALIDE,
   LIBELLE_STATUT_INVALIDE,
   LIBELLE_TOMES_PARUS_INVALIDE,
   LONGUEUR_RECHERCHE_MIN,
@@ -20,7 +23,12 @@ import {
   TOMES_PARUS_MAX,
 } from "@/lib/constants";
 import { isbnValide } from "@/lib/domain";
-import type { EtatCreation, ResultatRecherche, ResultatScan } from "@/lib/domain";
+import type {
+  CandidatPrepare,
+  EtatCreation,
+  ResultatRecherche,
+  ResultatScan,
+} from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
 function revaliderEdition(slug: string): void {
@@ -135,21 +143,28 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
   revaliderEdition(slug);
 }
 
-export async function rechercherSeries(terme: string): Promise<ResultatRecherche> {
+export async function rechercherAuCatalogue(terme: string): Promise<ResultatRecherche> {
   await exigerProprietaire();
 
   const requete = terme.trim();
   if (requete.length < LONGUEUR_RECHERCHE_MIN) {
-    return { locales: [], distantes: [], indisponible: false };
+    return { locales: [], candidats: [] };
   }
 
   const utilisateurId = await idUtilisateurCourant();
 
-  const [editions, distante] = await Promise.all([
+  if (isbnValide(requete.replace(/[^0-9]/g, ""))) {
+    const candidat = await candidatParEan(requete.replace(/[^0-9]/g, ""));
+    return { locales: [], candidats: candidat ? [candidat] : [] };
+  }
+
+  const [editions, candidats] = await Promise.all([
     prisma.edition.findMany({
       where: {
+        suivis: { some: { utilisateurId } },
         OR: [
           { serie: { titre: { contains: requete, mode: "insensitive" } } },
+          { serie: { alias: { has: requete } } },
           { nom: { contains: requete, mode: "insensitive" } },
         ],
       },
@@ -163,14 +178,8 @@ export async function rechercherSeries(terme: string): Promise<ResultatRecherche
         volumes: { select: { possessions: selectionPossession(utilisateurId) } },
       },
     }),
-    rechercherSurAniList(requete),
+    rechercherCandidats(requete),
   ]);
-
-  const titresLocaux = new Set(
-    (await prisma.serie.findMany({ select: { titre: true, titreVo: true } })).flatMap((serie) =>
-      [serie.titre, serie.titreVo].filter((titre): titre is string => titre !== null).map(slugifier),
-    ),
-  );
 
   return {
     locales: editions.map((edition) => ({
@@ -181,16 +190,87 @@ export async function rechercherSeries(terme: string): Promise<ResultatRecherche
       tomesParus: edition.tomesParus,
       possedes: edition.volumes.filter(estPossede).length,
     })),
-    distantes: distante.resultats.map((resultat) => ({
-      ...resultat,
-      dejaEnCollection:
-        titresLocaux.has(slugifier(resultat.titre)) ||
-        (resultat.titreVo !== null && titresLocaux.has(slugifier(resultat.titreVo))),
-    })),
-    indisponible: distante.indisponible,
+    candidats,
   };
 }
 
+export async function preparerCandidat(
+  serieNormalise: string,
+  marqueurNormalise: string | null,
+): Promise<CandidatPrepare | null> {
+  await exigerProprietaire();
+
+  const candidat = await candidatParGroupe(serieNormalise, marqueurNormalise);
+  if (!candidat) {
+    return null;
+  }
+
+  const { tomes, annonces } = await tomesDuGroupe(serieNormalise, marqueurNormalise);
+  const enrichi = await enrichirDepuisTomes(tomes);
+
+  return {
+    candidat,
+    auteur: enrichi.auteurs.join(", "),
+    editeur: enrichi.editeur ?? candidat.editeur,
+    prixDefautCentimes: enrichi.prixDefautCentimes,
+    tomesConnus: tomes.length,
+    tomesAvecEan: tomes.filter((tome) => tome.ean !== null).length,
+    annonces: annonces.length,
+  };
+}
+
+export async function ajouterCandidat(
+  _precedent: EtatCreation,
+  donnees: FormData,
+): Promise<EtatCreation> {
+  await exigerProprietaire();
+
+  const serieNormalise = lireTexte(donnees, "serieNormalise");
+  const marqueurBrut = lireTexte(donnees, "marqueurNormalise");
+  const titre = lireTexte(donnees, "titre");
+  const auteur = lireTexte(donnees, "auteur");
+  const nom = lireTexte(donnees, "nom");
+  const editeur = lireTexte(donnees, "editeur");
+  const prixBrut = lireTexte(donnees, "prixDefaut");
+  const tomesParus = Number(lireTexte(donnees, "tomesParus"));
+  const statut = lireTexte(donnees, "statut");
+  const editionTerminee = donnees.get("editionTerminee") === "on";
+  const ouvrirLesTomes = donnees.get("action") === ACTION_AJOUTER;
+
+  if (serieNormalise === "" || titre === "" || auteur === "" || nom === "") {
+    return { erreur: LIBELLE_CANDIDAT_INCOMPLET };
+  }
+  if (!estStatutEdition(statut)) {
+    return { erreur: LIBELLE_STATUT_INVALIDE };
+  }
+  if (!Number.isInteger(tomesParus) || tomesParus < 1 || tomesParus > TOMES_PARUS_MAX) {
+    return { erreur: LIBELLE_TOMES_PARUS_INVALIDE };
+  }
+  if (prixBrut !== "" && lireCentimes(prixBrut) === null) {
+    return { erreur: LIBELLE_PRIX_INVALIDE };
+  }
+
+  const editionSlug = await creerDepuisCandidat({
+    serieNormalise,
+    marqueurNormalise: marqueurBrut === "" ? null : marqueurBrut,
+    titre,
+    titreVo: null,
+    auteur,
+    genres: [],
+    nom,
+    editeur: editeur || null,
+    tomesParus,
+    prixDefautCentimes: lireCentimes(prixBrut),
+    editionTerminee,
+    statut,
+  });
+
+  revalidatePath("/");
+  revalidatePath("/manquants");
+  revalidatePath("/wishlist");
+  revalidatePath("/planning");
+  redirect(ouvrirLesTomes ? `/edition/${editionSlug}/tomes` : `/edition/${editionSlug}`);
+}
 function estStatutEdition(valeur: string): valeur is StatutEdition {
   return (STATUTS_EDITION as readonly string[]).includes(valeur);
 }

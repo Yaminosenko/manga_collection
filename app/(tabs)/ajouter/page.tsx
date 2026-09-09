@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { AddSeries } from "@/components/add-series";
+import { SearchSeries } from "@/components/search-series";
 import { estProprietaire } from "@/lib/guard";
 
 export const dynamic = "force-dynamic";
@@ -9,5 +9,5 @@ export default async function Page() {
     notFound();
   }
 
-  return <AddSeries />;
+  return <SearchSeries />;
 }
