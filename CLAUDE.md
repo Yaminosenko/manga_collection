@@ -764,11 +764,20 @@ détail et les cas réels sont dans `JOURNAL.md`.
   un palier hors d'atteinte, donc l'amendement du 1er septembre ne le couvre pas.
 - **Supprimer le store Vercel Blob**, gardé quelques jours par prudence (décidé le 3 septembre).
   `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota.
-- **Définir `CRON_SECRET` dans les variables d'environnement Vercel.** Sans elle, `/api/cron`
-  répond 401 à tout et la promotion automatique des sorties échues ne tourne jamais — échec
-  fermé volontaire, ce chemin étant hors de la garde d'accès. N'importe quelle chaîne aléatoire
-  longue convient ; Vercel l'envoie ensuite en `Authorization: Bearer`. **Tant que ce n'est pas
-  fait, seul le bouton « Je l'ai » promeut une sortie.**
+- **`CRON_SECRET` : posé dans Vercel, à ne pas re-poser — et invérifiable depuis ce poste.**
+  Ce point était écrit « à faire » jusqu'au 9 septembre 2026 alors qu'il avait été posé le
+  3 septembre ; le propriétaire l'a confirmé. Sans elle, `/api/cron` répondrait 401 à tout et la
+  promotion automatique des sorties échues ne tournerait jamais — échec fermé volontaire, ce
+  chemin étant hors de la garde d'accès.
+
+  **Deux pièges à connaître avant d'y toucher.** D'abord, **l'endpoint ne peut pas dire si le
+  secret est posé** : `autorise()` (`app/api/cron/route.ts:11`) rend `false` aussi bien quand le
+  secret est absent que quand l'en-tête est faux, donc la production répond `401` dans les deux
+  cas — sonder `/api/cron` ne prouve rien, seul le tableau de bord Vercel tranche. Ensuite, **la
+  valeur jumelle est dans le `.env` de l'autre poste**, pas dans celui-ci : le `CRON_SECRET`
+  local ne vaut probablement pas celui de Vercel, donc **un appel local réussi ne dit rien de la
+  production**, et un appel local en échec ne dit rien non plus. C'est la même dispersion sur
+  deux machines que les CSV de planning.
 - **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` existe depuis le
   3 septembre et ne fait qu'une chose : promouvoir les sorties dont le mois est clos. Restent
   les nouveaux tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
