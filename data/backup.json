@@ -1,10 +1,10 @@
 {
-  "exporteeLe": "2026-09-09T14:22:02.286Z",
+  "exporteeLe": "2026-09-09T15:59:58.693Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
     "tomes": 1716,
-    "possedes": 1155,
+    "possedes": 1156,
     "suivies": 84,
     "couvertures": 1676,
     "liens": 18
@@ -31242,7 +31242,18 @@
               "dateSortie": "2026-08-13T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": null,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "9c2ced5a-06fe-44e3-9b12-c64a2346fce6",
+                  "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             }
           ]
         }

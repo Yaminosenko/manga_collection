@@ -801,7 +801,7 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 | `Edition.slugMangaNews` | **0 / 113** — le lien sortant de la page Édition ne s'affiche donc jamais |
 | Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
-| `ParutionCatalogue` | **50 232** parutions, **11 315 séries**, janvier 2000 → décembre 2026, dont **48 222 avec EAN** — l'archive complète, hors les deux trous connus |
+| `ParutionCatalogue` | **52 009** parutions, **11 530** séries, **janvier 2000 → décembre 2026 sans un mois manquant** — 324 mois, dont **49 956 avec EAN** |
 
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
 élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
@@ -984,13 +984,11 @@ détail et les cas réels sont dans `JOURNAL.md`.
   de planning — le circuit visé par le plan de §13.1. Ça règle le défaut du 30 août, « le
   planning est une photographie, pas un flux » : ajouter une série calculerait ses sorties
   sur-le-champ. Demande le filtre `suivie`, donc M2 d'abord.
-- **Deux trous dans l'archive, et ils sont plus petits qu'annoncé** (corrigé le 8 septembre) :
-  `2000-09` (31 lignes, le plus petit mois) et **février → juillet 2024, 6 mois**. Le chiffre de
-  33 mois du 3 septembre supposait le premier lot perdu ; il a été retrouvé et étendu — 29
-  fichiers d'`2024-08` à `2026-12`, 8 298 lignes, mois du nom concordant avec le contenu sur les
-  29, 98,8 % d'EAN livre. Sans urgence : `tomesParus` n'est jamais abaissé, les lots s'importent
-  dans n'importe quel ordre, et la borne de fenêtre protège les sorties annoncées d'un import qui
-  ne les couvre pas.
+- ~~**Deux trous dans l'archive**~~ — **comblés le 9 septembre 2026.** `2000-09` (31 lignes,
+  le chiffre annoncé, exact) et **février → juillet 2024** ont été téléchargés et importés.
+  L'archive couvre désormais **janvier 2000 → décembre 2026 sans un mois manquant**, soit
+  324 mois et 52 009 parutions. Effet mesuré : **100 % de nos 1 493 ISBN y résolvent**, et les
+  écarts de `tomesParus` de l'audit passent de 5 à 2.
 - **Où sont les CSV de planning** (corrigé le 9 septembre 2026). Ils ne sont pas dans le dépôt et
   ne le seront pas. **Tout est sur cette machine** : `~/Documents/planning_manga` porte les 288
   fichiers datés de janvier 2000 à janvier 2024, en `planning_YYYY-MM.csv`. Les trois dossiers
@@ -1001,6 +999,26 @@ détail et les cas réels sont dans `JOURNAL.md`.
   **La casse du nom de fichier varie** — `Planning_2026-11.csv` contre `planning_2024-08.csv` :
   tout parcours du dossier doit être insensible à la casse, ce que `glob` ne garantit pas selon
   la plateforme.
+- **Compléter la liste `MARQUEURS_EDITION` du script d'import, puis `--recalculer`** —
+  **reporté par décision du 9 septembre 2026, à garder en mémoire.** Le problème n'est pas
+  seulement la casse (`Edition Limitée` / `Edition limitée`, `Edition spéciale` /
+  `Edition Speciale`) mais l'**absence de marqueurs** : « grimoire » n'y est pas, donc
+  « L'Atelier des sorciers - Édition grimoire » sort comme une **série à part** au lieu d'une
+  édition de L'Atelier des sorciers. Même famille de cause que les deux écarts de `tomesParus`
+  qui subsistent — six « Pokémon - La Grande Aventure » distincts au catalogue, dont un
+  « (Glénat) » à 6 tomes qui est exactement notre compte.
+
+  Le corriger demande d'ajouter les marqueurs au Python puis
+  `npm run catalogue:apply -- --recalculer`, qui **réécrit les champs dérivés des 52 009 lignes**
+  depuis `titreBrut`, sans retélécharger un CSV. C'est une écriture large sur des données de
+  production : à faire délibérément, pas en passant. Rien n'est cassé entre-temps — le
+  regroupement en minuscules fait à la requête absorbe déjà la casse.
+- **`nom` et `tomesParus` n'ont plus d'endroit où se corriger** depuis la suppression du
+  formulaire de confirmation (9 septembre 2026). L'écran État ne propose que statut, parution
+  et suivi. Le catalogue est juste dans 99 % des cas mesurés et `editions:audit` rattrape le
+  reste, mais le jour où un compte est faux, il est faux pour de bon. **Ces deux champs iront à
+  l'écran État** — pas à la création, ce serait revenir à la saisie manuelle écartée.
+
 - **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
   `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et
   `creerSerieAvecEdition` les laisse vides : sans écran, le nettoyage ne rapporte rien.

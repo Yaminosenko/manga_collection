@@ -1,7 +1,7 @@
 {
-  "releveLe": "2026-09-09T14:21:59.814Z",
+  "releveLe": "2026-09-09T15:58:17.121Z",
   "editions": 113,
-  "conformes": 76,
+  "conformes": 79,
   "divergences": [
     {
       "slug": "berserk-prestige-edition",
@@ -64,7 +64,7 @@
         "serieTitre": "Classroom for heroes",
         "editeur": "Doki Doki",
         "tomesParus": 21,
-        "lignes": 20,
+        "lignes": 22,
         "nosTomes": 19
       },
       "autresCandidats": [],
@@ -100,30 +100,6 @@
       "autresCandidats": [],
       "ecarts": [
         "aucun tome ne porte d'ISBN"
-      ]
-    },
-    {
-      "slug": "fire-force",
-      "titre": "FIRE FORCE",
-      "base": {
-        "nom": "Édition simple",
-        "editeur": "Kana",
-        "tomesParus": 34,
-        "tomesAvecIsbn": 32
-      },
-      "candidat": {
-        "serieNormalise": "fireforce",
-        "marqueurEdition": null,
-        "nom": "Édition simple",
-        "serieTitre": "Fire Force",
-        "editeur": "Kana",
-        "tomesParus": 32,
-        "lignes": 32,
-        "nosTomes": 32
-      },
-      "autresCandidats": [],
-      "ecarts": [
-        "tomesParus"
       ]
     },
     {
@@ -241,7 +217,7 @@
         "serieTitre": "Je suis un assassin (et je surpasse le héros)",
         "editeur": "Doki Doki",
         "tomesParus": 6,
-        "lignes": 6,
+        "lignes": 7,
         "nosTomes": 5
       },
       "autresCandidats": [],
@@ -277,30 +253,6 @@
       "autresCandidats": [],
       "ecarts": [
         "aucun tome ne porte d'ISBN"
-      ]
-    },
-    {
-      "slug": "mashle",
-      "titre": "MASHLE",
-      "base": {
-        "nom": "Édition simple",
-        "editeur": "Kazé",
-        "tomesParus": 18,
-        "tomesAvecIsbn": 17
-      },
-      "candidat": {
-        "serieNormalise": "mashle",
-        "marqueurEdition": null,
-        "nom": "Édition simple",
-        "serieTitre": "Mashle",
-        "editeur": "Kaze Manga",
-        "tomesParus": 17,
-        "lignes": 17,
-        "nosTomes": 17
-      },
-      "autresCandidats": [],
-      "ecarts": [
-        "tomesParus"
       ]
     },
     {
@@ -550,7 +502,7 @@
         "serieTitre": "Servamp",
         "editeur": "Doki Doki",
         "tomesParus": 23,
-        "lignes": 22,
+        "lignes": 23,
         "nosTomes": 22
       },
       "autresCandidats": [],
@@ -589,7 +541,7 @@
         "serieTitre": "Talentless",
         "editeur": "Doki Doki",
         "tomesParus": 14,
-        "lignes": 13,
+        "lignes": 14,
         "nosTomes": 13
       },
       "autresCandidats": [],
@@ -613,30 +565,6 @@
       ]
     },
     {
-      "slug": "tsugumi-project",
-      "titre": "TSUGUMI PROJECT",
-      "base": {
-        "nom": "Édition simple",
-        "editeur": "Ki-oon",
-        "tomesParus": 7,
-        "tomesAvecIsbn": 6
-      },
-      "candidat": {
-        "serieNormalise": "tsugumiproject",
-        "marqueurEdition": null,
-        "nom": "Édition simple",
-        "serieTitre": "Tsugumi Project",
-        "editeur": "Ki-oon",
-        "tomesParus": 6,
-        "lignes": 6,
-        "nosTomes": 6
-      },
-      "autresCandidats": [],
-      "ecarts": [
-        "tomesParus"
-      ]
-    },
-    {
       "slug": "why-nobody-remember-my-world",
       "titre": "Why Nobody Remembers My World ?",
       "base": {
@@ -652,7 +580,7 @@
         "serieTitre": "Why Nobody Remembers My World ?",
         "editeur": "Doki Doki",
         "tomesParus": 13,
-        "lignes": 13,
+        "lignes": 14,
         "nosTomes": 12
       },
       "autresCandidats": [],
@@ -676,7 +604,7 @@
         "serieTitre": "Yasei no Last Boss",
         "editeur": "Doki Doki",
         "tomesParus": 10,
-        "lignes": 9,
+        "lignes": 10,
         "nosTomes": 9
       },
       "autresCandidats": [],

@@ -3079,3 +3079,62 @@ possession, un `SuiviEdition` à `EN_COURS`, `creeeParId` renseigné. 110 série
 **Ce qu'on perd, et c'est assumé** : `nom` et `tomesParus` n'ont plus d'endroit où se corriger.
 Le formulaire était le seul. Si le besoin se présente, ces deux champs iront à l'écran État — pas
 à la création.
+
+### Fait — l'archive de catalogue est complète (9 septembre 2026)
+
+Les deux trous que §12 traînait depuis le 3 septembre sont comblés. Le propriétaire a
+téléchargé les mois manquants ; neuf fichiers, dont sept utiles.
+
+| Fichier | Mois | Lignes |
+|---|---|---|
+| `PlanningManga_09-09-2026.csv` | **septembre 2000** | **31** |
+| `(1)` à `(6)` | **février → juillet 2024** | 303, 262, 285, 293, 293, 309 |
+| `(7)`, `(8)` | août, septembre 2024 — déjà importés | 285, 318 |
+
+**Les 31 lignes de septembre 2000 sont exactement le chiffre que §12 annonçait**, écrit le
+2 septembre sans avoir le fichier. Et les deux mois de recouvrement ont été absorbés sans bruit :
+`1 777 inserees, 602 deja presentes` — la clé `(titreBrut, date)` fait son travail.
+
+**Piège évité, et il valait la peine** : le dossier Téléchargements contient une douzaine
+d'exports clients en `.csv`. `import_catalogue.py` avale **tous** les `*.csv` d'un dossier ; le
+pointer là aurait ingéré des données personnelles dans le catalogue. Les neuf fichiers de
+planning ont donc été copiés dans un dossier propre d'abord. **Ne jamais pointer l'import sur un
+dossier qu'on n'a pas trié.**
+
+Deux fichiers ont d'abord échappé à ma détection de mois — février et août 2024 — parce que je
+cherchais l'accent dans un flux d'octets. C'était ma sonde, pas les fichiers.
+
+#### L'état de l'archive, et ce que ça change
+
+| | Avant | Après |
+|---|---|---|
+| Parutions | 50 232 | **52 009** |
+| Séries distinctes | 11 315 | **11 530** |
+| Avec EAN | 48 222 | **49 956** |
+| Couverture | deux trous | **2000-01 → 2026-12, 324 mois, aucun manquant** |
+| Nos ISBN résolus | 1 491 / 1 491 | **1 493 / 1 493** |
+| Écarts de `tomesParus` à l'audit | 5 | **2** |
+| Éditions conformes | 74 / 113 | **79 / 113** |
+
+**La prédiction du matin est vérifiée.** J'avais écrit que les cinq écarts restants venaient du
+trou de février à juillet 2024, et que les tomes excédentaires de notre base n'avaient ni ISBN
+ni date pour cette raison. Combler le trou a fait disparaître **exactement** les trois que
+j'avais nommés : `fire-force` 34/32, `mashle` 18/17, `tsugumi-project` 7/6.
+
+#### Les deux écarts qui restent ont une autre cause, et c'est la même que « Grimoire »
+
+Ni l'un ni l'autre n'est un trou d'archive : ce sont des **découpages de séries** dans les
+titres de manga-news.
+
+- `pokemon-la-grande-aventure` : notre base dit 6, le groupe apparié dit 3. Mais le catalogue
+  connaît **six séries distinctes** sous ce nom — « Kiosque » (12), « Noir et Blanc » (9),
+  « Epée & Bouclier » (7), **« (Glénat) » (6)**, « Soleil et Lune » (6), et « La Grande
+  Aventure » (3). Notre 6 correspond exactement au variant Glénat : c'est un appariement sur le
+  mauvais groupe, pas une donnée fausse.
+- `ippo-s4-la-loi-du-ring` : notre base dit 27, le catalogue 21 pour la saison 4 — et 21 aussi
+  pour les saisons 3 et 5, 30 pour la 1, 36 pour la 6. **Indéterminé** : soit le Sheet a compté
+  large, soit manga-news découpe les saisons autrement. Je ne tranche pas.
+
+C'est la même racine que le cas « Grimoire » relevé le même jour : **le découpage série /
+édition repose sur le titre**, et la liste des marqueurs est incomplète. Le report du
+`--recalculer` est consigné en « Reste à faire ».
