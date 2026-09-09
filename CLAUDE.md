@@ -550,7 +550,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 8 septembre 2026.
+Dernière mise à jour : 9 septembre 2026.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -589,7 +589,10 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
 élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
 tomes. `data/backup.json` datait du 3 septembre au moment de ce relevé et affichait donc deux
-tomes de moins — **la sauvegarde se relance avant de s'appuyer sur ses chiffres.**
+tomes de moins — **la sauvegarde se relance avant de s'appuyer sur ses chiffres.** Relancée le
+9 septembre 2026, elle concorde désormais avec les compteurs ci-dessus ; elle portait encore
+1 712 tomes, 1 153 possédés, 1 674 couvertures et 13 `aVerifier`. Le commit est tagué
+`avant-multi-compte` — Phase 0 de §13.1.
 
 ### Pièges établis
 
@@ -671,9 +674,13 @@ détail et les cas réels sont dans `JOURNAL.md`.
   côtés, et `sousTitreLigne` (`lib/domain.ts:165`) reperdrait le nom d'édition puisqu'il teste
   `editionsDeLaSerie > 1`. **La porte d'entrée est l'ISBN, pas AniList** — voir `JOURNAL.md`,
   « Établi — l'ISBN est la clé des éditions françaises » (30 août).
-- **Couvertures** : 1 674 sur 1 712, déposées dans Cloudflare R2. Restent 36 tomes parus —
-  `ippo-s4-la-loi-du-ring` 25 et `les-legendaires-saga` 11 — et deux annonces,
-  `radiant` 20 et `les-legendaires-saga`. Le remplissage reste
+- **Couvertures** : 1 676 sur 1 714, déposées dans Cloudflare R2. Restent 38 tomes parus —
+  `ippo-s4-la-loi-du-ring` 25, `les-legendaires-saga` 11 et
+  `blackrock-shooter-innocent-soul` 2 et 3 — et deux annonces, `radiant` 20 et
+  `les-legendaires-saga` 13. **Les deux tomes de Black Rock Shooter viennent de la promotion
+  d'une sortie annoncée** : `promouvoir()` crée le `Volume` en reprenant la couverture de la
+  `Sortie`, et celle-ci était nulle — un tome promu sans couverture reste donc sans couverture
+  jusqu'au prochain remplissage manuel. Le remplissage reste
   **manuel et local** : `npm run db:backup`, puis `covers:fetch`, puis `covers:upload`.
   §5 prévoit un rafraîchissement de fond qui ramasserait les couvertures manquantes ; la tâche
   quotidienne existe depuis le 3 septembre mais ne fait encore que promouvoir les sorties
@@ -1100,8 +1107,18 @@ correspondant. Tant que le code n'est pas prêt, les garder hors de ce dossier.
    Seule sa `raisonCompletion` est périmée, et elle n'est affichée par aucun écran.
    **Ce constat a ouvert le remplacement de `termineeForcee` par `suivie`, arbitré le
    8 septembre — voir « `suivie` remplace `termineeForcee` » ci-dessus.**
-3. `npm run db:backup`, commit, **et taguer ce commit** : c'est le seul chemin de retour, et il
-   faut l'ancien `backup-db.ts` pour relire l'ancien `backup.json`.
+3. ~~`npm run db:backup`, commit, et taguer ce commit~~ — **fait le 9 septembre 2026**, tag
+   **`avant-multi-compte`** sur le commit « Rafraichir la sauvegarde avant la migration
+   multi-compte ». C'est le seul chemin de retour, et il porte l'ancien `backup-db.ts`, seul
+   capable de relire ce `backup.json` — la Phase 2 fait passer ses compteurs de 8 à 7.
+4. **Relire les 12 éditions encore marquées `aVerifier`** par le bouton « Répartition vérifiée »
+   de la sous-page « Mes tomes ». La colonne meurt avec la migration 2 et **la répartition
+   devinée ne se rattrape pas après coup** : ce qui n'est pas relu devient indistinguable du
+   vérifié. Relevé le 9 septembre 2026 — `doubt` 4, `fire-punch` 8, `gantz` 18,
+   `ippo-s4-la-loi-du-ring` 27, `les-legendaires-saga` 12,
+   `mirai-nikki-le-journal-du-futur` 12, `mushoku-tensei-les-aventures-de-roxy` 12,
+   `my-hero-academia-smash` 5, `naruto` 72, `one-puch-man` 34, `prophecy-the-copycat` 3,
+   `terraformars` 23. Seul point de la Phase 0 qui demande l'écran et non le terminal.
 
 **Phase 1 — la répétition sur données réelles.** Le banc existe depuis le 30 août :
 `npx prisma dev`, `LOCAL_DATABASE_URL`, `db:backup -- --restore --reset` pour y verser la copie
@@ -1113,8 +1130,14 @@ fidèle, puis les trois migrations. Contrôles à l'arrivée :
 | statuts préservés : `EN_COURS=86 ABANDONNEE=18 EN_PAUSE=5 VENDUE=4` |
 | `suivie=true` = **84**, et aucune sur un `statut` ≠ `EN_COURS` |
 | `SuiviEdition` sans colonne `raisonCompletion` ni `aVerifier` |
-| `Possession` = 1 712, toutes sur l'id propriétaire, 1 153 à `possede=true` |
+| `Possession` = **1 714**, toutes sur l'id propriétaire, **1 155** à `possede=true` |
 | `Serie.alias` renseigné sur 105 · `Edition` sans les 5 colonnes |
+
+**Les deux compteurs de `Possession` bougent tout seuls** — la promotion des sorties échues crée
+des tomes, donc des possessions. Ceux ci-dessus sont relevés le 9 septembre 2026 ; le contrôle se
+fait contre le `compteurs` de `data/backup.json` fraîchement écrit, pas contre ce tableau, sinon
+il échoue à faux. Les cinq autres lignes, elles, sont stables : rien n'ajoute ni ne retire une
+édition sans intervention.
 
 **Phase 2 — le code**, dans cet ordre :
 1. `lib/utilisateur.ts` — `utilisateurCourant()`, **invité résolu vers le propriétaire en
