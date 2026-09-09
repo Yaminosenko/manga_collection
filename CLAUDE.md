@@ -616,6 +616,11 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 Dernière mise à jour : 9 septembre 2026.
 
+**La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
+nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
+déploiement sans la demander. Elle est publique — la garde est applicative, et la page `/acces`
+répond 200 à tout le monde ; c'est le trou assumé de §7, pas une fuite.
+
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
 
@@ -726,12 +731,14 @@ détail et les cas réels sont dans `JOURNAL.md`.
   migration, comme prévu. `chargerPlanning` filtre sur `suivie` et l'écran est passé de 14 à
   **10 sorties** : `one-puch-man`, `les-legendaires-saga`, `why-nobody-remember-my-world` et
   `blue-exorcist` ont disparu.
-- **Deux chemins de la Phase 2 restent non vérifiés fonctionnellement.**
-  `creerSerieAvecEdition` — créer le `SuiviEdition`, renseigner `creeeParId`, ne plus créer de
-  possessions — n'a pas pu tourner : le formulaire de confirmation n'est rendu que depuis un
-  résultat distant, et **AniList a coupé son API** (voir §5). Le mode invité non plus, faute de
-  fabriquer un jeton. À reprendre dès qu'AniList revient, ou quand `/ajouter` sera branché sur
-  `ParutionCatalogue` — ce qui rend ce branchement plus urgent qu'avant.
+- **Un chemin de la Phase 2 reste non vérifié fonctionnellement : `creerSerieAvecEdition`** —
+  créer le `SuiviEdition`, renseigner `creeeParId`, ne plus créer de possessions. Il n'a pas pu
+  tourner : le formulaire de confirmation n'est rendu que depuis un résultat distant, et
+  **AniList a coupé son API** (voir §5). À reprendre dès qu'AniList revient, ou quand
+  `/ajouter` sera branché sur `ParutionCatalogue` — ce qui rend ce branchement plus urgent
+  qu'avant. Le mode invité, lui, **a été vérifié en production le 9 septembre** : le bouton
+  « Entrer en invité » rend bien la collection du propriétaire en lecture seule, sans bouton
+  « Je l'ai » ni actions de masse.
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit désormais
   « Suivie / Non suivie », mais la Collection et la page Édition disent toujours « Terminée par
   choix » pour la même édition. Le rendu n'a pas bougé volontairement — la formule de backfill

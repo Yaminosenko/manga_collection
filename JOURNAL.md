@@ -2382,3 +2382,46 @@ n'est pas une source acquise.
 « Reste à faire ». Le catalogue porte le nom FR, le marqueur d'édition, l'éditeur, la date et
 l'EAN, il est en base, et il ne dépend de personne. La dépendance à AniList pour la porte
 d'entrée était un point unique de rupture ; c'est maintenant démontré.
+
+### Fait — la séparation appliquée à la production (9 septembre 2026)
+
+Les trois migrations sont jouées sur Neon, par **la commande de production exacte** —
+`npm run db:migrate`, `DIRECT_URL`, `prisma/migrations`, sans aucune variable de banc — pour que
+ce qui tourne soit littéralement ce que Vercel exécutera.
+
+**Contrôle avant :** les compteurs de `data/backup.json` concordaient à l'unité avec Neon. Le
+chemin de retour couvrait donc l'état réel, et pas celui du matin. Ce contrôle vaut d'être
+gardé : sans lui, une écriture faite en production entre la sauvegarde et la migration serait
+perdue sans trace.
+
+**Contrôle après**, identique au banc au chiffre près : 1 `Utilisateur` `PROPRIETAIRE` à `email`
+nul, 113 `SuiviEdition` sur ce seul compte, statuts `86/18/5/4` préservés, `suivie=true` sur 84
+et aucune hors `EN_COURS`, `ajouteeLe` sans nulle, 1 714 possessions dont 1 155 possédées,
+`alias` sur 105 séries sans divergence avec `titreVo`, `creeeParId` nul sur les 113, aucune des
+5 colonnes restante sur `Edition`, index de `Possession` échangés, index GIN sur `alias`.
+Intacts : 109 séries, 113 éditions, 1 714 tomes, 14 sorties, 18 liens, 8 296 parutions.
+
+**Le filet éprouvé dans les deux sens, pour la première fois depuis sa réécriture** :
+sauvegarde de Neon dans la nouvelle forme, puis restauration complète sur le banc — 1
+utilisateur, 113 suivis, 1 714 possessions, sept compteurs concordants.
+
+**La production vérifiée à l'écran, en mode invité.** 10 commits et le tag poussés, Vercel
+déployé, puis `https://manga-collection-wcj8.vercel.app` ouvert par le bouton « Entrer en
+invité » — aucun mot de passe n'a été saisi ni n'avait à l'être. Bandeau « Mode invité ·
+consultation seule », Collection **1 155 tomes · 109 éditions · ≥ 8 787,61 €**, Manquants
+**116 tomes · 16 éditions**, Planning **10 sorties**, et **aucun bouton « Je l'ai »** : les
+contrôles d'écriture sont masqués. Session invitée refermée par « Quitter ».
+
+**Ça vérifie du même coup la résolution invité → propriétaire** de `lib/utilisateur.ts`, qui
+était l'un des deux chemins déclarés non vérifiés une heure plus tôt. Il n'en reste qu'un,
+`creerSerieAvecEdition`, bloqué par la coupure d'AniList.
+
+**L'URL de production n'était écrite nulle part** — ni dans le dépôt, ni dans `JOURNAL.md`, ni
+dans `CLAUDE.md`. Impossible de contrôler un déploiement sans la demander au propriétaire, alors
+que le journal prétend faire foi sur ce qui est fait. Elle est désormais en tête de §12.
+
+**Ordre à retenir pour la prochaine migration** : la base est partie avant le code, donc la
+production a servi l'ancien code sur le nouveau schéma pendant quelques minutes — le temps du
+`git push`. Sans utilisateur derrière, c'est sans conséquence ; avec, il faut pousser d'abord et
+migrer ensuite, ou accepter une fenêtre d'erreur. §13.1 disait « les trois partent ensemble avec
+le code » sans trancher lequel des deux part en premier.
