@@ -11,6 +11,7 @@ import { Check, WarningCircle } from "@/components/icons";
 import {
   COLONNES_GRILLE,
   LIBELLE_A_VERIFIER,
+  LIBELLE_REPARTITION_ERREUR,
   LIBELLE_REPARTITION_VERIFIEE,
   MENTION_REPARTITION_DEVINEE,
 } from "@/lib/constants";
@@ -216,12 +217,8 @@ export function VolumeGrid({
 }
 
 function ValidationRepartition({ slug }: { slug: string }) {
-  const [validee, setValidee] = useState(false);
+  const [echouee, setEchouee] = useState(false);
   const [enCours, demarrer] = useTransition();
-
-  if (validee) {
-    return null;
-  }
 
   return (
     <div className="border-divider flex flex-col gap-[9px] border-t pt-[14px]">
@@ -235,14 +232,21 @@ function ValidationRepartition({ slug }: { slug: string }) {
         disabled={enCours}
         onClick={() =>
           demarrer(async () => {
-            setValidee(true);
-            await marquerRepartitionVerifiee(slug);
+            setEchouee(false);
+            try {
+              await marquerRepartitionVerifiee(slug);
+            } catch {
+              setEchouee(true);
+            }
           })
         }
         className="min-h-11 self-start rounded-md border border-neutral-800 px-[12px] text-[12px] font-medium text-neutral-300 transition-colors hover:border-accent-600 hover:text-accent-200 disabled:opacity-50"
       >
         {LIBELLE_REPARTITION_VERIFIEE}
       </button>
+      {echouee ? (
+        <span className="text-[11px]/[1.5] text-neutral-400">{LIBELLE_REPARTITION_ERREUR}</span>
+      ) : null}
     </div>
   );
 }

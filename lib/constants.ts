@@ -19,6 +19,8 @@ export const LIBELLE_A_VERIFIER = "À vérifier";
 export const LIBELLE_REPARTITION_VERIFIEE = "Répartition vérifiée";
 export const MENTION_REPARTITION_DEVINEE =
   "L’import du Sheet a attribué les premiers tomes sans savoir lesquels étaient possédés. Confirmez la répartition une fois relue.";
+export const LIBELLE_REPARTITION_ERREUR =
+  "La validation n’a pas été enregistrée. Réessayez.";
 
 export const URL_RECHERCHE_MANGA_NEWS = "https://www.manga-news.com/index.php/recherche/?q=";
 export const LIBELLE_FICHE_MANGA_NEWS = "Fiche manga-news";
