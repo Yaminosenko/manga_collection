@@ -2541,3 +2541,108 @@ donc sans EAN à apparier — ce n'est pas un défaut du catalogue.
 demande plus la recherche BnF par titre, mesurée le même jour à 95 % de notices avec code mais
 handicapée par la confusion entre éditions. Le catalogue donne la même chose avec le nom FR, le
 marqueur d'édition et l'éditeur déjà séparés.
+
+### Établi — ce que l'ISBN donne vraiment (9 septembre 2026)
+
+Trois hypothèses posées avant de refondre `/ajouter` : une fois l'ISBN en main, a-t-on le
+nombre de tomes, les codes du reste de la série, et une couverture par tome ? Mesuré, pas
+supposé. **Deux vraies, une fausse.**
+
+#### Le nombre de tomes : oui
+
+Par le catalogue, sur les 44 éditions appariées avant complétion de l'archive : `max(numero)`
+est **23 fois exactement égal** à notre `tomesParus`, **21 fois au-dessus** — des tomes
+annoncés — et **jamais en dessous**. Par la BnF en recherche par titre, le `max` du numéro
+parsé égale notre compte dans **9 cas sur 12**.
+
+**Les trois écarts sont tous des confusions d'édition, pas des erreurs de source.** BERSERK
+rend 43 là où notre base dit 6, parce que la recherche par titre mélange l'édition simple et
+la Prestige. GANTZ rend 37 contre 18 pour la même raison — et **c'est notre base qui a
+raison** : le propriétaire possède la Perfect Edition, 18 tomes chez Delcourt/Tonkam, quand
+l'édition simple en fait 37 chez Tonkam. J'avais conclu l'inverse ; correction faite le jour
+même après vérification en base.
+
+> **Défaut trouvé au passage, non corrigé.** Notre ligne GANTZ porte `tomesParus = 18`, juste
+> pour la Perfect Edition, mais `nom = « Édition simple »` et `editeur = Tonkam`, qui sont ceux
+> de l'édition à 37 tomes. Un mélange hérité du Sheet, qui ne portait pas de nom d'édition.
+> **Le catalogue permet désormais d'auditer les 113 éditions** sur ce motif : celles dont le
+> compte colle à un candidat mais dont le nom ou l'éditeur colle à un autre.
+
+#### Les codes du reste de la série : oui, par les deux, et l'archive change tout
+
+Avant la complétion de l'archive, le catalogue ne pouvait pas : **231 EAN mobilisables pour
+745 tomes, 31 %**, brutalement corrélés à l'ancienneté — 100 % pour les séries nées après août
+2024, **3 % pour D.Gray-man, 4 % pour Terraformars**. Après les 288 fichiers anciens :
+**1 539 sur 1 554, soit 99 %**.
+
+La BnF sait aussi le faire, par titre : **environ 95 % des notices portent un EAN ou un ISBN**
+(39/40, 40/40, 37/40, 14/15, 16/17). **Ça révise §5**, qui affirmait « l'ISBN par tome reste
+donc ouvert ». Son obstacle n'est pas le code mais **l'attribution à un numéro** : `200$h` rend
+`Vol. 20` pour Beastars et `Friend`, `Black`, `Howling` pour Bleach — de **18 % à 98 %** de
+numéros exploitables selon la série. Le catalogue n'a pas ce problème, ses numéros étant déjà
+extraits, d'où le choix de le prendre comme source d'identité.
+
+#### Une couverture par tome : oui, mais inutilisable
+
+Le service BnF Couvertures répond **41 fois sur 59 EAN tirés au hasard, soit 69 %** — 36 % pour
+les parutions des années 2000, 69 % pour les 2010, 86 % pour les 2020.
+
+**Mais la seule taille disponible plafonne à 150 px de haut** : 95×150, 100×150, 105×150,
+108×150 selon le format d'origine. `couverture=2`, `3`, `4`, `0`, l'endpoint par ARK et les
+autres noms de paramètre rendent tous 400 ou 500. L'application a besoin de **256×360** : c'est
+**2,4 fois trop petit**.
+
+**Les « trois tailles » de §5 n'existent pas**, et l'ordre des sources de couvertures décidé le
+31 août — BnF en premier — reposait donc sur une hypothèse jamais mesurée. À cette résolution
+la BnF ne peut servir que de vignette de repli. **MangaDex reste nécessaire.**
+
+Détail exploitable : un EAN sans couverture rend **500 déterministe**, avec
+`IllegalArgumentException: id to load is required for loading`, jamais un 404 propre.
+
+#### Ce que la BnF donne et qu'on n'utilisait pas : l'auteur
+
+`700$a` + `700$b`, filtrés sur le code de fonction `070`, et `701` pour les co-auteurs. Vérifié
+sur 6 ISBN, jamais vide : Beastars → Paru Itagaki, **Ajin → Tsuina Miura + Gamon Sakurai**,
+Radiant → Tony Valente. Les `702` sont à écarter, ce sont les traducteurs, illustrateurs,
+réalisateurs et compositeurs.
+
+**Ça lève l'obstacle bloquant du 4 septembre** : `Serie.auteur` est `NOT NULL` et le CSV
+manga-news ne porte pas d'auteur, ce qui interdisait de créer une série depuis le catalogue
+seul. La BnF le fournit par ISBN, et le catalogue fournit l'ISBN.
+
+**En revanche le titre BnF n'est pas fiable** : pour l'ISBN de Bleach tome 22, `200$a` rend
+« Conquistadores », le sous-titre du tome. Chaque source sur ce qu'elle sait — le catalogue
+pour l'identité, la BnF pour l'auteur et le prix.
+
+#### La structure du catalogue, telle qu'elle sert l'algorithme
+
+| Mesure | Valeur |
+|---|---|
+| Groupes `(serieNormalise, marqueurEdition)` | **12 619** pour 11 315 séries |
+| Séries multi-édition | **863** |
+| Groupes sans aucun numéro de tome | **5 361**, soit 42 % — one-shots, coffrets, artbooks |
+| Groupes d'une seule ligne | **6 356** |
+| Lignes de date future | **944** |
+| Groupes dont `tomesParus` serait gonflé sans filtre de date | **722** |
+| Groupes dont l'éditeur varie | **141** |
+| Groupes dont le `serieTitre` varie | **57**, et les écarts sont cosmétiques (`Assassin'S` / `Assassin's`) |
+| `pg_trgm` | disponible sur Neon, **pas installée** |
+
+**Les magazines polluent, et aucune règle automatique ne les distingue.** Animeland compte 257
+« tomes », et ses éditeurs — Anime Manga Presse, AM Media Network, Ynnis, Tokyo arena — ne
+suffisent pas à les repérer puisque Glénat en publie aussi. Le nombre de tomes non plus :
+Détective Conan en a 107. Décidé : on ne filtre pas, l'humain choisit dans une liste classée.
+
+#### Une sonde a encore menti, et dans le sens le plus dangereux
+
+Ma première lecture du XML BnF rendait `null` sur tous les champs, et j'ai commencé à écrire
+que le parseur de `lib/bnf.ts` était cassé en production. **C'était ma transcription qui avait
+perdu un antislash** — le motif compilé était `[sS]` au lieu de `[\s\S]`, donc il ne
+franchissait pas les retours à la ligne. Le vrai module marche : `chercherParIsbn` rend titre,
+éditeur, année, format et prix.
+
+Septième manifestation du même piège, et la première où il allait produire un **faux rapport de
+défaut** plutôt qu'un faux succès. La règle vaut dans les deux sens : **appeler le vrai module,
+jamais une copie du code.** Constat utile obtenu en le faisant : `chercherPrixDefautCentimes`
+rend 690 pour Beastars et **`null` pour Goodnight Punpun**, ce qui explique enfin pourquoi
+c'est la seule série sans prix de la collection.

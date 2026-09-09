@@ -242,15 +242,116 @@ Collection, décocher le dernier ramène ici. Une ligne porte la couverture du t
 Ces séries **ne comptent ni dans les compteurs d'en-tête de la Collection ni dans la valeur** —
 comme les vendues, et pour la même raison : on ne les possède pas.
 
-### Ajout de série
-1. Recherche — résultats mêlant la collection locale (anti-doublon) et l'API externe
-2. **Confirmation d'édition** — étape obligatoire. Les API ne connaissent pas les éditions
-   françaises : nom, éditeur et nombre de tomes parus sont pré-remplis puis corrigés à la main.
-   C'est ici qu'on crée une édition qui n'existe dans aucune base.
-3. Génération des tomes, aucun possédé
-4. Atterrissage sur la page édition
+### Rechercher — l'écran d'ajout
 
-Scan de code-barres EAN-13 : après les quatre écrans ci-dessus.
+> **Arbitré le 9 septembre 2026, pas encore construit.** L'écran s'appelle aujourd'hui
+> « Ajouter » et passe par AniList seule. Ce qui suit est la cible, décidée après mesure du
+> catalogue et des sources — voir `JOURNAL.md`. La route reste `/ajouter` : la changer casserait
+> les raccourcis de la PWA installée pour rien.
+
+**Le nom change parce que le geste a changé.** On ne vient plus « ajouter » un objet qu'on
+décrit soi-même : on **cherche** dans un catalogue de 11 315 séries, et ce qu'on trouve, on
+l'ajoute ou on le suit.
+
+#### Une barre, deux formes de saisie
+
+Texte ou **EAN-13**, discriminés par `isbnValide()` — 13 chiffres, préfixe 978/979, clé de
+contrôle juste. Pas de choix à faire, pas deux écrans à maintenir. Le scanner reste un bouton
+qui remplit la même barre.
+
+**Résolution par EAN, dans cet ordre** — le premier qui répond gagne :
+
+| Rang | Test | Résultat |
+|---|---|---|
+| 1 | `Volume.isbn` en base | tome déjà connu → fiche de l'édition |
+| 2 | `Sortie.isbn` | sortie annoncée → bouton « Je l'ai » |
+| 3 | `ParutionCatalogue.ean` | **la ligne la plus récente**, jamais la première |
+| 4 | BnF par ISBN | notice seule → candidat manuel |
+| 5 | rien | saisie manuelle |
+
+**Résolution par texte** : le local d'abord, par index sur `Serie.slug`, `Serie.titre` et
+`Serie.alias` — un résultat local est un **lien** vers la fiche, jamais une création. Puis le
+catalogue, classé par correspondance exacte, préfixe, puis similarité trigramme.
+**Aucun seuil ne sélectionne** : l'algorithme classe, l'utilisateur choisit. C'est la leçon des
+cinq échecs d'appariement automatique, et ici elle est gratuite — il y a un humain devant.
+
+#### Une ligne de résultat par édition, pas par série
+
+**Un résultat = un groupe `(serieNormalise, marqueurEdition)`**, affiché avec son nombre de
+tomes et son éditeur. Il y a **12 619 groupes pour 11 315 séries**, et **863 séries sont
+multi-édition**.
+
+C'est GANTZ qui l'impose : le catalogue en connaît quatre — édition simple à **37 tomes** chez
+Tonkam, **Perfect Edition à 18 tomes** chez Delcourt/Tonkam, et deux coffrets. Sans le nombre
+de tomes sur la ligne de résultat, impossible de savoir laquelle on ajoute. C'est aussi ce qui
+rend enfin soluble l'ajout d'une **seconde édition à une série existante** : le marqueur
+distingue ce que `creerSerieAvecEdition` confondait.
+
+#### Deux actions, un seul état
+
+**« Ajouter » et « Suivre » écrivent exactement les mêmes lignes** — `Serie`, `Edition`,
+`SuiviEdition`, les `Volume`, et **aucune `Possession`**. La série atterrit donc en wish list
+dans les deux cas et n'entre en Collection qu'au premier tome coché : c'est l'appartenance
+déduite de §3, qui ne stocke rien et ne peut pas se désynchroniser.
+
+La seule différence est ce qui suit : **« Ajouter » emmène dans « Mes tomes »** pour cocher,
+**« Suivre » reste sur la recherche**. Se tromper de bouton n'a donc aucune conséquence.
+
+**Le cochage reste manuel**, un tome à la fois ou d'un coup avec `Tout` : pas de champ
+« j'ai les tomes 1 à N » à la création.
+
+#### Ce que le candidat porte, et d'où ça vient
+
+| Champ | Règle | Ce qui la justifie |
+|---|---|---|
+| `titre` | `serieTitre` de la ligne la plus récente | 57 groupes sur 12 619 ont un titre variable, et les écarts sont cosmétiques |
+| `nom` | `marqueurEdition`, sinon « Édition simple » | — |
+| `editeur` | le plus fréquent du groupe, départagé par récence | l'éditeur varie dans 141 groupes |
+| `tomesParus` | `max(numero)` **sur les lignes de date passée** | 722 groupes seraient gonflés sans ce filtre, 944 lignes étant datées du futur |
+| `tomesParus` sans aucun numéro | **1** | 5 361 groupes n'ont aucun `Vol.N` — one-shots, coffrets, artbooks |
+| `volumes` | `numero` → EAN + date ; **les trous restent vides** | Détective Conan : `max = 107` pour 87 numéros distincts |
+| `auteur` | BnF `700`/`701` filtrés sur le code de fonction `070` | les `702` sont traducteurs et illustrateurs ; Ajin rend bien ses deux auteurs |
+| `prixDefaut` | BnF `010$d` sur l'EAN du dernier tome paru | mesuré : Beastars 690, Ajin 760, Smoking 795 |
+| `editionTerminee` | **pré-cochée** si aucune sortie depuis `MOIS_SANS_SORTIE_POUR_TERMINEE` (24) | sinon une série finie en 2010 afficherait le hachuré « à paraître » et trois cases fantômes |
+| `genres` · `themes` | **vides** | AniList est coupée, et le catalogue n'en porte pas |
+| couvertures | **aucune à la création** | la BnF plafonne à 150 px ; la tâche quotidienne les ramassera |
+
+**Le titre ne vient jamais de la BnF.** Pour l'ISBN de Bleach tome 22, son `200$a` rend
+« Conquistadores » — le sous-titre du tome. Le catalogue porte le nom de série, la BnF l'auteur
+et le prix : chacune sur ce qu'elle sait.
+
+**`editionTerminee` pré-cochée est une déduction, et c'est assumé** : elle est visible dans le
+formulaire et se décoche d'un tap. Le seuil de 24 mois est prudent — les séries longues
+s'interrompent souvent 12 à 18 mois.
+
+#### L'écriture
+
+- Série déjà en base, appariée par `slug` ou `alias` → on ne crée **que** l'`Edition`, son
+  `SuiviEdition` et ses `Volume`.
+- Sinon → `Serie` avec `alias` amorcé des variantes de titre, puis le reste.
+- Les `Volume` portent **`isbn` et `dateSortie`** là où le catalogue les connaît. C'est la
+  nouveauté qui débloque le reste : couverture et prix s'obtiennent par ISBN.
+- `creeeParId` renseigné.
+- **Les sorties futures du groupe deviennent des `Sortie`** dans le même geste, dans la fenêtre
+  M-1 → M+6 de §13.1. Une série ajoutée ou suivie annonce donc ses tomes à venir
+  immédiatement, sans attendre un import — c'est la fin du défaut « le planning est une
+  photographie, pas un flux ».
+- **Aucune `Possession`**, sauf par `/scanner` : le tome scanné est marqué possédé, et la série
+  entre alors directement en Collection.
+
+#### Deux préalables techniques
+
+- **`CREATE EXTENSION pg_trgm`** — disponible sur Neon, pas installée (vérifié le 9 septembre),
+  plus un index GIN trigramme sur `ParutionCatalogue.serieNormalise`.
+- **L'anti-doublon et `resoudreIsbn` doivent passer par un index.** Aujourd'hui le premier
+  charge *tous* les titres de série et le second *toutes* les éditions ; §13.2 l'avait relevé,
+  et à 11 315 séries de catalogue ça ne tient plus.
+
+**Les magazines ne sont pas filtrés**, décidé le 9 septembre. Animeland (257 « tomes »), Les
+Inrocks, Made in Japan et Dream Team sortent donc dans les résultats. Aucune règle automatique
+n'est fiable — l'éditeur ne suffit pas, Glénat en publie, et le nombre de tomes non plus,
+Détective Conan en a 107. Une liste noire écrite à la main, dans l'esprit de
+`RECHERCHES_MANUELLES`, viendra plus tard.
 
 ---
 
@@ -837,8 +938,10 @@ détail et les cas réels sont dans `JOURNAL.md`.
   **50 232 parutions, 11 315 séries, janvier 2000 → décembre 2026**, dont 48 222 avec EAN. Les
   288 fichiers anciens n'étaient pas sur une autre machine mais dans `~/Documents/planning_manga`.
   Voir `JOURNAL.md`. Restent les deux trous connus, `2000-09` et février → juillet 2024.
-- **Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`.** C'est ce que la table sert et
-  rien ne le fait encore. Aujourd'hui l'ajout passe par AniList seul : `tomesParus` pré-rempli
+- **Brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`** — **l'algorithme est arbitré,
+  voir §4 « Rechercher — l'écran d'ajout ».** C'est le chantier suivant, et le seul qui reste
+  entre la collection et une version stable de l'ajout. Aujourd'hui l'ajout passe par AniList
+  seul : `tomesParus` pré-rempli
   avec le **compte japonais**, aucune couverture, aucun ISBN, aucune date, aucun thème, et
   l'éditeur comme le prix arrivent plus tard par des scripts — `goodnight-punpun`, seule série
   jamais ajoutée depuis l'application, est encore la seule sans prix, ce qui suffit à faire
