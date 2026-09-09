@@ -1,9 +1,9 @@
 {
-  "exporteeLe": "2026-09-09T12:14:05.640Z",
+  "exporteeLe": "2026-09-09T14:22:02.286Z",
   "compteurs": {
     "series": 109,
     "editions": 113,
-    "tomes": 1714,
+    "tomes": 1716,
     "possedes": 1155,
     "suivies": 84,
     "couvertures": 1676,
@@ -19358,7 +19358,7 @@
           "slug": "marimashita-iruma-kun",
           "nom": "Édition simple",
           "editeur": "Nobi nobi !",
-          "tomesParus": 34,
+          "tomesParus": 35,
           "editionTerminee": false,
           "prixDefautCentimes": 720,
           "slugMangaNews": null,
@@ -19373,7 +19373,22 @@
               "ajouteeLe": "2026-08-28T14:15:17.864Z"
             }
           ],
-          "sorties": [],
+          "sorties": [
+            {
+              "id": "e98a81b1-bb5d-45e4-8518-0799b7485df1",
+              "numero": 36,
+              "date": "2026-10-14T00:00:00.000Z",
+              "isbn": "9782384967247",
+              "couvertureUrl": null
+            },
+            {
+              "id": "87e995d2-4efc-4f4c-8e99-a1c490faf88e",
+              "numero": 37,
+              "date": "2026-12-02T00:00:00.000Z",
+              "isbn": "9782384967261",
+              "couvertureUrl": null
+            }
+          ],
           "volumes": [
             {
               "id": "a4a5d850-01f3-4836-8d0c-7b6621400136",
@@ -20054,6 +20069,15 @@
                   "note": null
                 }
               ]
+            },
+            {
+              "id": "ffaee232-827d-4ba2-a782-f5086a5197a8",
+              "numero": 35,
+              "isbn": "9782384967223",
+              "dateSortie": "2026-08-19T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": []
             }
           ]
         }
@@ -30754,7 +30778,7 @@
           "slug": "saga-of-tany-the-evil-youjo-senki",
           "nom": "Édition simple",
           "editeur": "Delcourt-Tonkam",
-          "tomesParus": 22,
+          "tomesParus": 23,
           "editionTerminee": false,
           "prixDefautCentimes": 850,
           "slugMangaNews": null,
@@ -31210,6 +31234,15 @@
                   "note": null
                 }
               ]
+            },
+            {
+              "id": "89f40cbe-c1f5-47af-a20c-f76b5ac6e7f9",
+              "numero": 23,
+              "isbn": "9782413077299",
+              "dateSortie": "2026-08-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": []
             }
           ]
         }

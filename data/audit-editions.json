@@ -1,7 +1,7 @@
 {
-  "releveLe": "2026-09-09T14:14:11.035Z",
+  "releveLe": "2026-09-09T14:21:59.814Z",
   "editions": 113,
-  "conformes": 74,
+  "conformes": 76,
   "divergences": [
     {
       "slug": "berserk-prestige-edition",
@@ -280,30 +280,6 @@
       ]
     },
     {
-      "slug": "marimashita-iruma-kun",
-      "titre": "Iruma à l'école des démons",
-      "base": {
-        "nom": "Édition simple",
-        "editeur": "Nobi nobi !",
-        "tomesParus": 34,
-        "tomesAvecIsbn": 20
-      },
-      "candidat": {
-        "serieNormalise": "irumaalecoledesdemons",
-        "marqueurEdition": null,
-        "nom": "Édition simple",
-        "serieTitre": "Iruma à l’école des démons",
-        "editeur": "nobi nobi!",
-        "tomesParus": 35,
-        "lignes": 34,
-        "nosTomes": 20
-      },
-      "autresCandidats": [],
-      "ecarts": [
-        "tomesParus"
-      ]
-    },
-    {
       "slug": "mashle",
       "titre": "MASHLE",
       "base": {
@@ -517,30 +493,6 @@
       "autresCandidats": [],
       "ecarts": [
         "aucun tome ne porte d'ISBN"
-      ]
-    },
-    {
-      "slug": "saga-of-tany-the-evil-youjo-senki",
-      "titre": "Tanya, the evil",
-      "base": {
-        "nom": "Édition simple",
-        "editeur": "Delcourt-Tonkam",
-        "tomesParus": 22,
-        "tomesAvecIsbn": 20
-      },
-      "candidat": {
-        "serieNormalise": "tanyatheevil",
-        "marqueurEdition": null,
-        "nom": "Édition simple",
-        "serieTitre": "Tanya The Evil",
-        "editeur": "Delcourt / Tonkam",
-        "tomesParus": 23,
-        "lignes": 23,
-        "nosTomes": 20
-      },
-      "autresCandidats": [],
-      "ecarts": [
-        "tomesParus"
       ]
     },
     {
