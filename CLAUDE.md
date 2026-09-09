@@ -1056,13 +1056,31 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   non plus — il faudrait les déduire des titres, ou les saisir.
 - **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
   peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
-- **Mise au point de la caméra du scanner.** Le scan décode, mais l'autofocus ne converge pas
-  quand le tome est tenu trop près : l'appareil principal d'un téléphone ne fait pas le point
-  sous une dizaine de centimètres. Contournement : éloigner à 20-25 cm, la détection travaillant
-  sur les frames natives en 1920 × 1080 et non sur l'aperçu à 240 px. Pistes non essayées —
-  agrandir l'aperçu pour juger la netteté, choisir explicitement la caméra plutôt que de laisser
-  `facingMode: "environment"` attraper l'ultra grand-angle, et une contrainte de zoom.
-  **Rien n'est vérifiable depuis le poste** ; la saisie manuelle de l'ISBN, elle, est testée.
+- **Mise au point de la caméra du scanner — les trois pistes sont écrites, aucune n'est
+  vérifiée** (9 septembre 2026). Le scan décode, mais l'autofocus ne converge pas quand le tome
+  est tenu trop près : l'appareil principal d'un téléphone ne fait pas le point sous une dizaine
+  de centimètres, et l'ultra grand-angle n'a souvent pas de mise au point du tout. Contournement
+  connu : éloigner à 20-25 cm, la détection travaillant sur les frames natives en 1920 × 1080.
+
+  Ce qui a été implémenté, et qu'il faut juger **sur téléphone** :
+
+  | Piste | Ce que fait le code |
+  |---|---|
+  | agrandir l'aperçu | il passe d'une hauteur fixe de 240 px à un `aspect-[4/3]` pleine largeur, soit ~322 px à 430 — assez pour juger la netteté à l'œil |
+  | choisir la caméra | un sélecteur apparaît **dès qu'il y a plus d'une caméra**, le choix est mémorisé en `localStorage` et repris au prochain scan ; en cas d'échec du `deviceId` exact, retour à `facingMode: environment` |
+  | contrainte de zoom | `ZOOM_RAPPROCHE` (2) est appliqué **si la piste déclare `zoom` avec un maximum > 1**, ce qui recadre au centre et grossit le code-barres |
+
+  Deux ajouts venus avec : le tap sur l'aperçu demande `focusMode: "single-shot"` quand
+  l'appareil le déclare — c'est ce qu'un tap-to-focus doit faire — au lieu de réappliquer
+  `continuous` ; et le bouton surligné est **la caméra réellement active**, lue dans
+  `getSettings().deviceId`, pas celle qui a été demandée.
+
+  **Rien de tout cela n'est vérifiable depuis le poste** : `BarcodeDetector` n'existe pas sur
+  Chrome de bureau, et il n'y a pas de caméra utile. Ce qui est vérifié, c'est la dégradation —
+  sans caméra l'écran affiche sa mention, masque l'aperçu, ne montre aucun sélecteur et garde le
+  champ ISBN, qui reste le chemin testé. **Le reste attend ton téléphone**, et si la netteté ne
+  s'améliore pas, la question suivante est la torche : un rayon de librairie est sombre, et
+  `torch` est une contrainte largement supportée sur Android.
 - ~~**Sortir Blob du chemin des couvertures**~~ — **tranché le 1er septembre 2026 : Cloudflare
   R2.** La piste `public/` du dépôt est écartée : zéro opération Blob, mais 38 Mo dans git et
   autant retenu par déploiement dans *Deployment Storage*. Voir `JOURNAL.md`,

@@ -7,6 +7,8 @@ import { basculerTome, resoudreIsbn } from "@/lib/actions";
 import {
   CANDIDATS_SCAN_MAX,
   CHEMIN_RECHERCHE,
+  CLE_STOCKAGE_CAMERA,
+  LIBELLE_CAMERA,
   LIBELLE_ISBN,
   LIBELLE_REFAIRE_MISE_AU_POINT,
   LIBELLE_SCAN_CANDIDATS_TITRE,
@@ -17,6 +19,8 @@ import {
   LIBELLE_SCAN_ISBN_INVALIDE,
   LIBELLE_SCAN_OUVRIR_EDITION,
   LIBELLE_SCAN_VERS_RECHERCHE,
+  MENTION_CHOIX_CAMERA,
+  ZOOM_RAPPROCHE,
 } from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
 import { isbnValide, type ResultatScan } from "@/lib/domain";
@@ -29,25 +33,103 @@ const INTERVALLE_DETECTION_MS = 400;
 const LARGEUR_IDEALE = 1920;
 const HAUTEUR_IDEALE = 1080;
 
-type CapacitesEtendues = MediaTrackCapabilities & { focusMode?: string[]; zoom?: unknown };
+type Intervalle = { min: number; max: number; step?: number };
+type CapacitesEtendues = MediaTrackCapabilities & {
+  focusMode?: string[];
+  zoom?: Intervalle;
+};
+type ContraintesEtendues = MediaTrackConstraintSet & {
+  focusMode?: string;
+  zoom?: number;
+};
 
-async function reglerMiseAuPoint(flux: MediaStream): Promise<void> {
+function capacitesDe(flux: MediaStream): CapacitesEtendues | null {
   const piste = flux.getVideoTracks()[0];
-  if (!piste?.applyConstraints) {
-    return;
+  if (!piste?.getCapabilities) {
+    return null;
   }
-  const capacites = piste.getCapabilities?.() as CapacitesEtendues | undefined;
-  const modes = capacites?.focusMode;
-  if (modes && !modes.includes("continuous")) {
+  return (piste.getCapabilities() as CapacitesEtendues) ?? null;
+}
+
+async function appliquer(flux: MediaStream, contraintes: ContraintesEtendues[]): Promise<void> {
+  const piste = flux.getVideoTracks()[0];
+  if (!piste?.applyConstraints || contraintes.length === 0) {
     return;
   }
   try {
-    await piste.applyConstraints({
-      advanced: [{ focusMode: "continuous" } as MediaTrackConstraintSet],
-    });
+    await piste.applyConstraints({ advanced: contraintes as MediaTrackConstraintSet[] });
   } catch {
-    /* l'appareil refuse la contrainte : on garde la mise au point par defaut */
+    /* l'appareil refuse : on garde ses reglages par defaut */
   }
+}
+
+function zoomUtile(capacites: CapacitesEtendues | null): number | null {
+  const plage = capacites?.zoom;
+  if (!plage || typeof plage.max !== "number" || plage.max <= 1) {
+    return null;
+  }
+  return Math.min(plage.max, ZOOM_RAPPROCHE);
+}
+
+async function reglerMiseAuPoint(flux: MediaStream): Promise<void> {
+  const capacites = capacitesDe(flux);
+  const modes = capacites?.focusMode ?? [];
+  const contraintes: ContraintesEtendues[] = [];
+
+  if (modes.includes("continuous")) {
+    contraintes.push({ focusMode: "continuous" });
+  }
+  const zoom = zoomUtile(capacites);
+  if (zoom !== null) {
+    contraintes.push({ zoom });
+  }
+
+  await appliquer(flux, contraintes);
+}
+
+async function refaireLaMiseAuPoint(flux: MediaStream): Promise<void> {
+  const modes = capacitesDe(flux)?.focusMode ?? [];
+  if (modes.includes("single-shot")) {
+    await appliquer(flux, [{ focusMode: "single-shot" }]);
+    return;
+  }
+  await reglerMiseAuPoint(flux);
+}
+
+function lireCameraMemorisee(): string | null {
+  try {
+    return window.localStorage.getItem(CLE_STOCKAGE_CAMERA);
+  } catch {
+    return null;
+  }
+}
+
+function memoriserCamera(identifiant: string): void {
+  try {
+    window.localStorage.setItem(CLE_STOCKAGE_CAMERA, identifiant);
+  } catch {
+    /* le navigateur refuse le stockage : le choix ne survivra pas a la session */
+  }
+}
+
+async function camerasDisponibles(): Promise<MediaDeviceInfo[]> {
+  if (!navigator.mediaDevices?.enumerateDevices) {
+    return [];
+  }
+  try {
+    const appareils = await navigator.mediaDevices.enumerateDevices();
+    return appareils.filter((appareil) => appareil.kind === "videoinput");
+  } catch {
+    return [];
+  }
+}
+
+function nomDeCamera(appareil: MediaDeviceInfo, rang: number): string {
+  const brut = appareil.label.trim();
+  if (brut === "") {
+    return `${LIBELLE_CAMERA} ${rang + 1}`;
+  }
+  return brut.replace(/\s*\([0-9a-f]{4}:[0-9a-f]{4}\)\s*$/i, "");
 }
 
 type Detecteur = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: string }[]> };
@@ -56,6 +138,9 @@ export function Scanner() {
   const video = useRef<HTMLVideoElement>(null);
   const [flux, setFlux] = useState<MediaStream | null>(null);
   const [camera, setCamera] = useState<"inconnue" | "active" | "indisponible">("inconnue");
+  const [cameras, setCameras] = useState<MediaDeviceInfo[]>([]);
+  const [choixCamera, setChoixCamera] = useState<string | null>(null);
+  const [cameraActive, setCameraActive] = useState<string | null>(null);
   const [saisie, setSaisie] = useState("");
   const [resultat, setResultat] = useState<ResultatScan | null>(null);
   const [invalide, setInvalide] = useState(false);
@@ -85,28 +170,48 @@ export function Scanner() {
         setCamera("indisponible");
         return;
       }
+
+      const memorisee = choixCamera ?? lireCameraMemorisee();
+      const resolution = {
+        width: { ideal: LARGEUR_IDEALE },
+        height: { ideal: HAUTEUR_IDEALE },
+      };
+
       try {
         obtenu = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: "environment",
-            width: { ideal: LARGEUR_IDEALE },
-            height: { ideal: HAUTEUR_IDEALE },
-          },
+          video: memorisee
+            ? { deviceId: { exact: memorisee }, ...resolution }
+            : { facingMode: "environment", ...resolution },
         });
-        if (!vivant) {
-          obtenu.getTracks().forEach((piste) => piste.stop());
-          return;
-        }
-        await reglerMiseAuPoint(obtenu);
-        if (!vivant) {
-          obtenu.getTracks().forEach((piste) => piste.stop());
-          return;
-        }
-        setCamera("active");
-        setFlux(obtenu);
       } catch {
-        setCamera("indisponible");
+        try {
+          obtenu = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment", ...resolution },
+          });
+        } catch {
+          setCamera("indisponible");
+          return;
+        }
       }
+
+      if (!vivant) {
+        obtenu.getTracks().forEach((piste) => piste.stop());
+        return;
+      }
+
+      await reglerMiseAuPoint(obtenu);
+      const trouvees = await camerasDisponibles();
+      const utilisee = obtenu.getVideoTracks()[0]?.getSettings().deviceId ?? null;
+
+      if (!vivant) {
+        obtenu.getTracks().forEach((piste) => piste.stop());
+        return;
+      }
+
+      setCameras(trouvees);
+      setCameraActive(utilisee);
+      setCamera("active");
+      setFlux(obtenu);
     }
 
     ouvrirCamera();
@@ -114,7 +219,7 @@ export function Scanner() {
       vivant = false;
       obtenu?.getTracks().forEach((piste) => piste.stop());
     };
-  }, []);
+  }, [choixCamera]);
 
   useEffect(() => {
     if (!flux || !video.current) {
@@ -162,20 +267,55 @@ export function Scanner() {
         type="button"
         hidden={camera !== "active"}
         onClick={() => {
-          if (flux) reglerMiseAuPoint(flux);
+          if (flux) refaireLaMiseAuPoint(flux);
         }}
         aria-label={LIBELLE_REFAIRE_MISE_AU_POINT}
         className="relative block overflow-hidden rounded-md bg-black"
       >
-        <video ref={video} muted autoPlay playsInline className="h-[240px] w-full object-cover" />
+        <video
+          ref={video}
+          muted
+          autoPlay
+          playsInline
+          className="aspect-[4/3] w-full object-cover"
+        />
         <span className="bg-accent/70 pointer-events-none absolute inset-x-[14%] top-1/2 h-[2px] -translate-y-1/2" />
       </button>
+
+      {camera === "active" && cameras.length > 1 ? (
+        <div className="flex flex-wrap gap-[6px]">
+          {cameras.map((appareil, rang) => {
+            const actif = cameraActive === appareil.deviceId;
+            return (
+              <button
+                key={appareil.deviceId}
+                type="button"
+                aria-pressed={actif}
+                onClick={() => {
+                  memoriserCamera(appareil.deviceId);
+                  flux?.getTracks().forEach((piste) => piste.stop());
+                  setFlux(null);
+                  setCamera("inconnue");
+                  setChoixCamera(appareil.deviceId);
+                }}
+                className={`min-h-11 max-w-full truncate rounded-md border px-[10px] text-[11.5px] font-medium transition-colors ${
+                  actif
+                    ? "border-accent text-accent bg-accent/12"
+                    : "border-neutral-800 text-neutral-400 hover:border-neutral-700"
+                }`}
+              >
+                {nomDeCamera(appareil, rang)}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
 
       <p className="text-[11.5px]/[1.6] text-neutral-600">
         {camera === "indisponible"
           ? LIBELLE_SCAN_INDISPONIBLE
           : camera === "active"
-            ? `${LIBELLE_SCAN_INVITE} ${LIBELLE_REFAIRE_MISE_AU_POINT}`
+            ? `${LIBELLE_SCAN_INVITE} ${LIBELLE_REFAIRE_MISE_AU_POINT}${cameras.length > 1 ? ` ${MENTION_CHOIX_CAMERA}` : ""}`
             : LIBELLE_SCAN_INVITE}
       </p>
 

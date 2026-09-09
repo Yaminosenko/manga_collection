@@ -2913,3 +2913,34 @@ d'ouvrir la confirmation avec le candidat déjà résolu — l'utilisateur doit 
 prévoit qu'un scan puisse créer l'édition **et marquer le tome scanné comme possédé**, ce qui
 est le seul chemin qui fait entrer une série directement en Collection plutôt qu'en wish list.
 C'est le prochain pas, et il demande de porter le candidat d'un écran à l'autre.
+
+### Fait — les trois pistes de mise au point du scanner (9 septembre 2026), non vérifiées
+
+Les trois pistes que §12 listait comme « non essayées » sont écrites. **Aucune n'est vérifiée**,
+et c'est structurel : `BarcodeDetector` n'existe pas sur Chrome de bureau et ce poste n'a pas de
+caméra utile. L'entrée est donc dans le journal pour dire ce qui a été *écrit*, pas ce qui a été
+*prouvé* — contrairement à la règle habituelle, et c'est dit.
+
+| Piste | Implémentation |
+|---|---|
+| Aperçu trop petit pour juger la netteté | hauteur fixe de 240 px remplacée par `aspect-[4/3]` pleine largeur, ~322 px à 430 |
+| `facingMode: environment` attrape l'ultra grand-angle | sélecteur de caméra dès qu'il y en a plusieurs, choix mémorisé en `localStorage`, retour au `facingMode` si le `deviceId` exact échoue |
+| Pas de zoom | `zoom: 2` appliqué si la piste déclare la capacité avec un maximum > 1 |
+
+Deux corrections venues en écrivant :
+
+- **Le tap sur l'aperçu réappliquait `continuous`**, alors qu'un tap-to-focus doit demander une
+  mise au point ponctuelle. Il demande maintenant `single-shot` quand l'appareil le déclare, et
+  retombe sur `continuous` sinon.
+- **Le bouton surligné est la caméra réellement active**, lue dans `getSettings().deviceId`, et
+  non celle demandée. Si le `deviceId` exact échoue et qu'on retombe sur `facingMode`, le
+  surlignage dit la vérité. Au passage, ça évite de lire `localStorage` pendant le rendu.
+
+**Ce qui est vérifié, et c'est peu** : sans caméra l'écran affiche « Le scan par la caméra n'est
+disponible que sur Android », masque l'aperçu, ne rend aucun bouton de sélection et garde le
+champ ISBN — la dégradation que §11 exige. Le champ manuel, lui, est éprouvé : il a servi à
+valider les deux rangs de résolution le même jour.
+
+**Si la netteté ne s'améliore pas sur téléphone**, la piste suivante n'est pas la mise au point
+mais la lumière : un rayon de librairie est sombre, et `torch` est une contrainte largement
+supportée sur Android. Elle n'est pas implémentée.
