@@ -193,13 +193,23 @@ l'ouverture d'un écran. Tout écran lit la base locale.
 ### Sources
 | Source | Usage | État mesuré |
 |---|---|---|
-| AniList (GraphQL) | Métadonnées série, couverture série, pont vers les titres romaji | 12/12 · sans clé, sans quota gênant |
+| AniList (GraphQL) | Métadonnées série, couverture série, pont vers les titres romaji | 12/12 · sans clé, sans quota gênant — **mais l'API est coupée depuis leur côté, voir ci-dessous** |
 | BnF (SRU) | Éditeur, ISBN, date de parution VF, **prix en UNIMARC `010$d`** | **éditeur : 106/113 · sans clé**, les 7 derniers saisis à la main |
 | BnF (Service Couvertures) | **Couvertures VF par ISBN/EAN** | sans clé · réutilisation documentée · URL en bêta |
 | MangaDex | Couvertures de tome, **dernier recours** | **93 % en `ja` · en attente d'autorisation** |
 | Google Books | Tomes VF par ISBN, date de parution, couverture tome | **bloqué sans clé d'API, couverture jamais mesurée** |
 | Open Library | Complément ISBN, couverture par ISBN | 0/11 sur des ISBN français |
 | manga-news | Planning des sorties VF | **Export mensuel offert aux visiteurs, archives qualifiées jusqu'à 2000** · l'usage *programmatique* reste en attente d'autorisation |
+
+> **AniList est coupée par ses propres exploitants — constaté le 9 septembre 2026.** Toute
+> requête rend `403` avec « The AniList API has been temporarily disabled due to severe
+> stability issues. » Ce n'est ni le réseau du poste ni une clé manquante : la réponse vient
+> d'AniList. Conséquences immédiates : **`/ajouter` ne propose plus que la collection locale**
+> (l'écran dégrade proprement, « La recherche externe est indisponible »), et
+> `anilist:fetch` comme `relations:fetch` ne rendront rien. La sonde du 28 août reste vraie de
+> ce que l'API donnait ; elle ne dit rien de sa disponibilité. **Argument de plus pour brancher
+> `/ajouter` sur `ParutionCatalogue`** — voir « Reste à faire » : le catalogue porte le nom FR,
+> l'éditeur, la date et l'EAN sans dépendre de personne.
 
 ### Ce que la sonde du 28 août 2026 a établi (échantillon de 12 séries)
 

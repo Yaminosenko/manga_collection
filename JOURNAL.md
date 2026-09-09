@@ -2314,3 +2314,71 @@ changer à Manquants.
 `statut` et `aVerifier` sur `Edition` et niche la possession sous le volume. Après migration il
 ne sait donc ni sauvegarder ni restaurer le banc — c'est le point 4 de la Phase 2, et il doit
 être fait **avant** qu'on ait besoin du filet.
+
+### Fait — la Phase 2 éprouvée sur le banc (9 septembre 2026)
+
+Le code de la séparation catalogue/suivi tourne sur une copie fidèle de la base, migrée. Voie A
+de la vérification : `lib/prisma.ts` choisit l'adaptateur `pg` quand `LOCAL_DATABASE_URL` est
+présente, ce qui permet d'éprouver les écrans **sans toucher à Neon**. `pg` et
+`@prisma/adapter-pg` passent en `dependencies`, étant désormais référencés depuis du code
+applicatif ; sans la variable, c'est `DATABASE_URL` et l'adaptateur Neon, inchangé.
+
+| Écran | Lu à l'écran |
+|---|---|
+| Collection | 1 155 tomes · 109 éditions · ≥ 8 787,61 € — identique à avant |
+| Manquants | **116 tomes · 16 éditions**, section repliée disparue, AIR GEAR avec ses 5 trous |
+| Planning | **10 sorties**, aucune des 4 fantômes |
+| Page Édition | « Statut · Terminée par choix » conservé sur `judge`, bloc Séries liées intact |
+| État | nouveau bloc « SUIVI », « Suivie / Non suivie » |
+| Mes tomes | grille sans bloc « À vérifier » |
+
+**Quatre écritures réelles, chacune recontrôlée en base.** `judge` passé à « Suivie » → `true`
+en base, suivies 84 → 85, **et Manquants monte à 117 tomes · 17 éditions avec JUDGE dedans** :
+la réversibilité d'un tap, celle que §13.1 promet en échange de la section repliée. Retour à
+« Non suivie » → `false`, 84. `doubt` tome 2 coché → 1 156 possédés, sur la nouvelle clé
+`(utilisateurId, volumeId)` ; décoché → 1 155. Le banc est revenu à sa base exacte :
+1 714 possessions, 1 155 possédés, 84 suivies, 113 suivis.
+
+**Le piège d'automatisation, sixième manifestation.** Un premier rétablissement de `judge`,
+cliqué **par référence d'élément juste après la navigation**, n'a rien écrit — sans doute avant
+l'hydratation. Aucune erreur, l'écran inchangé, et je ne l'ai vu qu'en relisant la base. Le
+geste refait par coordonnées, sur un élément visible, est passé. **Recapturer avant de cliquer,
+et ne conclure que sur la base.**
+
+#### Ce qui reste non vérifié, et pourquoi
+
+**`creerSerieAvecEdition` n'a pas pu être exercée.** Ses changements de Phase 2 — créer le
+`SuiviEdition`, renseigner `creeeParId`, ne plus créer de possessions — compilent mais n'ont pas
+tourné. Le formulaire de confirmation n'est rendu que depuis un **résultat distant**
+(`components/add-series.tsx`, `choisie` vient de `resultats.distantes`), et le scanner ne fait
+que pointer des éditions existantes. Sans AniList, il n'existe donc aucun chemin d'interface
+vers la création. À reprendre dès qu'AniList revient, ou quand `/ajouter` sera branché sur
+`ParutionCatalogue`.
+
+**Le mode invité non plus**, faute de vouloir saisir le mot de passe pour fabriquer un jeton
+invité. Le propriétaire confirme qu'il fonctionne ; la ligne qui le résout vers le propriétaire
+est dans `lib/utilisateur.ts` et n'a pas été exercée.
+
+### Établi — AniList a coupé son API (9 septembre 2026)
+
+Constaté en éprouvant `/ajouter`. Toute requête à `graphql.anilist.co` rend **403** avec
+« The AniList API has been temporarily disabled due to severe stability issues. » La réponse
+vient d'AniList : ce n'est ni le réseau du poste professionnel, ni un défaut de notre code, ni
+une clé manquante — vérifié en direct au curl, avec et sans `User-Agent`.
+
+**Ce que ça prouve au passage, et qui est une bonne nouvelle** : la règle de §11 — « une API
+muette ne casse jamais un écran » — tient sur le terrain. `/ajouter` affiche la collection
+locale avec ses compteurs justes et la mention « La recherche externe est indisponible. La
+collection locale reste consultable. » Aucune trace, aucun écran cassé. Ce chemin de dégradation
+n'avait jamais été éprouvé autrement qu'en théorie.
+
+**Ce que ça coûte** : plus aucun ajout de série depuis l'application, `anilist:fetch` et
+`relations:fetch` ne rendront rien, et le pont vers les titres romaji de MangaDex est coupé — le
+sélecteur de couvertures en dépend (§5). La sonde du 28 août reste vraie de ce que l'API
+*donnait* ; elle ne disait rien de sa disponibilité, et c'est la leçon : une source mesurée
+n'est pas une source acquise.
+
+**Ce que ça renforce** : brancher `/ajouter` et `/scanner` sur `ParutionCatalogue`, déjà dans
+« Reste à faire ». Le catalogue porte le nom FR, le marqueur d'édition, l'éditeur, la date et
+l'EAN, il est en base, et il ne dépend de personne. La dépendance à AniList pour la porte
+d'entrée était un point unique de rupture ; c'est maintenant démontré.

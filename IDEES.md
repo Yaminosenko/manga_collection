@@ -85,6 +85,27 @@ panneaux, un clic sur une pastille faisant un `scrollIntoView({ behavior: "smoot
 utilisateur sur `SuiviEdition` et `Possession` ; construire l'écran d'abord obligerait à écrire
 les requêtes deux fois.
 
+### Le rôle invité disparaît quand les comptes existent — 9 septembre 2026
+
+Dit en éprouvant la Phase 2 : le mode invité fonctionne, **mais il n'a de raison d'être que
+faute de comptes.** Une fois l'identité en place (§13.2), on ne se connectera plus « en invité » :
+un utilisateur consultera la collection d'un autre **avec son propre compte**. La consultation
+d'autrui remplace le rôle, elle ne s'y ajoute pas.
+
+Ça n'est pas encore tranché — d'où la présence ici — mais deux conséquences sont déjà connues :
+
+- **§13.2 décrit trois rôles, Invité / Utilisateur / Propriétaire.** Si l'invité s'en va, il
+  reste deux rôles et une **visibilité** : qui peut voir la collection de qui. Ce n'est pas un
+  rôle, c'est une relation entre comptes, et personne ne l'a encore dessinée — publique par
+  défaut, sur autorisation, par lien ?
+- **`utilisateurCourant()` a une ligne à durée de vie connue.** `lib/utilisateur.ts` résout
+  l'invité vers l'id du propriétaire en lecture seule ; c'est indispensable aujourd'hui et
+  ça devient mort le jour où le rôle s'en va. À supprimer avec lui, pas avant.
+
+Reste à décider : ce que voit un compte sans collection à lui, et si le partage d'URL publique
+survit sous une forme quelconque — c'est aujourd'hui le seul moyen de montrer sa collection à
+quelqu'un.
+
 ## Questions ouvertes
 
 - **La pile à lire arrive-t-elle dans ce lot ou après ?** C'est la seule des quatre pastilles
