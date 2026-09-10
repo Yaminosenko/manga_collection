@@ -537,9 +537,51 @@ que la construction du catalogue (§13.2), pas un chantier de couvertures.
 **L'archive est qualifiée jusqu'à septembre 2000, EAN-13 compris** (2 septembre 2026) : le
 verrou n'attend plus qu'un lot de CSV.
 
-**Champ `sourceCouverture` sur `Volume`, à ajouter.** Sans lui, les 1 674 images actuelles sont
-un sac indistinct : impossible de savoir lesquelles viennent de MangaDex et méritent d'être
-remplacées par la version française, ni de fournir l'attribution exigée par la BnF.
+**Champ `sourceCouverture` — ajouté le 10 septembre 2026**, sur `Volume` **et sur `Sortie`**, la
+seconde parce que `promouvoir()` recopie la couverture de la sortie vers le tome. `null` veut dire
+**« indéterminé, antérieur au champ »**, exactement comme `Edition.creeeParId` — et c'est assumé :
+les 1 680 images d'alors étaient un sac indistinct, mélange de MangaDex et de dépôts manuels, et
+rien ne permet de les départager après coup. **Ne pas les marquer en masse**, ce serait inventer
+une provenance. Seules les acquisitions faites depuis portent leur source.
+
+### Ce que la passe du 10 septembre 2026 a mesuré sur les sources
+
+Contredit en partie l'ordre décidé le 31 août, et il faut le savoir avant de s'y fier.
+
+| Source | Rendement mesuré | Résolution rendue |
+|---|---|---|
+| **BnF, service Couvertures** | **31 / 42** sur nos ISBN manquants | **97–108 × 150 px**, et `couverture=1` est la **seule** valeur qui réponde — les « trois tailles » annoncées plus haut n'existent pas en pratique |
+| **Open Library** | **0 / 5** | — (confirme la mesure du 28 août) |
+| **MangaDex, `fr` puis `ja`** | 6 / 8 sur les séries qui ont un identifiant | **722×1024 à 1800×2560** |
+
+**L'ordre ci-dessus met la BnF en tête pour une raison juridique, pas de qualité** — c'est la
+seule source dont les conditions de réutilisation sont écrites. Mais elle rend des images **à
+moins de la moitié de la cote nécessaire**, là où MangaDex en japonais rend 5 à 10 fois mieux.
+L'usage retenu est donc : **MangaDex quand elle a la série, la BnF en complément par ISBN**, et
+`sourceCouverture` pour produire l'attribution ou remplacer l'image selon le cas. C'est une
+inversion assumée de l'ordre écrit, motivée par la mesure.
+
+**Le plafond de 150 px se voit beaucoup moins qu'attendu, et pour une raison de conception** : ces
+couvertures ne tombent que sur des tomes **non possédés**, que la grille affiche à **34 %
+d'opacité**. La désaturation masque la mollesse ; le titre et l'illustration restent
+reconnaissables. **Le jour où un de ces tomes est coché, il passe en pleine opacité et l'écart
+saute aux yeux** — c'est le cas à surveiller, et `sourceCouverture = "bnf"` est ce qui permet de
+les retrouver.
+
+**La langue : `fr`, sinon `ja`, et jamais une troisième.** Arbitré le 10 septembre après un essai
+raté. `LANGUES_PAR_PREFERENCE` de `fetch_covers.py` l'appliquait déjà ; c'est une sonde improvisée
+qui a dévié en classant `ko` et `pt-br`. Deux raisons de s'y tenir :
+- **Le logo coréen d'Iruma-kun occupe une bande large en bas de l'image**, sans commune mesure
+  avec le logo japonais d'origine.
+- **La métadonnée `locale` de MangaDex n'est pas fiable.** La couverture de Youjo Senki t.23
+  étiquetée `pt-br` est **en espagnol**, avec le **logo Panini Manga incrusté** et des marges
+  d'habillage : pas « la même illustration avec un autre titre », mais la maquette d'un autre
+  éditeur. Un sélecteur qui fait confiance à `locale` se fera avoir.
+
+**Et il faut paginer.** `api.mangadex.org/cover` plafonne à 100 résultats par requête et rend le
+compte réel dans `total` : sans pagination on lit une tranche arbitraire et on conclut à tort
+qu'un tome n'existe pas. Iruma-kun en a **216**, Youjo Senki **205**. `fetch_covers.py` pagine ;
+la première sonde non, et elle a fait rater les couvertures japonaises qui existaient bel et bien.
 
 **Scrapers par éditeur : V3, conditionnel.** L'éditeur venu de la BnF permet de router un tome
 vers le bon site. Mais un scraper s'écrit en une heure et se maintient éternellement, et rien
@@ -862,6 +904,9 @@ et 114 éditions** entre-temps :
 | Thèmes | **143 valeurs distinctes**, dont les 99 françaises intactes : seules les **11** séries sans aucun thème en ont reçu, en anglais |
 | Cible | **2 remplies**, là où elle était nulle. `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
 | `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen (id 6199) |
+| Couvertures de tomes | **1 708 / 1 721** — 1 676 avant la passe du 10 septembre |
+| Couvertures de sorties | **14 / 16** |
+| `sourceCouverture` | **28 à `bnf`**, **1 680 à `null`** = indéterminé, antérieur au champ |
 
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
 élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
@@ -918,6 +963,18 @@ détail et les cas réels sont dans `JOURNAL.md`.
   périmée il tombe hors de l'écran ; par référence d'élément juste après une navigation il
   précède l'hydratation. Dans les deux cas : aucune erreur, aucun log, l'écran inchangé.
   Recapturer juste avant de cliquer, et **ne conclure que sur la base**.
+- **`fetch_covers.py` fondait son idempotence sur `public/covers/`, qui n'est pas dans le dépôt.**
+  Sur un poste où le dossier est vide — donc tout poste neuf — il considérait que **les 1 680
+  couvertures manquaient** et les retéléchargeait toutes depuis MangaDex. Corrigé le 10 septembre
+  2026 : il consulte d'abord `couvertureUrl` dans `data/backup.json`, puis son propre manifeste,
+  et le fichier local en dernier. **Le coût a été payé avant la correction** : ~1 287 images
+  reprises pour rien, exactement la récupération massive que §5 dit d'éviter avant réponse de
+  MangaDex. Corollaire général : **un script qui déduit son état d'un dossier ignoré par git
+  repartira de zéro sur un autre poste.**
+- **Trois scripts Python appelaient `main()` sans garde `if __name__ == "__main__"`** —
+  `fetch_covers.py`, `fetch_publishers.py`, `generate_icons.py`. **Les importer suffisait à les
+  exécuter en entier**, et c'est arrivé : un script de vérification qui importait
+  `fetch_covers` a relancé la passe complète. La garde est posée sur les trois.
 - **Le cache des couvertures est immuable un an.** Corriger une image ne suffit pas : un
   appareil qui a vu la mauvaise la garde. Et **supprimer un fichier ne nettoie pas la base** —
   toute suppression remet `couvertureUrl` à `null` dans le même geste.
@@ -1014,13 +1071,27 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
-- **Les couvertures** : **1 676 / 1 716**. Restent 40 tomes — `ippo-s4-la-loi-du-ring` 25,
-  `les-legendaires-saga` 11, `blackrock-shooter-innocent-soul` 2, plus les deux tomes créés le
-  9 septembre pour Iruma-kun et Tanya — et **4 sorties annoncées sur 16**. Le remplissage reste
-  manuel et local : `db:backup`, puis `covers:fetch`, puis `covers:upload`. Y porter la tâche
-  quotidienne demande de réécrire en TypeScript le sélecteur MangaDex de `fetch_covers.py`,
-  celui qui pénalise les fiches satellites — sans lui, un appariement naïf fait repartir Bleach
-  avec 1 tome sur 74.
+- **Les couvertures** : **1 708 / 1 721** et **14 sorties sur 16** après la passe du 10 septembre
+  2026. **Les 13 tomes qui restent ne sont pas un problème de source, c'en est un d'ISBN** — et
+  c'est le verrou que §5 annonce depuis le 31 août :
+
+  | Ce qui manque | Cause |
+  |---|---|
+  | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à interroger |
+  | `ippo-s4` t.3–7 · `grimoire` t.3 — **6 tomes** | ISBN connu, mais **pas de notice illustrée à la BnF**, et pas d'identifiant MangaDex pour ces éditions |
+  | `les-legendaires-saga` t.13 · `radiant` t.20 — **2 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
+
+  Le chemin le plus rentable est donc **de leur trouver un ISBN dans `ParutionCatalogue`**, pas de
+  chercher une source de plus. Les 2 sorties se rempliront d'elles-mêmes à la parution, quand le
+  cron les promeut en tome.
+
+  Le remplissage reste manuel et local : `db:backup`, puis `covers:fetch`, puis `covers:bnf`, puis
+  `covers:upload`. Y porter la tâche quotidienne demande de réécrire en TypeScript le sélecteur
+  MangaDex de `fetch_covers.py`, celui qui pénalise les fiches satellites — sans lui, un
+  appariement naïf fait repartir Bleach avec 1 tome sur 74. **Et son pont vers MangaDex passe
+  encore par AniList, qui est morte** : les 108 identifiants déjà résolus le sauvent, mais une
+  série neuve n'en obtiendra pas. Le remplacer par les titres romaji et natifs de MangaBaka, que
+  `data/mangabaka.json` porte déjà, est le petit chantier qui débloque la ligne suivante.
 - **Une série ajoutée n'a aucune couverture.** Conséquence directe du choix du 9 septembre : rien
   n'est posé à la création. C'est le même chantier que la ligne précédente.
 - **`Edition.slugMangaNews` est nul sur les 113 éditions**, donc le lien sortant de la page
@@ -1113,7 +1184,8 @@ Ce qui reste :
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
 | `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
 | `npm run catalogue:apply` | écrit `ParutionCatalogue`. `-- --dry-run` d'abord ; `-- --recalculer` réécrit les champs dérivés depuis `titreBrut` sans retélécharger un CSV |
-| `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex |
+| `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex, `fr` puis `ja`. **Son idempotence part de `data/backup.json`** : relancer `db:backup` d'abord, sinon il retélécharge |
+| `npm run covers:bnf` | complète par la BnF, **par ISBN**, pour ce que MangaDex n'a pas. Images à 150 px de haut — écrit `data/covers-bnf.json`, et `covers:upload` en tire `sourceCouverture = "bnf"` |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
 | `npm run covers:upload` | dépose dans R2 et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
 | `npm run covers:migrate` | rebascule toutes les `couvertureUrl` vers `R2_PUBLIC_BASE`. `-- --dry-run` d'abord. Sert au jour du domaine personnalisé : sans rien à envoyer, il ne fait que réécrire |

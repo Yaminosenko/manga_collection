@@ -274,6 +274,22 @@ def charger_json(chemin, defaut):
         return defaut
 
 
+def couvertures_en_base():
+    source = json.load(open(SOURCE_COLLECTION, encoding="utf-8"))
+    tomes, annonces = {}, {}
+    for serie in source["series"]:
+        for edition in serie["editions"]:
+            tomes[edition["slug"]] = {
+                volume["numero"] for volume in edition.get("volumes", [])
+                if volume.get("couvertureUrl")
+            }
+            annonces[edition["slug"]] = {
+                sortie["numero"] for sortie in edition.get("sorties", [])
+                if sortie.get("couvertureUrl")
+            }
+    return tomes, annonces
+
+
 def sorties_visees():
     source = json.load(open(SOURCE_COLLECTION, encoding="utf-8"))
     visees = []
@@ -302,6 +318,7 @@ def main():
     cibles = editions_visees()
     identifiants = charger_json(FICHIER_IDS, {})
     manifeste = charger_json(FICHIER_MANIFESTE, {})
+    tomes_en_base, annonces_en_base = couvertures_en_base()
     sans_correspondance, sans_couverture = [], []
     telecharges = poids_total = 0
 
@@ -310,6 +327,8 @@ def main():
         deja = {
             numero for numero in attendus
             if os.path.exists(f"{RACINE_COUVERTURES}/{slug}/{numero}.webp")
+            or numero in tomes_en_base.get(slug, set())
+            or numero in manifeste.get(slug, [])
         }
         if len(deja) == tomes_parus:
             manifeste[slug] = sorted(deja)
@@ -386,7 +405,7 @@ def main():
         familles = None
         for numero in numeros:
             chemin = f"{RACINE_COUVERTURES}/{slug}/{numero}.webp"
-            if os.path.exists(chemin):
+            if os.path.exists(chemin) or numero in annonces_en_base.get(slug, set()):
                 obtenus.append(numero)
                 continue
             if familles is None:
@@ -432,4 +451,5 @@ def main():
         print(f"    {slug}")
 
 
-main()
+if __name__ == "__main__":
+    main()

@@ -1,13 +1,13 @@
 {
-  "exporteeLe": "2026-09-10T08:47:18.449Z",
+  "exporteeLe": "2026-09-10T09:46:26.069Z",
   "compteurs": {
     "series": 110,
     "editions": 114,
     "tomes": 1721,
     "possedes": 1159,
     "suivies": 85,
-    "couvertures": 1676,
-    "liens": 18
+    "couvertures": 1708,
+    "liens": 28
   },
   "utilisateurs": [
     {
@@ -21,109 +21,169 @@
   ],
   "liens": [
     {
-      "id": "bf7aed28-436d-4b7a-a038-208dfad55c4c",
+      "id": "0be6a6b1-4e19-4dad-b054-cd18355b1d7f",
       "serieId": "03e39511-c6d1-4290-aa7e-64e844333ab7",
       "serieLieeId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
       "type": "SUITE"
     },
     {
-      "id": "02e008f4-3f6b-4fc9-93b3-31c5b2ac790a",
+      "id": "3ecc8b98-ef14-41a4-9c1d-bf21f5ea25aa",
+      "serieId": "04005f0f-a845-40d5-9fa8-37e65cf6c1fa",
+      "serieLieeId": "25b0c1db-0485-46ae-bceb-dd36113ae8ca",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "7e2ac4e6-48fc-4daa-b9e3-cd4764b084da",
+      "serieId": "08b69bb0-b658-449f-b0e5-209f865c10fa",
+      "serieLieeId": "5b9bd47d-e525-465c-8f26-8f11086d1f31",
+      "type": "HORS_SERIE"
+    },
+    {
+      "id": "3fe76521-354e-4317-bb71-a8dc1ebafbe0",
       "serieId": "08b69bb0-b658-449f-b0e5-209f865c10fa",
       "serieLieeId": "7df44ae4-4b07-4ebe-9a6c-6305ad68667f",
       "type": "AUTRE"
     },
     {
-      "id": "6a512d0e-d400-4fea-8e2c-692bb5d35577",
+      "id": "430af83e-00ad-435e-a6de-c1521ac8c511",
       "serieId": "0d829e02-434a-4a14-befc-b0461b8270aa",
       "serieLieeId": "f7f66f75-5394-4d6a-bef1-896ece5416ef",
       "type": "SERIE_MERE"
     },
     {
-      "id": "dabc4e67-a7e7-45b4-bab1-6ea4d287a26b",
+      "id": "53c5492e-0a85-4b87-b4e5-87bef205b030",
+      "serieId": "1ea9189b-e73c-419f-93ef-e73ef4c8f2e7",
+      "serieLieeId": "25b0c1db-0485-46ae-bceb-dd36113ae8ca",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "3c81895d-eca5-4b93-8037-3864010da341",
+      "serieId": "25b0c1db-0485-46ae-bceb-dd36113ae8ca",
+      "serieLieeId": "04005f0f-a845-40d5-9fa8-37e65cf6c1fa",
+      "type": "SPIN_OFF"
+    },
+    {
+      "id": "e3d19050-f94d-40f8-a981-ef78331eb52c",
+      "serieId": "25b0c1db-0485-46ae-bceb-dd36113ae8ca",
+      "serieLieeId": "1ea9189b-e73c-419f-93ef-e73ef4c8f2e7",
+      "type": "SPIN_OFF"
+    },
+    {
+      "id": "dc85911c-d914-424a-ac2c-1a88bf676ac6",
       "serieId": "27cccb9f-b7f1-4db6-9b51-0689ff4ef396",
       "serieLieeId": "7319a911-92d3-4e1f-82da-5bb7f7e2ed60",
       "type": "AUTRE"
     },
     {
-      "id": "32615afe-b67f-4dc1-b9b3-235234c9cbcb",
+      "id": "9d99c670-8135-423b-a1ce-fae276e9c47d",
       "serieId": "4070cc42-8d70-4dd0-ae63-ba35b77bd737",
       "serieLieeId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
       "type": "PREQUELLE"
     },
     {
-      "id": "27fff978-b3d1-4007-9182-700789681f14",
+      "id": "ad430b53-5e04-4ec5-a83e-69e33bf995ee",
       "serieId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
       "serieLieeId": "7e24a177-3cb0-4ee4-8592-43e93fcc60ef",
-      "type": "GUIDE"
+      "type": "HORS_SERIE"
     },
     {
-      "id": "4d78a92e-19c1-448a-828d-11e3a7d24a16",
+      "id": "91fb25ff-33bb-497e-9caa-fcc64fd64f37",
       "serieId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
       "serieLieeId": "8a37795c-cc65-421f-a61a-bd1090576550",
       "type": "SPIN_OFF"
     },
     {
-      "id": "45601415-3dd8-4501-b165-43efedb784da",
+      "id": "5b1c00da-0fb8-47a6-bb5a-f5de8835377a",
+      "serieId": "5b9bd47d-e525-465c-8f26-8f11086d1f31",
+      "serieLieeId": "08b69bb0-b658-449f-b0e5-209f865c10fa",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "e82ec3c2-2201-4068-a2bc-120fae7e251e",
       "serieId": "70822b1e-37b3-4014-bb30-aee10c227778",
       "serieLieeId": "a75feded-103b-4bb1-9e14-478ce72590a1",
       "type": "HORS_SERIE"
     },
     {
-      "id": "90225716-1a62-4bc9-8f70-8ea854a9947a",
+      "id": "e2636c22-d29e-47f9-a293-0ff7150c442e",
       "serieId": "7319a911-92d3-4e1f-82da-5bb7f7e2ed60",
       "serieLieeId": "27cccb9f-b7f1-4db6-9b51-0689ff4ef396",
       "type": "AUTRE"
     },
     {
-      "id": "22852b20-505d-4b7e-970f-4d7cb35a05b5",
-      "serieId": "7df44ae4-4b07-4ebe-9a6c-6305ad68667f",
-      "serieLieeId": "08b69bb0-b658-449f-b0e5-209f865c10fa",
-      "type": "AUTRE"
-    },
-    {
-      "id": "eba91279-76eb-49a6-85c3-580197492d33",
+      "id": "f0d4bd4d-e3ee-4691-bb4c-273c72c2bf1f",
       "serieId": "7e24a177-3cb0-4ee4-8592-43e93fcc60ef",
       "serieLieeId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
       "type": "SERIE_MERE"
     },
     {
-      "id": "066115a7-b3dc-49c3-8d2c-9ff07b85ae2c",
+      "id": "d2f0d2a7-65d2-463a-9dc3-c65a799fa1a0",
       "serieId": "8a37795c-cc65-421f-a61a-bd1090576550",
       "serieLieeId": "428efa29-e187-4fd6-96ec-ab6e8bc30116",
       "type": "SERIE_MERE"
     },
     {
-      "id": "2ed2d2ff-2ff6-4267-bd66-060d20585131",
+      "id": "c8eadb46-04c6-4677-bce9-7dba8003c38e",
+      "serieId": "9facfe27-a7e1-410a-ad44-cbeb0e115d94",
+      "serieLieeId": "c7a8134a-3ea9-49ad-8c43-ba9f890cfbdd",
+      "type": "SPIN_OFF"
+    },
+    {
+      "id": "e7ddc518-6d46-4726-9cf7-29b60fe8ae1d",
       "serieId": "a75feded-103b-4bb1-9e14-478ce72590a1",
       "serieLieeId": "70822b1e-37b3-4014-bb30-aee10c227778",
       "type": "SERIE_MERE"
     },
     {
-      "id": "343ee5a1-e330-4f39-9203-b619d0a1df90",
+      "id": "7422f1e9-48c4-4a69-a835-fba4a483e311",
+      "serieId": "aacf21e3-3bd9-41d8-93eb-3a7bad01c251",
+      "serieLieeId": "d65dcc5d-ef6a-4bea-91c0-67f803ab3f57",
+      "type": "HORS_SERIE"
+    },
+    {
+      "id": "46f7f31f-a4ee-46a8-ae2f-b51120eb2410",
+      "serieId": "aacf21e3-3bd9-41d8-93eb-3a7bad01c251",
+      "serieLieeId": "dea7f0c4-d664-47f9-8c40-6ee0c147fe2e",
+      "type": "PREQUELLE"
+    },
+    {
+      "id": "80459894-05e9-412b-a669-2a21e62cb5d6",
+      "serieId": "c7a8134a-3ea9-49ad-8c43-ba9f890cfbdd",
+      "serieLieeId": "9facfe27-a7e1-410a-ad44-cbeb0e115d94",
+      "type": "SERIE_MERE"
+    },
+    {
+      "id": "b16032e8-05ce-4df9-9755-52f20ee343f3",
       "serieId": "ceaf4e09-9658-47e2-b6ef-5885e3827ab4",
       "serieLieeId": "ff323d4a-3882-47a4-ab62-caae77236832",
       "type": "PREQUELLE"
     },
     {
-      "id": "f07a7dd1-9a94-43e0-a056-0cb89cec83f3",
+      "id": "cf19f684-89ca-4cf6-a1fd-bf4e6da69a87",
       "serieId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
       "serieLieeId": "03e39511-c6d1-4290-aa7e-64e844333ab7",
       "type": "PREQUELLE"
     },
     {
-      "id": "e051805e-e991-48b7-813d-84a78e66f66d",
+      "id": "ca863382-1aad-445c-bb81-a2b1aefa7864",
       "serieId": "d41e0676-cc6e-49cd-b08d-02907c94d376",
       "serieLieeId": "4070cc42-8d70-4dd0-ae63-ba35b77bd737",
       "type": "SUITE"
     },
     {
-      "id": "38c8d0fb-925b-4f9b-8095-1f67c0e7f4bb",
+      "id": "bc1d2c2b-f11a-4602-a8ed-3c189ca9aa74",
+      "serieId": "dea7f0c4-d664-47f9-8c40-6ee0c147fe2e",
+      "serieLieeId": "aacf21e3-3bd9-41d8-93eb-3a7bad01c251",
+      "type": "SUITE"
+    },
+    {
+      "id": "c88465c1-cddc-4b94-934b-ff33717de3f5",
       "serieId": "f7f66f75-5394-4d6a-bef1-896ece5416ef",
       "serieLieeId": "0d829e02-434a-4a14-befc-b0461b8270aa",
       "type": "GUIDE"
     },
     {
-      "id": "f40ee7e5-d8ac-4c00-a644-d7e69cb2c85c",
+      "id": "32d867bc-c431-4d2a-af98-d31527b66df9",
       "serieId": "ff323d4a-3882-47a4-ab62-caae77236832",
       "serieLieeId": "ceaf4e09-9658-47e2-b6ef-5885e3827ab4",
       "type": "SUITE"
@@ -137,6 +197,7 @@
       "titreVo": "アクタージュ act-age",
       "auteur": "Tatsuya Matsuki & Shiro Usazaki",
       "genres": [
+        "Comedy",
         "Drama",
         "Psychological",
         "Slice of Life"
@@ -145,12 +206,35 @@
         "Cinéma"
       ],
       "alias": [
-        "アクタージュ act-age"
+        "アクタージュ act-age",
+        "액터쥬",
+        "act-age ดารายอดอัจฉริยะ (SIC)",
+        "Akutaaju",
+        "Картина на века",
+        "سن التمثيل",
+        "عصر التمثيل",
+        "ดารายอดอัจฉริยะ",
+        "アクタージュ",
+        "演员夜凪景",
+        "演員夜凪景"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "actage",
+        "アクタージュactage",
+        "액터쥬",
+        "actageดารายอดอจฉรยะsic",
+        "akutaaju",
+        "картинанавека",
+        "سنالتمثيل",
+        "عصرالتمثيل",
+        "ดารายอดอจฉรยะ",
+        "アクタージュ",
+        "演员夜凪景",
+        "演員夜凪景"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 9733,
       "editions": [
         {
           "id": "5a3b2d8d-686e-40df-8f89-e398b07dc5a0",
@@ -225,25 +309,52 @@
       "titreVo": "エア・ギア",
       "auteur": "Oh ! Great",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
+        "Ecchi",
         "Action",
         "Comedy",
         "Drama",
-        "Ecchi",
+        "Psychological",
         "Romance",
-        "Sci-Fi",
-        "Sports"
+        "Sports",
+        "Tragedy"
       ],
       "themes": [
         "Ecole",
         "Sport"
       ],
       "alias": [
-        "エア・ギア"
+        "エア・ギア",
+        "에어 기어",
+        "Air Gear Unlimited",
+        "Lucht Gear",
+        "Эйр Гир",
+        "الهواء والعتاد",
+        "এয়ার গিয়ার",
+        "ขาคู่ทะลุฟ้า แอร์เกียร์",
+        "แอร์เกียร์ ขาคู่ทะลุฟ้า (VBK)",
+        "エア・ギア UNLIMITED",
+        "飛輪少年"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "airgear",
+        "エアギア",
+        "에어기어",
+        "airgearunlimited",
+        "luchtgear",
+        "эйргир",
+        "الهواءوالعتاد",
+        "এযরগযর",
+        "ขาคทะลฟาแอรเกยร",
+        "แอรเกยรขาคทะลฟาvbk",
+        "エアギアunlimited",
+        "飛輪少年"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10003,
       "editions": [
         {
           "id": "0cfe2766-1509-4f4f-ab3b-a787a97f7307",
@@ -1018,11 +1129,15 @@
       "titreVo": "亜人",
       "auteur": "Gamon Sakurai & Tsuina Miura",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Action",
+        "Drama",
         "Horror",
         "Mystery",
         "Psychological",
-        "Supernatural"
+        "Tragedy",
+        "Thriller"
       ],
       "themes": [
         "Combats",
@@ -1030,12 +1145,37 @@
         "Mort"
       ],
       "alias": [
-        "亜人"
+        "亜人",
+        "아인",
+        "Ajin: Demi-Human",
+        "Ajin: Semi-humain",
+        "Ajin: Semi-humano",
+        "Ajin: Yarı-İnsan",
+        "Ajin: สายพันธุ์อมนุษย์",
+        "Ajin อาจิน สายพันธุ์อมนุษย์",
+        "Ajin อาจิน สายพันธุ์อมนุษย์ (SIC)",
+        "Á nhân",
+        "Demi-Human",
+        "Demihumans"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "ajin",
+        "亜人",
+        "아인",
+        "ajindemihuman",
+        "ajinsemihumain",
+        "ajinsemihumano",
+        "ajinyarıinsan",
+        "ajinสายพนธอมนษย",
+        "ajinอาจนสายพนธอมนษย",
+        "ajinอาจนสายพนธอมนษยsic",
+        "anhan",
+        "demihuman",
+        "demihumans"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2426,
       "editions": [
         {
           "id": "15b69101-36c8-4aae-9d90-b6e1cdc0ae95",
@@ -1410,12 +1550,14 @@
       "titreVo": "All You Need Is Kill",
       "auteur": "Hiroshi Sakuraza & Takeshi Obata",
       "genres": [
+        "Sci-Fi",
+        "Mecha",
         "Action",
         "Drama",
-        "Mecha",
+        "Mystery",
         "Psychological",
         "Romance",
-        "Sci-Fi"
+        "Tragedy"
       ],
       "themes": [
         "Aliens",
@@ -1424,12 +1566,35 @@
         "Mature"
       ],
       "alias": [
-        "All You Need Is Kill"
+        "All you need is kill - Cuộc chiến luân hồi",
+        "All You Need Is Kill - Öldür Yeter",
+        "All You Need Is Kill - Stačí jen zabíjet",
+        "AYNK",
+        "Cuộc Chiến Luân Hồi",
+        "Edge of Tomorrow",
+        "Na skraju jutra",
+        "No Limite Do Amanhâ",
+        "Öldür Yeter",
+        "Ooru Yuu Niido izu Kiru",
+        "Yarının Sınırında"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "allyouneediskill",
+        "allyouneediskillcuocchienluanhoi",
+        "allyouneediskillolduryeter",
+        "allyouneediskillstacijenzabijet",
+        "aynk",
+        "cuocchienluanhoi",
+        "edgeoftomorrow",
+        "naskrajujutra",
+        "nolimitedoamanha",
+        "olduryeter",
+        "ooruyuuniidoizukiru",
+        "yarınınsınırında"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 18661,
       "editions": [
         {
           "id": "408b9ce1-0ed3-4136-845a-cf4b01d90f20",
@@ -1504,10 +1669,11 @@
       "titreVo": "アルマ",
       "auteur": "Mito Shinji",
       "genres": [
+        "Sci-Fi",
         "Adventure",
         "Drama",
         "Psychological",
-        "Sci-Fi"
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -1515,12 +1681,21 @@
         "Jeux Video"
       ],
       "alias": [
-        "アルマ"
+        "アルマ",
+        "Alma (Shinji Mito)",
+        "Aruma",
+        "Альма"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "alma",
+        "アルマ",
+        "almashinjimito",
+        "aruma",
+        "альма"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 36212,
       "editions": [
         {
           "id": "19feaa44-5e37-47d4-8ddb-f7e9409949e6",
@@ -1635,10 +1810,13 @@
       "titreVo": "暗殺教室",
       "auteur": "Yusei Matsui",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Comedy",
-        "Sci-Fi",
-        "Supernatural"
+        "Drama",
+        "Mystery",
+        "Tragedy"
       ],
       "themes": [
         "Alien",
@@ -1646,12 +1824,37 @@
         "School Life"
       ],
       "alias": [
-        "暗殺教室"
+        "暗殺教室",
+        "암살 교실",
+        "Ansatsu Kyōshitsu",
+        "Ansatsu Kyoushitsu",
+        "Ansatsu Kyoushitsu Extra",
+        "Asasinay salklas",
+        "Atentátní karta třída",
+        "Attentat Klassenzimmer",
+        "Aula de asesinato",
+        "Aula di assassinio",
+        "Clase de asesinato",
+        "Classe d'assassinat"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "assassinationclassroom",
+        "暗殺教室",
+        "암살교실",
+        "ansatsukyoshitsu",
+        "ansatsukyoushitsu",
+        "ansatsukyoushitsuextra",
+        "asasinaysalklas",
+        "atentatnikartatrida",
+        "attentatklassenzimmer",
+        "auladeasesinato",
+        "auladiassassinio",
+        "clasedeasesinato",
+        "classedassassinat"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 14302,
       "editions": [
         {
           "id": "94920395-5ca1-4d64-8749-2eba0c69cae2",
@@ -2106,11 +2309,16 @@
       "titreVo": "BEASTARS",
       "auteur": "Paru Itagaki",
       "genres": [
+        "Fantasy",
+        "Action",
+        "Comedy",
         "Drama",
+        "Martial Arts",
         "Mystery",
         "Psychological",
         "Romance",
-        "Slice of Life"
+        "Slice of Life",
+        "Tragedy"
       ],
       "themes": [
         "Adolescence",
@@ -2125,12 +2333,33 @@
         "Mature"
       ],
       "alias": [
-        "BEASTARS"
+        "비스타즈",
+        "비스타즈 (BEASTARS)",
+        "Beastars - Выдающиеся звери",
+        "Biisutaazu",
+        "Legoshi, a farkas",
+        "Видатні звірі",
+        "Выдающиеся звери",
+        "بيستارز",
+        "บีสตาร์",
+        "ビースターズ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "beastars",
+        "비스타즈",
+        "비스타즈beastars",
+        "beastarsвыдающиесязвери",
+        "biisutaazu",
+        "legoshiafarkas",
+        "видатнізвірі",
+        "выдающиесязвери",
+        "بيستارز",
+        "บสตาร",
+        "ビースターズ"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 6803,
       "editions": [
         {
           "id": "bc0310bd-3a21-4cbf-ac20-e7cef96e6f2b",
@@ -2605,12 +2834,14 @@
       "titreVo": "ベルセルク",
       "auteur": "Kentaro Miura",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Adventure",
         "Drama",
-        "Fantasy",
         "Horror",
-        "Psychological"
+        "Psychological",
+        "Tragedy"
       ],
       "themes": [
         "Démons",
@@ -2618,12 +2849,37 @@
         "Combats"
       ],
       "alias": [
-        "ベルセルク"
+        "ベルセルク",
+        "베르세르크",
+        "Berserk Max",
+        "Beruseruku",
+        "Берсерк",
+        "Бярсерк",
+        "ברזרק",
+        "برزرک",
+        "برسرك",
+        "بيرسيرك",
+        "बर्जर्क",
+        "बर्सर्क"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "berserk",
+        "ベルセルク",
+        "베르세르크",
+        "berserkmax",
+        "beruseruku",
+        "берсерк",
+        "бярсерк",
+        "ברזרק",
+        "برزرک",
+        "برسرك",
+        "بيرسيرك",
+        "बरजरक",
+        "बरसरक"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1692,
       "editions": [
         {
           "id": "7438ac65-b7c8-461a-96c0-881b09d89f17",
@@ -3662,6 +3918,7 @@
       "titreVo": "ブラッククローバー",
       "auteur": "Yûki Tabata",
       "genres": [
+        "Fantasy",
         "Action",
         "Comedy"
       ],
@@ -3671,12 +3928,23 @@
         "magie"
       ],
       "alias": [
-        "ブラッククローバー"
+        "ブラッククローバー",
+        "Black Clover One-Shot",
+        "Black Clover (Pilot)",
+        "Black Clover (Pre-Serialization)",
+        "Чёрный клевер"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blackclover",
+        "ブラッククローバー",
+        "blackcloveroneshot",
+        "blackcloverpilot",
+        "blackcloverpreserialization",
+        "чёрныйклевер"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 34103,
       "editions": [
         {
           "id": "d5eee821-accf-4b95-9986-dbb7598d56b5",
@@ -4451,10 +4719,12 @@
       "titreVo": "ブラック・ラグーン",
       "auteur": "Rei Hiroe",
       "genres": [
+        "Ecchi",
         "Action",
         "Adventure",
         "Comedy",
-        "Drama"
+        "Drama",
+        "Tragedy"
       ],
       "themes": [
         "Crime",
@@ -4462,12 +4732,37 @@
         "Pirate"
       ],
       "alias": [
-        "ブラック・ラグーン"
+        "ブラック・ラグーン",
+        "블랙 라군",
+        "Burakku Laguun",
+        "Đầm Đen",
+        "Đầm Lầy Đen",
+        "Пираты «Чёрной лагуны»",
+        "Чёрная лагуна",
+        "Чорна лагуна",
+        "البحيرة السوداء",
+        "ब्ल्याक लगुन",
+        "จรชนพันธุ์เดือด",
+        "ทะเลสาบสีดำ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blacklagoon",
+        "ブラックラグーン",
+        "블랙라군",
+        "burakkulaguun",
+        "đamđen",
+        "đamlayđen",
+        "пиратычёрнойлагуны",
+        "чёрнаялагуна",
+        "чорналагуна",
+        "البحيرةالسوداء",
+        "बलयकलगन",
+        "จรชนพนธเดอด",
+        "ทะเลสาบสดำ"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 6195,
       "editions": [
         {
           "id": "4b444975-0d67-4e87-b08d-175429e9ffcf",
@@ -4762,10 +5057,13 @@
       "titreVo": "BLACK TORCH",
       "auteur": "Tsuyoshi Takaki",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Sci-Fi",
-        "Supernatural"
+        "Drama",
+        "Martial Arts"
       ],
       "themes": [
         "Démons",
@@ -4773,12 +5071,31 @@
         "Ninjas"
       ],
       "alias": [
-        "BLACK TORCH"
+        "블랙 토치",
+        "Black Torch: Kara Meşale",
+        "Burakku Toochi",
+        "Kara Fener",
+        "Kara Meşale",
+        "Черный факел",
+        "الشعلة السوداء",
+        "ブラックトーチ",
+        "黑炬Black Torch"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blacktorch",
+        "블랙토치",
+        "blacktorchkaramesale",
+        "burakkutoochi",
+        "karafener",
+        "karamesale",
+        "черныйфакел",
+        "الشعلةالسوداء",
+        "ブラックトーチ",
+        "黑炬blacktorch"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 25112,
       "editions": [
         {
           "id": "02dc42d0-e3d3-44bd-aac2-bf5536102c56",
@@ -4913,20 +5230,39 @@
       "titreVo": "ブラック★ロックシューター -イノセントソウル-",
       "auteur": "Sanami Suzuki & Huke",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Drama",
-        "Fantasy"
+        "Tragedy"
       ],
       "themes": [
         "BRS ✭"
       ],
       "alias": [
-        "ブラック★ロックシューター -イノセントソウル-"
+        "ブラック★ロックシューター -イノセントソウル-",
+        "B★SIS",
+        "Стрелок с Чёрной Скалы",
+        "Стрелок с чёрной скалы: Невинная душа",
+        "แบล็ค★ร็อคชู้ตเตอร์ อินโนเซนต์โซล",
+        "黑岩射手-Innocent Soul",
+        "黑岩射手-天真之灵",
+        "黑岩射手-天真之靈"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blackrockshooterinnocentsoul",
+        "ブラックロックシューターイノセントソウル",
+        "bsis",
+        "стрелоксчёрнойскалы",
+        "стрелоксчёрнойскалыневиннаядуша",
+        "แบลครอคชตเตอรอนโนเซนตโซล",
+        "黑岩射手innocentsoul",
+        "黑岩射手天真之灵",
+        "黑岩射手天真之靈"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5876,
       "editions": [
         {
           "id": "24922f71-c042-4564-8761-0b023161a6b8",
@@ -4976,7 +5312,7 @@
               "isbn": "9782809431919",
               "dateSortie": "2013-07-17T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/blackrock-shooter-innocent-soul/2.webp",
               "possessions": [
                 {
                   "id": "36ed186f-c660-41e5-a314-5694d0ffe914",
@@ -4996,7 +5332,7 @@
               "isbn": "9782809433104",
               "dateSortie": "2013-09-18T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/blackrock-shooter-innocent-soul/3.webp",
               "possessions": [
                 {
                   "id": "503c8966-4ff0-48ac-8704-db140e26da09",
@@ -5020,17 +5356,30 @@
       "titre": "BLACK★ROCK SHOOTER – THE GAME",
       "titreVo": "ブラック★ロックシューター THE GAME",
       "auteur": "TNSK & Huke",
-      "genres": [],
+      "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Action",
+        "Mystery",
+        "Tragedy"
+      ],
       "themes": [
         "BRS ✭"
       ],
       "alias": [
-        "ブラック★ロックシューター THE GAME"
+        "ブラック★ロックシューター THE GAME",
+        "VOCALOID - BLACK★ROCK SHOOTER THE GAME",
+        "Стрелок с Чёрной Скалы: Игра"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blackrockshooterthegame",
+        "ブラックロックシューターthegame",
+        "vocaloidblackrockshooterthegame",
+        "стрелоксчёрнойскалыигра"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 15377,
       "editions": [
         {
           "id": "0b1a32db-f510-443f-a813-347d842f37f8",
@@ -5105,11 +5454,15 @@
       "titreVo": "BLAME!",
       "auteur": "Nihei Tsutomu",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Action",
+        "Adventure",
         "Drama",
         "Horror",
+        "Mystery",
         "Psychological",
-        "Sci-Fi"
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -5117,12 +5470,29 @@
         "Jeux Video"
       ],
       "alias": [
-        "BLAME!"
+        "블레임",
+        "Blame! พลิกวินาทีล่า",
+        "Buramu!",
+        "İftira!",
+        "Блам!",
+        "Блейм!",
+        "ブラム!",
+        "探索者"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blame",
+        "블레임",
+        "blameพลกวนาทลา",
+        "buramu",
+        "iftira",
+        "блам",
+        "блейм",
+        "ブラム",
+        "探索者"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 12030,
       "editions": [
         {
           "id": "cafe37d5-217d-44ba-812e-58764ba4535c",
@@ -5277,18 +5647,44 @@
       "titreVo": "ブレイザードライブ",
       "auteur": "Seishi Kishimoto",
       "genres": [
-        "Action"
+        "Sci-Fi",
+        "Supernatural",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama"
       ],
       "themes": [
         "Autocollant"
       ],
       "alias": [
-        "ブレイザードライブ"
+        "ブレイザードライブ",
+        "블레이저 드라이브",
+        "Tribal",
+        "Tribal, Trival",
+        "Trival",
+        "Блайзер Драйв",
+        "Блейзер Драйв",
+        "เบลเซอร์ไดรฟ์ (VBK)",
+        "徽章战役",
+        "徽章戰役"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blazerdrive",
+        "ブレイザードライブ",
+        "블레이저드라이브",
+        "tribal",
+        "tribaltrival",
+        "trival",
+        "блайзердрайв",
+        "блейзердрайв",
+        "เบลเซอรไดรฟvbk",
+        "徽章战役",
+        "徽章戰役"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 11744,
       "editions": [
         {
           "id": "747e4f09-6db7-447e-bf5c-098bf88dcecc",
@@ -5503,9 +5899,14 @@
       "titreVo": "BLEACH",
       "auteur": "Tite Kubo",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Supernatural"
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Tragedy"
       ],
       "themes": [
         "Nekketsu",
@@ -5513,12 +5914,35 @@
         "Combats"
       ],
       "alias": [
-        "BLEACH"
+        "블리치",
+        "BLEACH 블리치",
+        "Sứ Mạng Thần Chết",
+        "Блич",
+        "Бліч",
+        "בְּלִיץ'",
+        "بليتش",
+        "بلیچ",
+        "ब्लीच",
+        "பிளீச்",
+        "เทพมรณะ (NED)"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "bleach",
+        "블리치",
+        "bleach블리치",
+        "sumangthanchet",
+        "блич",
+        "бліч",
+        "בליץ",
+        "بليتش",
+        "بلیچ",
+        "बलच",
+        "பளச",
+        "เทพมรณะned"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2410,
       "editions": [
         {
           "id": "564f9035-d34b-4768-bc6d-56d7ae0ac6e5",
@@ -7030,17 +7454,27 @@
       "id": "5b9bd47d-e525-465c-8f26-8f11086d1f31",
       "slug": "bleach-13-blades",
       "titre": "BLEACH – 13 BLADES",
-      "titreVo": null,
+      "titreVo": "BLEACH Beginning of the revive of Tomorrow",
       "auteur": "Tite Kubo",
-      "genres": [],
+      "genres": [
+        "Supernatural",
+        "Action"
+      ],
       "themes": [
         "Guide"
       ],
-      "alias": [],
-      "aliasNormalises": [],
+      "alias": [
+        "Bleach: Beginning of the Revive of Tomorrow",
+        "Блич: Начало возрождения завтрашнего дня"
+      ],
+      "aliasNormalises": [
+        "bleach13blades",
+        "bleachbeginningofthereviveoftomorrow",
+        "бличначаловозрождениязавтрашнегодня"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 142235,
       "editions": [
         {
           "id": "b7007b6a-c179-43e9-8667-5617f2de6f58",
@@ -7095,8 +7529,15 @@
       "titreVo": "青の祓魔師",
       "auteur": "Kazue Kato",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
-        "Supernatural"
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Tragedy"
       ],
       "themes": [
         "Démons",
@@ -7104,12 +7545,37 @@
         "Magie"
       ],
       "alias": [
-        "青の祓魔師"
+        "青の祓魔師",
+        "청의 엑소시스트",
+        "Aoex",
+        "Ao no Exorcist",
+        "Ao no Futsumashi",
+        "Lam Hỏa Diệt Quỷ",
+        "Mavi İblis Kovucu",
+        "Modrý Exorcista",
+        "The Blue Magic Exorcist",
+        "Блакитний Екзорцист",
+        "Синий экзорцист",
+        "المعوذ الأزرق"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blueexorcist",
+        "青の祓魔師",
+        "청의엑소시스트",
+        "aoex",
+        "aonoexorcist",
+        "aonofutsumashi",
+        "lamhoadietquy",
+        "maviibliskovucu",
+        "modryexorcista",
+        "thebluemagicexorcist",
+        "блакитнийекзорцист",
+        "синийэкзорцист",
+        "المعوذالأزرق"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2977,
       "editions": [
         {
           "id": "1942bfd2-4e40-4052-a79f-2d6a2112e73a",
@@ -7792,9 +8258,14 @@
       "titreVo": "ヒノワが征く!",
       "auteur": "Takahiro & Streleka",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Ecchi",
         "Action",
+        "Adventure",
         "Drama",
-        "Fantasy"
+        "Horror",
+        "Tragedy"
       ],
       "themes": [
         "Bataille navale",
@@ -7802,12 +8273,23 @@
         "Guerre"
       ],
       "alias": [
-        "ヒノワが征く!"
+        "ヒノワが征く!",
+        "Hinowa Conquers!",
+        "Hinowa ga CRUSH!",
+        "Hinowa ga Yuku!",
+        "Завоевательница Хинова!"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "blueeyessword",
+        "ヒノワが征く",
+        "hinowaconquers",
+        "hinowagacrush",
+        "hinowagayuku",
+        "завоевательницахинова"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 25829,
       "editions": [
         {
           "id": "75a89760-4a10-465a-bebb-7346f3a25bd3",
@@ -8003,19 +8485,37 @@
       "auteur": "Tite Kubo",
       "genres": [
         "Fantasy",
-        "Supernatural"
+        "Supernatural",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Romance"
       ],
       "themes": [
         "Dragon",
         "Magie"
       ],
       "alias": [
-        "BURN THE WITCH"
+        "Burn the Witch (Oneshot)",
+        "Burn the Witch (Pilot)",
+        "Сжечь ведьму",
+        "Спалити відьму",
+        "לשרוף את המכשפה",
+        "バーン・ザ・ウィッチ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "burnthewitch",
+        "burnthewitchoneshot",
+        "burnthewitchpilot",
+        "сжечьведьму",
+        "спалитивідьму",
+        "לשרוףאתהמכשפה",
+        "バーンザウィッチ"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5348,
       "editions": [
         {
           "id": "39676607-5354-4ea3-add3-2c1160d28597",
@@ -8070,11 +8570,15 @@
       "titreVo": "よふかしのうた",
       "auteur": "Kotoyama",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Action",
         "Comedy",
+        "Drama",
         "Psychological",
         "Romance",
         "Slice of Life",
-        "Supernatural"
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -8082,12 +8586,37 @@
         "Jeux Video"
       ],
       "alias": [
-        "よふかしのうた"
+        "よふかしのうた",
+        "철야의 노래",
+        "Appel de La Nuit",
+        "Bản Nhạc Của Kẻ Đi Dạo Đêm",
+        "Call of the Night - Canções da Noite",
+        "Canções Da Noite",
+        "Chanson des Marcheurs Nocturnes",
+        "Cheol-yaui Nolae",
+        "Chèyè Zhī Gē",
+        "El Canto de la Noche",
+        "Gecenin Çağrısı",
+        "Khúc ca của kẻ dạo đêm"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "callofthenight",
+        "よふかしのうた",
+        "철야의노래",
+        "appeldelanuit",
+        "bannhaccuakeđidaođem",
+        "callofthenightcancoesdanoite",
+        "cancoesdanoite",
+        "chansondesmarcheursnocturnes",
+        "cheolyauinolae",
+        "cheyezhige",
+        "elcantodelanoche",
+        "gecenincagrısı",
+        "khuccacuakedaođem"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5415,
       "editions": [
         {
           "id": "e31b0cc6-1e80-4f07-bec1-0282207c99d6",
@@ -8482,11 +9011,15 @@
       "titreVo": "チェンソーマン",
       "auteur": "Tatsuki Fujimoto",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Comedy",
         "Drama",
         "Horror",
-        "Supernatural"
+        "Mystery",
+        "Psychological",
+        "Tragedy"
       ],
       "themes": [
         "Combats",
@@ -8494,12 +9027,37 @@
         "Organisations secrètes"
       ],
       "alias": [
-        "チェンソーマン"
+        "チェンソーマン",
+        "체인쏘맨",
+        "체인소 맨",
+        "Chainsaw Man: Public Safety Saga",
+        "CSM",
+        "Testere Adam",
+        "Людина-бензопила",
+        "Человек-бензопила",
+        "Шынжырлы ара адам",
+        "رجل المنشار",
+        "مرد اره ای",
+        "चेन्सो म्यान"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "chainsawman",
+        "チェンソーマン",
+        "체인쏘맨",
+        "체인소맨",
+        "chainsawmanpublicsafetysaga",
+        "csm",
+        "testereadam",
+        "людинабензопила",
+        "человекбензопила",
+        "шынжырлыараадам",
+        "رجلالمنشار",
+        "مردارهای",
+        "चनसमयन"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1677,
       "editions": [
         {
           "id": "b1953384-b935-4837-9571-149d9726806c",
@@ -8982,20 +9540,47 @@
       "titreVo": "貞操逆転世界",
       "auteur": "Amahara & Mantaro",
       "genres": [
+        "Fantasy",
+        "Adult",
+        "Ecchi",
+        "Smut",
         "Comedy",
-        "Hentai"
+        "Slice of Life"
       ],
       "themes": [
         "Sexe",
         "Isekkai"
       ],
       "alias": [
-        "貞操逆転世界"
+        "貞操逆転世界",
+        "정조역전세계",
+        "Chasteté inversée",
+        "El mundo de la castidad invertida",
+        "Il mondo della morale al rovescio",
+        "Świat na opak",
+        "Teisou Gyakuten Sekai",
+        "The World of Moral Reversal",
+        "World of Reversed Gender Roles",
+        "Мир перевёрнутой морали",
+        "贞操逆转世界"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "chastityreverseworld",
+        "貞操逆転世界",
+        "정조역전세계",
+        "chasteteinversee",
+        "elmundodelacastidadinvertida",
+        "ilmondodellamoralealrovescio",
+        "swiatnaopak",
+        "teisougyakutensekai",
+        "theworldofmoralreversal",
+        "worldofreversedgenderroles",
+        "мирперевёрнутойморали",
+        "贞操逆转世界"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7087,
       "editions": [
         {
           "id": "2d37564a-7e5f-4c4c-9ff9-dc882333687a",
@@ -9110,8 +9695,11 @@
       "titreVo": "英雄教室",
       "auteur": "Shin Araki & Koara Kishida",
       "genres": [
-        "Action",
         "Fantasy",
+        "Ecchi",
+        "Action",
+        "Comedy",
+        "Romance",
         "Slice of Life"
       ],
       "themes": [
@@ -9119,12 +9707,25 @@
         "Combats"
       ],
       "alias": [
-        "英雄教室"
+        "英雄教室",
+        "Class Room for Heroes - With the boy of a former brave",
+        "Eiyū Kyōshitsu",
+        "Eiyuu Kyoushitsu",
+        "Hero Classroom",
+        "Класс для героев"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "classroomforheroes",
+        "英雄教室",
+        "classroomforheroeswiththeboyofaformerbrave",
+        "eiyukyoshitsu",
+        "eiyuukyoushitsu",
+        "heroclassroom",
+        "классдлягероев"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 83338,
       "editions": [
         {
           "id": "21e27c05-5918-4601-b19f-721975aaa577",
@@ -9579,19 +10180,51 @@
       "titreVo": "CLAYMORE",
       "auteur": "Yagi Norihiro",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Fantasy",
-        "Horror"
+        "Horror",
+        "Mystery",
+        "Tragedy"
       ],
-      "themes": [],
+      "themes": [
+        "European Ambience",
+        "Adoption",
+        "Monsters",
+        "Orphans",
+        "Super Powers"
+      ],
       "alias": [
-        "CLAYMORE"
+        "클레이모어",
+        "CLAYMORE [クレイモア]",
+        "Kureimoa",
+        "Mắt Bạc",
+        "Клеймор",
+        "كلايمور",
+        "อสูรสาวพิฆาตมาร (NED)",
+        "クレイモア",
+        "大剑",
+        "大劍",
+        "猎魔战记"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "claymore",
+        "클레이모어",
+        "claymoreクレイモア",
+        "kureimoa",
+        "matbac",
+        "клеймор",
+        "كلايمور",
+        "อสรสาวพฆาตมารned",
+        "クレイモア",
+        "大剑",
+        "大劍",
+        "猎魔战记"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 8654,
       "editions": [
         {
           "id": "b18de8f5-aee6-4482-b9f0-2c56764069d8",
@@ -10166,9 +10799,18 @@
       "titreVo": "ディー・グレイマン",
       "auteur": "Katsura Hoshino",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Fantasy"
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Mystery",
+        "Psychological",
+        "Tragedy",
+        "Historical"
       ],
       "themes": [
         "Démons",
@@ -10176,12 +10818,37 @@
         "Combats"
       ],
       "alias": [
-        "ディー・グレイマン"
+        "ディー・グレイマン",
+        "디 그레이맨",
+        "DGM",
+        "디 그레이맨(D.Gray-man)",
+        "D.Grey-man",
+        "Dī Gureiman",
+        "Dグレ",
+        "D·格雷少年",
+        "Hokage Team",
+        "Thầy trừ tà",
+        "Ди Грей-мен",
+        "Ди.Грэй-мен"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "dgrayman",
+        "ディーグレイマン",
+        "디그레이맨",
+        "dgm",
+        "디그레이맨dgrayman",
+        "dgreyman",
+        "digureiman",
+        "dグレ",
+        "d格雷少年",
+        "hokageteam",
+        "thaytruta",
+        "дигреймен",
+        "дигрэймен"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2705,
       "editions": [
         {
           "id": "7942d834-4f12-4067-806e-1d146b02982d",
@@ -10796,23 +11463,53 @@
       "titreVo": "魔都精兵のスレイブ",
       "auteur": "Takahiro & Yôhei Takemura",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
+        "Adult",
+        "Ecchi",
         "Action",
         "Adventure",
+        "Comedy",
         "Drama",
-        "Ecchi",
-        "Fantasy",
+        "Martial Arts",
         "Romance"
       ],
       "themes": [
         "Magie"
       ],
       "alias": [
-        "魔都精兵のスレイブ"
+        "魔都精兵のスレイブ",
+        "마도정병의 슬레이브",
+        "Budak Korps Elite Kota Iblis",
+        "Cehennem Askerlerinin Kölesi",
+        "Chained Soldier",
+        "El esclavo de la élite de soldados de Mato",
+        "Mabotai",
+        "Mato Seihei no Slave",
+        "Nô Lệ Của Đội Tinh Nhuệ Ma Đô",
+        "Nô Lệ Của Ma Đô Tinh Binh",
+        "Slave of the Hell Soldiers",
+        "Slave of the Magic Capital's Elite Troops"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "demonslave",
+        "魔都精兵のスレイブ",
+        "마도정병의슬레이브",
+        "budakkorpselitekotaiblis",
+        "cehennemaskerlerininkolesi",
+        "chainedsoldier",
+        "elesclavodelaelitedesoldadosdemato",
+        "mabotai",
+        "matoseiheinoslave",
+        "nolecuađoitinhnhuemađo",
+        "nolecuamađotinhbinh",
+        "slaveofthehellsoldiers",
+        "slaveofthemagiccapitalselitetroops"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 883,
       "editions": [
         {
           "id": "a098b340-0e66-4122-8e11-a7e03d8f199b",
@@ -11247,9 +11944,11 @@
       "titreVo": "Doubt",
       "auteur": "Yoshiki Tonogai",
       "genres": [
+        "Drama",
         "Horror",
         "Mystery",
         "Psychological",
+        "Tragedy",
         "Thriller"
       ],
       "themes": [
@@ -11257,12 +11956,31 @@
         "Survival game"
       ],
       "alias": [
-        "Doubt"
+        "Ai Là Con Sói",
+        "Doubt (다우트)",
+        "Doubt 疑懼",
+        "Rabbit Doubt",
+        "Сомнение",
+        "شكّ",
+        "ลวง หลอก ฆ่า",
+        "ダウト",
+        "疑惧Doubt"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "doubt",
+        "ailaconsoi",
+        "doubt다우트",
+        "doubt疑懼",
+        "rabbitdoubt",
+        "сомнение",
+        "شك",
+        "ลวงหลอกฆา",
+        "ダウト",
+        "疑惧doubt"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 11884,
       "editions": [
         {
           "id": "c98833ef-cfca-43ba-920c-42ffeae5fa1c",
@@ -11377,12 +12095,16 @@
       "titreVo": "ドラゴンボール",
       "auteur": "Akira Toriyama",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
         "Comedy",
-        "Fantasy",
-        "Sci-Fi",
-        "Supernatural"
+        "Drama",
+        "Martial Arts",
+        "Psychological",
+        "Tragedy"
       ],
       "themes": [
         "Aliens",
@@ -11392,12 +12114,37 @@
         "Tournois"
       ],
       "alias": [
-        "ドラゴンボール"
+        "ドラゴンボール",
+        "드래곤볼",
+        "드래곤 볼 신장판",
+        "드래곤 볼 완전판",
+        "7 viên ngọc rồng",
+        "Bảy viên ngọc rồng",
+        "Bola de Drac",
+        "Bola de dragón",
+        "Bola naga",
+        "DBZ",
+        "Doragon booru",
+        "Dragoi Bola"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "dragonball",
+        "ドラゴンボール",
+        "드래곤볼",
+        "드래곤볼신장판",
+        "드래곤볼완전판",
+        "7vienngocrong",
+        "bayvienngocrong",
+        "boladedrac",
+        "boladedragon",
+        "bolanaga",
+        "dbz",
+        "doragonbooru",
+        "dragoibola"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 997,
       "editions": [
         {
           "id": "d022ea2c-49ca-4dbe-a43b-42e4d951b5be",
@@ -11936,19 +12683,57 @@
       "titreVo": "炎炎ノ消防隊",
       "auteur": "Ohkubo Atsushi",
       "genres": [
-        "Action",
-        "Drama",
+        "Fantasy",
         "Sci-Fi",
-        "Supernatural"
+        "Supernatural",
+        "Ecchi",
+        "Action",
+        "Comedy",
+        "Drama",
+        "Tragedy"
       ],
-      "themes": [],
+      "themes": [
+        "Unrealistic Fighting",
+        "Steampunk",
+        "Military",
+        "Rescue",
+        "Violence",
+        "Conspiracy",
+        "Exorcism",
+        "Fire"
+      ],
       "alias": [
-        "炎炎ノ消防隊"
+        "炎炎ノ消防隊",
+        "장장 노 소방대",
+        "Biệt Đội Lính Cứu Hỏa",
+        "Blazing Fire Brigade",
+        "En'en no Shōbō-tai",
+        "Enen no Shouboutai",
+        "Enn Enn no Shouboutai",
+        "Fire Brigade of Flames",
+        "Fire Force: Alev Gücü",
+        "Korps Pemadam Kebakaran",
+        "La brigada de bomberos de las llamas",
+        "Бригада пылающего пламени"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "fireforce",
+        "炎炎ノ消防隊",
+        "장장노소방대",
+        "bietđoilinhcuuhoa",
+        "blazingfirebrigade",
+        "enennoshobotai",
+        "enennoshouboutai",
+        "ennennnoshouboutai",
+        "firebrigadeofflames",
+        "fireforcealevgucu",
+        "korpspemadamkebakaran",
+        "labrigadadebomberosdelasllamas",
+        "бригадапылающегопламени"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 22256,
       "editions": [
         {
           "id": "e14fb711-0d3b-485a-be7c-68a444976929",
@@ -12663,11 +13448,15 @@
       "titreVo": "ファイアパンチ",
       "auteur": "Tatsuki Fukimoto",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
+        "Adventure",
         "Drama",
         "Mystery",
         "Psychological",
-        "Supernatural",
+        "Tragedy",
         "Thriller"
       ],
       "themes": [
@@ -12677,12 +13466,33 @@
         "Mature"
       ],
       "alias": [
-        "ファイアパンチ"
+        "ファイアパンチ",
+        "파이어 펀치",
+        "Agni Punch",
+        "Faia Panchi",
+        "Hoả Quyền",
+        "Вогняний удар",
+        "Огненный удар",
+        "Отсоғар",
+        "От соққы",
+        "炎拳"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "firepunch",
+        "ファイアパンチ",
+        "파이어펀치",
+        "agnipunch",
+        "faiapanchi",
+        "hoaquyen",
+        "вогнянийудар",
+        "огненныйудар",
+        "отсоғар",
+        "отсоққы",
+        "炎拳"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2027,
       "editions": [
         {
           "id": "14b738e4-4dcd-4adc-b65c-92d842df4cdf",
@@ -12877,11 +13687,15 @@
       "titreVo": "鋼の錬金術師",
       "auteur": "Hiromu Arakawa",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
         "Comedy",
         "Drama",
-        "Fantasy"
+        "Tragedy",
+        "Historical"
       ],
       "themes": [
         "Alchimie",
@@ -12889,12 +13703,37 @@
         "Steampunk"
       ],
       "alias": [
-        "鋼の錬金術師"
+        "鋼の錬金術師",
+        "강철의 연금술사",
+        "Alchemist of Steel",
+        "Alquimista de Aço",
+        "Cang giả kim thuật sư",
+        "Čelični alhemičar",
+        "Çelik Simyacı",
+        "FMA",
+        "Fullmetal Alchemist Gaiden",
+        "Fullmetal Alchemist - Ocelový alchymista",
+        "Giả Kim Thuật Sư",
+        "Hagane no Renkinjutsushi"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "fullmetalalchemist",
+        "鋼の錬金術師",
+        "강철의연금술사",
+        "alchemistofsteel",
+        "alquimistadeaco",
+        "canggiakimthuatsu",
+        "celicnialhemicar",
+        "celiksimyacı",
+        "fma",
+        "fullmetalalchemistgaiden",
+        "fullmetalalchemistocelovyalchymista",
+        "giakimthuatsu",
+        "haganenorenkinjutsushi"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 8312,
       "editions": [
         {
           "id": "143c3f8d-32c4-467b-a462-d149f3c3ec9b",
@@ -13753,24 +14592,53 @@
       "titreVo": "GANTZ",
       "auteur": "Hiroya Oku",
       "genres": [
-        "Action",
-        "Drama",
-        "Ecchi",
-        "Horror",
-        "Psychological",
+        "Fantasy",
         "Sci-Fi",
-        "Supernatural"
+        "Supernatural",
+        "Adult",
+        "Ecchi",
+        "Action",
+        "Adventure",
+        "Drama",
+        "Horror",
+        "Mystery",
+        "Psychological",
+        "Romance",
+        "Tragedy"
       ],
       "themes": [
         "Aliens"
       ],
       "alias": [
-        "GANTZ"
+        "간츠",
+        "Gantz/Osaka",
+        "GANTZ:T",
+        "GANTZ杀戮都市",
+        "GANTZ殺戮都市",
+        "Гантз",
+        "Ганц",
+        "جانتز",
+        "กันสึ",
+        "ガンツ",
+        "杀戮都市"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "gantz",
+        "간츠",
+        "gantzosaka",
+        "gantzt",
+        "gantz杀戮都市",
+        "gantz殺戮都市",
+        "гантз",
+        "ганц",
+        "جانتز",
+        "กนส",
+        "ガンツ",
+        "杀戮都市"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 4781,
       "editions": [
         {
           "id": "a89d735b-2c15-4c0a-a08e-ed6c024560a2",
@@ -14165,18 +15033,57 @@
       "titreVo": "おやすみプンプン",
       "auteur": "Inio Asano & Hiro Kashiwaba",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Comedy",
         "Drama",
         "Psychological",
-        "Slice of Life"
+        "Romance",
+        "Slice of Life",
+        "Tragedy"
       ],
-      "themes": [],
+      "themes": [
+        "Working",
+        "Dark Ambience",
+        "Depression",
+        "Dreams",
+        "First Love",
+        "Denpa",
+        "Urban",
+        "Coming of Age"
+      ],
       "alias": [
-        "おやすみプンプン"
+        "おやすみプンプン",
+        "잘 자, 푼푼",
+        "Boa noite, Punpun",
+        "Bonne Nuit Punpun",
+        "Buenas noches, Punpun",
+        "Buonanotte, Punpun",
+        "Dobranoc Punpun!",
+        "Dobranoc, Punpunie",
+        "Good Night Pung Pung",
+        "Gute Nacht, Punpun",
+        "Hyvää yötä Punpun",
+        "İyi Geceler, Punpun"
       ],
-      "aliasNormalises": [],
-      "cible": null,
+      "aliasNormalises": [
+        "goodnightpunpun",
+        "おやすみプンプン",
+        "잘자푼푼",
+        "boanoitepunpun",
+        "bonnenuitpunpun",
+        "buenasnochespunpun",
+        "buonanottepunpun",
+        "dobranocpunpun",
+        "dobranocpunpunie",
+        "goodnightpungpung",
+        "gutenachtpunpun",
+        "hyvaayotapunpun",
+        "iyigecelerpunpun"
+      ],
+      "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1357,
       "editions": [
         {
           "id": "de900589-3839-41dd-8ad1-e855408537b3",
@@ -14471,9 +15378,13 @@
       "titreVo": "HELLSING",
       "auteur": "Hirano Kota",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
-        "Hentai",
-        "Horror"
+        "Comedy",
+        "Horror",
+        "Tragedy",
+        "Historical"
       ],
       "themes": [
         "Isekkai",
@@ -14481,12 +15392,35 @@
         "Jeux Video"
       ],
       "alias": [
-        "HELLSING"
+        "헬싱",
+        "Crossfire",
+        "Hellsing: Balada o lovci upírů",
+        "Hellsing Cross Fire",
+        "Hellsing: Epicum de vēnātōre lamiæ",
+        "Hellsing: The Legend of a Vampire Hunter",
+        "The Legend of a Vampire Hunter",
+        "The Legend of the Vampire Hunter",
+        "Thợ săn ma cà rồng",
+        "Геллсінґ",
+        "Хеллсинг"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "hellsing",
+        "헬싱",
+        "crossfire",
+        "hellsingbaladaolovciupiru",
+        "hellsingcrossfire",
+        "hellsingepicumdevenatorelamiæ",
+        "hellsingthelegendofavampirehunter",
+        "thelegendofavampirehunter",
+        "thelegendofthevampirehunter",
+        "thosanmacarong",
+        "геллсінґ",
+        "хеллсинг"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1736,
       "editions": [
         {
           "id": "d326b4d1-e03f-4222-b985-010727a8d84c",
@@ -14623,18 +15557,40 @@
       "genres": [
         "Action",
         "Horror",
-        "Psychological"
+        "Psychological",
+        "Tragedy"
       ],
       "themes": [
         "Sequestration"
       ],
       "alias": [
-        "HIDEOUT"
+        "Dark Hideout",
+        "Sığınak",
+        "Skrovište",
+        "Пана",
+        "Сховішча",
+        "Сховок",
+        "Таса",
+        "Укрытие",
+        "คุกนรก แดนมรณะ (SIC)",
+        "藏鬼处HIDEOUT"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "hideout",
+        "darkhideout",
+        "sıgınak",
+        "skroviste",
+        "пана",
+        "сховішча",
+        "сховок",
+        "таса",
+        "укрытие",
+        "คกนรกแดนมรณะsic",
+        "藏鬼处hideout"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7404,
       "editions": [
         {
           "id": "fa72912e-b948-4dc4-9324-1ebd115df1cd",
@@ -14692,6 +15648,8 @@
         "Action",
         "Comedy",
         "Drama",
+        "Martial Arts",
+        "Slice of Life",
         "Sports"
       ],
       "themes": [
@@ -14701,12 +15659,39 @@
         "Tournois"
       ],
       "alias": [
-        "はじめの一歩"
+        "はじめの一歩",
+        "더 화이팅",
+        "더 화이팅 신장재편판",
+        "Fighting Spirit",
+        "Fight!! Ippo",
+        "Hajime no Ippo",
+        "Hajime no Ippo: Fighting Spirit!",
+        "Hajime no Ippo Gaiden",
+        "Hajime no Ippo Gaiden: Naniwa no Tora",
+        "Hajime no Ippo Gaiden: Naniwa Tiger",
+        "Hajime no Ippo: The Fighting!",
+        "Ippo",
+        "Ippo, la rage de vaincre"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "ippos4laloiduring",
+        "はじめの一歩",
+        "더화이팅",
+        "더화이팅신장재편판",
+        "fightingspirit",
+        "fightippo",
+        "hajimenoippo",
+        "hajimenoippofightingspirit",
+        "hajimenoippogaiden",
+        "hajimenoippogaidennaniwanotora",
+        "hajimenoippogaidennaniwatiger",
+        "hajimenoippothefighting",
+        "ippo",
+        "ippolaragedevaincre"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 206,
       "editions": [
         {
           "id": "59c53de9-c777-4e76-9dcf-d89f1864402f",
@@ -14876,7 +15861,7 @@
               "isbn": "9782368520659",
               "dateSortie": "2015-05-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/8.webp",
               "possessions": [
                 {
                   "id": "1e2fd6c8-7f9e-45ae-9794-a29c57be701e",
@@ -14896,7 +15881,7 @@
               "isbn": "9782368520666",
               "dateSortie": "2015-06-11T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/9.webp",
               "possessions": [
                 {
                   "id": "94ea4078-b5ed-4072-9ac6-0b5417a9c447",
@@ -14916,7 +15901,7 @@
               "isbn": "9782368520673",
               "dateSortie": "2015-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/10.webp",
               "possessions": [
                 {
                   "id": "f5554727-ffb5-4268-b2df-b92b60c7ad1b",
@@ -14936,7 +15921,7 @@
               "isbn": "9782368520680",
               "dateSortie": "2015-08-27T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/11.webp",
               "possessions": [
                 {
                   "id": "d2200c71-0e4b-4392-bcf9-84afcb490955",
@@ -14956,7 +15941,7 @@
               "isbn": "9782368520697",
               "dateSortie": "2015-09-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/12.webp",
               "possessions": [
                 {
                   "id": "8b2061bc-62d0-45ed-8715-b008d38eff26",
@@ -14976,7 +15961,7 @@
               "isbn": "9782368520703",
               "dateSortie": "2015-10-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/13.webp",
               "possessions": [
                 {
                   "id": "a6fc0e14-b9c6-49e2-8b73-22f73b1ba327",
@@ -14996,7 +15981,7 @@
               "isbn": "9782368520710",
               "dateSortie": "2015-11-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/14.webp",
               "possessions": [
                 {
                   "id": "feec6949-a015-4ed4-9e5f-95973e32e525",
@@ -15016,7 +16001,7 @@
               "isbn": "9782368520727",
               "dateSortie": "2015-12-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/15.webp",
               "possessions": [
                 {
                   "id": "97d4fb7f-3565-4441-a8ff-4c22269967ce",
@@ -15036,7 +16021,7 @@
               "isbn": "9782368520734",
               "dateSortie": "2016-01-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/16.webp",
               "possessions": [
                 {
                   "id": "9cab3db4-06a6-496c-a967-2b23c84faaf2",
@@ -15056,7 +16041,7 @@
               "isbn": "9782368520741",
               "dateSortie": "2016-02-11T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/17.webp",
               "possessions": [
                 {
                   "id": "be6b2319-588a-4a83-b322-f6bba53baf7c",
@@ -15076,7 +16061,7 @@
               "isbn": "9782368520758",
               "dateSortie": "2016-03-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/18.webp",
               "possessions": [
                 {
                   "id": "1c07934d-6251-49d3-b893-795f11f6a632",
@@ -15096,7 +16081,7 @@
               "isbn": "9782368520765",
               "dateSortie": "2016-04-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/19.webp",
               "possessions": [
                 {
                   "id": "480a70ca-29ca-4764-be56-d60249408bfa",
@@ -15116,7 +16101,7 @@
               "isbn": "9782368520772",
               "dateSortie": "2016-05-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/20.webp",
               "possessions": [
                 {
                   "id": "15fb79e5-3375-4381-bad4-519b7eeae32e",
@@ -15136,7 +16121,7 @@
               "isbn": "9782368520789",
               "dateSortie": "2016-06-09T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/21.webp",
               "possessions": [
                 {
                   "id": "c3fbef64-a561-4b17-9049-2d9c55350e50",
@@ -15281,10 +16266,11 @@
       "titreVo": "魔男のイチ",
       "auteur": "Nishi Osamu & Usazaki Shiro",
       "genres": [
+        "Fantasy",
         "Action",
         "Adventure",
         "Comedy",
-        "Fantasy"
+        "Drama"
       ],
       "themes": [
         "Isekkai",
@@ -15292,12 +16278,37 @@
         "Jeux Video"
       ],
       "alias": [
-        "魔男のイチ"
+        "魔男のイチ",
+        "마남 이치",
+        "Czarownik Ichi",
+        "Ichi, el brujo.",
+        "Ichi, o Bruxo",
+        "Ichi the Warlock",
+        "Madan no Ichi",
+        "Phù thuỷ Ichi",
+        "The Wizard Ichi",
+        "Ведьмак Ити",
+        "Відьма Ічі",
+        "Волшебник Ити"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "ichithewitch",
+        "魔男のイチ",
+        "마남이치",
+        "czarownikichi",
+        "ichielbrujo",
+        "ichiobruxo",
+        "ichithewarlock",
+        "madannoichi",
+        "phuthuyichi",
+        "thewizardichi",
+        "ведьмакити",
+        "відьмаічі",
+        "волшебникити"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 676,
       "editions": [
         {
           "id": "d07b6bf6-515d-454b-8fc2-81175c536cc6",
@@ -15432,20 +16443,48 @@
       "titreVo": "暗殺者である俺のステータスが勇者よりも明らかに強いのだが",
       "auteur": "Aigamo Hiroyuki & Akai Matsuri",
       "genres": [
+        "Fantasy",
         "Action",
         "Adventure",
-        "Fantasy"
+        "Drama",
+        "Horror",
+        "Romance"
       ],
       "themes": [
         "Isekkai"
       ],
       "alias": [
-        "暗殺者である俺のステータスが勇者よりも明らかに強いのだが"
+        "暗殺者である俺のステータスが勇者よりも明らかに強いのだが",
+        "암살자인 내 스테이터스가 용사보다도 훨씬 강한데요",
+        "암살자인 내 스테이터스가 용사보다 명백히 강합니다만",
+        "Ansatsusha de Aru no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+        "Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga",
+        "Assasin de Aru no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+        "Assassin de Aru Ore no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+        "Assassin de aru ore no Sutetasu ga Yuusha yori mo Akiraka ni Tsuyoi Nodaga",
+        "Il mio status da assassino supera ovviamente quello degli eroi",
+        "Mes compétences en tant qu'assassin sont bien au-delà de celles du héros",
+        "Meu status como assassino obviamente excede o do herói",
+        "My Status as an Assassin Obviously Exceeds the Brave's"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "jesuisunassassinetjesurpasseleheros",
+        "暗殺者である俺のステータスが勇者よりも明らかに強いのだが",
+        "암살자인내스테이터스가용사보다도훨씬강한데요",
+        "암살자인내스테이터스가용사보다명백히강합니다만",
+        "ansatsushadearunostatusgayushayorimoakirakanitsuyoinodaga",
+        "ansatsushadearuorenostatusgayuushayorimoakirakanitsuyoinodaga",
+        "assasindearunostatusgayushayorimoakirakanitsuyoinodaga",
+        "assassindearuorenostatusgayushayorimoakirakanitsuyoinodaga",
+        "assassindearuorenosutetasugayuushayorimoakirakanitsuyoinodaga",
+        "ilmiostatusdaassassinosuperaovviamentequellodeglieroi",
+        "mescompetencesentantquassassinsontbienaudeladecellesduheros",
+        "meustatuscomoassassinoobviamenteexcedeodoheroi",
+        "mystatusasanassassinobviouslyexceedsthebraves"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 29748,
       "editions": [
         {
           "id": "3751fd78-61d2-4a16-b8b9-1676b87df7bf",
@@ -15600,20 +16639,51 @@
       "titreVo": "JKハルは異世界で娼婦になった",
       "auteur": "Hiratori Ko & Yamada J-ta",
       "genres": [
-        "Drama",
-        "Ecchi",
         "Fantasy",
+        "Adult",
+        "Ecchi",
+        "Drama",
         "Psychological",
-        "Slice of Life"
+        "Slice of Life",
+        "Tragedy"
       ],
-      "themes": [],
+      "themes": [
+        "Working",
+        "Bullying",
+        "Violence"
+      ],
       "alias": [
-        "JKハルは異世界で娼婦になった"
+        "JKハルは異世界で娼婦になった",
+        "여고생 하루는 이세계에서 창부가 되었다",
+        "HSG Haru Became A Prostitute In Another World",
+        "JK 하루는 이세계에서 창부가 되었다",
+        "JK Haru is a Sex Worker in Another World",
+        "JK Haru wa Isekai de Shofu ni Natta",
+        "JK Haru wa Isekai de Shoufu ni Natta",
+        "JK Haru: życie prostytutki w innym świecie",
+        "Старшеклассница Хару стала проституткой в другом мире",
+        "ฮารุสาวม.ปลายไปขายตัวในต่างโลก",
+        "女高中生小春在异世界成为娼妓",
+        "女高中生小春在异世界成为游女"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "jkharusexworkerinanotherworld",
+        "jkハルは異世界で娼婦になった",
+        "여고생하루는이세계에서창부가되었다",
+        "hsgharubecameaprostituteinanotherworld",
+        "jk하루는이세계에서창부가되었다",
+        "jkharuisasexworkerinanotherworld",
+        "jkharuwaisekaideshofuninatta",
+        "jkharuwaisekaideshoufuninatta",
+        "jkharuzycieprostytutkiwinnymswiecie",
+        "старшеклассницахарусталапроституткойвдругоммире",
+        "ฮารสาวมปลายไปขายตวในตางโลก",
+        "女高中生小春在异世界成为娼妓",
+        "女高中生小春在异世界成为游女"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 34582,
       "editions": [
         {
           "id": "9ea06ce5-ad4c-4a88-af90-76fb40397f46",
@@ -15791,18 +16861,34 @@
         "Drama",
         "Horror",
         "Mystery",
-        "Psychological"
+        "Psychological",
+        "Tragedy"
       ],
       "themes": [
         "Survival game"
       ],
       "alias": [
-        "JUDGE"
+        "JUDGE(저지)",
+        "Judge (TONOGAI Yoshiki)",
+        "JUDGE เกมพิพากษา",
+        "JUDGE ジャッジ",
+        "JUDGE 审判",
+        "Осуждение",
+        "ジャッジ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "judge",
+        "judge저지",
+        "judgetonogaiyoshiki",
+        "judgeเกมพพากษา",
+        "judgeジャッジ",
+        "judge审判",
+        "осуждение",
+        "ジャッジ"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1272,
       "editions": [
         {
           "id": "256a7662-4854-4835-9975-31d5a7ff3ab9",
@@ -15957,9 +17043,13 @@
       "titreVo": "カグラバチ",
       "auteur": "Hokazono Takeru",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
+        "Adventure",
+        "Comedy",
         "Drama",
-        "Fantasy"
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -15967,12 +17057,33 @@
         "Jeux Video"
       ],
       "alias": [
-        "カグラバチ"
+        "カグラバチ",
+        "카구라바치",
+        "Kagura Bowl",
+        "KGB",
+        "Кагурабати",
+        "קאגורהבאצ'י",
+        "كاجوراباتشي",
+        "คากุระบาจิ",
+        "神楽鉢",
+        "神樂鉢"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "kagurabachi",
+        "カグラバチ",
+        "카구라바치",
+        "kagurabowl",
+        "kgb",
+        "кагурабати",
+        "קאגורהבאצי",
+        "كاجوراباتشي",
+        "คากระบาจ",
+        "神楽鉢",
+        "神樂鉢"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 708,
       "editions": [
         {
           "id": "87c9e603-265c-49a2-9f34-2526fbc41495",
@@ -16195,24 +17306,42 @@
       "titreVo": "怪人麗嬢",
       "auteur": "Tetsuya Tashiro",
       "genres": [
-        "Action",
+        "Fantasy",
+        "Supernatural",
         "Ecchi",
+        "Action",
+        "Comedy",
+        "Drama",
         "Horror",
         "Psychological",
-        "Romance",
-        "Supernatural"
+        "Romance"
       ],
       "themes": [
         "Assassinat",
         "Crime"
       ],
       "alias": [
-        "怪人麗嬢"
+        "怪人麗嬢",
+        "괴인영애",
+        "Kaijin Reijō",
+        "Kaijin Reijou",
+        "Phantom Lady Beauty",
+        "Slasher Maidens",
+        "Девы-убийцы"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "kaijinreijoh",
+        "怪人麗嬢",
+        "괴인영애",
+        "kaijinreijo",
+        "kaijinreijou",
+        "phantomladybeauty",
+        "slashermaidens",
+        "девыубийцы"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 8728,
       "editions": [
         {
           "id": "d72c8ab7-8328-45cc-9f83-b230f09d0302",
@@ -16535,8 +17664,15 @@
       "titreVo": "怪獣８号",
       "auteur": "Naoya Matsumoto",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
-        "Sci-Fi"
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Tragedy"
       ],
       "themes": [
         "Combats",
@@ -16544,12 +17680,37 @@
         "Monstres"
       ],
       "alias": [
-        "怪獣８号"
+        "怪獣８号",
+        "괴수 8호",
+        "괴수 8호 리믹스",
+        "8Kaijuu",
+        "8 No’lu Canavar",
+        "Kaidžú č. 8",
+        "Kaiju 8",
+        "Kaijū 8-gō",
+        "Kaijū Hachigō",
+        "Kaiju No. 8",
+        "KAIJU NO.8 (Monster #8)",
+        "KAIJU No. EIGHT"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "kaijun8",
+        "怪獣８号",
+        "괴수8호",
+        "괴수8호리믹스",
+        "8kaijuu",
+        "8nolucanavar",
+        "kaidzuc8",
+        "kaiju8",
+        "kaiju8go",
+        "kaijuhachigo",
+        "kaijuno8",
+        "kaijuno8monster8",
+        "kaijunoeight"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2207,
       "editions": [
         {
           "id": "e3f63f64-7aaf-442d-b888-d808e7be355a",
@@ -16904,8 +18065,12 @@
       "titreVo": "怪物事変",
       "auteur": "Aimoto Sho",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
-        "Supernatural"
+        "Comedy",
+        "Drama",
+        "Mystery"
       ],
       "themes": [
         "Isekkai",
@@ -16913,12 +18078,37 @@
         "Jeux Video"
       ],
       "alias": [
-        "怪物事変"
+        "怪物事変",
+        "괴물사변",
+        "Demon Incident",
+        "Demon Incidents",
+        "Incident de démon",
+        "Insiden Monster",
+        "Insiden Siluman",
+        "Kaibutsu Jihen",
+        "Kemono Jihen",
+        "Kemono Jihen – Gefährlichen Phänomenen auf der Spur",
+        "Kemono Jihen: Incidentes Sobrenaturais",
+        "Kemono Jihen. Niesamowite zdarzenia"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "kemonoincidents",
+        "怪物事変",
+        "괴물사변",
+        "demonincident",
+        "demonincidents",
+        "incidentdedemon",
+        "insidenmonster",
+        "insidensiluman",
+        "kaibutsujihen",
+        "kemonojihen",
+        "kemonojihengefahrlichenphanomenenaufderspur",
+        "kemonojihenincidentessobrenaturais",
+        "kemonojihenniesamowitezdarzenia"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5942,
       "editions": [
         {
           "id": "759d6d5b-f052-48c8-b516-b9e9f333d9ef",
@@ -17433,10 +18623,12 @@
       "titreVo": "幼稚園WARS",
       "auteur": "Chiba You",
       "genres": [
+        "Sci-Fi",
         "Action",
         "Comedy",
         "Drama",
-        "Romance"
+        "Romance",
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -17444,12 +18636,35 @@
         "Jeux Video"
       ],
       "alias": [
-        "幼稚園WARS"
+        "幼稚園WARS",
+        "Anaokulu SAVAŞLARI",
+        "Mẫu Giáo Đại Chiến",
+        "Nhà trẻ loạn chiến",
+        "유치원 WARS",
+        "Yōchien Wars",
+        "Youchien WARS",
+        "Детсадовские войны",
+        "อนุบาล WARS",
+        "อนุบาล WARS (SIC)",
+        "ようちえん ウォーズ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "kindergartenwars",
+        "幼稚園wars",
+        "anaokulusavaslari",
+        "maugiaođaichien",
+        "nhatreloanchien",
+        "유치원wars",
+        "yochienwars",
+        "youchienwars",
+        "детсадовскиевойны",
+        "อนบาลwars",
+        "อนบาลwarssic",
+        "ようちえんウォーズ"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 3873,
       "editions": [
         {
           "id": "c0f7b490-6991-4dc3-918d-ad8672c6cb7d",
@@ -17789,15 +19004,61 @@
       "id": "14d3ccf4-caff-4384-b061-ae6d7473d6d3",
       "slug": "l-atelier-des-sorciers-edition-grimoire",
       "titre": "L'Atelier des sorciers - Édition grimoire",
-      "titreVo": null,
+      "titreVo": "Tongari Bōshi no Atelier",
       "auteur": "Kamome Shirahama",
-      "genres": [],
-      "themes": [],
-      "alias": [],
-      "aliasNormalises": [],
-      "cible": null,
+      "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Adventure",
+        "Boys Love",
+        "Comedy",
+        "Drama",
+        "Slice of Life",
+        "Tragedy"
+      ],
+      "themes": [
+        "Spearplay",
+        "European Ambience",
+        "Accidents",
+        "Disability",
+        "Ecology",
+        "Highly Visual Narrative",
+        "Philosophy",
+        "Politics"
+      ],
+      "alias": [
+        "고깔모자의 아틀리에",
+        "Asrama Topi Lancip",
+        "Atelier of Witch Hat",
+        "Atelier of Witch Hat: Das Geheimnis der Hexen",
+        "Atelier of Witch Hat: El Atelier de Sombreros de Mago",
+        "Ateliér špičatých klobouků",
+        "Atelier spiczastych kapeluszy",
+        "Atelierul Vrăjitoarelor",
+        "Boszorkánysüveg–műhely",
+        "Cadı Şapkası Atölyesi",
+        "Das Geheimnis der Hexen",
+        "El Atelier del Sombrero Puntiagudo"
+      ],
+      "aliasNormalises": [
+        "latelierdessorcierseditiongrimoire",
+        "tongariboshinoatelier",
+        "고깔모자의아틀리에",
+        "asramatopilancip",
+        "atelierofwitchhat",
+        "atelierofwitchhatdasgeheimnisderhexen",
+        "atelierofwitchhatelatelierdesombrerosdemago",
+        "atelierspicatychklobouku",
+        "atelierspiczastychkapeluszy",
+        "atelierulvrajitoarelor",
+        "boszorkanysuvegmuhely",
+        "cadısapkasıatolyesi",
+        "dasgeheimnisderhexen",
+        "elatelierdelsombreropuntiagudo"
+      ],
+      "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2409,
       "editions": [
         {
           "id": "715dbc91-ca92-44bd-be56-8b75e6edbc4b",
@@ -17827,7 +19088,7 @@
               "isbn": "9782811698874",
               "dateSortie": "2025-01-22T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/1.webp",
               "possessions": [
                 {
                   "id": "cc91b5f2-b344-4f8a-bc1c-59a66bb0713a",
@@ -17847,7 +19108,7 @@
               "isbn": "9791043300677",
               "dateSortie": "2025-04-09T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/2.webp",
               "possessions": [
                 {
                   "id": "3734dc9f-8e25-41d0-a9f4-bc9088dcfa24",
@@ -17876,7 +19137,7 @@
               "isbn": "9791043301421",
               "dateSortie": "2025-10-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/4.webp",
               "possessions": []
             },
             {
@@ -17885,7 +19146,7 @@
               "isbn": "9791043301438",
               "dateSortie": "2026-05-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/5.webp",
               "possessions": []
             }
           ]
@@ -17899,20 +19160,47 @@
       "titreVo": "蒼竜の側用人",
       "auteur": "Shiki Shitose",
       "genres": [
-        "Drama",
         "Fantasy",
+        "Supernatural",
+        "Adventure",
+        "Drama",
         "Romance"
       ],
       "themes": [
         "Dragons"
       ],
       "alias": [
-        "蒼竜の側用人"
+        "蒼竜の側用人",
+        "창룡의 시종",
+        "Azfareo no Sobayounin",
+        "Azufareo no Sobayounin",
+        "Chamberlain of the Azfareo",
+        "Die Legende von Azfareo",
+        "Die Legende von Azfareo – Im Dienste des blauen Drachen",
+        "Gadis Penasihat Azfareo",
+        "Hana no Othello",
+        "Natsumeki Mermaid",
+        "Souryou no Sobayounin",
+        "Souryuu no Sobayounin"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "leschroniquesdazfareo",
+        "蒼竜の側用人",
+        "창룡의시종",
+        "azfareonosobayounin",
+        "azufareonosobayounin",
+        "chamberlainoftheazfareo",
+        "dielegendevonazfareo",
+        "dielegendevonazfareoimdienstedesblauendrachen",
+        "gadispenasihatazfareo",
+        "hananoothello",
+        "natsumekimermaid",
+        "souryounosobayounin",
+        "souryuunosobayounin"
+      ],
       "cible": "Shojo",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 23846,
       "editions": [
         {
           "id": "9103c3a7-4dab-467e-8626-d30fc14b548b",
@@ -18138,7 +19426,9 @@
         "héros"
       ],
       "alias": [],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "leslegendairessaga"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": null,
@@ -18199,7 +19489,7 @@
               "isbn": "9782413016649",
               "dateSortie": "2020-08-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/2.webp",
               "possessions": [
                 {
                   "id": "f3325e4c-b4f5-4a7b-8d5f-0f7578296ca9",
@@ -18219,7 +19509,7 @@
               "isbn": "9782413016656",
               "dateSortie": "2020-12-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/3.webp",
               "possessions": [
                 {
                   "id": "3cce38c7-f749-4e5e-8b67-3d10e7eee3b2",
@@ -18239,7 +19529,7 @@
               "isbn": "9782413030133",
               "dateSortie": "2021-06-23T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/4.webp",
               "possessions": [
                 {
                   "id": "fea8c316-ee48-49d6-8fff-c88249708b8b",
@@ -18259,7 +19549,7 @@
               "isbn": "9782413030140",
               "dateSortie": "2021-12-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/5.webp",
               "possessions": [
                 {
                   "id": "be596835-2ffd-4f70-8661-2150ed62c269",
@@ -18279,7 +19569,7 @@
               "isbn": "9782413040262",
               "dateSortie": "2022-03-16T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/6.webp",
               "possessions": [
                 {
                   "id": "2bf5cdac-2c06-4e3a-8ff8-d6c23538f584",
@@ -18299,7 +19589,7 @@
               "isbn": "9782413044628",
               "dateSortie": "2022-06-29T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/7.webp",
               "possessions": [
                 {
                   "id": "83e5f564-8936-45dc-9c00-a35507d51831",
@@ -18319,7 +19609,7 @@
               "isbn": "9782413044635",
               "dateSortie": "2023-04-26T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/8.webp",
               "possessions": [
                 {
                   "id": "08aec149-27d7-42ff-aa89-b2fb5382f4ac",
@@ -18359,7 +19649,7 @@
               "isbn": "9782413076162",
               "dateSortie": "2025-02-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/10.webp",
               "possessions": [
                 {
                   "id": "ba14a198-11f9-46ef-ac7d-211b6d3b70dc",
@@ -18379,7 +19669,7 @@
               "isbn": "9782413088639",
               "dateSortie": "2025-06-25T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/11.webp",
               "possessions": [
                 {
                   "id": "a59bf98d-ea83-460b-bfa6-63a1937d3165",
@@ -18399,7 +19689,7 @@
               "isbn": "9782413088646",
               "dateSortie": "2026-01-29T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/12.webp",
               "possessions": [
                 {
                   "id": "baefe4fa-4c07-48a6-b674-aa45878f3075",
@@ -18424,18 +19714,36 @@
       "titreVo": "LEVIATHAN",
       "auteur": "Kuroi Shiro",
       "genres": [
-        "Psychological",
         "Sci-Fi",
+        "Drama",
+        "Psychological",
         "Thriller"
       ],
-      "themes": [],
-      "alias": [
-        "LEVIATHAN"
+      "themes": [
+        "Diary"
       ],
-      "aliasNormalises": [],
+      "alias": [
+        "Leviatán",
+        "Leviathan リバイアサン",
+        "Ribaiasan",
+        "Левиафан",
+        "Левіатан",
+        "Левіафан",
+        "リバイアサン"
+      ],
+      "aliasNormalises": [
+        "leviathan",
+        "leviatan",
+        "leviathanリバイアサン",
+        "ribaiasan",
+        "левиафан",
+        "левіатан",
+        "левіафан",
+        "リバイアサン"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 9873,
       "editions": [
         {
           "id": "d91c6b19-2f4b-4847-80eb-2a2faf1a5f28",
@@ -18530,10 +19838,15 @@
       "titreVo": "マギ",
       "auteur": "Shinobu Ohtaka",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Ecchi",
         "Action",
         "Adventure",
+        "Comedy",
         "Drama",
-        "Fantasy"
+        "Mystery",
+        "Tragedy"
       ],
       "themes": [
         "Guerre",
@@ -18541,12 +19854,37 @@
         "Monstres"
       ],
       "alias": [
-        "マギ"
+        "マギ",
+        "마기",
+        "Magi",
+        "Magi: Bậc Thầy Pháp Thuật",
+        "Magi El laberinto de la magia",
+        "Magi: El Laberinto de Magia",
+        "Magi - Labyrinth of Magic",
+        "Magi: Mê Cung Ma Thuật",
+        "Magi - Mê Cung Thần Thoại",
+        "Magi: O Labirinto da Magia",
+        "Magi: иMê Cung Thần Thoại",
+        "MAGI魔奇少年"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "magithelabyrinthofmagic",
+        "マギ",
+        "마기",
+        "magi",
+        "magibacthayphapthuat",
+        "magiellaberintodelamagia",
+        "magiellaberintodemagia",
+        "magilabyrinthofmagic",
+        "magimecungmathuat",
+        "magimecungthanthoai",
+        "magiolabirintodamagia",
+        "magiиmecungthanthoai",
+        "magi魔奇少年"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10495,
       "editions": [
         {
           "id": "78341990-efcf-41c5-8da8-f371a5c65f43",
@@ -19321,19 +20659,47 @@
       "titreVo": "図書館の大魔術師",
       "auteur": "Mitsu Izumi",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Adventure",
-        "Fantasy"
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Slice of Life"
       ],
       "themes": [
         "Littérature"
       ],
       "alias": [
-        "図書館の大魔術師"
+        "図書館の大魔術師",
+        "도서관의 대마법사",
+        "Đại Pháp sư của thư viện",
+        "Kütüphanenin Başbüyücüsü",
+        "The Great Wizard of the Library",
+        "Toshokan no Daimajutsushi",
+        "Wielki Strażnik Biblioteki",
+        "Wielki Strażnik Biblioteki (Polish)",
+        "Маг-библиотекарь",
+        "Маг из библиотеки",
+        "Чарівник Бібліотеки"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "magusofthelibrary",
+        "図書館の大魔術師",
+        "도서관의대마법사",
+        "đaiphapsucuathuvien",
+        "kutuphaneninbasbuyucusu",
+        "thegreatwizardofthelibrary",
+        "toshokannodaimajutsushi",
+        "wielkistraznikbiblioteki",
+        "wielkistraznikbibliotekipolish",
+        "магбиблиотекарь",
+        "магизбиблиотеки",
+        "чарівникбібліотеки"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1898,
       "editions": [
         {
           "id": "8142fbb6-ab3a-4a07-95ad-39ae7052e4e8",
@@ -19548,8 +20914,12 @@
       "titreVo": "魔入りました！入間くん",
       "auteur": "Nishi Osamu",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Adventure",
         "Comedy",
-        "Fantasy"
+        "Drama",
+        "Slice of Life"
       ],
       "themes": [
         "Isekkai",
@@ -19557,12 +20927,37 @@
         "Jeux Video"
       ],
       "alias": [
-        "魔入りました！入間くん"
+        "魔入りました！入間くん",
+        "악마에 입문했습니다! 이루마 군",
+        "마에 들어갔습니다! 이루마 군",
+        "Bienvenido al instituto demoníaco, Iruma-kun",
+        "Here's Come the Demon! Iruma-kun",
+        "Iruma Giá Đáo",
+        "Iruma-kun en el instituto demoníaco",
+        "Iruma-Kun en la Escuela de Demonios",
+        "Iruma w szkole demonów",
+        "İşte Şeytan Geliyor! Iruma-kun",
+        "Mairimashita! Iruma-kun",
+        "Selamat datang di sekolah iblis! Iruma-kun"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "irumaalecoledesdemons",
+        "魔入りました入間くん",
+        "악마에입문했습니다이루마군",
+        "마에들어갔습니다이루마군",
+        "bienvenidoalinstitutodemoniacoirumakun",
+        "herescomethedemonirumakun",
+        "irumagiađao",
+        "irumakunenelinstitutodemoniaco",
+        "irumakunenlaescueladedemonios",
+        "irumawszkoledemonow",
+        "isteseytangeliyorirumakun",
+        "mairimashitairumakun",
+        "selamatdatangdisekolahiblisirumakun"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 89,
       "editions": [
         {
           "id": "914bfe57-eea6-4dd2-b960-26400891b3ea",
@@ -19590,14 +20985,14 @@
               "numero": 36,
               "date": "2026-10-14T00:00:00.000Z",
               "isbn": "9782384967247",
-              "couvertureUrl": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/marimashita-iruma-kun/36.webp"
             },
             {
               "id": "87e995d2-4efc-4f4c-8e99-a1c490faf88e",
               "numero": 37,
               "date": "2026-12-02T00:00:00.000Z",
               "isbn": "9782384967261",
-              "couvertureUrl": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/marimashita-iruma-kun/37.webp"
             }
           ],
           "volumes": [
@@ -20287,7 +21682,7 @@
               "isbn": "9782384967223",
               "dateSortie": "2026-08-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/marimashita-iruma-kun/35.webp",
               "possessions": [
                 {
                   "id": "962a2865-b449-409a-974a-83e79743fd3a",
@@ -20312,21 +21707,46 @@
       "titreVo": "マッシュル-MASHLE-",
       "auteur": "Halime Komoto",
       "genres": [
+        "Fantasy",
         "Action",
-        "Comedy",
-        "Fantasy"
+        "Comedy"
       ],
       "themes": [
         "Magie",
         "Art martiaux"
       ],
       "alias": [
-        "マッシュル-MASHLE-"
+        "マッシュル-MASHLE-",
+        "마슐",
+        "Magic & Muscle",
+        "Mashle: Magia e Músculos",
+        "Mashle: Magic and Muscles",
+        "MASHLE:Magic & Muscle",
+        "MASHLE ศึกโลกเวทมนตร์คนพลังกล้าม",
+        "Магия и мускулы",
+        "МЕШ: Магія та М'язи",
+        "ماش: السحر والعضلات",
+        "ماشل",
+        "ماشل : جادو و عضله"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mashle",
+        "マッシュルmashle",
+        "마슐",
+        "magicmuscle",
+        "mashlemagiaemusculos",
+        "mashlemagicandmuscles",
+        "mashlemagicmuscle",
+        "mashleศกโลกเวทมนตรคนพลงกลาม",
+        "магияимускулы",
+        "мешмагіятамязи",
+        "ماشالسحروالعضلات",
+        "ماشل",
+        "ماشلجادووعضله"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 37953,
       "editions": [
         {
           "id": "df40ff37-0773-4939-aa40-aa1f05e0caba",
@@ -20721,10 +22141,15 @@
       "titreVo": "未来日記",
       "auteur": "Sakae Esuno",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
+        "Drama",
         "Mystery",
         "Psychological",
-        "Supernatural",
+        "Romance",
+        "Tragedy",
         "Thriller"
       ],
       "themes": [
@@ -20732,12 +22157,39 @@
         "Psycho"
       ],
       "alias": [
-        "未来日記"
+        "未来日記",
+        "미래일기",
+        "Diário do Futuro",
+        "Future Diary",
+        "Gelecek Günlüğü",
+        "Mirai Nikki",
+        "Mirai Nikki - Future Diary",
+        "Pamiętnik przyszłości",
+        "Дневник Будущего",
+        "مذكرة المستقبل",
+        "भविष्य डायरी",
+        "บันทึกมรณะ : เกมล่าท้าอนาคต",
+        "未來日記"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mirainikkilejournaldufutur",
+        "未来日記",
+        "미래일기",
+        "diariodofuturo",
+        "futurediary",
+        "gelecekgunlugu",
+        "mirainikki",
+        "mirainikkifuturediary",
+        "pamietnikprzyszłosci",
+        "дневникбудущего",
+        "مذكرةالمستقبل",
+        "भवषयडयर",
+        "บนทกมรณะเกมลาทาอนาคต",
+        "未來日記"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10354,
       "editions": [
         {
           "id": "60a27a3c-fe18-4caf-bba7-3ce4c8a6a4af",
@@ -21012,22 +22464,39 @@
       "titreVo": "未来日記: Mosaic",
       "auteur": "Sakae Esuno",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
+        "Comedy",
+        "Drama",
+        "Mystery",
         "Psychological",
-        "Romance",
-        "Supernatural"
+        "Romance"
       ],
       "themes": [
         "Battle Royal",
         "Psycho"
       ],
       "alias": [
-        "未来日記: Mosaic"
+        "未来日記: Mosaic",
+        "Diário do Futuro: Mosaic",
+        "Future Diary: Mosaic",
+        "Дневник будущего: Мозаика",
+        "บันทึกมรณะ : เกมล่าท้าอนาคต MOSAIC",
+        "未来日記モザイク"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mirainikkimosaic",
+        "未来日記mosaic",
+        "diariodofuturomosaic",
+        "futurediarymosaic",
+        "дневникбудущегомозаика",
+        "บนทกมรณะเกมลาทาอนาคตmosaic",
+        "未来日記モザイク"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10355,
       "editions": [
         {
           "id": "045899eb-8977-48fe-a390-8a75a36e079d",
@@ -21082,22 +22551,34 @@
       "titreVo": "未来日記・パラドックス",
       "auteur": "Sakae Esuno",
       "genres": [
+        "Supernatural",
         "Action",
         "Comedy",
-        "Mystery",
-        "Supernatural"
+        "Drama",
+        "Mystery"
       ],
       "themes": [
         "Battle Royal",
         "Psycho"
       ],
       "alias": [
-        "未来日記・パラドックス"
+        "未来日記・パラドックス",
+        "Diário do Futuro: Paradox",
+        "Future Diary Paradox",
+        "Дневник будущего: Парадокс",
+        "บันทึกมรณะ : เกมล่าท้าอนาคต PARADOX"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mirainikkiparadox",
+        "未来日記パラドックス",
+        "diariodofuturoparadox",
+        "futurediaryparadox",
+        "дневникбудущегопарадокс",
+        "บนทกมรณะเกมลาทาอนาคตparadox"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10356,
       "editions": [
         {
           "id": "83ed1dfb-0c49-4171-bee6-3efb1b132a9a",
@@ -21152,8 +22633,11 @@
       "titreVo": "ウスズミの果て",
       "auteur": "Iwamune Haruo",
       "genres": [
+        "Sci-Fi",
+        "Adventure",
+        "Drama",
         "Mystery",
-        "Sci-Fi"
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -21161,12 +22645,37 @@
         "Jeux Video"
       ],
       "alias": [
-        "ウスズミの果て"
+        "ウスズミの果て",
+        "엷은 먹빛의 끝",
+        "A Cor do Fim: Missão no Apocalipse",
+        "Au bout de l'incolore",
+        "Kolor końca świata",
+        "Los confines de la oscuridad - Misión en el apocalipsis",
+        "Mission in the Apocalyspe",
+        "Son Kıyamet Görevi",
+        "The Color of the End",
+        "The Color of the End: Mission in the Apocalypse",
+        "The End In Diluted Ink",
+        "The End of Usuzumi"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "missionintheapocalypse",
+        "ウスズミの果て",
+        "엷은먹빛의끝",
+        "acordofimmissaonoapocalipse",
+        "auboutdelincolore",
+        "kolorkoncaswiata",
+        "losconfinesdelaoscuridadmisionenelapocalipsis",
+        "missionintheapocalyspe",
+        "sonkıyametgorevi",
+        "thecoloroftheend",
+        "thecoloroftheendmissionintheapocalypse",
+        "theendindilutedink",
+        "theendofusuzumi"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 670,
       "editions": [
         {
           "id": "38673a2e-cb79-481c-9bb6-ee4663aaf5fc",
@@ -21281,21 +22790,30 @@
       "titreVo": "モンスターハンター オラージュ",
       "auteur": "Hiro Mashima",
       "genres": [
+        "Fantasy",
         "Action",
         "Adventure",
-        "Comedy",
-        "Fantasy"
+        "Comedy"
       ],
       "themes": [
         "Monster Hunter"
       ],
       "alias": [
-        "モンスターハンター オラージュ"
+        "モンスターハンター オラージュ",
+        "Ураган, охотник на монстров",
+        "怪物猎人Orage",
+        "魔物獵人ORAGE"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "monsterhunterorage",
+        "モンスターハンターオラージュ",
+        "ураганохотникнамонстров",
+        "怪物猎人orage",
+        "魔物獵人orage"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10113,
       "editions": [
         {
           "id": "ff097aeb-3e1b-4548-844a-dedf099fe342",
@@ -21410,22 +22928,54 @@
       "titreVo": "モンスター娘のいる日常",
       "auteur": "Okayado",
       "genres": [
-        "Comedy",
-        "Ecchi",
         "Fantasy",
-        "Romance"
+        "Supernatural",
+        "Adult",
+        "Ecchi",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Romance",
+        "Slice of Life"
       ],
       "themes": [
         "Monster Girls",
         "Harem"
       ],
       "alias": [
-        "モンスター娘のいる日常"
+        "モンスター娘のいる日常",
+        "몬스터 딸이있는 일상",
+        "몬스터 아가씨가 있는 일상",
+        "Codzienność z potworzycami",
+        "Daily Life with a Monster Girl",
+        "Der Alltag mit Monstermädchen",
+        "Die Monster Mädchen",
+        "El día a día con las Chicas Monstruo",
+        "Everyday Life with Monster Girls",
+        "Everyday That There Is a Monster Girl",
+        "La vie Quotidienne Avec des Demi-Humaines",
+        "Ma vie Monstresses",
+        "Mi vida con las chicas monstruo"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "monstermusumeeverydaylifewithmonstergirls",
+        "モンスター娘のいる日常",
+        "몬스터딸이있는일상",
+        "몬스터아가씨가있는일상",
+        "codziennosczpotworzycami",
+        "dailylifewithamonstergirl",
+        "deralltagmitmonstermadchen",
+        "diemonstermadchen",
+        "eldiaadiaconlaschicasmonstruo",
+        "everydaylifewithmonstergirls",
+        "everydaythatthereisamonstergirl",
+        "laviequotidienneavecdesdemihumaines",
+        "maviemonstresses",
+        "mividaconlaschicasmonstruo"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7134,
       "editions": [
         {
           "id": "3f2716e5-db06-4219-b27b-0eef066a2903",
@@ -21828,10 +23378,16 @@
       "titreVo": "無職転生 ～蛇足編～",
       "auteur": "Fujikawa Yuka & Rifujin na Magonote",
       "genres": [
-        "Action",
-        "Drama",
+        "Fantasy",
         "Ecchi",
-        "Fantasy"
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Mystery",
+        "Romance",
+        "Slice of Life",
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -21839,12 +23395,37 @@
         "Magie"
       ],
       "alias": [
-        "無職転生 ～蛇足編～"
+        "無職転生 ～蛇足編～",
+        "무직전생 ~이세계에 갔으면 최선을 다한다~",
+        "무직전생 ～다른 세계 가면 진심 낸다～",
+        "A Reencarnação do Vagabundo: Vou dar meu melhor se for para outro mundo",
+        "Jobless Reincarnation: It Will be All Out if I Go to Another World",
+        "Jobless Reincarnation: I Will Go All Out When I'm Transported to Another World",
+        "Jobless Reincarnation: I Will Seriously Try If I Go to Another World",
+        "Mr. No-Job's New Life: If I Go to a Parallel World, Then I'll Get Serious",
+        "Mushoku Tensei: If I Get to a Parallel Universe I'll Bring Out my True Effort",
+        "Mushoku Tensei: In dieser Welt mach ich alles anders",
+        "Mushoku Tensei - Isekai Ittara Honki Dasu",
+        "Mushoku Tensei: İşsiz Reenkarnasyon"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mushokutensei",
+        "無職転生蛇足編",
+        "무직전생이세계에갔으면최선을다한다",
+        "무직전생다른세계가면진심낸다",
+        "areencarnacaodovagabundovoudarmeumelhorseforparaoutromundo",
+        "joblessreincarnationitwillbealloutifigotoanotherworld",
+        "joblessreincarnationiwillgoalloutwhenimtransportedtoanotherworld",
+        "joblessreincarnationiwillseriouslytryifigotoanotherworld",
+        "mrnojobsnewlifeifigotoaparallelworldthenillgetserious",
+        "mushokutenseiifigettoaparalleluniverseillbringoutmytrueeffort",
+        "mushokutenseiindieserweltmachichallesanders",
+        "mushokutenseiisekaiittarahonkidasu",
+        "mushokutenseiissizreenkarnasyon"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 217,
       "editions": [
         {
           "id": "30b39e57-912f-4ea0-947c-96038b4f78d0",
@@ -22339,19 +23920,48 @@
       "titreVo": "無職転生 ～異世界行ったら本気だす～",
       "auteur": "Higake Take & Rifujin na Magonote",
       "genres": [
+        "Fantasy",
+        "Action",
         "Adventure",
-        "Drama",
-        "Ecchi",
-        "Fantasy"
+        "Drama"
       ],
-      "themes": [],
+      "themes": [
+        "Beast Girl"
+      ],
       "alias": [
-        "無職転生 ～異世界行ったら本気だす～"
+        "無職転生 ～異世界行ったら本気だす～",
+        "Jobless Reincarnation: Eris Seriously Sharpen Her Fangs",
+        "Jobless Reincarnation: Eris Seriously Sharpens Her Fangs",
+        "Mushoku no Tensei: Eris Gaiden",
+        "Mushoku Tensei: Eris Gaiden",
+        "Mushoku Tensei: Eris wa Honki de Kiba o Togu",
+        "Mushoku Tensei: Eris wa Honki de Kiba wo Togu",
+        "Mushoku Tensei: Isekai Ittara Honki Dasu - Eris wa Honki de Kiba o Togu",
+        "Mushoku Tensei: Jobless Reincarnation—Eris Sharpens Her Fangs",
+        "Mushoku Tensei - L'Épée d'Eris",
+        "Реинкарнация Безработного - История Эрис",
+        "Реинкарнация безработного: Серьёзная Эрис точит клыки",
+        "เกิดชาตินี้พี่ต้องเทพ -เอริสเดินทางลับคมเขี้ยว-"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mushokutenseilepeediris",
+        "無職転生異世界行ったら本気だす",
+        "joblessreincarnationerisseriouslysharpenherfangs",
+        "joblessreincarnationerisseriouslysharpensherfangs",
+        "mushokunotenseierisgaiden",
+        "mushokutenseierisgaiden",
+        "mushokutenseieriswahonkidekibaotogu",
+        "mushokutenseieriswahonkidekibawotogu",
+        "mushokutenseiisekaiittarahonkidasueriswahonkidekibaotogu",
+        "mushokutenseijoblessreincarnationerissharpensherfangs",
+        "mushokutenseilepeederis",
+        "реинкарнациябезработногоисторияэрис",
+        "реинкарнациябезработногосерьёзнаяэристочитклыки",
+        "เกดชาตนพตองเทพเอรสเดนทางลบคมเขยว"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 9594,
       "editions": [
         {
           "id": "65303817-29d6-408e-902d-1d109d650f4c",
@@ -22406,10 +24016,12 @@
       "titreVo": "無職転生 ~ロキシーだって本気です~",
       "auteur": "Shöko Iwami & Rifujin na Magonote",
       "genres": [
+        "Fantasy",
+        "Ecchi",
+        "Action",
         "Adventure",
         "Comedy",
-        "Drama",
-        "Fantasy"
+        "Drama"
       ],
       "themes": [
         "Isekkai",
@@ -22417,12 +24029,35 @@
         "Magie"
       ],
       "alias": [
-        "無職転生 ~ロキシーだって本気です~"
+        "無職転生 ~ロキシーだって本気です~",
+        "무직전생 ~록시도 최선을 다합니다~",
+        "Mushoku Tensei: Roxy da tte Honki desu",
+        "Mushoku Tensei: Roxy Gets Serious",
+        "Mushoku Tensei -Roxy is Serious-",
+        "Roxy is Serious",
+        "Реинкарнация безработного: История Рокси",
+        "Реінкарнація Безробітного: Роксі Стає Серйозною",
+        "تناسخ علاف : روکسی جدی میشه",
+        "เกิดชาตินี้พี่ต้องเทพ บันทึกของร็อกซี",
+        "无职转生　～洛琪希也要拿出真本事～"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "mushokutenseilesaventuresderoxy",
+        "無職転生ロキシーだって本気です",
+        "무직전생록시도최선을다합니다",
+        "mushokutenseiroxydattehonkidesu",
+        "mushokutenseiroxygetsserious",
+        "mushokutenseiroxyisserious",
+        "roxyisserious",
+        "реинкарнациябезработногоисториярокси",
+        "реінкарнаціябезробітногороксістаєсерйозною",
+        "تناسخعلافروکسیجدیمیشه",
+        "เกดชาตนพตองเทพบนทกของรอกซ",
+        "无职转生洛琪希也要拿出真本事"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 28521,
       "editions": [
         {
           "id": "7a6c2c5e-2dca-4ec6-bbd1-05cfe9ec61ba",
@@ -22697,21 +24332,50 @@
       "titreVo": "我的姐姐是大明星",
       "auteur": "Iida Pochi",
       "genres": [
-        "Comedy",
+        "Fantasy",
+        "Supernatural",
         "Ecchi",
-        "Romance"
+        "Comedy",
+        "Horror",
+        "Romance",
+        "Slice of Life"
       ],
       "themes": [
         "Démons",
         "Erotique"
       ],
       "alias": [
-        "我的姐姐是大明星"
+        "我的姐姐是大明星",
+        "누나 되는자",
+        "누이 되는자",
+        "An Elder Sister",
+        "Ane Naru Mono",
+        "La cosa que se conviertió en mi hermana mayor",
+        "L'innominabile sorella",
+        "Mi hermana mayor",
+        "My Ancient Sister",
+        "My Elder Sister (German, French)",
+        "The Demon Who Became My Sister",
+        "The Elder Sister-Like One"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "myeldersister",
+        "我的姐姐是大明星",
+        "누나되는자",
+        "누이되는자",
+        "aneldersister",
+        "anenarumono",
+        "lacosaqueseconviertioenmihermanamayor",
+        "linnominabilesorella",
+        "mihermanamayor",
+        "myancientsister",
+        "myeldersistergermanfrench",
+        "thedemonwhobecamemysister",
+        "theeldersisterlikeone"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 23927,
       "editions": [
         {
           "id": "1aaf6ff5-c73d-46be-9f35-f8b4947d3764",
@@ -22866,8 +24530,14 @@
       "titreVo": "僕のヒーローアカデミア 雄英白書",
       "auteur": "Kohei Horikoshi",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
-        "Comedy"
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Tragedy"
       ],
       "themes": [
         "Combat",
@@ -22876,12 +24546,39 @@
         "School Life"
       ],
       "alias": [
-        "僕のヒーローアカデミア 雄英白書"
+        "僕のヒーローアカデミア 雄英白書",
+        "나히아",
+        "나의 히어로 아카데미아",
+        "나의 영웅 아카데미아",
+        "BnHA",
+        "Boku no Hero Academia",
+        "HeroAca",
+        "Học Viện Anh Hùng",
+        "Học Viện Siêu Anh Hùng",
+        "Kahramanlık Akademim",
+        "Mano herojų akademija",
+        "MHA",
+        "Mi Academia de Héroes"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "myheroacademia",
+        "僕のヒーローアカデミア雄英白書",
+        "나히아",
+        "나의히어로아카데미아",
+        "나의영웅아카데미아",
+        "bnha",
+        "bokunoheroacademia",
+        "heroaca",
+        "hocvienanhhung",
+        "hocviensieuanhhung",
+        "kahramanlıkakademim",
+        "manoherojuakademija",
+        "mha",
+        "miacademiadeheroes"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7423,
       "editions": [
         {
           "id": "0c5b4fc9-2685-4d2d-afa9-116623781e50",
@@ -23756,20 +25453,45 @@
       "titreVo": "僕のヒーローアカデミアすまっしゅ",
       "auteur": "Kohei Horikoshi & Neda Hirofumi",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
-        "Comedy",
-        "Fantasy"
+        "Comedy"
       ],
       "themes": [
         "Satyre"
       ],
       "alias": [
-        "僕のヒーローアカデミアすまっしゅ"
+        "僕のヒーローアカデミアすまっしゅ",
+        "나의 히어로 아카데미아 스매시!!",
+        "Boku no Hero Academia Smash!!",
+        "Boku no Hīrō Academia Sumasshu!!",
+        "Boku no Hīrō Academia Sumasshu!!, 我的英雄学院SMASH!!, 我的英雄學院SMASH!!",
+        "Моя геройская академия Smash!!",
+        "Моя геройская академия: Разгром!",
+        "我的英雄学术：粉碎！！",
+        "我的英雄学院SMASH!!",
+        "我的英雄學術：粉碎！！",
+        "我的英雄學院SMASH!!"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "myheroacademiasmash",
+        "僕のヒーローアカデミアすまっしゅ",
+        "나의히어로아카데미아스매시",
+        "bokunoheroacademiasmash",
+        "bokunohiroacademiasumasshu",
+        "bokunohiroacademiasumasshu我的英雄学院smash我的英雄學院smash",
+        "моягеройскаяакадемияsmash",
+        "моягеройскаяакадемияразгром",
+        "我的英雄学术粉碎",
+        "我的英雄学院smash",
+        "我的英雄學術粉碎",
+        "我的英雄學院smash"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 22736,
       "editions": [
         {
           "id": "d03fc383-f5a7-440a-9779-0abc60624dd8",
@@ -23908,7 +25630,9 @@
         "Guide"
       ],
       "alias": [],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "myheroacademiaultraarchive"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": null,
@@ -23966,9 +25690,17 @@
       "titreVo": "NARUTO -ナルト-",
       "auteur": "Masahi Kishimoto",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Supernatural"
+        "Comedy",
+        "Drama",
+        "Martial Arts",
+        "Romance",
+        "Slice of Life",
+        "Tragedy"
       ],
       "themes": [
         "Amitié",
@@ -23979,12 +25711,35 @@
         "Nekketsu"
       ],
       "alias": [
-        "NARUTO -ナルト-"
+        "NARUTO -ナルト-",
+        "나루토",
+        "Hóⁿ-éng Jím-chiá",
+        "Naluto",
+        "Naṛutu",
+        "Нароуто",
+        "Нарута",
+        "Наруто",
+        "ნარუტო",
+        "Նարուտո",
+        "נאַרוטאָ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "naruto",
+        "narutoナルト",
+        "나루토",
+        "hoⁿengjimchia",
+        "naluto",
+        "narutu",
+        "нароуто",
+        "нарута",
+        "наруто",
+        "ნარუტო",
+        "նարուտո",
+        "נארוטא"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 270,
       "editions": [
         {
           "id": "a2e196a4-4b55-4396-846c-5069eb5b6ff1",
@@ -25459,12 +27214,16 @@
       "titreVo": "新世紀エヴァンゲリオン",
       "auteur": "Sadamoto Yoshiyuki & Anno Hideaki",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Mecha",
+        "Supernatural",
         "Action",
         "Drama",
-        "Mecha",
+        "Horror",
         "Mystery",
         "Psychological",
-        "Sci-Fi"
+        "Tragedy"
       ],
       "themes": [
         "Mechas",
@@ -25473,12 +27232,37 @@
         "apocalyptique"
       ],
       "alias": [
-        "新世紀エヴァンゲリオン"
+        "新世紀エヴァンゲリオン",
+        "신세기 에반게리온",
+        "Evangelion",
+        "EVANGELION เอวานเกเลียน",
+        "Eva người máy thông minh",
+        "Neogénesis Evangelion",
+        "Shinseiki Evangelion",
+        "Евангелион",
+        "Евангелион нового поколения",
+        "Новый век: Евангелион",
+        "เอวานเกเลี่ยน",
+        "しんせいきエヴァンゲリオン"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "neongenesisevangelion",
+        "新世紀エヴァンゲリオン",
+        "신세기에반게리온",
+        "evangelion",
+        "evangelionเอวานเกเลยน",
+        "evanguoimaythongminh",
+        "neogenesisevangelion",
+        "shinseikievangelion",
+        "евангелион",
+        "евангелионновогопоколения",
+        "новыйвекевангелион",
+        "เอวานเกเลยน",
+        "しんせいきエヴァンゲリオン"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1527,
       "editions": [
         {
           "id": "d445eda0-7bbe-4a3d-8937-e0fbd64009d7",
@@ -25653,10 +27437,12 @@
       "titreVo": "ヨルハ 真珠湾降下作戦記録",
       "auteur": "Yoko Taro & Soramichi Megumu",
       "genres": [
+        "Sci-Fi",
         "Action",
         "Drama",
+        "Mystery",
         "Psychological",
-        "Sci-Fi"
+        "Tragedy"
       ],
       "themes": [
         "Isekkai",
@@ -25664,12 +27450,39 @@
         "Jeux Video"
       ],
       "alias": [
-        "ヨルハ 真珠湾降下作戦記録"
+        "ヨルハ 真珠湾降下作戦記録",
+        "NieR: Automata – Pearl Harbor Çıkarma Operasyonu",
+        "NieR: Automata: YoRHa Shinjuwan Kouka Sakusen Kiroku",
+        "YoRHa – Abstieg 11941: Eine NieR:Automata Story",
+        "YoRHa Pearl Harbor Descent Mission Record ヨルハ",
+        "YoRHa: Pearl Harbor Descent Operation Record",
+        "YoRHa: Pearl Harbor Descent Record",
+        "YoRHa: Pearl Harbor Descent Record – A NieR:Automata Story",
+        "YoRHa Shinjuwan Kōka Sakusen Kiroku",
+        "Yorha: Shinjuwan Kouka Sakusen Kiroku",
+        "YoRHa Stage",
+        "YoRHa: Отчёт о высадке на Пёрл-Харбор",
+        "YoRHA: Протокол висадки в Перл-Гарбор"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "nierautomataoperationpearlharbor",
+        "ヨルハ真珠湾降下作戦記録",
+        "nierautomatapearlharborcıkarmaoperasyonu",
+        "nierautomatayorhashinjuwankoukasakusenkiroku",
+        "yorhaabstieg11941einenierautomatastory",
+        "yorhapearlharbordescentmissionrecordヨルハ",
+        "yorhapearlharbordescentoperationrecord",
+        "yorhapearlharbordescentrecord",
+        "yorhapearlharbordescentrecordanierautomatastory",
+        "yorhashinjuwankokasakusenkiroku",
+        "yorhashinjuwankoukasakusenkiroku",
+        "yorhastage",
+        "yorhaотчётовысадкенапёрлхарбор",
+        "yorhaпротоколвисадкивперлгарбор"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7203,
       "editions": [
         {
           "id": "76d0d460-8271-4b9b-bfd4-67e4f52927df",
@@ -25784,8 +27597,10 @@
       "titreVo": "ノ・ゾ・キ・ア・ナ",
       "auteur": "Wakoh Honna",
       "genres": [
-        "Drama",
+        "Adult",
         "Ecchi",
+        "Comedy",
+        "Drama",
         "Romance"
       ],
       "themes": [
@@ -25793,12 +27608,35 @@
         "Sexe"
       ],
       "alias": [
-        "ノ・ゾ・キ・ア・ナ"
+        "ノ・ゾ・キ・ア・ナ",
+        "엿보기구멍",
+        "A Peephole",
+        "Dikiz Deliği",
+        "Heimliche Blicke",
+        "Peep Hole",
+        "Peeping Hole",
+        "Podejrzane sekrety",
+        "Un Trou pour Voyeurisme",
+        "Вічко",
+        "Дыра"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "nozokiana",
+        "ノゾキアナ",
+        "엿보기구멍",
+        "apeephole",
+        "dikizdeligi",
+        "heimlicheblicke",
+        "peephole",
+        "peepinghole",
+        "podejrzanesekrety",
+        "untroupourvoyeurisme",
+        "вічко",
+        "дыра"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10541,
       "editions": [
         {
           "id": "ab0f8fa3-a3fc-4fde-abf2-9e4850ce83b5",
@@ -26093,10 +27931,15 @@
       "titreVo": "ワンパンマン",
       "auteur": "ONE & YUSUKE MURATA",
       "genres": [
-        "Action",
-        "Comedy",
+        "Fantasy",
         "Sci-Fi",
-        "Supernatural"
+        "Supernatural",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Martial Arts",
+        "Tragedy"
       ],
       "themes": [
         "Aliens",
@@ -26110,12 +27953,37 @@
         "Super pouvoirs"
       ],
       "alias": [
-        "ワンパンマン"
+        "ワンパンマン",
+        "원펀맨",
+        "El hombre de un solo golpe",
+        "One-Punch Man: Tek Yumruk",
+        "ONE-PUNCH MAN 一拳超人",
+        "OPM",
+        "Tek Yumruk",
+        "Wanpanman",
+        "Бірұрман",
+        "Ванпанчмен",
+        "Уанпанчмен",
+        "איש האגרוף הבודד"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "onepunchman",
+        "ワンパンマン",
+        "원펀맨",
+        "elhombredeunsologolpe",
+        "onepunchmantekyumruk",
+        "onepunchman一拳超人",
+        "opm",
+        "tekyumruk",
+        "wanpanman",
+        "бірұрман",
+        "ванпанчмен",
+        "уанпанчмен",
+        "אישהאגרוףהבודד"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 725,
       "editions": [
         {
           "id": "6daad833-a254-4a0c-89be-933d4c028e5e",
@@ -26838,19 +28706,46 @@
       "titreVo": "オリエント",
       "auteur": "Ohtaka Shinobu",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Adventure",
         "Comedy",
-        "Fantasy"
+        "Drama",
+        "Historical"
       ],
-      "themes": [],
+      "themes": [
+        "Dystopian",
+        "Lost Civilization"
+      ],
       "alias": [
-        "オリエント"
+        "オリエント",
+        "오리엔트",
+        "2 สิงห์ พลิกตำนานพิฆาตอสูร",
+        "2 สิงห์ พลิกตำนานพิฆาตอสูร (SIC)",
+        "Orient",
+        "Orient -オリエント-",
+        "ORIENT 東方少年",
+        "Ориент",
+        "اورينت",
+        "东方少年"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "orientsamuraiquest",
+        "オリエント",
+        "오리엔트",
+        "2สงหพลกตำนานพฆาตอสร",
+        "2สงหพลกตำนานพฆาตอสรsic",
+        "orient",
+        "orientオリエント",
+        "orient東方少年",
+        "ориент",
+        "اورينت",
+        "东方少年"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 6560,
       "editions": [
         {
           "id": "ce59b05b-2a35-407f-9c19-476460f7877b",
@@ -27325,10 +29220,13 @@
       "titreVo": "【推しの子】",
       "auteur": "Aka Akasaka",
       "genres": [
+        "Supernatural",
+        "Comedy",
         "Drama",
         "Mystery",
         "Psychological",
-        "Supernatural"
+        "Slice of Life",
+        "Tragedy"
       ],
       "themes": [
         "Cinéma",
@@ -27336,12 +29234,39 @@
         "Réincarnation"
       ],
       "alias": [
-        "【推しの子】"
+        "【推しの子】",
+        "【최애의 아이】",
+        "Anak Idola",
+        "Criança que deve ser suportada",
+        "Đứa Con Của Thần Tượng",
+        "Dưới Ánh Hào Quang",
+        "Favorite Girl",
+        "Filho de sua favorita",
+        "Hijos predilectos",
+        "İdolümün Çocuğu",
+        "L'Enfant d'une Star",
+        "Ma Star",
+        "[Mein*Star]"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "oshinoko",
+        "推しの子",
+        "최애의아이",
+        "anakidola",
+        "criancaquedevesersuportada",
+        "đuaconcuathantuong",
+        "duoianhhaoquang",
+        "favoritegirl",
+        "filhodesuafavorita",
+        "hijospredilectos",
+        "idolumuncocugu",
+        "lenfantdunestar",
+        "mastar",
+        "meinstar"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 593,
       "editions": [
         {
           "id": "efc9ebd6-15f2-4bff-95d0-1032d08efc63",
@@ -27696,13 +29621,18 @@
       "titreVo": "パンドラハーツ",
       "auteur": "Jun Mochizuki",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
+        "Comedy",
         "Drama",
-        "Fantasy",
+        "Horror",
         "Mystery",
         "Psychological",
-        "Supernatural"
+        "Romance",
+        "Tragedy"
       ],
       "themes": [
         "Crime",
@@ -27710,12 +29640,35 @@
         "Alice"
       ],
       "alias": [
-        "パンドラハーツ"
+        "パンドラハーツ",
+        "Chiếc Hộp Pandora",
+        "판도라 하츠(PandoraHearts)",
+        "Pandora Hearts Pilot",
+        "Pandoros širdys",
+        "Сердца Пандоры",
+        "Серця Пандори",
+        "دل های پاندورا",
+        "قلوب باندورا",
+        "แพนโดร่า ฮาร์ทส์",
+        "潘多拉之心"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "pandorahearts",
+        "パンドラハーツ",
+        "chiechoppandora",
+        "판도라하츠pandorahearts",
+        "pandoraheartspilot",
+        "pandorossirdys",
+        "сердцапандоры",
+        "серцяпандори",
+        "دلهایپاندورا",
+        "قلوبباندورا",
+        "แพนโดราฮารทส",
+        "潘多拉之心"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10719,
       "editions": [
         {
           "id": "51e01741-71c6-43a6-9935-7dd4d29ea98b",
@@ -28244,7 +30197,10 @@
       "alias": [
         "パンドラハーツ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "pandoraheart85",
+        "パンドラハーツ"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": null,
@@ -28302,23 +30258,51 @@
       "titreVo": "ポケットモンスターSPECIAL",
       "auteur": "Hidenori Kusaka & Mato",
       "genres": [
+        "Fantasy",
         "Action",
         "Adventure",
         "Comedy",
         "Drama",
-        "Fantasy"
+        "Tragedy"
       ],
       "themes": [
         "Animaux",
         "Nature"
       ],
       "alias": [
-        "ポケットモンスターSPECIAL"
+        "ポケットモンスターSPECIAL",
+        "포켓몬스터 스페셜",
+        "Pocket Monster Special",
+        "Pocket Monsters Special",
+        "Pocket Monsters Special Omega Ruby Alpha Sapphire ORAS",
+        "Pocket Monsters Special Sun Moon",
+        "Pocket Monsters Special Sword and Shield",
+        "Pocket Monsters Special XY",
+        "Pokémon Adventure",
+        "Pokémon Adventures",
+        "Pokémon Adventures: Diamond and Pearl/Platinum",
+        "Pokémon Adventures: HeartGold & SoulSilver",
+        "Pokémon Black and White"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "pokemonlagrandeaventure",
+        "ポケットモンスターspecial",
+        "포켓몬스터스페셜",
+        "pocketmonsterspecial",
+        "pocketmonstersspecial",
+        "pocketmonstersspecialomegarubyalphasapphireoras",
+        "pocketmonstersspecialsunmoon",
+        "pocketmonstersspecialswordandshield",
+        "pocketmonstersspecialxy",
+        "pokemonadventure",
+        "pokemonadventures",
+        "pokemonadventuresdiamondandpearlplatinum",
+        "pokemonadventuresheartgoldsoulsilver",
+        "pokemonblackandwhite"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5733,
       "editions": [
         {
           "id": "24886f0d-acbe-4f3d-b179-7af3445055ba",
@@ -28473,20 +30457,49 @@
       "titreVo": "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク",
       "auteur": "Momota Inoue",
       "genres": [
+        "Fantasy",
+        "Action",
         "Adventure",
-        "Fantasy"
+        "Drama"
       ],
       "themes": [
         "Animaux",
         "Nature"
       ],
       "alias": [
-        "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク"
+        "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク",
+        "Gekijōban Pocket Monster Diamond & Pearl: Genei no Hasha Zoroark",
+        "Gekijouban Pocket Monster Diamond & Pearl: Genei no Hasha Zoroark",
+        "Gekijouban Pokemon- Genei no Hasha Zoroark",
+        "Genei no Hasha Zoroark",
+        "Phantom Ruler: Zoroark",
+        "Pocket Monsters Diamond & Pearl: Genei no Hasha Zoroark",
+        "Pokemon Diamond & Pearl: Genei no Hasha Zoroark",
+        "Pokémon - Zoroark: Illuusioiden mestari",
+        "Pokémon - Zoroark le maître des Illusions",
+        "Pokémon - Zoroark: Master of Illusions",
+        "Ruler of Illusions: Zoroark",
+        "Покемон: Алмаз и жемчуг — Мастер иллюзий Зороарк"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "pokemonzoroarklemaitredesillusion",
+        "ポケットモンスターダイヤモンドパール幻影の覇者ゾロアーク",
+        "gekijobanpocketmonsterdiamondpearlgeneinohashazoroark",
+        "gekijoubanpocketmonsterdiamondpearlgeneinohashazoroark",
+        "gekijoubanpokemongeneinohashazoroark",
+        "geneinohashazoroark",
+        "phantomrulerzoroark",
+        "pocketmonstersdiamondpearlgeneinohashazoroark",
+        "pokemondiamondpearlgeneinohashazoroark",
+        "pokemonzoroarkilluusioidenmestari",
+        "pokemonzoroarklemaitredesillusions",
+        "pokemonzoroarkmasterofillusions",
+        "rulerofillusionszoroark",
+        "покемоналмазижемчугмастериллюзийзороарк"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 112502,
       "editions": [
         {
           "id": "db1c7d5f-ae91-4381-83fc-e37eb9d79e75",
@@ -28543,18 +30556,32 @@
       "genres": [
         "Drama",
         "Mystery",
-        "Psychological"
+        "Psychological",
+        "Tragedy"
       ],
       "themes": [
         "Mature"
       ],
       "alias": [
-        "予告犯―THE COPYCAT―"
+        "予告犯―THE COPYCAT―",
+        "Prophecy",
+        "Yokokuhan",
+        "Yokokuhan: The Copycat",
+        "Преступление с уведомлением: Подражатель",
+        "予告犯"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "prophecythecopycat",
+        "予告犯thecopycat",
+        "prophecy",
+        "yokokuhan",
+        "yokokuhanthecopycat",
+        "преступлениесуведомлениемподражатель",
+        "予告犯"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 8215,
       "editions": [
         {
           "id": "c06b07cd-dc89-494d-a374-e43d99106374",
@@ -28649,20 +30676,34 @@
       "titreVo": "幾日",
       "auteur": "Tony Valent",
       "genres": [
-        "Hentai",
-        "Romance"
+        "Fantasy",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama"
       ],
       "themes": [
         "Magie",
         "Combat"
       ],
       "alias": [
-        "幾日"
+        "幾日",
+        "Радиант",
+        "Радіант",
+        "Чi “Життя однієї киці",
+        "ラディアン"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "radiant",
+        "幾日",
+        "радиант",
+        "радіант",
+        "чiжиттяоднієїкиці",
+        "ラディアン"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 2416,
       "editions": [
         {
           "id": "ac121022-10e8-4f32-8b9d-b0e67f50a18c",
@@ -29085,22 +31126,46 @@
       "titreVo": "ラグナクリムゾン",
       "auteur": "Daiki Kobayashi",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
         "Action",
         "Adventure",
-        "Fantasy",
-        "Mystery"
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Mystery",
+        "Tragedy"
       ],
       "themes": [
         "Dragons",
         "Voyage Temporel"
       ],
       "alias": [
-        "ラグナクリムゾン"
+        "ラグナクリムゾン",
+        "라그나 크림슨",
+        "Ragnac Crimson",
+        "Рагна Багровый",
+        "راغنا كريمزون",
+        "ตำนานนักล่ามังกร",
+        "ตำนานนักล่ามังกร (SIC)",
+        "拉格納緋紅",
+        "狩龙人拉格纳"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "ragnacrimson",
+        "ラグナクリムゾン",
+        "라그나크림슨",
+        "ragnaccrimson",
+        "рагнабагровый",
+        "راغناكريمزون",
+        "ตำนานนกลามงกร",
+        "ตำนานนกลามงกรsic",
+        "拉格納緋紅",
+        "狩龙人拉格纳"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 3729,
       "editions": [
         {
           "id": "c03006d4-18da-457a-ba61-88cc06dadbe6",
@@ -29463,9 +31528,12 @@
       "titreVo": "雷雷雷",
       "auteur": "Kei Yoshiaki",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Comedy",
-        "Sci-Fi"
+        "Horror",
+        "Slice of Life"
       ],
       "themes": [
         "Isekkai",
@@ -29473,12 +31541,25 @@
         "Jeux Video"
       ],
       "alias": [
-        "雷雷雷"
+        "雷雷雷",
+        "라이라이라이",
+        "Lightning Lightning Lightning",
+        "ГрімГрімГрім",
+        "ГромГромГром",
+        "ライライライ"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "rairairai",
+        "雷雷雷",
+        "라이라이라이",
+        "lightninglightninglightning",
+        "грімгрімгрім",
+        "громгромгром",
+        "ライライライ"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1982,
       "editions": [
         {
           "id": "0c299918-c21a-4722-9741-54693e3edbf6",
@@ -29573,11 +31654,15 @@
       "titreVo": "アカメが斬る！",
       "auteur": "Takahiro & Tetsuya Tashiro",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Adventure",
+        "Comedy",
         "Drama",
-        "Fantasy",
-        "Horror"
+        "Horror",
+        "Romance",
+        "Tragedy"
       ],
       "themes": [
         "Assassinat",
@@ -29587,12 +31672,37 @@
         "Politique"
       ],
       "alias": [
-        "アカメが斬る！"
+        "アカメが斬る！",
+        "아카메가 벤다!!",
+        "Akame ga Kill!",
+        "Akame ga Kiru!",
+        "Akame Keser!",
+        "Akame Kills!",
+        "Akame Slashes!",
+        "Red-Eyed Killer!",
+        "Red-Eye Kills!",
+        "Red Eyes Sword",
+        "Red Eyes Sword - Akame ga Kill ! (FRoff)",
+        "Sát thủ Akame!"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "redeyesswordakamegakill",
+        "アカメが斬る",
+        "아카메가벤다",
+        "akamegakill",
+        "akamegakiru",
+        "akamekeser",
+        "akamekills",
+        "akameslashes",
+        "redeyedkiller",
+        "redeyekills",
+        "redeyessword",
+        "redeyesswordakamegakillfroff",
+        "satthuakame"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 4897,
       "editions": [
         {
           "id": "36672b76-1525-4237-b691-94c7820bb54c",
@@ -29927,9 +32037,14 @@
       "titreVo": "アカメが斬る！零",
       "auteur": "Takahiro & Kei Toru",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Ecchi",
         "Action",
         "Adventure",
-        "Fantasy"
+        "Drama",
+        "Horror",
+        "Tragedy"
       ],
       "themes": [
         "Assassinat",
@@ -29939,12 +32054,39 @@
         "Politique"
       ],
       "alias": [
-        "アカメが斬る！零"
+        "アカメが斬る！零",
+        "아카메가 벤다!",
+        "아카메가 벤다! 제로",
+        "Akame ga KILL!",
+        "Akame ga Kill! Zero",
+        "Akame ga Kiru! Rei",
+        "Akame ga kiru! Zero",
+        "Red Eyes Sword - Akame Ga Kill !",
+        "Red Eyes Sword - Akame ga Kill ! Zero (FR)",
+        "Red Eyes Sword Zero",
+        "Убийца Акаме! Начало",
+        "Убийца Акамэ! Начало",
+        "อาคาเมะ สวยประหาร Zero (SIC)"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "redeyesswordakamegakillzero",
+        "アカメが斬る零",
+        "아카메가벤다",
+        "아카메가벤다제로",
+        "akamegakill",
+        "akamegakillzero",
+        "akamegakirurei",
+        "akamegakiruzero",
+        "redeyesswordakamegakill",
+        "redeyesswordakamegakillzerofr",
+        "redeyesswordzero",
+        "убийцаакаменачало",
+        "убийцаакамэначало",
+        "อาคาเมะสวยประหารzerosic"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 9548,
       "editions": [
         {
           "id": "79a663d2-4a4c-49cb-a08b-582713a40ba1",
@@ -30183,16 +32325,44 @@
         "Drama",
         "Psychological",
         "Romance",
-        "Slice of Life"
+        "Slice of Life",
+        "Tragedy"
       ],
-      "themes": [],
+      "themes": [
+        "Working",
+        "Life-Changing Events",
+        "Coming of Age",
+        "Experiments",
+        "Rehabilitation"
+      ],
       "alias": [
-        "リライフ"
+        "リライフ",
+        "리라이프",
+        "리라이프 -Relife-",
+        "ReLIFE 重返17岁",
+        "ReLIFE 重返17歲",
+        "Повторная жизнь",
+        "إعادة الحياة",
+        "रि-लाइफ",
+        "重生计划",
+        "重返17歲"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "relife",
+        "リライフ",
+        "리라이프",
+        "리라이프relife",
+        "relife重返17岁",
+        "relife重返17歲",
+        "повторнаяжизнь",
+        "إعادةالحياة",
+        "रलइफ",
+        "重生计划",
+        "重返17歲"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 9991,
       "editions": [
         {
           "id": "1a444004-4d23-4470-8c73-fcb9b8d90250",
@@ -30527,7 +32697,10 @@
       "titreVo": "リメンバー",
       "auteur": "Welzard & Katsutoshi Murase",
       "genres": [
-        "Action"
+        "Drama",
+        "Psychological",
+        "Romance",
+        "Slice of Life"
       ],
       "themes": [
         "Fantôme",
@@ -30535,12 +32708,21 @@
         "School Life"
       ],
       "alias": [
-        "リメンバー"
+        "リメンバー",
+        "Jide",
+        "Помни",
+        "记得"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "remember",
+        "リメンバー",
+        "jide",
+        "помни",
+        "记得"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 14621,
       "editions": [
         {
           "id": "cad99e27-b752-477a-90db-d9d098946fde",
@@ -30915,9 +33097,10 @@
       "titreVo": "ルリドラゴン",
       "auteur": "Shindo Masaoki",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Comedy",
-        "Slice of Life",
-        "Supernatural"
+        "Slice of Life"
       ],
       "themes": [
         "Isekkai",
@@ -30925,12 +33108,35 @@
         "Jeux Video"
       ],
       "alias": [
-        "ルリドラゴン"
+        "ルリドラゴン",
+        "루리 드래곤",
+        "Drak Ruri",
+        "Rồng Ruri",
+        "Ruri Sang Naga",
+        "Ruri Si(Naga)",
+        "Smok Ruri",
+        "Дракон Рури",
+        "التنينه روري",
+        "รูริดราก้อน",
+        "瑠璃龍龍"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "ruridragon",
+        "ルリドラゴン",
+        "루리드래곤",
+        "drakruri",
+        "rongruri",
+        "rurisangnaga",
+        "rurisinaga",
+        "smokruri",
+        "драконрури",
+        "التنينهروري",
+        "รรดรากอน",
+        "瑠璃龍龍"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 600,
       "editions": [
         {
           "id": "c0114abd-c711-46f9-aed2-ecba56659dfb",
@@ -31053,17 +33259,58 @@
       "titreVo": "幼女戦記",
       "auteur": "Carlo Zen & Tojo Chika",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
         "Action",
-        "Fantasy"
+        "Comedy",
+        "Drama",
+        "Tragedy",
+        "Historical"
       ],
-      "themes": [],
+      "themes": [
+        "Invasion",
+        "European Ambience",
+        "Politics",
+        "Religion",
+        "Reincarnation",
+        "Guns",
+        "Military",
+        "War"
+      ],
       "alias": [
-        "幼女戦記"
+        "幼女戦記",
+        "유녀전기",
+        "Ấu Nữ Chiến Ký",
+        "Crónicas de una niña en guerra",
+        "Crônicas Militares de uma Pequena Garota",
+        "Diario de guerra",
+        "Diario De Guerra: Saga Of Tanya The Evil",
+        "Die Militärischen Aufzeichnungen eines kleinen Mädchens",
+        "Kisah Tanya yang Jahat",
+        "Kisah Tentera Seorang Gadis Kecil",
+        "Kronik Militer Seorang Gadis Kecil",
+        "Küçük Bir Kızın Askeri Günlükleri",
+        "La Saga de Tanya la Malvada"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "tanyatheevil",
+        "幼女戦記",
+        "유녀전기",
+        "aunuchienky",
+        "cronicasdeunaninaenguerra",
+        "cronicasmilitaresdeumapequenagarota",
+        "diariodeguerra",
+        "diariodeguerrasagaoftanyatheevil",
+        "diemilitarischenaufzeichnungeneineskleinenmadchens",
+        "kisahtanyayangjahat",
+        "kisahtenteraseoranggadiskecil",
+        "kronikmiliterseoranggadiskecil",
+        "kucukbirkızınaskerigunlukleri",
+        "lasagadetanyalamalvada"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 3937,
       "editions": [
         {
           "id": "fe65f415-d170-4c07-b96c-5f737e83e973",
@@ -31533,7 +33780,7 @@
               "isbn": "9782413077299",
               "dateSortie": "2026-08-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/saga-of-tany-the-evil-youjo-senki/23.webp",
               "possessions": [
                 {
                   "id": "9c2ced5a-06fe-44e3-9b12-c64a2346fce6",
@@ -31558,8 +33805,11 @@
       "titreVo": "聖闘士星矢 THE LOST CANVAS 冥王神話",
       "auteur": "Teshirogi Shiori",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
-        "Adventure"
+        "Adventure",
+        "Drama"
       ],
       "themes": [
         "Isekkai",
@@ -31567,12 +33817,37 @@
         "Jeux Video"
       ],
       "alias": [
-        "聖闘士星矢 THE LOST CANVAS 冥王神話"
+        "聖闘士星矢 THE LOST CANVAS 冥王神話",
+        "Cavaleiros Do Zodíaco - Lost Canvas: A Saga de Hades",
+        "I Cavalieri dello zodiaco - The Lost Canvas - Il mito di Ade",
+        "Knights of the Zodiac: The Lost Canvas",
+        "Os Cavaleiros do Zodiaco - The Lost Canvas - A Saga de Hades",
+        "Saint Seiya, The Lost Canvas: Hades Mythology",
+        "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+        "Saint Seiya: The Lost Canvas - Meiō Shinwa",
+        "Saint Seiya - The Lost Canvas - Meiou Shinwa",
+        "Saint Seiya - The Lost Canvas - The Myth of Hades",
+        "Thần Thoại Minh Vương",
+        "The Knig"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "saintseiyathelostcanvas",
+        "聖闘士星矢thelostcanvas冥王神話",
+        "cavaleirosdozodiacolostcanvasasagadehades",
+        "icavalieridellozodiacothelostcanvasilmitodiade",
+        "knightsofthezodiacthelostcanvas",
+        "oscavaleirosdozodiacothelostcanvasasagadehades",
+        "saintseiyathelostcanvashadesmythology",
+        "saintseiyathelostcanvaslalegendedhades",
+        "saintseiyathelostcanvasmeioshinwa",
+        "saintseiyathelostcanvasmeioushinwa",
+        "saintseiyathelostcanvasthemythofhades",
+        "thanthoaiminhvuong",
+        "theknig"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5436,
       "editions": [
         {
           "id": "735bb6cb-ac39-4b95-b5b2-40beea6963a0",
@@ -32107,9 +34382,11 @@
       "titreVo": "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝",
       "auteur": "Masami Kurumada & Shiori Teshirogi",
       "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Action",
         "Adventure",
-        "Drama",
-        "Fantasy"
+        "Drama"
       ],
       "themes": [
         "Arts martiaux",
@@ -32119,12 +34396,39 @@
         "Mythologie"
       ],
       "alias": [
-        "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝"
+        "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝",
+        "Cavaleiros Do Zodíaco - Lost Canvas: Gaiden",
+        "I Cavalieri dello zodiaco - The Lost Canvas - Il mito di Ade",
+        "Knights of the Zodiac: The Lost Canvas",
+        "Os Cavaleiros do Zodíaco: The Lost Canvas - A saga de Hades",
+        "Os Cavaleiros do Zodíaco: The Lost Canvas Gaiden",
+        "Saint Seiya - The Lost Canvas Gaiden",
+        "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+        "Saint Seiya: The Lost Canvas - Meiō Shinwa",
+        "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden",
+        "Saint Seiya - The Lost Canvas - The Myth of Hades - Gaiden",
+        "The Lost Canvas",
+        "Святой Сэйя: Потерянный холст — Гайдэн"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "saintseiyathelostcanvaschronicles",
+        "聖闘士星矢thelostcanvas冥王神話外伝",
+        "cavaleirosdozodiacolostcanvasgaiden",
+        "icavalieridellozodiacothelostcanvasilmitodiade",
+        "knightsofthezodiacthelostcanvas",
+        "oscavaleirosdozodiacothelostcanvasasagadehades",
+        "oscavaleirosdozodiacothelostcanvasgaiden",
+        "saintseiyathelostcanvasgaiden",
+        "saintseiyathelostcanvaslalegendedhades",
+        "saintseiyathelostcanvasmeioshinwa",
+        "saintseiyathelostcanvasmeioushinwagaiden",
+        "saintseiyathelostcanvasthemythofhadesgaiden",
+        "thelostcanvas",
+        "святойсэйяпотерянныйхолстгайдэн"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 9957,
       "editions": [
         {
           "id": "4fa9dae8-ab90-4bde-b329-94ff27e7e033",
@@ -32479,8 +34783,11 @@
       "titreVo": "早乙女選手、ひたかくす",
       "auteur": "Naoki Mizuguchi",
       "genres": [
-        "Comedy",
         "Ecchi",
+        "Action",
+        "Comedy",
+        "Drama",
+        "Martial Arts",
         "Romance",
         "Sports"
       ],
@@ -32492,12 +34799,27 @@
         "School Life"
       ],
       "alias": [
-        "早乙女選手、ひたかくす"
+        "早乙女選手、ひたかくす",
+        "사오토메 선수, 숨다",
+        "Fighter Saotome, Cover Up",
+        "Saotome Girl, Hitakakusu",
+        "Saotome-Senshu, Hitakakusu",
+        "Боец Саотомэ",
+        "早乙女选手躲躲藏藏"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "saotomeloveboxing",
+        "早乙女選手ひたかくす",
+        "사오토메선수숨다",
+        "fightersaotomecoverup",
+        "saotomegirlhitakakusu",
+        "saotomesenshuhitakakusu",
+        "боецсаотомэ",
+        "早乙女选手躲躲藏藏"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 26057,
       "editions": [
         {
           "id": "1e224e9b-7981-4924-9ca1-6cd5224e6b4e",
@@ -32732,21 +35054,47 @@
       "titreVo": "SERVAMP -サーヴァンプ-",
       "auteur": "Tanaka Strike",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Comedy",
-        "Supernatural"
+        "Drama",
+        "Mystery"
       ],
       "themes": [
         "Combats",
         "Vampire"
       ],
       "alias": [
-        "SERVAMP -サーヴァンプ-"
+        "SERVAMP -サーヴァンプ-",
+        "서뱀프",
+        "Hắp huyết quỷ bộc nhân",
+        "Saavampu",
+        "Savampu",
+        "SERVAMP Hầu Cận Ma Cà Rồng",
+        "Servamps",
+        "Survamp",
+        "Сервамп",
+        "Слуга вампир",
+        "خادم خون‌آشام"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "servamp",
+        "servampサーヴァンプ",
+        "서뱀프",
+        "haphuyetquybocnhan",
+        "saavampu",
+        "savampu",
+        "servamphaucanmacarong",
+        "servamps",
+        "survamp",
+        "сервамп",
+        "слугавампир",
+        "خادمخونآشام"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 540,
       "editions": [
         {
           "id": "8b7ccc7e-cdf4-44e3-a295-8ed08a8d4073",
@@ -33241,22 +35589,48 @@
       "titreVo": "シャーマンキング",
       "auteur": "Kiroyuki Takei",
       "genres": [
+        "Supernatural",
         "Action",
         "Adventure",
         "Comedy",
-        "Supernatural"
+        "Drama"
       ],
       "themes": [
         "Shaman",
         "Nekketsu"
       ],
       "alias": [
-        "シャーマンキング"
+        "シャーマンキング",
+        "Funbari no Uta",
+        "Mappa Douji",
+        "relax",
+        "Shaman King: Complete Version",
+        "Shaman King: Full Version",
+        "Shaman King Kang Zeng Bang",
+        "Shaman King Kanzenban",
+        "Shaman King (Kanzenban Edition)",
+        "Shaman King KZB",
+        "Shaman King Remix Track",
+        "Shaman King シャーマンキング"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "shamanking",
+        "シャーマンキング",
+        "funbarinouta",
+        "mappadouji",
+        "relax",
+        "shamankingcompleteversion",
+        "shamankingfullversion",
+        "shamankingkangzengbang",
+        "shamankingkanzenban",
+        "shamankingkanzenbanedition",
+        "shamankingkzb",
+        "shamankingremixtrack",
+        "shamankingシャーマンキング"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 98831,
       "editions": [
         {
           "id": "8f9df9e2-046b-4733-8cc1-42391df2fcc6",
@@ -33941,12 +36315,39 @@
         "Jeux Video"
       ],
       "alias": [
-        "スーパーの裏でヤニ吸うふたり"
+        "スーパーの裏でヤニ吸うふたり",
+        "슈퍼 뒤에서 담배 피우는 두 사람",
+        "A Story About Smoking at the Back of the Supermarket",
+        "Behind the Supermarket, Smoking with You.",
+        "Cerita Tentang Merokok di Belakang Supermarket",
+        "Deux fumeurs à l'arrière de la supérette",
+        "Fumando atrás del súper con vos",
+        "Fumando juntos detrás del súper",
+        "Fumer en bonne compagnie à l'arrière de la supérette",
+        "Hai Người Hút Thuốc Phía Sau Siêu Thị",
+        "Hiên Sau Siêu Thị, Muộn Phiền Bay Đi",
+        "Merokok Bersamamu di Belakang Supermarket",
+        "Paląc z tobą na tyłach sklepu"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "smokingbehindthesupermarketwithyou",
+        "スーパーの裏でヤニ吸うふたり",
+        "슈퍼뒤에서담배피우는두사람",
+        "astoryaboutsmokingatthebackofthesupermarket",
+        "behindthesupermarketsmokingwithyou",
+        "ceritatentangmerokokdibelakangsupermarket",
+        "deuxfumeursalarrieredelasuperette",
+        "fumandoatrasdelsuperconvos",
+        "fumandojuntosdetrasdelsuper",
+        "fumerenbonnecompagniealarrieredelasuperette",
+        "hainguoihutthuocphiasausieuthi",
+        "hiensausieuthimuonphienbayđi",
+        "merokokbersamamudibelakangsupermarket",
+        "palacztobanatyłachsklepu"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 3188,
       "editions": [
         {
           "id": "c5a86b54-5d07-4d21-8bcb-87123b83d750",
@@ -34109,9 +36510,12 @@
       "titreVo": "나 혼자만 레벨업",
       "auteur": "Dubu & Chugong",
       "genres": [
+        "Fantasy",
         "Action",
         "Adventure",
-        "Fantasy"
+        "Drama",
+        "Horror",
+        "Tragedy"
       ],
       "themes": [
         "Apprentissage",
@@ -34120,12 +36524,37 @@
         "Super pouvoirs"
       ],
       "alias": [
-        "나 혼자만 레벨업"
+        "나 혼자만 레벨업",
+        "나혼렙",
+        "Aku Level Up Sendiri",
+        "Ben yanlız gelişirim",
+        "Egyéni szintlépés",
+        "Grinding Sendiri",
+        "I Alone Level-Up",
+        "I am the only the one who levels up",
+        "I Level Up Alone",
+        "Jogador solo",
+        "Na Honjaman Lebel-eob",
+        "Na Honjaman Level Up"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "sololeveling",
+        "나혼자만레벨업",
+        "나혼렙",
+        "akulevelupsendiri",
+        "benyanlızgelisirim",
+        "egyeniszintlepes",
+        "grindingsendiri",
+        "ialonelevelup",
+        "iamtheonlytheonewholevelsup",
+        "ilevelupalone",
+        "jogadorsolo",
+        "nahonjamanlebeleob",
+        "nahonjamanlevelup"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 3397,
       "editions": [
         {
           "id": "18021c05-b187-4ebd-b92f-b267424ff81a",
@@ -34540,11 +36969,17 @@
       "titreVo": "ソウルイーター",
       "auteur": "Ohkubo Atsushi",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
+        "Ecchi",
         "Action",
         "Adventure",
         "Comedy",
-        "Fantasy",
-        "Supernatural"
+        "Drama",
+        "Horror",
+        "Martial Arts",
+        "Tragedy"
       ],
       "themes": [
         "Shinigami",
@@ -34552,12 +36987,35 @@
         "folie"
       ],
       "alias": [
-        "ソウルイーター"
+        "ソウルイーター",
+        "소울이터",
+        "Devorador de almas",
+        "소울이터(SOUL EATER)",
+        "Пожиратель душ",
+        "אכלן הנשמות",
+        "סול איטר",
+        "اكل  الروح",
+        "سول  ايتر",
+        "โซลอีทเตอร์",
+        "噬魂师"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "souleater",
+        "ソウルイーター",
+        "소울이터",
+        "devoradordealmas",
+        "소울이터souleater",
+        "пожирательдуш",
+        "אכלןהנשמות",
+        "סולאיטר",
+        "اكلالروح",
+        "سولايتر",
+        "โซลอทเตอร",
+        "噬魂师"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 10091,
       "editions": [
         {
           "id": "d78bfeb4-a86d-4330-bef4-7b0cda1750d1",
@@ -35356,10 +37814,14 @@
       "titreVo": "SPY×FAMILY",
       "auteur": "Endo Tatsuya",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Comedy",
+        "Drama",
+        "Romance",
         "Slice of Life",
-        "Supernatural"
+        "Historical"
       ],
       "themes": [
         "Isekkai",
@@ -35367,12 +37829,35 @@
         "Jeux Video"
       ],
       "alias": [
-        "SPY×FAMILY"
+        "SPY×FAMILY",
+        "스파이 패밀리",
+        "CASUS × AİLE",
+        "Gia Đình Điệp Viên",
+        "ŠNIPO×ŠEIMA",
+        "Špión x Rodina",
+        "SPY×FAMILY: WJ Special Extra Mission!!",
+        "SPY×FAMILY 間諜家家酒",
+        "SPY×FAMILY间谍家家酒",
+        "SxF",
+        "SZPIEG X RODZINA"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "spyxfamily",
+        "spyfamily",
+        "스파이패밀리",
+        "casusaile",
+        "giađinhđiepvien",
+        "sniposeima",
+        "spionxrodina",
+        "spyfamilywjspecialextramission",
+        "spyfamily間諜家家酒",
+        "spyfamily间谍家家酒",
+        "sxf",
+        "szpiegxrodzina"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 1288,
       "editions": [
         {
           "id": "643af1cc-5a8b-409c-bf65-3f42b13852b0",
@@ -35727,11 +38212,13 @@
       "titreVo": "無能なナナ",
       "auteur": "Furuya Iori & Looseboy",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Drama",
         "Horror",
         "Mystery",
         "Psychological",
-        "Supernatural",
+        "Tragedy",
         "Thriller"
       ],
       "themes": [
@@ -35740,12 +38227,33 @@
         "School Life"
       ],
       "alias": [
-        "無能なナナ"
+        "無能なナナ",
+        "무능한 나나",
+        "Munō na Nana",
+        "Munou na Nana",
+        "Nana yang tidak berbakat",
+        "Talentless Nana",
+        "Бездарная Нана",
+        "نانا غير الموهوبة",
+        "แผนลับดับศัตรู",
+        "无能的奈奈"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "talentless",
+        "無能なナナ",
+        "무능한나나",
+        "munonanana",
+        "munounanana",
+        "nanayangtidakberbakat",
+        "talentlessnana",
+        "бездарнаянана",
+        "ناناغيرالموهوبة",
+        "แผนลบดบศตร",
+        "无能的奈奈"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 25735,
       "editions": [
         {
           "id": "ee2a9fb4-b8ae-435a-a956-1d4b6ce7816a",
@@ -36060,10 +38568,9 @@
       "titreVo": "テラフォーマーズ",
       "auteur": "Yu Sasuga & Ken-Ichi Tachibana",
       "genres": [
+        "Sci-Fi",
         "Action",
-        "Adventure",
-        "Horror",
-        "Sci-Fi"
+        "Horror"
       ],
       "themes": [
         "Espace",
@@ -36074,12 +38581,23 @@
         "Scientifique"
       ],
       "alias": [
-        "テラフォーマーズ"
+        "テラフォーマーズ",
+        "Terraformars: Lost Mission",
+        "Терраформирование: Утерянное задание",
+        "テラフォーマーズ LOST MISSION",
+        "火星任務"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "terraformars",
+        "テラフォーマーズ",
+        "terraformarslostmission",
+        "терраформированиеутерянноезадание",
+        "テラフォーマーズlostmission",
+        "火星任務"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 103205,
       "editions": [
         {
           "id": "827c8a7d-3637-41a5-98d2-2974e2b4094f",
@@ -36574,11 +39092,15 @@
       "titreVo": "魔法使いの嫁",
       "auteur": "Koré Yamakazi",
       "genres": [
-        "Drama",
         "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
+        "Adventure",
+        "Comedy",
+        "Drama",
         "Romance",
         "Slice of Life",
-        "Supernatural"
+        "Tragedy"
       ],
       "themes": [
         "Magie",
@@ -36586,12 +39108,39 @@
         "Sorcière"
       ],
       "alias": [
-        "魔法使いの嫁"
+        "魔法使いの嫁",
+        "마법사의 신부",
+        "Ang Asawa ng Mago",
+        "Čarodějova nevěsta",
+        "Cô Dâu Pháp Sư",
+        "Die Braut des Magiers",
+        "Kadim Büyücünün Gelini",
+        "Kadim Magus'un Gelini",
+        "La Femme du Mage",
+        "La sposa dello stregone",
+        "Mahōtsukai no Yome",
+        "Mahoutsukai no Yome",
+        "Mempelai Sang Magus Kuno"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "theancientmagusbride",
+        "魔法使いの嫁",
+        "마법사의신부",
+        "angasawangmago",
+        "carodejovanevesta",
+        "codauphapsu",
+        "diebrautdesmagiers",
+        "kadimbuyucunungelini",
+        "kadimmagusungelini",
+        "lafemmedumage",
+        "lasposadellostregone",
+        "mahotsukainoyome",
+        "mahoutsukainoyome",
+        "mempelaisangmaguskuno"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 849,
       "editions": [
         {
           "id": "a1d4d0c1-b33e-442e-994b-54385e305243",
@@ -37094,9 +39643,11 @@
       "titreVo": "魔法使いの嫁 詩篇.108 魔術師の青",
       "auteur": "Makoto Sanda & Isuo Tsukumo",
       "genres": [
-        "Adventure",
         "Fantasy",
-        "Supernatural"
+        "Supernatural",
+        "Adventure",
+        "Drama",
+        "Slice of Life"
       ],
       "themes": [
         "Magie",
@@ -37104,12 +39655,31 @@
         "Sorcière"
       ],
       "alias": [
-        "魔法使いの嫁 詩篇.108 魔術師の青"
+        "魔法使いの嫁 詩篇.108 魔術師の青",
+        "Mahō Tsukai no Yome Shihen.108: Majutsushi no Ao",
+        "Mahoutsukai no Yome: Shihen.108 - Majutsushi no Ao",
+        "The Ancient Magus Bride Psa.108: Wizard's Blue",
+        "The Ancient Magus Bride Psalm.108: Magician Blue",
+        "The Ancient Magus' Bride Psalm 108: Wizard's Blue",
+        "The Ancient Magus Bride Psaume 108: Le Bleu du Magicien",
+        "The Ancient Magus’ Bride: Wizard’s Blue",
+        "Невеста чародея: Синий маг — Сто восьмой псалом"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "theancientmagusbridelebleudumagicien",
+        "魔法使いの嫁詩篇108魔術師の青",
+        "mahotsukainoyomeshihen108majutsushinoao",
+        "mahoutsukainoyomeshihen108majutsushinoao",
+        "theancientmagusbridepsa108wizardsblue",
+        "theancientmagusbridepsalm108magicianblue",
+        "theancientmagusbridepsalm108wizardsblue",
+        "theancientmagusbridepsaume108lebleudumagicien",
+        "theancientmagusbridewizardsblue",
+        "невестачародеясиниймагстовосьмойпсалом"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 37348,
       "editions": [
         {
           "id": "86b84a75-da1a-4077-a765-4685b31a2693",
@@ -37344,22 +39914,46 @@
       "titreVo": "魔法使いの嫁",
       "auteur": "Koré Yamakazi",
       "genres": [
-        "Drama",
         "Fantasy",
-        "Romance",
-        "Slice of Life",
-        "Supernatural"
+        "Supernatural",
+        "Drama",
+        "Romance"
       ],
       "themes": [
         "Guide"
       ],
       "alias": [
-        "魔法使いの嫁"
+        "魔法使いの嫁",
+        "마법사의 신부 단편집",
+        "Mahōtsukai no Yome: Danpenshū",
+        "Mahou Tsukai no Yome: Danpen-Shu",
+        "Mahoutsukai no Yome Danpenshuu",
+        "Mahou Tsukai no Yome: Fragment",
+        "Mahoutsukai no Yome Fragments",
+        "The Ancient Magus' Bride: Collected Fragments",
+        "The Ancient Magus’ Bride: Fragment Collection",
+        "The Ancient Magus' Bride fragments",
+        "The Ancient Magus' Bride: Fragments Collection",
+        "魔法使いの嫁 断片集"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "theancientmagusbridesupplement2",
+        "魔法使いの嫁",
+        "마법사의신부단편집",
+        "mahotsukainoyomedanpenshu",
+        "mahoutsukainoyomedanpenshu",
+        "mahoutsukainoyomedanpenshuu",
+        "mahoutsukainoyomefragment",
+        "mahoutsukainoyomefragments",
+        "theancientmagusbridecollectedfragments",
+        "theancientmagusbridefragmentcollection",
+        "theancientmagusbridefragments",
+        "theancientmagusbridefragmentscollection",
+        "魔法使いの嫁断片集"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 101258,
       "editions": [
         {
           "id": "2f0a94ad-aa6b-4631-a599-5c3b645e26f8",
@@ -37414,11 +40008,16 @@
       "titreVo": "約束のネバーランド",
       "auteur": "Kaiu Shirai & Posuka Demizu",
       "genres": [
-        "Drama",
         "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
+        "Action",
+        "Adventure",
+        "Drama",
         "Horror",
         "Mystery",
         "Psychological",
+        "Tragedy",
         "Thriller"
       ],
       "themes": [
@@ -37426,12 +40025,37 @@
         "Monstres"
       ],
       "alias": [
-        "約束のネバーランド"
+        "約束のネバーランド",
+        "약속의 네버랜드",
+        "A Terra do Nunca Prometido",
+        "Miền đất hứa",
+        "Obećana Nedođija",
+        "TPN",
+        "Vadedilmiş Yokyer",
+        "YakuNeba",
+        "Yakusoku no Nebaarando",
+        "Yakusoku no Neverland",
+        "YnN",
+        "Zaslíbená Země Nezemě"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "thepromisedneverland",
+        "約束のネバーランド",
+        "약속의네버랜드",
+        "aterradonuncaprometido",
+        "mienđathua",
+        "obecananedođija",
+        "tpn",
+        "vadedilmisyokyer",
+        "yakuneba",
+        "yakusokunonebaarando",
+        "yakusokunoneverland",
+        "ynn",
+        "zaslibenazemenezeme"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 5072,
       "editions": [
         {
           "id": "0a5d252d-b7cc-4dd4-9760-d4a4a15fc263",
@@ -37866,21 +40490,49 @@
       "titreVo": "望まぬ不死の冒険者",
       "auteur": "Yu Okano & Haji Nakasone",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Fantasy"
+        "Horror",
+        "Mystery"
       ],
       "themes": [
         "Monstre",
         "Harem"
       ],
       "alias": [
-        "望まぬ不死の冒険者"
+        "望まぬ不死の冒険者",
+        "바라지 않는 불사의 모험자",
+        "원치 않는 불사의 모험가",
+        "L'aventurier immortel indésiré",
+        "Nozomanu Fushi no Bōkensha",
+        "Nozomanu Fushi no Boukensha",
+        "The Unwanted Immortal Adventurer",
+        "Нежеланно бессмертный авантюрист",
+        "เส้นทางพลิกผันของราชันอมตะ (DEXPRESS)",
+        "เส้นทางพลิกผันชองราชันอมตะ",
+        "事与愿违的不死冒险者",
+        "事與願違的不死冒險者"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "theunwantedundeadadventurer",
+        "望まぬ不死の冒険者",
+        "바라지않는불사의모험자",
+        "원치않는불사의모험가",
+        "laventurierimmortelindesire",
+        "nozomanufushinobokensha",
+        "nozomanufushinoboukensha",
+        "theunwantedimmortaladventurer",
+        "нежеланнобессмертныйавантюрист",
+        "เสนทางพลกผนของราชนอมตะdexpress",
+        "เสนทางพลกผนชองราชนอมตะ",
+        "事与愿违的不死冒险者",
+        "事與願違的不死冒險者"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 6428,
       "editions": [
         {
           "id": "8add2626-cada-4b54-93e4-317ed7830bb5",
@@ -38175,8 +40827,14 @@
       "titreVo": "新しいきみへ",
       "auteur": "Mito Shinji",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
+        "Action",
         "Drama",
+        "Mystery",
         "Psychological",
+        "Romance",
+        "Slice of Life",
         "Thriller"
       ],
       "themes": [
@@ -38185,12 +40843,27 @@
         "Jeux Video"
       ],
       "alias": [
-        "新しいきみへ"
+        "新しいきみへ",
+        "Atarashii Kimi e",
+        "Para la nueva tú",
+        "Untuk Dirimu yang Baru",
+        "К новому тебе",
+        "สู่เธอคนใหม่ (SIC)",
+        "致崭新的你"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "toanewyou",
+        "新しいきみへ",
+        "atarashiikimie",
+        "paralanuevatu",
+        "untukdirimuyangbaru",
+        "кновомутебе",
+        "สเธอคนใหมsic",
+        "致崭新的你"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 6065,
       "editions": [
         {
           "id": "84689f46-fa6d-4b0d-bdae-d6acd087fdeb",
@@ -38342,22 +41015,45 @@
       "id": "6a4933ca-75d0-4b7a-b7c9-a5ae296b1ea5",
       "slug": "tsugumi-project",
       "titre": "TSUGUMI PROJECT",
-      "titreVo": null,
+      "titreVo": "虎鶫〈とらつぐみ〉　－ＴＳＵＧＵＭＩ　ＰＲＯＪＥＣＴ－",
       "auteur": "Ippaty",
       "genres": [
+        "Sci-Fi",
+        "Supernatural",
         "Action",
-        "Adventure"
+        "Adventure",
+        "Drama",
+        "Mystery"
       ],
       "themes": [
         "Post",
         "apo",
         "Survie"
       ],
-      "alias": [],
-      "aliasNormalises": [],
+      "alias": [
+        "Das Tsugumi-Projekt",
+        "Tiger Thrush -THRUSH PROJECT-",
+        "Tiger Thrush -TSUGUMI PROJECT-",
+        "Toratsugumi: TSUGUMI PROJECT",
+        "Проект Дрозд",
+        "Проєкт «Цуґумі»",
+        "虎鶇 －鶇計畫－",
+        "虎鶫〈とらつぐみ〉　－ＴＳＵＧＵＭＩ　ＰＲＯＪＥＣＴ－"
+      ],
+      "aliasNormalises": [
+        "tsugumiproject",
+        "虎鶫とらつぐみｔｓｕｇｕｍｉｐｒｏｊｅｃｔ",
+        "dastsugumiprojekt",
+        "tigerthrushthrushproject",
+        "tigerthrushtsugumiproject",
+        "toratsugumitsugumiproject",
+        "проектдрозд",
+        "проєктцуґумі",
+        "虎鶇鶇計畫"
+      ],
       "cible": "Seinen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 35817,
       "editions": [
         {
           "id": "b8b19090-fbed-4f68-bb17-be37f166194e",
@@ -38532,10 +41228,17 @@
       "titreVo": "UQ HOLDER！",
       "auteur": "Ken Akamatsu",
       "genres": [
-        "Action",
         "Fantasy",
         "Sci-Fi",
-        "Supernatural"
+        "Supernatural",
+        "Ecchi",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Martial Arts",
+        "Romance",
+        "Tragedy"
       ],
       "themes": [
         "Combat",
@@ -38543,12 +41246,35 @@
         "Nekkestu"
       ],
       "alias": [
-        "UQ HOLDER！"
+        "유큐 홀더",
+        "Eternal Holder",
+        "Eternity Holder",
+        "Pemegang UQ!",
+        "UQ 홀더!",
+        "UQ HOLDER! ~마법선생 네기마! 2~",
+        "UQ Holder! Magister Negi Magi! 2",
+        "UQ Holder!: Mahou Sensei Negima! 2",
+        "UQ HOLDER! (ユーキューホルダー!)",
+        "UQ HOLDER！悠久持有者！",
+        "UQ HOLDER! 〜魔法先生ネギま!2〜"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "uqholder",
+        "유큐홀더",
+        "eternalholder",
+        "eternityholder",
+        "pemeganguq",
+        "uq홀더",
+        "uqholder마법선생네기마2",
+        "uqholdermagisternegimagi2",
+        "uqholdermahousenseinegima2",
+        "uqholderユーキューホルダー",
+        "uqholder悠久持有者",
+        "uqholder魔法先生ネギま2"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7523,
       "editions": [
         {
           "id": "81c57303-13fa-41fd-a405-6a8055ea2ea7",
@@ -39143,19 +41869,52 @@
       "titreVo": "なぜ僕の世界を誰も覚えていないのか？",
       "auteur": "Sazane Kei & Arikan",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
+        "Ecchi",
         "Action",
         "Adventure",
-        "Fantasy",
-        "Sci-Fi"
+        "Drama",
+        "Romance"
       ],
-      "themes": [],
+      "themes": [
+        "Post-Apocalyptic",
+        "Military",
+        "Alternate Reality",
+        "Alternate Universe",
+        "Magic"
+      ],
       "alias": [
-        "なぜ僕の世界を誰も覚えていないのか？"
+        "なぜ僕の世界を誰も覚えていないのか？",
+        "어째서 아무도 나의 세계를 기억하지 않는걸까?",
+        "Naze Boku no Sekai wo Daremo Oboeteinai no ka?",
+        "Neden Kimse Benim Dünyamı Hatırlamıyor?",
+        "Phy Sew lu, ele tis Es feo r-delis ec I.",
+        "Tại sao không ai nhớ đến thế giới của tôi",
+        "Why Does Nobody Remember Me in this World?",
+        "Why Doesn't Anybody Remember My World?",
+        "Why Nobody Remember Me in This World?",
+        "Почему все забыли мой мир?",
+        "为何无人记得我的世界？"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "whynobodyremembersmyworld",
+        "なぜ僕の世界を誰も覚えていないのか",
+        "어째서아무도나의세계를기억하지않는걸까",
+        "nazebokunosekaiwodaremooboeteinainoka",
+        "nedenkimsebenimdunyamıhatırlamıyor",
+        "physewlueletisesfeordeliseci",
+        "taisaokhongainhođenthegioicuatoi",
+        "whydoesnobodyremembermeinthisworld",
+        "whydoesntanybodyremembermyworld",
+        "whynobodyremembermeinthisworld",
+        "почемувсезабылимоймир",
+        "为何无人记得我的世界"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 7065,
       "editions": [
         {
           "id": "6f940c7b-4304-4ca8-a03c-233f3ed308f9",
@@ -39458,21 +42217,53 @@
       "titreVo": "ゆらぎ荘の幽奈さん",
       "auteur": "Tadahiro Miura",
       "genres": [
+        "Fantasy",
+        "Supernatural",
         "Ecchi",
+        "Action",
+        "Comedy",
+        "Drama",
+        "Martial Arts",
         "Romance",
-        "Supernatural"
+        "Slice of Life",
+        "Tragedy"
       ],
       "themes": [
         "Harem",
         "Fantôme"
       ],
       "alias": [
-        "ゆらぎ荘の幽奈さん"
+        "ゆらぎ荘の幽奈さん",
+        "유라기장의 유우나",
+        "Ghost Inn - La locanda di Yuna",
+        "Ma nữ cứng đầu",
+        "Yuna de la posada Yuragi",
+        "Yunas Geisterhaus",
+        "Yuragi Manor's Yuuna-san",
+        "Yuragi-sō no Yūna-san",
+        "Yuragi-sou no Yuuna-san",
+        "Yuuna and the Haunted Hot Springs",
+        "Yuuna e a Pensão Assombrada",
+        "Yuuna e a Pensão Assombrada (Brazil)"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "yunadelapensionyuragi",
+        "ゆらぎ荘の幽奈さん",
+        "유라기장의유우나",
+        "ghostinnlalocandadiyuna",
+        "manucungđau",
+        "yunadelaposadayuragi",
+        "yunasgeisterhaus",
+        "yuragimanorsyuunasan",
+        "yuragisonoyunasan",
+        "yuragisounoyuunasan",
+        "yuunaandthehauntedhotsprings",
+        "yuunaeapensaoassombrada",
+        "yuunaeapensaoassombradabrazil"
+      ],
       "cible": "Echi",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 23594,
       "editions": [
         {
           "id": "4f7210d5-1da2-4d58-ab09-fab4bd442f5d",
@@ -39987,9 +42778,12 @@
       "titreVo": "野生のラスボスが現れた！",
       "auteur": "Firehead & Haduki Tsubasa",
       "genres": [
+        "Fantasy",
+        "Sci-Fi",
+        "Supernatural",
         "Action",
         "Adventure",
-        "Fantasy"
+        "Drama"
       ],
       "themes": [
         "Isekkai",
@@ -39997,12 +42791,33 @@
         "Jeux Video"
       ],
       "alias": [
-        "野生のラスボスが現れた！"
+        "野生のラスボスが現れた！",
+        "야생의 라스트보스가 나타났다!",
+        "A Wild Last Boss Appeared!",
+        "Yasei no Last Boss ga Arawareta!",
+        "Yasei no Last Boss ga Arawareta! Kokuyoku no Haō",
+        "Yasei no Last Boss ga Arawareta!: Kokuyoku no Haou",
+        "Шальной последний босс появился!",
+        "Шальной последний босс явился!",
+        "野生のラスボスが現れた！黒翼の覇王",
+        "野生的最終BOSS出現了"
       ],
-      "aliasNormalises": [],
+      "aliasNormalises": [
+        "yaseinolastboss",
+        "野生のラスボスが現れた",
+        "야생의라스트보스가나타났다",
+        "awildlastbossappeared",
+        "yaseinolastbossgaarawareta",
+        "yaseinolastbossgaarawaretakokuyokunohao",
+        "yaseinolastbossgaarawaretakokuyokunohaou",
+        "шальнойпоследнийбосспоявился",
+        "шальнойпоследнийбоссявился",
+        "野生のラスボスが現れた黒翼の覇王",
+        "野生的最終boss出現了"
+      ],
       "cible": "Shonen",
       "couvertureUrl": null,
-      "idMangaBaka": null,
+      "idMangaBaka": 385,
       "editions": [
         {
           "id": "ee3c670c-3160-4e1f-a4cf-bb5f675a5247",

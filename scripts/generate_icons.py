@@ -62,4 +62,5 @@ def main():
     print(f"  {chemin_apple}")
 
 
-main()
+if __name__ == "__main__":
+    main()

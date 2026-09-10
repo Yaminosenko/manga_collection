@@ -12,6 +12,7 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:backup": "tsx scripts/backup-db.ts",
     "covers:fetch": "python scripts/fetch_covers.py",
+    "covers:bnf": "python scripts/fetch_covers_bnf.py",
     "covers:upload": "tsx scripts/upload-covers.ts",
     "covers:migrate": "tsx scripts/migrate-covers-r2.ts",
     "covers:manuelles": "python scripts/import_covers_manuelles.py",

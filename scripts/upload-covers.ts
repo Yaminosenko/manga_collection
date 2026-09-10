@@ -8,6 +8,8 @@ import { prisma } from "../lib/prisma";
 
 const SOURCE = join(process.cwd(), "data", "covers.json");
 const SOURCE_ANNONCES = join(process.cwd(), "data", "covers-annonces.json");
+const SOURCE_BNF = join(process.cwd(), "data", "covers-bnf.json");
+const SOURCE_BNF_LIBELLE = "bnf";
 const MANIFESTE_STOCKAGE = join(process.cwd(), "data", "storage.json");
 const DOSSIER_LOCAL = join(process.cwd(), "public", "covers");
 const PREFIXE_OBJETS = "covers";
@@ -27,6 +29,7 @@ type Couverture = {
   numero: number;
   chemin: string;
   cheminLocal: string;
+  source: string | null;
 };
 
 type Options = {
@@ -40,15 +43,26 @@ function charger(chemin: string): Manifeste {
   return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as Manifeste) : {};
 }
 
-function inventorier(manifeste: Manifeste): Couverture[] {
+function inventorier(manifeste: Manifeste, source: string | null = null): Couverture[] {
   return Object.entries(manifeste).flatMap(([slug, numeros]) =>
     numeros.map((numero) => ({
       slug,
       numero,
       chemin: `${PREFIXE_OBJETS}/${slug}/${numero}${EXTENSION}`,
       cheminLocal: join(DOSSIER_LOCAL, slug, `${numero}${EXTENSION}`),
+      source,
     })),
   );
+}
+
+function sansDoublon(couvertures: Couverture[]): Couverture[] {
+  const parChemin = new Map<string, Couverture>();
+  for (const couverture of couvertures) {
+    const deja = parChemin.get(couverture.chemin);
+    if (deja && deja.source !== null) continue;
+    parChemin.set(couverture.chemin, couverture);
+  }
+  return [...parChemin.values()];
 }
 
 function lireOptions(argv: string[]): Options {
@@ -139,7 +153,10 @@ async function ecrireEnBase(urls: Map<string, string>, couvertures: Couverture[]
     for (const couverture of liste) {
       await prisma.volume.update({
         where: { editionId_numero: { editionId: edition.id, numero: couverture.numero } },
-        data: { couvertureUrl: urls.get(couverture.chemin) },
+        data: {
+          couvertureUrl: urls.get(couverture.chemin),
+          ...(couverture.source === null ? {} : { sourceCouverture: couverture.source }),
+        },
       });
       ecrits += 1;
     }
@@ -163,7 +180,10 @@ async function effacerEnBase(couvertures: Couverture[]) {
 
 async function main() {
   const options = lireOptions(process.argv.slice(2));
-  const couvertures = inventorier(charger(SOURCE));
+  const couvertures = sansDoublon([
+    ...inventorier(charger(SOURCE_BNF), SOURCE_BNF_LIBELLE),
+    ...inventorier(charger(SOURCE)),
+  ]);
   const annonces = inventorier(charger(SOURCE_ANNONCES));
   const toutes = [...couvertures, ...annonces];
 

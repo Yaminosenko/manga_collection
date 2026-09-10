@@ -164,4 +164,5 @@ def main():
             print(f"    {slug[:34]:34} {detail}")
 
 
-main()
+if __name__ == "__main__":
+    main()

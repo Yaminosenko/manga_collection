@@ -3252,3 +3252,113 @@ repartager à l'identique. L'attribution est en pied de `/ajouter`.
 la même seconde. Ce n'est pas un plafond franchi : les cadences étaient à 24 et 120 contre 30 et
 180 annoncées. `mangabaka:fetch` est donc **reprenable**, et il l'a fallu. `-- --recalculer`
 rejoue les règles sur les identifiants déjà résolus sans consommer le quota de recherche.
+
+---
+
+### Fait — la passe de couvertures, et deux defauts payes au prix fort
+
+**10 septembre 2026.** Passe sur les tomes ajoutes depuis, leurs series et le planning.
+**1 676 → 1 708 couvertures de tomes** et **12 → 14 sorties**. Le chemin pour y arriver a coute
+plus cher que le resultat, et c'est ce qui vaut d'etre ecrit.
+
+#### D'abord la mesure, qui a change la source a employer
+
+45 tomes et 4 sorties sans couverture, dont **38 et 4 portaient un ISBN**. §5 met la BnF en tete
+depuis le 31 aout, donc sonde de la BnF par ISBN : **31 / 42, toutes a 97–108 × 150 px**, et
+`couverture=1` est la seule valeur du parametre qui reponde — les « trois tailles » annoncees
+n'existent pas. Open Library : **0 / 5**, ce qui confirme le 28 aout.
+
+Et un constat structurel : **les 4 sorties annoncees ne peuvent pas avoir de couverture BnF**,
+le depot legal n'ayant pas lieu avant parution. §5 n'a donc aucune source pour le planning.
+
+Quatre niveaux de couverture existent en base et ils ne se valent pas. `Volume` et `Sortie` sont
+affiches ; `Edition` l'est aussi mais **retombe sur la couverture du dernier tome possede**, donc
+ses 0/114 ne font aucun trou visible ; et **`Serie.couvertureUrl` n'est lu par aucun ecran** — les
+blocs « Autres editions » et « Series liees » prennent la couverture du tome 1. Le remplir depuis
+MangaBaka, qui a de belles images, n'aurait rien change a l'ecran.
+
+#### Le premier defaut : une idempotence fondee sur un dossier ignore par git
+
+`fetch_covers.py` decidait qu'une couverture manquait **si le fichier local etait absent**.
+`public/covers/` n'est pas dans le depot. Sur ce poste il etait vide : le script a entrepris de
+retelecharger **les 1 680 couvertures**. J'ai coupe a **~1 287**.
+
+Rien n'a ete publie — ces images existent deja dans R2 et le dossier est ignore — mais c'est
+exactement la recuperation massive que §5 dit d'eviter avant reponse de MangaDex, et j'aurais du
+verifier l'idempotence avant de lancer, pas apres. **Corrige** : le script consulte d'abord
+`couvertureUrl` dans `data/backup.json`, puis son propre manifeste, et le fichier local en
+dernier. Le piege general est note en « Pieges etablis » : un script qui deduit son etat d'un
+dossier ignore repartira de zero sur un autre poste.
+
+#### Le second : trois scripts s'executaient a l'import
+
+`fetch_covers.py`, `fetch_publishers.py` et `generate_icons.py` appelaient `main()` sans garde
+`if __name__ == "__main__"`. Mon script de verification importait `fetch_covers` pour reutiliser
+ses fonctions : **la passe entiere s'est relancee**. Elle a fini l'acquisition, ce qui tombait
+bien, mais ce n'etait pas la decision. La garde est posee sur les trois — celle de
+`fetch_publishers.py` compte double, il interroge la BnF.
+
+#### La regle de langue, tranchee par le proprietaire
+
+Ma premiere sonde MangaDex **plafonnait a 100 resultats sans paginer**. Iruma-kun en a 216,
+Youjo Senki 205 : j'ai lu une tranche arbitraire et conclu que seules des couvertures coreennes
+et bresiliennes existaient. Le proprietaire a corrige — « il y a bien les tomes en jap » — et
+pose la regle : **fr d'abord, `ja` sinon, jamais une autre langue.** C'etait deja
+`LANGUES_PAR_PREFERENCE` dans `fetch_covers.py` ; seule ma sonde deviait.
+
+Deux raisons de s'y tenir, vues a l'oeil :
+- le **logo coreen** d'Iruma-kun occupe une bande large en bas de l'image, sans commune mesure
+  avec le logo japonais d'origine ;
+- la couverture de Youjo Senki t.23 etiquetee `pt-br` est **en espagnol**, avec le **logo Panini
+  Manga incruste** et des marges d'habillage. Pas « la meme illustration avec un autre titre »,
+  mais la maquette d'un autre editeur. **La metadonnee `locale` de MangaDex n'est pas fiable.**
+
+Avec la regle : **6 couvertures, toutes japonaises**, de 722×1024 a 1800×2560 — blackrock t.2 et
+t.3, iruma t.35, **iruma t.36 et t.37 qui sont des sorties**, tany t.23. Les trois series sans
+identifiant MangaDex — `ippo-s4`, `les-legendaires-saga`, `grimoire` — n'ont rien, comme le
+proprietaire l'avait anticipe pour Grimoire.
+
+#### `sourceCouverture`, et l'inversion assumee de l'ordre des sources
+
+Migration additive, sur `Volume` **et sur `Sortie`** — la seconde parce que `promouvoir()`
+recopie la couverture de la sortie vers le tome. Repetee sur un banc neuf, **eprouvee par
+ecriture reelle** avant d'aller sur Neon.
+
+`null` veut dire **« indetermine, anterieur au champ »**, comme `Edition.creeeParId`. Les 1 680
+images d'alors ne sont pas marquables : melange de MangaDex et de depots manuels, rien ne permet
+de les departager apres coup, et les marquer en masse serait inventer une provenance.
+
+`covers:bnf` complete MangaDex par ISBN : **28 obtenues** — ippo t.8–21, grimoire t.1/2/4/5,
+legendaires t.2–8/10–12 — et `covers:upload` en tire `sourceCouverture = "bnf"`. Cout R2 du
+passage : 30 operations Class A sur le million mensuel.
+
+**L'ordre de §5 met la BnF en tete pour une raison juridique, pas de qualite.** Mesure faite,
+elle rend moins de la moitie de la cote necessaire quand MangaDex en japonais rend 5 a 10 fois
+mieux. L'usage retenu inverse donc l'ordre ecrit : MangaDex quand elle a la serie, la BnF en
+complement, et `sourceCouverture` pour l'attribution ou le remplacement.
+
+#### Verifie a l'ecran, et une inquietude qui tombe
+
+J'avais annonce que les images a 150 px seraient « visiblement molles » dans la grille, planche
+de comparaison a l'appui — a pleine opacite c'est vrai. **A l'ecran, ca ne se voit presque pas**,
+et pour une raison de conception : ces couvertures ne tombent que sur des tomes **non possedes**,
+que la grille affiche a **34 % d'opacite**. Verifie sur `les-legendaires-saga` et sur
+`ippo-s4-la-loi-du-ring`, le cas que j'avais signale comme le plus genant parce qu'il melange
+haute definition et BnF : les tomes 8 a 12 se lisent tres bien, et les 5, 6, 7 restent vides a
+juste titre.
+
+**Le cas a surveiller est l'inverse** : le jour ou un de ces tomes est coche, il passe en pleine
+opacite et l'ecart saute aux yeux. `sourceCouverture = "bnf"` est ce qui permettra de le
+retrouver.
+
+Au passage, un symptome de l'avertissement de §12 sur `r2.dev` : les images nouvellement
+deposees ont mis plusieurs secondes a apparaitre, cases vides a l'ecran entre-temps. L'URL est
+bien limitee en debit et non mise en cache.
+
+#### Ce qui reste, et ce n'est pas un probleme de source
+
+13 tomes et 2 sorties. **7 des 13 n'ont aucun ISBN en base** — `ippo-s4` t.22–27 et
+`les-legendaires-saga` t.9 —, donc rien a interroger : c'est le verrou que §5 annonce depuis le
+31 aout. 6 ont un ISBN mais aucune notice illustree a la BnF ni identifiant MangaDex. Le chemin
+le plus rentable est de **leur trouver un ISBN dans `ParutionCatalogue`**, pas de chercher une
+source de plus.
