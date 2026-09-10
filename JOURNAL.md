@@ -3362,3 +3362,77 @@ bien limitee en debit et non mise en cache.
 31 aout. 6 ont un ISBN mais aucune notice illustree a la BnF ni identifiant MangaDex. Le chemin
 le plus rentable est de **leur trouver un ISBN dans `ParutionCatalogue`**, pas de chercher une
 source de plus.
+
+---
+
+### Corrige — la BnF ne plafonne pas a 150 px, et la documentation le disait
+
+**10 septembre 2026, en fin de journee.** Le proprietaire a produit la documentation officielle du
+service Couvertures. **Elle contredit deux entrees de ce journal et trois passages de
+`CLAUDE.md`.** Mesure sur un meme ISBN :
+
+| Requete | Resultat |
+|---|---|
+| `&couverture=1` seul | 106×150 · 6,9 Ko |
+| `&couverture=1&taille=originale` | **600×853** · 618 Ko |
+| `…&taille=originale&largeur=256&hauteur=360` | **253×360** · 32,6 Ko, redimensionnee cote serveur |
+
+**La cause est nette et elle m'appartient : le nom du parametre a ete devine au lieu d'etre lu.**
+L'entree du 2 septembre avait essaye `couverture=2`, `3`, `4`, `0` en supposant que ce chiffre
+etait une taille, et en avait conclu que « les trois tailles de §5 n'existent pas ». Ce matin j'ai
+refait le meme essai et tire la meme conclusion, en l'ecrivant cette fois dans `CLAUDE.md` comme
+une mesure etablie. **Le chiffre apres `couverture` n'est pas une taille : c'est 1 pour la
+premiere de couverture et 4 pour la quatrieme.** Le `4` rendait 500 parce que la notice testee
+n'a pas de dos. Le parametre de taille s'appelle `taille`.
+
+Deux mecanismes ont concouru. Le premier est d'avoir sonde plutot que cherche : cinq essais de
+parametres ne valent pas une page de documentation, et la page existait. Le second est d'avoir
+**herite d'une affirmation du depot et de l'avoir traitee comme acquise** — elle etait dans §5
+depuis le 31 aout, elle sonnait juste, et ma sonde l'a « confirmee » parce qu'elle repetait la
+meme erreur.
+
+#### Ce que la documentation apporte d'autre, et qui etait deja utile
+
+- **Le 500 signifie « aucune image sur la notice »**, explicitement, et ce n'est pas une
+  indisponibilite du service. Le cache des echecs de `VignetteCatalogue` est donc bien fonde, et
+  **verifie** : **0 / 15** des EAN sans miniature en ont une en taille d'origine. Les 283 echecs
+  deja memorises restent valides, seules les images positives ont ete refaites.
+- On peut savoir **a l'avance** si une notice porte une image : **zone 950 en Intermarc**,
+  `950$b = C1`. Interrogeable par le SRU que `lib/bnf.ts` utilise deja.
+- L'interrogation par **`EAN=`** existe a cote de `ISBN=` — c'est le nom de notre champ.
+- **Licence ouverte de l'Etat**, avec obligation de mentionner **la provenance et la date de
+  recuperation**. D'ou `couvertureRecupereeLe`, ajoutee dans la meme migration que
+  `VignetteCatalogue`. Et elle **n'interdit pas l'usage commercial** : cette source ne pese pas
+  sur §13.4, contrairement au `NC` de MangaBaka.
+
+#### Ce que ca change
+
+**La BnF devient la source principale et non un pis-aller** : edition francaise, bon tome,
+appariement exact par EAN, cote de grille, licence permissive. Verifie a l'oeil sur Zettai Karen
+Children t.1 — jaquette Kana francaise, 242×360, nette.
+
+**La distinction « vignette 150 px pour la recherche / couverture 256×360 pour la grille » tombe.**
+Une seule image sert les deux, et le chantier des vignettes de catalogue s'en trouve simplifie.
+
+**Les 28 couvertures deposees a 150 px le matin ont ete refaites le meme jour**, en meme temps que
+les series ajoutees entre-temps : **74 couvertures**, 24 a 33 Ko, toutes avec leur source et leur
+date. La collection passe a **1 754 / 1 770**. `fetch_covers_bnf.py` gagne `--refaire`, qui reprend
+ce qui est deja marque `bnf` — c'est ce qui a permis la reprise, et ce qui la permettra la
+prochaine fois que la cote demandee changera.
+
+**Volumetrie revue.** L'image passe de 7,4 a **22,3 Ko** mesures. Les 12 405 groupes de catalogue
+font donc **~147 Mo** au lieu de 49, et le catalogue entier **~591 Mo** au lieu de 196 — soit
+**1,5 % et 5,9 % des 10 Go de R2**. La conclusion ne bouge pas : ca tient largement.
+
+**Rendement mesure, et il depend beaucoup de l'ordre.** 68 % sur les gros groupes (One Piece,
+Detective Conan, Kingdom, Gintama, Bleach, Naruto), 53 % sur un tirage aleatoire de 90, mais
+**20 a 29 % sur le debut alphabetique** — `#Cooking Karine`, `+Anima`, `100 Manga Artists` : le
+tri par titre concentrait les artbooks et les essais. `fetch-vignettes.ts` trie donc par
+**nombre de lignes du groupe decroissant**, pour qu'un passage plafonne serve d'abord ce qu'on
+cherche vraiment.
+
+#### Lacune corrigee au passage
+
+`sourceCouverture` et `couvertureRecupereeLe` avaient ete ajoutees au schema **sans etre portees
+dans `backup-db.ts`** : une restauration les aurait perdues silencieusement. Corrige, et la
+sauvegarde les porte desormais sur les tomes comme sur les sorties.

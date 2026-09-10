@@ -155,7 +155,9 @@ async function ecrireEnBase(urls: Map<string, string>, couvertures: Couverture[]
         where: { editionId_numero: { editionId: edition.id, numero: couverture.numero } },
         data: {
           couvertureUrl: urls.get(couverture.chemin),
-          ...(couverture.source === null ? {} : { sourceCouverture: couverture.source }),
+          ...(couverture.source === null
+            ? {}
+            : { sourceCouverture: couverture.source, couvertureRecupereeLe: new Date() }),
         },
       });
       ecrits += 1;

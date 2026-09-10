@@ -43,13 +43,17 @@ export function clientR2(): S3Client {
   return client;
 }
 
-export async function deposer(chemin: string, contenu: Buffer): Promise<string> {
+export async function deposer(
+  chemin: string,
+  contenu: Buffer,
+  type: string = TYPE_IMAGE,
+): Promise<string> {
   await clientR2().send(
     new PutObjectCommand({
       Bucket: bucket(),
       Key: chemin,
       Body: contenu,
-      ContentType: TYPE_IMAGE,
+      ContentType: type,
       CacheControl: `public, max-age=${CACHE_UN_AN_SECONDES}`,
     }),
   );

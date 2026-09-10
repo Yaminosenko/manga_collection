@@ -112,30 +112,32 @@ model SuiviEdition {
 }
 
 model Sortie {
-  id               String   @id @default(uuid())
-  edition          Edition  @relation(fields: [editionId], references: [id], onDelete: Cascade)
-  editionId        String
-  numero           Int
-  date             DateTime
-  isbn             String?
-  couvertureUrl    String?
-  sourceCouverture String?
+  id                    String    @id @default(uuid())
+  edition               Edition   @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  editionId             String
+  numero                Int
+  date                  DateTime
+  isbn                  String?
+  couvertureUrl         String?
+  sourceCouverture      String?
+  couvertureRecupereeLe DateTime?
 
   @@unique([editionId, numero])
   @@index([date])
 }
 
 model Volume {
-  id               String       @id @default(uuid())
-  edition          Edition      @relation(fields: [editionId], references: [id], onDelete: Cascade)
-  editionId        String
-  numero           Int
-  isbn             String?
-  dateSortie       DateTime?
-  prixCentimes     Int?
-  couvertureUrl    String?
-  sourceCouverture String?
-  possessions      Possession[]
+  id                    String       @id @default(uuid())
+  edition               Edition      @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  editionId             String
+  numero                Int
+  isbn                  String?
+  dateSortie            DateTime?
+  prixCentimes          Int?
+  couvertureUrl         String?
+  sourceCouverture      String?
+  couvertureRecupereeLe DateTime?
+  possessions           Possession[]
 
   @@unique([editionId, numero])
 }
@@ -182,4 +184,15 @@ model AliasRecherche {
   utilisations Int      @default(1)
   creeLe       DateTime @default(now())
   vuLe         DateTime @default(now())
+}
+
+model VignetteCatalogue {
+  ean           String   @id
+  couvertureUrl String?
+  source        String?
+  largeur       Int?
+  hauteur       Int?
+  recupereeLe   DateTime @default(now())
+
+  @@index([couvertureUrl])
 }

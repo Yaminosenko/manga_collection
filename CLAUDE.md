@@ -332,7 +332,7 @@ le besoin se présente, c'est à l'écran État que ces deux champs iront — **
 | `prixDefaut` | BnF `010$d`, **le tome le plus récent d'abord** — le prix monte avec le temps, l'auteur ne change pas | mesuré : 19,95 € pour l'Édition grimoire contre 7,70 € pour l'édition simple, sur la même série |
 | `editionTerminee` | **pré-cochée** si aucune sortie depuis `MOIS_SANS_SORTIE_POUR_TERMINEE` (24) | sinon une série finie en 2010 afficherait le hachuré « à paraître » et trois cases fantômes |
 | `genres` · `themes` · `cible` · `titreVo` · `alias` | **MangaBaka, si un de ses titres est exactement le titre du candidat** | le catalogue n'en porte pas, et l'égalité exacte est la seule règle d'appariement automatique que ce document n'ait pas vue échouer. Rien trouvé ⇒ champs vides, comme avant : jamais une donnée devinée |
-| couvertures | **aucune à la création** | la BnF plafonne à 150 px ; la tâche quotidienne les ramassera |
+| couvertures | **aucune à la création** | rattrapable : la BnF rend du 256×360 par EAN — voir la rectification de §5 |
 
 **Le titre ne vient jamais de la BnF.** Pour l'ISBN de Bleach tome 22, son `200$a` rend
 « Conquistadores » — le sous-titre du tome. Le catalogue porte le nom de série, la BnF l'auteur
@@ -550,7 +550,7 @@ Contredit en partie l'ordre décidé le 31 août, et il faut le savoir avant de 
 
 | Source | Rendement mesuré | Résolution rendue |
 |---|---|---|
-| **BnF, service Couvertures** | **31 / 42** sur nos ISBN manquants | **97–108 × 150 px**, et `couverture=1` est la **seule** valeur qui réponde — les « trois tailles » annoncées plus haut n'existent pas en pratique |
+| **BnF, service Couvertures** | **31 / 42** sur nos ISBN manquants | **256×360 et au-delà** — voir la rectification ci-dessous |
 | **Open Library** | **0 / 5** | — (confirme la mesure du 28 août) |
 | **MangaDex, `fr` puis `ja`** | 6 / 8 sur les séries qui ont un identifiant | **722×1024 à 1800×2560** |
 
@@ -561,12 +561,45 @@ L'usage retenu est donc : **MangaDex quand elle a la série, la BnF en compléme
 `sourceCouverture` pour produire l'attribution ou remplacer l'image selon le cas. C'est une
 inversion assumée de l'ordre écrit, motivée par la mesure.
 
-**Le plafond de 150 px se voit beaucoup moins qu'attendu, et pour une raison de conception** : ces
-couvertures ne tombent que sur des tomes **non possédés**, que la grille affiche à **34 %
-d'opacité**. La désaturation masque la mollesse ; le titre et l'illustration restent
-reconnaissables. **Le jour où un de ces tomes est coché, il passe en pleine opacité et l'écart
-saute aux yeux** — c'est le cas à surveiller, et `sourceCouverture = "bnf"` est ce qui permet de
-les retrouver.
+> ### Rectification du 10 septembre 2026 — il n'y a pas de plafond à 150 px
+>
+> **Ce document a dit « la BnF plafonne à 150 px » depuis le 31 août, et c'est faux.** Le
+> propriétaire a produit la documentation officielle du service, qui donne **trois dimensions**,
+> et la mesure les confirme sur le même ISBN :
+>
+> | Requête | Résultat |
+> |---|---|
+> | `&couverture=1` seul (miniature) | 106×150 · 6,9 Ko |
+> | `&couverture=1&taille=originale` | **600×853** · 618 Ko |
+> | `…&taille=originale&largeur=256&hauteur=360` | **253×360** · 32,6 Ko — **redimensionnée côté serveur, proportions respectées** |
+>
+> **La cause de l'erreur est nette : j'ai deviné le nom du paramètre au lieu de lire la
+> documentation.** J'avais essayé `couverture=2`, `3`, `4` en supposant que ce chiffre était une
+> taille. Il ne l'est pas : **`couverture=1` est la première de couverture et `couverture=4` la
+> quatrième.** Le `4` rendait 500 parce que cette notice n'a pas de dos, et j'en ai conclu qu'une
+> seule taille existait. Le paramètre de taille s'appelle `taille`.
+>
+> **Ce que la documentation apporte d'autre :**
+> - **Le code 500 signifie « aucune image sur la notice »**, c'est écrit, et ce n'est pas une
+>   indisponibilité du service. Le cache des échecs de `VignetteCatalogue` est donc fondé — et
+>   vérifié : **0 / 15** des EAN sans miniature en ont une en taille d'origine.
+> - On peut **savoir à l'avance** si une notice porte une image : **zone 950 en Intermarc**,
+>   `950$b = C1` pour la première de couverture. Interrogeable par le SRU que `lib/bnf.ts` utilise
+>   déjà.
+> - L'interrogation par **`EAN=`** existe à côté de `ISBN=` — c'est le nom de notre champ.
+> - **Licence ouverte de l'État**, avec obligation de mentionner **la provenance et la date de
+>   récupération** : d'où `sourceCouverture` **et** `couvertureRecupereeLe`. Elle **n'interdit pas
+>   l'usage commercial**, contrairement au `NC` de MangaBaka — donc cette source-là ne pèse pas
+>   sur §13.4.
+>
+> **Conséquences.** La BnF devient la **source principale** et non un pis-aller : édition
+> française, bon tome, appariement exact par EAN, cote de grille, licence permissive. Et la
+> distinction « vignette 150 px pour la recherche / couverture 256×360 pour la grille » **tombe** :
+> une seule image sert les deux. Les 28 couvertures déposées à 150 px le matin ont été refaites
+> le même jour.
+>
+> **La leçon, à ajouter aux pièges** : *avant de conclure qu'une API ne sait pas faire quelque
+> chose, chercher sa documentation.* Cinq essais de paramètres devinés ne valent pas une page lue.
 
 **La langue : `fr`, sinon `ja`, et jamais une troisième.** Arbitré le 10 septembre après un essai
 raté. `LANGUES_PAR_PREFERENCE` de `fetch_covers.py` l'appliquait déjà ; c'est une sonde improvisée
@@ -963,6 +996,13 @@ détail et les cas réels sont dans `JOURNAL.md`.
   périmée il tombe hors de l'écran ; par référence d'élément juste après une navigation il
   précède l'hydratation. Dans les deux cas : aucune erreur, aucun log, l'écran inchangé.
   Recapturer juste avant de cliquer, et **ne conclure que sur la base**.
+- **Avant de conclure qu'une API ne sait pas faire quelque chose, chercher sa documentation.**
+  « La BnF plafonne à 150 px » a vécu dans ce document du 31 août au 10 septembre, et une sonde
+  l'a « confirmée » en devinant le nom du paramètre : `couverture=2`, `3`, `4` au lieu de `taille`.
+  Le chiffre après `couverture` n'est pas une taille, c'est **1 pour la première de couverture et
+  4 pour la quatrième**. La page officielle donnait les trois dimensions. **Cinq essais de
+  paramètres devinés ne valent pas une page lue** — et une affirmation héritée du dépôt se vérifie
+  avant d'être reconduite, surtout quand elle sonne juste.
 - **`fetch_covers.py` fondait son idempotence sur `public/covers/`, qui n'est pas dans le dépôt.**
   Sur un poste où le dossier est vide — donc tout poste neuf — il considérait que **les 1 680
   couvertures manquaient** et les retéléchargeait toutes depuis MangaDex. Corrigé le 10 septembre
@@ -1185,7 +1225,7 @@ Ce qui reste :
 | `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
 | `npm run catalogue:apply` | écrit `ParutionCatalogue`. `-- --dry-run` d'abord ; `-- --recalculer` réécrit les champs dérivés depuis `titreBrut` sans retélécharger un CSV |
 | `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex, `fr` puis `ja`. **Son idempotence part de `data/backup.json`** : relancer `db:backup` d'abord, sinon il retélécharge |
-| `npm run covers:bnf` | complète par la BnF, **par ISBN**, pour ce que MangaDex n'a pas. Images à 150 px de haut — écrit `data/covers-bnf.json`, et `covers:upload` en tire `sourceCouverture = "bnf"` |
+| `npm run covers:bnf` | complète par la BnF, **par EAN**, pour ce que MangaDex n'a pas. Demande du 512×720 maximum, proportions respectées. `-- --refaire` reprend les couvertures déjà marquées `bnf`. Écrit `data/covers-bnf.json`, et `covers:upload` en tire `sourceCouverture` **et** `couvertureRecupereeLe` |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
 | `npm run covers:upload` | dépose dans R2 et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
 | `npm run covers:migrate` | rebascule toutes les `couvertureUrl` vers `R2_PUBLIC_BASE`. `-- --dry-run` d'abord. Sert au jour du domaine personnalisé : sans rien à envoyer, il ne fait que réécrire |

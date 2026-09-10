@@ -12,9 +12,13 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 USER_AGENT = "manga-collection/0.1 (application personnelle non commerciale)"
 SERVICE_COUVERTURES = "https://openapi.bnf.fr/couverture/image/image/recupererImage"
+PREMIERE_DE_COUVERTURE = 1
+LARGEUR_DEMANDEE, HAUTEUR_DEMANDEE = 512, 720
 FICHIER_MANIFESTE = "data/covers-bnf.json"
 REQUETES_PAR_SECONDE = 2.0
 TYPES_IMAGE = ("image/jpeg", "image/png")
+SOURCE_BNF = "bnf"
+REFAIRE = "--refaire"
 
 dernier_appel = 0.0
 
@@ -35,16 +39,24 @@ def charger_json(chemin, defaut):
         return defaut
 
 
-def cibles():
+def a_reprendre(entree, refaire):
+    if not entree.get("isbn"):
+        return False
+    if not entree.get("couvertureUrl"):
+        return True
+    return refaire and entree.get("sourceCouverture") == SOURCE_BNF
+
+
+def cibles(refaire):
     source = json.load(open(SOURCE_COLLECTION, encoding="utf-8"))
     tomes, annonces = [], []
     for serie in source["series"]:
         for edition in serie["editions"]:
             for volume in edition.get("volumes", []):
-                if not volume.get("couvertureUrl") and volume.get("isbn"):
+                if a_reprendre(volume, refaire):
                     tomes.append((edition["slug"], volume["numero"], volume["isbn"]))
             for sortie in edition.get("sorties", []):
-                if not sortie.get("couvertureUrl") and sortie.get("isbn"):
+                if a_reprendre(sortie, refaire):
                     annonces.append((edition["slug"], sortie["numero"], sortie["isbn"]))
     return tomes, annonces
 
@@ -52,7 +64,8 @@ def cibles():
 def telecharger(isbn):
     patienter()
     requete = urllib.request.Request(
-        f"{SERVICE_COUVERTURES}?ISBN={isbn}&couverture=1",
+        f"{SERVICE_COUVERTURES}?EAN={isbn}&couverture={PREMIERE_DE_COUVERTURE}"
+        f"&taille=originale&largeur={LARGEUR_DEMANDEE}&hauteur={HAUTEUR_DEMANDEE}",
         headers={"User-Agent": USER_AGENT},
     )
     try:
@@ -65,16 +78,17 @@ def telecharger(isbn):
         return None
 
 
-def acquerir(lot, manifeste, libelle):
+def acquerir(lot, manifeste, libelle, refaire):
     obtenues = 0
     absentes = []
     for index, (slug, numero, isbn) in enumerate(lot, start=1):
-        if numero in manifeste.get(slug, []):
-            continue
         chemin = f"{RACINE_COUVERTURES}/{slug}/{numero}.webp"
-        if os.path.exists(chemin):
-            manifeste.setdefault(slug, []).append(numero)
-            continue
+        if not refaire:
+            if numero in manifeste.get(slug, []):
+                continue
+            if os.path.exists(chemin):
+                manifeste.setdefault(slug, []).append(numero)
+                continue
 
         octets = telecharger(isbn)
         if octets is None:
@@ -100,15 +114,18 @@ def acquerir(lot, manifeste, libelle):
 
 
 def main():
-    tomes, annonces = cibles()
+    refaire = REFAIRE in sys.argv
+    tomes, annonces = cibles(refaire)
     manifeste = charger_json(FICHIER_MANIFESTE, {})
 
-    print(f"{len(tomes)} tomes et {len(annonces)} sorties sans couverture mais avec un ISBN")
-    print("La BnF plafonne a 150 px de haut : ces images sont un pis-aller assume.")
+    print(f"{len(tomes)} tomes et {len(annonces)} sorties visees")
+    print(f"cote demandee a la BnF : {LARGEUR_DEMANDEE}x{HAUTEUR_DEMANDEE} maximum, proportions respectees")
+    if refaire:
+        print(f"{REFAIRE} : les couvertures deja marquees « {SOURCE_BNF} » sont reprises")
     print()
 
-    absentes = acquerir(tomes, manifeste, "tomes")
-    absentes += acquerir(annonces, manifeste, "sorties annoncees")
+    absentes = acquerir(tomes, manifeste, "tomes", refaire)
+    absentes += acquerir(annonces, manifeste, "sorties annoncees", refaire)
 
     for slug in manifeste:
         manifeste[slug] = sorted(set(manifeste[slug]))

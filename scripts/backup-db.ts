@@ -48,6 +48,8 @@ type VolumeSauve = {
   dateSortie: string | null;
   prixCentimes: number | null;
   couvertureUrl: string | null;
+  sourceCouverture: string | null;
+  couvertureRecupereeLe: string | null;
   possessions: PossessionSauvee[];
 };
 
@@ -57,6 +59,8 @@ type SortieSauvee = {
   date: string;
   isbn: string | null;
   couvertureUrl: string | null;
+  sourceCouverture: string | null;
+  couvertureRecupereeLe: string | null;
 };
 
 type SuiviSauve = {
@@ -217,6 +221,8 @@ async function exporter() {
           date: sortie.date.toISOString(),
           isbn: sortie.isbn,
           couvertureUrl: sortie.couvertureUrl,
+          sourceCouverture: sortie.sourceCouverture,
+          couvertureRecupereeLe: enISO(sortie.couvertureRecupereeLe),
         })),
         volumes: edition.volumes.map((volume) => ({
           id: volume.id,
@@ -225,6 +231,8 @@ async function exporter() {
           dateSortie: enISO(volume.dateSortie),
           prixCentimes: volume.prixCentimes,
           couvertureUrl: volume.couvertureUrl,
+          sourceCouverture: volume.sourceCouverture,
+          couvertureRecupereeLe: enISO(volume.couvertureRecupereeLe),
           possessions: volume.possessions.map((possession) => ({
             id: possession.id,
             utilisateurId: possession.utilisateurId,
@@ -360,6 +368,8 @@ async function restaurer() {
         dateSortie: enDate(volume.dateSortie),
         prixCentimes: volume.prixCentimes,
         couvertureUrl: volume.couvertureUrl,
+        sourceCouverture: volume.sourceCouverture ?? null,
+        couvertureRecupereeLe: enDate(volume.couvertureRecupereeLe),
       })),
     ),
   );
@@ -373,6 +383,8 @@ async function restaurer() {
         date: new Date(sortie.date),
         isbn: sortie.isbn,
         couvertureUrl: sortie.couvertureUrl,
+        sourceCouverture: sortie.sourceCouverture ?? null,
+        couvertureRecupereeLe: enDate(sortie.couvertureRecupereeLe),
       })),
     ),
   );
