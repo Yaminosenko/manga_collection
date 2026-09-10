@@ -3436,3 +3436,112 @@ cherche vraiment.
 `sourceCouverture` et `couvertureRecupereeLe` avaient ete ajoutees au schema **sans etre portees
 dans `backup-db.ts`** : une restauration les aurait perdues silencieusement. Corrige, et la
 sauvegarde les porte desormais sur les tomes comme sur les sorties.
+
+---
+
+### Fait — les vignettes sur la recherche, et une passe de nettoyage sur CLAUDE.md
+
+**10 septembre 2026, fin de journee.** Le probleme etait pose ainsi par le proprietaire : « une
+recherche donne le titre, le nombre de tomes, l'edition, mais **aucune info visuelle** ». Et plus
+largement, aucune couverture disponible instantanement — ni en recherche, ni en consultant une
+serie non possedee, ni en ajoutant une serie dont les couvertures n'ont pas ete ramassees.
+
+#### Le magasin de vignettes
+
+`VignetteCatalogue`, cle par EAN, qui **memorise aussi les echecs** — sur le modele
+d'`AliasRecherche` : sans ca, un EAN que la BnF ne connait pas serait redemande a chaque
+recherche. Le script est reprenable, plafonne par `--max`, et **trie par nombre de lignes du
+groupe decroissant**. Ce tri n'est pas cosmetique : un premier essai trie par titre est parti sur
+`#Cooking Karine`, `+Anima` et `100 Manga Artists`, avec 26 % de rendement, quand le tri par
+taille donne One Piece, Detective Conan, Kingdom, Gintama, Bleach et Naruto a **68 %**.
+
+**L'arithmetique a rouvert une porte que §13.2 avait fermee le 2 septembre.** Cette section disait
+« ne pas enrichir les ~59 000 tomes d'avance : a 23,4 Ko la couverture cela ferait 1,4 Go, plus
+que le Go de Vercel Blob, pour des images que personne ne regarde ». Ses trois premisses ont
+bouge : l'image mesuree fait **22,3 Ko**, le stockage est passe a **10 Go de R2** le 3 septembre,
+et la troisieme — « des images que personne ne regarde » — est exactement ce que ce chantier
+casse. Les 12 405 groupes font donc **~147 Mo**, soit **1,5 %** du palier gratuit, et le catalogue
+entier ~591 Mo, soit 5,9 %.
+
+**Rendement, sans illusion : ~53 % des groupes.** J'ai parie qu'un repli sur la parution la plus
+recente rattraperait beaucoup, le tome 1 etant le livre le plus ancien de sa serie ; mesure sur
+30 groupes echoues, il en rend **4**. La cause n'est pas l'age du volume mais l'absence de la
+serie entiere du jeu illustre de la BnF, qui se joue par titre et par editeur. Le script essaie
+neanmoins **jusqu'a 4 volumes** : c'est peu couteux — 17 groupes sur 25 n'ont qu'un seul EAN, donc
+rien a essayer — et ca rattrape les grosses series. **One Piece n'a aucune image sur son tome 1 et
+en a une sur le tome 2** ; Naruto et Bleach ne rendent rien en six essais.
+
+#### L'affichage
+
+Chaque resultat porte une couverture a gauche du titre — **56×80** en recherche, **70×100** sur la
+carte du scanner, ou elle sert de confirmation qu'on a scanne le bon tome.
+
+**Aucun appel externe pendant une recherche**, ce qui etait la contrainte a tenir : §5 interdit
+d'appeler une API a l'ouverture d'un ecran, et 25 candidats auraient fait 25 appels par frappe.
+`ParutionCatalogue` joint `VignetteCatalogue` sur l'EAN dans la meme requete, et le groupe retient
+la premiere image par numero croissant. Une recherche reste une lecture locale.
+
+Verifie en tapant pour de vrai : « naruto » rend la ligne locale avec sa jaquette, « blue lock »
+la jaquette Pika francaise sur l'edition simple, et l'EAN de Blue Lock t.1 rend la carte de scan
+avec sa couverture.
+
+#### Deux regles nommees plutot qu'un helper unique
+
+Le repli manquait aussi a la wish list, aux blocs « Autres editions » et « Series liees », et a la
+Collection. Mais **les ecrans ne veulent pas la meme image**, et les confondre aurait casse
+l'anatomie de la Collection. D'ou `lib/vignettes.ts` et ses deux fonctions :
+`couvertureDeProgression` rend le dernier tome possede, `couvertureDIdentification` rend le
+premier des quatre premiers tomes qui a une image, sinon la vignette de catalogue d'un de leurs
+ISBN.
+
+L'identification sert aussi de dernier recours la ou la progression ne rend rien : une edition a
+zero tome possede. **Effet visible et verifie : les quatre editions vendues, dont les lignes
+etaient vides**, affichent la jaquette de leur tome 1.
+
+Trois defauts trouves en le faisant. La wish list ne selectionnait que le tome 1, `take: 1` et
+sans son ISBN — et c'est l'ecran ou ca se voit le plus, une entree de wish list ayant par
+definition zero tome possede et pas de barre pour compenser. Les blocs « Series liees » et
+« Autres editions » prenaient le dernier tome possede, donc n'affichaient rien pour une serie
+qu'on ne possede pas : le mauvais choix pour un bloc dont le role est de faire decouvrir. Et **§4
+prescrit « couverture du dernier tome possede » quand le code mettait `Edition.couvertureUrl`
+avant**, sur la Collection, les Manquants et la wish list — personne ne l'avait vu parce que ce
+champ est nul sur les 116 editions, donc le premier cran ne servait jamais.
+
+Enfin, la vignette de wish list est passee de 74×52 a **120×84**, la cote de la ligne de
+Collection, espacement compris : une entree de wish list est une serie comme une autre, elle a
+juste un compteur a zero.
+
+#### La passe de nettoyage sur CLAUDE.md
+
+Le document avait atteint **2 149 lignes** et souffrait de ce qu'il reproche lui-meme a l'ancien
+journal : des rectifications empilees qui finissent par se contredire. Il est redescendu a
+**2 095**, non par coupe mais par fusion.
+
+Ce qui a ete corrige :
+
+- **Trois sections se superposaient sur les couvertures** — l'ordre du 31 aout, la mesure du
+  10 septembre, et une rectification en encadre. L'ordre porte maintenant les faits mesures, y
+  compris les trois tailles de la BnF ; le recit de l'erreur reste ici, ou il a sa place.
+- **Deux tableaux d'etat chiffre se superposaient, et les deux etaient perimes.** Un seul
+  tableau, relu en base : 112 series, 116 editions, 1 770 tomes, 1 754 couvertures.
+- **§4 racontait ce qui avait ete fait** au lieu d'enoncer la regle. C'est le role de ce fichier,
+  pas du sien.
+- **Une contradiction franche sur la camera du scanner** : « verifiee depuis le 9 septembre » a un
+  endroit, « aucune piste n'est verifiee » a un autre. Tranchee par la date la plus recente, avec
+  la nuance qui manquait : le scan a fonctionne, mais **aucune des trois pistes n'a ete isolee**,
+  on ne sait pas laquelle a regle le probleme.
+- **`pg_trgm` etait note « pas installee »** alors que la migration du 9 septembre la pose.
+- **Les compteurs cites comme courants ailleurs** — 113 editions, 1 708 couvertures, 11 315 series
+  de catalogue — sont alignes. Ceux de §13.1 sont laisses tels quels : cette section est
+  historique et le document le dit.
+- **Le residu d'`aDejaPossede` a change de nature.** §13.1 disait « les 4 seules editions a zero
+  tome possede sont exactement les 4 VENDUE ». Il y en a **5** depuis qu'une entree de wish list
+  existe — cas legitime, mais la phrase etait fausse. Le cas qui manque toujours est celui d'une
+  edition qui **retombe** a zero sans etre vendue.
+- **Les themes ne sont plus 99 valeurs francaises mais 143 en deux langues**, ce qui renforce la
+  decision de §13.2 de ne pas les rendre filtrables, et etend a eux la dette de table de
+  correspondance.
+
+Deux entrees neuves au reste a faire : `AliasRecherche` n'expire jamais et aucun ecran ne la
+montre ; et « aot » trouve SAOTOME LOVE & BOXING par le `contains` sur le titre, donc n'atteint
+jamais le rebond.

@@ -244,14 +244,13 @@ comme les vendues, et pour la même raison : on ne les possède pas.
 
 ### Rechercher — l'écran d'ajout
 
-> **Arbitré le 9 septembre 2026, pas encore construit.** L'écran s'appelle aujourd'hui
-> « Ajouter » et passe par AniList seule. Ce qui suit est la cible, décidée après mesure du
-> catalogue et des sources — voir `JOURNAL.md`. La route reste `/ajouter` : la changer casserait
-> les raccourcis de la PWA installée pour rien.
+> **Arbitré le 9 septembre 2026, construit les 9 et 10.** Ce qui suit décrit l'écran tel qu'il
+> est, sauf mention contraire. **La route reste `/ajouter`** : la changer casserait les
+> raccourcis de la PWA installée pour rien.
 
 **Le nom change parce que le geste a changé.** On ne vient plus « ajouter » un objet qu'on
-décrit soi-même : on **cherche** dans un catalogue de 11 315 séries, et ce qu'on trouve, on
-l'ajoute ou on le suit.
+décrit soi-même : on **cherche** dans un catalogue de **12 880 groupes**, et ce qu'on trouve,
+on l'ajoute ou on le suit.
 
 #### Une barre, deux formes de saisie
 
@@ -283,54 +282,43 @@ catalogue, classé par correspondance exacte, préfixe, puis similarité trigram
 **Aucun seuil ne sélectionne** : l'algorithme classe, l'utilisateur choisit. C'est la leçon des
 cinq échecs d'appariement automatique, et ici elle est gratuite — il y a un humain devant.
 
-#### Chaque ligne de résultat porte une vignette — fait le 10 septembre 2026
+#### Chaque ligne de résultat porte une vignette
 
-Une ligne de texte seule ne dit pas ce qu'on regarde. Chaque résultat affiche donc la couverture
-du tome 1 en **56×80**, à gauche du titre, et le scanner en fait autant sur sa carte de candidat
-en **70×100** — là c'est la confirmation visuelle qu'on a scanné le bon tome.
+Une ligne de texte seule ne dit pas ce qu'on regarde. Chaque résultat porte donc une couverture
+à gauche du titre — **56×80** en recherche, **70×100** sur la carte du scanner, où elle sert de
+confirmation qu'on a scanné le bon tome.
 
 **Aucun appel externe pendant une recherche.** La vignette est jointe en base, en une requête :
 `ParutionCatalogue` joint `VignetteCatalogue` sur l'EAN, et le groupe retient la première image
-disponible par numéro croissant. Une recherche reste donc une lecture locale, comme §5 l'exige.
-L'ordre de résolution est **la base d'abord** :
-
-1. le premier tome de l'édition qui a une `couvertureUrl` — les 114 / 116 éditions en collection ;
-2. sinon la `VignetteCatalogue` d'un de ses ISBN ;
-3. sinon `Edition.couvertureUrl`, puis `Serie.couvertureUrl`.
-
-C'est ce troisième cran qui donne enfin un usage à `Serie.couvertureUrl`, qu'aucun écran ne lisait.
+disponible par numéro croissant. Une recherche reste une lecture locale, comme §5 l'exige.
 
 **Une vignette absente n'est pas un blanc cassé** : `Cover` retombe sur son placeholder, muet sur
 une ligne de catalogue puisqu'on ne sait pas quel tome l'image aurait montré.
 
-#### Deux règles de couverture, nommées — arbitré le 10 septembre 2026
+#### Deux règles de couverture, nommées
 
 Le mécanisme est le même partout, mais **les écrans ne veulent pas la même image**, et les
-confondre casserait la Collection. `lib/vignettes.ts` porte donc deux fonctions nommées :
+confondre casserait l'anatomie de la Collection. `lib/vignettes.ts` porte deux fonctions nommées :
 
 | Règle | Ce qu'elle rend | Où |
 |---|---|---|
 | `couvertureDeProgression` | **le dernier tome possédé** | Collection, Manquants, « Autres éditions », « Séries liées » — elle raconte où j'en suis |
 | `couvertureDIdentification` | **le premier des 4 premiers tomes qui a une image**, sinon la `VignetteCatalogue` d'un de leurs ISBN | Recherche, scanner, wish list — il n'y a rien à raconter, il faut reconnaître |
 
-L'identification sert aussi de **dernier recours** là où la progression ne rend rien : une
-édition à zéro tome possédé. Effet visible immédiat — **les 4 éditions vendues, dont les lignes
-étaient vides**, affichent la jaquette de leur tome 1.
+L'identification sert aussi de **dernier recours** là où la progression ne rend rien : une édition
+à zéro tome possédé, dont la ligne serait sinon vide. Puis, en tout dernier,
+`Edition.couvertureUrl` et `Serie.couvertureUrl` — c'est le seul usage de ce dernier champ,
+qu'aucun écran ne lisait.
 
-**Une incohérence corrigée au passage.** §4 prescrit « couverture du **dernier tome possédé** »,
-et le code mettait `Edition.couvertureUrl` **avant** — sur la Collection, les Manquants et la
-wish list. Personne ne l'avait vu parce que ce champ est **nul sur les 116 éditions** : le
-premier cran ne servait jamais. L'ordre est aligné sur la spécification, et le jour où
-`Edition.couvertureUrl` sera rempli il ne volera plus la place de la progression.
-
-**Le dernier cran est `Serie.couvertureUrl`**, ce qui donne enfin un usage à ce champ qu'aucun
-écran ne lisait.
+**`Edition.couvertureUrl` ne passe jamais avant la progression**, contrairement à ce que le code
+faisait jusqu'au 10 septembre : §4 prescrit « couverture du dernier tome possédé », et ce champ
+étant nul sur les 116 éditions, personne ne s'en était aperçu.
 
 #### Une ligne de résultat par édition, pas par série
 
 **Un résultat = un groupe `(serieNormalise, marqueurEdition)`**, affiché avec son nombre de
-tomes et son éditeur. Il y a **12 619 groupes pour 11 315 séries**, et **863 séries sont
-multi-édition**.
+tomes, son éditeur et sa vignette. Il y a **12 880 groupes pour 11 530 séries**, et **863
+séries sont multi-édition**.
 
 C'est GANTZ qui l'impose : le catalogue en connaît quatre — édition simple à **37 tomes** chez
 Tonkam, **Perfect Edition à 18 tomes** chez Delcourt/Tonkam, et deux coffrets. Sans le nombre
@@ -402,13 +390,14 @@ s'interrompent souvent 12 à 18 mois.
   confirmation **par l'URL** — `?serie=…&marqueur=…&isbn=…` — pour ne pas faire retaper le
   titre ; l'ISBN voyage en champ caché et le tome correspondant est coché après création.
 
-#### Deux préalables techniques
+#### Le préalable technique qui reste
 
-- **`CREATE EXTENSION pg_trgm`** — disponible sur Neon, pas installée (vérifié le 9 septembre),
-  plus un index GIN trigramme sur `ParutionCatalogue.serieNormalise`.
-- **L'anti-doublon et `resoudreIsbn` doivent passer par un index.** Aujourd'hui le premier
-  charge *tous* les titres de série et le second *toutes* les éditions ; §13.2 l'avait relevé,
-  et à 11 315 séries de catalogue ça ne tient plus.
+`CREATE EXTENSION pg_trgm` et l'index GIN trigramme sur `ParutionCatalogue.serieNormalise`
+sont posés depuis la migration `20260909170000_recherche_catalogue`.
+
+**Reste l'anti-doublon et `resoudreIsbn`, qui doivent passer par un index.** Aujourd'hui le
+premier charge *tous* les titres de série et le second *toutes* les éditions ; §13.2 l'avait
+relevé, et à 11 530 séries de catalogue ça ne tient plus.
 
 **Les magazines ne sont pas filtrés**, décidé le 9 septembre. Animeland (257 « tomes »), Les
 Inrocks, Made in Japan et Dream Team sortent donc dans les résultats. Aucune règle automatique
@@ -519,8 +508,11 @@ de scantrad, pas la publication. Naruto et Bleach n'ont que leur jeu japonais ca
 côte à côte sur les trois séries qui ont les deux jeux. Le rendu est accepté (29 août 2026),
 y compris sur les titres entièrement en katakana comme Chainsaw Man.
 
-**Le pont passe par AniList.** Le titre VF est souvent introuvable tel quel ; AniList donne le
-romaji, MangaDex répond dessus. 11 correspondances sur 12 sur l'échantillon d'août.
+**Le pont passe par le romaji.** Le titre VF est souvent introuvable tel quel ; il faut le
+romaji pour que MangaDex réponde. 11 correspondances sur 12 sur l'échantillon d'août.
+**Ce pont était AniList, qui est morte** : `fetch_covers.py` l'appelle encore et n'obtiendra
+donc plus d'identifiant pour une série neuve. Les titres natifs et romaji de
+`data/mangabaka.json` le remplacent — voir « Reste à faire ».
 
 **La politique est `fr` d'abord, `ja` en repli.** Radiant l'impose : série française, 19
 couvertures `fr` contre 4 `ja`.
@@ -557,28 +549,45 @@ manga-news n'a pas d'API. Une demande d'autorisation doit être envoyée avant t
 utilisation programmatique. En attendant, `slugMangaNews` ne sert qu'à construire un
 lien sortant vers la fiche officielle.
 
-### Ordre des sources de couverture (31 août 2026)
+### Ordre des sources de couverture — arrêté le 31 août, mesuré et révisé le 10 septembre 2026
 
-Décidé après recherche. **La couverture japonaise sur une édition française est un pis-aller,
-plus le chemin principal.**
+**La BnF d'abord, par EAN.** `openapi.bnf.fr/couverture/image/image/recupererImage`, interrogeable
+par `EAN=`, `ISBN=` ou `idArk=`, sans passer par l'ARK.
 
-1. **BnF, service Couvertures.** Interrogeable **directement par ISBN ou EAN**, sans passer par
-   l'ARK : `openapi.bnf.fr/couverture/image/image/recupererImage?ISBN=<isbn>&couverture=1`.
-   Trois tailles. **Seule source dont le statut juridique est écrit** : réutilisation possible
-   avec mention de la source et de la date de récupération — la seule tenable le jour d'une
-   ouverture ou d'une monétisation. Toutes les notices ne portent pas d'image ; URL en bêta.
-2. **Open Library.** `covers.openlibrary.org/b/isbn/<isbn>-L.jpg`, avec `?default=false` pour
-   obtenir un 404 plutôt qu'une image vide. Faible sur le manga français, gratuite à essayer.
-3. **MangaDex.** Dernier recours assumé.
-4. **Dépôt manuel**, déjà en place.
+| Ce qu'on demande | Ce qu'on obtient |
+|---|---|
+| `?EAN=<ean>&couverture=1` | la **miniature**, ~106×150, 7 Ko |
+| `…&couverture=1&taille=originale` | la **taille d'origine**, jusqu'à 600×853 et plus, ~600 Ko |
+| `…&taille=originale&largeur=256&hauteur=360` | **exactement notre cote**, redimensionnée côté serveur, proportions respectées, ~22 Ko |
 
-**Le vrai verrou n'est pas la source, c'est l'ISBN.** Toutes les bonnes sources s'interrogent
-par ISBN ; MangaDex n'a été retenu que faute d'ISBN, d'où le sélecteur d'appariement par titre
-et ses ratés. Le planning manga-news porte un EAN sur 306 lignes sur 307 : **l'import des
-archives supprime l'appariement par similarité** — planning → EAN → BnF. C'est le même chantier
-que la construction du catalogue (§13.2), pas un chantier de couvertures.
-**L'archive est qualifiée jusqu'à septembre 2000, EAN-13 compris** (2 septembre 2026) : le
-verrou n'attend plus qu'un lot de CSV.
+**`couverture` n'est pas une taille : `1` est la première de couverture, `4` la quatrième.** Le
+paramètre de taille s'appelle `taille` — voir la rectification ci-dessous, cette confusion a
+coûté une journée.
+
+Trois autres choses à savoir, toutes documentées par la BnF :
+- **Un code 500 signifie « aucune image sur cette notice »**, pas une panne. Mesuré : **0 / 15**
+  des EAN sans miniature en ont une en taille d'origine — l'absence est une absence, pas une
+  limite de taille.
+- La présence d'une image est **connaissable à l'avance** : zone **950 en Intermarc**,
+  `950$b = C1`. Interrogeable par le SRU que `lib/bnf.ts` utilise déjà.
+- **Licence ouverte de l'État**, à condition de mentionner **la provenance et la date de
+  récupération** — d'où `sourceCouverture` **et** `couvertureRecupereeLe`. Elle **n'interdit pas
+  l'usage commercial**, contrairement au `NC` de MangaBaka : cette source ne pèse pas sur §13.4.
+  Les URL restent **en bêta**, susceptibles d'être modifiées.
+
+**Ensuite MangaDex**, `fr` puis `ja`, **et jamais une troisième langue** — voir la sonde du
+29 août et l'arbitrage du 10 septembre. Elle rend des images bien plus grandes que la BnF
+(722×1024 à 1800×2560), donc **on la préfère quand elle a la série** ; mais elle exige un
+identifiant que le catalogue n'a pas, et son usage programmatique reste en attente
+d'autorisation.
+
+**Puis le dépôt manuel**, déjà en place. **Open Library est écartée** : 0/11 le 28 août, 0/5 le
+10 septembre, sur des ISBN français.
+
+**Le vrai verrou n'est pas la source, c'est l'ISBN.** Toutes les bonnes sources s'interrogent par
+EAN ; MangaDex n'a été retenu que faute d'EAN, d'où le sélecteur d'appariement par titre et ses
+ratés. Le constat tient toujours : sur les 16 tomes de la collection encore sans couverture,
+**7 n'ont aucun ISBN en base** — rien à interroger.
 
 **Champ `sourceCouverture` — ajouté le 10 septembre 2026**, sur `Volume` **et sur `Sortie`**, la
 seconde parce que `promouvoir()` recopie la couverture de la sortie vers le tome. `null` veut dire
@@ -587,66 +596,26 @@ les 1 680 images d'alors étaient un sac indistinct, mélange de MangaDex et de 
 rien ne permet de les départager après coup. **Ne pas les marquer en masse**, ce serait inventer
 une provenance. Seules les acquisitions faites depuis portent leur source.
 
-### Ce que la passe du 10 septembre 2026 a mesuré sur les sources
+### Rendement mesuré des sources, le 10 septembre 2026
 
-Contredit en partie l'ordre décidé le 31 août, et il faut le savoir avant de s'y fier.
-
-| Source | Rendement mesuré | Résolution rendue |
+| Source | Rendement | Sur quoi |
 |---|---|---|
-| **BnF, service Couvertures** | **31 / 42** sur nos ISBN manquants | **256×360 et au-delà** — voir la rectification ci-dessous |
-| **Open Library** | **0 / 5** | — (confirme la mesure du 28 août) |
-| **MangaDex, `fr` puis `ja`** | 6 / 8 sur les séries qui ont un identifiant | **722×1024 à 1800×2560** |
+| **BnF par EAN** | **68 %** | les gros groupes du catalogue — One Piece, Détective Conan, Bleach, Naruto |
+| | **53 %** | un tirage aléatoire de 90 groupes |
+| | **20 à 29 %** | le début alphabétique — artbooks, essais, one-shots |
+| | 31 / 42 | les ISBN manquants de la collection |
+| **MangaDex**, `fr` puis `ja` | 6 / 8 | les séries qui ont un identifiant, soit 108 sur 12 880 |
+| **Open Library** | **0 / 5** | des ISBN français — confirme le 0/11 du 28 août |
 
-**L'ordre ci-dessus met la BnF en tête pour une raison juridique, pas de qualité** — c'est la
-seule source dont les conditions de réutilisation sont écrites. Mais elle rend des images **à
-moins de la moitié de la cote nécessaire**, là où MangaDex en japonais rend 5 à 10 fois mieux.
-L'usage retenu est donc : **MangaDex quand elle a la série, la BnF en complément par ISBN**, et
-`sourceCouverture` pour produire l'attribution ou remplacer l'image selon le cas. C'est une
-inversion assumée de l'ordre écrit, motivée par la mesure.
+**Le rendement dépend beaucoup de l'ordre de traitement**, d'où le tri par taille de groupe
+décroissante dans `vignettes:fetch` : un passage plafonné doit servir d'abord ce qu'on cherche.
 
-> ### Rectification du 10 septembre 2026 — il n'y a pas de plafond à 150 px
->
-> **Ce document a dit « la BnF plafonne à 150 px » depuis le 31 août, et c'est faux.** Le
-> propriétaire a produit la documentation officielle du service, qui donne **trois dimensions**,
-> et la mesure les confirme sur le même ISBN :
->
-> | Requête | Résultat |
-> |---|---|
-> | `&couverture=1` seul (miniature) | 106×150 · 6,9 Ko |
-> | `&couverture=1&taille=originale` | **600×853** · 618 Ko |
-> | `…&taille=originale&largeur=256&hauteur=360` | **253×360** · 32,6 Ko — **redimensionnée côté serveur, proportions respectées** |
->
-> **La cause de l'erreur est nette : j'ai deviné le nom du paramètre au lieu de lire la
-> documentation.** J'avais essayé `couverture=2`, `3`, `4` en supposant que ce chiffre était une
-> taille. Il ne l'est pas : **`couverture=1` est la première de couverture et `couverture=4` la
-> quatrième.** Le `4` rendait 500 parce que cette notice n'a pas de dos, et j'en ai conclu qu'une
-> seule taille existait. Le paramètre de taille s'appelle `taille`.
->
-> **Ce que la documentation apporte d'autre :**
-> - **Le code 500 signifie « aucune image sur la notice »**, c'est écrit, et ce n'est pas une
->   indisponibilité du service. Le cache des échecs de `VignetteCatalogue` est donc fondé — et
->   vérifié : **0 / 15** des EAN sans miniature en ont une en taille d'origine.
-> - On peut **savoir à l'avance** si une notice porte une image : **zone 950 en Intermarc**,
->   `950$b = C1` pour la première de couverture. Interrogeable par le SRU que `lib/bnf.ts` utilise
->   déjà.
-> - L'interrogation par **`EAN=`** existe à côté de `ISBN=` — c'est le nom de notre champ.
-> - **Licence ouverte de l'État**, avec obligation de mentionner **la provenance et la date de
->   récupération** : d'où `sourceCouverture` **et** `couvertureRecupereeLe`. Elle **n'interdit pas
->   l'usage commercial**, contrairement au `NC` de MangaBaka — donc cette source-là ne pèse pas
->   sur §13.4.
->
-> **Conséquences.** La BnF devient la **source principale** et non un pis-aller : édition
-> française, bon tome, appariement exact par EAN, cote de grille, licence permissive. Et la
-> distinction « vignette 150 px pour la recherche / couverture 256×360 pour la grille » **tombe** :
-> une seule image sert les deux. Les 28 couvertures déposées à 150 px le matin ont été refaites
-> le même jour.
->
-> **La leçon, à ajouter aux pièges** : *avant de conclure qu'une API ne sait pas faire quelque
-> chose, chercher sa documentation.* Cinq essais de paramètres devinés ne valent pas une page lue.
+**Essayer les volumes suivants rattrape peu, mais au bon endroit.** Sur 25 groupes dont le tome 1
+n'a pas d'image, 3 en trouvent une sur un tome suivant — et 17 des 25 n'ont qu'un seul EAN, donc
+rien à essayer. Mais One Piece est de ceux-là : rien sur le tome 1, une image sur le tome 2.
+L'absence se joue **par titre**, pas par volume : Naruto et Bleach ne rendent rien en six essais.
 
-**La langue : `fr`, sinon `ja`, et jamais une troisième.** Arbitré le 10 septembre après un essai
-raté. `LANGUES_PAR_PREFERENCE` de `fetch_covers.py` l'appliquait déjà ; c'est une sonde improvisée
-qui a dévié en classant `ko` et `pt-br`. Deux raisons de s'y tenir :
+**La langue : `fr`, sinon `ja`, et jamais une troisième.** Arbitré le 10 septembre. Deux raisons :
 - **Le logo coréen d'Iruma-kun occupe une bande large en bas de l'image**, sans commune mesure
   avec le logo japonais d'origine.
 - **La métadonnée `locale` de MangaDex n'est pas fiable.** La couverture de Youjo Senki t.23
@@ -654,10 +623,9 @@ qui a dévié en classant `ko` et `pt-br`. Deux raisons de s'y tenir :
   d'habillage : pas « la même illustration avec un autre titre », mais la maquette d'un autre
   éditeur. Un sélecteur qui fait confiance à `locale` se fera avoir.
 
-**Et il faut paginer.** `api.mangadex.org/cover` plafonne à 100 résultats par requête et rend le
-compte réel dans `total` : sans pagination on lit une tranche arbitraire et on conclut à tort
-qu'un tome n'existe pas. Iruma-kun en a **216**, Youjo Senki **205**. `fetch_covers.py` pagine ;
-la première sonde non, et elle a fait rater les couvertures japonaises qui existaient bel et bien.
+**Et il faut paginer.** `api.mangadex.org/cover` plafonne à 100 résultats et rend le compte réel
+dans `total` : sans pagination on lit une tranche arbitraire et on conclut à tort qu'un tome
+n'existe pas. Iruma-kun en a **216**, Youjo Senki **205**.
 
 **Scrapers par éditeur : V3, conditionnel.** L'éditeur venu de la BnF permet de router un tome
 vers le bon site. Mais un scraper s'écrit en une heure et se maintient éternellement, et rien
@@ -922,7 +890,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 9 septembre 2026.
+Dernière mise à jour : 10 septembre 2026.
 
 **La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
 nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
@@ -945,56 +913,42 @@ l'autre du fichier.
 Ce qui suit regarde vers l'avant : l'état chiffré, les pièges qui se répètent, le travail
 restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 
-### L'état chiffré — lu en base le 9 septembre 2026, après la migration
+### L'état chiffré — lu en base le 10 septembre 2026
+
+**Un seul tableau, relu à chaque fois plutôt que rectifié par empilement.** Les compteurs de §8
+ont bougé depuis l'import et c'est normal : le planning élargit des dénominateurs, la promotion
+des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
 
 | | |
 |---|---|
-| Séries | **109** |
-| Éditions | **113** |
-| Suivis (`SuiviEdition`) | **113**, tous sur le propriétaire — `EN_COURS` 86, `ABANDONNEE` 18, `EN_PAUSE` 5, `VENDUE` 4 |
-| `suivie = true` | **84**, et aucune sur un `statut` ≠ `EN_COURS` |
+| Séries · Éditions | **112** · **116** |
+| Suivis (`SuiviEdition`) | **116**, tous sur le propriétaire — `EN_COURS` 89, `ABANDONNEE` 18, `EN_PAUSE` 5, `VENDUE` 4 |
+| `suivie = true` | **87** |
 | Utilisateurs | **1**, `PROPRIETAIRE`, `email` nul |
-| Tomes (`Volume`) | **1 714** |
-| Possessions | **1 714**, dont **1 155** possédées et 559 à `possede=false` |
-| Couvertures | **1 676 / 1 714**, servies depuis Cloudflare R2 |
-| ISBN et dates de sortie | **1 491 / 1 714**, soit 87 % |
-| Éditeur · `titreVo` · `alias` | **113 / 113** · **105 / 109** · **105 / 109** |
-| Sorties annoncées (`Sortie`) | **14**, dont **10** sur une édition suivie — l'écran n'affiche que ces 10 |
-| Liens entre séries (`LienSerie`) | ~~**18** sur 16 séries~~ → **28** sur 23 séries depuis MangaBaka |
-| `Edition.creeeParId` | **nul sur les 113** — c'est-à-dire « venu de l'import » |
-| `Edition.slugMangaNews` | **0 / 113** — le lien sortant de la page Édition ne s'affiche donc jamais |
-| Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
-| Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
-| `ParutionCatalogue` | **52 009** parutions, **11 530** séries, **janvier 2000 → décembre 2026 sans un mois manquant** — 324 mois, dont **49 956 avec EAN** |
+| Tomes (`Volume`) | **1 770** |
+| Possessions | **1 719**, dont **1 162** possédées |
+| **Couvertures de tomes** | **1 754 / 1 770**, servies depuis Cloudflare R2 |
+| **Couvertures de sorties** | **14 / 16** |
+| `sourceCouverture` | **74 à `bnf`**, le reste à `null` = indéterminé, antérieur au champ |
+| ISBN | **1 547 / 1 770** |
+| Sorties annoncées (`Sortie`) | **16** |
+| Liens entre séries (`LienSerie`) | **28** sur 23 séries, dérivés de MangaBaka |
+| `Serie.idMangaBaka` | **109 / 112** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
+| `Serie.alias` · `aliasNormalises` | **1 121** libellés · **1 234** formes indexées, dont 86 séries avec une forme japonaise |
+| Abréviations captées | **60 séries** : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
+| Genres · Thèmes · Cible | **22** valeurs · **143** valeurs · `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
+| `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
+| `VignetteCatalogue` | **463 EAN interrogés**, **111 avec une image** — il en reste **11 942** |
+| `Edition.creeeParId` | **3 / 116** renseignés. `null` veut dire « venu de l'import » ; ces 3 viennent de `/ajouter` |
+| `Edition.slugMangaNews` | **0 / 116** — le lien sortant de la page Édition ne s'affiche donc jamais |
+| Éditions à zéro tome possédé | **5** : les 4 `VENDUE`, **plus une entrée de wish list** |
+| Possessions portant `dateAchat` ou `prixPayeCentimes` | **0** — la V1 ne les écrit pas |
+| `ParutionCatalogue` | **52 009** parutions, **12 880 groupes**, **janvier 2000 → décembre 2026 sans un mois manquant** |
 
-**Relevé le 10 septembre 2026, après le passage à MangaBaka** — la base est passée à **110 séries
-et 114 éditions** entre-temps :
-
-| | |
-|---|---|
-| `Serie.idMangaBaka` | **107 / 110**. Les 3 sans : `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5` |
-| `Serie.aliasNormalises` | **1 214 formes indexées**, dont 86 séries avec une forme japonaise |
-| `Serie.alias` | **998 alias ajoutés** aux 110 qui n'en portaient qu'un — le `titreVo` |
-| Abréviations captées | **60 séries** en portent une : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
-| Genres | **22 valeurs distinctes**, vocabulaire MangaBaka. `Hentai` a disparu — il était faux sur Hellsing et Radiant. `Mecha`, `Sports` et `Ecchi` sont récupérés depuis les tags par `TAGS_PROMUS_EN_GENRE` |
-| Thèmes | **143 valeurs distinctes**, dont les 99 françaises intactes : seules les **11** séries sans aucun thème en ont reçu, en anglais |
-| Cible | **2 remplies**, là où elle était nulle. `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
-| `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen (id 6199) |
-| Couvertures de tomes | **1 708 / 1 721** — 1 676 avant la passe du 10 septembre |
-| Couvertures de sorties | **14 / 16** |
-| `sourceCouverture` | **28 à `bnf`**, **1 680 à `null`** = indéterminé, antérieur au champ |
-
-Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
-élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
-tomes. **La sauvegarde se relance avant de s'appuyer sur ses chiffres** — elle a menti de deux
-tomes le 7 septembre pour avoir été prise le 3.
-
-`data/backup.json` est **dans la nouvelle forme** depuis le 9 septembre : il porte les
-utilisateurs, les suivis et les possessions par compte, et ses compteurs sont passés de 8 à 7 —
-`aVerifier` a disparu, `forcees` est devenu `suivies`, qui s'inverse. **Une sauvegarde d'avant
-la migration ne se relit qu'avec l'ancien script**, et l'actuel le dit en clair en renvoyant au
-tag `avant-multi-compte`. Ce tag est le chemin de retour : il porte le `backup.json` d'avant
-**et** le `backup-db.ts` qui sait le lire.
+**La sauvegarde se relance avant de s'appuyer sur ses chiffres** — elle a menti de deux tomes le
+7 septembre pour avoir été prise le 3. Et `data/backup.json` est dans la forme multi-compte
+depuis le 9 septembre : **une sauvegarde d'avant ne se relit qu'avec l'ancien script**, que porte
+le tag `avant-multi-compte`, seul chemin de retour.
 
 ### Pièges établis
 
@@ -1112,16 +1066,9 @@ Ce qui reste :
 
 #### Ce qui améliore le chemin automatique
 
-- ~~**Les abréviations ne trouvent rien.**~~ — **traité le 10 septembre 2026 par MangaBaka**,
-  et par la donnée plutôt que par l'apprentissage : le catalogue MangaBaka porte « JJK » comme
-  titre alternatif noté « Short title ». Trois pièces, décrites en §5 et en §13.3 :
-  `Serie.aliasNormalises` (forme comparable, index GIN, un `has()` exact au lieu d'un `contains`
-  sensible à la casse), le **rebond** — quand le local et le catalogue ne rendent rien, MangaBaka
-  traduit le terme et `ParutionCatalogue` est relancé sur les titres rendus — et la table
-  `AliasRecherche`, qui **mémorise** la traduction pour que la deuxième fois soit locale.
-  Reste à faire dessus : **rien n'expire jamais dans `AliasRecherche`**, et une traduction
-  fausse s'y installe donc à demeure ; il n'y a aucun écran pour la voir ni la corriger, seule
-  une suppression en base la déloge.
+- **`AliasRecherche` n'expire jamais et aucun écran ne la montre.** Une traduction fausse s'y
+  installe à demeure, et seule une suppression en base la déloge. C'est le résidu du rebond —
+  voir §13.3 pour le mécanisme, `JOURNAL.md` pour ce qui a été fait.
 - **Compléter la liste `MARQUEURS_EDITION` du script d'import, puis `--recalculer`** —
   **reporté par décision du 9 septembre 2026, à garder en mémoire.** Le problème n'est pas
   seulement la casse (`Edition Limitée` / `Edition limitée`, `Edition spéciale` /
@@ -1154,14 +1101,14 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
-- **Les couvertures** : **1 708 / 1 721** et **14 sorties sur 16** après la passe du 10 septembre
-  2026. **Les 13 tomes qui restent ne sont pas un problème de source, c'en est un d'ISBN** — et
-  c'est le verrou que §5 annonce depuis le 31 août :
+- **Les couvertures** : **1 754 / 1 770** et **14 sorties sur 16**. **Les 16 tomes qui restent ne
+  sont pas un problème de source, c'en est un d'ISBN** — le verrou que §5 annonce depuis le
+  31 août :
 
   | Ce qui manque | Cause |
   |---|---|
   | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à interroger |
-  | `ippo-s4` t.3–7 · `grimoire` t.3 — **6 tomes** | ISBN connu, mais **pas de notice illustrée à la BnF**, et pas d'identifiant MangaDex pour ces éditions |
+  | `ippo-s4` t.3–7 · `grimoire` t.3 · `initial-d` t.33–35 — **9 tomes** | ISBN connu, mais **pas de notice illustrée à la BnF**, et pas d'identifiant MangaDex pour ces éditions |
   | `les-legendaires-saga` t.13 · `radiant` t.20 — **2 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
 
   Le chemin le plus rentable est donc **de leur trouver un ISBN dans `ParutionCatalogue`**, pas de
@@ -1175,18 +1122,22 @@ Ce qui reste :
   encore par AniList, qui est morte** : les 108 identifiants déjà résolus le sauvent, mais une
   série neuve n'en obtiendra pas. Le remplacer par les titres romaji et natifs de MangaBaka, que
   `data/mangabaka.json` porte déjà, est le petit chantier qui débloque la ligne suivante.
-- **Une série ajoutée n'a aucune couverture.** Conséquence directe du choix du 9 septembre : rien
-  n'est posé à la création. C'est le même chantier que la ligne précédente.
-- **`Edition.slugMangaNews` est nul sur les 113 éditions**, donc le lien sortant de la page
+- **Une série ajoutée n'a aucune couverture de tome**, rien n'étant posé à la création. Mais elle
+  n'est plus invisible pour autant : depuis le 10 septembre la recherche, le scanner et la wish
+  list lui trouvent une vignette via `VignetteCatalogue`. Ce qui manque est la **grille**, où les
+  tomes restent des pastilles jusqu'au prochain `covers:bnf`.
+- **`Edition.slugMangaNews` est nul sur les 116 éditions**, donc le lien sortant de la page
   Édition ne s'affiche jamais. Le planning ne porte pas les slugs ; il faudrait les déduire des
   titres ou les saisir.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis en
   cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
-- **Thèmes** : 99 valeurs françaises, avec les coupures d'import (`Post` + `apo`, `Super` +
-  `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`). Aucun écran ne les affiche et la création
-  les laisse vides : sans écran, le nettoyage ne rapporte rien.
+- **Thèmes** : **143 valeurs**, dont les 99 françaises d'origine avec leurs coupures d'import
+  (`Post` + `apo`, `Super` + `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`) et les anglaises
+  venues de MangaBaka sur les 11 séries qui n'en avaient aucune. **Deux langues coexistent donc**,
+  et la table de correspondance d'affichage que §13.2 doit aux genres leur est due aussi. Aucun
+  écran ne les affiche : sans écran, le nettoyage ne rapporte rien.
 
 #### Ce qui tourne en arrière-plan, ou pas
 
@@ -1201,10 +1152,11 @@ Ce qui reste :
   manipulation de masse et de commiter le résultat.
 - **`SuiviEdition.aDejaPossede` reste à trancher, et son backfill n'est exact qu'aujourd'hui.**
   « Une série reste en Collection tant qu'elle a des tomes possédés **ou en a eu** », et « en a
-  eu » n'est enregistré nulle part. Les 4 seules éditions à zéro tome possédé sont encore
-  exactement les 4 `VENDUE` ; le jour où une édition tombe à zéro sans être vendue, rien ne la
-  sépare d'une entrée de wish list. Le backfill `possédés ≥ 1 OR statut = VENDUE` est juste
-  maintenant et se dégradera.
+  eu » n'est enregistré nulle part. **Il y a maintenant 5 éditions à zéro tome possédé** : les 4
+  `VENDUE` et une entrée de wish list, qui est un cas légitime. Le cas qui manque toujours est
+  celui d'une édition qui **retombe** à zéro sans être vendue : rien ne la distinguerait d'une
+  envie d'achat. Le backfill `possédés ≥ 1 OR statut = VENDUE` reste juste aujourd'hui et se
+  dégradera.
 
 #### Échéances et environnement
 
@@ -1221,10 +1173,6 @@ Ce qui reste :
   l'en-tête est faux, donc `/api/cron` répond `401` dans les deux cas et **le sonder ne prouve
   rien** ; et la valeur jumelle est dans le `.env` **de l'autre poste**, donc un appel local ne
   dit rien de la production.
-- **La mise au point de la caméra du scanner est vérifiée depuis le 9 septembre** : le
-  propriétaire a scanné un tome sur téléphone. Si la netteté redevient un problème de près, la
-  piste suivante n'est pas la mise au point mais **la lumière** — `torch` est largement supportée
-  sur Android et n'est pas implémentée.
 ### Reprendre sur un poste neuf
 
 1. `git clone`, puis `npm install` — le client Prisma se régénère tout seul.
@@ -1278,7 +1226,7 @@ Ce qui reste :
 | `npm run titles:fetch` puis `titles:apply` | noms de séries alignés sur la BnF |
 | `npm run publishers:fetch` puis `publishers:apply` | éditeurs depuis la BnF |
 | `npm run relations:fetch` puis `relations:apply` | séries liées. **`fetch` n'appelle plus rien** : il dérive `data/relations.json` des liens déjà portés par `data/mangabaka.json`, hors ligne et instantanément |
-| `npm run editions:audit` | **lecture seule** — apparie les 113 éditions au catalogue par les EAN de leurs tomes et liste les écarts de nom, d'éditeur et de tomes parus dans `data/audit-editions.json`. Aveugle sur les 23 éditions sans ISBN |
+| `npm run editions:audit` | **lecture seule** — apparie les éditions au catalogue par les EAN de leurs tomes et liste les écarts de nom, d'éditeur et de tomes parus dans `data/audit-editions.json`. Aveugle sur les 23 éditions sans ISBN |
 | `npm run db:migrate` | applique les migrations à Neon sur le 443. `LOCAL_DATABASE_URL` la détourne vers un Postgres local, `MIGRATIONS_DIR` vers un autre dossier — les deux servent à répéter une migration avant de la livrer |
 
 **Toujours relire le manifeste entre le `fetch` et le `apply`** — c'est la raison d'être du
@@ -1295,14 +1243,15 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   À rouvrir seulement si une source de couvertures de tome manque un jour.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.slugMangaNews` est nul sur les 113 éditions.** Le Sheet ne le portait pas, et le
+- **`Edition.slugMangaNews` est nul sur les 116 éditions.** Le Sheet ne le portait pas, et le
   lien sortant de la page Édition ne s'affiche donc jamais. Le planning ne porte pas les slugs
   non plus — il faudrait les déduire des titres, ou les saisir.
 - **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
   peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
-- **Mise au point de la caméra du scanner — les trois pistes sont écrites, aucune n'est
-  vérifiée** (9 septembre 2026). Le scan décode, mais l'autofocus ne converge pas quand le tome
-  est tenu trop près : l'appareil principal d'un téléphone ne fait pas le point sous une dizaine
+- **Mise au point de la caméra du scanner — les trois pistes sont écrites et le scan a
+  fonctionné sur téléphone le 9 septembre**, mais aucune des trois n'a été isolée : on ne sait
+  pas laquelle a réglé le problème. Le symptôme d'origine : l'autofocus ne converge pas quand
+  le tome est tenu trop près : l'appareil principal d'un téléphone ne fait pas le point sous une dizaine
   de centimètres, et l'ultra grand-angle n'a souvent pas de mise au point du tout. Contournement
   connu : éloigner à 20-25 cm, la détection travaillant sur les frames natives en 1920 × 1080.
 
@@ -1320,16 +1269,11 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   `getSettings().deviceId`, pas celle qui a été demandée.
 
   **Rien de tout cela n'est vérifiable depuis le poste** : `BarcodeDetector` n'existe pas sur
-  Chrome de bureau, et il n'y a pas de caméra utile. Ce qui est vérifié, c'est la dégradation —
-  sans caméra l'écran affiche sa mention, masque l'aperçu, ne montre aucun sélecteur et garde le
-  champ ISBN, qui reste le chemin testé. **Le reste attend ton téléphone**, et si la netteté ne
-  s'améliore pas, la question suivante est la torche : un rayon de librairie est sombre, et
-  `torch` est une contrainte largement supportée sur Android.
-- ~~**Sortir Blob du chemin des couvertures**~~ — **tranché le 1er septembre 2026 : Cloudflare
-  R2.** La piste `public/` du dépôt est écartée : zéro opération Blob, mais 38 Mo dans git et
-  autant retenu par déploiement dans *Deployment Storage*. Voir `JOURNAL.md`,
-  « Tranché — Cloudflare R2 » ; la migration est faite depuis le 3 septembre. **Un second store
-  Blob ne sert à rien** : la documentation est explicite, le quota est au compte, pas au store.
+  Chrome de bureau, et il n'y a pas de caméra utile. Ce qui l'est, c'est la dégradation — sans
+  caméra l'écran affiche sa mention, masque l'aperçu, ne montre aucun sélecteur et garde le
+  champ ISBN. Si la netteté redevient un problème de près, la piste suivante n'est pas la mise
+  au point mais **la lumière** : `torch` est largement supportée sur Android et n'est pas
+  implémentée.
 
 ---
 
@@ -2006,14 +1950,16 @@ on y va**, §7 amendé en conséquence. Les marges mesurées et les trois garde-
 
 #### Filtres : genres seulement
 
-Les genres viennent de la liste fermée d'AniList depuis le 30 août — normalisés, filtrables.
-Les **thèmes ne sont pas filtrables** : 99 valeurs françaises avec les coupures d'import
-documentées (`Post` + `apo`, `Super` + `héros`, `Combats` / `Combat`).
+Les genres viennent d'une liste fermée — celle d'AniList jusqu'au 9 septembre, celle de
+MangaBaka depuis : **22 valeurs**, normalisées, filtrables.
+Les **thèmes ne sont pas filtrables** : **143 valeurs en deux langues**, les 99 françaises
+d'origine avec leurs coupures d'import (`Post` + `apo`, `Super` + `héros`, `Combats` /
+`Combat`) et les anglaises venues de MangaBaka.
 
 Un filtre « apo » exposé à un utilisateur tiers est indéfendable. Le nettoyage des thèmes
 attend un écran qui les affiche.
 
-**La table de correspondance d'affichage se pose avant le filtre, pas après.** Les 19 genres
+**La table de correspondance d'affichage se pose avant le filtre, pas après.** Les genres
 sont stockés en anglais — c'est la clé, elle ne se traduit pas en base — mais l'interface est en
 français : un filtre livré tel quel afficherait « Slice of Life » et « Supernatural » au milieu
 d'un écran français. Le sens de la correspondance est donc **stockage anglais → libellé
