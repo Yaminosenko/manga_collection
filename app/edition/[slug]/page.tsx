@@ -58,7 +58,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
         <header className="flex gap-[14px]">
           <div className="shadow-edge relative h-[104px] w-[74px] flex-none overflow-hidden rounded-cover-lg text-[13px]">
             <Cover
-              couvertureUrl={edition.couvertureUrl ?? dernier?.couvertureUrl ?? null}
+              couvertureUrl={edition.couvertureEnTete}
               numero={dernier?.numero ?? null}
               titre={edition.titre}
             />

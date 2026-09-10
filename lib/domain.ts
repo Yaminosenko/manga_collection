@@ -94,6 +94,7 @@ export type Edition = {
   suivie: boolean;
   slugMangaNews: string | null;
   couvertureUrl: string | null;
+  couvertureEnTete: string | null;
   prixDefautCentimes: number | null;
   tomes: Tome[];
   sorties: SortieAnnoncee[];

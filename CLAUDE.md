@@ -951,7 +951,7 @@ des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
 | `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
 | `VignetteCatalogue` | **463 EAN interrogés**, **111 avec une image** — il en reste **11 942** |
 | `Edition.creeeParId` | **3 / 116** renseignés. `null` veut dire « venu de l'import » ; ces 3 viennent de `/ajouter` |
-| `Edition.slugMangaNews` | **0 / 116** — le lien sortant de la page Édition ne s'affiche donc jamais |
+| `Edition.slugMangaNews` | **0 / 116**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
 | Éditions à zéro tome possédé | **5** : les 4 `VENDUE`, **plus une entrée de wish list** |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **52 009** parutions, **12 880 groupes**, **janvier 2000 → décembre 2026 sans un mois manquant** |
@@ -1137,9 +1137,11 @@ Ce qui reste :
   n'est plus invisible pour autant : depuis le 10 septembre la recherche, le scanner et la wish
   list lui trouvent une vignette via `VignetteCatalogue`. Ce qui manque est la **grille**, où les
   tomes restent des pastilles jusqu'au prochain `covers:bnf`.
-- **`Edition.slugMangaNews` est nul sur les 116 éditions**, donc le lien sortant de la page
-  Édition ne s'affiche jamais. Le planning ne porte pas les slugs ; il faudrait les déduire des
-  titres ou les saisir.
+- **`Edition.slugMangaNews` est nul sur les 116 éditions**, mais **le lien sortant s'affiche**
+  quand même : la page Édition construit une **recherche** manga-news sur le titre, elle n'a
+  jamais utilisé ce champ. Le remplir ne ferait que remplacer une recherche par un lien direct
+  vers la fiche — un confort, pas un trou. Le planning ne porte pas les slugs ; il faudrait les
+  déduire des titres ou les saisir.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis en
   cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
@@ -1254,9 +1256,10 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   À rouvrir seulement si une source de couvertures de tome manque un jour.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.slugMangaNews` est nul sur les 116 éditions.** Le Sheet ne le portait pas, et le
-  lien sortant de la page Édition ne s'affiche donc jamais. Le planning ne porte pas les slugs
-  non plus — il faudrait les déduire des titres, ou les saisir.
+- **`Edition.slugMangaNews` est nul sur les 116 éditions.** Le Sheet ne le portait pas. Le lien
+  sortant s'affiche néanmoins, sous forme de **recherche** par titre : ce champ ne servirait
+  qu'à pointer la fiche directement. Le planning ne porte pas les slugs non plus — il faudrait
+  les déduire des titres, ou les saisir.
 - **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
   peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
 - **Mise au point de la caméra du scanner — les trois pistes sont écrites et le scan a

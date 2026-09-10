@@ -46,6 +46,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
         select: {
           numero: true,
           couvertureUrl: true,
+          isbn: true,
           prixCentimes: true,
           possessions: possession,
         },
@@ -125,6 +126,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
   }
 
   const vignettes = await vignettesParIsbn([
+    ...edition.volumes.map((volume) => volume.isbn),
     ...edition.serie.editions.flatMap((autre) => autre.volumes.map((volume) => volume.isbn)),
     ...edition.serie.liens.flatMap((lien) =>
       lien.serieLiee.editions.flatMap((autre) => autre.volumes.map((volume) => volume.isbn)),
@@ -145,6 +147,11 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
     suivie: suivi.suivie,
     slugMangaNews: edition.slugMangaNews,
     couvertureUrl: edition.couvertureUrl,
+    couvertureEnTete:
+      couvertureDeProgression(volumesPossedes(edition.volumes)) ??
+      couvertureDIdentification(edition.volumes, vignettes) ??
+      edition.couvertureUrl ??
+      edition.serie.couvertureUrl,
     prixDefautCentimes: edition.prixDefautCentimes,
     sorties: edition.sorties.map((sortie) => ({
       numero: sortie.numero,
