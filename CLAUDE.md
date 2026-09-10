@@ -283,6 +283,30 @@ catalogue, classé par correspondance exacte, préfixe, puis similarité trigram
 **Aucun seuil ne sélectionne** : l'algorithme classe, l'utilisateur choisit. C'est la leçon des
 cinq échecs d'appariement automatique, et ici elle est gratuite — il y a un humain devant.
 
+#### Chaque ligne de résultat porte une vignette — fait le 10 septembre 2026
+
+Une ligne de texte seule ne dit pas ce qu'on regarde. Chaque résultat affiche donc la couverture
+du tome 1 en **56×80**, à gauche du titre, et le scanner en fait autant sur sa carte de candidat
+en **70×100** — là c'est la confirmation visuelle qu'on a scanné le bon tome.
+
+**Aucun appel externe pendant une recherche.** La vignette est jointe en base, en une requête :
+`ParutionCatalogue` joint `VignetteCatalogue` sur l'EAN, et le groupe retient la première image
+disponible par numéro croissant. Une recherche reste donc une lecture locale, comme §5 l'exige.
+L'ordre de résolution est **la base d'abord** :
+
+1. le premier tome de l'édition qui a une `couvertureUrl` — les 114 / 116 éditions en collection ;
+2. sinon la `VignetteCatalogue` d'un de ses ISBN ;
+3. sinon `Edition.couvertureUrl`, puis `Serie.couvertureUrl`.
+
+C'est ce troisième cran qui donne enfin un usage à `Serie.couvertureUrl`, qu'aucun écran ne lisait.
+
+**Une vignette absente n'est pas un blanc cassé** : `Cover` retombe sur son placeholder, muet sur
+une ligne de catalogue puisqu'on ne sait pas quel tome l'image aurait montré.
+
+**Ce qui n'en profite pas encore** : les lignes de **wish list** et le bloc **Séries liées**
+prennent la couverture du tome 1 sans passer par le repli sur `VignetteCatalogue`. Même
+mécanisme à porter, dans `lib/editions.ts`.
+
 #### Une ligne de résultat par édition, pas par série
 
 **Un résultat = un groupe `(serieNormalise, marqueurEdition)`**, affiché avec son nombre de
@@ -1224,6 +1248,7 @@ Ce qui reste :
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
 | `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
 | `npm run catalogue:apply` | écrit `ParutionCatalogue`. `-- --dry-run` d'abord ; `-- --recalculer` réécrit les champs dérivés depuis `titreBrut` sans retélécharger un CSV |
+| `npm run vignettes:fetch` | **une couverture par groupe de catalogue**, depuis la BnF par EAN, en 256×360. Reprenable, `-- --max <n>` plafonne, `-- --tout` enchaîne les 12 000, `-- --dry-run` montre les cibles. Trie par **taille de groupe décroissante** et essaie jusqu'à 4 volumes avant de renoncer. Mémorise aussi les échecs, sinon un EAN sans image serait redemandé à chaque recherche |
 | `npm run covers:fetch` | acquiert les couvertures manquantes depuis MangaDex, `fr` puis `ja`. **Son idempotence part de `data/backup.json`** : relancer `db:backup` d'abord, sinon il retélécharge |
 | `npm run covers:bnf` | complète par la BnF, **par EAN**, pour ce que MangaDex n'a pas. Demande du 512×720 maximum, proportions respectées. `-- --refaire` reprend les couvertures déjà marquées `bnf`. Écrit `data/covers-bnf.json`, et `covers:upload` en tire `sourceCouverture` **et** `couvertureRecupereeLe` |
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |

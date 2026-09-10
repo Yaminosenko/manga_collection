@@ -181,6 +181,7 @@ export type ResultatLocal = {
   editeur: string | null;
   tomesParus: number;
   possedes: number;
+  couvertureUrl: string | null;
 };
 
 export type ResultatRecherche = {
@@ -211,6 +212,7 @@ export type CandidatEdition = {
   derniereParution: string | null;
   editionTerminee: boolean;
   slugEnCollection: string | null;
+  couvertureUrl: string | null;
 };
 
 export type TomeCandidat = {

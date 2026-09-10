@@ -18,6 +18,7 @@ type LigneGroupe = {
   tomesParus: number | null;
   lignes: bigint;
   derniereParution: Date | null;
+  couvertureUrl: string | null;
 };
 
 function estTerminee(derniereParution: Date | null, instant: Date): boolean {
@@ -40,6 +41,7 @@ function enCandidat(ligne: LigneGroupe, instant: Date): CandidatEdition {
     derniereParution: ligne.derniereParution?.toISOString() ?? null,
     editionTerminee: estTerminee(ligne.derniereParution, instant),
     slugEnCollection: null,
+    couvertureUrl: ligne.couvertureUrl,
   };
 }
 
@@ -51,7 +53,14 @@ const CHAMPS_GROUPE = Prisma.sql`
   mode() WITHIN GROUP (ORDER BY "editeur") AS "editeur",
   max("numero") FILTER (WHERE "date" <= now())::int AS "tomesParus",
   count(*)::bigint AS "lignes",
-  max("date") FILTER (WHERE "date" <= now()) AS "derniereParution"`;
+  max("date") FILTER (WHERE "date" <= now()) AS "derniereParution",
+  (array_agg("vignetteUrl" ORDER BY "numero" ASC NULLS LAST, "date" ASC)
+     FILTER (WHERE "vignetteUrl" IS NOT NULL))[1] AS "couvertureUrl"`;
+
+const PARUTIONS_AVEC_VIGNETTE = Prisma.sql`
+  SELECT pc.*, v."couvertureUrl" AS "vignetteUrl"
+  FROM "ParutionCatalogue" pc
+  LEFT JOIN "VignetteCatalogue" v ON v."ean" = pc."ean"`;
 
 export async function rechercherCandidats(
   terme: string,
@@ -64,7 +73,7 @@ export async function rechercherCandidats(
 
   const groupes = await prisma.$queryRaw<LigneGroupe[]>`
     SELECT "serieNormalise", ${MARQUEUR_NORMALISE} AS "marqueurNormalise", ${CHAMPS_GROUPE}
-    FROM "ParutionCatalogue"
+    FROM (${PARUTIONS_AVEC_VIGNETTE}) parutions
     WHERE "serieNormalise" LIKE ${`%${requete}%`}
        OR similarity("serieNormalise", ${requete}) >= ${SIMILARITE_CATALOGUE_MIN}
     GROUP BY 1, 2
@@ -104,7 +113,7 @@ export async function candidatParGroupe(
 ): Promise<CandidatEdition | null> {
   const groupes = await prisma.$queryRaw<LigneGroupe[]>`
     SELECT "serieNormalise", ${MARQUEUR_NORMALISE} AS "marqueurNormalise", ${CHAMPS_GROUPE}
-    FROM "ParutionCatalogue"
+    FROM (${PARUTIONS_AVEC_VIGNETTE}) parutions
     WHERE "serieNormalise" = ${serieNormalise}
       AND ${MARQUEUR_NORMALISE} IS NOT DISTINCT FROM ${marqueurNormalise}
     GROUP BY 1, 2`;

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { ajouterCandidatDirect, rechercherAuCatalogue } from "@/lib/actions";
 import { CaretRight, MagnifyingGlass } from "@/components/icons";
+import { Cover } from "@/components/cover";
 import {
   DELAI_RECHERCHE_MS,
   LIBELLE_AJOUT_EN_COURS,
@@ -28,7 +29,10 @@ const RECHERCHE_VIDE: ResultatRecherche = { locales: [], candidats: [], termeRes
 
 const SECTION = "text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase";
 const LIGNE =
-  "border-row-divider flex min-h-11 items-center gap-[10px] border-b py-[10px] text-left";
+  "border-row-divider flex min-h-11 items-center gap-[12px] border-b py-[10px] text-left";
+const VIGNETTE =
+  "shadow-edge h-[80px] w-[56px] flex-none overflow-hidden rounded-cover bg-surface";
+const PLACEHOLDER_VIGNETTE = "p-[4px] text-[9px] text-neutral-700";
 
 export function SearchSeries() {
   const [terme, setTerme] = useState("");
@@ -116,6 +120,15 @@ export function SearchSeries() {
             <h2 className={SECTION}>{LIBELLE_DEJA_EN_COLLECTION}</h2>
             {resultats.locales.map((locale) => (
               <Link key={locale.slug} href={`/edition/${locale.slug}`} className={LIGNE}>
+                <span className={VIGNETTE}>
+                  <Cover
+                    couvertureUrl={locale.couvertureUrl}
+                    numero={null}
+                    titre={locale.titre}
+                    afficherNumero={false}
+                    placeholderClassName={PLACEHOLDER_VIGNETTE}
+                  />
+                </span>
                 <span className="flex min-w-0 flex-1 flex-col gap-[3px]">
                   <span className="titre-serie truncate text-[14px] font-medium text-text">
                     {locale.titre}
@@ -141,6 +154,15 @@ export function SearchSeries() {
                 onClick={() => ouvrir(candidat)}
                 className={`${LIGNE} disabled:opacity-50`}
               >
+                <span className={VIGNETTE}>
+                  <Cover
+                    couvertureUrl={candidat.couvertureUrl}
+                    numero={null}
+                    titre={candidat.titre}
+                    afficherNumero={false}
+                    placeholderClassName={PLACEHOLDER_VIGNETTE}
+                  />
+                </span>
                 <span className="flex min-w-0 flex-1 flex-col gap-[3px]">
                   <span className="titre-serie truncate text-[14px] font-medium text-text">
                     {candidat.titre}

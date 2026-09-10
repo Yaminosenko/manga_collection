@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { Check, MagnifyingGlass, WarningCircle } from "@/components/icons";
+import { Cover } from "@/components/cover";
 import { ajouterCandidatDirect, basculerTome, resoudreIsbn } from "@/lib/actions";
 import {
   CANDIDATS_SCAN_MAX,
@@ -30,6 +31,8 @@ const CHAMP =
   "bg-surface w-full rounded-md px-[12px] py-[9px] text-[13px] text-text outline-none placeholder:text-neutral-600";
 const BOUTON =
   "flex min-h-11 items-center justify-center rounded-md border border-accent px-[14px] text-[13px] font-medium text-accent transition-colors hover:bg-accent/12";
+const VIGNETTE_SCAN =
+  "shadow-edge h-[100px] w-[70px] flex-none overflow-hidden rounded-cover bg-bg";
 const INTERVALLE_DETECTION_MS = 400;
 const LARGEUR_IDEALE = 1920;
 const HAUTEUR_IDEALE = 1080;
@@ -407,13 +410,25 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
     const { candidat, tomesAvecEan } = resultat.prepare;
     return (
       <article className="bg-surface flex flex-col gap-[8px] rounded-md p-[14px]">
-        <span className="titre-serie text-text text-[15px] font-medium">{candidat.titre}</span>
-        <span className="text-[12px] text-neutral-500">
-          {[candidat.nom, resultat.prepare.editeur].filter(Boolean).join(" · ")}
-        </span>
-        <span className="text-[11.5px] text-neutral-500">
-          {candidat.tomesParus} tomes parus · {tomesAvecEan} avec ISBN
-        </span>
+        <div className="flex items-start gap-[12px]">
+          <span className={VIGNETTE_SCAN}>
+            <Cover
+              couvertureUrl={candidat.couvertureUrl}
+              numero={null}
+              titre={candidat.titre}
+              afficherNumero={false}
+            />
+          </span>
+          <span className="flex min-w-0 flex-1 flex-col gap-[6px]">
+            <span className="titre-serie text-text text-[15px] font-medium">{candidat.titre}</span>
+            <span className="text-[12px] text-neutral-500">
+              {[candidat.nom, resultat.prepare.editeur].filter(Boolean).join(" · ")}
+            </span>
+            <span className="text-[11.5px] text-neutral-500">
+              {candidat.tomesParus} tomes parus · {tomesAvecEan} avec ISBN
+            </span>
+          </span>
+        </div>
         {candidat.slugEnCollection ? (
           <Link
             href={`/edition/${candidat.slugEnCollection}`}

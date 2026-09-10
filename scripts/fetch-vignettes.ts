@@ -23,7 +23,15 @@ const OPTION_PLAFOND = "--max";
 const OPTION_ESSAI = "--dry-run";
 const OPTION_TOUT = "--tout";
 
-type Cible = { ean: string; titre: string; numero: number | null };
+const VOLUMES_ESSAYES = 4;
+
+type Cible = {
+  ean: string;
+  titre: string;
+  numero: number | null;
+  serieNormalise: string;
+  marqueurNormalise: string | null;
+};
 
 function lireOptions(argv: string[]): { plafond: number; essai: boolean } {
   const essai = argv.includes(OPTION_ESSAI);
@@ -55,7 +63,8 @@ async function cibles(): Promise<Cible[]> {
       WHERE "ean" IS NOT NULL
       ORDER BY "serieNormalise", lower("marqueurEdition"), "numero" ASC NULLS LAST, "date" ASC
     )
-    SELECT p."ean", p."serieTitre" AS "titre", p."numero"
+    SELECT p."ean", p."serieTitre" AS "titre", p."numero",
+           p."serieNormalise", p.marqueur AS "marqueurNormalise"
     FROM premiers p
     JOIN groupes g
       ON g."serieNormalise" = p."serieNormalise"
@@ -63,6 +72,18 @@ async function cibles(): Promise<Cible[]> {
     LEFT JOIN "VignetteCatalogue" v ON v."ean" = p."ean"
     WHERE v."ean" IS NULL
     ORDER BY g.lignes DESC, g.derniere DESC`;
+}
+
+async function eansDuGroupe(cible: Cible): Promise<{ ean: string; numero: number | null }[]> {
+  return prisma.$queryRaw<{ ean: string; numero: number | null }[]>`
+    SELECT "ean", min("numero")::int AS "numero"
+    FROM "ParutionCatalogue"
+    WHERE "serieNormalise" = ${cible.serieNormalise}
+      AND lower("marqueurEdition") IS NOT DISTINCT FROM ${cible.marqueurNormalise}
+      AND "ean" IS NOT NULL
+    GROUP BY "ean"
+    ORDER BY min("numero") ASC NULLS LAST
+    LIMIT ${VOLUMES_ESSAYES}`;
 }
 
 let dernierDepart = 0;
@@ -151,64 +172,68 @@ async function main() {
   let trouvees = 0;
   let absentes = 0;
   let refusees = 0;
+  let replis = 0;
   let poids = 0;
   let rang = 0;
 
   await enFile(
     aTraiter.map((cible) => async () => {
-      const image = await telecharger(cible.ean);
       rang += 1;
+      const candidats = await eansDuGroupe(cible);
 
-      if (!image) {
-        absentes += 1;
+      for (const candidat of candidats) {
+        const image = await telecharger(candidat.ean);
+        if (!image) continue;
+
+        const cote = dimensions(image.octets);
+        if (cote !== null && cote.hauteur < HAUTEUR_MINIMALE) {
+          refusees += 1;
+          continue;
+        }
+
+        const url = await deposer(
+          `${PREFIXE_OBJETS}/${candidat.ean}.${image.extension}`,
+          image.octets,
+          image.type,
+        );
+        trouvees += 1;
+        poids += image.octets.length;
+        if (candidat.ean !== cible.ean) {
+          replis += 1;
+        }
+
         await prisma.vignetteCatalogue.upsert({
           where: { ean: cible.ean },
-          create: { ean: cible.ean, couvertureUrl: null, source: SOURCE },
-          update: { couvertureUrl: null, source: SOURCE, recupereeLe: new Date() },
+          create: {
+            ean: cible.ean,
+            couvertureUrl: url,
+            source: SOURCE,
+            largeur: cote?.largeur ?? null,
+            hauteur: cote?.hauteur ?? null,
+          },
+          update: {
+            couvertureUrl: url,
+            source: SOURCE,
+            largeur: cote?.largeur ?? null,
+            hauteur: cote?.hauteur ?? null,
+            recupereeLe: new Date(),
+          },
         });
+
+        if (rang % 50 === 0) {
+          console.log(
+            `  ${rang}/${aTraiter.length} — ${trouvees} images (${replis} par repli), ${absentes} absentes`,
+          );
+        }
         return;
       }
 
-      const cote = dimensions(image.octets);
-      if (cote !== null && cote.hauteur < HAUTEUR_MINIMALE) {
-        refusees += 1;
-        await prisma.vignetteCatalogue.upsert({
-          where: { ean: cible.ean },
-          create: { ean: cible.ean, couvertureUrl: null, source: SOURCE },
-          update: { couvertureUrl: null, source: SOURCE, recupereeLe: new Date() },
-        });
-        return;
-      }
-
-      const url = await deposer(
-        `${PREFIXE_OBJETS}/${cible.ean}.${image.extension}`,
-        image.octets,
-        image.type,
-      );
-      trouvees += 1;
-      poids += image.octets.length;
-
+      absentes += 1;
       await prisma.vignetteCatalogue.upsert({
         where: { ean: cible.ean },
-        create: {
-          ean: cible.ean,
-          couvertureUrl: url,
-          source: SOURCE,
-          largeur: cote?.largeur ?? null,
-          hauteur: cote?.hauteur ?? null,
-        },
-        update: {
-          couvertureUrl: url,
-          source: SOURCE,
-          largeur: cote?.largeur ?? null,
-          hauteur: cote?.hauteur ?? null,
-          recupereeLe: new Date(),
-        },
+        create: { ean: cible.ean, couvertureUrl: null, source: SOURCE },
+        update: { couvertureUrl: null, source: SOURCE, recupereeLe: new Date() },
       });
-
-      if (rang % 50 === 0) {
-        console.log(`  ${rang}/${aTraiter.length} — ${trouvees} images, ${absentes} absentes`);
-      }
     }),
     CONCURRENCE,
   );
@@ -219,7 +244,7 @@ async function main() {
 
   console.log();
   console.log(`Traites ce passage    : ${aTraiter.length}`);
-  console.log(`Images obtenues       : ${trouvees}${refusees > 0 ? ` (${refusees} trop petites, ecartees)` : ""}`);
+  console.log(`Images obtenues       : ${trouvees}${replis > 0 ? ` (dont ${replis} sur un tome suivant)` : ""}${refusees > 0 ? ` (${refusees} trop petites, ecartees)` : ""}`);
   console.log(`Sans notice illustree : ${absentes}`);
   if (trouvees > 0) {
     console.log(`Poids moyen           : ${(poids / trouvees / 1024).toFixed(1)} Ko`);

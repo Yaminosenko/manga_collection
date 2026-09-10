@@ -186,10 +186,22 @@ async function editionsLocales(utilisateurId: string, requete: string): Promise<
       nom: true,
       editeur: true,
       tomesParus: true,
-      serie: { select: { titre: true } },
-      volumes: { select: { possessions: selectionPossession(utilisateurId) } },
+      couvertureUrl: true,
+      serie: { select: { titre: true, couvertureUrl: true } },
+      volumes: {
+        orderBy: { numero: "asc" },
+        select: {
+          couvertureUrl: true,
+          isbn: true,
+          possessions: selectionPossession(utilisateurId),
+        },
+      },
     },
   });
+
+  const vignettes = await vignettesParIsbn(
+    editions.flatMap((edition) => edition.volumes.map((volume) => volume.isbn)),
+  );
 
   return editions.map((edition) => ({
     slug: edition.slug,
@@ -198,7 +210,30 @@ async function editionsLocales(utilisateurId: string, requete: string): Promise<
     editeur: edition.editeur,
     tomesParus: edition.tomesParus,
     possedes: edition.volumes.filter(estPossede).length,
+    couvertureUrl:
+      edition.volumes.find((volume) => volume.couvertureUrl !== null)?.couvertureUrl ??
+      edition.volumes
+        .map((volume) => (volume.isbn === null ? null : vignettes.get(volume.isbn) ?? null))
+        .find((url) => url !== null) ??
+      edition.couvertureUrl ??
+      edition.serie.couvertureUrl,
   }));
+}
+
+async function vignettesParIsbn(isbns: (string | null)[]): Promise<Map<string, string>> {
+  const connus = [...new Set(isbns.filter((isbn): isbn is string => isbn !== null))];
+  if (connus.length === 0) {
+    return new Map();
+  }
+  const vignettes = await prisma.vignetteCatalogue.findMany({
+    where: { ean: { in: connus }, couvertureUrl: { not: null } },
+    select: { ean: true, couvertureUrl: true },
+  });
+  return new Map(
+    vignettes.flatMap((vignette) =>
+      vignette.couvertureUrl === null ? [] : [[vignette.ean, vignette.couvertureUrl] as const],
+    ),
+  );
 }
 
 async function parRebond(utilisateurId: string, requete: string): Promise<ResultatRecherche> {
