@@ -3,122 +3,186 @@
     {
       "slug": "burn-the-witch",
       "type": "AUTRE",
-      "romaji": "BURN THE WITCH"
+      "titre": "Burn the Witch"
+    },
+    {
+      "slug": "bleach-13-blades",
+      "type": "HORS_SERIE",
+      "titre": "Bleach 13 Blades."
+    }
+  ],
+  "bleach-13-blades": [
+    {
+      "slug": "bleach",
+      "type": "SERIE_MERE",
+      "titre": "BLEACH"
     }
   ],
   "blue-eyes-sword": [
     {
       "slug": "red-eyes-sword-akame-ga-kill",
       "type": "PREQUELLE",
-      "romaji": "Akame ga Kill!"
-    }
-  ],
-  "burn-the-witch": [
-    {
-      "slug": "bleach",
-      "type": "AUTRE",
-      "romaji": "BLEACH"
+      "titre": "Red Eyes Sword - Akame ga Kill !"
     }
   ],
   "doubt": [
     {
       "slug": "judge",
       "type": "SUITE",
-      "romaji": "JUDGE"
+      "titre": "Judge"
     }
   ],
   "fire-force": [
     {
       "slug": "soul-eater",
       "type": "AUTRE",
-      "romaji": "Soul Eater"
+      "titre": "SOUL EATER"
     }
   ],
   "judge": [
     {
       "slug": "doubt",
       "type": "PREQUELLE",
-      "romaji": "Doubt"
+      "titre": "Doubt"
+    }
+  ],
+  "mirai-nikki-le-journal-du-futur": [
+    {
+      "slug": "mirai-nikki-mosaic",
+      "type": "SPIN_OFF",
+      "titre": "Future Diary: Mosaic"
+    },
+    {
+      "slug": "mirai-nikki-paradox",
+      "type": "SPIN_OFF",
+      "titre": "Future Diary Paradox"
+    }
+  ],
+  "mirai-nikki-mosaic": [
+    {
+      "slug": "mirai-nikki-le-journal-du-futur",
+      "type": "SERIE_MERE",
+      "titre": "Future Diary"
+    }
+  ],
+  "mirai-nikki-paradox": [
+    {
+      "slug": "mirai-nikki-le-journal-du-futur",
+      "type": "SERIE_MERE",
+      "titre": "Future Diary"
+    }
+  ],
+  "mushoku-tensei": [
+    {
+      "slug": "mushoku-tensei-les-aventures-de-roxy",
+      "type": "PREQUELLE",
+      "titre": "Mushoku Tensei - Les aventures de Roxy"
+    },
+    {
+      "slug": "mushoku-tensei-l-epee-d-iris",
+      "type": "HORS_SERIE",
+      "titre": "Mushoku Tensei - L'Épée d'Eris"
+    }
+  ],
+  "mushoku-tensei-les-aventures-de-roxy": [
+    {
+      "slug": "mushoku-tensei",
+      "type": "SUITE",
+      "titre": "Mushoku Tensei : Nouvelle vie, nouvelle chance"
+    }
+  ],
+  "my-hero-academia": [
+    {
+      "slug": "my-hero-academia-smash",
+      "type": "SPIN_OFF",
+      "titre": "My Hero Academia Smash!!"
+    }
+  ],
+  "my-hero-academia-smash": [
+    {
+      "slug": "my-hero-academia",
+      "type": "SERIE_MERE",
+      "titre": "My Hero Academia"
     }
   ],
   "pandora-heart": [
     {
       "slug": "pandora-heart-8-5",
       "type": "GUIDE",
-      "romaji": null
+      "titre": null
     }
   ],
   "pandora-heart-8-5": [
     {
       "slug": "pandora-heart",
       "type": "SERIE_MERE",
-      "romaji": null
+      "titre": null
     }
   ],
   "red-eyes-sword-akame-ga-kill": [
     {
       "slug": "red-eyes-sword-akame-ga-kill-zero",
       "type": "PREQUELLE",
-      "romaji": "Akame ga Kill! Zero"
+      "titre": "Red Eyes Sword - Akame Ga Kill !"
     },
     {
       "slug": "blue-eyes-sword",
       "type": "SUITE",
-      "romaji": "Hinowa ga Yuku!"
+      "titre": "Blue Eyes Sword"
     }
   ],
   "red-eyes-sword-akame-ga-kill-zero": [
     {
       "slug": "red-eyes-sword-akame-ga-kill",
       "type": "SUITE",
-      "romaji": "Akame ga Kill!"
+      "titre": "Red Eyes Sword - Akame ga Kill !"
     }
   ],
   "saint-seiya-the-lost-canvas": [
     {
       "slug": "saint-seiya-the-lost-canvas-chronicles",
       "type": "HORS_SERIE",
-      "romaji": "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden"
+      "titre": "Saint Seiya - The Lost Canvas - La légende d'Hadès"
     }
   ],
   "saint-seiya-the-lost-canvas-chronicles": [
     {
       "slug": "saint-seiya-the-lost-canvas",
       "type": "SERIE_MERE",
-      "romaji": "Saint Seiya: THE LOST CANVAS - Meiou Shinwa"
+      "titre": "Saint Seiya - The Lost Canvas - La légende d'Hadès"
     }
   ],
   "soul-eater": [
     {
       "slug": "fire-force",
       "type": "AUTRE",
-      "romaji": "Enen no Shouboutai"
+      "titre": "Fire Force"
     }
   ],
   "the-ancient-magus-bride": [
     {
-      "slug": "the-ancient-magus-bride-le-bleu-du-magicien",
-      "type": "SPIN_OFF",
-      "romaji": "Mahoutsukai no Yome: Shihen.108 - Majutsushi no Ao"
+      "slug": "the-ancient-magus-bride-supplement-2",
+      "type": "HORS_SERIE",
+      "titre": "The Ancient Magus' Bride: Collected Fragments"
     },
     {
-      "slug": "the-ancient-magus-bride-supplement-2",
-      "type": "GUIDE",
-      "romaji": null
+      "slug": "the-ancient-magus-bride-le-bleu-du-magicien",
+      "type": "SPIN_OFF",
+      "titre": "The Ancient Magus Bride - Le bleu du magicien"
     }
   ],
   "the-ancient-magus-bride-le-bleu-du-magicien": [
     {
       "slug": "the-ancient-magus-bride",
       "type": "SERIE_MERE",
-      "romaji": "Mahoutsukai no Yome"
+      "titre": "La Femme du Mage"
     }
   ],
   "the-ancient-magus-bride-supplement-2": [
     {
       "slug": "the-ancient-magus-bride",
       "type": "SERIE_MERE",
-      "romaji": null
+      "titre": "La Femme du Mage"
     }
   ]
 }

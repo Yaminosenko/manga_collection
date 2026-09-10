@@ -4,14 +4,17 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { candidatParEan, candidatParGroupe, rechercherCandidats, tomesDuGroupe } from "@/lib/catalogue";
-import { enrichirDepuisTomes } from "@/lib/enrichissement";
+import { enrichirDepuisTomes, enrichirSerieParTitre } from "@/lib/enrichissement";
 import { chercherParIsbn } from "@/lib/bnf";
 import { creerDepuisCandidat } from "@/lib/creation";
 import { promouvoirSortie } from "@/lib/promotion";
 import { exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estPossede, selectionPossession } from "@/lib/possession";
+import { rebondir } from "@/lib/rebond";
+import { normaliserAlias } from "@/lib/normalisation";
 import {
+  CANDIDATS_RECHERCHE_MAX,
   LIBELLE_AUTEUR_INCONNU,
   LIBELLE_CANDIDAT_INTROUVABLE,
   LONGUEUR_RECHERCHE_MIN,
@@ -19,7 +22,13 @@ import {
   STATUT_A_LA_CREATION,
 } from "@/lib/constants";
 import { isbnValide } from "@/lib/domain";
-import type { CandidatPrepare, ResultatRecherche, ResultatScan } from "@/lib/domain";
+import type {
+  CandidatEdition,
+  CandidatPrepare,
+  ResultatLocal,
+  ResultatRecherche,
+  ResultatScan,
+} from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
 function revaliderEdition(slug: string): void {
@@ -139,49 +148,92 @@ export async function rechercherAuCatalogue(terme: string): Promise<ResultatRech
 
   const requete = terme.trim();
   if (requete.length < LONGUEUR_RECHERCHE_MIN) {
-    return { locales: [], candidats: [] };
+    return { locales: [], candidats: [], termeResolu: null };
   }
 
   const utilisateurId = await idUtilisateurCourant();
 
   if (isbnValide(requete.replace(/[^0-9]/g, ""))) {
     const candidat = await candidatParEan(requete.replace(/[^0-9]/g, ""));
-    return { locales: [], candidats: candidat ? [candidat] : [] };
+    return { locales: [], candidats: candidat ? [candidat] : [], termeResolu: null };
   }
 
-  const [editions, candidats] = await Promise.all([
-    prisma.edition.findMany({
-      where: {
-        suivis: { some: { utilisateurId } },
-        OR: [
-          { serie: { titre: { contains: requete, mode: "insensitive" } } },
-          { serie: { alias: { has: requete } } },
-          { nom: { contains: requete, mode: "insensitive" } },
-        ],
-      },
-      take: RESULTATS_RECHERCHE_MAX,
-      select: {
-        slug: true,
-        nom: true,
-        editeur: true,
-        tomesParus: true,
-        serie: { select: { titre: true } },
-        volumes: { select: { possessions: selectionPossession(utilisateurId) } },
-      },
-    }),
+  const [locales, candidats] = await Promise.all([
+    editionsLocales(utilisateurId, requete),
     rechercherCandidats(requete),
   ]);
 
+  if (locales.length > 0 || candidats.length > 0) {
+    return { locales, candidats, termeResolu: null };
+  }
+
+  return parRebond(utilisateurId, requete);
+}
+
+async function editionsLocales(utilisateurId: string, requete: string): Promise<ResultatLocal[]> {
+  const editions = await prisma.edition.findMany({
+    where: {
+      suivis: { some: { utilisateurId } },
+      OR: [
+        { serie: { titre: { contains: requete, mode: "insensitive" } } },
+        { serie: { aliasNormalises: { has: normaliserAlias(requete) } } },
+        { nom: { contains: requete, mode: "insensitive" } },
+      ],
+    },
+    take: RESULTATS_RECHERCHE_MAX,
+    select: {
+      slug: true,
+      nom: true,
+      editeur: true,
+      tomesParus: true,
+      serie: { select: { titre: true } },
+      volumes: { select: { possessions: selectionPossession(utilisateurId) } },
+    },
+  });
+
+  return editions.map((edition) => ({
+    slug: edition.slug,
+    titre: edition.serie.titre,
+    nom: edition.nom,
+    editeur: edition.editeur,
+    tomesParus: edition.tomesParus,
+    possedes: edition.volumes.filter(estPossede).length,
+  }));
+}
+
+async function parRebond(utilisateurId: string, requete: string): Promise<ResultatRecherche> {
+  const rebond = await rebondir(requete);
+  if (rebond.titres.length === 0) {
+    return { locales: [], candidats: [], termeResolu: null };
+  }
+
+  const parSlug = new Map<string, ResultatLocal>();
+  const parGroupe = new Map<string, CandidatEdition>();
+  let termeResolu: string | null = null;
+
+  for (const titre of rebond.titres) {
+    const [locales, candidats] = await Promise.all([
+      editionsLocales(utilisateurId, titre),
+      rechercherCandidats(titre),
+    ]);
+
+    for (const locale of locales) {
+      parSlug.set(locale.slug, locale);
+      termeResolu ??= titre;
+    }
+    for (const candidat of candidats) {
+      const cle = `${candidat.serieNormalise} ${candidat.marqueurNormalise ?? ""}`;
+      if (parGroupe.has(cle)) continue;
+      parGroupe.set(cle, candidat);
+      termeResolu ??= titre;
+    }
+    if (parGroupe.size >= CANDIDATS_RECHERCHE_MAX) break;
+  }
+
   return {
-    locales: editions.map((edition) => ({
-      slug: edition.slug,
-      titre: edition.serie.titre,
-      nom: edition.nom,
-      editeur: edition.editeur,
-      tomesParus: edition.tomesParus,
-      possedes: edition.volumes.filter(estPossede).length,
-    })),
-    candidats,
+    locales: [...parSlug.values()].slice(0, RESULTATS_RECHERCHE_MAX),
+    candidats: [...parGroupe.values()].slice(0, CANDIDATS_RECHERCHE_MAX),
+    termeResolu,
   };
 }
 
@@ -244,13 +296,20 @@ export async function ajouterCandidatDirect(
     redirect(`/edition/${candidat.slugEnCollection}`);
   }
 
+  const serie = await enrichirSerieParTitre(candidat.titre);
+  const auteur = prepare.auteur === "" ? serie.auteur : prepare.auteur;
+
   const editionSlug = await creerDepuisCandidat({
     serieNormalise,
     marqueurNormalise,
     titre: candidat.titre,
-    titreVo: null,
-    auteur: prepare.auteur === "" ? LIBELLE_AUTEUR_INCONNU : prepare.auteur,
-    genres: [],
+    titreVo: serie.titreVo,
+    auteur: auteur === "" ? LIBELLE_AUTEUR_INCONNU : auteur,
+    genres: serie.genres,
+    themes: serie.themes,
+    cible: serie.cible,
+    alias: serie.alias,
+    idMangaBaka: serie.idMangaBaka,
     nom: candidat.nom,
     editeur: prepare.editeur,
     tomesParus: candidat.tomesParus,

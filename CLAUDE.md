@@ -331,7 +331,7 @@ le besoin se présente, c'est à l'écran État que ces deux champs iront — **
 | `auteur` | BnF `700`/`701` code `070`, interrogée sur **les tomes les plus anciens autant que les plus récents** | une notice récente est souvent incomplète : sur l'Édition grimoire de L'Atelier des sorciers, les tomes 4 et 5 rendent `auteurs=[]` et les tomes 1 et 2 rendent « Kamome Shirahama » |
 | `prixDefaut` | BnF `010$d`, **le tome le plus récent d'abord** — le prix monte avec le temps, l'auteur ne change pas | mesuré : 19,95 € pour l'Édition grimoire contre 7,70 € pour l'édition simple, sur la même série |
 | `editionTerminee` | **pré-cochée** si aucune sortie depuis `MOIS_SANS_SORTIE_POUR_TERMINEE` (24) | sinon une série finie en 2010 afficherait le hachuré « à paraître » et trois cases fantômes |
-| `genres` · `themes` | **vides** | AniList est coupée, et le catalogue n'en porte pas |
+| `genres` · `themes` · `cible` · `titreVo` · `alias` | **MangaBaka, si un de ses titres est exactement le titre du candidat** | le catalogue n'en porte pas, et l'égalité exacte est la seule règle d'appariement automatique que ce document n'ait pas vue échouer. Rien trouvé ⇒ champs vides, comme avant : jamais une donnée devinée |
 | couvertures | **aucune à la création** | la BnF plafonne à 150 px ; la tâche quotidienne les ramassera |
 
 **Le titre ne vient jamais de la BnF.** Pour l'ISBN de Bleach tome 22, son `200$a` rend
@@ -384,7 +384,8 @@ l'ouverture d'un écran. Tout écran lit la base locale.
 ### Sources
 | Source | Usage | État mesuré |
 |---|---|---|
-| AniList (GraphQL) | Métadonnées série, couverture série, pont vers les titres romaji | 12/12 · sans clé, sans quota gênant — **mais l'API est coupée depuis leur côté, voir ci-dessous** |
+| **MangaBaka (HTTP)** | **Genres, thèmes, cible, titres alternatifs et abréviations, auteur, séries liées** | **22/25 sur les titres VF de la collection · sans clé · API publique documentée · CC BY-NC-SA 4.0** |
+| AniList (GraphQL) | ~~Métadonnées série, couverture série, pont vers les titres romaji~~ | **coupée par ses exploitants, remplacée par MangaBaka le 10 septembre 2026 — voir ci-dessous** |
 | BnF (SRU) | Éditeur, ISBN, date de parution VF, **prix en UNIMARC `010$d`** | **éditeur : 106/113 · sans clé**, les 7 derniers saisis à la main |
 | BnF (Service Couvertures) | **Couvertures VF par ISBN/EAN** | sans clé · réutilisation documentée · URL en bêta |
 | MangaDex | Couvertures de tome, **dernier recours** | **93 % en `ja` · en attente d'autorisation** |
@@ -395,12 +396,57 @@ l'ouverture d'un écran. Tout écran lit la base locale.
 > **AniList est coupée par ses propres exploitants — constaté le 9 septembre 2026.** Toute
 > requête rend `403` avec « The AniList API has been temporarily disabled due to severe
 > stability issues. » Ce n'est ni le réseau du poste ni une clé manquante : la réponse vient
-> d'AniList. Conséquences immédiates : **`/ajouter` ne propose plus que la collection locale**
-> (l'écran dégrade proprement, « La recherche externe est indisponible »), et
-> `anilist:fetch` comme `relations:fetch` ne rendront rien. La sonde du 28 août reste vraie de
-> ce que l'API donnait ; elle ne dit rien de sa disponibilité. **Argument de plus pour brancher
-> `/ajouter` sur `ParutionCatalogue`** — voir « Reste à faire » : le catalogue porte le nom FR,
-> l'éditeur, la date et l'EAN sans dépendre de personne.
+> d'AniList. La sonde du 28 août reste vraie de ce que l'API donnait ; elle ne dit rien de sa
+> disponibilité. **Son code a été supprimé le 10 septembre 2026** — `lib/anilist.ts`,
+> `fetch-anilist.ts`, `apply-anilist.ts` — et non laissé en dormance, comme la saisie manuelle
+> la veille. `data/anilist.json` reste au dépôt : c'est la trace de ce que ses 26 recherches
+> manuelles avaient résolu, et `RECHERCHES_MANUELLES` est repris tel quel dans
+> `fetch-mangabaka.ts`.
+
+### MangaBaka — ce que la sonde du 10 septembre 2026 a établi
+
+Sondée en ~45 requêtes. `https://api.mangabaka.org/v2/`, deux points d'entrée utiles :
+`series/search?q=…&limit=…` et `series/{id}?schema=full`. **Plafonds annoncés : 30 requêtes par
+minute sur la recherche, 180 sur le reste**, et uniquement sur les requêtes non cachées —
+`cf-cache-status: HIT` ne compte pas. Le code prend 24 et 120 pour garder de la marge.
+
+**C'est la première source, après la BnF, dont l'usage programmatique n'est pas en attente d'une
+autorisation.** Le site dit vouloir qu'on utilise ses données « in dashboards, scripts, bots, or
+personal tools **without scraping pages** », et publie un dump nightly (`series.sqlite.tar.gz`,
+533 Mo · `series.jsonl.zst`, 382 Mo). 300 000+ séries, agrégées d'AniList, MyAnimeList,
+MangaUpdates, Kitsu, Anime-Planet et Shikimori.
+
+**Ce qu'elle donne, mesuré sur 25 séries de la collection interrogées par leur titre VF :**
+**22 / 25 appariées.** Les 3 échecs sont nos découpages VF — `IPPO – S4 LA LOI DU RING`,
+`Nier: Automata - Opération Pearl Harbor`, `SAINT SEIYA - THE LOST CANVAS - CHRONICLES`, et ce
+sont exactement les cas que `RECHERCHES_MANUELLES` couvrait déjà pour AniList.
+
+- **Sa recherche indexe les titres français et les alternatifs.** `L'Atelier des sorciers` et
+  `BLUE EYES SWORD` → *Hinowa ga CRUSH!* tombent juste — là où le seuil AniList mettait 0,000.
+  Le titre FR n'est *stocké* que sur 9/22, mais l'index le trouve quand il existe.
+- **Les abréviations sont dans la donnée.** Jujutsu Kaisen porte
+  `{"language":"ja-Latn","traits":["alternative"],"title":"JJK","note":"Short title"}`. C'est ce
+  qui règle « les abréviations ne trouvent rien » **par la donnée** et non par un apprentissage.
+- **148 tags hiérarchiques** avec `name_path`, `is_genre`, `weight` (`core` / `recurrent` / …) et
+  `is_spoiler` : les genres, les thèmes et la cible sortent du même champ.
+- `authors` et `artists` **séparés**, `relationships` avec `relation_type` et `chronology`.
+
+**Ce qu'elle ne donne pas, et c'est le point décisif : rien au niveau du tome.** Aucun ISBN,
+aucun EAN — grep sur l'objet complet de 115 Ko : zéro —, aucune couverture par tome, aucune date
+par tome, et `search?q=<ean>` rend 0 résultat. `final_volume` est le **compte japonais** et
+n'égale notre `tomesParus` VF que sur **11 / 22** (Dragon Ball 42 contre 21, GANTZ 37 contre 18).
+L'éditeur VF n'est présent que sur **2 / 22**. **`ParutionCatalogue` + BnF restent donc le seul
+chemin vers l'EAN, `tomesParus` et l'éditeur** ; MangaBaka ne touche qu'à la couche série.
+
+**Sa couverture de série est écartée pour l'instant** (décidé le 10 septembre) : elle est unique
+par série, souvent la jaquette japonaise du tome 1, et 2 des 22 sont sous 256×360. Les
+couvertures restent le chantier `covers:fetch` / `covers:upload`.
+
+> **Licence : CC BY-NC-SA 4.0 — personnel et non commercial, attribution obligatoire.**
+> L'attribution est posée en pied de `/ajouter` (`MENTION_MANGABAKA`). Pour la V1 c'est sans
+> friction, mais **§13.4 ne peut pas encaisser un euro avec cette source en place** : le `NC`
+> l'interdit et le `SA` imposerait de repartager à l'identique. C'est une **quatrième échéance
+> externe**, de la même famille que les droits sur les couvertures.
 
 ### Ce que la sonde du 28 août 2026 a établi (échantillon de 12 séries)
 
@@ -796,12 +842,26 @@ restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 | ISBN et dates de sortie | **1 491 / 1 714**, soit 87 % |
 | Éditeur · `titreVo` · `alias` | **113 / 113** · **105 / 109** · **105 / 109** |
 | Sorties annoncées (`Sortie`) | **14**, dont **10** sur une édition suivie — l'écran n'affiche que ces 10 |
-| Liens entre séries (`LienSerie`) | **18** sur 16 séries |
+| Liens entre séries (`LienSerie`) | ~~**18** sur 16 séries~~ → **28** sur 23 séries depuis MangaBaka |
 | `Edition.creeeParId` | **nul sur les 113** — c'est-à-dire « venu de l'import » |
 | `Edition.slugMangaNews` | **0 / 113** — le lien sortant de la page Édition ne s'affiche donc jamais |
 | Éditions à zéro tome possédé | **4**, et ce sont exactement les 4 `VENDUE` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0 / 1 714** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **52 009** parutions, **11 530** séries, **janvier 2000 → décembre 2026 sans un mois manquant** — 324 mois, dont **49 956 avec EAN** |
+
+**Relevé le 10 septembre 2026, après le passage à MangaBaka** — la base est passée à **110 séries
+et 114 éditions** entre-temps :
+
+| | |
+|---|---|
+| `Serie.idMangaBaka` | **107 / 110**. Les 3 sans : `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5` |
+| `Serie.aliasNormalises` | **1 214 formes indexées**, dont 86 séries avec une forme japonaise |
+| `Serie.alias` | **998 alias ajoutés** aux 110 qui n'en portaient qu'un — le `titreVo` |
+| Abréviations captées | **60 séries** en portent une : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
+| Genres | **22 valeurs distinctes**, vocabulaire MangaBaka. `Hentai` a disparu — il était faux sur Hellsing et Radiant. `Mecha`, `Sports` et `Ecchi` sont récupérés depuis les tags par `TAGS_PROMUS_EN_GENRE` |
+| Thèmes | **143 valeurs distinctes**, dont les 99 françaises intactes : seules les **11** séries sans aucun thème en ont reçu, en anglais |
+| Cible | **2 remplies**, là où elle était nulle. `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
+| `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen (id 6199) |
 
 Les cinq premiers compteurs de §8 ont bougé depuis l'import, et c'est normal : le planning a
 élargi des dénominateurs, et la promotion des sorties échues (`app/api/cron/route.ts`) crée des
@@ -861,6 +921,14 @@ détail et les cas réels sont dans `JOURNAL.md`.
 - **Le cache des couvertures est immuable un an.** Corriger une image ne suffit pas : un
   appareil qui a vu la mauvaise la garde. Et **supprimer un fichier ne nettoie pas la base** —
   toute suppression remet `couvertureUrl` à `null` dans le même geste.
+- **`api.mangabaka.org` se ferme au poste professionnel après un gros volume.** Constaté le
+  10 septembre : ~250 requêtes passent, puis la connexion est **fermée sans réponse TLS** —
+  `curl` rend 000, pas un 429. Ce n'est pas un plafond MangaBaka qu'on aurait franchi : les
+  cadences étaient à 24 et 120 par minute contre 30 et 180 annoncées. Et ce n'est pas le réseau
+  en général — `mangabaka.org` et `catalogue.bnf.fr` répondent 200 dans la même seconde. Le même
+  poste avait déjà rendu `SELF_SIGNED_CERT_IN_CHAIN` par intermittence sur cet hôte. **Tout
+  script qui parle à MangaBaka doit donc être reprenable**, et `mangabaka:fetch` l'est : il ne
+  recalcule pas une entrée déjà écrite au manifeste.
 - **Après un `git pull` touchant au schéma, `npx prisma generate`** — `lib/generated/` est
   ignoré par git. Après un déplacement de route, purger `.next`, et le redémarrer si un serveur
   de développement tournait.
@@ -876,13 +944,44 @@ détail et les cas réels sont dans `JOURNAL.md`.
 > parlaient encore de `creerSerieAvecEdition`, fonction **supprimée depuis**, sont tombées avec
 > elle. L'ordre est celui de la valeur décroissante, pas celui de l'ancienneté.
 
+#### Ce que le passage à MangaBaka laisse ouvert
+
+Le chantier est **fait et vérifié sur la production le 10 septembre 2026** — voir `JOURNAL.md`.
+Ce qui reste :
+
+- **« aot » ne trouve pas L'Attaque des Titans, il trouve SAOTOME LOVE & BOXING.** Le `contains`
+  sur le titre attrape `s-aot-ome`, donc la recherche croit avoir trouvé et **le rebond ne part
+  jamais**. Le défaut est dans la règle de sous-chaîne, pas dans les alias : c'est elle qui fait
+  marcher la frappe partielle (« bleac » → Bleach), donc la resserrer casserait autre chose.
+  Deux issues, à trancher : ne considérer comme « trouvé » qu'une correspondance sur le terme
+  **entier** — un alias exact ou un `serieNormalise` égal — et laisser le rebond compléter les
+  simples sous-chaînes ; ou lancer le rebond en parallèle quand le terme est court. La première
+  est plus juste, la seconde plus prévisible en nombre d'appels.
+- **Rien n'expire dans `AliasRecherche`, et aucun écran ne la montre.** Une traduction fausse s'y
+  installe à demeure ; seule une suppression en base la déloge.
+- **`mushoku-tensei` reste sans correspondance** — MangaBaka ne connaît pas « Mushoku Tensei »
+  nu, et le terme manuel `Mushoku Tensei : Nouvelle vie, nouvelle chance` le résout, mais les
+  trois séries sans correspondance gardent leurs genres d'AniList : `les-legendaires-saga` et
+  `my-hero-academia-ultra-archive` sont **absentes du catalogue MangaBaka**, et
+  `pandora-heart-8-5` aussi — le guide 8.5 n'y existe pas, seul un artbook « Odds and Ends »
+  s'en approche, et ce n'est pas le même objet. Elles sont dans `ABSENTES_DE_MANGABAKA`.
+- **Les thèmes venus de MangaBaka sont en anglais**, et n'ont été écrits que sur les 11 séries qui
+  n'en avaient aucun — pour ne pas mélanger deux langues dans les 99 valeurs françaises
+  existantes. La table de correspondance d'affichage que §13.2 doit déjà aux genres leur est due
+  aussi.
+
 #### Ce qui améliore le chemin automatique
 
-- **Les abréviations ne trouvent rien.** « jjk » ne rend aucun résultat : le catalogue n'a pas
-  d'alias. `Serie.alias` est en base et renseigné sur 105 séries depuis la migration ; la
-  recherche locale s'en sert déjà, mais le catalogue non. Les **alias appris** de §13.3 — « JJK »
-  suivi de l'ouverture de Jujutsu Kaisen enregistre l'association — sont ce qui rapporte le plus
-  au quotidien.
+- ~~**Les abréviations ne trouvent rien.**~~ — **traité le 10 septembre 2026 par MangaBaka**,
+  et par la donnée plutôt que par l'apprentissage : le catalogue MangaBaka porte « JJK » comme
+  titre alternatif noté « Short title ». Trois pièces, décrites en §5 et en §13.3 :
+  `Serie.aliasNormalises` (forme comparable, index GIN, un `has()` exact au lieu d'un `contains`
+  sensible à la casse), le **rebond** — quand le local et le catalogue ne rendent rien, MangaBaka
+  traduit le terme et `ParutionCatalogue` est relancé sur les titres rendus — et la table
+  `AliasRecherche`, qui **mémorise** la traduction pour que la deuxième fois soit locale.
+  Reste à faire dessus : **rien n'expire jamais dans `AliasRecherche`**, et une traduction
+  fausse s'y installe donc à demeure ; il n'y a aucun écran pour la voir ni la corriger, seule
+  une suppression en base la déloge.
 - **Compléter la liste `MARQUEURS_EDITION` du script d'import, puis `--recalculer`** —
   **reporté par décision du 9 septembre 2026, à garder en mémoire.** Le problème n'est pas
   seulement la casse (`Edition Limitée` / `Edition limitée`, `Edition spéciale` /
@@ -1018,11 +1117,11 @@ détail et les cas réels sont dans `JOURNAL.md`.
 | `npm run covers:manuelles <dossier>` | convertit un lot fourni à la main |
 | `npm run covers:upload` | dépose dans R2 et écrit `couvertureUrl`. `-- --force <slug>[:<numero>]` pour corriger, `-- --max <n>` pour relever le plafond de 150 envois |
 | `npm run covers:migrate` | rebascule toutes les `couvertureUrl` vers `R2_PUBLIC_BASE`. `-- --dry-run` d'abord. Sert au jour du domaine personnalisé : sans rien à envoyer, il ne fait que réécrire |
-| `npm run anilist:fetch` puis `anilist:apply` | genres et titres VO |
+| `npm run mangabaka:fetch` puis `mangabaka:apply` | genres, thèmes, cible, titre VO, **alias et abréviations**, et les liens de séries. `apply` n'écrit que les appariements **exacts** ; `-- --non-exactes` force les autres, `-- --revert` remonte `data/series-avant-mangabaka.json` |
 | `npm run publication:fetch` puis `publication:apply` | tomes parus BnF et état de parution |
 | `npm run titles:fetch` puis `titles:apply` | noms de séries alignés sur la BnF |
 | `npm run publishers:fetch` puis `publishers:apply` | éditeurs depuis la BnF |
-| `npm run relations:fetch` puis `relations:apply` | séries liées depuis AniList |
+| `npm run relations:fetch` puis `relations:apply` | séries liées. **`fetch` n'appelle plus rien** : il dérive `data/relations.json` des liens déjà portés par `data/mangabaka.json`, hors ligne et instantanément |
 | `npm run editions:audit` | **lecture seule** — apparie les 113 éditions au catalogue par les EAN de leurs tomes et liste les écarts de nom, d'éditeur et de tomes parus dans `data/audit-editions.json`. Aveugle sur les 23 éditions sans ISBN |
 | `npm run db:migrate` | applique les migrations à Neon sur le 443. `LOCAL_DATABASE_URL` la détourne vers un Postgres local, `MIGRATIONS_DIR` vers un autre dossier — les deux servent à répéter une migration avant de la livrer |
 
@@ -1782,12 +1881,28 @@ vingt ans de saisie communautaire.
 Avec un catalogue pré-construit (13.2), le problème change de nature : l'utilisateur ne
 cherche plus « dehors » mais **dans la base**. Par ordre de rendement :
 
-1. **`Serie.alias`** — posé en 13.1, c'est ce qui rapporte le plus
+1. ~~**`Serie.alias`**~~ — **fait le 10 septembre 2026.** `alias` porte les libellés affichables,
+   **`aliasNormalises` porte la forme comparable** et son index GIN : la recherche locale fait un
+   `has()` exact sur l'index au lieu d'un `contains` sensible à la casse, qui ne pouvait pas
+   faire correspondre « jjk » à « JJK ». Les deux colonnes sont dérivées et se réécrivent
+   entièrement à chaque `mangabaka:apply` — ne rien y saisir à la main sans le savoir.
 2. **Recherche plein texte PostgreSQL** — normalisation des accents, trigrammes, natif sur Neon
 3. **L'ISBN comme chemin privilégié** — le scan court-circuite entièrement la recherche ;
    chaque scan est un appariement exact
-4. **Les alias appris** — « JJK » suivi de l'ouverture de Jujutsu Kaisen enregistre
-   l'association. C'est ainsi que se constituent les vingt ans de l'autre.
+4. ~~**Les alias appris**~~ — **fait le 10 septembre 2026, mais pas comme prévu.** Le plan disait
+   « JJK suivi de l'ouverture de Jujutsu Kaisen enregistre l'association », c'est-à-dire une
+   observation du comportement. La donnée MangaBaka rend ça inutile pour l'essentiel : « JJK » y
+   **est déjà**, comme titre alternatif noté « Short title ». Ce qui est enregistré n'est donc pas
+   ce que l'utilisateur a cliqué mais **ce que MangaBaka a répondu** — le rebond de §5 écrit une
+   ligne `AliasRecherche` (`normalise` → `titres`), et la fois suivante le terme est résolu sans
+   sortir de la base. C'est plus sûr : un clic ne prouve pas qu'une association est juste, alors
+   qu'ici l'association vient d'un catalogue.
+
+   **La conséquence à connaître : la recherche fait un appel externe.** §5 dit « jamais à
+   l'ouverture d'un écran », et c'est respecté — le rebond ne part que sur une frappe, et
+   seulement quand le local **et** le catalogue ont rendu zéro résultat. Mais c'est bien un appel
+   dans le chemin d'une interaction, la première fois pour un terme donné, et il dégrade en
+   silence si MangaBaka ne répond pas : l'écran affiche « Aucun résultat », pas une panne.
 
 L'appariement difficile ne subsiste qu'à l'import du catalogue : **une fois, hors ligne,
 sous supervision**, jamais pendant qu'un utilisateur attend.
@@ -1816,10 +1931,19 @@ partagées, comparaison, suivi d'autres utilisateurs, badges.
 
 ---
 
-### 13.4 Les trois échéances externes
+### 13.4 Les quatre échéances externes
 
 Elles ne dépendent pas du code et ont le **même déclencheur : le premier euro encaissé**.
 Tout ce qui précède est réversible ; à partir de là, non.
+
+**La licence de MangaBaka interdit le commercial** — CC BY-NC-SA 4.0, constaté le 10 septembre
+2026, et c'est la quatrième, ajoutée le jour où la source est entrée dans le code. Le `NC`
+interdit l'usage commercial des données originales de MangaBaka ; le `SA` imposerait de
+repartager à l'identique ce qui en dérive. Les genres, thèmes, cible, alias et liens de séries
+en viennent depuis cette date. Trois issues, à trancher **avant** d'ouvrir le paiement, pas
+après : demander une licence commerciale à MangaBaka, se replier sur des sources sans clause
+`NC`, ou renoncer au paiement. **Ne pas se rassurer en disant que ce ne sont que des métadonnées**
+— c'est exactement ce que la licence couvre.
 
 **Vercel Hobby devient interdit.** Le plan gratuit ne peut pas servir un projet générant du
 revenu, et Vercel l'applique. Pro à 20 $/mois, soit environ 50 utilisateurs payants pour

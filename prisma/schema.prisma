@@ -42,22 +42,25 @@ model Utilisateur {
 }
 
 model Serie {
-  id            String      @id @default(uuid())
-  slug          String      @unique
-  titre         String
-  titreVo       String?
-  auteur        String
-  genres        String[]
-  themes        String[]
-  alias         String[]    @default([])
-  cible         String?
-  couvertureUrl String?
-  editions      Edition[]
-  liens         LienSerie[] @relation("liensSortants")
-  liensEntrants LienSerie[] @relation("liensEntrants")
+  id              String      @id @default(uuid())
+  slug            String      @unique
+  titre           String
+  titreVo         String?
+  auteur          String
+  genres          String[]
+  themes          String[]
+  alias           String[]    @default([])
+  aliasNormalises String[]    @default([])
+  cible           String?
+  couvertureUrl   String?
+  idMangaBaka     Int?
+  editions        Edition[]
+  liens           LienSerie[] @relation("liensSortants")
+  liensEntrants   LienSerie[] @relation("liensEntrants")
 
   @@index([titre])
   @@index([alias(ops: ArrayOps)], type: Gin)
+  @@index([aliasNormalises(ops: ArrayOps)], type: Gin)
 }
 
 model LienSerie {
@@ -167,4 +170,14 @@ model ParutionCatalogue {
   @@index([ean])
   @@index([serieNormalise])
   @@index([serieNormalise(ops: raw("gin_trgm_ops"))], type: Gin, map: "ParutionCatalogue_serieNormalise_trgm_idx")
+}
+
+model AliasRecherche {
+  normalise    String   @id
+  terme        String
+  titres       String[] @default([])
+  idMangaBaka  Int?
+  utilisations Int      @default(1)
+  creeLe       DateTime @default(now())
+  vuLe         DateTime @default(now())
 }

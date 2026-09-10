@@ -92,8 +92,10 @@ type SerieSauvee = {
   genres: string[];
   themes: string[];
   alias: string[];
+  aliasNormalises: string[];
   cible: string | null;
   couvertureUrl: string | null;
+  idMangaBaka: number | null;
   editions: EditionSauvee[];
 };
 
@@ -187,8 +189,10 @@ async function exporter() {
       genres: serie.genres,
       themes: serie.themes,
       alias: serie.alias,
+      aliasNormalises: serie.aliasNormalises,
       cible: serie.cible,
       couvertureUrl: serie.couvertureUrl,
+      idMangaBaka: serie.idMangaBaka,
       editions: serie.editions.map((edition) => ({
         id: edition.id,
         slug: edition.slug,
@@ -311,8 +315,10 @@ async function restaurer() {
     genres: serie.genres,
     themes: serie.themes,
     alias: serie.alias ?? [],
+    aliasNormalises: serie.aliasNormalises ?? [],
     cible: serie.cible,
     couvertureUrl: serie.couvertureUrl,
+    idMangaBaka: serie.idMangaBaka ?? null,
   }));
 
   const editions = sauvegarde.series.flatMap((serie) =>

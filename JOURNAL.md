@@ -3138,3 +3138,117 @@ titres de manga-news.
 C'est la même racine que le cas « Grimoire » relevé le même jour : **le découpage série /
 édition repose sur le titre**, et la liste des marqueurs est incomplète. Le report du
 `--recalculer` est consigné en « Reste à faire ».
+
+---
+
+### Fait — MangaBaka remplace AniList, et les abréviations trouvent enfin
+
+**10 septembre 2026.** AniList était coupée depuis la veille ; MangaBaka la remplace sur toute
+la couche série, et son catalogue apporte au passage ce que « Reste à faire » désignait comme
+l'entrée la plus rentable : les abréviations.
+
+#### Ce que la sonde a établi, en ~45 requêtes
+
+`https://api.mangabaka.org/v2/`, sans clé, **30 requêtes par minute sur la recherche et 180 sur
+le reste**, uniquement sur les requêtes non cachées. 300 000+ séries, plus un dump nightly.
+**C'est la première source, après la BnF, dont l'usage programmatique n'est pas en attente d'une
+autorisation** — leur site demande explicitement qu'on passe par l'API plutôt que par le site.
+
+Mesuré sur 25 séries de la collection interrogées par leur titre VF : **22 / 25 appariées**. Sa
+recherche indexe les titres français et alternatifs — `L'Atelier des sorciers` et
+`BLUE EYES SWORD` → *Hinowa ga CRUSH!* tombent juste, là où le seuil AniList mettait **0,000**.
+
+**Et les abréviations sont dans la donnée**, pas à apprendre : Jujutsu Kaisen porte
+`{"language":"ja-Latn","traits":["alternative"],"title":"JJK","note":"Short title"}`.
+
+**Ce qu'elle ne donne pas : rien au niveau du tome.** Aucun ISBN — grep sur l'objet complet de
+115 Ko : zéro —, aucune couverture ni date par tome, `search?q=<ean>` rend 0 résultat.
+`final_volume` est le compte japonais et n'égale notre `tomesParus` VF que sur **11 / 22**.
+L'éditeur VF n'est là que sur **2 / 22**. `ParutionCatalogue` + BnF restent donc le seul chemin
+vers l'EAN, `tomesParus` et l'éditeur.
+
+#### Les trois pièces livrées
+
+| Pièce | Ce qu'elle fait |
+|---|---|
+| `Serie.aliasNormalises` + index GIN | la recherche locale faisait `alias: { has: requete }`, une égalité **sensible à la casse** qui ne pouvait pas rapprocher « jjk » de « JJK ». Elle interroge la forme normalisée |
+| le rebond (`lib/rebond.ts`) | local et catalogue à zéro ⇒ MangaBaka traduit le terme, `ParutionCatalogue` est relancé sur les titres rendus. Délai propre de 3,5 s, pas les 8 s des autres appels : c'est dans le chemin d'une frappe |
+| `AliasRecherche` | mémorise la traduction. La deuxième fois ne sort pas de la base |
+
+`lib/anilist.ts` et ses deux scripts sont **supprimés**, pas mis en dormance. `data/anilist.json`
+reste : c'est la trace de ses 26 recherches manuelles, reprises dans `fetch-mangabaka.ts`.
+**`relations:fetch` ne fait plus aucun appel** — les liens sont déjà dans le manifeste MangaBaka,
+il les dérive hors ligne.
+
+#### La règle d'appariement : l'égalité exacte, et rien d'autre
+
+`mangabaka:apply` **n'écrit que les appariements exacts** — un des titres MangaBaka, normalisé,
+égal au terme cherché. C'est la seule règle d'appariement automatique que ce document n'ait pas
+vue échouer, et le résultat est **107 exactes sur 107 appariements**, 110 séries interrogées.
+
+Il a fallu deux corrections pour y arriver, et les deux disent la même chose : **l'étalon est le
+terme cherché, pas le titre local.**
+
+- Le premier passage comparait au titre VF. `red-eyes-sword-akame-ga-kill-zero` retenait alors la
+  série mère, et `IPPO – S4 LA LOI DU RING` marquait 0,368 sur un candidat juste. Quand
+  `RECHERCHES_MANUELLES` fournit le terme, c'est **lui** qui a été écrit à la main, donc lui qui
+  fait foi.
+- Trois entrées manuelles héritées d'AniList pointaient volontairement vers la **série mère**,
+  faute de mieux à l'époque. Avec l'étalon corrigé, elles devenaient « exactes » et auraient
+  écrit les alias et l'identifiant du parent sur l'enfant. Corrigées : `mushoku-tensei` → id 217,
+  `mushoku-tensei-l-epee-d-iris` → id 9594 (et le Sheet écrit « Iris » là où l'édition dit
+  « Eris »), `the-ancient-magus-bride-supplement-2` → id 101258, 断片集. **Aucun identifiant n'est
+  plus partagé entre deux séries.**
+- `pandora-heart-8-5` n'existe pas chez MangaBaka — seul un artbook « Odds and Ends » s'en
+  approche, et ce n'est pas le même objet. Il rejoint `ABSENTES_DE_MANGABAKA` avec
+  `les-legendaires-saga` et `my-hero-academia-ultra-archive`.
+
+#### Trois défauts trouvés par la répétition sur le banc, dont deux invisibles autrement
+
+Le banc a servi exactement à ce pour quoi il existe.
+
+1. **Le poids le plus fort n'est pas `core`, c'est `defining`** — et ma règle de thèmes ne
+   retenait que `core`, donc ignorait les 34 tags les plus caractéristiques de Jujutsu Kaisen
+   pour en garder 29 moins pertinents. Corrigé par un rang de poids explicite.
+2. **Le vocabulaire de genres de MangaBaka n'est pas celui d'AniList** : la première application
+   a fait disparaître `Ecchi`, `Mecha`, `Sports` et `Hentai`. Perdre `Hentai` est un gain — il
+   était faux sur Hellsing et Radiant. Perdre les trois autres était une régression, et les trois
+   existent en tags (`Settings > Sci-Fi > Mecha`, `Themes > Sports`,
+   `Sexual Content > Intensity > Ecchi`) : `TAGS_PROMUS_EN_GENRE` les remonte au rang de genre.
+3. **La normalisation arrachait le dakuten japonais.** `ワンパンマン` devenait `ワンハンマン` :
+   `NFKD` décompose パ en ハ + U+3099, et le filtre à diacritiques emportait la marque. U+3099
+   n'est pas un accent latin. Corrigé en ne dépouillant que les marques qui suivent une lettre
+   **latine**, puis en recomposant en NFC — sans quoi le dernier filtre, qui ne garde que lettres
+   et chiffres, supprimait la marque devenue autonome.
+
+Un quatrième contrôle, mené par acquit de conscience : `'x' = ANY(colonne)` **ne peut pas**
+emprunter un index GIN, seul `colonne @> ARRAY['x']` le fait — vérifié plan à la main,
+`enable_seqscan` coupé. Le `has` de Prisma compile bien en `@>`, donc l'index sert.
+
+#### Vérifié à l'écran, puis en base
+
+Sur la production, dans le navigateur, en tapant pour de vrai :
+
+- **« OPM » ouvre sur ONE-PUNCH MAN**, section « Déjà dans la collection ».
+- **« jjk » affiche « Trouvé sous "Jujutsu Kaisen" »** puis **sept éditions distinctes** du
+  catalogue avec leur compte de tomes — simple 30, Prestige 30, Roman 2, Agenda, trois Coffrets
+  Starter, toutes chez Ki-oon. C'est §4 appliqué : une ligne par édition, pas par série.
+- La base porte ensuite la ligne `AliasRecherche` `jjk → Jujutsu Kaisen (id 6199)`, écrite par ce
+  clic et par rien d'autre.
+
+État après écriture : **107 / 110 identifiants**, **1 214 formes indexées** dont 86 japonaises,
+**998 alias ajoutés**, **60 séries portant une abréviation**, **28 liens de séries** contre 18,
+2 cibles remplies, 11 séries pourvues de thèmes. Les 99 thèmes français sont intacts — seules les
+séries qui n'en avaient aucun en ont reçu.
+
+#### Deux choses à savoir, écrites le jour même
+
+**La licence est CC BY-NC-SA 4.0**, et c'est une **quatrième échéance externe** de §13.4 :
+le `NC` interdit d'encaisser un euro avec cette source en place, le `SA` imposerait de
+repartager à l'identique. L'attribution est en pied de `/ajouter`.
+
+**`api.mangabaka.org` se ferme au poste professionnel après ~250 requêtes** — connexion fermée,
+`curl` rend 000, pas un 429, alors que `mangabaka.org` et `catalogue.bnf.fr` répondent 200 dans
+la même seconde. Ce n'est pas un plafond franchi : les cadences étaient à 24 et 120 contre 30 et
+180 annoncées. `mangabaka:fetch` est donc **reprenable**, et il l'a fallu. `-- --recalculer`
+rejoue les règles sur les identifiants déjà résolus sans consommer le quota de recherche.

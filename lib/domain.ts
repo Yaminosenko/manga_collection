@@ -7,7 +7,6 @@ import {
   LONGUEUR_ISBN,
   PREFIXES_ISBN,
 } from "@/lib/constants";
-import type { SerieDistante } from "@/lib/anilist";
 import type { StatutEdition, TypeLienSerie } from "@/lib/generated/prisma/enums";
 
 export type ResultatScan =
@@ -184,11 +183,10 @@ export type ResultatLocal = {
   possedes: number;
 };
 
-export type ResultatDistant = SerieDistante & { dejaEnCollection: boolean };
-
 export type ResultatRecherche = {
   locales: ResultatLocal[];
   candidats: CandidatEdition[];
+  termeResolu: string | null;
 };
 
 export type CandidatPrepare = {

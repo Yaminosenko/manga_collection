@@ -1,11 +1,11 @@
 {
-  "exporteeLe": "2026-09-09T15:59:58.693Z",
+  "exporteeLe": "2026-09-10T08:47:18.449Z",
   "compteurs": {
-    "series": 109,
-    "editions": 113,
-    "tomes": 1716,
-    "possedes": 1156,
-    "suivies": 84,
+    "series": 110,
+    "editions": 114,
+    "tomes": 1721,
+    "possedes": 1159,
+    "suivies": 85,
     "couvertures": 1676,
     "liens": 18
   },
@@ -147,8 +147,10 @@
       "alias": [
         "アクタージュ act-age"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "5a3b2d8d-686e-40df-8f89-e398b07dc5a0",
@@ -238,8 +240,10 @@
       "alias": [
         "エア・ギア"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "0cfe2766-1509-4f4f-ab3b-a787a97f7307",
@@ -1028,8 +1032,10 @@
       "alias": [
         "亜人"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "15b69101-36c8-4aae-9d90-b6e1cdc0ae95",
@@ -1420,8 +1426,10 @@
       "alias": [
         "All You Need Is Kill"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "408b9ce1-0ed3-4136-845a-cf4b01d90f20",
@@ -1509,8 +1517,10 @@
       "alias": [
         "アルマ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "19feaa44-5e37-47d4-8ddb-f7e9409949e6",
@@ -1638,8 +1648,10 @@
       "alias": [
         "暗殺教室"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "94920395-5ca1-4d64-8749-2eba0c69cae2",
@@ -2115,8 +2127,10 @@
       "alias": [
         "BEASTARS"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "bc0310bd-3a21-4cbf-ac20-e7cef96e6f2b",
@@ -2606,8 +2620,10 @@
       "alias": [
         "ベルセルク"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "7438ac65-b7c8-461a-96c0-881b09d89f17",
@@ -3657,8 +3673,10 @@
       "alias": [
         "ブラッククローバー"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d5eee821-accf-4b95-9986-dbb7598d56b5",
@@ -4446,8 +4464,10 @@
       "alias": [
         "ブラック・ラグーン"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "4b444975-0d67-4e87-b08d-175429e9ffcf",
@@ -4755,8 +4775,10 @@
       "alias": [
         "BLACK TORCH"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "02dc42d0-e3d3-44bd-aac2-bf5536102c56",
@@ -4901,8 +4923,10 @@
       "alias": [
         "ブラック★ロックシューター -イノセントソウル-"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "24922f71-c042-4564-8761-0b023161a6b8",
@@ -5003,8 +5027,10 @@
       "alias": [
         "ブラック★ロックシューター THE GAME"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "0b1a32db-f510-443f-a813-347d842f37f8",
@@ -5093,8 +5119,10 @@
       "alias": [
         "BLAME!"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "cafe37d5-217d-44ba-812e-58764ba4535c",
@@ -5257,8 +5285,10 @@
       "alias": [
         "ブレイザードライブ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "747e4f09-6db7-447e-bf5c-098bf88dcecc",
@@ -5485,8 +5515,10 @@
       "alias": [
         "BLEACH"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "564f9035-d34b-4768-bc6d-56d7ae0ac6e5",
@@ -7005,8 +7037,10 @@
         "Guide"
       ],
       "alias": [],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "b7007b6a-c179-43e9-8667-5617f2de6f58",
@@ -7072,8 +7106,10 @@
       "alias": [
         "青の祓魔師"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "1942bfd2-4e40-4052-a79f-2d6a2112e73a",
@@ -7768,8 +7804,10 @@
       "alias": [
         "ヒノワが征く!"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "75a89760-4a10-465a-bebb-7346f3a25bd3",
@@ -7974,8 +8012,10 @@
       "alias": [
         "BURN THE WITCH"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "39676607-5354-4ea3-add3-2c1160d28597",
@@ -8044,8 +8084,10 @@
       "alias": [
         "よふかしのうた"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "e31b0cc6-1e80-4f07-bec1-0282207c99d6",
@@ -8454,8 +8496,10 @@
       "alias": [
         "チェンソーマン"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "b1953384-b935-4837-9571-149d9726806c",
@@ -8948,8 +8992,10 @@
       "alias": [
         "貞操逆転世界"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "2d37564a-7e5f-4c4c-9ff9-dc882333687a",
@@ -9075,8 +9121,10 @@
       "alias": [
         "英雄教室"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "21e27c05-5918-4601-b19f-721975aaa577",
@@ -9540,8 +9588,10 @@
       "alias": [
         "CLAYMORE"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "b18de8f5-aee6-4482-b9f0-2c56764069d8",
@@ -10128,8 +10178,10 @@
       "alias": [
         "ディー・グレイマン"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "7942d834-4f12-4067-806e-1d146b02982d",
@@ -10757,8 +10809,10 @@
       "alias": [
         "魔都精兵のスレイブ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "a098b340-0e66-4122-8e11-a7e03d8f199b",
@@ -11205,8 +11259,10 @@
       "alias": [
         "Doubt"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "c98833ef-cfca-43ba-920c-42ffeae5fa1c",
@@ -11338,8 +11394,10 @@
       "alias": [
         "ドラゴンボール"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d022ea2c-49ca-4dbe-a43b-42e4d951b5be",
@@ -11887,8 +11945,10 @@
       "alias": [
         "炎炎ノ消防隊"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "e14fb711-0d3b-485a-be7c-68a444976929",
@@ -12619,8 +12679,10 @@
       "alias": [
         "ファイアパンチ"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "14b738e4-4dcd-4adc-b65c-92d842df4cdf",
@@ -12829,8 +12891,10 @@
       "alias": [
         "鋼の錬金術師"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "143c3f8d-32c4-467b-a462-d149f3c3ec9b",
@@ -13703,8 +13767,10 @@
       "alias": [
         "GANTZ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "a89d735b-2c15-4c0a-a08e-ed6c024560a2",
@@ -14107,8 +14173,10 @@
       "alias": [
         "おやすみプンプン"
       ],
+      "aliasNormalises": [],
       "cible": null,
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "de900589-3839-41dd-8ad1-e855408537b3",
@@ -14415,8 +14483,10 @@
       "alias": [
         "HELLSING"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d326b4d1-e03f-4222-b985-010727a8d84c",
@@ -14561,8 +14631,10 @@
       "alias": [
         "HIDEOUT"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "fa72912e-b948-4dc4-9324-1ebd115df1cd",
@@ -14631,8 +14703,10 @@
       "alias": [
         "はじめの一歩"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "59c53de9-c777-4e76-9dcf-d89f1864402f",
@@ -15220,8 +15294,10 @@
       "alias": [
         "魔男のイチ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d07b6bf6-515d-454b-8fc2-81175c536cc6",
@@ -15366,8 +15442,10 @@
       "alias": [
         "暗殺者である俺のステータスが勇者よりも明らかに強いのだが"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "3751fd78-61d2-4a16-b8b9-1676b87df7bf",
@@ -15532,8 +15610,10 @@
       "alias": [
         "JKハルは異世界で娼婦になった"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "9ea06ce5-ad4c-4a88-af90-76fb40397f46",
@@ -15719,8 +15799,10 @@
       "alias": [
         "JUDGE"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "256a7662-4854-4835-9975-31d5a7ff3ab9",
@@ -15887,8 +15969,10 @@
       "alias": [
         "カグラバチ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "87c9e603-265c-49a2-9f34-2526fbc41495",
@@ -16125,8 +16209,10 @@
       "alias": [
         "怪人麗嬢"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d72c8ab7-8328-45cc-9f83-b230f09d0302",
@@ -16460,8 +16546,10 @@
       "alias": [
         "怪獣８号"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "e3f63f64-7aaf-442d-b888-d808e7be355a",
@@ -16827,8 +16915,10 @@
       "alias": [
         "怪物事変"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "759d6d5b-f052-48c8-b516-b9e9f333d9ef",
@@ -17356,8 +17446,10 @@
       "alias": [
         "幼稚園WARS"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "c0f7b490-6991-4dc3-918d-ad8672c6cb7d",
@@ -17694,6 +17786,113 @@
       ]
     },
     {
+      "id": "14d3ccf4-caff-4384-b061-ae6d7473d6d3",
+      "slug": "l-atelier-des-sorciers-edition-grimoire",
+      "titre": "L'Atelier des sorciers - Édition grimoire",
+      "titreVo": null,
+      "auteur": "Kamome Shirahama",
+      "genres": [],
+      "themes": [],
+      "alias": [],
+      "aliasNormalises": [],
+      "cible": null,
+      "couvertureUrl": null,
+      "idMangaBaka": null,
+      "editions": [
+        {
+          "id": "715dbc91-ca92-44bd-be56-8b75e6edbc4b",
+          "slug": "l-atelier-des-sorciers-edition-grimoire",
+          "nom": "Édition simple",
+          "editeur": "Pika éditions",
+          "tomesParus": 5,
+          "editionTerminee": false,
+          "prixDefautCentimes": 1995,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+          "suivis": [
+            {
+              "id": "d0e56939-77cb-460d-971e-d345da901e15",
+              "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-10T06:54:51.386Z"
+            }
+          ],
+          "sorties": [],
+          "volumes": [
+            {
+              "id": "4f684a2e-b463-4d18-aebb-3d80dd485dee",
+              "numero": 1,
+              "isbn": "9782811698874",
+              "dateSortie": "2025-01-22T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": [
+                {
+                  "id": "cc91b5f2-b344-4f8a-bc1c-59a66bb0713a",
+                  "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "724347ea-b3ec-43d2-a814-2a27e474c25a",
+              "numero": 2,
+              "isbn": "9791043300677",
+              "dateSortie": "2025-04-09T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": [
+                {
+                  "id": "3734dc9f-8e25-41d0-a9f4-bc9088dcfa24",
+                  "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "a042aa39-2f0b-4e59-9a77-9efcf6d4e983",
+              "numero": 3,
+              "isbn": "9791043303005",
+              "dateSortie": "2025-07-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": []
+            },
+            {
+              "id": "4f2e2226-570f-4612-988e-47300178facc",
+              "numero": 4,
+              "isbn": "9791043301421",
+              "dateSortie": "2025-10-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": []
+            },
+            {
+              "id": "a79bd8fd-0689-44dd-b5fe-984c21c6b287",
+              "numero": 5,
+              "isbn": "9791043301438",
+              "dateSortie": "2026-05-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "possessions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "114ce57d-04b0-4d0c-a862-23e18e71ff86",
       "slug": "les-chroniques-d-azfareo",
       "titre": "LES CHRONIQUES D'AZFAREO",
@@ -17710,8 +17909,10 @@
       "alias": [
         "蒼竜の側用人"
       ],
+      "aliasNormalises": [],
       "cible": "Shojo",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "9103c3a7-4dab-467e-8626-d30fc14b548b",
@@ -17937,8 +18138,10 @@
         "héros"
       ],
       "alias": [],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "02dfb705-e939-408b-a10d-f1630f9b013f",
@@ -18229,8 +18432,10 @@
       "alias": [
         "LEVIATHAN"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d91c6b19-2f4b-4847-80eb-2a2faf1a5f28",
@@ -18338,8 +18543,10 @@
       "alias": [
         "マギ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "78341990-efcf-41c5-8da8-f371a5c65f43",
@@ -19123,8 +19330,10 @@
       "alias": [
         "図書館の大魔術師"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "8142fbb6-ab3a-4a07-95ad-39ae7052e4e8",
@@ -19350,8 +19559,10 @@
       "alias": [
         "魔入りました！入間くん"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "914bfe57-eea6-4dd2-b960-26400891b3ea",
@@ -20077,7 +20288,18 @@
               "dateSortie": "2026-08-19T00:00:00.000Z",
               "prixCentimes": null,
               "couvertureUrl": null,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "962a2865-b449-409a-974a-83e79743fd3a",
+                  "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             }
           ]
         }
@@ -20101,8 +20323,10 @@
       "alias": [
         "マッシュル-MASHLE-"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "df40ff37-0773-4939-aa40-aa1f05e0caba",
@@ -20510,8 +20734,10 @@
       "alias": [
         "未来日記"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "60a27a3c-fe18-4caf-bba7-3ce4c8a6a4af",
@@ -20798,8 +21024,10 @@
       "alias": [
         "未来日記: Mosaic"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "045899eb-8977-48fe-a390-8a75a36e079d",
@@ -20866,8 +21094,10 @@
       "alias": [
         "未来日記・パラドックス"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "83ed1dfb-0c49-4171-bee6-3efb1b132a9a",
@@ -20933,8 +21163,10 @@
       "alias": [
         "ウスズミの果て"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "38673a2e-cb79-481c-9bb6-ee4663aaf5fc",
@@ -21060,8 +21292,10 @@
       "alias": [
         "モンスターハンター オラージュ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "ff097aeb-3e1b-4548-844a-dedf099fe342",
@@ -21188,8 +21422,10 @@
       "alias": [
         "モンスター娘のいる日常"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "3f2716e5-db06-4219-b27b-0eef066a2903",
@@ -21605,8 +21841,10 @@
       "alias": [
         "無職転生 ～蛇足編～"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "30b39e57-912f-4ea0-947c-96038b4f78d0",
@@ -22110,8 +22348,10 @@
       "alias": [
         "無職転生 ～異世界行ったら本気だす～"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "65303817-29d6-408e-902d-1d109d650f4c",
@@ -22179,8 +22419,10 @@
       "alias": [
         "無職転生 ~ロキシーだって本気です~"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "7a6c2c5e-2dca-4ec6-bbd1-05cfe9ec61ba",
@@ -22466,8 +22708,10 @@
       "alias": [
         "我的姐姐是大明星"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "1aaf6ff5-c73d-46be-9f35-f8b4947d3764",
@@ -22634,8 +22878,10 @@
       "alias": [
         "僕のヒーローアカデミア 雄英白書"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "0c5b4fc9-2685-4d2d-afa9-116623781e50",
@@ -23520,8 +23766,10 @@
       "alias": [
         "僕のヒーローアカデミアすまっしゅ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d03fc383-f5a7-440a-9779-0abc60624dd8",
@@ -23660,8 +23908,10 @@
         "Guide"
       ],
       "alias": [],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "38526959-7407-484f-a8af-760b69ae2615",
@@ -23731,8 +23981,10 @@
       "alias": [
         "NARUTO -ナルト-"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "a2e196a4-4b55-4396-846c-5069eb5b6ff1",
@@ -25223,8 +25475,10 @@
       "alias": [
         "新世紀エヴァンゲリオン"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d445eda0-7bbe-4a3d-8937-e0fbd64009d7",
@@ -25412,8 +25666,10 @@
       "alias": [
         "ヨルハ 真珠湾降下作戦記録"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "76d0d460-8271-4b9b-bfd4-67e4f52927df",
@@ -25539,8 +25795,10 @@
       "alias": [
         "ノ・ゾ・キ・ア・ナ"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "ab0f8fa3-a3fc-4fde-abf2-9e4850ce83b5",
@@ -25854,8 +26112,10 @@
       "alias": [
         "ワンパンマン"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "6daad833-a254-4a0c-89be-933d4c028e5e",
@@ -26587,8 +26847,10 @@
       "alias": [
         "オリエント"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "ce59b05b-2a35-407f-9c19-476460f7877b",
@@ -27076,8 +27338,10 @@
       "alias": [
         "【推しの子】"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "efc9ebd6-15f2-4bff-95d0-1032d08efc63",
@@ -27448,8 +27712,10 @@
       "alias": [
         "パンドラハーツ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "51e01741-71c6-43a6-9935-7dd4d29ea98b",
@@ -27978,8 +28244,10 @@
       "alias": [
         "パンドラハーツ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "caf2804c-8d94-4bc1-9da4-9559996e6009",
@@ -28047,8 +28315,10 @@
       "alias": [
         "ポケットモンスターSPECIAL"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "24886f0d-acbe-4f3d-b179-7af3445055ba",
@@ -28213,8 +28483,10 @@
       "alias": [
         "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "db1c7d5f-ae91-4381-83fc-e37eb9d79e75",
@@ -28279,8 +28551,10 @@
       "alias": [
         "予告犯―THE COPYCAT―"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "c06b07cd-dc89-494d-a374-e43d99106374",
@@ -28385,8 +28659,10 @@
       "alias": [
         "幾日"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "ac121022-10e8-4f32-8b9d-b0e67f50a18c",
@@ -28821,8 +29097,10 @@
       "alias": [
         "ラグナクリムゾン"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "c03006d4-18da-457a-ba61-88cc06dadbe6",
@@ -29197,8 +29475,10 @@
       "alias": [
         "雷雷雷"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "0c299918-c21a-4722-9741-54693e3edbf6",
@@ -29309,8 +29589,10 @@
       "alias": [
         "アカメが斬る！"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "36672b76-1525-4237-b691-94c7820bb54c",
@@ -29659,8 +29941,10 @@
       "alias": [
         "アカメが斬る！零"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "79a663d2-4a4c-49cb-a08b-582713a40ba1",
@@ -29905,8 +30189,10 @@
       "alias": [
         "リライフ"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "1a444004-4d23-4470-8c73-fcb9b8d90250",
@@ -30251,8 +30537,10 @@
       "alias": [
         "リメンバー"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "cad99e27-b752-477a-90db-d9d098946fde",
@@ -30639,8 +30927,10 @@
       "alias": [
         "ルリドラゴン"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "c0114abd-c711-46f9-aed2-ecba56659dfb",
@@ -30770,8 +31060,10 @@
       "alias": [
         "幼女戦記"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "fe65f415-d170-4c07-b96c-5f737e83e973",
@@ -31277,8 +31569,10 @@
       "alias": [
         "聖闘士星矢 THE LOST CANVAS 冥王神話"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "735bb6cb-ac39-4b95-b5b2-40beea6963a0",
@@ -31827,8 +32121,10 @@
       "alias": [
         "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "4fa9dae8-ab90-4bde-b329-94ff27e7e033",
@@ -32198,8 +32494,10 @@
       "alias": [
         "早乙女選手、ひたかくす"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "1e224e9b-7981-4924-9ca1-6cd5224e6b4e",
@@ -32445,8 +32743,10 @@
       "alias": [
         "SERVAMP -サーヴァンプ-"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "8b7ccc7e-cdf4-44e3-a295-8ed08a8d4073",
@@ -32953,8 +33253,10 @@
       "alias": [
         "シャーマンキング"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "8f9df9e2-046b-4733-8cc1-42391df2fcc6",
@@ -33641,8 +33943,10 @@
       "alias": [
         "スーパーの裏でヤニ吸うふたり"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "c5a86b54-5d07-4d21-8bcb-87123b83d750",
@@ -33818,8 +34122,10 @@
       "alias": [
         "나 혼자만 레벨업"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "18021c05-b187-4ebd-b92f-b267424ff81a",
@@ -34248,8 +34554,10 @@
       "alias": [
         "ソウルイーター"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "d78bfeb4-a86d-4330-bef4-7b0cda1750d1",
@@ -35061,8 +35369,10 @@
       "alias": [
         "SPY×FAMILY"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "643af1cc-5a8b-409c-bf65-3f42b13852b0",
@@ -35432,8 +35742,10 @@
       "alias": [
         "無能なナナ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "ee2a9fb4-b8ae-435a-a956-1d4b6ce7816a",
@@ -35764,8 +36076,10 @@
       "alias": [
         "テラフォーマーズ"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "827c8a7d-3637-41a5-98d2-2974e2b4094f",
@@ -36274,8 +36588,10 @@
       "alias": [
         "魔法使いの嫁"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "a1d4d0c1-b33e-442e-994b-54385e305243",
@@ -36790,8 +37106,10 @@
       "alias": [
         "魔法使いの嫁 詩篇.108 魔術師の青"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "86b84a75-da1a-4077-a765-4685b31a2693",
@@ -37038,8 +37356,10 @@
       "alias": [
         "魔法使いの嫁"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "2f0a94ad-aa6b-4631-a599-5c3b645e26f8",
@@ -37108,8 +37428,10 @@
       "alias": [
         "約束のネバーランド"
       ],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "0a5d252d-b7cc-4dd4-9760-d4a4a15fc263",
@@ -37555,8 +37877,10 @@
       "alias": [
         "望まぬ不死の冒険者"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "8add2626-cada-4b54-93e4-317ed7830bb5",
@@ -37863,8 +38187,10 @@
       "alias": [
         "新しいきみへ"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "84689f46-fa6d-4b0d-bdae-d6acd087fdeb",
@@ -38028,8 +38354,10 @@
         "Survie"
       ],
       "alias": [],
+      "aliasNormalises": [],
       "cible": "Seinen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "b8b19090-fbed-4f68-bb17-be37f166194e",
@@ -38217,8 +38545,10 @@
       "alias": [
         "UQ HOLDER！"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "81c57303-13fa-41fd-a405-6a8055ea2ea7",
@@ -38822,8 +39152,10 @@
       "alias": [
         "なぜ僕の世界を誰も覚えていないのか？"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "6f940c7b-4304-4ca8-a03c-233f3ed308f9",
@@ -39137,8 +39469,10 @@
       "alias": [
         "ゆらぎ荘の幽奈さん"
       ],
+      "aliasNormalises": [],
       "cible": "Echi",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "4f7210d5-1da2-4d58-ab09-fab4bd442f5d",
@@ -39665,8 +39999,10 @@
       "alias": [
         "野生のラスボスが現れた！"
       ],
+      "aliasNormalises": [],
       "cible": "Shonen",
       "couvertureUrl": null,
+      "idMangaBaka": null,
       "editions": [
         {
           "id": "ee3c670c-3160-4e1f-a4cf-bb5f675a5247",

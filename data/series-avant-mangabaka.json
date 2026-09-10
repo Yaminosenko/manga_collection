@@ -1,0 +1,2082 @@
+{
+  "act-age": {
+    "titreVo": "アクタージュ act-age",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Cinéma"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "アクタージュ act-age"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "air-gear": {
+    "titreVo": "エア・ギア",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Ecchi",
+      "Romance",
+      "Sci-Fi",
+      "Sports"
+    ],
+    "themes": [
+      "Ecole",
+      "Sport"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "エア・ギア"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "ajin": {
+    "titreVo": "亜人",
+    "genres": [
+      "Action",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "themes": [
+      "Combats",
+      "Monstres",
+      "Mort"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "亜人"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "all-you-need-is-kill": {
+    "titreVo": "All You Need Is Kill",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mecha",
+      "Psychological",
+      "Romance",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Aliens",
+      "Guerre",
+      "Mort",
+      "Mature"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "All You Need Is Kill"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "alma": {
+    "titreVo": "アルマ",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "アルマ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "assassination-classroom": {
+    "titreVo": "暗殺教室",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [
+      "Alien",
+      "Assassinat",
+      "School Life"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "暗殺教室"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "beastars": {
+    "titreVo": "BEASTARS",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Adolescence",
+      "Amitié",
+      "Amour",
+      "Animaux",
+      "Ecole",
+      "Enquête",
+      "Harcèlement",
+      "Secrets",
+      "Société",
+      "Mature"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "BEASTARS"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "berserk": {
+    "titreVo": "ベルセルク",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Psychological"
+    ],
+    "themes": [
+      "Démons",
+      "Malédiction",
+      "Combats"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "ベルセルク"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "black-clover": {
+    "titreVo": "ブラッククローバー",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "themes": [
+      "Nekketsu",
+      "amitié",
+      "magie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ブラッククローバー"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "black-lagoon": {
+    "titreVo": "ブラック・ラグーン",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "themes": [
+      "Crime",
+      "Mafia",
+      "Pirate"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ブラック・ラグーン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "black-torch": {
+    "titreVo": "BLACK TORCH",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [
+      "Démons",
+      "Fantômes",
+      "Ninjas"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "BLACK TORCH"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "blackrock-shooter-innocent-soul": {
+    "titreVo": "ブラック★ロックシューター -イノセントソウル-",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "BRS ✭"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ブラック★ロックシューター -イノセントソウル-"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "blackrock-shooter-the-game": {
+    "titreVo": "ブラック★ロックシューター THE GAME",
+    "genres": [],
+    "themes": [
+      "BRS ✭"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ブラック★ロックシューター THE GAME"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "blame": {
+    "titreVo": "BLAME!",
+    "genres": [
+      "Action",
+      "Drama",
+      "Horror",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "BLAME!"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "blazer-drive": {
+    "titreVo": "ブレイザードライブ",
+    "genres": [
+      "Action"
+    ],
+    "themes": [
+      "Autocollant"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ブレイザードライブ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "bleach": {
+    "titreVo": "BLEACH",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Supernatural"
+    ],
+    "themes": [
+      "Nekketsu",
+      "Shinigami",
+      "Combats"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "BLEACH"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "bleach-13-blades": {
+    "titreVo": null,
+    "genres": [],
+    "themes": [
+      "Guide"
+    ],
+    "cible": "Shonen",
+    "alias": [],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "blue-exorcist": {
+    "titreVo": "青の祓魔師",
+    "genres": [
+      "Action",
+      "Supernatural"
+    ],
+    "themes": [
+      "Démons",
+      "Ecole",
+      "Magie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "青の祓魔師"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "blue-eyes-sword": {
+    "titreVo": "ヒノワが征く!",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Bataille navale",
+      "Combats",
+      "Guerre"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ヒノワが征く!"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "burn-the-witch": {
+    "titreVo": "BURN THE WITCH",
+    "genres": [
+      "Fantasy",
+      "Supernatural"
+    ],
+    "themes": [
+      "Dragon",
+      "Magie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "BURN THE WITCH"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "call-of-the-night": {
+    "titreVo": "よふかしのうた",
+    "genres": [
+      "Comedy",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "よふかしのうた"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "chainsaw-man": {
+    "titreVo": "チェンソーマン",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Supernatural"
+    ],
+    "themes": [
+      "Combats",
+      "Démons",
+      "Organisations secrètes"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "チェンソーマン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "chastity-reverse-world": {
+    "titreVo": "貞操逆転世界",
+    "genres": [
+      "Comedy",
+      "Hentai"
+    ],
+    "themes": [
+      "Sexe",
+      "Isekkai"
+    ],
+    "cible": "Echi",
+    "alias": [
+      "貞操逆転世界"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "classroom-for-heroes": {
+    "titreVo": "英雄教室",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Amour",
+      "Combats"
+    ],
+    "cible": "Echi",
+    "alias": [
+      "英雄教室"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "claymore": {
+    "titreVo": "CLAYMORE",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Horror"
+    ],
+    "themes": [],
+    "cible": "Seinen",
+    "alias": [
+      "CLAYMORE"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "d-gray-man": {
+    "titreVo": "ディー・グレイマン",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Démons",
+      "Malédiction",
+      "Combats"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ディー・グレイマン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "demon-slave": {
+    "titreVo": "魔都精兵のスレイブ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Ecchi",
+      "Fantasy",
+      "Romance"
+    ],
+    "themes": [
+      "Magie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "魔都精兵のスレイブ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "doubt": {
+    "titreVo": "Doubt",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Thriller"
+    ],
+    "themes": [
+      "Société",
+      "Survival game"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Doubt"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "dragon-ball": {
+    "titreVo": "ドラゴンボール",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [
+      "Aliens",
+      "Arts martiaux",
+      "Combats",
+      "Super pouvoirs",
+      "Tournois"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ドラゴンボール"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "fire-force": {
+    "titreVo": "炎炎ノ消防隊",
+    "genres": [
+      "Action",
+      "Drama",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "炎炎ノ消防隊"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "fire-punch": {
+    "titreVo": "ファイアパンチ",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "themes": [
+      "Post",
+      "apocalyptique",
+      "Vengeance",
+      "Mature"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "ファイアパンチ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "fullmetal-alchemist": {
+    "titreVo": "鋼の錬金術師",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Alchimie",
+      "Militaire",
+      "Steampunk"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "鋼の錬金術師"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "gantz": {
+    "titreVo": "GANTZ",
+    "genres": [
+      "Action",
+      "Drama",
+      "Ecchi",
+      "Horror",
+      "Psychological",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [
+      "Aliens"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "GANTZ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "goodnight-punpun": {
+    "titreVo": "おやすみプンプン",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Slice of Life"
+    ],
+    "themes": [],
+    "cible": null,
+    "alias": [
+      "おやすみプンプン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "hellsing": {
+    "titreVo": "HELLSING",
+    "genres": [
+      "Action",
+      "Hentai",
+      "Horror"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "HELLSING"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "hideout": {
+    "titreVo": "HIDEOUT",
+    "genres": [
+      "Action",
+      "Horror",
+      "Psychological"
+    ],
+    "themes": [
+      "Sequestration"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "HIDEOUT"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "titreVo": "はじめの一歩",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Sports"
+    ],
+    "themes": [
+      "Amitié",
+      "Boxe",
+      "Sport",
+      "Tournois"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "はじめの一歩"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "itchi-the-witch": {
+    "titreVo": "魔男のイチ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "魔男のイチ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "titreVo": "暗殺者である俺のステータスが勇者よりも明らかに強いのだが",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "暗殺者である俺のステータスが勇者よりも明らかに強いのだが"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "titreVo": "JKハルは異世界で娼婦になった",
+    "genres": [
+      "Drama",
+      "Ecchi",
+      "Fantasy",
+      "Psychological",
+      "Slice of Life"
+    ],
+    "themes": [],
+    "cible": "Echi",
+    "alias": [
+      "JKハルは異世界で娼婦になった"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "judge": {
+    "titreVo": "JUDGE",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological"
+    ],
+    "themes": [
+      "Survival game"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "JUDGE"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "kagurabachi": {
+    "titreVo": "カグラバチ",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "カグラバチ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "kaijin-reijoh": {
+    "titreVo": "怪人麗嬢",
+    "genres": [
+      "Action",
+      "Ecchi",
+      "Horror",
+      "Psychological",
+      "Romance",
+      "Supernatural"
+    ],
+    "themes": [
+      "Assassinat",
+      "Crime"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "怪人麗嬢"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "kaiju-n8": {
+    "titreVo": "怪獣８号",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Combats",
+      "Militaire",
+      "Monstres"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "怪獣８号"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "kemono-incidents": {
+    "titreVo": "怪物事変",
+    "genres": [
+      "Action",
+      "Supernatural"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "怪物事変"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "kindergarten-wars": {
+    "titreVo": "幼稚園WARS",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "幼稚園WARS"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "l-atelier-des-sorciers-edition-grimoire": {
+    "titreVo": null,
+    "genres": [],
+    "themes": [],
+    "cible": null,
+    "alias": [],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "les-chroniques-d-azfareo": {
+    "titreVo": "蒼竜の側用人",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "themes": [
+      "Dragons"
+    ],
+    "cible": "Shojo",
+    "alias": [
+      "蒼竜の側用人"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "les-legendaires-saga": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "themes": [
+      "Magie",
+      "Malédiction",
+      "Super",
+      "héros"
+    ],
+    "cible": "Shonen",
+    "alias": [],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "leviathan": {
+    "titreVo": "LEVIATHAN",
+    "genres": [
+      "Psychological",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "themes": [],
+    "cible": "Seinen",
+    "alias": [
+      "LEVIATHAN"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "magi-the-labyrinth-of-magic": {
+    "titreVo": "マギ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Guerre",
+      "Magie",
+      "Monstres"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "マギ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "magus-of-the-library": {
+    "titreVo": "図書館の大魔術師",
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Littérature"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "図書館の大魔術師"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "marimashita-iruma-kun": {
+    "titreVo": "魔入りました！入間くん",
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "魔入りました！入間くん"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mashle": {
+    "titreVo": "マッシュル-MASHLE-",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "themes": [
+      "Magie",
+      "Art martiaux"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "マッシュル-MASHLE-"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "titreVo": "未来日記",
+    "genres": [
+      "Action",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "themes": [
+      "Battle Royal",
+      "Psycho"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "未来日記"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mirai-nikki-mosaic": {
+    "titreVo": "未来日記: Mosaic",
+    "genres": [
+      "Action",
+      "Psychological",
+      "Romance",
+      "Supernatural"
+    ],
+    "themes": [
+      "Battle Royal",
+      "Psycho"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "未来日記: Mosaic"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mirai-nikki-paradox": {
+    "titreVo": "未来日記・パラドックス",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Mystery",
+      "Supernatural"
+    ],
+    "themes": [
+      "Battle Royal",
+      "Psycho"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "未来日記・パラドックス"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mission-in-the-apocalypse": {
+    "titreVo": "ウスズミの果て",
+    "genres": [
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ウスズミの果て"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "monster-hunter-orage": {
+    "titreVo": "モンスターハンター オラージュ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "themes": [
+      "Monster Hunter"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "モンスターハンター オラージュ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "titreVo": "モンスター娘のいる日常",
+    "genres": [
+      "Comedy",
+      "Ecchi",
+      "Fantasy",
+      "Romance"
+    ],
+    "themes": [
+      "Monster Girls",
+      "Harem"
+    ],
+    "cible": "Echi",
+    "alias": [
+      "モンスター娘のいる日常"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mushoku-tensei": {
+    "titreVo": "無職転生 ～蛇足編～",
+    "genres": [
+      "Action",
+      "Drama",
+      "Ecchi",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Harem",
+      "Magie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "無職転生 ～蛇足編～"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mushoku-tensei-l-epee-d-iris": {
+    "titreVo": "無職転生 ～異世界行ったら本気だす～",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Ecchi",
+      "Fantasy"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "無職転生 ～異世界行ったら本気だす～"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "titreVo": "無職転生 ~ロキシーだって本気です~",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Harem",
+      "Magie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "無職転生 ~ロキシーだって本気です~"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "my-elder-sister": {
+    "titreVo": "我的姐姐是大明星",
+    "genres": [
+      "Comedy",
+      "Ecchi",
+      "Romance"
+    ],
+    "themes": [
+      "Démons",
+      "Erotique"
+    ],
+    "cible": "Echi",
+    "alias": [
+      "我的姐姐是大明星"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "my-hero-academia": {
+    "titreVo": "僕のヒーローアカデミア 雄英白書",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "themes": [
+      "Combat",
+      "Super héro",
+      "super pouvoir",
+      "School Life"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "僕のヒーローアカデミア 雄英白書"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "my-hero-academia-smash": {
+    "titreVo": "僕のヒーローアカデミアすまっしゅ",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "themes": [
+      "Satyre"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "僕のヒーローアカデミアすまっしゅ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "my-hero-academia-ultra-archive": {
+    "titreVo": null,
+    "genres": [],
+    "themes": [
+      "Guide"
+    ],
+    "cible": "Shonen",
+    "alias": [],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "naruto": {
+    "titreVo": "NARUTO -ナルト-",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Supernatural"
+    ],
+    "themes": [
+      "Amitié",
+      "Arts martiaux",
+      "Ninjas",
+      "Combats",
+      "Guerre",
+      "Nekketsu"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "NARUTO -ナルト-"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "neon-genesis-evangelion": {
+    "titreVo": "新世紀エヴァンゲリオン",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mecha",
+      "Mystery",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Mechas",
+      "Militaire",
+      "Post",
+      "apocalyptique"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "新世紀エヴァンゲリオン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "nier-automata-op-pearl-harbor": {
+    "titreVo": "ヨルハ 真珠湾降下作戦記録",
+    "genres": [
+      "Action",
+      "Drama",
+      "Psychological",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ヨルハ 真珠湾降下作戦記録"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "nozokiana": {
+    "titreVo": "ノ・ゾ・キ・ア・ナ",
+    "genres": [
+      "Drama",
+      "Ecchi",
+      "Romance"
+    ],
+    "themes": [
+      "Adultère",
+      "Sexe"
+    ],
+    "cible": "Echi",
+    "alias": [
+      "ノ・ゾ・キ・ア・ナ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "one-puch-man": {
+    "titreVo": "ワンパンマン",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [
+      "Aliens",
+      "Arts martiaux",
+      "Parodie",
+      "Combats",
+      "Cyborgs",
+      "Monstres",
+      "Super",
+      "héros",
+      "Super pouvoirs"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ワンパンマン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "oriant-samurai-quest": {
+    "titreVo": "オリエント",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "オリエント"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "oshi-no-ko": {
+    "titreVo": "【推しの子】",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "themes": [
+      "Cinéma",
+      "Idols",
+      "Réincarnation"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "【推しの子】"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "pandora-heart": {
+    "titreVo": "パンドラハーツ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "themes": [
+      "Crime",
+      "Magie",
+      "Alice"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "パンドラハーツ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "pandora-heart-8-5": {
+    "titreVo": "パンドラハーツ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "themes": [
+      "Guide"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "パンドラハーツ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "pokemon-la-grande-aventure": {
+    "titreVo": "ポケットモンスターSPECIAL",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Animaux",
+      "Nature"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ポケットモンスターSPECIAL"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "pokemon-zoroark-le-maitre-des-illusion": {
+    "titreVo": "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク",
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Animaux",
+      "Nature"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ポケットモンスター ダイヤモンド&パール 幻影の覇者 ゾロアーク"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "prophecy-the-copycat": {
+    "titreVo": "予告犯―THE COPYCAT―",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological"
+    ],
+    "themes": [
+      "Mature"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "予告犯―THE COPYCAT―"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "radiant": {
+    "titreVo": "幾日",
+    "genres": [
+      "Hentai",
+      "Romance"
+    ],
+    "themes": [
+      "Magie",
+      "Combat"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "幾日"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "ragna-crimson": {
+    "titreVo": "ラグナクリムゾン",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Mystery"
+    ],
+    "themes": [
+      "Dragons",
+      "Voyage Temporel"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ラグナクリムゾン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "rai-rai-rai": {
+    "titreVo": "雷雷雷",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "雷雷雷"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "red-eyes-sword-akame-ga-kill": {
+    "titreVo": "アカメが斬る！",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "themes": [
+      "Assassinat",
+      "Combats",
+      "Gore",
+      "Organisations secrètes",
+      "Politique"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "アカメが斬る！"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "red-eyes-sword-akame-ga-kill-zero": {
+    "titreVo": "アカメが斬る！零",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Assassinat",
+      "Combats",
+      "Gore",
+      "Organisations secrètes",
+      "Politique"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "アカメが斬る！零"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "relife": {
+    "titreVo": "リライフ",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [],
+    "cible": "Seinen",
+    "alias": [
+      "リライフ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "remember": {
+    "titreVo": "リメンバー",
+    "genres": [
+      "Action"
+    ],
+    "themes": [
+      "Fantôme",
+      "Malédiction",
+      "School Life"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "リメンバー"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "ruridragon": {
+    "titreVo": "ルリドラゴン",
+    "genres": [
+      "Comedy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ルリドラゴン"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "titreVo": "幼女戦記",
+    "genres": [
+      "Action",
+      "Fantasy"
+    ],
+    "themes": [],
+    "cible": "Seinen",
+    "alias": [
+      "幼女戦記"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "saint-seiya-the-lost-canvas": {
+    "titreVo": "聖闘士星矢 THE LOST CANVAS 冥王神話",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "聖闘士星矢 THE LOST CANVAS 冥王神話"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "titreVo": "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "themes": [
+      "Arts martiaux",
+      "Combats",
+      "Dieux",
+      "Déesses",
+      "Mythologie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "聖闘士星矢 THE LOST CANVAS 冥王神話 外伝"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "saotome-love-boxing": {
+    "titreVo": "早乙女選手、ひたかくす",
+    "genres": [
+      "Comedy",
+      "Ecchi",
+      "Romance",
+      "Sports"
+    ],
+    "themes": [
+      "Amour",
+      "Sport",
+      "Boxe",
+      "Tomboy",
+      "School Life"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "早乙女選手、ひたかくす"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "servamp": {
+    "titreVo": "SERVAMP -サーヴァンプ-",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Supernatural"
+    ],
+    "themes": [
+      "Combats",
+      "Vampire"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "SERVAMP -サーヴァンプ-"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "shaman-king": {
+    "titreVo": "シャーマンキング",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Supernatural"
+    ],
+    "themes": [
+      "Shaman",
+      "Nekketsu"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "シャーマンキング"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "smoking-behind-the-supermarket": {
+    "titreVo": "スーパーの裏でヤニ吸うふたり",
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "スーパーの裏でヤニ吸うふたり"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "solo-leveling": {
+    "titreVo": "나 혼자만 레벨업",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Apprentissage",
+      "Combats",
+      "Magie",
+      "Super pouvoirs"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "나 혼자만 레벨업"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "soul-eater": {
+    "titreVo": "ソウルイーター",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy",
+      "Supernatural"
+    ],
+    "themes": [
+      "Shinigami",
+      "école",
+      "folie"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "ソウルイーター"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "spy-x-family": {
+    "titreVo": "SPY×FAMILY",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "SPY×FAMILY"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "talentless": {
+    "titreVo": "無能なナナ",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "themes": [
+      "Crime",
+      "Super pouvoir",
+      "School Life"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "無能なナナ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "terraformars": {
+    "titreVo": "テラフォーマーズ",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "themes": [
+      "Espace",
+      "Gore",
+      "Guerre",
+      "Post",
+      "apocalyptique",
+      "Scientifique"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "テラフォーマーズ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "the-ancient-magus-bride": {
+    "titreVo": "魔法使いの嫁",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "themes": [
+      "Magie",
+      "Dragon",
+      "Sorcière"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "魔法使いの嫁"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "titreVo": "魔法使いの嫁 詩篇.108 魔術師の青",
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Supernatural"
+    ],
+    "themes": [
+      "Magie",
+      "Dragon",
+      "Sorcière"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "魔法使いの嫁 詩篇.108 魔術師の青"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "the-ancient-magus-bride-supplement-2": {
+    "titreVo": "魔法使いの嫁",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "themes": [
+      "Guide"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "魔法使いの嫁"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "the-promised-neverland": {
+    "titreVo": "約束のネバーランド",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Thriller"
+    ],
+    "themes": [
+      "Famille",
+      "Monstres"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "約束のネバーランド"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "the-unwanted-unded-adventurer": {
+    "titreVo": "望まぬ不死の冒険者",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Monstre",
+      "Harem"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "望まぬ不死の冒険者"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "to-a-new-you": {
+    "titreVo": "新しいきみへ",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Thriller"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "新しいきみへ"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "tsugumi-project": {
+    "titreVo": null,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "themes": [
+      "Post",
+      "apo",
+      "Survie"
+    ],
+    "cible": "Seinen",
+    "alias": [],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "uqholder": {
+    "titreVo": "UQ HOLDER！",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural"
+    ],
+    "themes": [
+      "Combat",
+      "Harem",
+      "Nekkestu"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "UQ HOLDER！"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "why-nobody-remember-my-world": {
+    "titreVo": "なぜ僕の世界を誰も覚えていないのか？",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "なぜ僕の世界を誰も覚えていないのか？"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "yuna-de-la-pension-yuragi": {
+    "titreVo": "ゆらぎ荘の幽奈さん",
+    "genres": [
+      "Ecchi",
+      "Romance",
+      "Supernatural"
+    ],
+    "themes": [
+      "Harem",
+      "Fantôme"
+    ],
+    "cible": "Echi",
+    "alias": [
+      "ゆらぎ荘の幽奈さん"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  },
+  "yusei-no-last-boss": {
+    "titreVo": "野生のラスボスが現れた！",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "themes": [
+      "Isekkai",
+      "Gender bender",
+      "Jeux Video"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "野生のラスボスが現れた！"
+    ],
+    "aliasNormalises": [],
+    "idMangaBaka": null
+  }
+}

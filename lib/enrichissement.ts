@@ -1,5 +1,8 @@
 import { chercherParIsbn } from "@/lib/bnf";
 import { EAN_ESSAYES_POUR_ENRICHIR } from "@/lib/constants";
+import { convertir, rechercherSurMangaBaka, serieCompleteParId } from "@/lib/mangabaka";
+import type { SerieMangaBaka } from "@/lib/mangabaka";
+import { normaliserAlias } from "@/lib/normalisation";
 import type { TomeCandidat } from "@/lib/domain";
 
 export type Enrichissement = {
@@ -61,4 +64,54 @@ export async function enrichirDepuisTomes(tomes: TomeCandidat[]): Promise<Enrich
   }
 
   return resultat;
+}
+
+export type EnrichissementSerie = {
+  idMangaBaka: number | null;
+  titreVo: string | null;
+  genres: string[];
+  themes: string[];
+  cible: string | null;
+  alias: string[];
+  auteur: string;
+};
+
+const SERIE_VIDE: EnrichissementSerie = {
+  idMangaBaka: null,
+  titreVo: null,
+  genres: [],
+  themes: [],
+  cible: null,
+  alias: [],
+  auteur: "",
+};
+
+function porteLeMemeTitre(candidat: SerieMangaBaka, cible: string): boolean {
+  return candidat.titres.some((titre) => normaliserAlias(titre.titre) === cible);
+}
+
+export async function enrichirSerieParTitre(titre: string): Promise<EnrichissementSerie> {
+  const cible = normaliserAlias(titre);
+  if (cible === "") {
+    return SERIE_VIDE;
+  }
+
+  const trouvees = await rechercherSurMangaBaka(titre);
+  const retenu = trouvees.valeur.find((candidat) => porteLeMemeTitre(candidat, cible));
+  if (!retenu) {
+    return SERIE_VIDE;
+  }
+
+  const complete = await serieCompleteParId(retenu.id);
+  const serie = complete.valeur ? convertir(complete.valeur) : retenu;
+
+  return {
+    idMangaBaka: serie.id,
+    titreVo: serie.titreVo,
+    genres: serie.genres,
+    themes: serie.themes,
+    cible: serie.cible,
+    alias: serie.alias,
+    auteur: serie.auteur,
+  };
 }

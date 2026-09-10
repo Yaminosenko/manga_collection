@@ -54,7 +54,54 @@ export const LIBELLE_COLLECTION_ERREUR = "La collection n’a pas pu être charg
 
 export const DELAI_APPEL_EXTERNE_MS = 8_000;
 
-export const URL_ANILIST = "https://graphql.anilist.co";
+export const URL_MANGABAKA = "https://api.mangabaka.org/v2";
+export const RECHERCHES_MANGABAKA_PAR_MINUTE = 24;
+export const DETAILS_MANGABAKA_PAR_MINUTE = 120;
+export const RESULTATS_MANGABAKA_MAX = 5;
+export const ALIAS_PAR_SERIE_MAX = 12;
+export const THEMES_PAR_SERIE_MAX = 8;
+export const NIVEAU_THEME_MAX = 2;
+export const POIDS_TAGS_DECROISSANT = ["defining", "core", "recurrent", "unweighted", "incidental"];
+export const POIDS_THEMES_RETENUS = ["defining", "core"];
+export const TAGS_PROMUS_EN_GENRE = ["Mecha", "Sports", "Ecchi"];
+export const TITRES_REBOND_MAX = 3;
+export const DELAI_REBOND_MS = 3_500;
+
+export const BRANCHES_THEMES_MANGABAKA = [
+  "Themes",
+  "World Building",
+  "Settings",
+  "Species & Creatures",
+  "Activities",
+  "Narrative Tropes",
+];
+
+export const CIBLES_MANGABAKA: Record<string, string> = {
+  Shounen: "Shonen",
+  Seinen: "Seinen",
+  Shoujo: "Shojo",
+  Josei: "Josei",
+};
+
+export const TYPES_LIEN_MANGABAKA: Record<string, string> = {
+  prequel: "PREQUELLE",
+  sequel: "SUITE",
+  side_story: "HORS_SERIE",
+  parent: "SERIE_MERE",
+  spin_off: "SPIN_OFF",
+  guide: "GUIDE",
+  alternative_version: "AUTRE",
+  alternative_story: "AUTRE",
+  shared_universe: "AUTRE",
+  compilation: "AUTRE",
+  contains: "AUTRE",
+  other: "AUTRE",
+};
+
+export const MENTION_MANGABAKA =
+  "Métadonnées de séries : MangaBaka, CC BY-NC-SA 4.0";
+export const URL_MANGABAKA_SITE = "https://mangabaka.org";
+
 export const RESULTATS_RECHERCHE_MAX = 10;
 export const DELAI_RECHERCHE_MS = 350;
 export const LONGUEUR_RECHERCHE_MIN = 2;
@@ -90,12 +137,9 @@ export const STATUTS_EDITION = ["EN_COURS", "ABANDONNEE", "EN_PAUSE", "VENDUE"] 
 export const LIBELLE_STATUT_INVALIDE = "Le statut choisi n’existe pas.";
 export const LIBELLE_TOMES_PARUS_INVALIDE = `Le nombre de tomes parus doit être un entier entre 1 et ${TOMES_PARUS_MAX}.`;
 export const LIBELLE_DEJA_EN_COLLECTION = "Déjà dans la collection";
-export const LIBELLE_ANILIST_INDISPONIBLE =
-  "La recherche externe est indisponible. La collection locale reste consultable.";
 export const LIBELLE_RECHERCHE_VIDE = "Aucun résultat.";
 export const LIBELLE_INVITE_RECHERCHE = "Cherchez une série par son titre.";
-export const LIBELLE_TOMES_JAPONAIS =
-  "Compte japonais indicatif : corrigez-le avec le nombre de tomes parus en France.";
+export const PREFIXE_TERME_RESOLU = "Trouvé sous ";
 
 export const NOM_APPLICATION = "Collection de mangas";
 export const NOM_APPLICATION_COURT = "Collection";

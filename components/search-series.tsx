@@ -15,13 +15,16 @@ import {
   LIBELLE_TOME_DU_CATALOGUE,
   LONGUEUR_RECHERCHE_MIN,
   MENTION_AJOUT_DIRECT,
+  MENTION_MANGABAKA,
   PLACEHOLDER_RECHERCHE,
+  PREFIXE_TERME_RESOLU,
   TITRE_RECHERCHER,
   TITRE_SCANNER,
+  URL_MANGABAKA_SITE,
 } from "@/lib/constants";
 import type { CandidatEdition, ResultatRecherche } from "@/lib/domain";
 
-const RECHERCHE_VIDE: ResultatRecherche = { locales: [], candidats: [] };
+const RECHERCHE_VIDE: ResultatRecherche = { locales: [], candidats: [], termeResolu: null };
 
 const SECTION = "text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase";
 const LIGNE =
@@ -101,6 +104,13 @@ export function SearchSeries() {
           <p className="py-[24px] text-[13px] text-neutral-600">{LIBELLE_RECHERCHE_VIDE}</p>
         ) : null}
 
+        {resultats.termeResolu ? (
+          <p className="text-[11.5px] text-neutral-500">
+            {PREFIXE_TERME_RESOLU}
+            <span className="text-neutral-400">« {resultats.termeResolu} »</span>
+          </p>
+        ) : null}
+
         {resultats.locales.length > 0 ? (
           <section className="flex flex-col gap-[4px]">
             <h2 className={SECTION}>{LIBELLE_DEJA_EN_COLLECTION}</h2>
@@ -157,6 +167,12 @@ export function SearchSeries() {
         {ajout ? (
           <p className="text-[11.5px] text-neutral-500">{LIBELLE_AJOUT_EN_COURS}</p>
         ) : null}
+
+        <p className="mt-auto pt-[18px] text-[10.5px] text-neutral-600">
+          <a href={URL_MANGABAKA_SITE} target="_blank" rel="noreferrer" className="underline">
+            {MENTION_MANGABAKA}
+          </a>
+        </p>
       </div>
     </main>
   );

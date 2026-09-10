@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { slugifier } from "@/lib/slug";
+import { aliasAffichables, formesNormalisees } from "@/lib/normalisation";
 import { MOIS_FENETRE_SORTIE, NOM_EDITION_PAR_DEFAUT } from "@/lib/constants";
 import { tomesDuGroupe } from "@/lib/catalogue";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
@@ -26,6 +27,10 @@ export type ChampsCandidat = {
   titreVo: string | null;
   auteur: string;
   genres: string[];
+  themes: string[];
+  cible: string | null;
+  alias: string[];
+  idMangaBaka: number | null;
   nom: string;
   editeur: string | null;
   tomesParus: number;
@@ -75,8 +80,11 @@ export async function creerDepuisCandidatPour(
           titreVo: champs.titreVo,
           auteur: champs.auteur,
           genres: champs.genres,
-          themes: [],
-          alias: champs.titreVo ? [champs.titreVo] : [],
+          themes: champs.themes,
+          cible: champs.cible,
+          idMangaBaka: champs.idMangaBaka,
+          alias: aliasAffichables(champs.titre, champs.titreVo, champs.alias),
+          aliasNormalises: formesNormalisees(champs.titre, champs.titreVo, champs.alias),
         },
         select: { id: true },
       })

@@ -1,0 +1,6186 @@
+{
+  "act-age": {
+    "titreLocal": "ACT-AGE",
+    "recherche": "ACT-AGE",
+    "id": 9733,
+    "titre": "ACT-AGE",
+    "titreFr": null,
+    "titreVo": "アクタージュ",
+    "auteur": "Tatsuya Matsuki & Shiro Usazaki",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Dead Parents",
+      "Educational",
+      "Philosophy",
+      "Working",
+      "Coming of Age",
+      "Entertainment Industry",
+      "Showbiz"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "액터쥬",
+      "act-age",
+      "act-age ดารายอดอัจฉริยะ (SIC)",
+      "Akutaaju",
+      "Картина на века",
+      "سن التمثيل",
+      "عصر التمثيل",
+      "ดารายอดอัจฉริยะ",
+      "アクタージュ",
+      "アクタージュ act-age",
+      "演员夜凪景",
+      "演員夜凪景"
+    ],
+    "volumesJaponais": 12,
+    "urlCanonique": "https://mangabaka.org/manga/9733/ACT-AGE",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 31361,
+        "type": "PREQUELLE"
+      }
+    ],
+    "autresCandidats": [
+      "At That Age (172021)"
+    ]
+  },
+  "air-gear": {
+    "titreLocal": "AIR GEAR",
+    "recherche": "AIR GEAR",
+    "id": 10003,
+    "titre": "Air Gear",
+    "titreFr": null,
+    "titreVo": "エア・ギア",
+    "auteur": "Ito Oogure",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Sports",
+      "Tragedy"
+    ],
+    "themes": [
+      "Parkour",
+      "Coming of Age",
+      "Disability",
+      "Tournaments",
+      "Urban",
+      "Teamwork"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "에어 기어",
+      "Air Gear",
+      "Air Gear Unlimited",
+      "Lucht Gear",
+      "Эйр Гир",
+      "الهواء والعتاد",
+      "এয়ার গিয়ার",
+      "ขาคู่ทะลุฟ้า แอร์เกียร์",
+      "แอร์เกียร์ ขาคู่ทะลุฟ้า (VBK)",
+      "エア・ギア",
+      "エア・ギア UNLIMITED",
+      "飛輪少年"
+    ],
+    "volumesJaponais": 37,
+    "urlCanonique": "https://mangabaka.org/manga/10003/Air-Gear",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 101897,
+        "type": "SUITE"
+      }
+    ],
+    "autresCandidats": [
+      "Air Gear - Trick:358 (101897)",
+      "Air Gear dj - Re:Act (244145)"
+    ]
+  },
+  "ajin": {
+    "titreLocal": "AJIN",
+    "recherche": "AJIN",
+    "id": 2426,
+    "titre": "Ajin: Semi-humain",
+    "titreFr": "Ajin: Semi-humain",
+    "titreVo": "亜人",
+    "auteur": "Gamon Sakurai",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy",
+      "Thriller"
+    ],
+    "themes": [
+      "Urban",
+      "Guns",
+      "Military",
+      "Philosophy",
+      "Revenge",
+      "Violence",
+      "Crimes",
+      "Dark Ambience"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "아인",
+      "Ajin",
+      "Ajin: Demi-Human",
+      "Ajin: Semi-humain",
+      "Ajin: Semi-humano",
+      "Ajin: Yarı-İnsan",
+      "Ajin: สายพันธุ์อมนุษย์",
+      "Ajin อาจิน สายพันธุ์อมนุษย์",
+      "Ajin อาจิน สายพันธุ์อมนุษย์ (SIC)",
+      "Á nhân",
+      "Demi-Human",
+      "Demihumans"
+    ],
+    "volumesJaponais": 17,
+    "urlCanonique": "https://mangabaka.org/manga/2426/Ajin-Demi-Human",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Oyajina! Chinatsu And Tomoe (15996)",
+      "Demi-Human Sharehouse (3144)",
+      "Nightmare Fortress (44841)",
+      "NekoMajin (13003)"
+    ]
+  },
+  "all-you-need-is-kill": {
+    "titreLocal": "ALL YOU NEED IS KILL",
+    "recherche": "ALL YOU NEED IS KILL",
+    "id": 18661,
+    "titre": "All You Need Is Kill",
+    "titreFr": null,
+    "titreVo": "All You Need Is Kill",
+    "auteur": "Hiroshi Sakurazaka & Takeshi Obata",
+    "genres": [
+      "Sci-Fi",
+      "Mecha",
+      "Action",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Tragedy"
+    ],
+    "themes": [
+      "Alternate Universe",
+      "Dark Ambience",
+      "Guns",
+      "Immortality",
+      "Romantic Subplot",
+      "Sacrifice",
+      "Suicide",
+      "Invasion"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "All You Need Is Kill",
+      "All you need is kill - Cuộc chiến luân hồi",
+      "All You Need Is Kill - Öldür Yeter",
+      "All You Need Is Kill - Stačí jen zabíjet",
+      "AYNK",
+      "Cuộc Chiến Luân Hồi",
+      "Edge of Tomorrow",
+      "Na skraju jutra",
+      "No Limite Do Amanhâ",
+      "Öldür Yeter",
+      "Ooru Yuu Niido izu Kiru",
+      "Yarının Sınırında"
+    ],
+    "volumesJaponais": 2,
+    "urlCanonique": "https://mangabaka.org/manga/18661/All-You-Need-Is-Kill",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "All You Need is Kill (82836)"
+    ]
+  },
+  "alma": {
+    "titreLocal": "ALMA",
+    "recherche": "ALMA",
+    "id": 36212,
+    "titre": "Alma",
+    "titreFr": null,
+    "titreVo": "アルマ",
+    "auteur": "Shinji Mito",
+    "genres": [
+      "Sci-Fi",
+      "Adventure",
+      "Drama",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Dystopian",
+      "Artificial Intelligence",
+      "Military",
+      "Post-Apocalyptic",
+      "Environmental Degradation"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Alma",
+      "Alma (Shinji Mito)",
+      "Aruma",
+      "Альма",
+      "アルマ"
+    ],
+    "volumesJaponais": 4,
+    "urlCanonique": "https://mangabaka.org/manga/36212/Alma",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Almark (Komikku) (2010)",
+      "Alma-chan Wants to Be a Family! (48323)",
+      "Almark (104580)",
+      "Granny (89835)"
+    ]
+  },
+  "assassination-classroom": {
+    "titreLocal": "ASSASSINATION CLASSROOM",
+    "recherche": "ASSASSINATION CLASSROOM",
+    "id": 14302,
+    "titre": "Assassination Classroom",
+    "titreFr": "Assassination Classroom",
+    "titreVo": "Ansatsu Kyōshitsu",
+    "auteur": "Yuusei Matsui",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Mystery",
+      "Tragedy"
+    ],
+    "themes": [
+      "Hidden Talent",
+      "Monsters",
+      "Artificial Intelligence",
+      "Discrimination",
+      "Educational",
+      "Philosophy",
+      "Hidden Potential",
+      "Odd Situations"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "암살 교실",
+      "Ansatsu Kyōshitsu",
+      "Ansatsu Kyoushitsu",
+      "Ansatsu Kyoushitsu Extra",
+      "Asasinay salklas",
+      "Assassination Classroom",
+      "Atentátní karta třída",
+      "Attentat Klassenzimmer",
+      "Aula de asesinato",
+      "Aula di assassinio",
+      "Clase de asesinato",
+      "Classe d'assassinat"
+    ],
+    "volumesJaponais": 21,
+    "urlCanonique": "https://mangabaka.org/manga/14302/Assassination-Classroom",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 12146,
+        "type": "AUTRE"
+      },
+      {
+        "id": 110061,
+        "type": "AUTRE"
+      },
+      {
+        "id": 23067,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Koro Quest ! (23067)",
+      "Assassination Classroom dj - Something Only You Can Do (590658)",
+      "Ansatsu Kyoushitsu - Ijiwaru Assassin! (Doujinshi) (192504)",
+      "Ansatsu Kyoushitsu dj - Nagisa-kun Ketsuboushou (282470)"
+    ]
+  },
+  "beastars": {
+    "titreLocal": "BEASTARS",
+    "recherche": "BEASTARS",
+    "id": 6803,
+    "titre": "BEASTARS",
+    "titreFr": null,
+    "titreVo": "BEASTARS",
+    "auteur": "Paru Itagaki",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Secret Desire",
+      "Dark Ambience",
+      "Bullying",
+      "Dead Parents",
+      "Discrimination",
+      "Drugs",
+      "Inferiority Complex",
+      "Politics"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "비스타즈",
+      "비스타즈 (BEASTARS)",
+      "BEASTARS",
+      "Beastars - Выдающиеся звери",
+      "Biisutaazu",
+      "Legoshi, a farkas",
+      "Видатні звірі",
+      "Выдающиеся звери",
+      "بيستارز",
+      "บีสตาร์",
+      "ビースターズ"
+    ],
+    "volumesJaponais": 22,
+    "urlCanonique": "https://mangabaka.org/manga/6803/BEASTARS",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 5061,
+        "type": "AUTRE"
+      }
+    ],
+    "autresCandidats": [
+      "Beastars dj - BgaP (318660)",
+      "BEASTRINGS (165069)",
+      "Hoshikuzu Telepath: Utakata Seastar (509464)"
+    ]
+  },
+  "berserk": {
+    "titreLocal": "BERSERK",
+    "recherche": "BERSERK",
+    "id": 1692,
+    "titre": "BERSERK",
+    "titreFr": null,
+    "titreVo": "ベルセルク",
+    "auteur": "MIURA Kentaro & MORI Kouji & Studio Gaga",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Prophecy",
+      "Dystopian",
+      "Fairy",
+      "Adoption",
+      "Child Abuse",
+      "Coming of Age",
+      "Disability",
+      "Military"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "베르세르크",
+      "BERSERK",
+      "Berserk Max",
+      "Beruseruku",
+      "Берсерк",
+      "Бярсерк",
+      "ברזרק",
+      "برزرک",
+      "برسرك",
+      "بيرسيرك",
+      "बर्जर्क",
+      "बर्सर्क"
+    ],
+    "volumesJaponais": 43,
+    "urlCanonique": "https://mangabaka.org/manga/1692/BERSERK",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 101295,
+        "type": "AUTRE"
+      },
+      {
+        "id": 98582,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Berserk - Le chevalier du dragon des flammes (82960)",
+      "Berserk: The Prototype (48182)",
+      "Berserk of Gluttony (60246)",
+      "Ripple: Berserker (51093)"
+    ]
+  },
+  "black-clover": {
+    "titreLocal": "BLACK CLOVER",
+    "recherche": "BLACK CLOVER",
+    "id": 34103,
+    "titre": "Black Clover (Pre-Serialization)",
+    "titreFr": null,
+    "titreVo": "ブラッククローバー",
+    "auteur": "Yuuki Tabata",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Comedy"
+    ],
+    "themes": [
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Black Clover",
+      "Black Clover One-Shot",
+      "Black Clover (Pilot)",
+      "Black Clover (Pre-Serialization)",
+      "Чёрный клевер",
+      "ブラッククローバー"
+    ],
+    "volumesJaponais": null,
+    "urlCanonique": "https://mangabaka.org/manga/34103/Black-Clover-Pre-Serialization",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Noir clover (1915)",
+      "Black Clover: Quartet Knights (31170)",
+      "Black Clover SD: Asta on the Road to the Wizard King (47794)",
+      "Black Clover: Abareushi no Sho (101305)"
+    ]
+  },
+  "black-lagoon": {
+    "titreLocal": "BLACK LAGOON",
+    "recherche": "BLACK LAGOON",
+    "id": 6195,
+    "titre": "Black Lagoon",
+    "titreFr": null,
+    "titreVo": "BLACK LAGOON",
+    "auteur": "Rei Hiroe",
+    "genres": [
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Tragedy"
+    ],
+    "themes": [
+      "Lawlessness",
+      "Crimes",
+      "Guns",
+      "Military"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "블랙 라군",
+      "Black Lagoon",
+      "Burakku Laguun",
+      "Đầm Đen",
+      "Đầm Lầy Đen",
+      "Пираты «Чёрной лагуны»",
+      "Чёрная лагуна",
+      "Чорна лагуна",
+      "البحيرة السوداء",
+      "ब्ल्याक लगुन",
+      "จรชนพันธุ์เดือด",
+      "ทะเลสาบสีดำ"
+    ],
+    "volumesJaponais": 14,
+    "urlCanonique": "https://mangabaka.org/manga/6195/Black-Lagoon",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 17210,
+        "type": "AUTRE"
+      },
+      {
+        "id": 50202,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 108806,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 6833,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 7238,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 82984,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Black Lagoon (82984)",
+      "Ballad of the Sinful Wizard (105535)",
+      "BLACK LAGOON: Eda - initial stage (6833)",
+      "Black Lagoon: Sōji-ya Sawyer - Kaitai! Gore Gore Musume (7238)"
+    ]
+  },
+  "black-torch": {
+    "titreLocal": "BLACK TORCH",
+    "recherche": "BLACK TORCH",
+    "id": 25112,
+    "titre": "Black Torch",
+    "titreFr": null,
+    "titreVo": "BLACK TORCH",
+    "auteur": "Tsuyoshi Takaki",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Martial Arts"
+    ],
+    "themes": [
+      "Animals",
+      "Teamwork"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "블랙 토치",
+      "Black Torch",
+      "Black Torch: Kara Meşale",
+      "Burakku Toochi",
+      "Kara Fener",
+      "Kara Meşale",
+      "Черный факел",
+      "الشعلة السوداء",
+      "ブラックトーチ",
+      "黑炬Black Torch"
+    ],
+    "volumesJaponais": 5,
+    "urlCanonique": "https://mangabaka.org/manga/25112/Black-Torch",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "blackrock-shooter-innocent-soul": {
+    "titreLocal": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
+    "recherche": "BLACK★ROCK SHOOTER – INNOCENT SOUL",
+    "id": 5876,
+    "titre": "Black Rock Shooter: Innocent Soul",
+    "titreFr": null,
+    "titreVo": "ブラック★ロックシューター -イノセントソウル-",
+    "auteur": "huke & Sanami Suzuki",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Drama",
+      "Tragedy"
+    ],
+    "themes": [
+      "Guns",
+      "Super Powers",
+      "Parallel World"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Black Rock Shooter: Innocent Soul",
+      "B★SIS",
+      "Стрелок с Чёрной Скалы",
+      "Стрелок с чёрной скалы: Невинная душа",
+      "แบล็ค★ร็อคชู้ตเตอร์ อินโนเซนต์โซล",
+      "ブラック★ロックシューター -イノセントソウル-",
+      "黑岩射手-Innocent Soul",
+      "黑岩射手-天真之灵",
+      "黑岩射手-天真之靈"
+    ],
+    "volumesJaponais": 3,
+    "urlCanonique": "https://mangabaka.org/manga/5876/Black-Rock-Shooter-Innocent-Soul",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "blackrock-shooter-the-game": {
+    "titreLocal": "BLACK★ROCK SHOOTER – THE GAME",
+    "recherche": "BLACK★ROCK SHOOTER – THE GAME",
+    "id": 15377,
+    "titre": "Black Rock Shooter - The Game",
+    "titreFr": null,
+    "titreVo": "ブラック★ロックシューター THE GAME",
+    "auteur": "huke & TNSK",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Action",
+      "Mystery",
+      "Tragedy"
+    ],
+    "themes": [
+      "Apocalyptic Future",
+      "Dark Ambience",
+      "Mysterious Elements",
+      "Post-Apocalyptic",
+      "Dark Past",
+      "Guns",
+      "Human Weapon",
+      "Revenge"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Black Rock Shooter - The Game",
+      "VOCALOID - BLACK★ROCK SHOOTER THE GAME",
+      "Стрелок с Чёрной Скалы: Игра",
+      "ブラック★ロックシューター THE GAME"
+    ],
+    "volumesJaponais": 2,
+    "urlCanonique": "https://mangabaka.org/manga/15377/Black-Rock-Shooter-The-Game",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Black ★ Rock Shooter the Game 4-koma Magic (76284)"
+    ]
+  },
+  "blame": {
+    "titreLocal": "BLAME!",
+    "recherche": "BLAME!",
+    "id": 12030,
+    "titre": "BLAME!",
+    "titreFr": "BLAME!",
+    "titreVo": "BLAME!",
+    "auteur": "Tsutomu Nihei",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Biopunk",
+      "Urban",
+      "Artificial Intelligence",
+      "Survival",
+      "Cyberpunk",
+      "Dark Ambience",
+      "Dystopian",
+      "Post-Apocalyptic"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "블레임",
+      "BLAME!",
+      "Blame! พลิกวินาทีล่า",
+      "Buramu!",
+      "İftira!",
+      "Блам!",
+      "Блейм!",
+      "ブラム!",
+      "探索者"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/12030/BLAME",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 12032,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 40011,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 102102,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "BLAME (102101)",
+      "BLAME!² (102102)",
+      "BLAME! Academy and So On (14651)",
+      "Blame! Movie Edition: The Electrofishers' Escape (32463)"
+    ]
+  },
+  "blazer-drive": {
+    "titreLocal": "BLAZER DRIVE",
+    "recherche": "BLAZER DRIVE",
+    "id": 11744,
+    "titre": "Blazer Drive",
+    "titreFr": null,
+    "titreVo": "ブレイザードライブ",
+    "auteur": "Seishi Kishimoto",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "themes": [
+      "Conspiracy",
+      "Super Powers",
+      "Secret Organizations",
+      "Teamwork"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "블레이저 드라이브",
+      "Blazer Drive",
+      "Tribal",
+      "Tribal, Trival",
+      "Trival",
+      "Блайзер Драйв",
+      "Блейзер Драйв",
+      "เบลเซอร์ไดรฟ์ (VBK)",
+      "ブレイザードライブ",
+      "徽章战役",
+      "徽章戰役"
+    ],
+    "volumesJaponais": 9,
+    "urlCanonique": "https://mangabaka.org/manga/11744/Blazer-Drive",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "bleach": {
+    "titreLocal": "BLEACH",
+    "recherche": "BLEACH",
+    "id": 2410,
+    "titre": "BLEACH",
+    "titreFr": null,
+    "titreVo": "BLEACH",
+    "auteur": "Tite Kubo",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Tragedy"
+    ],
+    "themes": [
+      "Coming of Age",
+      "Exorcism",
+      "Philosophy",
+      "Super Powers",
+      "War"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "블리치",
+      "BLEACH",
+      "BLEACH 블리치",
+      "Sứ Mạng Thần Chết",
+      "Блич",
+      "Бліч",
+      "בְּלִיץ'",
+      "بليتش",
+      "بلیچ",
+      "ब्लीच",
+      "பிளீச்",
+      "เทพมรณะ (NED)"
+    ],
+    "volumesJaponais": 74,
+    "urlCanonique": "https://mangabaka.org/manga/2410/BLEACH",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 5348,
+        "type": "AUTRE"
+      },
+      {
+        "id": 539285,
+        "type": "AUTRE"
+      },
+      {
+        "id": 49871,
+        "type": "SUITE"
+      },
+      {
+        "id": 31200,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 69693,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 82994,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101917,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101918,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101919,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101920,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101922,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101923,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101924,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101925,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 142235,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 22865,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 584252,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Bleach (69691)",
+      "Bleach: Special One-Shot (49871)",
+      "Color Bleach+: The Bleach Official Bootleg (69730)",
+      "Bleach: Jigoku-hen Special - The Unforgivens (31200)"
+    ]
+  },
+  "bleach-13-blades": {
+    "titreLocal": "BLEACH – 13 BLADES",
+    "recherche": "BLEACH – 13 BLADES",
+    "id": 142235,
+    "titre": "Bleach 13 Blades.",
+    "titreFr": null,
+    "titreVo": "BLEACH Beginning of the revive of Tomorrow",
+    "auteur": "",
+    "genres": [
+      "Supernatural",
+      "Action"
+    ],
+    "themes": [],
+    "cible": null,
+    "alias": [
+      "Bleach 13 Blades.",
+      "Bleach: Beginning of the Revive of Tomorrow",
+      "Блич: Начало возрождения завтрашнего дня"
+    ],
+    "volumesJaponais": null,
+    "urlCanonique": "https://mangabaka.org/novel/142235/Bleach-13-Blades",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 2410,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "blue-exorcist": {
+    "titreLocal": "BLUE EXORCIST",
+    "recherche": "BLUE EXORCIST",
+    "id": 2977,
+    "titre": "Blue Exorcist",
+    "titreFr": "Blue Exorcist",
+    "titreVo": "Ao no Exorcist",
+    "auteur": "Kazue Katou",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Tragedy"
+    ],
+    "themes": [
+      "Curses",
+      "Mythology",
+      "Espionage",
+      "Orphans",
+      "Religion",
+      "Magic",
+      "Demon World",
+      "Conspiracy"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "청의 엑소시스트",
+      "Aoex",
+      "Ao no Exorcist",
+      "Ao no Futsumashi",
+      "Blue Exorcist",
+      "Lam Hỏa Diệt Quỷ",
+      "Mavi İblis Kovucu",
+      "Modrý Exorcista",
+      "The Blue Magic Exorcist",
+      "Блакитний Екзорцист",
+      "Синий экзорцист",
+      "المعوذ الأزرق"
+    ],
+    "volumesJaponais": 34,
+    "urlCanonique": "https://mangabaka.org/manga/2977/Blue-Exorcist",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 3703,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 134540,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 134541,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Ao no Exorcist: Weekend Hero (104368)",
+      "Blue Exorcist the Movie (134540)",
+      "Blue Exorcist dj - Fill/Kill/Reverse/My Moment (192267)",
+      "Blue Exorcist - Squall (Doujinshi) (191838)"
+    ]
+  },
+  "blue-eyes-sword": {
+    "titreLocal": "BLUE EYES SWORD",
+    "recherche": "BLUE EYES SWORD",
+    "id": 25829,
+    "titre": "Blue Eyes Sword",
+    "titreFr": "Blue Eyes Sword",
+    "titreVo": "HINOWA ga YUKU!",
+    "auteur": "Takahiro & strelka",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Tragedy"
+    ],
+    "themes": [
+      "Death",
+      "Super Powers",
+      "War"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Blue Eyes Sword",
+      "Hinowa Conquers!",
+      "Hinowa ga CRUSH!",
+      "Hinowa ga Yuku!",
+      "Завоевательница Хинова!",
+      "ヒノワが征く!"
+    ],
+    "volumesJaponais": 8,
+    "urlCanonique": "https://mangabaka.org/manga/25829/Hinowa-ga-CRUSH",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 4897,
+        "type": "PREQUELLE"
+      }
+    ],
+    "autresCandidats": [
+      "Cobra: The Space Pirate (38380)"
+    ]
+  },
+  "burn-the-witch": {
+    "titreLocal": "BURN THE WITCH",
+    "recherche": "BURN THE WITCH",
+    "id": 5348,
+    "titre": "Burn the Witch",
+    "titreFr": null,
+    "titreVo": "BURN THE WITCH",
+    "auteur": "Tite Kubo",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "themes": [
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Burn the Witch",
+      "Burn the Witch (Oneshot)",
+      "Burn the Witch (Pilot)",
+      "Сжечь ведьму",
+      "Спалити відьму",
+      "לשרוף את המכשפה",
+      "バーン・ザ・ウィッチ"
+    ],
+    "volumesJaponais": null,
+    "urlCanonique": "https://mangabaka.org/manga/5348/Burn-the-Witch-Oneshot",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 539285,
+        "type": "AUTRE"
+      }
+    ],
+    "autresCandidats": [
+      "Burn the Witch (539285)"
+    ]
+  },
+  "call-of-the-night": {
+    "titreLocal": "CALL OF THE NIGHT",
+    "recherche": "CALL OF THE NIGHT",
+    "id": 5415,
+    "titre": "Appel de La Nuit",
+    "titreFr": "Appel de La Nuit",
+    "titreVo": "よふかしのうた",
+    "auteur": "Kotoyama",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Urban",
+      "Depression",
+      "Philosophy",
+      "Coming of Age",
+      "Loneliness",
+      "Nightlife"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "철야의 노래",
+      "Appel de La Nuit",
+      "Bản Nhạc Của Kẻ Đi Dạo Đêm",
+      "Call of the Night",
+      "Call of the Night - Canções da Noite",
+      "Canções Da Noite",
+      "Chanson des Marcheurs Nocturnes",
+      "Cheol-yaui Nolae",
+      "Chèyè Zhī Gē",
+      "El Canto de la Noche",
+      "Gecenin Çağrısı",
+      "Khúc ca của kẻ dạo đêm"
+    ],
+    "volumesJaponais": 20,
+    "urlCanonique": "https://mangabaka.org/manga/5415/Call-of-the-Night",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 352293,
+        "type": "SUITE"
+      }
+    ],
+    "autresCandidats": [
+      "Call of the Night: Paradise Arc (352293)",
+      "Call the Name of the Night (1869)",
+      "iLLUMiNATiON (15737)",
+      "Pampering My Beast Commander (95387)"
+    ]
+  },
+  "chainsaw-man": {
+    "titreLocal": "CHAINSAW MAN",
+    "recherche": "CHAINSAW MAN",
+    "id": 1677,
+    "titre": "Chainsaw Man",
+    "titreFr": null,
+    "titreVo": "チェンソーマン",
+    "auteur": "Tatsuki Fujimoto",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Amnesia",
+      "Unrealistic Fighting",
+      "Dark Ambience",
+      "Contracts",
+      "Death",
+      "Debts",
+      "Manipulation",
+      "Philosophy"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "체인쏘맨",
+      "체인소 맨",
+      "Chainsaw Man",
+      "Chainsaw Man: Public Safety Saga",
+      "CSM",
+      "Testere Adam",
+      "Людина-бензопила",
+      "Человек-бензопила",
+      "Шынжырлы ара адам",
+      "رجل المنشار",
+      "مرد اره ای",
+      "चेन्सो म्यान"
+    ],
+    "volumesJaponais": 24,
+    "urlCanonique": "https://mangabaka.org/manga/1677/Chainsaw-Man",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 83072,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Chainsaw Man: Buddy Stories (83072)",
+      "Tatsuki Fujimoto Before Chainsaw Man: 22-26 (100429)",
+      "Nayuta, l'enfant de la prophétie (4657)",
+      "Chainsaw Man dj - Love Domination (602246)"
+    ]
+  },
+  "chastity-reverse-world": {
+    "titreLocal": "CHASTITY REVERSE WORLD",
+    "recherche": "CHASTITY REVERSE WORLD",
+    "id": 7087,
+    "titre": "Chasteté inversée",
+    "titreFr": "Chasteté inversée",
+    "titreVo": "貞操逆転世界",
+    "auteur": "Amahara & Mantarou",
+    "genres": [
+      "Fantasy",
+      "Adult",
+      "Ecchi",
+      "Smut",
+      "Comedy",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Normal to Abnormal",
+      "Role Reversal",
+      "Alternate Universe"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "정조역전세계",
+      "Chasteté inversée",
+      "Chastity Reverse World",
+      "El mundo de la castidad invertida",
+      "Il mondo della morale al rovescio",
+      "Świat na opak",
+      "Teisou Gyakuten Sekai",
+      "The World of Moral Reversal",
+      "World of Reversed Gender Roles",
+      "Мир перевёрнутой морали",
+      "貞操逆転世界",
+      "贞操逆转世界"
+    ],
+    "volumesJaponais": 5,
+    "urlCanonique": "https://mangabaka.org/manga/7087/Chastity-Reverse-World",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Chasteté inversée - Les femmes ont le contrôle (103127)",
+      "The Rumor is I'm Easy Man if You Ask in a World of Reversed Chastity (566832)",
+      "I, the Only Male Knight in a Chastity-Reversed World, Entered the Female Knight Academy and Was Treated as a Hero for Some Reason: Unrivaled in the Harem with My Unequaled Skills (522983)",
+      "An Adventurer's Life Surrounded by Lewd Beauties in a Chastity-Reversed Parallel World (4079)"
+    ]
+  },
+  "classroom-for-heroes": {
+    "titreLocal": "CLASSROOM FOR HEROES",
+    "recherche": "CLASSROOM FOR HEROES",
+    "id": 83338,
+    "titre": "Classroom for Heroes",
+    "titreFr": null,
+    "titreVo": "Eiyū Kyōshitsu",
+    "auteur": "Shin Araki & Haruyuki Morisawa",
+    "genres": [
+      "Fantasy",
+      "Ecchi",
+      "Action",
+      "Comedy",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "Classroom for Heroes",
+      "Class Room for Heroes - With the boy of a former brave",
+      "Eiyū Kyōshitsu",
+      "Eiyuu Kyoushitsu",
+      "Hero Classroom",
+      "Класс для героев",
+      "英雄教室"
+    ],
+    "volumesJaponais": 15,
+    "urlCanonique": "https://mangabaka.org/novel/83338/Classroom-for-Heroes",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 35786,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 98685,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Empress of Flame (21310)",
+      "Hero Classroom (375)",
+      "Class Room For Heroes: Girl's Mission (67868)",
+      "The Hero Creation Classroom of a Reincarnated Ordinary Person: After Reaching My Limit as an Adventurer, I Reluctantly Opened a Classroom in the Countryside to Earn Money for the Future, and My Student Became the Strongest (580398)"
+    ]
+  },
+  "claymore": {
+    "titreLocal": "CLAYMORE",
+    "recherche": "CLAYMORE",
+    "id": 8654,
+    "titre": "Claymore",
+    "titreFr": null,
+    "titreVo": "Claymore",
+    "auteur": "Norihiro Yagi",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Horror",
+      "Mystery",
+      "Tragedy"
+    ],
+    "themes": [
+      "European Ambience",
+      "Adoption",
+      "Monsters",
+      "Orphans",
+      "Super Powers"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "클레이모어",
+      "Claymore",
+      "CLAYMORE [クレイモア]",
+      "Kureimoa",
+      "Mắt Bạc",
+      "Клеймор",
+      "كلايمور",
+      "อสูรสาวพิฆาตมาร (NED)",
+      "クレイモア",
+      "大剑",
+      "大劍",
+      "猎魔战记"
+    ],
+    "volumesJaponais": 27,
+    "urlCanonique": "https://mangabaka.org/manga/8654/Claymore",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 103244,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Claymore Extra Scene 5 (103244)",
+      "Claymore dj - Tokimeki Claymore (245107)",
+      "Claymore dj - Megami no Hohoemi (245720)",
+      "Claymore dj - More Book (244589)"
+    ]
+  },
+  "d-gray-man": {
+    "titreLocal": "D.GRAY-MAN",
+    "recherche": "D.GRAY-MAN",
+    "id": 2705,
+    "titre": "D.Gray-man",
+    "titreFr": null,
+    "titreVo": "D.Gray-man",
+    "auteur": "Katsura Hoshino",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy",
+      "Historical"
+    ],
+    "themes": [
+      "Reincarnation",
+      "Alternate History",
+      "Steampunk",
+      "Adoption",
+      "Exorcism",
+      "Religion",
+      "European Ambience",
+      "Monsters"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "디 그레이맨",
+      "DGM",
+      "디 그레이맨(D.Gray-man)",
+      "D.Gray-man",
+      "D.Grey-man",
+      "Dī Gureiman",
+      "Dグレ",
+      "D·格雷少年",
+      "Hokage Team",
+      "Thầy trừ tà",
+      "Ди Грей-мен",
+      "Ди.Грэй-мен"
+    ],
+    "volumesJaponais": 29,
+    "urlCanonique": "https://mangabaka.org/manga/2705/D-Gray-man",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 83169,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "D.Gray-man (83169)",
+      "Zone (101364)",
+      "D.Gray-Man dj - Family Walker (243224)",
+      "D.Gray-man dj - La Famille (239562)"
+    ]
+  },
+  "demon-slave": {
+    "titreLocal": "DEMON SLAVE",
+    "recherche": "DEMON SLAVE",
+    "id": 883,
+    "titre": "Demon slave",
+    "titreFr": "Demon slave",
+    "titreVo": "Mato Seihei no Slave",
+    "auteur": "Takahiro & Youhei Takemura",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Adult",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Romance"
+    ],
+    "themes": [
+      "Parallel World",
+      "Monsters",
+      "Guns",
+      "Revenge",
+      "Super Powers"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "마도정병의 슬레이브",
+      "Budak Korps Elite Kota Iblis",
+      "Cehennem Askerlerinin Kölesi",
+      "Chained Soldier",
+      "Demon slave",
+      "El esclavo de la élite de soldados de Mato",
+      "Mabotai",
+      "Mato Seihei no Slave",
+      "Nô Lệ Của Đội Tinh Nhuệ Ma Đô",
+      "Nô Lệ Của Ma Đô Tinh Binh",
+      "Slave of the Hell Soldiers",
+      "Slave of the Magic Capital's Elite Troops"
+    ],
+    "volumesJaponais": 21,
+    "urlCanonique": "https://mangabaka.org/manga/883/Chained-Soldier",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 101264,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101265,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Demon & Slave (116027)",
+      "A Cornered Mouse Will Defile A Cat (115552)",
+      "Je, un seigneur des démons, ai épousé un elfe esclavagisant, mais comment l'aime-je? (91)",
+      "An Archdemon’s Dilemma: How to Love Your Elf Bride (84443)"
+    ]
+  },
+  "doubt": {
+    "titreLocal": "DOUBT",
+    "recherche": "DOUBT",
+    "id": 11884,
+    "titre": "Doubt",
+    "titreFr": null,
+    "titreVo": "Doubt",
+    "auteur": "Yoshiki Tonogai",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy",
+      "Thriller"
+    ],
+    "themes": [
+      "Disability",
+      "Hypnosis",
+      "Manipulation",
+      "Video Games",
+      "Crimes",
+      "Survival"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Ai Là Con Sói",
+      "Doubt",
+      "Doubt (다우트)",
+      "Doubt 疑懼",
+      "Rabbit Doubt",
+      "Сомнение",
+      "شكّ",
+      "ลวง หลอก ฆ่า",
+      "ダウト",
+      "疑惧Doubt"
+    ],
+    "volumesJaponais": 4,
+    "urlCanonique": "https://mangabaka.org/manga/11884/Doubt",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 29047,
+        "type": "AUTRE"
+      },
+      {
+        "id": 39049,
+        "type": "AUTRE"
+      },
+      {
+        "id": 1272,
+        "type": "SUITE"
+      },
+      {
+        "id": 590316,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Doute !! (22063)",
+      "Doubt! (9457)",
+      "Doubt (30905)",
+      "Doubt (Shuuko NISHIMURA) (28359)"
+    ]
+  },
+  "dragon-ball": {
+    "titreLocal": "DRAGON BALL",
+    "recherche": "DRAGON BALL",
+    "id": 997,
+    "titre": "DRAGON BALL",
+    "titreFr": null,
+    "titreVo": "DRAGON BALL",
+    "auteur": "Akira Toriyama",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Flying",
+      "Afterlife",
+      "Coming of Age",
+      "Legends",
+      "Marriage",
+      "Teleportation",
+      "Magic",
+      "Tournaments"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "드래곤볼",
+      "드래곤 볼 신장판",
+      "드래곤 볼 완전판",
+      "7 viên ngọc rồng",
+      "Bảy viên ngọc rồng",
+      "Bola de Drac",
+      "Bola de dragón",
+      "Bola naga",
+      "DBZ",
+      "Doragon booru",
+      "Dragoi Bola",
+      "DRAGON BALL"
+    ],
+    "volumesJaponais": 42,
+    "urlCanonique": "https://mangabaka.org/manga/997/DRAGON-BALL",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 6039,
+        "type": "AUTRE"
+      },
+      {
+        "id": 22164,
+        "type": "AUTRE"
+      },
+      {
+        "id": 26043,
+        "type": "AUTRE"
+      },
+      {
+        "id": 31875,
+        "type": "AUTRE"
+      },
+      {
+        "id": 101536,
+        "type": "AUTRE"
+      },
+      {
+        "id": 17706,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 18,
+        "type": "SUITE"
+      },
+      {
+        "id": 27354,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 187663,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 27526,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 77505,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Dragonball Z: Rebirth of F (21481)",
+      "Dragon Ball: Salut! Son Goku et ses amis sont de retours !! (27354)",
+      "Jaco le patrouilleur de la galaxie (17706)",
+      "DRAGON BALL SUPER (18)"
+    ]
+  },
+  "fire-force": {
+    "titreLocal": "FIRE FORCE",
+    "recherche": "FIRE FORCE",
+    "id": 22256,
+    "titre": "Fire Force",
+    "titreFr": null,
+    "titreVo": "炎炎ノ消防隊",
+    "auteur": "Atsushi Ookubo",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Tragedy"
+    ],
+    "themes": [
+      "Unrealistic Fighting",
+      "Steampunk",
+      "Military",
+      "Rescue",
+      "Violence",
+      "Conspiracy",
+      "Exorcism",
+      "Fire"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "장장 노 소방대",
+      "Biệt Đội Lính Cứu Hỏa",
+      "Blazing Fire Brigade",
+      "En'en no Shōbō-tai",
+      "Enen no Shouboutai",
+      "Enn Enn no Shouboutai",
+      "Fire Brigade of Flames",
+      "Fire Force",
+      "Fire Force: Alev Gücü",
+      "Korps Pemadam Kebakaran",
+      "La brigada de bomberos de las llamas",
+      "Бригада пылающего пламени"
+    ],
+    "volumesJaponais": 34,
+    "urlCanonique": "https://mangabaka.org/manga/22256/Fire-Force",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 10091,
+        "type": "AUTRE"
+      }
+    ],
+    "autresCandidats": [
+      "Enn Enn no Shouboutai (380471)",
+      "Enen no Shouboutai dj - Maki Saimin Paizuri Witch (328376)",
+      "Tomica Hero Rescue Force & Rescue Fire (62000)"
+    ]
+  },
+  "fire-punch": {
+    "titreLocal": "FIRE PUNCH",
+    "recherche": "FIRE PUNCH",
+    "id": 2027,
+    "titre": "Fire Punch",
+    "titreFr": "Fire Punch",
+    "titreVo": "ファイアパンチ",
+    "auteur": "Tatsuki Fujimoto",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Tragedy",
+      "Thriller"
+    ],
+    "themes": [
+      "Dark Ambience",
+      "Denpa",
+      "Abandoned Child/ren",
+      "Coming of Age",
+      "Fire",
+      "Mental Illness",
+      "Orphans",
+      "Politics"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "파이어 펀치",
+      "Agni Punch",
+      "Faia Panchi",
+      "Fire Punch",
+      "Hoả Quyền",
+      "Вогняний удар",
+      "Огненный удар",
+      "Отсоғар",
+      "От соққы",
+      "ファイアパンチ",
+      "炎拳"
+    ],
+    "volumesJaponais": 8,
+    "urlCanonique": "https://mangabaka.org/manga/2027/Fire-Punch",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Live a Free of Abuse Authority Manager by Punching Live with \"Created Fairy\" in Outlying Town Atelier. (81631)"
+    ]
+  },
+  "fullmetal-alchemist": {
+    "titreLocal": "FULLMETAL ALCHEMIST",
+    "recherche": "FULLMETAL ALCHEMIST",
+    "id": 8312,
+    "titre": "FULL METAL ALCHEMIST",
+    "titreFr": null,
+    "titreVo": "Hagane no Renkinjutsushi",
+    "auteur": "Hiromu Arakawa",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Tragedy",
+      "Historical"
+    ],
+    "themes": [
+      "Parallel World",
+      "Steampunk",
+      "Ambitious Goals",
+      "Disability",
+      "Guns",
+      "Immortality",
+      "Orphans",
+      "Romantic Subplot"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "강철의 연금술사",
+      "Alchemist of Steel",
+      "Alquimista de Aço",
+      "Cang giả kim thuật sư",
+      "Čelični alhemičar",
+      "Çelik Simyacı",
+      "FMA",
+      "FULL METAL ALCHEMIST",
+      "Fullmetal Alchemist Gaiden",
+      "Fullmetal Alchemist - Ocelový alchymista",
+      "Giả Kim Thuật Sư",
+      "Hagane no Renkinjutsushi"
+    ],
+    "volumesJaponais": 27,
+    "urlCanonique": "https://mangabaka.org/manga/8312/FULL-METAL-ALCHEMIST",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 173055,
+        "type": "AUTRE"
+      },
+      {
+        "id": 173056,
+        "type": "AUTRE"
+      },
+      {
+        "id": 27440,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 83600,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104738,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104740,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 107055,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 107056,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 173052,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 173053,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 173054,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Fullmetal Alchemist (83600)",
+      "Fullmetal Alchemist (173053)",
+      "Fullmetal Alchemist 0 (104738)",
+      "Fullmetal Alchemist: The Prototype (50419)"
+    ]
+  },
+  "gantz": {
+    "titreLocal": "GANTZ",
+    "recherche": "GANTZ",
+    "id": 4781,
+    "titre": "GANTZ",
+    "titreFr": null,
+    "titreVo": "GANTZ",
+    "auteur": "Hiroya Oku",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Adult",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Tragedy"
+    ],
+    "themes": [
+      "Earth Invasion",
+      "Apocalypse",
+      "Monsters",
+      "Angst",
+      "Protagonist Lives Alone",
+      "Psychokinesis",
+      "Suicide",
+      "Survival"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "간츠",
+      "GANTZ",
+      "Gantz/Osaka",
+      "GANTZ:T",
+      "GANTZ杀戮都市",
+      "GANTZ殺戮都市",
+      "Гантз",
+      "Ганц",
+      "جانتز",
+      "กันสึ",
+      "ガンツ",
+      "杀戮都市"
+    ],
+    "volumesJaponais": 37,
+    "urlCanonique": "https://mangabaka.org/manga/4781/GANTZ",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 100995,
+        "type": "AUTRE"
+      },
+      {
+        "id": 100993,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 100994,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 1153,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 22835,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 100996,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "GANTZ:G (22835)",
+      "Gantz/Nishi (100994)",
+      "Gantz Origins: Oku Hiroya and SF Movie Stories (100995)",
+      "GANTZ:E (1153)"
+    ]
+  },
+  "goodnight-punpun": {
+    "titreLocal": "Goodnight Punpun",
+    "recherche": "Goodnight Punpun",
+    "id": 1357,
+    "titre": "Bonne Nuit Punpun",
+    "titreFr": "Bonne Nuit Punpun",
+    "titreVo": "おやすみプンプン",
+    "auteur": "Inio Asano",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Working",
+      "Dark Ambience",
+      "Depression",
+      "Dreams",
+      "First Love",
+      "Denpa",
+      "Urban",
+      "Coming of Age"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "잘 자, 푼푼",
+      "Boa noite, Punpun",
+      "Bonne Nuit Punpun",
+      "Buenas noches, Punpun",
+      "Buonanotte, Punpun",
+      "Dobranoc Punpun!",
+      "Dobranoc, Punpunie",
+      "Good Night Pung Pung",
+      "Goodnight Punpun",
+      "Gute Nacht, Punpun",
+      "Hyvää yötä Punpun",
+      "İyi Geceler, Punpun"
+    ],
+    "volumesJaponais": 13,
+    "urlCanonique": "https://mangabaka.org/manga/1357/Goodnight-Punpun",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "hellsing": {
+    "titreLocal": "HELLSING",
+    "recherche": "HELLSING",
+    "id": 1736,
+    "titre": "HELLSING",
+    "titreFr": null,
+    "titreVo": "HELLSING",
+    "auteur": "Kouta Hirano",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Horror",
+      "Tragedy",
+      "Historical"
+    ],
+    "themes": [
+      "Drugs",
+      "Religion",
+      "Guns",
+      "Military",
+      "Nazi"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "헬싱",
+      "Crossfire",
+      "HELLSING",
+      "Hellsing: Balada o lovci upírů",
+      "Hellsing Cross Fire",
+      "Hellsing: Epicum de vēnātōre lamiæ",
+      "Hellsing: The Legend of a Vampire Hunter",
+      "The Legend of a Vampire Hunter",
+      "The Legend of the Vampire Hunter",
+      "Thợ săn ma cà rồng",
+      "Геллсінґ",
+      "Хеллсинг"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/1736/HELLSING",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 11425,
+        "type": "PREQUELLE"
+      }
+    ],
+    "autresCandidats": [
+      "Hellsing: The Legend of a Vampire Hunter (103158)",
+      "Hellsing: The Dawn (11425)",
+      "Hellsing Kyouju no Omoide (455726)",
+      "Hellsing dj - Nyannyan Blood (228262)"
+    ]
+  },
+  "hideout": {
+    "titreLocal": "HIDEOUT",
+    "recherche": "HIDEOUT",
+    "id": 7404,
+    "titre": "HIDEOUT",
+    "titreFr": null,
+    "titreVo": "HIDEOUT",
+    "auteur": "Masasumi Kakizaki",
+    "genres": [
+      "Action",
+      "Horror",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Loneliness",
+      "Crimes",
+      "Survival"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Dark Hideout",
+      "HIDEOUT",
+      "Sığınak",
+      "Skrovište",
+      "Пана",
+      "Сховішча",
+      "Сховок",
+      "Таса",
+      "Укрытие",
+      "คุกนรก แดนมรณะ (SIC)",
+      "藏鬼处HIDEOUT"
+    ],
+    "volumesJaponais": 1,
+    "urlCanonique": "https://mangabaka.org/manga/7404/HIDEOUT",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Hideout (139281)",
+      "Himitsu Kichi (13427)",
+      "Bienvenue au café des chats ! (154319)",
+      "Atelier Ryza: The Manga - Ever Darkness & the Secret Hideout (7306)"
+    ]
+  },
+  "ippo-s4-la-loi-du-ring": {
+    "titreLocal": "IPPO – S4 LA LOI DU RING",
+    "recherche": "Hajime no Ippo",
+    "id": 206,
+    "titre": "Ippo",
+    "titreFr": "Ippo",
+    "titreVo": "はじめの一歩",
+    "auteur": "George Morikawa",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Slice of Life",
+      "Sports"
+    ],
+    "themes": [
+      "Coming of Age",
+      "Romantic Subplot",
+      "Tournaments"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "더 화이팅",
+      "더 화이팅 신장재편판",
+      "Fighting Spirit",
+      "Fight!! Ippo",
+      "Hajime no Ippo",
+      "Hajime no Ippo: Fighting Spirit!",
+      "Hajime no Ippo Gaiden",
+      "Hajime no Ippo Gaiden: Naniwa no Tora",
+      "Hajime no Ippo Gaiden: Naniwa Tiger",
+      "Hajime no Ippo: The Fighting!",
+      "Ippo",
+      "Ippo, la rage de vaincre"
+    ],
+    "volumesJaponais": 145,
+    "urlCanonique": "https://mangabaka.org/manga/206/Hajime-no-Ippo-Fighting-Spirit",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Hajime no Ippo (137456)",
+      "Palace of Shame (137470)",
+      "Dark Hunter (105601)",
+      "Hunter Hunter dj - Hajime no Ippo (283483)"
+    ]
+  },
+  "itchi-the-witch": {
+    "titreLocal": "Ichi the Witch",
+    "recherche": "Ichi the Witch",
+    "id": 676,
+    "titre": "Ichi the Witch",
+    "titreFr": null,
+    "titreVo": "魔男のイチ",
+    "auteur": "Osamu Nishi & Shiro Usazaki",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "themes": [
+      "Hunting",
+      "Fantasy Creature",
+      "Found Family",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "마남 이치",
+      "Czarownik Ichi",
+      "Ichi, el brujo.",
+      "Ichi, o Bruxo",
+      "Ichi the Warlock",
+      "Ichi the Witch",
+      "Madan no Ichi",
+      "Phù thuỷ Ichi",
+      "The Wizard Ichi",
+      "Ведьмак Ити",
+      "Відьма Ічі",
+      "Волшебник Ити"
+    ],
+    "volumesJaponais": 9,
+    "urlCanonique": "https://mangabaka.org/manga/676/Ichi-the-Witch",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "je-suis-un-assassin-et-je-surpasse-le-heros": {
+    "titreLocal": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "recherche": "JE SUIS UN ASSASSIN (et je surpasse le héros)",
+    "id": 29748,
+    "titre": "Je suis un assassin et je surpasse le héros",
+    "titreFr": "Je suis un assassin et je surpasse le héros",
+    "titreVo": "Assassin de Aru Ore no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+    "auteur": "Hiroyuki Aigamo & Matsuri Akai",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Romance"
+    ],
+    "themes": [
+      "Game Elements",
+      "Conspiracy",
+      "Politics",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "암살자인 내 스테이터스가 용사보다도 훨씬 강한데요",
+      "암살자인 내 스테이터스가 용사보다 명백히 강합니다만",
+      "Ansatsusha de Aru no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+      "Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga",
+      "Assasin de Aru no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+      "Assassin de Aru Ore no Status ga Yūsha Yori mo Akiraka ni Tsuyoi Nodaga",
+      "Assassin de aru ore no Sutetasu ga Yuusha yori mo Akiraka ni Tsuyoi Nodaga",
+      "Il mio status da assassino supera ovviamente quello degli eroi",
+      "Je suis un assassin et je surpasse le héros",
+      "Mes compétences en tant qu'assassin sont bien au-delà de celles du héros",
+      "Meu status como assassino obviamente excede o do herói",
+      "My Status as an Assassin Obviously Exceeds the Brave's"
+    ],
+    "volumesJaponais": 7,
+    "urlCanonique": "https://mangabaka.org/manga/29748/My-Status-as-an-Assassin-Obviously-Exceeds-the-Hero-s",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "jk-haru-sex-worker-in-another-world": {
+    "titreLocal": "JK HARU - SEX WORKER IN ANOTHER WORLD",
+    "recherche": "JK Haru is a Sex Worker in Another World",
+    "id": 34582,
+    "titre": "JK Haru is a Sex Worker in Another World",
+    "titreFr": null,
+    "titreVo": "JK Haru wa Isekai de Shōfu ni Natta",
+    "auteur": "J-ta Yamada & Kou Hiratori",
+    "genres": [
+      "Fantasy",
+      "Adult",
+      "Ecchi",
+      "Drama",
+      "Psychological",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Working",
+      "Bullying",
+      "Violence"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "여고생 하루는 이세계에서 창부가 되었다",
+      "HSG Haru Became A Prostitute In Another World",
+      "JK 하루는 이세계에서 창부가 되었다",
+      "JK Haru is a Sex Worker in Another World",
+      "JK Haru wa Isekai de Shofu ni Natta",
+      "JK Haru wa Isekai de Shoufu ni Natta",
+      "JK Haru: życie prostytutki w innym świecie",
+      "JKハルは異世界で娼婦になった",
+      "Старшеклассница Хару стала проституткой в другом мире",
+      "ฮารุสาวม.ปลายไปขายตัวในต่างโลก",
+      "女高中生小春在异世界成为娼妓",
+      "女高中生小春在异世界成为游女"
+    ],
+    "volumesJaponais": 7,
+    "urlCanonique": "https://mangabaka.org/manga/34582/JK-Haru-is-a-Sex-Worker-in-Another-World",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "JK Haru Is a Sex Worker in Another World (83998)",
+      "JK Haru Is a Sex Worker in Another World: Summer (83999)"
+    ]
+  },
+  "judge": {
+    "titreLocal": "JUDGE",
+    "recherche": "JUDGE",
+    "id": 1272,
+    "titre": "Judge",
+    "titreFr": null,
+    "titreVo": "JUDGE",
+    "auteur": "Yoshiki Tonogai",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Crimes",
+      "Survival"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Judge",
+      "JUDGE(저지)",
+      "Judge (TONOGAI Yoshiki)",
+      "JUDGE เกมพิพากษา",
+      "JUDGE ジャッジ",
+      "JUDGE 审判",
+      "Осуждение",
+      "ジャッジ"
+    ],
+    "volumesJaponais": 6,
+    "urlCanonique": "https://mangabaka.org/manga/1272/Judge",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 39049,
+        "type": "AUTRE"
+      },
+      {
+        "id": 11884,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 29047,
+        "type": "SUITE"
+      }
+    ],
+    "autresCandidats": [
+      "The Judge of Darkness (69798)",
+      "The Judged (126139)",
+      "School Judgement: Gakkyu Hotei (5729)",
+      "Drag-on Dragoon - Judgement (17671)"
+    ]
+  },
+  "kagurabachi": {
+    "titreLocal": "KAGURABACHI",
+    "recherche": "KAGURABACHI",
+    "id": 708,
+    "titre": "Kagurabachi",
+    "titreFr": null,
+    "titreVo": "カグラバチ",
+    "auteur": "Takeru Hokazono",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Tragedy"
+    ],
+    "themes": [
+      "Crimes",
+      "Alternate History",
+      "Urban",
+      "Super Powers",
+      "Sorcery",
+      "Organized Crime",
+      "Politics",
+      "Revenge"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "카구라바치",
+      "Kagurabachi",
+      "Kagura Bowl",
+      "KGB",
+      "Кагурабати",
+      "קאגורהבאצ'י",
+      "كاجوراباتشي",
+      "คากุระบาจิ",
+      "カグラバチ",
+      "神楽鉢",
+      "神樂鉢"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/708/Kagurabachi",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 100772,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 598209,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Kagurabachi: Genichi Sojo's Bathhouse Quest (100772)",
+      "Kagurabachi: Bonus Chapter - Soya Sazanami's Memories, Begone! (598209)"
+    ]
+  },
+  "kaijin-reijoh": {
+    "titreLocal": "KAIJIN REIJOH",
+    "recherche": "Kaijin Reijou",
+    "id": 8728,
+    "titre": "Slasher Maidens",
+    "titreFr": null,
+    "titreVo": "怪人麗嬢",
+    "auteur": "Tetsuya Tashiro",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Psychological",
+      "Romance"
+    ],
+    "themes": [
+      "Tokusatsu",
+      "Monsters",
+      "Violence"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "괴인영애",
+      "Kaijin Reijō",
+      "Kaijin Reijoh",
+      "Kaijin Reijou",
+      "Phantom Lady Beauty",
+      "Slasher Maidens",
+      "Девы-убийцы",
+      "怪人麗嬢"
+    ],
+    "volumesJaponais": 15,
+    "urlCanonique": "https://mangabaka.org/manga/8728/Slasher-Maidens",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Hakushaku Reijou to Furachi na Aijin (424406)"
+    ]
+  },
+  "kaiju-n8": {
+    "titreLocal": "KAIJU N°8",
+    "recherche": "Kaijuu 8-gou",
+    "id": 2207,
+    "titre": "Kaiju n°8",
+    "titreFr": "Kaiju n°8",
+    "titreVo": "Kaijū 8-gō",
+    "auteur": "Naoya Matsumoto",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Tragedy"
+    ],
+    "themes": [
+      "Urban",
+      "Body Modification",
+      "Childhood Dream",
+      "Guns",
+      "Super Powers",
+      "Tokusatsu",
+      "Monsters",
+      "Military"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "괴수 8호",
+      "괴수 8호 리믹스",
+      "8Kaijuu",
+      "8 No’lu Canavar",
+      "Kaidžú č. 8",
+      "Kaiju 8",
+      "Kaijū 8-gō",
+      "Kaijū Hachigō",
+      "Kaiju n°8",
+      "Kaiju No. 8",
+      "KAIJU NO.8 (Monster #8)",
+      "KAIJU No. EIGHT"
+    ],
+    "volumesJaponais": 16,
+    "urlCanonique": "https://mangabaka.org/manga/2207/Kaiju-No-8",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 3666,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 103820,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 398907,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 3207,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Kaiju N°8 side B (3666)",
+      "Kaiju No. 8: Exclusive on the Third Division (103820)",
+      "Kaiju No. 8: Hoshina’s Day Off (398907)",
+      "Kaiju No. 8: Relax (3207)"
+    ]
+  },
+  "kemono-incidents": {
+    "titreLocal": "KEMONO INCIDENTS",
+    "recherche": "KEMONO INCIDENTS",
+    "id": 5942,
+    "titre": "Incident de démon",
+    "titreFr": "Incident de démon",
+    "titreVo": "けものじへん",
+    "auteur": "Shou Aimoto",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Mystery"
+    ],
+    "themes": [
+      "Orphans"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "괴물사변",
+      "Demon Incident",
+      "Demon Incidents",
+      "Incident de démon",
+      "Insiden Monster",
+      "Insiden Siluman",
+      "Kaibutsu Jihen",
+      "Kemono Incidents",
+      "Kemono Jihen",
+      "Kemono Jihen – Gefährlichen Phänomenen auf der Spur",
+      "Kemono Jihen: Incidentes Sobrenaturais",
+      "Kemono Jihen. Niesamowite zdarzenia"
+    ],
+    "volumesJaponais": 26,
+    "urlCanonique": "https://mangabaka.org/manga/5942/Kemono-Jihen",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 101605,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "kindergarten-wars": {
+    "titreLocal": "KINDERGARTEN WARS",
+    "recherche": "KINDERGARTEN WARS",
+    "id": 3873,
+    "titre": "Kindergarten Wars",
+    "titreFr": null,
+    "titreVo": "Yōchien Wars",
+    "auteur": "You Chiba",
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Tragedy"
+    ],
+    "themes": [
+      "Assassination Attempt",
+      "Elite School",
+      "Guns",
+      "Orphans",
+      "Romantic Subplot",
+      "Crimes"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Anaokulu SAVAŞLARI",
+      "Kindergarten Wars",
+      "Mẫu Giáo Đại Chiến",
+      "Nhà trẻ loạn chiến",
+      "유치원 WARS",
+      "Yōchien Wars",
+      "Youchien WARS",
+      "Детсадовские войны",
+      "อนุบาล WARS",
+      "อนุบาล WARS (SIC)",
+      "ようちえん ウォーズ",
+      "幼稚園WARS"
+    ],
+    "volumesJaponais": 17,
+    "urlCanonique": "https://mangabaka.org/manga/3873/Kindergarten-Wars",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 100950,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 7585,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Kindergarten Wars -Luke- (7585)",
+      "Kindergarten Wars: One-shot (100950)"
+    ]
+  },
+  "l-atelier-des-sorciers-edition-grimoire": {
+    "titreLocal": "L'Atelier des sorciers - Édition grimoire",
+    "recherche": "Witch Hat Atelier",
+    "id": 2409,
+    "titre": "L'Atelier des Sorciers",
+    "titreFr": "L'Atelier des Sorciers",
+    "titreVo": "Tongari Bōshi no Atelier",
+    "auteur": "Kamome Shirahama",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Adventure",
+      "Boys Love",
+      "Comedy",
+      "Drama",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Spearplay",
+      "European Ambience",
+      "Accidents",
+      "Disability",
+      "Ecology",
+      "Highly Visual Narrative",
+      "Philosophy",
+      "Politics"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "고깔모자의 아틀리에",
+      "Asrama Topi Lancip",
+      "Atelier of Witch Hat",
+      "Atelier of Witch Hat: Das Geheimnis der Hexen",
+      "Atelier of Witch Hat: El Atelier de Sombreros de Mago",
+      "Ateliér špičatých klobouků",
+      "Atelier spiczastych kapeluszy",
+      "Atelierul Vrăjitoarelor",
+      "Boszorkánysüveg–műhely",
+      "Cadı Şapkası Atölyesi",
+      "Das Geheimnis der Hexen",
+      "El Atelier del Sombrero Puntiagudo"
+    ],
+    "volumesJaponais": 16,
+    "urlCanonique": "https://mangabaka.org/manga/2409/Witch-Hat-Atelier",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 596884,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 600419,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 37252,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "La Cuisine des Sorciers (37252)",
+      "Witch Hat Atelier: Special Stories (574214)",
+      "L'Atelier des Sorciers - L'Art des Sorciers (596884)",
+      "Archives of Witch Hat Atelier (600419)"
+    ]
+  },
+  "les-chroniques-d-azfareo": {
+    "titreLocal": "LES CHRONIQUES D'AZFAREO",
+    "recherche": "LES CHRONIQUES D'AZFAREO",
+    "id": 23846,
+    "titre": "Les chroniques d'Azfaréo",
+    "titreFr": "Les chroniques d'Azfaréo",
+    "titreVo": "蒼竜〈アズファレオ〉の側用人",
+    "auteur": "Shiki Chitose",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Adventure",
+      "Drama",
+      "Romance"
+    ],
+    "themes": [
+      "Curses"
+    ],
+    "cible": "Shojo",
+    "alias": [
+      "창룡의 시종",
+      "Azfareo no Sobayounin",
+      "Azufareo no Sobayounin",
+      "Chamberlain of the Azfareo",
+      "Die Legende von Azfareo",
+      "Die Legende von Azfareo – Im Dienste des blauen Drachen",
+      "Gadis Penasihat Azfareo",
+      "Hana no Othello",
+      "Les chroniques d'Azfaréo",
+      "Natsumeki Mermaid",
+      "Souryou no Sobayounin",
+      "Souryuu no Sobayounin"
+    ],
+    "volumesJaponais": 9,
+    "urlCanonique": "https://mangabaka.org/manga/23846/Azufareo-no-Sobayounin",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 57697,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 156388,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "les-legendaires-saga": null,
+  "leviathan": {
+    "titreLocal": "LEVIATHAN",
+    "recherche": "LEVIATHAN",
+    "id": 9873,
+    "titre": "Léviathan",
+    "titreFr": "Léviathan",
+    "titreVo": "LEVIATHAN",
+    "auteur": "Shiro Kuroi",
+    "genres": [
+      "Sci-Fi",
+      "Drama",
+      "Psychological",
+      "Thriller"
+    ],
+    "themes": [
+      "Diary"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Leviatán",
+      "Leviathan",
+      "Leviathan リバイアサン",
+      "Ribaiasan",
+      "Левиафан",
+      "Левіатан",
+      "Левіафан",
+      "リバイアサン"
+    ],
+    "volumesJaponais": 3,
+    "urlCanonique": "https://mangabaka.org/manga/9873/Leviathan",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Léviathan Deep Water (3176)",
+      "Leviathan (12050)",
+      "The Leviathan of the Covenant (84493)",
+      "World of Leviathan (128696)"
+    ]
+  },
+  "magi-the-labyrinth-of-magic": {
+    "titreLocal": "MAGI - THE LABYRINTH OF MAGIC",
+    "recherche": "MAGI - THE LABYRINTH OF MAGIC",
+    "id": 10495,
+    "titre": "Magi - The Labyrinth of Magic",
+    "titreFr": "Magi - The Labyrinth of Magic",
+    "titreVo": "マギ",
+    "auteur": "Shinobu Ootaka",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Mystery",
+      "Tragedy"
+    ],
+    "themes": [
+      "Wish",
+      "Dystopian",
+      "Economics",
+      "Genie",
+      "Conspiracy",
+      "Politics",
+      "War",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "마기",
+      "Magi",
+      "Magi: Bậc Thầy Pháp Thuật",
+      "Magi El laberinto de la magia",
+      "Magi: El Laberinto de Magia",
+      "Magi - Labyrinth of Magic",
+      "Magi: Mê Cung Ma Thuật",
+      "Magi - Mê Cung Thần Thoại",
+      "Magi: O Labirinto da Magia",
+      "Magi - The Labyrinth of Magic",
+      "Magi: иMê Cung Thần Thoại",
+      "MAGI魔奇少年"
+    ],
+    "volumesJaponais": 37,
+    "urlCanonique": "https://mangabaka.org/manga/10495/Magi-The-Labyrinth-of-Magic",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 16902,
+        "type": "PREQUELLE"
+      }
+    ],
+    "autresCandidats": [
+      "The Land of Paradise (Magi: The Labyrinth of Magic) (16478)",
+      "Magi dj - Oyajidomo wa Naisho Dazo (269174)",
+      "Magi dj - Magical Zundoko Fire (274669)"
+    ]
+  },
+  "magus-of-the-library": {
+    "titreLocal": "MAGUS OF THE LIBRARY",
+    "recherche": "MAGUS OF THE LIBRARY",
+    "id": 1898,
+    "titre": "Magus of the Library",
+    "titreFr": null,
+    "titreVo": "Toshokan no Daimajutsushi",
+    "auteur": "Mitsu Izumi",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Mystery",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Language Barrier",
+      "Animals",
+      "Fairy",
+      "Adoption",
+      "Religion",
+      "Magic",
+      "Middle Eastern Ambience",
+      "Coming of Age"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "도서관의 대마법사",
+      "Đại Pháp sư của thư viện",
+      "Kütüphanenin Başbüyücüsü",
+      "Magus of the Library",
+      "The Great Wizard of the Library",
+      "Toshokan no Daimajutsushi",
+      "Wielki Strażnik Biblioteki",
+      "Wielki Strażnik Biblioteki (Polish)",
+      "Маг-библиотекарь",
+      "Маг из библиотеки",
+      "Чарівник Бібліотеки",
+      "図書館の大魔術師"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/1898/Magus-of-the-Library",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "marimashita-iruma-kun": {
+    "titreLocal": "Iruma à l'école des démons",
+    "recherche": "Mairimashita! Iruma-kun",
+    "id": 89,
+    "titre": "Iruma à l’école des démons",
+    "titreFr": "Iruma à l’école des démons",
+    "titreVo": "入間同學入魔了！",
+    "auteur": "Osamu Nishi",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Summoning",
+      "Demon World",
+      "Magical Creature",
+      "Abandoned Child/ren",
+      "Student Council",
+      "Human In Monster Demon Environment",
+      "Adoption",
+      "Found Family"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "악마에 입문했습니다! 이루마 군",
+      "마에 들어갔습니다! 이루마 군",
+      "Bienvenido al instituto demoníaco, Iruma-kun",
+      "Here's Come the Demon! Iruma-kun",
+      "Iruma à l’école des démons",
+      "Iruma Giá Đáo",
+      "Iruma-kun en el instituto demoníaco",
+      "Iruma-Kun en la Escuela de Demonios",
+      "Iruma w szkole demonów",
+      "İşte Şeytan Geliyor! Iruma-kun",
+      "Mairimashita! Iruma-kun",
+      "Selamat datang di sekolah iblis! Iruma-kun"
+    ],
+    "volumesJaponais": 49,
+    "urlCanonique": "https://mangabaka.org/manga/89/Welcome-to-Demon-School-Iruma-kun",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 5697,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 6204,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 865,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 1926,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 578014,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Welcome to Demon School! Iruma-kun: IruMafia Edition (865)",
+      "Welcome to Demon School! Iruma-kun Devilish Tales : Kalego’s Story (6204)",
+      "Mairimashita! Iruma-kun: Boku Doumei no Game-michi (578014)",
+      "After School! Iruma-kun (5697)"
+    ]
+  },
+  "mashle": {
+    "titreLocal": "MASHLE",
+    "recherche": "MASHLE",
+    "id": 37953,
+    "titre": "Mashle: Magic and Muscles",
+    "titreFr": null,
+    "titreVo": "マッシュル-MASHLE-",
+    "auteur": "Hajime Koumoto",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Comedy"
+    ],
+    "themes": [
+      "Discrimination",
+      "Gourmet",
+      "Romantic Subplot",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "마슐",
+      "Magic & Muscle",
+      "Mashle",
+      "Mashle: Magia e Músculos",
+      "Mashle: Magic and Muscles",
+      "MASHLE:Magic & Muscle",
+      "MASHLE ศึกโลกเวทมนตร์คนพลังกล้าม",
+      "Магия и мускулы",
+      "МЕШ: Магія та М'язи",
+      "ماش: السحر والعضلات",
+      "ماشل",
+      "ماشل : جادو و عضله"
+    ],
+    "volumesJaponais": 18,
+    "urlCanonique": "https://mangabaka.org/manga/37953/Mashle-Magic-and-Muscles",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 103807,
+        "type": "SUITE"
+      },
+      {
+        "id": 103804,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 103805,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 103806,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "MASHLE: Special One-Shot (103807)",
+      "MASHLE: Mash Burnedead to Gangan Ikouze (103806)",
+      "MASHLE: Mash Burnedead to Bouken no Sho (103804)",
+      "MASHLE: Mash Burnedead to Fukkatsu no Jumon (103805)"
+    ]
+  },
+  "mirai-nikki-le-journal-du-futur": {
+    "titreLocal": "MIRAI NIKKI - LE JOURNAL DU FUTUR",
+    "recherche": "Mirai Nikki",
+    "id": 10354,
+    "titre": "Future Diary",
+    "titreFr": null,
+    "titreVo": "Mirai Nikki",
+    "auteur": "Sakae Esuno",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Tragedy",
+      "Thriller"
+    ],
+    "themes": [
+      "Parallel World",
+      "Angst",
+      "Obsessive Love",
+      "Orphans",
+      "Stalkers",
+      "Survival"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "미래일기",
+      "Diário do Futuro",
+      "Future Diary",
+      "Gelecek Günlüğü",
+      "Mirai Nikki",
+      "Mirai Nikki - Future Diary",
+      "Pamiętnik przyszłości",
+      "Дневник Будущего",
+      "مذكرة المستقبل",
+      "भविष्य डायरी",
+      "บันทึกมรณะ : เกมล่าท้าอนาคต",
+      "未來日記"
+    ],
+    "volumesJaponais": 12,
+    "urlCanonique": "https://mangabaka.org/manga/10354/Future-Diary",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 4666,
+        "type": "SUITE"
+      },
+      {
+        "id": 10355,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 10356,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 82401,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Future Diary (105804)",
+      "Future Diary (82401)",
+      "Future Diary: Mosaic (10355)",
+      "Future Diary Paradox (10356)"
+    ]
+  },
+  "mirai-nikki-mosaic": {
+    "titreLocal": "MIRAI NIKKI – MOSAIC",
+    "recherche": "MIRAI NIKKI – MOSAIC",
+    "id": 10355,
+    "titre": "Future Diary: Mosaic",
+    "titreFr": null,
+    "titreVo": "未来日記: Mosaic",
+    "auteur": "Sakae Esuno",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Romance"
+    ],
+    "themes": [
+      "Survival",
+      "Parallel World"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Diário do Futuro: Mosaic",
+      "Future Diary: Mosaic",
+      "Mirai Nikki: Mosaic",
+      "Дневник будущего: Мозаика",
+      "บันทึกมรณะ : เกมล่าท้าอนาคต MOSAIC",
+      "未来日記: Mosaic",
+      "未来日記モザイク"
+    ],
+    "volumesJaponais": 1,
+    "urlCanonique": "https://mangabaka.org/manga/10355/Future-Diary-Mosaic",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 10354,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": [
+      "Future Diary (82401)"
+    ]
+  },
+  "mirai-nikki-paradox": {
+    "titreLocal": "MIRAI NIKKI – PARADOX",
+    "recherche": "MIRAI NIKKI – PARADOX",
+    "id": 10356,
+    "titre": "Future Diary Paradox",
+    "titreFr": null,
+    "titreVo": "未来日記・パラドックス",
+    "auteur": "Sakae Esuno",
+    "genres": [
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Mystery"
+    ],
+    "themes": [
+      "Alternate Universe",
+      "Parallel World"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Diário do Futuro: Paradox",
+      "Future Diary Paradox",
+      "Mirai Nikki Paradox",
+      "Дневник будущего: Парадокс",
+      "บันทึกมรณะ : เกมล่าท้าอนาคต PARADOX",
+      "未来日記・パラドックス"
+    ],
+    "volumesJaponais": 1,
+    "urlCanonique": "https://mangabaka.org/manga/10356/Future-Diary-Paradox",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 10354,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "mission-in-the-apocalypse": {
+    "titreLocal": "MISSION IN THE APOCALYPSE",
+    "recherche": "MISSION IN THE APOCALYPSE",
+    "id": 670,
+    "titre": "Au bout de l'incolore",
+    "titreFr": "Au bout de l'incolore",
+    "titreVo": "Usuzumi no Hate",
+    "auteur": "Haruo Iwamune",
+    "genres": [
+      "Sci-Fi",
+      "Adventure",
+      "Drama",
+      "Mystery",
+      "Tragedy"
+    ],
+    "themes": [
+      "Survival",
+      "Lost Civilization",
+      "Post-Apocalyptic",
+      "Urban",
+      "Artificial Intelligence",
+      "Philosophy"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "엷은 먹빛의 끝",
+      "A Cor do Fim: Missão no Apocalipse",
+      "Au bout de l'incolore",
+      "Kolor końca świata",
+      "Los confines de la oscuridad - Misión en el apocalipsis",
+      "Mission in the Apocalypse",
+      "Mission in the Apocalyspe",
+      "Son Kıyamet Görevi",
+      "The Color of the End",
+      "The Color of the End: Mission in the Apocalypse",
+      "The End In Diluted Ink",
+      "The End of Usuzumi"
+    ],
+    "volumesJaponais": 4,
+    "urlCanonique": "https://mangabaka.org/manga/670/The-Color-of-the-End-Mission-in-the-Apocalypse",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "monster-hunter-orage": {
+    "titreLocal": "MONSTER HUNTER ORAGE",
+    "recherche": "MONSTER HUNTER ORAGE",
+    "id": 10113,
+    "titre": "Monster Hunter Orage",
+    "titreFr": null,
+    "titreVo": "モンスターハンター オラージュ",
+    "auteur": "Hiro Mashima",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "Monster Hunter Orage",
+      "Ураган, охотник на монстров",
+      "モンスターハンター オラージュ",
+      "怪物猎人Orage",
+      "魔物獵人ORAGE"
+    ],
+    "volumesJaponais": 4,
+    "urlCanonique": "https://mangabaka.org/manga/10113/Monster-Hunter-Orage",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 27421,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "monster-musume-everyday-life-with-monster-girls": {
+    "titreLocal": "MONSTER MUSUME - EVERYDAY LIFE WITH MONSTER GIRLS",
+    "recherche": "Monster Musume no Iru Nichijou",
+    "id": 7134,
+    "titre": "La vie Quotidienne Avec des Demi-Humaines",
+    "titreFr": "La vie Quotidienne Avec des Demi-Humaines",
+    "titreVo": "Monster Musume no Iru Nichijō",
+    "auteur": "Takemaru Inui",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Adult",
+      "Ecchi",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Forced Living Arrangements",
+      "Government Agency",
+      "Monsters",
+      "Cohabitation"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "몬스터 딸이있는 일상",
+      "몬스터 아가씨가 있는 일상",
+      "Codzienność z potworzycami",
+      "Daily Life with a Monster Girl",
+      "Der Alltag mit Monstermädchen",
+      "Die Monster Mädchen",
+      "El día a día con las Chicas Monstruo",
+      "Everyday Life with Monster Girls",
+      "Everyday That There Is a Monster Girl",
+      "La vie Quotidienne Avec des Demi-Humaines",
+      "Ma vie Monstresses",
+      "Mi vida con las chicas monstruo"
+    ],
+    "volumesJaponais": 21,
+    "urlCanonique": "https://mangabaka.org/manga/7134/Monster-Musume-Everyday-Life-with-Monster-Girls",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 51741,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 104689,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Monster Musume: I ♥ Monster Girls (51741)",
+      "Monster Musume - Monster Girls on the Job! (104689)",
+      "Monster Musume no Iru Nichijou dj - Ochi Musume (294179)",
+      "[Monster Musume no Iru Nichijou] Mon-Mix (558057)"
+    ]
+  },
+  "mushoku-tensei": {
+    "titreLocal": "MUSHOKU TENSEI",
+    "recherche": "Mushoku Tensei : Nouvelle vie, nouvelle chance",
+    "id": 217,
+    "titre": "Mushoku Tensei : Nouvelle vie, nouvelle chance",
+    "titreFr": "Mushoku Tensei : Nouvelle vie, nouvelle chance",
+    "titreVo": "Mushoku Tensei - Isekai Ittara Honki Dasu",
+    "auteur": "Rifujin na Magonote & Yuka Fujikawa",
+    "genres": [
+      "Fantasy",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Mystery",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Survival",
+      "Bullying",
+      "Coming of Age",
+      "Healing",
+      "Rehabilitation",
+      "Violence",
+      "Reincarnation",
+      "Magical Creature"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "무직전생 ~이세계에 갔으면 최선을 다한다~",
+      "무직전생 ～다른 세계 가면 진심 낸다～",
+      "A Reencarnação do Vagabundo: Vou dar meu melhor se for para outro mundo",
+      "Jobless Reincarnation: It Will be All Out if I Go to Another World",
+      "Jobless Reincarnation: I Will Go All Out When I'm Transported to Another World",
+      "Jobless Reincarnation: I Will Seriously Try If I Go to Another World",
+      "Mr. No-Job's New Life: If I Go to a Parallel World, Then I'll Get Serious",
+      "Mushoku Tensei",
+      "Mushoku Tensei: If I Get to a Parallel Universe I'll Bring Out my True Effort",
+      "Mushoku Tensei: In dieser Welt mach ich alles anders",
+      "Mushoku Tensei - Isekai Ittara Honki Dasu",
+      "Mushoku Tensei: İşsiz Reenkarnasyon"
+    ],
+    "volumesJaponais": 24,
+    "urlCanonique": "https://mangabaka.org/manga/217/Mushoku-Tensei-Jobless-Reincarnation",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 28521,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 603,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 9594,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 75025,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 8111,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "mushoku-tensei-l-epee-d-iris": {
+    "titreLocal": "MUSHOKU TENSEI – L'épée d'Iris",
+    "recherche": "Mushoku Tensei - L'Épée d'Eris",
+    "id": 9594,
+    "titre": "Mushoku Tensei - L'Épée d'Eris",
+    "titreFr": "Mushoku Tensei - L'Épée d'Eris",
+    "titreVo": "無職転生　～エリスは本気で牙を砥ぐ～",
+    "auteur": "Rifujin na Magonote & Yuu Okano & Take Higake",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "themes": [
+      "Beast Girl"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Jobless Reincarnation: Eris Seriously Sharpen Her Fangs",
+      "Jobless Reincarnation: Eris Seriously Sharpens Her Fangs",
+      "Mushoku no Tensei: Eris Gaiden",
+      "Mushoku Tensei: Eris Gaiden",
+      "Mushoku Tensei: Eris wa Honki de Kiba o Togu",
+      "Mushoku Tensei: Eris wa Honki de Kiba wo Togu",
+      "Mushoku Tensei: Isekai Ittara Honki Dasu - Eris wa Honki de Kiba o Togu",
+      "Mushoku Tensei: Jobless Reincarnation—Eris Sharpens Her Fangs",
+      "Mushoku Tensei - L'Épée d'Eris",
+      "Реинкарнация Безработного - История Эрис",
+      "Реинкарнация безработного: Серьёзная Эрис точит клыки",
+      "เกิดชาตินี้พี่ต้องเทพ -เอริสเดินทางลับคมเขี้ยว-"
+    ],
+    "volumesJaponais": 1,
+    "urlCanonique": "https://mangabaka.org/manga/9594/Mushoku-Tensei-Jobless-Reincarnation-Eris-Sharpens-Her-Fangs",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 84589,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "mushoku-tensei-les-aventures-de-roxy": {
+    "titreLocal": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "recherche": "MUSHOKU TENSEI – Les aventures de Roxy",
+    "id": 28521,
+    "titre": "Mushoku Tensei - Les aventures de Roxy",
+    "titreFr": "Mushoku Tensei - Les aventures de Roxy",
+    "titreVo": "Mushoku Tensei: Roxy Datte Honki desu",
+    "auteur": "Rifujin na Magonote & Shoko Iwami",
+    "genres": [
+      "Fantasy",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "themes": [
+      "Coming of Age",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "무직전생 ~록시도 최선을 다합니다~",
+      "Mushoku Tensei - Les aventures de Roxy",
+      "Mushoku Tensei: Roxy da tte Honki desu",
+      "Mushoku Tensei: Roxy Gets Serious",
+      "Mushoku Tensei -Roxy is Serious-",
+      "Roxy is Serious",
+      "Реинкарнация безработного: История Рокси",
+      "Реінкарнація Безробітного: Роксі Стає Серйозною",
+      "تناسخ علاف : روکسی جدی میشه",
+      "เกิดชาตินี้พี่ต้องเทพ บันทึกของร็อกซี",
+      "无职转生　～洛琪希也要拿出真本事～",
+      "無職転生　～ロキシーだって本気です～"
+    ],
+    "volumesJaponais": 12,
+    "urlCanonique": "https://mangabaka.org/manga/28521/Mushoku-Tensei-Roxy-Gets-Serious",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 84589,
+        "type": "SERIE_MERE"
+      },
+      {
+        "id": 217,
+        "type": "SUITE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "my-elder-sister": {
+    "titreLocal": "MY ELDER SISTER",
+    "recherche": "MY ELDER SISTER",
+    "id": 23927,
+    "titre": "The Elder Sister-Like One",
+    "titreFr": null,
+    "titreVo": "Ane Naru Mono",
+    "auteur": "Pochi. Iida",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Ecchi",
+      "Comedy",
+      "Horror",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Cohabitation",
+      "Dead Parents"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "누나 되는자",
+      "누이 되는자",
+      "An Elder Sister",
+      "Ane Naru Mono",
+      "La cosa que se conviertió en mi hermana mayor",
+      "L'innominabile sorella",
+      "Mi hermana mayor",
+      "My Ancient Sister",
+      "My Elder Sister",
+      "My Elder Sister (German, French)",
+      "The Demon Who Became My Sister",
+      "The Elder Sister-Like One"
+    ],
+    "volumesJaponais": 6,
+    "urlCanonique": "https://mangabaka.org/manga/23927/The-Elder-Sister-Like-One",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "My Elder Sister (265851)",
+      "My Elder Sister is the Universe (129493)",
+      "My Elder Sister's Marriage (16702)",
+      "Sister and Giant - La Renaissance d'une jeune femme dans un autre monde (6818)"
+    ]
+  },
+  "my-hero-academia": {
+    "titreLocal": "MY HERO ACADEMIA",
+    "recherche": "MY HERO ACADEMIA",
+    "id": 7423,
+    "titre": "My Hero Academia",
+    "titreFr": "My Hero Academia",
+    "titreVo": "ヒロアカ",
+    "auteur": "Kouhei Horikoshi",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Tragedy"
+    ],
+    "themes": [
+      "Crimes",
+      "Tournaments",
+      "Urban",
+      "Animals",
+      "Coming of Age",
+      "Conspiracy",
+      "Injury",
+      "Politics"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "나히아",
+      "나의 히어로 아카데미아",
+      "나의 영웅 아카데미아",
+      "BnHA",
+      "Boku no Hero Academia",
+      "HeroAca",
+      "Học Viện Anh Hùng",
+      "Học Viện Siêu Anh Hùng",
+      "Kahramanlık Akademim",
+      "Mano herojų akademija",
+      "MHA",
+      "Mi Academia de Héroes"
+    ],
+    "volumesJaponais": 42,
+    "urlCanonique": "https://mangabaka.org/manga/7423/MY-HERO-ACADEMIA",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 10046,
+        "type": "AUTRE"
+      },
+      {
+        "id": 33428,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104450,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104451,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104452,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104454,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 125609,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 160680,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 1837,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 22736,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 35089,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 37369,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 41089,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 80166,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 103895,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 103897,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 104448,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 104449,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 105852,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "My Hero Academia: School Briefs (33428)",
+      "Vigilantes – My Hero Academia Illegals (1837)",
+      "My Hero Academia: Team-Up Missions (35089)",
+      "My Hero Academia - All Might: Rising (104448)"
+    ]
+  },
+  "my-hero-academia-smash": {
+    "titreLocal": "MY HERO ACADEMIA - Smash",
+    "recherche": "MY HERO ACADEMIA - Smash",
+    "id": 22736,
+    "titre": "My Hero Academia Smash!!",
+    "titreFr": null,
+    "titreVo": "Boku no Hero Academia Smash!!",
+    "auteur": "Hirofumi Neda & Kouhei Horikoshi",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Comedy"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "나의 히어로 아카데미아 스매시!!",
+      "Boku no Hero Academia Smash!!",
+      "Boku no Hīrō Academia Sumasshu!!",
+      "Boku no Hīrō Academia Sumasshu!!, 我的英雄学院SMASH!!, 我的英雄學院SMASH!!",
+      "My Hero Academia Smash!!",
+      "Моя геройская академия Smash!!",
+      "Моя геройская академия: Разгром!",
+      "僕のヒーローアカデミア すまっしゅ!!",
+      "我的英雄学术：粉碎！！",
+      "我的英雄学院SMASH!!",
+      "我的英雄學術：粉碎！！",
+      "我的英雄學院SMASH!!"
+    ],
+    "volumesJaponais": 5,
+    "urlCanonique": "https://mangabaka.org/manga/22736/My-Hero-Academia-Smash",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 7423,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "my-hero-academia-ultra-archive": null,
+  "naruto": {
+    "titreLocal": "NARUTO",
+    "recherche": "NARUTO",
+    "id": 270,
+    "titre": "NARUTO",
+    "titreFr": null,
+    "titreVo": "NARUTO―ナルト―",
+    "auteur": "Masashi Kishimoto",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Animals",
+      "Ambitious Goals",
+      "Orphans",
+      "Philosophy",
+      "Magic",
+      "Coming of Age",
+      "Found Family",
+      "Super Powers"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "나루토",
+      "Hóⁿ-éng Jím-chiá",
+      "Naluto",
+      "NARUTO",
+      "NARUTO―ナルト―",
+      "Naṛutu",
+      "Нароуто",
+      "Нарута",
+      "Наруто",
+      "ნარუტო",
+      "Նարուտո",
+      "נאַרוטאָ"
+    ],
+    "volumesJaponais": 72,
+    "urlCanonique": "https://mangabaka.org/manga/270/NARUTO",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 84644,
+        "type": "AUTRE"
+      },
+      {
+        "id": 9768,
+        "type": "SUITE"
+      },
+      {
+        "id": 31130,
+        "type": "SUITE"
+      },
+      {
+        "id": 22038,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 32207,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 66698,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 67698,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 67699,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 67700,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 67701,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 84640,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 84641,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 84642,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 84643,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 85612,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 100635,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101191,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101193,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101194,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101195,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101196,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101197,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101198,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101199,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101200,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101201,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101202,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 19654,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 40845,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Naruto Pilot (57337)",
+      "Naruto Special Gaiden: The Day Naruto Became Hokage (22038)",
+      "La véritable histoire d'Itachi (84643)",
+      "Naruto Gaiden - Le 7e Hokage et la Lune écarlate (21485)"
+    ]
+  },
+  "neon-genesis-evangelion": {
+    "titreLocal": "NEON GENESIS EVANGELION",
+    "recherche": "NEON GENESIS EVANGELION",
+    "id": 1527,
+    "titre": "Neon Genesis Evangelion",
+    "titreFr": "Neon Genesis Evangelion",
+    "titreVo": "Shinseiki Evangelion",
+    "auteur": "Yoshiyuki Sadamoto",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Mecha",
+      "Supernatural",
+      "Action",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Biopunk",
+      "Cyberpunk",
+      "Denpa",
+      "Post-Apocalyptic",
+      "Urban",
+      "Abandonment",
+      "Genetic Modification",
+      "Guns"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "신세기 에반게리온",
+      "Evangelion",
+      "EVANGELION เอวานเกเลียน",
+      "Eva người máy thông minh",
+      "Neogénesis Evangelion",
+      "Neon Genesis Evangelion",
+      "Shinseiki Evangelion",
+      "Евангелион",
+      "Евангелион нового поколения",
+      "Новый век: Евангелион",
+      "เอวานเกเลี่ยน",
+      "しんせいきエヴァンゲリオン"
+    ],
+    "volumesJaponais": 14,
+    "urlCanonique": "https://mangabaka.org/manga/1527/Neon-Genesis-Evangelion",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 73228,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Neon Genesis Evangelion: Campus Apocalypse (14280)",
+      "Neon Genesis Evangelion: ANIMA (84656)",
+      "Neon Genesis Evangelion: Comic Tribute (62192)",
+      "Neon Genesis Evangelion: Angelic Days (15097)"
+    ]
+  },
+  "nier-automata-op-pearl-harbor": {
+    "titreLocal": "Nier: Automata - Opération Pearl Harbor",
+    "recherche": "YoRHa: Shinjuwan Kouka Sakusen Kiroku",
+    "id": 7203,
+    "titre": "YoRHa: Pearl Harbor Descent Record",
+    "titreFr": null,
+    "titreVo": "YoRHa Pearl Harbor Descent Mission Record ヨルハ",
+    "auteur": "Megumu Soramichi & Tarou Yokoo",
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Survival",
+      "Dystopian",
+      "Single-Gender Society",
+      "Guns",
+      "Military",
+      "Philosophy",
+      "Violence",
+      "Viruses"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "NieR: Automata – Pearl Harbor Çıkarma Operasyonu",
+      "NieR: Automata: YoRHa Shinjuwan Kouka Sakusen Kiroku",
+      "YoRHa – Abstieg 11941: Eine NieR:Automata Story",
+      "YoRHa Pearl Harbor Descent Mission Record ヨルハ",
+      "YoRHa: Pearl Harbor Descent Operation Record",
+      "YoRHa: Pearl Harbor Descent Record",
+      "YoRHa: Pearl Harbor Descent Record – A NieR:Automata Story",
+      "YoRHa Shinjuwan Kōka Sakusen Kiroku",
+      "Yorha: Shinjuwan Kouka Sakusen Kiroku",
+      "YoRHa Stage",
+      "YoRHa: Отчёт о высадке на Пёрл-Харбор",
+      "YoRHA: Протокол висадки в Перл-Гарбор"
+    ],
+    "volumesJaponais": 4,
+    "urlCanonique": "https://mangabaka.org/manga/7203/YoRHa-Pearl-Harbor-Descent-Record-A-NieR-Automata-Story",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 84671,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 84672,
+        "type": "SUITE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "nozokiana": {
+    "titreLocal": "NOZOKIANA",
+    "recherche": "NOZOKIANA",
+    "id": 10541,
+    "titre": "Un Trou pour Voyeurisme",
+    "titreFr": "Un Trou pour Voyeurisme",
+    "titreVo": "No-Zo-Ki-A-Na",
+    "auteur": "Wakou Honna",
+    "genres": [
+      "Adult",
+      "Ecchi",
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "themes": [
+      "Coming of Age",
+      "Living Alone"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "엿보기구멍",
+      "A Peephole",
+      "Dikiz Deliği",
+      "Heimliche Blicke",
+      "Nozoki Ana",
+      "Peep Hole",
+      "Peeping Hole",
+      "Podejrzane sekrety",
+      "Un Trou pour Voyeurisme",
+      "Вічко",
+      "Дыра",
+      "ノ・ゾ・キ・ア・ナ"
+    ],
+    "volumesJaponais": 13,
+    "urlCanonique": "https://mangabaka.org/manga/10541/Nozoki-Ana",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Peephole (25553)",
+      "Peep Hole (159824)",
+      "Nozoki Ana (129582)",
+      "Nozukiana.com: Nozokimi Site (201007)"
+    ]
+  },
+  "one-puch-man": {
+    "titreLocal": "One-Punch Man",
+    "recherche": "One Punch-Man",
+    "id": 725,
+    "titre": "ONE-PUNCH MAN",
+    "titreFr": null,
+    "titreVo": "ONE PUNCH-MAN",
+    "auteur": "ONE & Yuusuke Murata",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Tragedy"
+    ],
+    "themes": [
+      "Flashbacks",
+      "Ranked by Strength",
+      "Urban",
+      "Monsters",
+      "Philosophy",
+      "Comedic Violence",
+      "Super Powers"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "원펀맨",
+      "El hombre de un solo golpe",
+      "ONE PUNCH-MAN",
+      "One-Punch Man: Tek Yumruk",
+      "ONE-PUNCH MAN 一拳超人",
+      "OPM",
+      "Tek Yumruk",
+      "Wanpanman",
+      "Бірұрман",
+      "Ванпанчмен",
+      "Уанпанчмен",
+      "איש האגרוף הבודד"
+    ],
+    "volumesJaponais": 37,
+    "urlCanonique": "https://mangabaka.org/manga/725/ONE-PUNCH-MAN",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 16508,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "One Punch-Man (4088)",
+      "Les Bons Petits Plats d'un Mangaka (65110)",
+      "One Punch Man DJ: Saitama vs God (529007)",
+      "One Punch-Man dj - Stray Cat (282862)"
+    ]
+  },
+  "oriant-samurai-quest": {
+    "titreLocal": "Orient - Samurai Quest",
+    "recherche": "Orient",
+    "id": 6560,
+    "titre": "Orient",
+    "titreFr": null,
+    "titreVo": "Orient -オリエント-",
+    "auteur": "Shinobu Ootaka",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Historical"
+    ],
+    "themes": [
+      "Dystopian",
+      "Lost Civilization"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "오리엔트",
+      "2 สิงห์ พลิกตำนานพิฆาตอสูร",
+      "2 สิงห์ พลิกตำนานพิฆาตอสูร (SIC)",
+      "Orient",
+      "Orient: Samurai Quest",
+      "Orient -オリエント-",
+      "ORIENT 東方少年",
+      "Ориент",
+      "اورينت",
+      "オリエント",
+      "东方少年"
+    ],
+    "volumesJaponais": 22,
+    "urlCanonique": "https://mangabaka.org/manga/6560/Orient",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Touhou Sangetsusei: Oriental Sacred Place (3893)",
+      "Cache-cache érotique (352013)",
+      "Yellow Magic Oriental Girl (216691)",
+      "Lorient no Aoi Sora (148208)"
+    ]
+  },
+  "oshi-no-ko": {
+    "titreLocal": "OSHI NO KO",
+    "recherche": "OSHI NO KO",
+    "id": 593,
+    "titre": "L'Enfant d'une Star",
+    "titreFr": "L'Enfant d'une Star",
+    "titreVo": "【推しの子】",
+    "auteur": "Aka Akasaka & Mengo Yokoyari",
+    "genres": [
+      "Supernatural",
+      "Comedy",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Urban",
+      "Baby/ies",
+      "Dead Parents",
+      "Educational",
+      "Lies",
+      "Pregnancy",
+      "Showbiz",
+      "Stalkers"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "【최애의 아이】",
+      "Anak Idola",
+      "Criança que deve ser suportada",
+      "Đứa Con Của Thần Tượng",
+      "Dưới Ánh Hào Quang",
+      "Favorite Girl",
+      "Filho de sua favorita",
+      "Hijos predilectos",
+      "İdolümün Çocuğu",
+      "L'Enfant d'une Star",
+      "Ma Star",
+      "[Mein*Star]"
+    ],
+    "volumesJaponais": 16,
+    "urlCanonique": "https://mangabaka.org/manga/593/Oshi-no-Ko",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 100496,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101237,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Hoshinoko! (78176)",
+      "[Oshi no Ko] Spica the First Star (101238)",
+      "Asano Inio's Short Stories (100491)",
+      "\"Oshi no Ko\" Tokubetsu-hen (100496)"
+    ]
+  },
+  "pandora-heart": {
+    "titreLocal": "Pandora Hearts",
+    "recherche": "Pandora Hearts",
+    "id": 10719,
+    "titre": "Pandora Hearts",
+    "titreFr": null,
+    "titreVo": "Pandora Hearts",
+    "auteur": "Jun Mochizuki",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Tragedy"
+    ],
+    "themes": [
+      "Alternate Reality",
+      "Alternate Universe",
+      "Denpa",
+      "Parallel World",
+      "Guns",
+      "Identity Crisis",
+      "Magic",
+      "Dark Ambience"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Chiếc Hộp Pandora",
+      "판도라 하츠(PandoraHearts)",
+      "Pandora Hearts",
+      "Pandora Hearts Pilot",
+      "Pandoros širdys",
+      "Сердца Пандоры",
+      "Серця Пандори",
+      "دل های پاندورا",
+      "قلوب باندورا",
+      "แพนโดร่า ฮาร์ทส์",
+      "パンドラハーツ",
+      "潘多拉之心"
+    ],
+    "volumesJaponais": 24,
+    "urlCanonique": "https://mangabaka.org/manga/10719/Pandora-Hearts",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 84817,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 99432,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "PandoraHearts ~Caucus Race~ (84817)",
+      "Pandora Hearts: Gilbert in Wonderland (99432)",
+      "Pandora's Heart (41138)",
+      "Pandora Hearts - Odds and Ends (Artbook) (253220)"
+    ]
+  },
+  "pandora-heart-8-5": null,
+  "pokemon-la-grande-aventure": {
+    "titreLocal": "POKEMON - LA GRANDE AVENTURE",
+    "recherche": "Pocket Monsters Special",
+    "id": 5733,
+    "titre": "Pokémon La Grande Aventure",
+    "titreFr": "Pokémon La Grande Aventure",
+    "titreVo": "Pokémon Special",
+    "auteur": "Hidenori Kusaka & Mato & Satoshi Yamamoto",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Tragedy"
+    ],
+    "themes": [
+      "Creature Taming",
+      "Organized Crime",
+      "Video Games",
+      "Tournaments",
+      "Animals",
+      "Coming of Age",
+      "Competitions"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "포켓몬스터 스페셜",
+      "Pocket Monster Special",
+      "Pocket Monsters Special",
+      "Pocket Monsters Special Omega Ruby Alpha Sapphire ORAS",
+      "Pocket Monsters Special Sun Moon",
+      "Pocket Monsters Special Sword and Shield",
+      "Pocket Monsters Special XY",
+      "Pokémon Adventure",
+      "Pokémon Adventures",
+      "Pokémon Adventures: Diamond and Pearl/Platinum",
+      "Pokémon Adventures: HeartGold & SoulSilver",
+      "Pokémon Black and White"
+    ],
+    "volumesJaponais": 64,
+    "urlCanonique": "https://mangabaka.org/manga/5733/Pok%C3%A9mon-Adventures",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 2963,
+        "type": "AUTRE"
+      },
+      {
+        "id": 3375,
+        "type": "AUTRE"
+      },
+      {
+        "id": 6205,
+        "type": "AUTRE"
+      },
+      {
+        "id": 19931,
+        "type": "AUTRE"
+      },
+      {
+        "id": 21658,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99369,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99417,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99418,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99471,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99472,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99525,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99526,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99553,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99554,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99624,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99677,
+        "type": "AUTRE"
+      },
+      {
+        "id": 19894,
+        "type": "AUTRE"
+      },
+      {
+        "id": 19921,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 26759,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 79102,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Pokemon : La Grande Aventure (79102)",
+      "Pokémon Adventures: X•Y (19931)",
+      "Pokémon Adventures: Omega Ruby and Alpha Sapphire (21658)",
+      "Pokémon: Sun & Moon (6205)"
+    ]
+  },
+  "pokemon-zoroark-le-maitre-des-illusion": {
+    "titreLocal": "POKEMON – ZOROARK LE MAITRE DES ILLUSION",
+    "recherche": "Pokemon Zoroark Master of Illusions",
+    "id": 112502,
+    "titre": "Pokémon - Zoroark le maître des Illusions",
+    "titreFr": "Pokémon - Zoroark le maître des Illusions",
+    "titreVo": "Gekijōban Pocket Monster Diamond & Pearl: Genei no Hasha Zoroark",
+    "auteur": "Momota Inoue",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "themes": [
+      "Pokémon"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Gekijōban Pocket Monster Diamond & Pearl: Genei no Hasha Zoroark",
+      "Gekijouban Pocket Monster Diamond & Pearl: Genei no Hasha Zoroark",
+      "Gekijouban Pokemon- Genei no Hasha Zoroark",
+      "Genei no Hasha Zoroark",
+      "Phantom Ruler: Zoroark",
+      "Pocket Monsters Diamond & Pearl: Genei no Hasha Zoroark",
+      "Pokemon Diamond & Pearl: Genei no Hasha Zoroark",
+      "Pokémon - Zoroark: Illuusioiden mestari",
+      "Pokémon - Zoroark le maître des Illusions",
+      "Pokémon - Zoroark: Master of Illusions",
+      "Ruler of Illusions: Zoroark",
+      "Покемон: Алмаз и жемчуг — Мастер иллюзий Зороарк"
+    ],
+    "volumesJaponais": 1,
+    "urlCanonique": "https://mangabaka.org/manga/112502/Pok%C3%A9mon-Zoroark-Master-of-Illusions",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "prophecy-the-copycat": {
+    "titreLocal": "PROPHECY – THE COPYCAT",
+    "recherche": "PROPHECY – THE COPYCAT",
+    "id": 8215,
+    "titre": "Prophecy",
+    "titreFr": null,
+    "titreVo": "Yokokuhan",
+    "auteur": "Fumio Obata & Tetsuya Tsutsui",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Tragedy"
+    ],
+    "themes": [
+      "Abusive Parents",
+      "Bullying",
+      "Discrimination",
+      "Investigation",
+      "Dark Ambience",
+      "Revenge",
+      "Torture",
+      "Violence"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Prophecy",
+      "Prophecy: The Copycat",
+      "Yokokuhan",
+      "Yokokuhan: The Copycat",
+      "Преступление с уведомлением: Подражатель",
+      "予告犯",
+      "予告犯―THE COPYCAT―"
+    ],
+    "volumesJaponais": 3,
+    "urlCanonique": "https://mangabaka.org/manga/8215/Prophecy",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 14200,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "radiant": {
+    "titreLocal": "RADIANT",
+    "recherche": "RADIANT",
+    "id": 2416,
+    "titre": "RADIANT",
+    "titreFr": "RADIANT",
+    "titreVo": "ラディアン",
+    "auteur": "Tony Valente",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "themes": [
+      "Discrimination",
+      "Sorcery",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Radiant",
+      "Радиант",
+      "Радіант",
+      "Чi “Життя однієї киці",
+      "ラディアン"
+    ],
+    "volumesJaponais": 19,
+    "urlCanonique": "https://mangabaka.org/oel/2416/RADIANT",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Radiant (111042)",
+      "Idolish Seven Trigger - Before the Radiant Glory (24671)",
+      "Intensément radieux (3701)",
+      "TOW Radiant Mythology (16739)"
+    ]
+  },
+  "ragna-crimson": {
+    "titreLocal": "RAGNA CRIMSON",
+    "recherche": "RAGNA CRIMSON",
+    "id": 3729,
+    "titre": "Ragna Crimson",
+    "titreFr": null,
+    "titreVo": "ラグナクリムゾン",
+    "auteur": "Daiki Kobayashi",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Tragedy"
+    ],
+    "themes": [
+      "Tragic Accident",
+      "Revenge",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "라그나 크림슨",
+      "Ragnac Crimson",
+      "Ragna Crimson",
+      "Рагна Багровый",
+      "راغنا كريمزون",
+      "ตำนานนักล่ามังกร",
+      "ตำนานนักล่ามังกร (SIC)",
+      "ラグナクリムゾン",
+      "拉格納緋紅",
+      "狩龙人拉格纳"
+    ],
+    "volumesJaponais": 17,
+    "urlCanonique": "https://mangabaka.org/manga/3729/Ragna-Crimson",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Red Fang (61643)"
+    ]
+  },
+  "rai-rai-rai": {
+    "titreLocal": "RAI RAI RAI",
+    "recherche": "RAI RAI RAI",
+    "id": 1982,
+    "titre": "Rai Rai Rai",
+    "titreFr": null,
+    "titreVo": "Rairairai",
+    "auteur": "Satoshi  Yoshiaki",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Horror",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Violence"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "라이라이라이",
+      "Lightning Lightning Lightning",
+      "Rairairai",
+      "ГрімГрімГрім",
+      "ГромГромГром",
+      "ライライライ",
+      "雷雷雷"
+    ],
+    "volumesJaponais": 6,
+    "urlCanonique": "https://mangabaka.org/manga/1982/Rai-Rai-Rai",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Rairairaise (3348)",
+      "Spread the Peace! (123944)",
+      "I Wish I Was Stupid (123417)",
+      "Rairaiden (31799)"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill": {
+    "titreLocal": "RED EYES SWORD Akame Ga Kill",
+    "recherche": "Akame ga Kill!",
+    "id": 4897,
+    "titre": "Red Eyes Sword - Akame ga Kill !",
+    "titreFr": "Red Eyes Sword - Akame ga Kill !",
+    "titreVo": "アカメが斬る！",
+    "auteur": "Takahiro & Tetsuya Tashiro",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Romance",
+      "Tragedy"
+    ],
+    "themes": [
+      "Crimes",
+      "Country Bumpkin Moves To City",
+      "Cruelty",
+      "Military",
+      "Super Powers",
+      "Teamwork",
+      "Violence",
+      "Corruption"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "아카메가 벤다!!",
+      "Akame ga Kill!",
+      "Akame ga Kiru!",
+      "Akame Keser!",
+      "Akame Kills!",
+      "Akame Slashes!",
+      "Red-Eyed Killer!",
+      "Red-Eye Kills!",
+      "Red Eyes Sword",
+      "Red Eyes Sword - Akame ga Kill !",
+      "Red Eyes Sword - Akame ga Kill ! (FRoff)",
+      "Sát thủ Akame!"
+    ],
+    "volumesJaponais": 15,
+    "urlCanonique": "https://mangabaka.org/manga/4897/Akame-ga-KILL",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 9548,
+        "type": "PREQUELLE"
+      },
+      {
+        "id": 25829,
+        "type": "SUITE"
+      },
+      {
+        "id": 36549,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 100575,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Red Eyes Sword - Akame ga Kill ! Zero (FR) (9548)",
+      "Akame ga Kill! Volume 1.5 (36549)",
+      "Akame ga Kiru! Memorial Fan Book (100575)"
+    ]
+  },
+  "red-eyes-sword-akame-ga-kill-zero": {
+    "titreLocal": "RED EYES SWORD Akame Ga Kill – ZERO",
+    "recherche": "Akame ga Kill! Zero",
+    "id": 9548,
+    "titre": "Red Eyes Sword - Akame Ga Kill !",
+    "titreFr": "Red Eyes Sword - Akame Ga Kill !",
+    "titreVo": "アカメが斬る!",
+    "auteur": "Takahiro & Kei Toru",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Tragedy"
+    ],
+    "themes": [
+      "Military",
+      "Super Powers",
+      "War",
+      "Corruption"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "아카메가 벤다!",
+      "아카메가 벤다! 제로",
+      "Akame ga KILL!",
+      "Akame ga Kill! Zero",
+      "Akame ga Kiru! Rei",
+      "Akame ga kiru! Zero",
+      "Red Eyes Sword - Akame Ga Kill !",
+      "Red Eyes Sword - Akame ga Kill ! Zero (FR)",
+      "Red Eyes Sword Zero",
+      "Убийца Акаме! Начало",
+      "Убийца Акамэ! Начало",
+      "อาคาเมะ สวยประหาร Zero (SIC)"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/9548/Akame-ga-KILL-ZERO",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 4897,
+        "type": "SUITE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "relife": {
+    "titreLocal": "RELIFE",
+    "recherche": "RELIFE",
+    "id": 9991,
+    "titre": "ReLIFE",
+    "titreFr": "ReLIFE",
+    "titreVo": "リライフ",
+    "auteur": "Sou Yayoi",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Working",
+      "Life-Changing Events",
+      "Coming of Age",
+      "Experiments",
+      "Rehabilitation"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "리라이프",
+      "리라이프 -Relife-",
+      "ReLife",
+      "ReLIFE 重返17岁",
+      "ReLIFE 重返17歲",
+      "Повторная жизнь",
+      "إعادة الحياة",
+      "रि-लाइफ",
+      "リライフ",
+      "重生计划",
+      "重返17歲"
+    ],
+    "volumesJaponais": 15,
+    "urlCanonique": "https://mangabaka.org/manga/9991/ReLIFE",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "ReLIFE (373176)",
+      "Re:Life (246689)",
+      "Relife Player (58252)",
+      "Remake (66480)"
+    ]
+  },
+  "remember": {
+    "titreLocal": "REMEMBER",
+    "recherche": "REMEMBER",
+    "id": 14621,
+    "titre": "Remember",
+    "titreFr": null,
+    "titreVo": "Jide",
+    "auteur": "Benjamin",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Depression",
+      "Graffiti",
+      "Art",
+      "Mental Illness",
+      "Unexpressed Feelings"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Jide",
+      "remember",
+      "Помни",
+      "记得"
+    ],
+    "volumesJaponais": 1,
+    "urlCanonique": "https://mangabaka.org/manhua/14621/Remember",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "ReMember (KING Gonta) (16108)",
+      "Re/member (FR) (1045)",
+      "Re:member (6330)",
+      "Peut-être qu'on s'est mariés (53229)"
+    ]
+  },
+  "ruridragon": {
+    "titreLocal": "RURIDRAGON",
+    "recherche": "RURIDRAGON",
+    "id": 600,
+    "titre": "Ruridragon",
+    "titreFr": "Ruridragon",
+    "titreVo": "ルリドラゴン",
+    "auteur": "Masaoki Shindou",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Comedy",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Super Powers",
+      "Dragon Girl",
+      "Coming of Age"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "루리 드래곤",
+      "Drak Ruri",
+      "Rồng Ruri",
+      "Ruridragon",
+      "Ruri Sang Naga",
+      "Ruri Si(Naga)",
+      "Smok Ruri",
+      "Дракон Рури",
+      "التنينه روري",
+      "รูริดราก้อน",
+      "ルリドラゴン",
+      "瑠璃龍龍"
+    ],
+    "volumesJaponais": 5,
+    "urlCanonique": "https://mangabaka.org/manga/600/RuriDragon",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Ruri Dragon (Oneshot) (47180)"
+    ]
+  },
+  "saga-of-tany-the-evil-youjo-senki": {
+    "titreLocal": "Tanya, the evil",
+    "recherche": "Youjo Senki",
+    "id": 3937,
+    "titre": "Les Histoires militaires d'une petite fille",
+    "titreFr": "Les Histoires militaires d'une petite fille",
+    "titreVo": "幼女戦記",
+    "auteur": "Carlo Zen & Chika Toujou",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Tragedy",
+      "Historical"
+    ],
+    "themes": [
+      "Invasion",
+      "European Ambience",
+      "Politics",
+      "Religion",
+      "Reincarnation",
+      "Guns",
+      "Military",
+      "War"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "유녀전기",
+      "Ấu Nữ Chiến Ký",
+      "Crónicas de una niña en guerra",
+      "Crônicas Militares de uma Pequena Garota",
+      "Diario de guerra",
+      "Diario De Guerra: Saga Of Tanya The Evil",
+      "Die Militärischen Aufzeichnungen eines kleinen Mädchens",
+      "Kisah Tanya yang Jahat",
+      "Kisah Tentera Seorang Gadis Kecil",
+      "Kronik Militer Seorang Gadis Kecil",
+      "Küçük Bir Kızın Askeri Günlükleri",
+      "La Saga de Tanya la Malvada"
+    ],
+    "volumesJaponais": 34,
+    "urlCanonique": "https://mangabaka.org/manga/3937/The-Saga-of-Tanya-the-Evil",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "The Saga of Tanya the Evil (86171)",
+      "The Saga of Tanya the Evil (26575)",
+      "A Little Girl Takes Up Senshado - Youjo Senki x Girls und Panzer (Doujinshi) (46880)",
+      "Youjo Senki dj - Saizensen no Degurechaff Ojisan (301118)"
+    ]
+  },
+  "saint-seiya-the-lost-canvas": {
+    "titreLocal": "SAINT SEIYA - THE LOST CANVAS",
+    "recherche": "SAINT SEIYA - THE LOST CANVAS",
+    "id": 5436,
+    "titre": "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+    "titreFr": "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+    "titreVo": "聖闘士星矢 THE LOST CANVAS 冥王神話",
+    "auteur": "Masami Kurumada & Shiori Teshirogi",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "themes": [
+      "Loyalty",
+      "Orphans",
+      "War",
+      "Mythology"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Cavaleiros Do Zodíaco - Lost Canvas: A Saga de Hades",
+      "I Cavalieri dello zodiaco - The Lost Canvas - Il mito di Ade",
+      "Knights of the Zodiac: The Lost Canvas",
+      "Os Cavaleiros do Zodiaco - The Lost Canvas - A Saga de Hades",
+      "Saint Seiya - The Lost Canvas",
+      "Saint Seiya, The Lost Canvas: Hades Mythology",
+      "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+      "Saint Seiya: The Lost Canvas - Meiō Shinwa",
+      "Saint Seiya - The Lost Canvas - Meiou Shinwa",
+      "Saint Seiya - The Lost Canvas - The Myth of Hades",
+      "Thần Thoại Minh Vương",
+      "The Knig"
+    ],
+    "volumesJaponais": 25,
+    "urlCanonique": "https://mangabaka.org/manga/5436/Saint-Seiya-The-Lost-Canvas-Mei%C5%8D-Shinwa",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 6516,
+        "type": "SUITE"
+      },
+      {
+        "id": 18176,
+        "type": "SUITE"
+      },
+      {
+        "id": 9957,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 78517,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Saint Seiya - The Lost Canvas - La légende d'Hadès (9957)",
+      "Saint Seiya - The Lost Canvas - La légende d'Hadès (78517)"
+    ]
+  },
+  "saint-seiya-the-lost-canvas-chronicles": {
+    "titreLocal": "SAINT SEIYA - THE LOST CANVAS - CHRONICLES",
+    "recherche": "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden",
+    "id": 9957,
+    "titre": "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+    "titreFr": "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+    "titreVo": "聖闘士星矢 THE LOST CANVAS 冥王神話",
+    "auteur": "Masami Kurumada & Shiori Teshirogi",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "themes": [
+      "Mythology"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Cavaleiros Do Zodíaco - Lost Canvas: Gaiden",
+      "I Cavalieri dello zodiaco - The Lost Canvas - Il mito di Ade",
+      "Knights of the Zodiac: The Lost Canvas",
+      "Os Cavaleiros do Zodíaco: The Lost Canvas - A saga de Hades",
+      "Os Cavaleiros do Zodíaco: The Lost Canvas Gaiden",
+      "Saint Seiya - The Lost Canvas Gaiden",
+      "Saint Seiya - The Lost Canvas - La légende d'Hadès",
+      "Saint Seiya: The Lost Canvas - Meiō Shinwa",
+      "Saint Seiya: The Lost Canvas - Meiou Shinwa Gaiden",
+      "Saint Seiya - The Lost Canvas - The Myth of Hades - Gaiden",
+      "The Lost Canvas",
+      "Святой Сэйя: Потерянный холст — Гайдэн"
+    ],
+    "volumesJaponais": 16,
+    "urlCanonique": "https://mangabaka.org/manga/9957/Saint-Seiya-The-Lost-Canvas-Mei%C5%8D-Shinwa",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 5436,
+        "type": "SERIE_MERE"
+      },
+      {
+        "id": 78517,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Saint Seiya - The Lost Canvas - La légende d'Hadès (78517)"
+    ]
+  },
+  "saotome-love-boxing": {
+    "titreLocal": "SAOTOME LOVE & BOXING",
+    "recherche": "SAOTOME LOVE & BOXING",
+    "id": 26057,
+    "titre": "Fighter Saotome, Cover Up",
+    "titreFr": null,
+    "titreVo": "早乙女選手、ひたかくす",
+    "auteur": "Naoki Mizuguchi",
+    "genres": [
+      "Ecchi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Romance",
+      "Sports"
+    ],
+    "themes": [
+      "Coming of Age"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "사오토메 선수, 숨다",
+      "Fighter Saotome, Cover Up",
+      "Saotome Girl, Hitakakusu",
+      "Saotome : Love & Boxing",
+      "Saotome-Senshu, Hitakakusu",
+      "Боец Саотомэ",
+      "早乙女选手躲躲藏藏",
+      "早乙女選手、ひたかくす"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/26057/Fighter-Saotome-Cover-Up",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "servamp": {
+    "titreLocal": "SERVAMP",
+    "recherche": "SERVAMP",
+    "id": 540,
+    "titre": "Servamp",
+    "titreFr": null,
+    "titreVo": "SERVAMP -サーヴァンプ-",
+    "auteur": "Strike Tanaka",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Mystery"
+    ],
+    "themes": [
+      "Animals",
+      "Adoption",
+      "Orphans",
+      "Magic",
+      "Contracts"
+    ],
+    "cible": "Shojo",
+    "alias": [
+      "서뱀프",
+      "Hắp huyết quỷ bộc nhân",
+      "Saavampu",
+      "Savampu",
+      "Servamp",
+      "SERVAMP Hầu Cận Ma Cà Rồng",
+      "Servamps",
+      "SERVAMP -サーヴァンプ-",
+      "Survamp",
+      "Сервамп",
+      "Слуга вампир",
+      "خادم خون‌آشام"
+    ],
+    "volumesJaponais": 24,
+    "urlCanonique": "https://mangabaka.org/manga/540/Servamp",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Servamp dj - Sleepy Life of Servamp (2898)"
+    ]
+  },
+  "shaman-king": {
+    "titreLocal": "SHAMAN KING",
+    "recherche": "SHAMAN KING",
+    "id": 98831,
+    "titre": "Shaman King",
+    "titreFr": null,
+    "titreVo": "Shaman King シャーマンキング",
+    "auteur": "Hiroyuki Takei",
+    "genres": [
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "themes": [
+      "Reincarnation",
+      "Shamanism",
+      "Tournaments"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "Funbari no Uta",
+      "Mappa Douji",
+      "relax",
+      "Shaman King",
+      "Shaman King: Complete Version",
+      "Shaman King: Full Version",
+      "Shaman King Kang Zeng Bang",
+      "Shaman King Kanzenban",
+      "Shaman King (Kanzenban Edition)",
+      "Shaman King KZB",
+      "Shaman King Remix Track",
+      "Shaman King シャーマンキング"
+    ],
+    "volumesJaponais": 27,
+    "urlCanonique": "https://mangabaka.org/manga/98831/Shaman-King",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 101679,
+        "type": "AUTRE"
+      },
+      {
+        "id": 29945,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 43302,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101621,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101622,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101623,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101683,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101684,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Shaman King (6220)",
+      "Shaman King: Zero (6332)",
+      "Shaman King: Flowers (6180)",
+      "Shaman King: Red Crimson (29945)"
+    ]
+  },
+  "smoking-behind-the-supermarket": {
+    "titreLocal": "Smoking behind the Supermarket with You",
+    "recherche": "Smoking behind the Supermarket with You",
+    "id": 3188,
+    "titre": "Deux fumeurs à l'arrière de la supérette",
+    "titreFr": "Deux fumeurs à l'arrière de la supérette",
+    "titreVo": "スーパーの裏でヤニ吸うふたり",
+    "auteur": "Jinushi",
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Slice of Life"
+    ],
+    "themes": [
+      "Secret Identity",
+      "Working",
+      "Urban"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "슈퍼 뒤에서 담배 피우는 두 사람",
+      "A Story About Smoking at the Back of the Supermarket",
+      "Behind the Supermarket, Smoking with You.",
+      "Cerita Tentang Merokok di Belakang Supermarket",
+      "Deux fumeurs à l'arrière de la supérette",
+      "Fumando atrás del súper con vos",
+      "Fumando juntos detrás del súper",
+      "Fumer en bonne compagnie à l'arrière de la supérette",
+      "Hai Người Hút Thuốc Phía Sau Siêu Thị",
+      "Hiên Sau Siêu Thị, Muộn Phiền Bay Đi",
+      "Merokok Bersamamu di Belakang Supermarket",
+      "Paląc z tobą na tyłach sklepu"
+    ],
+    "volumesJaponais": 9,
+    "urlCanonique": "https://mangabaka.org/manga/3188/Smoking-Behind-the-Supermarket-with-You",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "solo-leveling": {
+    "titreLocal": "SOLO LEVELING",
+    "recherche": "SOLO LEVELING",
+    "id": 3397,
+    "titre": "Solo Leveling",
+    "titreFr": null,
+    "titreVo": "俺だけレベルアップな件",
+    "auteur": "Chu-Gong & Seong-Rak Jang",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Tragedy"
+    ],
+    "themes": [
+      "Post-Apocalyptic",
+      "Creature Taming",
+      "Politics",
+      "Video Games",
+      "Dungeon Exploring",
+      "Game Elements",
+      "Level System",
+      "Super Powers"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "나혼렙",
+      "나 혼자만 레벨업",
+      "Aku Level Up Sendiri",
+      "Ben yanlız gelişirim",
+      "Egyéni szintlépés",
+      "Grinding Sendiri",
+      "I Alone Level-Up",
+      "I am the only the one who levels up",
+      "I Level Up Alone",
+      "Jogador solo",
+      "Na Honjaman Lebel-eob",
+      "Na Honjaman Level Up"
+    ],
+    "volumesJaponais": 15,
+    "urlCanonique": "https://mangabaka.org/manhwa/3397/Solo-Leveling",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 1252,
+        "type": "SUITE"
+      },
+      {
+        "id": 78950,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Solo Leveling (85266)",
+      "Solo Leveling: Ragnarok (1252)",
+      "Solo Leveling: Ragnarok (85267)",
+      "The Privilege of the Second Life is Power Leveling (3368)"
+    ]
+  },
+  "soul-eater": {
+    "titreLocal": "SOUL EATER",
+    "recherche": "SOUL EATER",
+    "id": 10091,
+    "titre": "SOUL EATER",
+    "titreFr": null,
+    "titreVo": "SOUL EATER",
+    "auteur": "Atsushi Ookubo",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Horror",
+      "Martial Arts",
+      "Tragedy"
+    ],
+    "themes": [
+      "Frankenstein",
+      "Agender",
+      "Coming of Age",
+      "Human Weapon",
+      "Philosophy",
+      "Guns",
+      "Super Powers",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "소울이터",
+      "Devorador de almas",
+      "소울이터(SOUL EATER)",
+      "SOUL EATER",
+      "Пожиратель душ",
+      "אכלן הנשמות",
+      "סול איטר",
+      "اكل  الروح",
+      "سول  ايتر",
+      "โซลอีทเตอร์",
+      "ソウルイーター",
+      "噬魂师"
+    ],
+    "volumesJaponais": 25,
+    "urlCanonique": "https://mangabaka.org/manga/10091/SOUL-EATER",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 22256,
+        "type": "AUTRE"
+      },
+      {
+        "id": 10076,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 98632,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "Soul Eater Not! (10076)",
+      "Revenge of the Soul Eater: Cast Out as a Weakling by My Sword Saint Father (100620)",
+      "The Soul Eater Cursed Girl [GA-REI] (13690)",
+      "The Revenge of the Soul Eater (38970)"
+    ]
+  },
+  "spy-x-family": {
+    "titreLocal": "SPY X FAMILY",
+    "recherche": "SPY X FAMILY",
+    "id": 1288,
+    "titre": "SPY×FAMILY",
+    "titreFr": null,
+    "titreVo": "SPY×FAMILY",
+    "auteur": "Tatsuya Endou",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Slice of Life",
+      "Historical"
+    ],
+    "themes": [
+      "European Ambience",
+      "Urban",
+      "Guns",
+      "Marriage",
+      "Orphans",
+      "Parenthood",
+      "Politics",
+      "Secrets"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "스파이 패밀리",
+      "CASUS × AİLE",
+      "Gia Đình Điệp Viên",
+      "ŠNIPO×ŠEIMA",
+      "Špión x Rodina",
+      "SPY×FAMILY",
+      "SPY×FAMILY: WJ Special Extra Mission!!",
+      "SPY×FAMILY 間諜家家酒",
+      "SPY×FAMILY间谍家家酒",
+      "SPY x FAMILY",
+      "SxF",
+      "SZPIEG X RODZINA"
+    ],
+    "volumesJaponais": 17,
+    "urlCanonique": "https://mangabaka.org/manga/1288/SPY-FAMILY",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 85314,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 104555,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 158151,
+        "type": "HORS_SERIE"
+      }
+    ],
+    "autresCandidats": [
+      "Spy x Family: Family Portrait (85314)",
+      "Four Lives Remain: Tatsuya Endo Before Spy x Family (43126)",
+      "SPY×FAMILY: EYES ONLY (77672)",
+      "Gekijouban Spy x Family Code: White (158151)"
+    ]
+  },
+  "talentless": {
+    "titreLocal": "TALENTLESS",
+    "recherche": "TALENTLESS",
+    "id": 25735,
+    "titre": "Talentless",
+    "titreFr": "Talentless",
+    "titreVo": "無能なナナ",
+    "auteur": "Loose Boy & Iori Furuya",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy",
+      "Thriller"
+    ],
+    "themes": [
+      "Crimes",
+      "Deception",
+      "Super Powers"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "무능한 나나",
+      "Munō na Nana",
+      "Munou na Nana",
+      "Nana yang tidak berbakat",
+      "Talentless",
+      "Talentless Nana",
+      "Бездарная Нана",
+      "نانا غير الموهوبة",
+      "แผนลับดับศัตรู",
+      "无能的奈奈",
+      "無能なナナ"
+    ],
+    "volumesJaponais": 15,
+    "urlCanonique": "https://mangabaka.org/manga/25735/Talentless-Nana",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Notorious No More: The Villainess Enjoys Feigning Incompetence (97880)",
+      "Notorious No More: The Villainess Enjoys Feigning Incompetence (201635)",
+      "Munō no Taka (60394)",
+      "Senmetsumadou no Saikyou Kenja: Musai no Kenja, Madou wo Kiwame Saikyou e Itaru (103238)"
+    ]
+  },
+  "terraformars": {
+    "titreLocal": "TERRAFORMARS",
+    "recherche": "Terra Formars",
+    "id": 103205,
+    "titre": "Terraformars",
+    "titreFr": null,
+    "titreVo": "テラフォーマーズ",
+    "auteur": "Akira  Higashiyama & Kenichi Tachibana",
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Horror"
+    ],
+    "themes": [],
+    "cible": null,
+    "alias": [
+      "Terraformars",
+      "Terraformars: Lost Mission",
+      "Терраформирование: Утерянное задание",
+      "テラフォーマーズ",
+      "テラフォーマーズ LOST MISSION",
+      "火星任務"
+    ],
+    "volumesJaponais": 2,
+    "urlCanonique": "https://mangabaka.org/novel/103205/Terraformars",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 2987,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": [
+      "Terraformars (158277)",
+      "Terraformars (26275)",
+      "Terraformars (103206)",
+      "Terraformars (23994)"
+    ]
+  },
+  "the-ancient-magus-bride": {
+    "titreLocal": "THE ANCIENT MAGUS BRIDE",
+    "recherche": "THE ANCIENT MAGUS BRIDE",
+    "id": 849,
+    "titre": "La Femme du Mage",
+    "titreFr": "La Femme du Mage",
+    "titreVo": "Mahōtsukai no Yome",
+    "auteur": "Kore Yamazaki",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Alternate Reality",
+      "Mythology",
+      "Familiar",
+      "Orphans",
+      "European Ambience",
+      "Fairy",
+      "Abandoned Child/ren",
+      "Folklore"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "마법사의 신부",
+      "Ang Asawa ng Mago",
+      "Čarodějova nevěsta",
+      "Cô Dâu Pháp Sư",
+      "Die Braut des Magiers",
+      "Kadim Büyücünün Gelini",
+      "Kadim Magus'un Gelini",
+      "La Femme du Mage",
+      "La sposa dello stregone",
+      "Mahōtsukai no Yome",
+      "Mahoutsukai no Yome",
+      "Mempelai Sang Magus Kuno"
+    ],
+    "volumesJaponais": 25,
+    "urlCanonique": "https://mangabaka.org/manga/849/The-Ancient-Magus-Bride",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 84401,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101258,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 28454,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 37348,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 37349,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "The Ancient Magus Bride - Le fil d'argent (84401)",
+      "The Ancient Magus Bride : Jack l'éclair et l'incident des fées (37349)",
+      "The Ancient Magus Bride - Le bleu du magicien (37348)",
+      "The Ancient Magus' Bride: Collected Fragments (101258)"
+    ]
+  },
+  "the-ancient-magus-bride-le-bleu-du-magicien": {
+    "titreLocal": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "recherche": "THE ANCIENT MAGUS BRIDE – Le bleu du magicien",
+    "id": 37348,
+    "titre": "The Ancient Magus Bride - Le bleu du magicien",
+    "titreFr": "The Ancient Magus Bride - Le bleu du magicien",
+    "titreVo": "Mahō Tsukai no Yome Shihen.108: Majutsushi no Ao",
+    "auteur": "Kore Yamazaki & Makoto Sanda & Isuo Tsukumo",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Adventure",
+      "Drama",
+      "Slice of Life"
+    ],
+    "themes": [],
+    "cible": "Shonen",
+    "alias": [
+      "Mahō Tsukai no Yome Shihen.108: Majutsushi no Ao",
+      "Mahoutsukai no Yome: Shihen.108 - Majutsushi no Ao",
+      "The Ancient Magus Bride - Le bleu du magicien",
+      "The Ancient Magus Bride Psa.108: Wizard's Blue",
+      "The Ancient Magus Bride Psalm.108: Magician Blue",
+      "The Ancient Magus' Bride Psalm 108: Wizard's Blue",
+      "The Ancient Magus Bride Psaume 108: Le Bleu du Magicien",
+      "The Ancient Magus’ Bride: Wizard’s Blue",
+      "Невеста чародея: Синий маг — Сто восьмой псалом",
+      "魔法使いの嫁 詩篇.108 魔術師の青"
+    ],
+    "volumesJaponais": 10,
+    "urlCanonique": "https://mangabaka.org/manga/37348/The-Ancient-Magus-Bride-Wizard-s-Blue",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 849,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "the-ancient-magus-bride-supplement-2": {
+    "titreLocal": "THE ANCIENT MAGUS BRIDE – Supplément 2",
+    "recherche": "The Ancient Magus' Bride: Collected Fragments",
+    "id": 101258,
+    "titre": "The Ancient Magus' Bride: Collected Fragments",
+    "titreFr": null,
+    "titreVo": "Mahōtsukai no Yome: Danpenshū",
+    "auteur": "Kore Yamazaki",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Drama",
+      "Romance"
+    ],
+    "themes": [],
+    "cible": "Seinen",
+    "alias": [
+      "마법사의 신부 단편집",
+      "Mahōtsukai no Yome: Danpenshū",
+      "Mahou Tsukai no Yome: Danpen-Shu",
+      "Mahoutsukai no Yome Danpenshuu",
+      "Mahou Tsukai no Yome: Fragment",
+      "Mahoutsukai no Yome Fragments",
+      "The Ancient Magus' Bride: Collected Fragments",
+      "The Ancient Magus’ Bride: Fragment Collection",
+      "The Ancient Magus' Bride fragments",
+      "The Ancient Magus' Bride: Fragments Collection",
+      "魔法使いの嫁 断片集"
+    ],
+    "volumesJaponais": 2,
+    "urlCanonique": "https://mangabaka.org/manga/101258/The-Ancient-Magus-Bride-Collected-Fragments",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 849,
+        "type": "SERIE_MERE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "the-promised-neverland": {
+    "titreLocal": "THE PROMISED NEVERLAND",
+    "recherche": "THE PROMISED NEVERLAND",
+    "id": 5072,
+    "titre": "The Promised Neverland",
+    "titreFr": "The Promised Neverland",
+    "titreVo": "約束のネバーランド",
+    "auteur": "Kaiu Shirai & Posuka Demizu",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Horror",
+      "Mystery",
+      "Psychological",
+      "Tragedy",
+      "Thriller"
+    ],
+    "themes": [
+      "Human In Monster Demon Environment",
+      "Lies",
+      "Manipulation",
+      "Philosophy",
+      "Rules",
+      "Secrets",
+      "Monsters",
+      "Coming of Age"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "약속의 네버랜드",
+      "A Terra do Nunca Prometido",
+      "Miền đất hứa",
+      "Obećana Nedođija",
+      "The Promised Neverland",
+      "TPN",
+      "Vadedilmiş Yokyer",
+      "YakuNeba",
+      "Yakusoku no Nebaarando",
+      "Yakusoku no Neverland",
+      "YnN",
+      "Zaslíbená Země Nezemě"
+    ],
+    "volumesJaponais": 20,
+    "urlCanonique": "https://mangabaka.org/manga/5072/The-Promised-Neverland",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 49236,
+        "type": "AUTRE"
+      },
+      {
+        "id": 99602,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101553,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101554,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101555,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101556,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101557,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101558,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 101559,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 601086,
+        "type": "HORS_SERIE"
+      },
+      {
+        "id": 30136,
+        "type": "SPIN_OFF"
+      },
+      {
+        "id": 100097,
+        "type": "SPIN_OFF"
+      }
+    ],
+    "autresCandidats": [
+      "The Promised Neverland: Special Side Story - A Mother's Determination (101558)",
+      "The Promised Neverland: Special Side Story - The First Shot (101556)",
+      "The Promised Neverland: Special Side Story - Seeking the Sky of Freedom (101557)",
+      "The Promised Neverland Gag Manga (30136)"
+    ]
+  },
+  "the-unwanted-unded-adventurer": {
+    "titreLocal": "The Unwanted Undead Adventurer",
+    "recherche": "Nozomanu Fushi no Boukensha",
+    "id": 6428,
+    "titre": "L'aventurier immortel indésiré",
+    "titreFr": "L'aventurier immortel indésiré",
+    "titreVo": "Nozomanu Fushi no Bōkensha",
+    "auteur": "Haiji Nakasone & Yuu Okano",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Horror",
+      "Mystery"
+    ],
+    "themes": [
+      "Game Elements",
+      "Evolution",
+      "Violence",
+      "Undead",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "바라지 않는 불사의 모험자",
+      "원치 않는 불사의 모험가",
+      "L'aventurier immortel indésiré",
+      "Nozomanu Fushi no Bōkensha",
+      "Nozomanu Fushi no Boukensha",
+      "The Unwanted Immortal Adventurer",
+      "The Unwanted Undead Adventurer",
+      "Нежеланно бессмертный авантюрист",
+      "เส้นทางพลิกผันของราชันอมตะ (DEXPRESS)",
+      "เส้นทางพลิกผันชองราชันอมตะ",
+      "事与愿违的不死冒险者",
+      "事與願違的不死冒險者"
+    ],
+    "volumesJaponais": 13,
+    "urlCanonique": "https://mangabaka.org/manga/6428/The-Unwanted-Undead-Adventurer",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "The Unwanted Undead Adventurer (84700)"
+    ]
+  },
+  "to-a-new-you": {
+    "titreLocal": "TO A NEW YOU",
+    "recherche": "TO A NEW YOU",
+    "id": 6065,
+    "titre": "Atarashii Kimi e",
+    "titreFr": null,
+    "titreVo": "新しいきみへ",
+    "auteur": "Shinji Mito",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Romance",
+      "Slice of Life",
+      "Thriller"
+    ],
+    "themes": [
+      "Adultery",
+      "Viruses"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Atarashii Kimi e",
+      "Para la nueva tú",
+      "To a New You",
+      "Untuk Dirimu yang Baru",
+      "К новому тебе",
+      "สู่เธอคนใหม่ (SIC)",
+      "新しいきみへ",
+      "致崭新的你"
+    ],
+    "volumesJaponais": 6,
+    "urlCanonique": "https://mangabaka.org/manga/6065/Atarashii-Kimi-e",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Our Last Crusade or the Rise of a New World (84136)",
+      "About the Time I Helped Find a Beautiful Exchange Student’s Lost Little Sister (228)",
+      "Vanilla Essence (118292)",
+      "Our Last Crusade or the Rise of a New World (30122)"
+    ]
+  },
+  "tsugumi-project": {
+    "titreLocal": "TSUGUMI PROJECT",
+    "recherche": "TSUGUMI PROJECT",
+    "id": 35817,
+    "titre": "Tsugumi Project",
+    "titreFr": null,
+    "titreVo": "虎鶫〈とらつぐみ〉　－ＴＳＵＧＵＭＩ　ＰＲＯＪＥＣＴ－",
+    "auteur": "ippatu",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Mystery"
+    ],
+    "themes": [
+      "Alternate History",
+      "Modern City",
+      "Death",
+      "Survival",
+      "Post-Apocalyptic",
+      "Violence"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "Das Tsugumi-Projekt",
+      "Tiger Thrush -THRUSH PROJECT-",
+      "Tiger Thrush -TSUGUMI PROJECT-",
+      "Toratsugumi: TSUGUMI PROJECT",
+      "Tsugumi Project",
+      "Проект Дрозд",
+      "Проєкт «Цуґумі»",
+      "虎鶇 －鶇計畫－",
+      "虎鶫〈とらつぐみ〉　－ＴＳＵＧＵＭＩ　ＰＲＯＪＥＣＴ－"
+    ],
+    "volumesJaponais": 7,
+    "urlCanonique": "https://mangabaka.org/manga/35817/Tsugumi-Project",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": []
+  },
+  "uqholder": {
+    "titreLocal": "UQ Holder !",
+    "recherche": "UQ Holder",
+    "id": 7523,
+    "titre": "UQ HOLDER!",
+    "titreFr": null,
+    "titreVo": "UQ HOLDER！",
+    "auteur": "Ken Akamatsu",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Romance",
+      "Tragedy"
+    ],
+    "themes": [
+      "Super Powers",
+      "Immortality",
+      "Magic"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "유큐 홀더",
+      "Eternal Holder",
+      "Eternity Holder",
+      "Pemegang UQ!",
+      "UQ 홀더!",
+      "UQ HOLDER!",
+      "UQ HOLDER! ~마법선생 네기마! 2~",
+      "UQ Holder! Magister Negi Magi! 2",
+      "UQ Holder!: Mahou Sensei Negima! 2",
+      "UQ HOLDER! (ユーキューホルダー!)",
+      "UQ HOLDER！悠久持有者！",
+      "UQ HOLDER! 〜魔法先生ネギま!2〜"
+    ],
+    "volumesJaponais": 28,
+    "urlCanonique": "https://mangabaka.org/manga/7523/UQ-HOLDER",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 2532,
+        "type": "PREQUELLE"
+      }
+    ],
+    "autresCandidats": [
+      "UQ Holder! (179154)",
+      "UQ Holder! dj - Yukihime no Hakudaku (276534)"
+    ]
+  },
+  "why-nobody-remember-my-world": {
+    "titreLocal": "Why Nobody Remembers My World ?",
+    "recherche": "Naze Boku no Sekai wo Daremo Oboeteinai no ka",
+    "id": 7065,
+    "titre": "Why Does Nobody Remember Me in this World?",
+    "titreFr": null,
+    "titreVo": "なぜ僕の世界を誰も覚えていないのか？",
+    "auteur": "Arikan & Kei Sazane",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Adventure",
+      "Drama",
+      "Romance"
+    ],
+    "themes": [
+      "Post-Apocalyptic",
+      "Military",
+      "Alternate Reality",
+      "Alternate Universe",
+      "Magic"
+    ],
+    "cible": "Seinen",
+    "alias": [
+      "어째서 아무도 나의 세계를 기억하지 않는걸까?",
+      "Naze Boku no Sekai wo Daremo Oboeteinai no ka?",
+      "Neden Kimse Benim Dünyamı Hatırlamıyor?",
+      "Phy Sew lu, ele tis Es feo r-delis ec I.",
+      "Tại sao không ai nhớ đến thế giới của tôi",
+      "Why Does Nobody Remember Me in this World?",
+      "Why Doesn't Anybody Remember My World?",
+      "Why Nobody Remember Me in This World?",
+      "Why Nobody Remembers My World?",
+      "Почему все забыли мой мир?",
+      "なぜ僕の世界を誰も覚えていないのか？",
+      "为何无人记得我的世界？"
+    ],
+    "volumesJaponais": 14,
+    "urlCanonique": "https://mangabaka.org/manga/7065/Why-Does-Nobody-Remember-Me-in-this-World",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "Why nobody remembers my world? (104733)"
+    ]
+  },
+  "yuna-de-la-pension-yuragi": {
+    "titreLocal": "YUNA DE LA PENSION YURAGI",
+    "recherche": "Yuragi-sou no Yuuna-san",
+    "id": 23594,
+    "titre": "Yûna de la pension Yuragi",
+    "titreFr": "Yûna de la pension Yuragi",
+    "titreVo": "ゆらぎ荘の幽奈さん",
+    "auteur": "Tadahiro Miura",
+    "genres": [
+      "Fantasy",
+      "Supernatural",
+      "Ecchi",
+      "Action",
+      "Comedy",
+      "Drama",
+      "Martial Arts",
+      "Romance",
+      "Slice of Life",
+      "Tragedy"
+    ],
+    "themes": [
+      "Monsters",
+      "Super Powers",
+      "Cohabitation",
+      "Exorcism"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "유라기장의 유우나",
+      "Ghost Inn - La locanda di Yuna",
+      "Ma nữ cứng đầu",
+      "Yûna de la pension Yuragi",
+      "Yuna de la posada Yuragi",
+      "Yunas Geisterhaus",
+      "Yuragi Manor's Yuuna-san",
+      "Yuragi-sō no Yūna-san",
+      "Yuragi-sou no Yuuna-san",
+      "Yuuna and the Haunted Hot Springs",
+      "Yuuna e a Pensão Assombrada",
+      "Yuuna e a Pensão Assombrada (Brazil)"
+    ],
+    "volumesJaponais": 24,
+    "urlCanonique": "https://mangabaka.org/manga/23594/Yuuna-and-the-Haunted-Hot-Springs",
+    "score": 1,
+    "exact": true,
+    "liens": [
+      {
+        "id": 8652,
+        "type": "AUTRE"
+      }
+    ],
+    "autresCandidats": []
+  },
+  "yusei-no-last-boss": {
+    "titreLocal": "Yasei no Last Boss",
+    "recherche": "Yasei no Last Boss ga Arawareta!",
+    "id": 385,
+    "titre": "A Wild Last Boss Appeared!",
+    "titreFr": null,
+    "titreVo": "Yasei no Last Boss ga Arawareta! Kokuyoku no Haō",
+    "auteur": "Firehead & Tsubasa Hazuki",
+    "genres": [
+      "Fantasy",
+      "Sci-Fi",
+      "Supernatural",
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "themes": [
+      "Past History",
+      "Summoning",
+      "Artificial Intelligence",
+      "Discrimination",
+      "Manipulation",
+      "Video Games",
+      "Zodiac",
+      "Game Elements"
+    ],
+    "cible": "Shonen",
+    "alias": [
+      "야생의 라스트보스가 나타났다!",
+      "A Wild Last Boss Appeared!",
+      "Yasei no Last Boss ga Arawareta!",
+      "Yasei no Last Boss ga Arawareta! Kokuyoku no Haō",
+      "Yasei no Last Boss ga Arawareta!: Kokuyoku no Haou",
+      "Шальной последний босс появился!",
+      "Шальной последний босс явился!",
+      "野生のラスボスが現れた！",
+      "野生のラスボスが現れた！黒翼の覇王",
+      "野生的最終BOSS出現了"
+    ],
+    "volumesJaponais": 11,
+    "urlCanonique": "https://mangabaka.org/manga/385/A-Wild-Last-Boss-Appeared",
+    "score": 1,
+    "exact": true,
+    "liens": [],
+    "autresCandidats": [
+      "A Wild Last Boss Appeared! (86138)"
+    ]
+  }
+}
