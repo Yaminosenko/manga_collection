@@ -7,6 +7,7 @@ import {
   LONGUEUR_ISBN,
   PREFIXES_ISBN,
 } from "@/lib/constants";
+import { sansAccent } from "@/lib/normalisation";
 import type { StatutEdition, TypeLienSerie } from "@/lib/generated/prisma/enums";
 
 export type ResultatScan =
@@ -173,6 +174,26 @@ export type Manquants = {
   editions: EditionManquante[];
   tomesManquants: number;
 };
+
+export type EspaceCollection = {
+  collection: Collection;
+  manquants: Manquants;
+  wishList: WishList;
+};
+
+type LigneRecherchable = { titre: string; nom: string; editeur: string | null };
+
+export function correspondALaRecherche(ligne: LigneRecherchable, recherche: string): boolean {
+  if (recherche.trim() === "") {
+    return true;
+  }
+  const cible = sansAccent(`${ligne.titre} ${ligne.nom} ${ligne.editeur ?? ""}`).toLowerCase();
+  return sansAccent(recherche)
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((mot) => cible.includes(mot));
+}
 
 export type ResultatLocal = {
   slug: string;

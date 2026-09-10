@@ -25,10 +25,7 @@ function memoriser(cle: string, position: number): void {
 
 export function useMemoireDefilement(cle: string): void {
   useEffect(() => {
-    const position = lire(cle);
-    if (position !== null) {
-      window.scrollTo(0, position);
-    }
+    window.scrollTo(0, lire(cle) ?? 0);
 
     const surDefilement = () => memoriser(cle, window.scrollY);
     window.addEventListener("scroll", surDefilement, { passive: true });

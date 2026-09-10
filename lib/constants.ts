@@ -127,6 +127,28 @@ export const LIBELLE_WISHLIST_COMPTEUR_SINGULIER = "série";
 export const LIBELLE_WISHLIST_COMPTEUR_PLURIEL = "séries";
 export const NOM_EDITION_PAR_DEFAUT = "Édition simple";
 
+export const TITRE_COLLECTION = "Collection";
+
+export const PANNEAUX = [
+  { cle: "collection", libelle: TITRE_COLLECTION, route: "/" },
+  { cle: "manquants", libelle: TITRE_MANQUANTS, route: "/manquants" },
+  { cle: "wishlist", libelle: TITRE_WISHLIST, route: "/wishlist" },
+] as const;
+
+export type ClePanneau = (typeof PANNEAUX)[number]["cle"];
+
+export const PANNEAU_PAR_DEFAUT: ClePanneau = "collection";
+
+export const CLES_STOCKAGE_DEFILEMENT: Record<ClePanneau, string> = {
+  collection: CLE_STOCKAGE_DEFILEMENT,
+  manquants: `${CLE_STOCKAGE_DEFILEMENT}.manquants`,
+  wishlist: `${CLE_STOCKAGE_DEFILEMENT}.wishlist`,
+};
+
+export const LIBELLE_PANNEAUX = "Panneaux de la collection";
+export const LIBELLE_MANQUANTS_COMPTEUR_TOMES = "tomes";
+export const LIBELLE_MANQUANTS_COMPTEUR_EDITIONS = "éditions";
+
 export const CANDIDATS_RECHERCHE_MAX = 25;
 export const SIMILARITE_CATALOGUE_MIN = 0.35;
 export const MOIS_SANS_SORTIE_POUR_TERMINEE = 24;
