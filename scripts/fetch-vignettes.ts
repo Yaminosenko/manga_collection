@@ -14,6 +14,10 @@ const CONCURRENCE = 3;
 const DELAI_MS = 20_000;
 const PLAFOND_PAR_DEFAUT = 200;
 const HAUTEUR_MINIMALE = 60;
+const CODES_ABSENCE = [404, 500];
+const REPRISES_RESEAU = 4;
+const ATTENTE_REPRISE_MS = 20_000;
+const ECHECS_RESEAU_AVANT_ARRET = 25;
 const TYPES_ACCEPTES: Record<string, string> = {
   "image/jpeg": "jpg",
   "image/png": "png",
@@ -104,7 +108,12 @@ async function patienter() {
 
 type Image = { octets: Buffer; type: string; extension: string };
 
-async function telecharger(ean: string): Promise<Image | null> {
+type Reponse =
+  | { etat: "image"; image: Image }
+  | { etat: "absente" }
+  | { etat: "injoignable"; cause: string };
+
+async function telecharger(ean: string): Promise<Reponse> {
   await patienter();
   try {
     const reponse = await fetch(
@@ -112,18 +121,42 @@ async function telecharger(ean: string): Promise<Image | null> {
         `&taille=originale&largeur=${LARGEUR}&hauteur=${HAUTEUR}`,
       { signal: AbortSignal.timeout(DELAI_MS), redirect: "follow" },
     );
-    if (!reponse.ok) {
-      return null;
+
+    if (CODES_ABSENCE.includes(reponse.status)) {
+      return { etat: "absente" };
     }
+    if (!reponse.ok) {
+      return { etat: "injoignable", cause: `http ${reponse.status}` };
+    }
+
     const type = (reponse.headers.get("content-type") ?? "").split(";")[0]?.trim() ?? "";
     const extension = TYPES_ACCEPTES[type];
     if (!extension) {
-      return null;
+      return { etat: "absente" };
     }
-    return { octets: Buffer.from(await reponse.arrayBuffer()), type, extension };
-  } catch {
-    return null;
+    return {
+      etat: "image",
+      image: { octets: Buffer.from(await reponse.arrayBuffer()), type, extension },
+    };
+  } catch (erreur) {
+    return { etat: "injoignable", cause: erreur instanceof Error ? erreur.name : "inconnue" };
   }
+}
+
+async function telechargerAvecReprises(ean: string): Promise<Reponse> {
+  let derniere: Reponse = { etat: "injoignable", cause: "jamais tentee" };
+
+  for (let tentative = 1; tentative <= REPRISES_RESEAU; tentative += 1) {
+    derniere = await telecharger(ean);
+    if (derniere.etat !== "injoignable") {
+      return derniere;
+    }
+    if (tentative < REPRISES_RESEAU) {
+      await dormir(ATTENTE_REPRISE_MS * tentative);
+    }
+  }
+
+  return derniere;
 }
 
 function dimensions(octets: Buffer): { largeur: number; hauteur: number } | null {
@@ -173,18 +206,37 @@ async function main() {
   let absentes = 0;
   let refusees = 0;
   let replis = 0;
+  let reportees = 0;
+  let echecsReseau = 0;
+  let reseauPerdu = false;
   let poids = 0;
   let rang = 0;
 
   await enFile(
     aTraiter.map((cible) => async () => {
       rang += 1;
+      if (reseauPerdu) {
+        return;
+      }
       const candidats = await eansDuGroupe(cible);
+      let injoignable = false;
 
       for (const candidat of candidats) {
-        const image = await telecharger(candidat.ean);
-        if (!image) continue;
+        const reponse = await telechargerAvecReprises(candidat.ean);
 
+        if (reponse.etat === "injoignable") {
+          injoignable = true;
+          echecsReseau += 1;
+          if (echecsReseau >= ECHECS_RESEAU_AVANT_ARRET) {
+            reseauPerdu = true;
+          }
+          break;
+        }
+        if (reponse.etat === "absente") {
+          continue;
+        }
+
+        const image = reponse.image;
         const cote = dimensions(image.octets);
         if (cote !== null && cote.hauteur < HAUTEUR_MINIMALE) {
           refusees += 1;
@@ -228,6 +280,11 @@ async function main() {
         return;
       }
 
+      if (injoignable) {
+        reportees += 1;
+        return;
+      }
+
       absentes += 1;
       await prisma.vignetteCatalogue.upsert({
         where: { ean: cible.ean },
@@ -246,6 +303,16 @@ async function main() {
   console.log(`Traites ce passage    : ${aTraiter.length}`);
   console.log(`Images obtenues       : ${trouvees}${replis > 0 ? ` (dont ${replis} sur un tome suivant)` : ""}${refusees > 0 ? ` (${refusees} trop petites, ecartees)` : ""}`);
   console.log(`Sans notice illustree : ${absentes}`);
+  if (reportees > 0) {
+    console.log(
+      `Reportees (reseau)    : ${reportees} — rien n'a ete ecrit pour elles, un prochain passage les reprendra`,
+    );
+  }
+  if (reseauPerdu) {
+    console.log(
+      `ARRET : ${ECHECS_RESEAU_AVANT_ARRET} echecs reseau, la BnF est injoignable. Relancer plus tard.`,
+    );
+  }
   if (trouvees > 0) {
     console.log(`Poids moyen           : ${(poids / trouvees / 1024).toFixed(1)} Ko`);
   }
