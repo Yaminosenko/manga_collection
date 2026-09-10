@@ -190,22 +190,41 @@ async function marquerCeuxEnCollection(
   const series = [...new Set(candidats.map((candidat) => candidat.serieNormalise))];
 
   const connus = await prisma.$queryRaw<
-    { serieNormalise: string; marqueurNormalise: string | null; slug: string }[]
+    {
+      serieNormalise: string;
+      marqueurNormalise: string | null;
+      slug: string;
+      couvertureCollection: string | null;
+    }[]
   >`
-    SELECT DISTINCT pc."serieNormalise", lower(pc."marqueurEdition") AS "marqueurNormalise", e."slug"
+    SELECT DISTINCT pc."serieNormalise", lower(pc."marqueurEdition") AS "marqueurNormalise",
+           e."slug",
+           (SELECT tome."couvertureUrl"
+              FROM "Volume" tome
+             WHERE tome."editionId" = e."id" AND tome."couvertureUrl" IS NOT NULL
+             ORDER BY tome."numero" ASC
+             LIMIT 1) AS "couvertureCollection"
     FROM "ParutionCatalogue" pc
     JOIN "Volume" v ON v."isbn" = pc."ean"
     JOIN "Edition" e ON e."id" = v."editionId"
     WHERE pc."serieNormalise" = ANY(${series})`;
 
-  const parGroupe = new Map<string, string>();
+  const parGroupe = new Map<string, { slug: string; couverture: string | null }>();
   for (const connu of connus) {
-    parGroupe.set(`${connu.serieNormalise} ${connu.marqueurNormalise ?? ""}`, connu.slug);
+    parGroupe.set(`${connu.serieNormalise} ${connu.marqueurNormalise ?? ""}`, {
+      slug: connu.slug,
+      couverture: connu.couvertureCollection,
+    });
   }
 
-  return candidats.map((candidat) => ({
-    ...candidat,
-    slugEnCollection:
-      parGroupe.get(`${candidat.serieNormalise} ${candidat.marqueurNormalise ?? ""}`) ?? null,
-  }));
+  return candidats.map((candidat) => {
+    const connu = parGroupe.get(
+      `${candidat.serieNormalise} ${candidat.marqueurNormalise ?? ""}`,
+    );
+    return {
+      ...candidat,
+      slugEnCollection: connu?.slug ?? null,
+      couvertureUrl: candidat.couvertureUrl ?? connu?.couverture ?? null,
+    };
+  });
 }

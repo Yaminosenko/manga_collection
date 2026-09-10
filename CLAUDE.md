@@ -295,6 +295,17 @@ disponible par numéro croissant. Une recherche reste une lecture locale, comme 
 **Une vignette absente n'est pas un blanc cassé** : `Cover` retombe sur son placeholder, muet sur
 une ligne de catalogue puisqu'on ne sait pas quel tome l'image aurait montré.
 
+**Une édition possédée n'apparaît qu'une fois.** Les deux sections se recoupent — le local
+apparie par titre et alias, le catalogue par EAN — donc une série qu'on possède sortait dans les
+deux. Un candidat dont le `slugEnCollection` est **déjà listé dans « Déjà dans la collection »**
+est retiré du catalogue. Les autres y restent : un candidat reconnu comme possédé que la
+recherche locale n'a pas trouvé est une information, pas un doublon — c'est le cas d'`ippo-s4`,
+dont le catalogue dit « Saison 4 » là où le titre local dit « S4 ».
+
+**Et un candidat reconnu comme possédé emprunte la couverture de son édition.** La jointure qui
+pose `slugEnCollection` ramène au passage le premier tome illustré de cette édition : la vignette
+est donc la même que dans la Collection, sans dépendre de `VignetteCatalogue`.
+
 #### Deux règles de couverture, nommées
 
 Le mécanisme est le même partout, mais **les écrans ne veulent pas la même image**, et les

@@ -164,11 +164,24 @@ export async function rechercherAuCatalogue(terme: string): Promise<ResultatRech
     rechercherCandidats(requete),
   ]);
 
-  if (locales.length > 0 || candidats.length > 0) {
-    return { locales, candidats, termeResolu: null };
+  const retenus = sansDoublonAvecLesLocales(locales, candidats);
+
+  if (locales.length > 0 || retenus.length > 0) {
+    return { locales, candidats: retenus, termeResolu: null };
   }
 
   return parRebond(utilisateurId, requete);
+}
+
+function sansDoublonAvecLesLocales(
+  locales: ResultatLocal[],
+  candidats: CandidatEdition[],
+): CandidatEdition[] {
+  const dejaListees = new Set(locales.map((locale) => locale.slug));
+  return candidats.filter(
+    (candidat) =>
+      candidat.slugEnCollection === null || !dejaListees.has(candidat.slugEnCollection),
+  );
 }
 
 async function editionsLocales(utilisateurId: string, requete: string): Promise<ResultatLocal[]> {
@@ -247,9 +260,14 @@ async function parRebond(utilisateurId: string, requete: string): Promise<Result
     if (parGroupe.size >= CANDIDATS_RECHERCHE_MAX) break;
   }
 
+  const locales = [...parSlug.values()].slice(0, RESULTATS_RECHERCHE_MAX);
+
   return {
-    locales: [...parSlug.values()].slice(0, RESULTATS_RECHERCHE_MAX),
-    candidats: [...parGroupe.values()].slice(0, CANDIDATS_RECHERCHE_MAX),
+    locales,
+    candidats: sansDoublonAvecLesLocales(locales, [...parGroupe.values()]).slice(
+      0,
+      CANDIDATS_RECHERCHE_MAX,
+    ),
     termeResolu,
   };
 }
