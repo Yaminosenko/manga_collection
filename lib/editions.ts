@@ -3,6 +3,12 @@ import { ORDRE_LIENS_SERIE } from "@/lib/constants";
 import { estPossede, selectionPossession, volumesPossedes } from "@/lib/possession";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estEnWishList } from "@/lib/domain";
+import {
+  couvertureDIdentification,
+  couvertureDeProgression,
+  vignettesParIsbn,
+  VOLUMES_POUR_IDENTIFIER,
+} from "@/lib/vignettes";
 import type {
   Collection,
   Edition,
@@ -73,6 +79,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
                         select: {
                           numero: true,
                           couvertureUrl: true,
+                          isbn: true,
                           possessions: possession,
                         },
                       },
@@ -96,6 +103,7 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
                 select: {
                   numero: true,
                   couvertureUrl: true,
+                  isbn: true,
                   possessions: possession,
                 },
               },
@@ -115,6 +123,13 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
   if (!suivi) {
     return null;
   }
+
+  const vignettes = await vignettesParIsbn([
+    ...edition.serie.editions.flatMap((autre) => autre.volumes.map((volume) => volume.isbn)),
+    ...edition.serie.liens.flatMap((lien) =>
+      lien.serieLiee.editions.flatMap((autre) => autre.volumes.map((volume) => volume.isbn)),
+    ),
+  ]);
 
   return {
     slug: edition.slug,
@@ -155,7 +170,9 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
           possedes: possedes.length,
           editionTerminee: autre.editionTerminee,
           desaturee: estDesaturee(autre.suivis[0]),
-          couvertureUrl: dernier?.couvertureUrl ?? null,
+          couvertureUrl:
+            couvertureDeProgression(possedes) ??
+            couvertureDIdentification(autre.volumes, vignettes),
           dernierNumeroPossede: dernier?.numero ?? null,
         };
       }),
@@ -181,7 +198,9 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
           possedes: principale.possedes.length,
           editionTerminee: principale.edition.editionTerminee,
           desaturee: estDesaturee(principale.edition.suivis[0]),
-          couvertureUrl: dernier?.couvertureUrl ?? null,
+          couvertureUrl:
+            couvertureDeProgression(principale.possedes) ??
+            couvertureDIdentification(principale.edition.volumes, vignettes),
           dernierNumeroPossede: dernier?.numero ?? null,
         };
       })
@@ -243,12 +262,15 @@ export async function chargerCollection(): Promise<Collection> {
           editionTerminee: true,
           couvertureUrl: true,
           prixDefautCentimes: true,
-          serie: { select: { titre: true, _count: { select: { editions: true } } } },
+          serie: {
+            select: { titre: true, couvertureUrl: true, _count: { select: { editions: true } } },
+          },
           volumes: {
             orderBy: { numero: "asc" },
             select: {
               numero: true,
               couvertureUrl: true,
+              isbn: true,
               prixCentimes: true,
               possessions: selectionPossession(utilisateurId),
             },
@@ -257,6 +279,10 @@ export async function chargerCollection(): Promise<Collection> {
       },
     },
   });
+
+  const vignettes = await vignettesParIsbn(
+    suivis.flatMap((suivi) => suivi.edition.volumes.map((volume) => volume.isbn)),
+  );
 
   let valeurCentimes = 0;
   let tomesSansPrix = 0;
@@ -290,7 +316,11 @@ export async function chargerCollection(): Promise<Collection> {
       ajouteeLe: suivi.ajouteeLe.getTime(),
       editionsDeLaSerie: edition.serie._count.editions,
       dernierNumeroPossede: dernier?.numero ?? null,
-      couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
+      couvertureUrl:
+        couvertureDeProgression(possedes) ??
+        couvertureDIdentification(edition.volumes, vignettes) ??
+        edition.couvertureUrl ??
+        edition.serie.couvertureUrl,
     };
   });
 
@@ -352,7 +382,7 @@ export async function chargerManquants(): Promise<Manquants> {
         possedes: possedes.length,
         manquants: parus.filter((volume) => !estPossede(volume)).map((volume) => volume.numero),
         dernierNumeroPossede: dernier?.numero ?? null,
-        couvertureUrl: edition.couvertureUrl ?? dernier?.couvertureUrl ?? null,
+        couvertureUrl: couvertureDeProgression(possedes) ?? edition.couvertureUrl,
       };
     })
     .filter((edition) => edition.manquants.length > 0)
@@ -422,16 +452,20 @@ export async function chargerWishList(): Promise<WishList> {
           tomesParus: true,
           editionTerminee: true,
           couvertureUrl: true,
-          serie: { select: { titre: true } },
+          serie: { select: { titre: true, couvertureUrl: true } },
           volumes: {
             orderBy: { numero: "asc" },
-            take: 1,
-            select: { couvertureUrl: true },
+            take: VOLUMES_POUR_IDENTIFIER,
+            select: { couvertureUrl: true, isbn: true },
           },
         },
       },
     },
   });
+
+  const vignettes = await vignettesParIsbn(
+    suivis.flatMap((suivi) => suivi.edition.volumes.map((volume) => volume.isbn)),
+  );
 
   return {
     lignes: suivis
@@ -443,7 +477,9 @@ export async function chargerWishList(): Promise<WishList> {
         tomesParus: suivi.edition.tomesParus,
         editionTerminee: suivi.edition.editionTerminee,
         couvertureUrl:
-          suivi.edition.couvertureUrl ?? suivi.edition.volumes[0]?.couvertureUrl ?? null,
+          couvertureDIdentification(suivi.edition.volumes, vignettes) ??
+          suivi.edition.couvertureUrl ??
+          suivi.edition.serie.couvertureUrl,
         ajouteeLe: suivi.ajouteeLe.getTime(),
       }))
       .sort((a, b) => a.titre.localeCompare(b.titre, "fr")),

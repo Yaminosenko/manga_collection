@@ -12,6 +12,7 @@ import { exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estPossede, selectionPossession } from "@/lib/possession";
 import { rebondir } from "@/lib/rebond";
+import { couvertureDIdentification, vignettesParIsbn } from "@/lib/vignettes";
 import { normaliserAlias } from "@/lib/normalisation";
 import {
   CANDIDATS_RECHERCHE_MAX,
@@ -211,29 +212,10 @@ async function editionsLocales(utilisateurId: string, requete: string): Promise<
     tomesParus: edition.tomesParus,
     possedes: edition.volumes.filter(estPossede).length,
     couvertureUrl:
-      edition.volumes.find((volume) => volume.couvertureUrl !== null)?.couvertureUrl ??
-      edition.volumes
-        .map((volume) => (volume.isbn === null ? null : vignettes.get(volume.isbn) ?? null))
-        .find((url) => url !== null) ??
+      couvertureDIdentification(edition.volumes, vignettes) ??
       edition.couvertureUrl ??
       edition.serie.couvertureUrl,
   }));
-}
-
-async function vignettesParIsbn(isbns: (string | null)[]): Promise<Map<string, string>> {
-  const connus = [...new Set(isbns.filter((isbn): isbn is string => isbn !== null))];
-  if (connus.length === 0) {
-    return new Map();
-  }
-  const vignettes = await prisma.vignetteCatalogue.findMany({
-    where: { ean: { in: connus }, couvertureUrl: { not: null } },
-    select: { ean: true, couvertureUrl: true },
-  });
-  return new Map(
-    vignettes.flatMap((vignette) =>
-      vignette.couvertureUrl === null ? [] : [[vignette.ean, vignette.couvertureUrl] as const],
-    ),
-  );
 }
 
 async function parRebond(utilisateurId: string, requete: string): Promise<ResultatRecherche> {

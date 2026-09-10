@@ -303,9 +303,28 @@ C'est ce troisième cran qui donne enfin un usage à `Serie.couvertureUrl`, qu'a
 **Une vignette absente n'est pas un blanc cassé** : `Cover` retombe sur son placeholder, muet sur
 une ligne de catalogue puisqu'on ne sait pas quel tome l'image aurait montré.
 
-**Ce qui n'en profite pas encore** : les lignes de **wish list** et le bloc **Séries liées**
-prennent la couverture du tome 1 sans passer par le repli sur `VignetteCatalogue`. Même
-mécanisme à porter, dans `lib/editions.ts`.
+#### Deux règles de couverture, nommées — arbitré le 10 septembre 2026
+
+Le mécanisme est le même partout, mais **les écrans ne veulent pas la même image**, et les
+confondre casserait la Collection. `lib/vignettes.ts` porte donc deux fonctions nommées :
+
+| Règle | Ce qu'elle rend | Où |
+|---|---|---|
+| `couvertureDeProgression` | **le dernier tome possédé** | Collection, Manquants, « Autres éditions », « Séries liées » — elle raconte où j'en suis |
+| `couvertureDIdentification` | **le premier des 4 premiers tomes qui a une image**, sinon la `VignetteCatalogue` d'un de leurs ISBN | Recherche, scanner, wish list — il n'y a rien à raconter, il faut reconnaître |
+
+L'identification sert aussi de **dernier recours** là où la progression ne rend rien : une
+édition à zéro tome possédé. Effet visible immédiat — **les 4 éditions vendues, dont les lignes
+étaient vides**, affichent la jaquette de leur tome 1.
+
+**Une incohérence corrigée au passage.** §4 prescrit « couverture du **dernier tome possédé** »,
+et le code mettait `Edition.couvertureUrl` **avant** — sur la Collection, les Manquants et la
+wish list. Personne ne l'avait vu parce que ce champ est **nul sur les 116 éditions** : le
+premier cran ne servait jamais. L'ordre est aligné sur la spécification, et le jour où
+`Edition.couvertureUrl` sera rempli il ne volera plus la place de la progression.
+
+**Le dernier cran est `Serie.couvertureUrl`**, ce qui donne enfin un usage à ce champ qu'aucun
+écran ne lisait.
 
 #### Une ligne de résultat par édition, pas par série
 
