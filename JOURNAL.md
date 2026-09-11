@@ -3625,3 +3625,128 @@ pas un fait. Meme motif que « la BnF plafonne a 150 px » la veille.
 - **41 % des groupes n'ont pas de vignette**, et c'est un plancher : l'absence se joue par titre
   chez la BnF, le repli sur d'autres volumes ne rend que 12 % des echecs. Aller au-dela demanderait
   un appariement par titre chez MangaBaka ou MangaDex, que ce depot a vu echouer cinq fois.
+
+---
+
+### Fait — l'identité et les comptes, éprouvés à deux comptes sur le banc
+
+**11 septembre 2026, branche `comptes-utilisateurs`, rien sur la production.** Le lot 1 de
+§13.6 est construit et vérifié sur le banc : on se connecte avec un compte, l'inscription est
+libre, chacun voit sa collection. Le rôle invité est supprimé, code compris.
+
+#### Ce que l'état des lieux a trouvé, et qui décide de tout
+
+La migration du 9 septembre avait déjà fait la moitié du travail sans que ça se voie : les
+12 requêtes d'écran partent de `SuiviEdition`, et `data/backup.json` le confirme —
+**116 suivis, 1 719 possessions, un seul `utilisateurId` distinct**. Le cron était déjà propre,
+il promeut avec `utilisateurId: null`. Les onze pages sont `force-dynamic`, donc aucun rendu
+n'est mis en cache et partagé.
+
+**Le vrai défaut était ailleurs : le cookie ne portait pas d'identité, le rôle *était* le
+jeton.** Les dix actions gardées de `lib/actions.ts` appelaient toutes `exigerProprietaire()`,
+`basculerTome` compris. Un compte `UTILISATEUR` aurait été refusé jusqu'à cocher ses propres
+tomes. **Neuf passent à `exigerAcces()` ; seul `definirParution` reste propriétaire.**
+
+#### Ce qui a été construit
+
+Une migration **purement additive** — `identifiant`, `motDePasseHash`, `versionJeton` —, un
+jeton signé portant `utilisateurId:versionJeton:expiration`, un hachage `scrypt` de
+`node:crypto` sans aucune dépendance, et la garde à **deux** niveaux et non trois :
+`exigerUtilisateur()` aurait été le jumeau exact d'`exigerAcces()` une fois l'invité parti.
+
+**Le rôle n'est pas dans le cookie**, il se lit sur la ligne, mémoïsé par requête avec `cache()`
+de React — le motif que la documentation Next prescrit pour un `verifySession`. C'est une
+requête par rendu au lieu de zéro, et en échange un changement de rôle ou de mot de passe prend
+effet tout de suite.
+
+Trois écrans — connexion, inscription, `/compte` — un sixième onglet « Moi » avec son icône, et
+`npm run compte`, seul chemin de reprise de la collection existante. Sont supprimés : la
+bannière invité, `entrerEnInvite`, `quitterInvite`, `jetonInvite`, `ACCESS_PASSWORD` et les cinq
+libellés qui allaient avec.
+
+**La section « changer le mot de passe » de `/compte` est masquée**, décidé en fin de journée.
+`changerMotDePasse` reste en place et c'est elle qui a servi à éprouver la révocation
+ci-dessous ; l'écran ne l'expose simplement pas encore. `npm run compte -- --reinitialiser`
+est donc aujourd'hui le seul chemin visible pour changer un mot de passe.
+
+#### Ce que la vérification a établi, à deux comptes réels
+
+Banc monté sur `prisma dev`, restauration fidèle — **sept compteurs concordants** — puis la
+migration en attente, puis `npm run compte -- --proprietaire`.
+
+| Contrôle | Résultat |
+|---|---|
+| le script pose l'accès sur la bonne ligne | `f087527f-…`, celle qui porte **116 suivis et 1 719 possessions** |
+| le propriétaire se connecte | **1 162 tomes · 111 éditions · 2 5 590,41 €**, inchangés |
+| un compte B s'inscrit | **0 tome · 0 édition · 0,00 €** ; en base, 0 suivi |
+| B coche un tome | `Possession` sur **l'id de B**, les 1 719 de A intactes |
+| B ajoute une édition | `Serie` existante réutilisée, **seule l'`Edition` est créée**, `creeeParId` = B |
+| A ouvre l'`/etat` de l'édition de B | **« Cette édition n'existe pas »** — le cloisonnement tient dans les deux sens |
+| B ouvre un `/etat` | statut et suivi actifs, **parution verrouillée** avec sa mention |
+| A change la parution | `definirParution("gantz", true)` passe, la base suit |
+| jeton à version périmée | `NEXT_REDIRECT;replace;/acces` et **aucune donnée servie** |
+| jeton expiré · signature falsifiée | **307 vers `/acces`**, arrêtés par le proxy |
+| les six onglets à 432 px | tiennent sans troncature |
+
+#### Deux défauts trouvés parce qu'on a cliqué pour de vrai
+
+**Le formulaire d'inscription se vidait à chaque erreur.** Une faute de frappe sur le mot de
+passe obligeait à retaper l'identifiant et l'email. L'état de l'action les renvoie désormais, et
+l'écran a au passage prouvé la normalisation : « Ami » revient en « ami ».
+
+**Une session révoquée servait une page d'erreur en 200.** La garde bloquait bien — aucune
+donnée de compte — mais `exigerAcces()` levait une erreur au lieu de renvoyer à la connexion.
+Elle fait maintenant `redirect(CHEMIN_ACCES)`.
+
+#### Un doublon de catalogue, et ce n'est pas le multi-compte
+
+Taper « GANTZ · Édition simple » au catalogue a créé **`gantz-2` à 37 tomes à côté du `gantz` de
+l'import à 18 tomes**. Premier réflexe : l'anti-doublon serait par compte. C'est faux —
+`slugEnCollection` est calculé **globalement**. La cause est ailleurs et elle était déjà
+écrite : la reconnaissance passe par `ParutionCatalogue.ean → Volume.isbn`, et **les 18 tomes de
+`gantz` n'ont aucun ISBN**. Rien à joindre, donc le candidat sort comme inconnu. Même angle mort
+que `editions:audit`, simplement plus probable à plusieurs comptes.
+
+#### Ce qui n'est pas prouvé, et il faut le dire
+
+**Le refus de `definirParution` pour un non-propriétaire n'a pas été éprouvé de bout en bout.**
+Ce qui est établi : le serveur classe bien B comme non-propriétaire — c'est lui qui a rendu la
+variante verrouillée et sa mention —, la garde tient en une condition, et son chemin positif
+passe pour A. Ce qui manque : une écriture réellement refusée. Deux tentatives ont échoué sans
+rien prouver, exactement comme le piège des six clics d'automatisation le prédit — le premier
+essai a cliqué dans un onglet dont le moteur de rendu ne répondait plus, le second a vu React
+remettre l'attribut `disabled` avant le clic. Une troisième piste, forcer le drapeau dans la
+page, a été **écartée** : elle affaiblissait la garde dans le code, et c'est la dernière chose à
+laisser traîner dans un arbre de travail.
+
+#### Un serveur de développement tué en chemin
+
+Next refuse un second serveur pour le même dossier. Celui du port 3001, laissé par une session
+antérieure, servait le code de la branche **contre Neon**, où les trois colonnes n'existent pas
+encore. Il a été tué après accord, et le banc relancé sur le 3005.
+
+#### Corrigé le même jour — « déjà dans la collection » était global
+
+Trouvé à l'usage, sur le banc, par le propriétaire : connecté en second compte, une série que
+lui seul possède portait « **Déjà dans la collection** », et la taper rendait « **cette édition
+n'existe pas** ».
+
+**Une seule cause pour les deux symptômes.** `slugEnCollection` répondait à une question
+globale — « une `Edition` existe-t-elle pour ce groupe de catalogue ? » — et servait à répondre
+à une question personnelle. Le libellé exposait donc la collection d'autrui, et
+`ajouterCandidatDirect` redirigeait vers une fiche que les requêtes, parties de `SuiviEdition`,
+refusaient au second compte.
+
+Le champ est scindé en deux : **`slugEdition`**, global, qui empêche le doublon, et
+**`dansMaCollection`**, par compte, qui pilote le libellé. Le cas qui manquait — l'édition
+existe mais n'est pas à moi — **crée maintenant le seul `SuiviEdition`** et ouvre la fiche.
+`rechercherCandidats`, `candidatParEan` et `candidatParGroupe` prennent l'`utilisateurId` en
+premier argument plutôt que de le deviner.
+
+**Vérifié en base** : `ami` tape BLEACH, que seul `dimitry` possède. Il reste **une seule
+`Edition` bleach** et il y a désormais **deux `SuiviEdition`**, une par compte, chacune avec son
+statut. La page s'ouvre, et elle affiche **4 / 74 pour `ami`** là où `dimitry` en a 74 — le
+compteur est bien personnel.
+
+Au passage, « tomes parus **selon le catalogue** » devient « tomes parus » sur les lignes de
+résultat, et la section « changer le mot de passe » de `/compte` est masquée.

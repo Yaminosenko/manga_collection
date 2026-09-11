@@ -176,7 +176,7 @@ export function SearchSeries() {
                     {candidat.tomesParus === 1
                       ? LIBELLE_TOME_DU_CATALOGUE
                       : LIBELLE_TOMES_DU_CATALOGUE}
-                    {candidat.slugEnCollection ? ` · ${LIBELLE_DEJA_EN_COLLECTION}` : ""}
+                    {candidat.dansMaCollection ? ` · ${LIBELLE_DEJA_EN_COLLECTION}` : ""}
                   </span>
                 </span>
                 <CaretRight className="size-[14px] flex-none text-neutral-600" />

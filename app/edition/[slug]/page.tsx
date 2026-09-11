@@ -4,7 +4,6 @@ import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
 import { ArrowLeft, ArrowUpRight, CaretRight } from "@/components/icons";
 import { chargerEdition } from "@/lib/editions";
-import { estProprietaire } from "@/lib/guard";
 import {
   aDesTomesAParaitre,
   dernierTomePossede,
@@ -33,7 +32,6 @@ function sousTitre(nom: string, editeur: string | null): string {
 export default async function Page({ params }: PageProps<"/edition/[slug]">) {
   const { slug } = await params;
   const edition = await chargerEdition(slug);
-  const proprietaire = await estProprietaire();
 
   if (!edition) {
     notFound();
@@ -256,15 +254,13 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
           </a>
         </footer>
 
-        {proprietaire ? (
-          <Link
-            href={`/edition/${edition.slug}/etat`}
-            className="flex min-h-11 w-full items-center justify-center gap-[8px] rounded-md border border-neutral-800 text-[13px] font-medium tracking-[0.06em] text-neutral-300 uppercase transition-colors hover:border-accent-600 hover:text-accent-200"
-          >
-            {LIBELLE_MODIFIER_ETAT}
-            <CaretRight className="size-[12px]" />
-          </Link>
-        ) : null}
+        <Link
+          href={`/edition/${edition.slug}/etat`}
+          className="flex min-h-11 w-full items-center justify-center gap-[8px] rounded-md border border-neutral-800 text-[13px] font-medium tracking-[0.06em] text-neutral-300 uppercase transition-colors hover:border-accent-600 hover:text-accent-200"
+        >
+          {LIBELLE_MODIFIER_ETAT}
+          <CaretRight className="size-[12px]" />
+        </Link>
       </div>
     </main>
   );

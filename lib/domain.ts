@@ -4,7 +4,12 @@ import {
   LIBELLE_COMPLETE,
   LIBELLE_EDITION_TERMINEE,
   LIBELLE_TERMINEE_FORCEE,
+  LONGUEUR_IDENTIFIANT_MAXIMALE,
+  LONGUEUR_IDENTIFIANT_MINIMALE,
   LONGUEUR_ISBN,
+  LONGUEUR_MOT_DE_PASSE_MINIMALE,
+  MOTIF_EMAIL,
+  MOTIF_IDENTIFIANT,
   PREFIXES_ISBN,
 } from "@/lib/constants";
 import type { StatutEdition, TypeLienSerie } from "@/lib/generated/prisma/enums";
@@ -212,7 +217,8 @@ export type CandidatEdition = {
   lignes: number;
   derniereParution: string | null;
   editionTerminee: boolean;
-  slugEnCollection: string | null;
+  slugEdition: string | null;
+  dansMaCollection: boolean;
   couvertureUrl: string | null;
 };
 
@@ -227,6 +233,19 @@ export type AnnonceCandidat = TomeCandidat;
 export type EtatCreation = { erreur: string | null };
 
 export type EtatAcces = { erreur: string | null };
+export type EtatInscription = {
+  erreur: string | null;
+  identifiant: string;
+  email: string;
+};
+export type EtatCompte = { erreur: string | null; message: string | null };
+
+export type CompteAffiche = {
+  identifiant: string | null;
+  email: string | null;
+  nom: string | null;
+  proprietaire: boolean;
+};
 
 export function dernierTomePossede(tomes: Tome[]): Tome | null {
   for (let index = tomes.length - 1; index >= 0; index -= 1) {
@@ -326,4 +345,28 @@ export function debutDuMois(instant: Date): Date {
 
 export function sortieEstParue(date: string, instant: Date): boolean {
   return new Date(date).getTime() <= instant.getTime();
+}
+
+export function normaliserIdentifiant(brut: string): string {
+  return brut.trim().toLowerCase();
+}
+
+export function identifiantValide(identifiant: string): boolean {
+  return (
+    identifiant.length >= LONGUEUR_IDENTIFIANT_MINIMALE &&
+    identifiant.length <= LONGUEUR_IDENTIFIANT_MAXIMALE &&
+    MOTIF_IDENTIFIANT.test(identifiant)
+  );
+}
+
+export function normaliserEmail(brut: string): string {
+  return brut.trim().toLowerCase();
+}
+
+export function emailValide(email: string): boolean {
+  return MOTIF_EMAIL.test(email);
+}
+
+export function motDePasseAssezLong(motDePasse: string): boolean {
+  return motDePasse.length >= LONGUEUR_MOT_DE_PASSE_MINIMALE;
 }

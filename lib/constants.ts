@@ -37,7 +37,8 @@ export const LIBELLE_VENDUES = "Vendues";
 export const LIBELLE_SENS_CROISSANT = "Ordre croissant";
 export const LIBELLE_SENS_DECROISSANT = "Ordre décroissant";
 export const LIBELLE_AUCUN_RESULTAT = "Aucune édition ne correspond.";
-export const LIBELLE_COLLECTION_VIDE = "La collection est vide.";
+export const LIBELLE_COLLECTION_VIDE =
+  "Aucune édition. Cherchez une série depuis Rechercher : un tap l’ajoute, et cocher un tome la fait entrer ici.";
 
 export const CROISSANT_PAR_DEFAUT: Record<CleTri, boolean> = {
   alphabetique: true,
@@ -115,8 +116,8 @@ export const LIBELLE_CANDIDAT_INTROUVABLE =
 export const STATUT_A_LA_CREATION = "EN_COURS" as const;
 export const MENTION_AJOUT_DIRECT =
   "Un tap ajoute la série et ouvre sa page : les tomes s’y cochent, et le suivi se règle depuis « Modifier l’état ».";
-export const LIBELLE_TOMES_DU_CATALOGUE = "tomes parus selon le catalogue";
-export const LIBELLE_TOME_DU_CATALOGUE = "tome paru selon le catalogue";
+export const LIBELLE_TOMES_DU_CATALOGUE = "tomes parus";
+export const LIBELLE_TOME_DU_CATALOGUE = "tome paru";
 
 
 export const TITRE_WISHLIST = "Wish list";
@@ -146,19 +147,60 @@ export const NOM_APPLICATION_COURT = "Collection";
 export const COULEUR_FOND_APPLICATION = "#161826";
 
 export const CHEMIN_ACCES = "/acces";
+export const CHEMIN_INSCRIPTION = "/inscription";
+export const CHEMIN_COMPTE = "/compte";
 export const COOKIE_ACCES = "collection.acces";
-export const MESSAGE_JETON = "acces";
-export const MESSAGE_JETON_INVITE = "invite";
 export const DUREE_ACCES_SECONDES = 31_536_000;
 
+export const LONGUEUR_IDENTIFIANT_MINIMALE = 3;
+export const LONGUEUR_IDENTIFIANT_MAXIMALE = 30;
+export const LONGUEUR_MOT_DE_PASSE_MINIMALE = 8;
+export const MOTIF_IDENTIFIANT = /^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?$/;
+export const MOTIF_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 export const TITRE_ACCES = "Collection privée";
+export const TITRE_INSCRIPTION = "Créer un compte";
+export const TITRE_COMPTE = "Mon compte";
+export const TITRE_SECTION_IDENTITE = "Identité";
+export const LIBELLE_ONGLET_COMPTE = "Moi";
+export const LIBELLE_ROLE_PROPRIETAIRE = "Propriétaire";
+export const LIBELLE_IDENTIFIANT = "Identifiant";
+export const LIBELLE_EMAIL = "Adresse email";
+export const LIBELLE_NOM_AFFICHE = "Nom affiché";
 export const LIBELLE_MOT_DE_PASSE = "Mot de passe";
+export const LIBELLE_MOT_DE_PASSE_ACTUEL = "Mot de passe actuel";
+export const LIBELLE_MOT_DE_PASSE_NOUVEAU = "Nouveau mot de passe";
+export const LIBELLE_MOT_DE_PASSE_CONFIRMATION = "Confirmer le mot de passe";
 export const LIBELLE_DEVERROUILLER = "Entrer";
-export const LIBELLE_ACCES_REFUSE = "Mot de passe incorrect.";
+export const LIBELLE_CREER_COMPTE = "Créer le compte";
+export const LIBELLE_VERS_INSCRIPTION = "Pas encore de compte ? En créer un";
+export const LIBELLE_VERS_ACCES = "Déjà un compte ? Se connecter";
+export const LIBELLE_ENREGISTRER = "Enregistrer";
+export const LIBELLE_CHANGER_MOT_DE_PASSE = "Changer le mot de passe";
+export const LIBELLE_DECONNEXION = "Se déconnecter";
+
+export const LIBELLE_ACCES_REFUSE = "Identifiant ou mot de passe incorrect.";
+export const LIBELLE_SESSION_EXPIREE = "Session expirée : reconnectez-vous.";
 export const LIBELLE_PROPRIETAIRE_ABSENT =
   "Aucun utilisateur propriétaire en base : la migration des comptes n’a pas été appliquée.";
-export const LIBELLE_ACCES_NON_CONFIGURE =
-  "Aucun mot de passe n’est configuré : renseignez ACCESS_PASSWORD dans l’environnement.";
+export const LIBELLE_SIGNATURE_NON_CONFIGUREE =
+  "Aucun secret de session n’est configuré : renseignez SESSION_SECRET dans l’environnement.";
+export const LIBELLE_IDENTIFIANT_INVALIDE =
+  `L’identifiant accepte les minuscules, les chiffres, le point, le tiret et le souligné, de ${LONGUEUR_IDENTIFIANT_MINIMALE} à ${LONGUEUR_IDENTIFIANT_MAXIMALE} caractères.`;
+export const LIBELLE_IDENTIFIANT_PRIS = "Cet identifiant est déjà utilisé.";
+export const LIBELLE_EMAIL_INVALIDE = "Cette adresse email n’est pas valide.";
+export const LIBELLE_EMAIL_PRIS = "Cette adresse email est déjà utilisée.";
+export const LIBELLE_MOT_DE_PASSE_COURT =
+  `Le mot de passe doit faire au moins ${LONGUEUR_MOT_DE_PASSE_MINIMALE} caractères.`;
+export const LIBELLE_MOT_DE_PASSE_DIFFERENT = "Les deux mots de passe ne correspondent pas.";
+export const LIBELLE_MOT_DE_PASSE_ACTUEL_FAUX = "Le mot de passe actuel est incorrect.";
+export const LIBELLE_MOT_DE_PASSE_ABSENT =
+  "Ce compte n’a pas encore de mot de passe : posez-en un avec npm run compte.";
+export const LIBELLE_COMPTE_ENREGISTRE = "Enregistré.";
+export const MENTION_EMAIL_INSCRIPTION =
+  "Elle ne sert qu’à réinitialiser votre mot de passe, et n’est jamais partagée.";
+export const MENTION_CHANGEMENT_MOT_DE_PASSE =
+  "Changer de mot de passe déconnecte tous vos autres appareils.";
 
 export const LIBELLE_TOMES_POSSEDES = "Tomes possédés";
 export const LIBELLE_AUTRES_EDITIONS = "Autres éditions";
@@ -201,11 +243,8 @@ export const MENTION_PARUTION =
 export const MENTION_SUIVI =
   "Une édition suivie rappelle ses tomes manquants dans Manquants et ses sorties dans Planning. Non suivie, elle reste dans la collection sans rien réclamer ; la barre garde son compte réel.";
 
-export const LIBELLE_ENTRER_INVITE = "Entrer en invité";
-export const LIBELLE_MODE_INVITE = "Mode invité · consultation seule";
-export const LIBELLE_QUITTER_INVITE = "Quitter";
-export const MENTION_INVITE_LECTURE =
-  "En invité, la collection se consulte mais ne se modifie pas.";
+export const MENTION_RESERVE_PROPRIETAIRE =
+  "Seul le propriétaire modifie une donnée de catalogue.";
 
 export const TITRE_PLANNING = "Planning";
 export const LIBELLE_PLANNING_VIDE =

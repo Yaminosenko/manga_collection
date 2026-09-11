@@ -13,6 +13,7 @@ import {
   LIBELLE_SUIVI,
   LIBELLE_SUIVIE,
   MENTION_PARUTION,
+  MENTION_RESERVE_PROPRIETAIRE,
   MENTION_SUIVI,
   STATUTS_EDITION,
 } from "@/lib/constants";
@@ -24,7 +25,7 @@ type Etat = {
   suivie: boolean;
 };
 
-type EditionStateProps = Etat & { slug: string };
+type EditionStateProps = Etat & { slug: string; parutionModifiable: boolean };
 
 const STATUTS: readonly StatutEdition[] = STATUTS_EDITION;
 
@@ -39,7 +40,13 @@ const CHOIX =
 const CHOIX_ACTIF = "border-accent bg-accent/12 text-accent";
 const CHOIX_INACTIF = "border-neutral-800 text-neutral-400 hover:border-neutral-700";
 
-export function EditionState({ slug, statut, editionTerminee, suivie }: EditionStateProps) {
+export function EditionState({
+  slug,
+  statut,
+  editionTerminee,
+  suivie,
+  parutionModifiable,
+}: EditionStateProps) {
   const [enCours, demarrer] = useTransition();
   const [etat, appliquer] = useOptimistic<Etat, Partial<Etat>>(
     { statut, editionTerminee, suivie },
@@ -103,16 +110,19 @@ export function EditionState({ slug, statut, editionTerminee, suivie }: EditionS
               key={libelle}
               type="button"
               aria-pressed={etat.editionTerminee === valeur}
+              disabled={!parutionModifiable}
               onClick={() => choisirParution(valeur)}
               className={`${CHOIX} ${
                 etat.editionTerminee === valeur ? CHOIX_ACTIF : CHOIX_INACTIF
-              }`}
+              } disabled:opacity-50`}
             >
               {libelle}
             </button>
           ))}
         </div>
-        <p className="text-[11px]/[1.5] text-neutral-600">{MENTION_PARUTION}</p>
+        <p className="text-[11px]/[1.5] text-neutral-600">
+          {parutionModifiable ? MENTION_PARUTION : MENTION_RESERVE_PROPRIETAIRE}
+        </p>
       </section>
 
       <section className="flex flex-col gap-[9px]">

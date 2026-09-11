@@ -17,7 +17,6 @@ type VolumeGridProps = {
   titre: string;
   tomesParus: number;
   aParaitre: boolean;
-  lectureSeule: boolean;
   sorties: SortieAnnoncee[];
   tomes: Tome[];
 };
@@ -41,7 +40,6 @@ export function VolumeGrid({
   titre,
   tomesParus,
   aParaitre,
-  lectureSeule,
   sorties,
   tomes,
 }: VolumeGridProps) {
@@ -82,7 +80,7 @@ export function VolumeGrid({
         <span className="text-[17px] font-medium text-text">
           {possedes.length} / {tomesParus} tomes
         </span>
-        <div className={`flex gap-[7px] ${lectureSeule ? "hidden" : ""}`}>
+        <div className="flex gap-[7px]">
           <button
             type="button"
             onClick={() => definirTous(true)}
@@ -111,7 +109,6 @@ export function VolumeGrid({
             return (
               <Case
                 key={numero}
-                lectureSeule={lectureSeule}
                 possede={possede}
                 numero={numero}
                 onBasculer={() => basculer(numero)}
@@ -201,13 +198,11 @@ export function VolumeGrid({
 }
 
 function Case({
-  lectureSeule,
   possede,
   numero,
   onBasculer,
   children,
 }: {
-  lectureSeule: boolean;
   possede: boolean;
   numero: number;
   onBasculer: () => void;
@@ -216,14 +211,6 @@ function Case({
   const classe = `case-tome relative aspect-cover overflow-hidden rounded-cover ${
     possede ? "case-possede" : "case-manquant"
   }`;
-
-  if (lectureSeule) {
-    return (
-      <div aria-label={`Tome ${numero}`} className={classe}>
-        {children}
-      </div>
-    );
-  }
 
   return (
     <button

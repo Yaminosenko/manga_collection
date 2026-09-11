@@ -32,6 +32,9 @@ enum RoleUtilisateur {
 model Utilisateur {
   id             String          @id @default(uuid())
   email          String?         @unique
+  identifiant    String?         @unique
+  motDePasseHash String?
+  versionJeton   Int             @default(1)
   nom            String?
   role           RoleUtilisateur @default(UTILISATEUR)
   aPaye          Boolean         @default(false)

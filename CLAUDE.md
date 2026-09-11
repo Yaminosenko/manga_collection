@@ -35,8 +35,8 @@ Possession   (id, utilisateurId, volumeId, possede, dateAchat, prixPayeCentimes,
 
 **La séparation catalogue / suivi est faite depuis le 9 septembre 2026** — voir §13.1 et
 `JOURNAL.md`. Le catalogue porte des faits objectifs, identiques pour tout le monde ; le suivi
-porte une ligne par utilisateur. Il n'y a qu'un compte, le propriétaire, et l'invité est résolu
-vers lui en lecture seule.
+porte une ligne par utilisateur. **Depuis le 11 septembre 2026 chaque compte se connecte avec
+son propre identifiant** et l'inscription est libre — voir §13.6.
 
 **« Ma collection » = ce pour quoi j'ai une ligne `SuiviEdition`**, plus « toutes les
 `Edition` ». Toute requête d'écran part donc de `SuiviEdition` et joint `Edition`, jamais
@@ -82,10 +82,18 @@ Le rapport **personnel** à une édition. Une ligne par utilisateur et par édit
 - `ajouteeLe` — ajoutée à **ma** collection, pas au catalogue. Sert au tri « Ajout récent ».
 
 ### Utilisateur
-Un seul compte aujourd'hui, le propriétaire, créé par la migration avec un `email` nul — le
-dépôt est public. `role` distingue `PROPRIETAIRE` de `UTILISATEUR` ; `aPaye` est posé d'avance
-pour §13.4. **L'invité n'est pas une ligne `Utilisateur`** : c'est un rôle de jeton, résolu vers
-l'id du propriétaire en lecture seule par `lib/utilisateur.ts`.
+Le propriétaire a été créé par la migration du 9 septembre avec un `email` nul — le dépôt est
+public. `role` distingue `PROPRIETAIRE` de `UTILISATEUR` ; `aPaye` est posé d'avance pour §13.4.
+
+`identifiant` est le **pseudo** de connexion, stocké normalisé et unique ; `motDePasseHash` est
+un `scrypt` ; `versionJeton` invalide toutes les sessions d'un compte quand son mot de passe
+change. Les trois sont nullables : la ligne du propriétaire les a nuls jusqu'au passage de
+`npm run compte`. **`email` est obligatoire à l'inscription mais reste non vérifié** — aucun
+envoyeur n'existe avant le lot 2 de §13.6.
+
+**Il n'y a plus de rôle invité** : chacun se connecte avec son compte. Montrer sa collection à
+quelqu'un n'est donc plus possible, et son remplacement — la visibilité entre comptes — n'est
+pas tranché, il vit dans `IDEES.md`.
 
 ### Volume
 Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date,
@@ -353,8 +361,21 @@ avec leur ISBN et leur date, les `Sortie` à venir, et **aucune `Possession`** �
 atterrit en wish list jusqu'au premier tome coché. Par `/scanner`, le tome scanné est coché et
 elle entre directement en Collection.
 
-**Taper une édition déjà présente n'en crée pas une seconde** : l'action reconnaît
-`slugEnCollection` et redirige vers la fiche existante.
+**Taper une édition déjà présente n'en crée pas une seconde**, et le multi-compte oblige à
+distinguer **deux questions que le code confondait** (corrigé le 11 septembre 2026) :
+
+| Question | Champ | Ce qu'elle pilote |
+|---|---|---|
+| cette édition existe-t-elle **au catalogue** ? | `slugEdition` | ne pas créer de doublon |
+| est-elle dans **ma** collection ? | `dansMaCollection` | le libellé « Déjà dans la collection », et le dédoublonnage des deux sections |
+
+`slugEdition` se calcule **globalement**, par la jointure `ParutionCatalogue.ean → Volume.isbn`.
+Trois cas, donc : elle est à moi, on ouvre la fiche ; elle existe mais n'est pas à moi, **on
+crée seulement le `SuiviEdition`** et on ouvre la fiche ; elle n'existe pas, on la crée.
+
+Le cas du milieu est celui qui manquait : avec un seul champ global, un second compte voyait
+« Déjà dans la collection » sur les éditions d'un autre — et le tap le renvoyait vers une fiche
+que ses requêtes, parties de `SuiviEdition`, lui refusaient : **« cette édition n'existe pas »**.
 
 **Conséquence à connaître** : `nom` et `tomesParus` n'ont plus d'endroit où se corriger dans
 l'application. Le formulaire était le seul, et l'écran État ne propose que statut, parution et
@@ -714,7 +735,7 @@ allumée en permanence. Tout ce qui suit découle de là.
 | Base | PostgreSQL sur Neon | Free — 0,5 Go, 100 CU-h/mois, veille après 5 min |
 | Hébergement | Vercel | Hobby — usage personnel, sans carte, non facturable |
 | Couvertures | Cloudflare R2 | Free — 10 Go, 1 M écritures/mois, egress gratuit, ~39 Mo nécessaires |
-| Accès privé | Garde applicative : mot de passe pour écrire, bouton invité pour consulter | Hobby ne sait pas protéger la production |
+| Accès privé | Garde applicative : un compte par personne, pseudo et mot de passe, inscription libre | Hobby ne sait pas protéger la production |
 | Mobile | PWA installable | — |
 
 Alternative écartée : FastAPI + React séparés. Deux déploiements, une couche API à écrire et
@@ -905,8 +926,9 @@ Dernière mise à jour : 10 septembre 2026.
 
 **La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
 nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
-déploiement sans la demander. Elle est publique — la garde est applicative, et la page `/acces`
-répond 200 à tout le monde ; c'est le trou assumé de §7, pas une fuite.
+déploiement sans la demander. Elle est publique — la garde est applicative, et les pages
+`/acces` et `/inscription` répondent 200 à tout le monde ; c'est le trou assumé de §7, pas une
+fuite. **Depuis §13.6 l'inscription y est libre**, d'où le `noindex` sur l'application.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
@@ -1106,6 +1128,15 @@ Ce qui reste :
   porté sur des groupes dont le catalogue connaît les ISBN. Un groupe à `tomesParus = 1` déduit
   d'une absence de numéro et sans EAN créerait un tome nu ; le code le prévoit, personne ne l'a
   vu tourner.
+- **Une édition sans aucun ISBN se fait dupliquer par un tap au catalogue** — constaté sur le
+  banc le 11 septembre 2026 en éprouvant §13.6. Taper « GANTZ · Édition simple » a créé
+  `gantz-2` à 37 tomes **à côté** du `gantz` de l'import à 18 tomes. La cause n'est pas le
+  multi-compte : `slugEnCollection` est bien calculé **globalement**, mais par la jointure
+  `ParutionCatalogue.ean → Volume.isbn`, et les 18 tomes de `gantz` **n'ont aucun ISBN** — rien
+  à joindre, donc le candidat sort comme inconnu. C'est le même angle mort que
+  `editions:audit`, « aveugle sur les 23 éditions sans ISBN », et il devient plus probable à
+  plusieurs comptes, chacun pouvant taper le même groupe. Le chemin rentable est le même que
+  pour les couvertures : **trouver un ISBN à ces éditions dans `ParutionCatalogue`**.
 
 #### Ce qui manque à l'application
 
@@ -1203,7 +1234,7 @@ Ce qui reste :
    |---|---|
    | `DATABASE_URL` | Neon → *Connect*, interrupteur **Connection pooling** activé |
    | `DIRECT_URL` | le même, **sans** le pooling. Sert aux migrations |
-   | `ACCESS_PASSWORD` | le mot de passe de la garde. **Le même que dans Vercel**, sinon les deux divergent |
+   | `SESSION_SECRET` | le secret qui signe les cookies de session. **Le même que dans Vercel**, sinon un cookie posé d'un côté est refusé de l'autre. N'importe quelle chaîne longue et aléatoire ; la changer déconnecte tout le monde |
 
    Les autres sont facultatives : les cinq variables `R2_*` pour déposer des couvertures — voir
    `.env.example`, et **recopier `R2_ENDPOINT` tel qu'affiché, ne pas le reconstruire** — et
@@ -1230,7 +1261,8 @@ Ce qui reste :
 
 | Commande | Rôle |
 |---|---|
-| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout |
+| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout. **Ne sauvegarde aucun mot de passe** — une restauration laisse les comptes sans accès |
+| `npm run compte` | les accès. `-- --lister` (lecture seule) montre chaque compte et ses compteurs ; `-- --proprietaire --identifiant <pseudo> [--email <adresse>]` pose un accès **sur la ligne `PROPRIETAIRE` existante**, sans déplacer une seule ligne de collection ; `-- --reinitialiser <pseudo>` repose un mot de passe et coupe les sessions. Le mot de passe est demandé sans écho |
 | `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste — **relire aussi `data/planning-divergences.json`** |
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
 | `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
@@ -1810,19 +1842,24 @@ sort du jeton.
 Ça referme au passage le trou assumé du 30 août : aujourd'hui quiconque connaît l'URL
 consulte la collection, prix et valeur totale compris.
 
-#### Les trois rôles
+#### Les deux rôles
 
-| | Invité | Utilisateur | Propriétaire |
+> **Il y en avait trois jusqu'au 11 septembre 2026.** L'invité a été supprimé avec §13.6 : on
+> consulte avec son propre compte, pas avec un rôle de jeton. La colonne est gardée ici parce
+> qu'elle dit ce qu'il savait faire, et donc ce qu'il faudra redonner à la visibilité entre
+> comptes — qui n'est pas tranchée, voir `IDEES.md`.
+
+| | ~~Invité~~ | Utilisateur | Propriétaire |
 |---|---|---|---|
-| Consulter | oui | oui | oui |
-| Cocher ses tomes, changer son statut | non | oui | oui |
-| Ajouter une série au catalogue | non | oui, marquée | oui |
-| Modifier nom, éditeur, tomes parus, parution | non | non | oui |
-| Importer le planning, lancer les scripts | non | non | oui |
-| Relire les ajouts marqués | non | non | oui |
+| Consulter | ~~oui~~ | oui | oui |
+| Cocher ses tomes, changer son statut | ~~non~~ | oui | oui |
+| Ajouter une série au catalogue | ~~non~~ | oui, marquée | oui |
+| Modifier nom, éditeur, tomes parus, parution | ~~non~~ | non | oui |
+| Importer le planning, lancer les scripts | ~~non~~ | non | oui |
+| Relire les ajouts marqués | ~~non~~ | non | oui |
 
-Le motif existe déjà et il est prouvé : `roleDuJeton`, `exigerAcces` pour lire,
-`exigerProprietaire` pour écrire. Ajouter un rôle est une extension, pas une refonte.
+Le motif existe déjà et il est prouvé : `exigerAcces` pour toute écriture personnelle,
+`exigerProprietaire` pour le catalogue. Ajouter un rôle est une extension, pas une refonte.
 
 **La frontière reste dans les Server Actions**, jamais dans l'interface — vérifié le
 30 août en appelant `definirParution` avec un cookie invité : 500 et aucune écriture.
@@ -2102,6 +2139,132 @@ décision, et une session future ne saurait plus ce qui fait foi.
 Une idée n'entre en §13 **qu'une fois arbitrée**, avec ce qui a été écarté et pourquoi. Une
 entrée n'entre dans `JOURNAL.md` **qu'une fois vérifiée fonctionnellement** — le document a
 quatre fois la preuve qu'une sonde ne prouve rien.
+
+---
+
+### 13.6 L'identité et les comptes — arbitré le 11 septembre 2026
+
+> **En cours, sur la branche `comptes-utilisateurs`.** Ce qui suit est tranché ; `JOURNAL.md`
+> fera foi sur ce qui est fait et vérifié. Le lot 2 — la réinitialisation par email — est
+> délibérément hors de ce chantier, voir la fin de section.
+
+#### Le point de départ, et pourquoi c'est un chantier et pas un ajout
+
+§13.1 a livré la moitié du travail sans que ça se voie : `SuiviEdition` et `Possession`
+portent un `utilisateurId`, et les **12 requêtes d'écran partent déjà de `SuiviEdition`**.
+Mesuré dans `data/backup.json` : 116 suivis et 1 719 possessions, **un seul `utilisateurId`
+distinct**. L'isolation par compte est donc faite côté données — un second compte verrait déjà
+sa propre collection sans qu'une requête bouge.
+
+Ce qui manque est l'identité, et le défaut est net : **le cookie ne porte pas qui vous êtes,
+le rôle *est* le jeton.** `lib/auth.ts` signe deux HMAC du même `ACCESS_PASSWORD` sur les
+messages fixes `"acces"` et `"invite"`. Conséquence mécanique : **les dix actions gardées de
+`lib/actions.ts` — 7 écritures et 3 lectures — appellent toutes `exigerProprietaire()`**,
+`basculerTome` compris, qui est pourtant une écriture strictement personnelle. Un compte
+`UTILISATEUR` créé aujourd'hui serait refusé partout, jusqu'à cocher ses propres tomes.
+**C'est là qu'est le coût du chantier, pas dans le SQL** — exactement comme les 19 sites de
+lecture de §13.1. Neuf de ces dix appels passent à `exigerAcces()` ; seul `definirParution`
+garde `exigerProprietaire()`.
+
+#### Ce qui est tranché
+
+| Décision | Motif |
+|---|---|
+| **Mot de passe par compte, et rien d'autre en V1** | choix du propriétaire. À savoir pour ne pas refaire l'enquête : « Sign in with Google » / OAuth 2.0 **est gratuit** et sans palier ; ce qui est payant est *Identity Platform*, un service **managé** qu'un OAuth écrit à la main ne touche pas, et les 90 jours sont le crédit de 300 $ du Google Cloud Free Program, qui ne s'applique qu'aux produits facturables |
+| **Auto-inscription libre** | et c'est peu exposé : la suppression de la saisie manuelle le 9 septembre borne un compte inconnu à `ParutionCatalogue` et à la BnF. **Il ne peut pas inventer une fiche**, seulement en adopter une qui existe |
+| **Identifiant = pseudo unique**, email obligatoire à l'inscription | le pseudo évite toute collision d'identité ; l'email ne sert qu'au lot 2 |
+| **Le rôle invité est supprimé, code compris** | `IDEES.md` du 9 septembre : on consultera la collection d'un autre **avec son propre compte**. La consultation d'autrui remplace le rôle, elle ne s'y ajoute pas |
+| **Jeton autoportant, `versionJeton` en base** | un changement de mot de passe coupe **toutes** les sessions d'un coup, sans table de sessions ni requête par navigation sur une base qui s'endort (§7) |
+| **Le rôle n'est pas dans le cookie** | il se lit sur la ligne, mémoïsé par requête : un changement de rôle ou de mot de passe prend effet immédiatement, au prix d'une requête par rendu sur des pages qui interrogent déjà la base |
+| **Le propriétaire reprend sa ligne par script local** | déterministe, rien au dépôt, et c'est le motif de tous les autres scripts du projet |
+| **`definirParution` reste propriétaire seul** | la lettre de §13.2. La **création** depuis le catalogue, elle, reste libre et marquée |
+| **Le hash n'entre pas dans `data/backup.json`** | le dépôt est public (§7) : un hash publié s'attaque hors ligne, sans limite de tentatives |
+| **Sixième onglet « Moi »** | — |
+
+#### Ce qui a été écarté, avec le motif
+
+- **Rapprocher automatiquement deux moyens de connexion par email identique.** Sans envoyeur,
+  l'email d'un compte mot de passe n'est vérifié par personne : quelqu'un inscrit avec votre
+  adresse récupérerait ensuite votre session. La liaison n'est donc possible que **depuis
+  « mon compte », déjà connecté** — et elle attend de toute façon qu'un second moyen existe.
+- **« Le premier compte créé devient propriétaire ».** Le domaine de production est public et
+  indexé (§7, §12) : le premier arrivant n'est pas forcément le propriétaire.
+- **Une garde à trois niveaux.** `exigerUtilisateur()` serait aujourd'hui le **jumeau exact**
+  d'`exigerAcces()` : une fois l'invité parti, aucune session en lecture seule n'existe plus.
+  Il naîtra avec la visibilité entre comptes, quand il aura une différence à porter.
+- **Une table `Session`.** Révocation appareil par appareil, mais une requête de plus à chaque
+  navigation. `versionJeton` achète la révocation qui compte — celle du changement de mot de
+  passe — pour une colonne.
+- **Un formulaire d'invitation, et un écran de gestion des comptes.** Hors de ce lot par
+  décision ; `npm run compte -- --lister` tient le besoin depuis le poste. Voir `IDEES.md`.
+
+#### Le schéma, purement additif
+
+`Utilisateur` **gagne** `identifiant String? @unique` (le pseudo, stocké normalisé),
+`motDePasseHash String?` et `versionJeton Int @default(1)`. `email` est déjà `@unique`.
+
+Aucune colonne ne bouge, aucun backfill, aucun `DROP` : au sens du critère de §13.1, **c'est
+un ajout, donc sans pénalité**. `identifiant` reste nullable parce que la ligne du
+propriétaire l'a nul jusqu'au passage du script, et Postgres tolère plusieurs `NULL` sous un
+index unique.
+
+Le hachage est `scrypt` de `node:crypto`, sel de 16 octets, vérification par
+`timingSafeEqual` — **aucune dépendance**, comme le reste du projet.
+
+#### La reprise de la collection existante : rien ne se déplace
+
+C'est le point à ne pas se laisser raconter autrement : **la collection est déjà attachée à un
+compte.** Cette ligne n'a simplement aucun moyen de se connecter. « Migrer » veut donc dire
+poser un credential sur une ligne qui existe :
+
+```sql
+UPDATE "Utilisateur" SET identifiant = …, email = …, "motDePasseHash" = …
+ WHERE role = 'PROPRIETAIRE';
+```
+
+`npm run compte` l'enveloppe : il refuse s'il trouve autre chose qu'un seul `PROPRIETAIRE`,
+demande le mot de passe **sans écho** — un argument entrerait dans l'historique du shell — et
+affiche les compteurs de la ligne qu'il vient de modifier, **seul contrôle qui prouve qu'on a
+touché la bonne**.
+
+**Le piège, et il est unique : passer par le formulaire d'inscription avant le script crée un
+compte neuf et vide.** Rien n'est perdu, les 116 éditions restent sur l'autre ligne, mais il
+faut alors supprimer le compte parasite. D'où l'ordre : sauvegarde, script, connexion, et
+**on vérifie qu'on voit 116 éditions**. Une collection vide à la première connexion est le
+signal qu'on s'est trompé de ligne.
+
+#### Trois conséquences assumées
+
+**On ne peut plus montrer sa collection à personne.** L'invité était le seul moyen ; un
+visiteur qui s'inscrit voit sa propre collection vide. Le remplacement est une **visibilité
+entre comptes**, qui n'est pas dessinée — elle vit dans `IDEES.md`, et c'est le prix de
+l'avoir sortie d'ici.
+
+**Une adresse email squattée bloque son vrai titulaire.** `email` est `@unique` : si quelqu'un
+s'inscrit avec votre adresse, aucun autre compte ne peut la porter. **C'est le lot 2 qui
+dénoue ça** — demander une réinitialisation sur cette adresse prouve la possession de la boîte
+et rend le compte. D'ici là, le script.
+
+**Une restauration remonte les comptes sans aucun mot de passe.** Le hash n'étant pas
+sauvegardé, plus personne ne peut se connecter après un `db:backup -- --restore` avant un
+passage de `npm run compte`. Les sept compteurs de la sauvegarde ne bougent pas, donc le
+contrôle de restauration reste valable.
+
+#### Lot 2 — la réinitialisation par email
+
+Hors de ce chantier, et **sans pénalité : c'est un ajout**. Deux colonnes de code, trois
+surfaces — demander, saisir le code, choisir le nouveau mot de passe —, `nodemailer` et le
+**SMTP de Gmail avec un mot de passe d'application**.
+
+Le choix de l'expéditeur est arbitré et il vaut d'être su : **Resend exige un domaine vérifié
+pour écrire à une adresse arbitraire** — sans domaine il n'écrit qu'au titulaire du compte, donc
+il ne peut pas servir un ami. Brevo et Mailjet acceptent de vérifier **une adresse seule**,
+mais un envoi depuis un `@gmail.com` via leurs serveurs n'est aligné ni SPF ni DKIM : c'est le
+cas nominal du classement en indésirable. Gmail est aligné par construction.
+
+**Et ce maillon ne s'éprouve qu'en production.** `api.mangabaka.org` se ferme déjà à ce réseau
+par interception TLS (§12) : un 587 sortant depuis le poste ne prouverait rien, ni dans un sens
+ni dans l'autre.
 
 ---
 

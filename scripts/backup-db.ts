@@ -24,6 +24,8 @@ const LOT_ECRITURE = 500;
 type UtilisateurSauve = {
   id: string;
   email: string | null;
+  identifiant: string | null;
+  versionJeton: number;
   nom: string | null;
   role: RoleUtilisateur;
   aPaye: boolean;
@@ -178,6 +180,8 @@ async function exporter() {
     utilisateurs: utilisateurs.map((utilisateur) => ({
       id: utilisateur.id,
       email: utilisateur.email,
+      identifiant: utilisateur.identifiant,
+      versionJeton: utilisateur.versionJeton,
       nom: utilisateur.nom,
       role: utilisateur.role,
       aPaye: utilisateur.aPaye,
@@ -308,6 +312,8 @@ async function restaurer() {
   const utilisateurs = sauvegarde.utilisateurs.map((utilisateur) => ({
     id: utilisateur.id,
     email: utilisateur.email,
+    identifiant: utilisateur.identifiant ?? null,
+    versionJeton: utilisateur.versionJeton ?? 1,
     nom: utilisateur.nom,
     role: utilisateur.role,
     aPaye: utilisateur.aPaye,
@@ -436,6 +442,9 @@ async function restaurer() {
     throw new Error(`compteurs divergents : ${ecarts.map(([cle]) => cle).join(", ")}`);
   }
   console.log("les compteurs correspondent");
+  console.log(
+    "aucun mot de passe n'est sauvegarde (depot public) : poser les acces avec npm run compte",
+  );
   await annoncerCatalogueHorsSauvegarde();
 }
 

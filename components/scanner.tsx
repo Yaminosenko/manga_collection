@@ -429,9 +429,9 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
             </span>
           </span>
         </div>
-        {candidat.slugEnCollection ? (
+        {candidat.dansMaCollection && candidat.slugEdition ? (
           <Link
-            href={`/edition/${candidat.slugEnCollection}`}
+            href={`/edition/${candidat.slugEdition}`}
             className={`${BOUTON} mt-[4px]`}
           >
             {LIBELLE_SCAN_OUVRIR_EDITION}

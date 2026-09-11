@@ -152,6 +152,29 @@ export function CalendarBlank({ className }: IconProps) {
   );
 }
 
+export function User({ className }: IconProps) {
+  return (
+    <Icon className={className}>
+      <circle
+        cx="128"
+        cy="96"
+        r="40"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <path
+        d="M32,216a96,96,0,0,1,192,0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
 export function BookmarkSimple({ className }: IconProps) {
   return (
     <Icon className={className}>

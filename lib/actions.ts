@@ -8,7 +8,7 @@ import { enrichirDepuisTomes, enrichirSerieParTitre } from "@/lib/enrichissement
 import { chercherParIsbn } from "@/lib/bnf";
 import { creerDepuisCandidat } from "@/lib/creation";
 import { promouvoirSortie } from "@/lib/promotion";
-import { exigerProprietaire } from "@/lib/guard";
+import { exigerAcces, exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estPossede, selectionPossession } from "@/lib/possession";
 import { rebondir } from "@/lib/rebond";
@@ -42,7 +42,7 @@ function revaliderEdition(slug: string): void {
 }
 
 export async function marquerSortieObtenue(slug: string, numero: number): Promise<void> {
-  await exigerProprietaire();
+  await exigerAcces();
   await promouvoirSortie(slug, numero, await idUtilisateurCourant(), new Date());
   revaliderEdition(slug);
   revalidatePath("/planning");
@@ -58,7 +58,7 @@ async function editionSuivie(slug: string): Promise<{ utilisateurId: string; edi
 }
 
 export async function definirStatut(slug: string, statut: StatutEdition): Promise<void> {
-  await exigerProprietaire();
+  await exigerAcces();
   const { utilisateurId, editionId } = await editionSuivie(slug);
   await prisma.suiviEdition.update({
     where: { utilisateurId_editionId: { utilisateurId, editionId } },
@@ -77,7 +77,7 @@ export async function definirParution(
 }
 
 export async function definirSuivie(slug: string, suivie: boolean): Promise<void> {
-  await exigerProprietaire();
+  await exigerAcces();
   const { utilisateurId, editionId } = await editionSuivie(slug);
   await prisma.suiviEdition.update({
     where: { utilisateurId_editionId: { utilisateurId, editionId } },
@@ -92,7 +92,7 @@ export async function basculerTome(
   numero: number,
   possede: boolean,
 ): Promise<void> {
-  await exigerProprietaire();
+  await exigerAcces();
 
   const volume = await prisma.volume.findFirst({
     where: { numero, edition: { slug } },
@@ -115,7 +115,7 @@ export async function basculerTome(
 }
 
 export async function definirTousLesTomes(slug: string, possede: boolean): Promise<void> {
-  await exigerProprietaire();
+  await exigerAcces();
 
   const edition = await prisma.edition.findUnique({
     where: { slug },
@@ -145,7 +145,7 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
 }
 
 export async function rechercherAuCatalogue(terme: string): Promise<ResultatRecherche> {
-  await exigerProprietaire();
+  await exigerAcces();
 
   const requete = terme.trim();
   if (requete.length < LONGUEUR_RECHERCHE_MIN) {
@@ -155,13 +155,13 @@ export async function rechercherAuCatalogue(terme: string): Promise<ResultatRech
   const utilisateurId = await idUtilisateurCourant();
 
   if (isbnValide(requete.replace(/[^0-9]/g, ""))) {
-    const candidat = await candidatParEan(requete.replace(/[^0-9]/g, ""));
+    const candidat = await candidatParEan(utilisateurId, requete.replace(/[^0-9]/g, ""));
     return { locales: [], candidats: candidat ? [candidat] : [], termeResolu: null };
   }
 
   const [locales, candidats] = await Promise.all([
     editionsLocales(utilisateurId, requete),
-    rechercherCandidats(requete),
+    rechercherCandidats(utilisateurId, requete),
   ]);
 
   const retenus = sansDoublonAvecLesLocales(locales, candidats);
@@ -180,7 +180,7 @@ function sansDoublonAvecLesLocales(
   const dejaListees = new Set(locales.map((locale) => locale.slug));
   return candidats.filter(
     (candidat) =>
-      candidat.slugEnCollection === null || !dejaListees.has(candidat.slugEnCollection),
+      candidat.slugEdition === null || !dejaListees.has(candidat.slugEdition),
   );
 }
 
@@ -244,7 +244,7 @@ async function parRebond(utilisateurId: string, requete: string): Promise<Result
   for (const titre of rebond.titres) {
     const [locales, candidats] = await Promise.all([
       editionsLocales(utilisateurId, titre),
-      rechercherCandidats(titre),
+      rechercherCandidats(utilisateurId, titre),
     ]);
 
     for (const locale of locales) {
@@ -276,9 +276,9 @@ export async function preparerCandidat(
   serieNormalise: string,
   marqueurNormalise: string | null,
 ): Promise<CandidatPrepare | null> {
-  await exigerProprietaire();
+  const { utilisateurId } = await exigerAcces();
 
-  const candidat = await candidatParGroupe(serieNormalise, marqueurNormalise);
+  const candidat = await candidatParGroupe(utilisateurId, serieNormalise, marqueurNormalise);
   if (!candidat) {
     return null;
   }
@@ -318,7 +318,7 @@ export async function ajouterCandidatDirect(
   marqueurNormalise: string | null,
   isbnPossede: string | null,
 ): Promise<void> {
-  await exigerProprietaire();
+  await exigerAcces();
 
   const prepare = await preparerCandidat(serieNormalise, marqueurNormalise);
   if (!prepare) {
@@ -327,8 +327,15 @@ export async function ajouterCandidatDirect(
 
   const { candidat } = prepare;
 
-  if (candidat.slugEnCollection !== null) {
-    redirect(`/edition/${candidat.slugEnCollection}`);
+  if (candidat.slugEdition !== null) {
+    if (!candidat.dansMaCollection) {
+      await suivreEditionExistante(candidat.slugEdition);
+    }
+    if (isbnPossede !== null) {
+      await marquerTomeParIsbn(candidat.slugEdition, isbnPossede);
+    }
+    revaliderApresAjout();
+    redirect(`/edition/${candidat.slugEdition}`);
   }
 
   const serie = await enrichirSerieParTitre(candidat.titre);
@@ -357,25 +364,40 @@ export async function ajouterCandidatDirect(
     await marquerTomeParIsbn(editionSlug, isbnPossede);
   }
 
+  revaliderApresAjout();
+  redirect(`/edition/${editionSlug}`);
+}
+
+function revaliderApresAjout(): void {
   revalidatePath("/");
   revalidatePath("/manquants");
   revalidatePath("/wishlist");
   revalidatePath("/planning");
-  redirect(`/edition/${editionSlug}`);
+}
+
+async function suivreEditionExistante(slug: string): Promise<void> {
+  const utilisateurId = await idUtilisateurCourant();
+  const edition = await prisma.edition.findUniqueOrThrow({
+    where: { slug },
+    select: { id: true },
+  });
+  await prisma.suiviEdition.upsert({
+    where: { utilisateurId_editionId: { utilisateurId, editionId: edition.id } },
+    create: { utilisateurId, editionId: edition.id, statut: STATUT_A_LA_CREATION },
+    update: {},
+  });
 }
 function racineDuTitre(titreNotice: string): string {
   return titreNotice.replace(/[\s.:,-]*\d{1,3}\s*$/, "").trim();
 }
 
 export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
-  await exigerProprietaire();
+  const { utilisateurId } = await exigerAcces();
 
   const isbn = brut.replace(/[^0-9]/g, "");
   if (!isbnValide(isbn)) {
     return null;
   }
-
-  const utilisateurId = await idUtilisateurCourant();
 
   const volume = await prisma.volume.findFirst({
     where: { isbn },
@@ -416,7 +438,7 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     };
   }
 
-  const candidat = await candidatParEan(isbn);
+  const candidat = await candidatParEan(utilisateurId, isbn);
   if (candidat) {
     const prepare = await preparerCandidat(candidat.serieNormalise, candidat.marqueurNormalise);
     if (prepare) {
@@ -435,7 +457,7 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     titreNotice: notice.titre,
     editeur: notice.editeur,
     annee: notice.annee,
-    candidats: await rechercherCandidats(racineDuTitre(notice.titre)),
+    candidats: await rechercherCandidats(utilisateurId, racineDuTitre(notice.titre)),
   };
 }
 

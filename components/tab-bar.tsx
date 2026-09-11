@@ -8,8 +8,11 @@ import {
   CalendarBlank,
   MagnifyingGlass,
   PuzzlePiece,
+  User,
 } from "@/components/icons";
 import {
+  CHEMIN_COMPTE,
+  LIBELLE_ONGLET_COMPTE,
   TITRE_MANQUANTS,
   TITRE_PLANNING,
   TITRE_RECHERCHER,
@@ -22,15 +25,15 @@ const ONGLETS = [
   { href: "/planning", libelle: TITRE_PLANNING, Icone: CalendarBlank },
   { href: "/wishlist", libelle: TITRE_WISHLIST, Icone: BookmarkSimple },
   { href: "/ajouter", libelle: TITRE_RECHERCHER, Icone: MagnifyingGlass },
+  { href: CHEMIN_COMPTE, libelle: LIBELLE_ONGLET_COMPTE, Icone: User },
 ] as const;
 
-export function TabBar({ lectureSeule }: { lectureSeule: boolean }) {
+export function TabBar() {
   const chemin = usePathname();
-  const onglets = lectureSeule ? ONGLETS.filter((o) => o.href !== "/ajouter") : ONGLETS;
 
   return (
     <nav className="bg-surface border-divider sticky bottom-0 flex border-t pt-[8px] pb-[calc(18px+env(safe-area-inset-bottom))]">
-      {onglets.map(({ href, libelle, Icone }) => {
+      {ONGLETS.map(({ href, libelle, Icone }) => {
         const actif = href === "/" ? chemin === "/" : chemin.startsWith(href);
         return (
           <Link

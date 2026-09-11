@@ -1,53 +1,49 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
-import { deverrouiller, entrerEnInvite } from "@/lib/auth-actions";
+import { CLASSE_BOUTON, CLASSE_BOUTON_DISCRET, Champ } from "@/components/champ";
+import { seConnecter } from "@/lib/auth-actions";
 import {
+  CHEMIN_INSCRIPTION,
   LIBELLE_DEVERROUILLER,
-  LIBELLE_ENTRER_INVITE,
+  LIBELLE_IDENTIFIANT,
   LIBELLE_MOT_DE_PASSE,
-  MENTION_INVITE_LECTURE,
+  LIBELLE_VERS_INSCRIPTION,
 } from "@/lib/constants";
 import type { EtatAcces } from "@/lib/domain";
 
 export function AccessForm() {
-  const [etat, action, enCours] = useActionState<EtatAcces, FormData>(deverrouiller, {
+  const [etat, action, enCours] = useActionState<EtatAcces, FormData>(seConnecter, {
     erreur: null,
   });
 
   return (
     <form action={action} className="flex w-full flex-col gap-[12px]">
-      <input
-        type="password"
-        name="motDePasse"
-        autoComplete="current-password"
-        aria-label={LIBELLE_MOT_DE_PASSE}
-        placeholder={LIBELLE_MOT_DE_PASSE}
-        required
+      <Champ
+        nom="identifiant"
+        libelle={LIBELLE_IDENTIFIANT}
+        autoComplete="username"
         autoFocus
-        className="bg-surface text-text min-h-11 w-full rounded-md border border-neutral-800 px-[14px] text-[14px] placeholder:text-neutral-600 focus:border-accent focus:outline-none"
       />
-      <button
-        type="submit"
-        disabled={enCours}
-        className="border-accent text-accent flex min-h-11 w-full items-center justify-center rounded-md border text-[14px] font-medium tracking-[0.06em] uppercase transition-colors hover:bg-accent/12 active:bg-accent/22 disabled:opacity-50"
-      >
+      <Champ
+        nom="motDePasse"
+        libelle={LIBELLE_MOT_DE_PASSE}
+        type="password"
+        autoComplete="current-password"
+      />
+
+      <button type="submit" disabled={enCours} className={CLASSE_BOUTON}>
         {LIBELLE_DEVERROUILLER}
       </button>
+
       {etat.erreur ? (
         <p className="text-center text-[13px] text-neutral-400">{etat.erreur}</p>
       ) : null}
 
-      <button
-        type="button"
-        onClick={() => entrerEnInvite()}
-        className="mt-[10px] min-h-11 w-full text-[12.5px] text-neutral-500 transition-colors hover:text-neutral-300"
-      >
-        {LIBELLE_ENTRER_INVITE}
-      </button>
-      <p className="text-center text-[11px]/[1.5] text-neutral-700">
-        {MENTION_INVITE_LECTURE}
-      </p>
+      <Link href={CHEMIN_INSCRIPTION} className={`${CLASSE_BOUTON_DISCRET} text-center`}>
+        {LIBELLE_VERS_INSCRIPTION}
+      </Link>
     </form>
   );
 }

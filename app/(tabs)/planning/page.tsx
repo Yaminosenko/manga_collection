@@ -1,6 +1,5 @@
 import { PlanningMonth } from "@/components/planning-month";
 import { chargerPlanning } from "@/lib/editions";
-import { estProprietaire } from "@/lib/guard";
 import { cleMois } from "@/lib/format";
 import { LIBELLE_PLANNING_VIDE, TITRE_PLANNING } from "@/lib/constants";
 import type { SortiePlanning } from "@/lib/domain";
@@ -19,7 +18,6 @@ function grouperParMois(sorties: SortiePlanning[]): SortiePlanning[][] {
 export default async function Page() {
   const sorties = await chargerPlanning();
   const mois = grouperParMois(sorties);
-  const proprietaire = await estProprietaire();
   const instant = new Date().toISOString();
 
   return (
@@ -38,12 +36,7 @@ export default async function Page() {
       ) : (
         <div className="flex flex-col gap-[22px]">
           {mois.map((groupe) => (
-            <PlanningMonth
-              key={cleMois(groupe[0].date)}
-              sorties={groupe}
-              proprietaire={proprietaire}
-              instant={instant}
-            />
+            <PlanningMonth key={cleMois(groupe[0].date)} sorties={groupe} instant={instant} />
           ))}
         </div>
       )}
