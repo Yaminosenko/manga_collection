@@ -3545,3 +3545,83 @@ Ce qui a ete corrige :
 Deux entrees neuves au reste a faire : `AliasRecherche` n'expire jamais et aucun ecran ne la
 montre ; et « aot » trouve SAOTOME LOVE & BOXING par le `contains` sur le titre, donc n'atteint
 jamais le rebond.
+
+---
+
+### Fait — le catalogue a ses vignettes, et deux diagnostics rates en chemin
+
+**10 et 11 septembre 2026.** Le magasin `VignetteCatalogue` est rempli pour l'integralite du
+catalogue : **12 382 EAN interroges, 7 272 vignettes, soit 59 %**. Il ne reste aucun groupe a
+traiter. Verifie a l'ecran, pas seulement au compteur.
+
+#### Le remplissage
+
+Un superviseur relance `vignettes:fetch -- --tout` jusqu'a epuisement : un tour complet sans
+incident reseau signifie qu'il ne reste rien, un tour ecourte declenche une pause de dix minutes
+puis une reprise. **3 h 20 pour le premier tour**, 11 902 groupes, 6 978 images a 23,9 Ko de
+moyenne.
+
+**Le mecanisme de reprise a servi des la premiere nuit** : le premier tour a reporte **2 groupes**
+pour cause reseau, le second les a reprises — une image, une absence — puis s'est arrete de
+lui-meme. Sans le correctif du meme jour, ces deux groupes auraient ete inscrits « sans image » a
+tort et perdus definitivement.
+
+Cloudflare, mesure par l'API : **8 880 objets, 208 Mo, 2,03 % des 10 Go**, et ~7 100 ecritures sur
+le million mensuel. Les ~189 Mo estimes contre 208 reels — l'ecart vient du poids moyen, 23,9 Ko
+au lieu de 22,3. Aucun palier approche, et l'ambition maximale d'une couverture par tome du
+catalogue tiendrait encore dans 5,9 %.
+
+#### Le defaut que la verification a l'ecran a trouve
+
+**One Piece n'avait pas de vignette alors que son tome 2 en a une**, mesure a la main la veille.
+La cause est chronologique et n'aurait jamais ete vue par les compteurs : One Piece est **premier**
+dans le tri par taille de groupe, donc traite dans un lot de l'apres-midi, **avant l'ajout du
+repli sur quatre volumes**. Sa ligne d'echec existait deja, et le grand passage de la nuit l'a
+sautee — le script ne redemande jamais une ligne existante.
+
+Ce n'etait pas isole : **364 echecs n'avaient jamais vu le repli**, et c'etaient exactement les
+plus gros groupes — One Piece, Detective Conan, Gintama, Bleach, Naruto, Fairy Tail, Inu Yasha,
+Jojo's, Doraemon. Le pire sous-ensemble possible, precisement parce que le tri les sert en
+premier.
+
+Les 364 lignes d'echec ont ete supprimees — du cache recalculable, les 139 images de la meme
+periode ayant ete verifiees a la bonne cote avant — puis reprises : **165 vignettes recuperees,
+dont 44 par le repli**. Le taux passe de 57 a 59 %.
+
+**La lecon generale** : quand une regle d'acquisition change, les lignes ecrites avant ne sont pas
+seulement incompletes, elles sont **protegees** par l'idempotence. Il faut les invalider
+explicitement, et le faire en distinguant ce qui est recalculable — un echec — de ce qui ne l'est
+pas.
+
+#### Detective Conan reste vide, et c'est structurel
+
+Ses quatre EAN essayes sont les **tomes 19 a 22** : l'archive de catalogue commence en janvier
+2000, or la serie a demarre en France avant, donc son premier EAN connu est le tome 19. Le repli
+essaie donc quatre parutions du debut des annees 2000, l'epoque ou la BnF ne couvre que 36 %.
+Rien a corriger — c'est la limite de l'archive, pas du script.
+
+#### Deux diagnostics rates, et ce qu'ils apprennent
+
+J'ai lu trois captures d'ecran comme des cases vides et propose deux explications, fausses toutes
+les deux, avant de mesurer.
+
+La premiere : « l'URL `r2.dev` est limitee en debit, les images mettent du temps a apparaitre ».
+Je l'ai repetee toute la journee en m'appuyant sur un avertissement de §12 — sans jamais la
+verifier. **Mesure : 20 requetes simultanees, 20 fois 200, en 501 ms.** L'avertissement de §12
+porte sur le debit soutenu et l'absence de cache, pas sur une latence au premier acces.
+
+La seconde : un verrouillage d'erreur dans `Cover`, qui aurait fige le placeholder apres un echec.
+Dementi par l'inspection du DOM : **5 images presentes, `complete: true`, 232 a 255 px de large**,
+et 6 placeholders correspondant aux absences reelles.
+
+Les captures etaient simplement prises avant que les images ne soient peintes. **Le DOM tranche,
+une capture ne tranche pas** — et une explication reprise du depot sans mesure est une hypothese,
+pas un fait. Meme motif que « la BnF plafonne a 150 px » la veille.
+
+#### Ce qui reste ouvert
+
+- **Les vignettes de la grille.** Un tome possede sans couverture affiche toujours sa pastille :
+  `VignetteCatalogue` sert la recherche, le scanner, la wish list et les en-tetes, pas la grille.
+- **41 % des groupes n'ont pas de vignette**, et c'est un plancher : l'absence se joue par titre
+  chez la BnF, le repli sur d'autres volumes ne rend que 12 % des echecs. Aller au-dela demanderait
+  un appariement par titre chez MangaBaka ou MangaDex, que ce depot a vu echouer cinq fois.

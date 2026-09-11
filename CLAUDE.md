@@ -949,7 +949,7 @@ des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
 | Abréviations captées | **60 séries** : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
 | Genres · Thèmes · Cible | **22** valeurs · **143** valeurs · `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
 | `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
-| `VignetteCatalogue` | **463 EAN interrogés**, **111 avec une image** — il en reste **11 942** |
+| `VignetteCatalogue` | **12 382 EAN interrogés**, **7 272 avec une image (59 %)** — le catalogue est couvert, il ne reste aucun groupe |
 | `Edition.creeeParId` | **3 / 116** renseignés. `null` veut dire « venu de l'import » ; ces 3 viennent de `/ajouter` |
 | `Edition.slugMangaNews` | **0 / 116**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
 | Éditions à zéro tome possédé | **5** : les 4 `VENDUE`, **plus une entrée de wish list** |
@@ -1077,6 +1077,11 @@ Ce qui reste :
 
 #### Ce qui améliore le chemin automatique
 
+- **Quand une règle d'acquisition change, les lignes déjà écrites sont *protégées* par
+  l'idempotence, pas seulement incomplètes.** Le 11 septembre, 364 groupes — dont One Piece,
+  Détective Conan, Bleach, Naruto — portaient un échec écrit **avant** l'ajout du repli sur
+  quatre volumes, et le grand passage les a sautés. Il faut invalider explicitement, en
+  distinguant ce qui est recalculable (un échec) de ce qui ne l'est pas (une image).
 - **`AliasRecherche` n'expire jamais et aucun écran ne la montre.** Une traduction fausse s'y
   installe à demeure, et seule une suppression en base la déloge. C'est le résidu du rebond —
   voir §13.3 pour le mécanisme, `JOURNAL.md` pour ce qui a été fait.
@@ -1177,7 +1182,9 @@ Ce qui reste :
   `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota
   d'opérations avancées.
 - **Brancher un domaine personnalisé sur le bucket R2.** L'URL `r2.dev` est **limitée en débit et
-  non mise en cache** par Cloudflare. Le basculement est gratuit et sans réenvoi —
+  non mise en cache** par Cloudflare. **Ce n'est pas une latence au premier accès** : mesuré le
+  11 septembre, 20 requêtes simultanées rendent 20 fois 200 en 501 ms. Ne pas mettre une case vide
+  sur son compte sans avoir regardé le DOM. Le basculement est gratuit et sans réenvoi —
   `covers:migrate` ne réécrit que les URL. Le frein est §7 : un domaine est une dépense
   **certaine et récurrente** (~10 $/an), pas un palier hors d'atteinte, donc l'amendement du
   1er septembre ne le couvre pas.
