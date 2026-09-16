@@ -1,5 +1,7 @@
 export const LIBELLE_A_PARAITRE = "À paraître";
 
+export const MENTION_SANS_COUVERTURE = "-- No Image --";
+
 export const COLONNES_GRILLE = 2;
 
 export const LARGEUR_MAX_APPLICATION = "430px";

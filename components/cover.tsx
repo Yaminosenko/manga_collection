@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 
+import { MENTION_SANS_COUVERTURE } from "@/lib/constants";
+
+const LARGEUR_REPERE = 100;
+const HAUTEUR_REPERE = 141;
+const TAILLE_MENTION = 11;
+const LARGEUR_MENTION = 76;
+
 type CoverProps = {
   couvertureUrl: string | null;
   numero: number | null;
@@ -39,9 +46,27 @@ export function Cover({
 
   return (
     <div
-      className={`cover-placeholder flex h-full w-full items-end justify-end font-medium ${placeholderClassName}`}
+      className={`cover-placeholder relative flex h-full w-full items-end justify-end font-medium ${placeholderClassName}`}
     >
-      {afficherNumero && numero !== null ? numero : null}
+      <svg
+        viewBox={`0 0 ${LARGEUR_REPERE} ${HAUTEUR_REPERE}`}
+        preserveAspectRatio="xMidYMid meet"
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full"
+      >
+        <text
+          x={LARGEUR_REPERE / 2}
+          y={HAUTEUR_REPERE / 2}
+          textLength={LARGEUR_MENTION}
+          fontSize={TAILLE_MENTION}
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="currentColor"
+        >
+          {MENTION_SANS_COUVERTURE}
+        </text>
+      </svg>
+      {afficherNumero && numero !== null ? <span className="relative">{numero}</span> : null}
     </div>
   );
 }
