@@ -3840,3 +3840,27 @@ l'export et dans la restauration, avec le `?? null` / `?? 0` qui laisse relire u
 antérieure. **Vérifié par un `db:backup` réel** : 4 séries portent un `idMangaDex` —
 `bakuman`, `initial-d`, `one-piece`, `vinland-saga` —, 53 tomes ont été essayés, 1 tentative au
 plus, et les 13 sans image l'ont tous été. Les sept compteurs ne bougent pas.
+
+#### Éprouvé sur une série neuve, ajoutée par le second compte
+
+C'est le cas que §13.2 décrivait depuis toujours — *récupérer la couverture quand une série entre
+dans une collection* — et il s'est présenté tout seul : `Testeur` a ajouté **Jujutsu Kaisen
+(30 tomes)** et **Green Worldz (8 tomes)** depuis `/ajouter`, soit **38 volumes sans une seule
+image**, tous à `couvertureTenteeLe` nul donc **en tête de file** sans que rien ne les ait
+déclarés.
+
+Une passe : **38 examinés, 38 obtenues — 18 par la BnF, 20 par MangaDex, 0 absente, 0
+injoignable.** Il ne reste que les 13 connus, et **plus aucun tome n'est « jamais essayé »**.
+
+**Contrôlé sur l'image, pas sur le compteur.** Six URL servies en 200 / `image/jpeg`, six tailles
+distinctes, et les deux tomes 1 regardés à l'œil : Jujutsu Kaisen t.01 est bien **l'édition
+Ki-oon**, logo français compris — donc la couverture `fr` de MangaDex et non la japonaise —, et
+Green Worldz t.01 bien **Pika Édition**. L'identifiant retenu sur `jujutsu-kaisen` est celui de
+la bonne série ; les garde-fous du matin tiennent sur un cas qu'ils n'avaient pas vu.
+
+**Ce que cette passe ne prouve pas, et il faut le dire :** elle a tourné **depuis le poste, contre
+Neon**, comme celles du matin. La base est la même, donc les couvertures sont bien en production —
+mais **le déploiement Vercel du 16 n'est toujours pas vérifié**. L'appel à `/api/cron` en
+production a rendu **401**, et pas parce qu'il serait cassé : le `CRON_SECRET` de ce poste n'est
+pas celui de Vercel, exactement le piège que §12 consigne. `autorise()` rendant `false` dans les
+deux cas, un 401 ne distingue rien. La preuve viendra du passage de 4 h, ou du tableau de bord.

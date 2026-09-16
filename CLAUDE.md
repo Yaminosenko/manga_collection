@@ -967,28 +967,28 @@ des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
 
 | | |
 |---|---|
-| Séries · Éditions | **116** · **120** |
-| Suivis (`SuiviEdition`) | **122** — `EN_COURS` 94, `ABANDONNEE` 19, `EN_PAUSE` 5, `VENDUE` 4 |
-| `suivie = true` | **91** |
+| Séries · Éditions | **118** · **122** |
+| Suivis (`SuiviEdition`) | **124** — `EN_COURS` 96, `ABANDONNEE` 19, `EN_PAUSE` 5, `VENDUE` 4. Plus de suivis que d'éditions : les deux comptes en partagent |
+| `suivie = true` | **94** |
 | Utilisateurs | **2** : le `PROPRIETAIRE` et un `UTILISATEUR` d'essai, tous deux avec un identifiant depuis §13.6 |
-| Tomes (`Volume`) | **1 941** |
-| Possessions | **1 735**, dont **1 174** possédées |
-| **Couvertures de tomes** | **1 928 / 1 941**, servies depuis Cloudflare R2 |
+| Tomes (`Volume`) | **1 979** |
+| Possessions | **1 741**, dont **1 180** possédées |
+| **Couvertures de tomes** | **1 966 / 1 979**, servies depuis Cloudflare R2 |
 | **Couvertures de sorties** | **15 / 19** |
-| `sourceCouverture` | **208 à `bnf`**, **40 à `mangadex`**, le reste à `null` = indéterminé, antérieur au champ |
-| ISBN | **1 718 / 1 941** |
+| `sourceCouverture` | **226 à `bnf`**, **60 à `mangadex`**, le reste à `null` = indéterminé, antérieur au champ |
+| ISBN | **1 756 / 1 979** |
 | Sorties annoncées (`Sortie`) | **19** |
 | Liens entre séries (`LienSerie`) | **28** sur 23 séries, dérivés de MangaBaka |
-| `Serie.idMangaBaka` | **113 / 116** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
-| `Serie.idMangaDex` | **4** : `bakuman`, `initial-d`, `one-piece`, `vinland-saga`. Écrit par le cron, **et seulement une fois les trois garde-fous tenus** — voir « Fait — les couvertures dans le cron » au journal |
-| `Volume.couvertureTenteeLe` | **53** tomes essayés par le cron, **1** tentative au plus ; les **13** encore sans image ont tous été essayés |
-| `Serie.alias` · `aliasNormalises` | **1 166** libellés · **1 283** formes indexées, formes japonaises comprises |
+| `Serie.idMangaBaka` | **115 / 118** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
+| `Serie.idMangaDex` | **5** : `bakuman`, `initial-d`, `jujutsu-kaisen`, `one-piece`, `vinland-saga`. Écrit par le cron, **et seulement une fois les trois garde-fous tenus** — voir « Fait — les couvertures dans le cron » au journal |
+| `Volume.couvertureTenteeLe` | **91** tomes essayés par le cron, **1** tentative au plus ; **plus aucun tome n'est « jamais essayé »**, et les 13 sans image l'ont tous été |
+| `Serie.alias` · `aliasNormalises` | **1 180** libellés · **1 299** formes indexées, formes japonaises comprises |
 | Abréviations captées | **60 séries** : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
-| Genres · Thèmes · Cible | **22** valeurs · **157** valeurs · `Shonen` 82 · `Seinen` 26 · `Echi` 7 · `Shojo` 1 |
+| Genres · Thèmes · Cible | **22** valeurs · **165** valeurs · `Shonen` 84 · `Seinen` 26 · `Echi` 7 · `Shojo` 1 |
 | `AliasRecherche` | **1 ligne** le 10 septembre, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
 | `VignetteCatalogue` | **12 382 EAN interrogés**, **7 272 avec une image (59 %)** — mesuré le 10 septembre, le catalogue est couvert |
-| `Edition.creeeParId` | **7 / 120** renseignés. `null` veut dire « venu de l'import » ; ces 7 viennent de `/ajouter` |
-| `Edition.slugMangaNews` | **0 / 120**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
+| `Edition.creeeParId` | **9 / 122** renseignés. `null` veut dire « venu de l'import » ; ces 9 viennent de `/ajouter` |
+| `Edition.slugMangaNews` | **0 / 122**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
 | Éditions à zéro tome possédé | **7** : les 4 `VENDUE`, plus `bakuman`, `initial-d` et `blackrock-shooter-innocent-soul` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **52 009** parutions, **12 880 groupes**, **janvier 2000 → décembre 2026 sans un mois manquant** |
@@ -1173,7 +1173,7 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
-- **Les couvertures** : **1 928 / 1 941** et **15 sorties sur 19**. **Le remplissage n'est plus
+- **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
 
@@ -1197,7 +1197,7 @@ Ce qui reste :
   lendemain** : le cron sert en priorité les tomes jamais essayés. Entre-temps la recherche, le
   scanner et la wish list lui trouvent une vignette via `VignetteCatalogue` ; seule la **grille**
   reste en pastilles, et pour une nuit au plus.
-- **`Edition.slugMangaNews` est nul sur les 120 éditions**, mais **le lien sortant s'affiche**
+- **`Edition.slugMangaNews` est nul sur les 122 éditions**, mais **le lien sortant s'affiche**
   quand même : la page Édition construit une **recherche** manga-news sur le titre, elle n'a
   jamais utilisé ce champ. Le remplir ne ferait que remplacer une recherche par un lien direct
   vers la fiche — un confort, pas un trou. Le planning ne porte pas les slugs ; il faudrait les
@@ -1327,7 +1327,7 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   À rouvrir seulement si une source de couvertures de tome manque un jour.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.slugMangaNews` est nul sur les 120 éditions.** Le Sheet ne le portait pas. Le lien
+- **`Edition.slugMangaNews` est nul sur les 122 éditions.** Le Sheet ne le portait pas. Le lien
   sortant s'affiche néanmoins, sous forme de **recherche** par titre : ce champ ne servirait
   qu'à pointer la fiche directement. Le planning ne porte pas les slugs non plus — il faudrait
   les déduire des titres, ou les saisir.

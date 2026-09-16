@@ -1,12 +1,12 @@
 {
-  "exporteeLe": "2026-09-16T12:08:17.584Z",
+  "exporteeLe": "2026-09-16T12:29:18.246Z",
   "compteurs": {
-    "series": 116,
-    "editions": 120,
-    "tomes": 1941,
-    "possedes": 1174,
-    "suivies": 91,
-    "couvertures": 1928,
+    "series": 118,
+    "editions": 122,
+    "tomes": 1979,
+    "possedes": 1180,
+    "suivies": 94,
+    "couvertures": 1966,
     "liens": 28
   },
   "utilisateurs": [
@@ -18420,6 +18420,192 @@
       ]
     },
     {
+      "id": "a811bc53-ebdc-421d-85f8-d2c9a31f7b8d",
+      "slug": "green-worldz",
+      "titre": "Green Worldz",
+      "titreVo": "GREEN WORLDZ",
+      "auteur": "Yûsuke Ôsawa",
+      "genres": [
+        "Sci-Fi",
+        "Supernatural",
+        "Action",
+        "Drama",
+        "Horror"
+      ],
+      "themes": [
+        "Post-Apocalyptic",
+        "Survival",
+        "Apocalypse",
+        "Plants",
+        "Deception"
+      ],
+      "alias": [
+        "Зелёные миры",
+        "グリーンワールズ"
+      ],
+      "aliasNormalises": [
+        "greenworldz",
+        "зелёныемиры",
+        "グリーンワールズ"
+      ],
+      "cible": "Shonen",
+      "couvertureUrl": null,
+      "idMangaBaka": 7137,
+      "idMangaDex": null,
+      "editions": [
+        {
+          "id": "6fa59f24-f0ab-4ab2-a61a-195add04018c",
+          "slug": "green-worldz",
+          "nom": "Édition simple",
+          "editeur": "Pika édition",
+          "tomesParus": 8,
+          "editionTerminee": true,
+          "prixDefautCentimes": 750,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+          "suivis": [
+            {
+              "id": "a6eb8494-2d59-4f0c-8813-fc64d841a983",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T12:25:37.251Z"
+            }
+          ],
+          "sorties": [],
+          "volumes": [
+            {
+              "id": "3ed8a6cd-fb4c-4fe0-a783-9ff4f132f09c",
+              "numero": 1,
+              "isbn": "9782811631437",
+              "dateSortie": "2016-06-15T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/1.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "e8e0a80f-4527-4f75-b79b-4c0b2d1ab665",
+              "numero": 2,
+              "isbn": "9782811631444",
+              "dateSortie": "2016-06-15T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/2.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "868e08b7-482f-4f35-a6e0-aca665c30e9d",
+              "numero": 3,
+              "isbn": "9782811631468",
+              "dateSortie": "2016-08-24T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/3.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "54f64981-335c-4db8-8f1d-0b4286631a0d",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "de2c1a39-8e4a-42e6-99e4-189a4396fbee",
+              "numero": 4,
+              "isbn": "9782811631475",
+              "dateSortie": "2016-10-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/4.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "afa7c24a-c3b3-4f1e-87ce-361abff94d58",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "3d0a770a-fc1b-4f1b-8a6c-dfa4f9b5f925",
+              "numero": 5,
+              "isbn": "9782811631482",
+              "dateSortie": "2016-11-30T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/5.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "07fe7972-40e2-4fc7-a36b-5d0461f2014d",
+              "numero": 6,
+              "isbn": "9782811631499",
+              "dateSortie": "2017-02-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/6.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "c336aa1b-d731-4987-8436-dbe013c689a2",
+              "numero": 7,
+              "isbn": "9782811634094",
+              "dateSortie": "2017-04-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/7.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "a3f9e273-16ae-4138-ac06-01cc709fd0e6",
+              "numero": 8,
+              "isbn": "9782811634100",
+              "dateSortie": "2017-05-31T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/8.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "47f80c3f-88d4-4e77-95ca-7bba04acac68",
       "slug": "hellsing",
       "titre": "HELLSING",
@@ -21011,6 +21197,528 @@
                   "note": null
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6f71f868-b59c-4154-94a0-8e65f614c7c0",
+      "slug": "jujutsu-kaisen",
+      "titre": "Jujutsu Kaisen",
+      "titreVo": "じゅじゅつかいせん",
+      "auteur": "Gege Akutami",
+      "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Action",
+        "Comedy",
+        "Drama",
+        "Horror",
+        "Martial Arts",
+        "Mystery",
+        "Psychological",
+        "Tragedy"
+      ],
+      "themes": [
+        "Urban",
+        "Body Modification",
+        "Curses",
+        "Monsters",
+        "Death",
+        "Super Powers",
+        "Magic",
+        "Sorcery"
+      ],
+      "alias": [
+        "じゅじゅつかいせん",
+        "주술회전",
+        "Batalha de Feiticeiros",
+        "Chú thuật hồi chiến",
+        "Contiendas de Brujería",
+        "Guerra de Hechiceros",
+        "JJK",
+        "Jujutsu Kaisen - Batalha de Feiticeiros",
+        "Jujutsu Kaisen - Contiendas de brujería",
+        "Jujutsu Kaisen: Guerra de hechiceros",
+        "Jujutsu Kaisen: la guerra màgica",
+        "Jujutsu kaisen - Sorcery Fight"
+      ],
+      "aliasNormalises": [
+        "jujutsukaisen",
+        "じゅじゅつかいせん",
+        "주술회전",
+        "batalhadefeiticeiros",
+        "chuthuathoichien",
+        "contiendasdebrujeria",
+        "guerradehechiceros",
+        "jjk",
+        "jujutsukaisenbatalhadefeiticeiros",
+        "jujutsukaisencontiendasdebrujeria",
+        "jujutsukaisenguerradehechiceros",
+        "jujutsukaisenlaguerramagica",
+        "jujutsukaisensorceryfight"
+      ],
+      "cible": "Shonen",
+      "couvertureUrl": null,
+      "idMangaBaka": 6199,
+      "idMangaDex": "c52b2ce3-7f95-469c-96b0-479524fb7a1a",
+      "editions": [
+        {
+          "id": "b2cd4d6e-713a-41c5-838d-76cbd381662b",
+          "slug": "jujutsu-kaisen",
+          "nom": "Édition simple",
+          "editeur": "Ki-oon",
+          "tomesParus": 30,
+          "editionTerminee": false,
+          "prixDefautCentimes": 695,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+          "suivis": [
+            {
+              "id": "efd7bf60-57b9-46db-ad8a-41e663d36e81",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T12:24:16.766Z"
+            }
+          ],
+          "sorties": [],
+          "volumes": [
+            {
+              "id": "f27d5c79-7970-4eab-a645-b14d41f1643a",
+              "numero": 1,
+              "isbn": "9791032705544",
+              "dateSortie": "2020-02-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/1.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "998e823e-a41b-4442-b4d3-18eb10716e54",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "c95014db-2183-4652-afca-6c81804b1cb0",
+              "numero": 2,
+              "isbn": "9791032705537",
+              "dateSortie": "2020-02-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/2.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "cb0738d0-6010-4cd4-a9ee-3a26bf70881a",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "90b160e0-bdf6-4d49-890a-2ae3be4306e2",
+              "numero": 3,
+              "isbn": "9791032706077",
+              "dateSortie": "2020-06-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/3.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "16e27b1b-6be2-4fea-95f0-1b929aeac3c1",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "4a91a336-e3d2-4e49-8de9-b84b69a30ac2",
+              "numero": 4,
+              "isbn": "9791032706343",
+              "dateSortie": "2020-08-27T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/4.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "b49ea8f7-8fcb-46b5-82ed-e99197f9f314",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "3087c239-eea9-4e75-8988-cc5c46bb221b",
+              "numero": 5,
+              "isbn": "9791032706565",
+              "dateSortie": "2020-10-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/5.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "e7f87bb8-34d9-4167-a8b4-c67b18e31d2d",
+              "numero": 6,
+              "isbn": "9791032706671",
+              "dateSortie": "2020-12-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/6.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "2bdbde06-f7b1-4aba-9c98-61a93b181ebe",
+              "numero": 7,
+              "isbn": "9791032707517",
+              "dateSortie": "2021-02-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/7.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "be8471e3-528f-475f-afb4-46636fbae682",
+              "numero": 8,
+              "isbn": "9791032707630",
+              "dateSortie": "2021-04-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/8.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "28a802bc-b1c6-4b28-a702-0f01a9364c19",
+              "numero": 9,
+              "isbn": "9791032707821",
+              "dateSortie": "2021-06-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/9.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "d5e00466-8426-45cd-aaff-4d85fea737a9",
+              "numero": 10,
+              "isbn": "9791032707852",
+              "dateSortie": "2021-08-26T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/10.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "f7cdba8b-24d4-4993-86cb-13723f04f477",
+              "numero": 11,
+              "isbn": "9791032707883",
+              "dateSortie": "2021-10-14T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/11.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "addb9dff-ae89-4baa-b424-b38d145bf2e6",
+              "numero": 12,
+              "isbn": "9791032707906",
+              "dateSortie": "2021-12-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/12.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "e95475f0-a470-4e89-bcc3-677786dcc2c9",
+              "numero": 13,
+              "isbn": "9791032710944",
+              "dateSortie": "2022-02-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/13.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "767d154c-4907-4774-b35e-b314fb867663",
+              "numero": 14,
+              "isbn": "9791032711194",
+              "dateSortie": "2022-04-07T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/14.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "f7fe7984-5bf7-4e89-ac58-d4a98386d549",
+              "numero": 15,
+              "isbn": "9791032711408",
+              "dateSortie": "2022-06-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/15.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "e2c380ef-a471-40e6-8872-59a72264da61",
+              "numero": 16,
+              "isbn": "9791032711811",
+              "dateSortie": "2022-09-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/16.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "9208d079-7424-441a-84df-f5b8c57197eb",
+              "numero": 17,
+              "isbn": "9791032711996",
+              "dateSortie": "2022-11-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/17.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "95983508-66c8-4256-bcfa-047550c57f96",
+              "numero": 18,
+              "isbn": "9791032712696",
+              "dateSortie": "2023-01-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/18.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "16a58182-81e5-424c-b429-0f20c7ad2915",
+              "numero": 19,
+              "isbn": "9791032712993",
+              "dateSortie": "2023-04-20T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/19.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "60d53b23-baa3-4e63-9029-8397e5a03997",
+              "numero": 20,
+              "isbn": "9791032713433",
+              "dateSortie": "2023-07-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/20.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "6dc14ce3-ac51-405c-a196-55f517b68df6",
+              "numero": 21,
+              "isbn": "9791032713631",
+              "dateSortie": "2023-10-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/21.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "57337569-974a-46c0-a4da-eb738a2934ae",
+              "numero": 22,
+              "isbn": "9791032716205",
+              "dateSortie": "2024-01-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/22.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "d5df30ce-8f8c-4170-a2bb-178b4425d7d4",
+              "numero": 23,
+              "isbn": "9791032716229",
+              "dateSortie": "2024-04-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/23.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "35230eb0-b45d-4d01-82ff-3b01a27cbc47",
+              "numero": 24,
+              "isbn": "9791032716243",
+              "dateSortie": "2024-07-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/24.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "28726ffb-0ae2-498b-baaa-ee04670008a8",
+              "numero": 25,
+              "isbn": "9791032716267",
+              "dateSortie": "2024-10-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/25.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "d547fdd2-3c80-47fd-bfc6-bb8f6addf37c",
+              "numero": 26,
+              "isbn": "9791032719565",
+              "dateSortie": "2025-04-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/26.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "135aaeda-36ab-4842-b70c-1398c1f8ab33",
+              "numero": 27,
+              "isbn": "9791032719572",
+              "dateSortie": "2025-07-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/27.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "81783f77-85ce-434b-8dc2-fa8f125196e4",
+              "numero": 28,
+              "isbn": "9791032719855",
+              "dateSortie": "2025-10-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/28.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "277344f8-9133-42c5-a168-0fee3975370f",
+              "numero": 29,
+              "isbn": "9791032724620",
+              "dateSortie": "2026-01-08T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/29.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "9856b902-6081-4543-8625-d508f25f054f",
+              "numero": 30,
+              "isbn": "9791032723777",
+              "dateSortie": "2026-07-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/jujutsu-kaisen/30.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureTentatives": 1,
+              "possessions": []
             }
           ]
         }
@@ -33770,7 +34478,7 @@
               "id": "034a4229-cbbe-426b-94f5-d36db79d5b27",
               "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
               "statut": "EN_COURS",
-              "suivie": false,
+              "suivie": true,
               "ajouteeLe": "2026-09-11T06:49:42.946Z"
             }
           ],
