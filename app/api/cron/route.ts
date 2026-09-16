@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
+import { acquerirCouverturesManquantes } from "@/lib/couvertures";
 import { promouvoirSortiesEchues } from "@/lib/promotion";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 const PREFIXE_AUTORISATION = "Bearer ";
 
@@ -19,7 +21,9 @@ export async function GET(request: NextRequest) {
     return new NextResponse(null, { status: 401 });
   }
 
-  const promues = await promouvoirSortiesEchues(new Date());
+  const maintenant = new Date();
+  const promues = await promouvoirSortiesEchues(maintenant);
+  const couvertures = await acquerirCouverturesManquantes(maintenant);
 
   if (promues.length > 0) {
     revalidatePath("/planning");
@@ -31,8 +35,13 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  if (couvertures.obtenues > 0) {
+    revalidatePath("/");
+  }
+
   return NextResponse.json({
     promues: promues.length,
     sorties: promues.map((promue) => `${promue.slug} t${promue.numero}`),
+    couvertures,
   });
 }

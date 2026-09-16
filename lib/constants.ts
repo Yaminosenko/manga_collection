@@ -287,3 +287,44 @@ export const ZOOM_RAPPROCHE = 2;
 
 export const LIBELLE_SORTIE_OBTENUE = "Je l’ai";
 export const LIBELLE_SORTIE_EN_COURS = "…";
+
+export const SERVICE_COUVERTURES_BNF =
+  "https://openapi.bnf.fr/couverture/image/image/recupererImage";
+export const PREMIERE_DE_COUVERTURE = 1;
+export const LARGEUR_COUVERTURE = 256;
+export const HAUTEUR_COUVERTURE = 360;
+export const DELAI_BNF_MS = 20_000;
+export const CODES_ABSENCE_BNF = [404, 500];
+export const TYPES_IMAGE_ACCEPTES: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+};
+
+export const API_MANGADEX = "https://api.mangadex.org";
+export const DEPOT_MANGADEX = "https://uploads.mangadex.org/covers";
+export const VIGNETTE_MANGADEX = ".256.jpg";
+export const LANGUES_COUVERTURE = ["fr", "ja"];
+export const RESULTATS_RECHERCHE_MANGADEX = 10;
+export const LOT_COUVERTURES_MANGADEX = 100;
+export const DELAI_MANGADEX_MS = 20_000;
+export const AGENT_UTILISATEUR =
+  "manga-collection/0.1 (application personnelle non commerciale)";
+export const MARQUEURS_SATELLITE = [
+  "pre-serialization",
+  "fan colored",
+  "colored",
+  "doujinshi",
+  "anthology",
+  "databook",
+  "artbook",
+  "spin-off",
+  "parody",
+];
+
+export const SOURCE_COUVERTURE_BNF = "bnf";
+export const SOURCE_COUVERTURE_MANGADEX = "mangadex";
+export const PREFIXE_OBJETS_COUVERTURES = "covers";
+export const PLAFOND_COUVERTURES_PAR_PASSAGE = 80;
+export const BUDGET_COUVERTURES_MS = 45_000;
+export const JOURS_AVANT_NOUVEL_ESSAI = [7, 30, 90];
+export const MILLISECONDES_PAR_JOUR = 86_400_000;

@@ -58,6 +58,7 @@ model Serie {
   cible           String?
   couvertureUrl   String?
   idMangaBaka     Int?
+  idMangaDex      String?
   editions        Edition[]
   liens           LienSerie[] @relation("liensSortants")
   liensEntrants   LienSerie[] @relation("liensEntrants")
@@ -141,9 +142,12 @@ model Volume {
   couvertureUrl         String?
   sourceCouverture      String?
   couvertureRecupereeLe DateTime?
+  couvertureTenteeLe    DateTime?
+  couvertureTentatives  Int          @default(0)
   possessions           Possession[]
 
   @@unique([editionId, numero])
+  @@index([couvertureUrl, couvertureTenteeLe])
 }
 
 model Possession {

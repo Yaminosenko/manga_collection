@@ -1,12 +1,12 @@
 {
-  "exporteeLe": "2026-09-16T09:40:28.621Z",
+  "exporteeLe": "2026-09-16T10:08:24.691Z",
   "compteurs": {
     "series": 116,
     "editions": 120,
     "tomes": 1941,
     "possedes": 1174,
     "suivies": 91,
-    "couvertures": 1754,
+    "couvertures": 1928,
     "liens": 28
   },
   "utilisateurs": [
@@ -2617,9 +2617,9 @@
               "isbn": "9782505008262",
               "dateSortie": "2010-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/1.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.307Z",
               "possessions": []
             },
             {
@@ -2628,9 +2628,9 @@
               "isbn": "9782505008279",
               "dateSortie": "2010-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/2.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.344Z",
               "possessions": []
             },
             {
@@ -2639,9 +2639,9 @@
               "isbn": "9782505009634",
               "dateSortie": "2010-09-17T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/3.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:02:44.756Z",
               "possessions": []
             },
             {
@@ -2650,9 +2650,9 @@
               "isbn": "9782505009887",
               "dateSortie": "2010-11-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/4.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:05:58.610Z",
               "possessions": []
             },
             {
@@ -2661,9 +2661,9 @@
               "isbn": "9782505010302",
               "dateSortie": "2011-01-07T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/5.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:05:58.610Z",
               "possessions": []
             },
             {
@@ -2672,9 +2672,9 @@
               "isbn": "9782505010760",
               "dateSortie": "2011-04-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/6.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.375Z",
               "possessions": []
             },
             {
@@ -2683,9 +2683,9 @@
               "isbn": "9782505011699",
               "dateSortie": "2011-07-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/7.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.405Z",
               "possessions": []
             },
             {
@@ -2694,9 +2694,9 @@
               "isbn": "9782505012412",
               "dateSortie": "2011-10-07T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/8.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.435Z",
               "possessions": []
             },
             {
@@ -2705,9 +2705,9 @@
               "isbn": "9782505049685",
               "dateSortie": "2012-01-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/9.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.467Z",
               "possessions": []
             },
             {
@@ -2716,9 +2716,9 @@
               "isbn": "9782505014379",
               "dateSortie": "2012-04-27T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/10.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.498Z",
               "possessions": []
             },
             {
@@ -2727,9 +2727,9 @@
               "isbn": "9782505014799",
               "dateSortie": "2012-07-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/11.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.529Z",
               "possessions": []
             },
             {
@@ -2738,9 +2738,9 @@
               "isbn": "9782505015475",
               "dateSortie": "2012-10-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/12.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.560Z",
               "possessions": []
             },
             {
@@ -2749,9 +2749,9 @@
               "isbn": "9782505016847",
               "dateSortie": "2013-01-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/13.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.592Z",
               "possessions": []
             },
             {
@@ -2760,9 +2760,9 @@
               "isbn": "9782505017271",
               "dateSortie": "2013-04-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/14.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.622Z",
               "possessions": []
             },
             {
@@ -2771,9 +2771,9 @@
               "isbn": "9782505017288",
               "dateSortie": "2013-07-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/15.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.653Z",
               "possessions": []
             },
             {
@@ -2782,9 +2782,9 @@
               "isbn": "9782505017295",
               "dateSortie": "2013-10-18T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/16.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.683Z",
               "possessions": []
             },
             {
@@ -2793,9 +2793,9 @@
               "isbn": "9782505060062",
               "dateSortie": "2014-01-24T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/17.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.715Z",
               "possessions": []
             },
             {
@@ -2804,9 +2804,9 @@
               "isbn": "9782505060444",
               "dateSortie": "2014-04-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/18.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.745Z",
               "possessions": []
             },
             {
@@ -2815,9 +2815,9 @@
               "isbn": "9782505060451",
               "dateSortie": "2014-07-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/19.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -2826,9 +2826,9 @@
               "isbn": "9782505060468",
               "dateSortie": "2014-11-28T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/bakuman/20.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             }
           ]
@@ -5898,7 +5898,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/black-rock-shooter-innocent-soul-l-integrale/1.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.198Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.806Z",
               "possessions": [
                 {
                   "id": "6df36de4-1af2-494e-a2d9-6214d0d9abdd",
@@ -17442,7 +17442,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/1.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.259Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.867Z",
               "possessions": []
             },
             {
@@ -17453,7 +17453,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/2.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.295Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.899Z",
               "possessions": []
             },
             {
@@ -17464,7 +17464,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/3.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.331Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.930Z",
               "possessions": []
             },
             {
@@ -17475,7 +17475,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/4.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.363Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.961Z",
               "possessions": []
             },
             {
@@ -17486,7 +17486,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/5.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.397Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:44.992Z",
               "possessions": []
             },
             {
@@ -17497,7 +17497,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/6.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.432Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.023Z",
               "possessions": []
             },
             {
@@ -17508,7 +17508,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/7.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.470Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.053Z",
               "possessions": []
             },
             {
@@ -17519,7 +17519,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/8.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.494Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.084Z",
               "possessions": []
             },
             {
@@ -17530,7 +17530,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/9.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.532Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.111Z",
               "possessions": []
             },
             {
@@ -17541,7 +17541,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/10.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.565Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.144Z",
               "possessions": []
             },
             {
@@ -17552,7 +17552,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/11.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.599Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.174Z",
               "possessions": []
             },
             {
@@ -17563,7 +17563,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/12.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.623Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.206Z",
               "possessions": []
             },
             {
@@ -17574,7 +17574,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/13.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.649Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.232Z",
               "possessions": []
             },
             {
@@ -17585,7 +17585,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/14.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.679Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.267Z",
               "possessions": []
             },
             {
@@ -17596,7 +17596,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/15.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.714Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.298Z",
               "possessions": []
             },
             {
@@ -17607,7 +17607,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/16.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.746Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.329Z",
               "possessions": []
             },
             {
@@ -17618,7 +17618,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/17.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.782Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.359Z",
               "possessions": []
             },
             {
@@ -17629,7 +17629,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/18.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.806Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.391Z",
               "possessions": []
             },
             {
@@ -17640,7 +17640,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/19.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.831Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.421Z",
               "possessions": []
             },
             {
@@ -17651,7 +17651,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/20.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.864Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.451Z",
               "possessions": []
             },
             {
@@ -17662,7 +17662,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/21.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.898Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.482Z",
               "possessions": []
             },
             {
@@ -17673,7 +17673,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/22.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.931Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.513Z",
               "possessions": []
             },
             {
@@ -17684,7 +17684,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/23.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.962Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.543Z",
               "possessions": []
             },
             {
@@ -17695,7 +17695,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/24.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:55.999Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.574Z",
               "possessions": []
             },
             {
@@ -17706,7 +17706,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/25.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.031Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.606Z",
               "possessions": []
             },
             {
@@ -17717,7 +17717,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/26.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.064Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.638Z",
               "possessions": []
             },
             {
@@ -17728,7 +17728,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/27.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.099Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.668Z",
               "possessions": []
             },
             {
@@ -17739,7 +17739,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/28.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.132Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.698Z",
               "possessions": []
             },
             {
@@ -17750,7 +17750,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/29.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.166Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.730Z",
               "possessions": []
             },
             {
@@ -17761,7 +17761,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/30.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.198Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.756Z",
               "possessions": []
             },
             {
@@ -17772,7 +17772,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/31.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.230Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.791Z",
               "possessions": []
             },
             {
@@ -17783,7 +17783,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/32.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.260Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.822Z",
               "possessions": []
             },
             {
@@ -17792,9 +17792,9 @@
               "isbn": "9782820325037",
               "dateSortie": "2016-09-21T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/33.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -17803,9 +17803,9 @@
               "isbn": "9782820328212",
               "dateSortie": "2017-03-15T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/34.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -17814,9 +17814,9 @@
               "isbn": "9782820328960",
               "dateSortie": "2017-09-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/35.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -17827,7 +17827,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/36.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.297Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.852Z",
               "possessions": []
             },
             {
@@ -17838,7 +17838,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/37.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.332Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.883Z",
               "possessions": []
             },
             {
@@ -17849,7 +17849,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/38.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.357Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.915Z",
               "possessions": []
             },
             {
@@ -17860,7 +17860,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/39.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.397Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.946Z",
               "possessions": []
             },
             {
@@ -17871,7 +17871,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/40.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.434Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:45.977Z",
               "possessions": []
             },
             {
@@ -17882,7 +17882,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/41.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.465Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.008Z",
               "possessions": []
             },
             {
@@ -17893,7 +17893,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/42.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.498Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.038Z",
               "possessions": []
             },
             {
@@ -17904,7 +17904,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/43.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.532Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.068Z",
               "possessions": []
             },
             {
@@ -17915,7 +17915,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/44.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.567Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.099Z",
               "possessions": []
             },
             {
@@ -17926,7 +17926,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/45.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.599Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.130Z",
               "possessions": []
             },
             {
@@ -17937,7 +17937,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/46.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.632Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.160Z",
               "possessions": []
             },
             {
@@ -17948,7 +17948,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/47.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.664Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.190Z",
               "possessions": []
             },
             {
@@ -17959,7 +17959,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/initial-d/48.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.697Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.222Z",
               "possessions": []
             }
           ]
@@ -18205,7 +18205,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/8.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.763Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.277Z",
               "possessions": [
                 {
                   "id": "1e2fd6c8-7f9e-45ae-9794-a29c57be701e",
@@ -18227,7 +18227,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/9.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.799Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.313Z",
               "possessions": [
                 {
                   "id": "94ea4078-b5ed-4072-9ac6-0b5417a9c447",
@@ -18249,7 +18249,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/10.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.832Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.345Z",
               "possessions": [
                 {
                   "id": "f5554727-ffb5-4268-b2df-b92b60c7ad1b",
@@ -18271,7 +18271,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/11.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.865Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.374Z",
               "possessions": [
                 {
                   "id": "d2200c71-0e4b-4392-bcf9-84afcb490955",
@@ -18293,7 +18293,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/12.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.894Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.405Z",
               "possessions": [
                 {
                   "id": "8b2061bc-62d0-45ed-8715-b008d38eff26",
@@ -18315,7 +18315,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/13.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.930Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.440Z",
               "possessions": [
                 {
                   "id": "a6fc0e14-b9c6-49e2-8b73-22f73b1ba327",
@@ -18337,7 +18337,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/14.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.964Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.483Z",
               "possessions": [
                 {
                   "id": "feec6949-a015-4ed4-9e5f-95973e32e525",
@@ -18359,7 +18359,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/15.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:56.998Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.514Z",
               "possessions": [
                 {
                   "id": "97d4fb7f-3565-4441-a8ff-4c22269967ce",
@@ -18381,7 +18381,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/16.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.032Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.545Z",
               "possessions": [
                 {
                   "id": "9cab3db4-06a6-496c-a967-2b23c84faaf2",
@@ -18403,7 +18403,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/17.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.064Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.575Z",
               "possessions": [
                 {
                   "id": "be6b2319-588a-4a83-b322-f6bba53baf7c",
@@ -18425,7 +18425,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/18.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.099Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.606Z",
               "possessions": [
                 {
                   "id": "1c07934d-6251-49d3-b893-795f11f6a632",
@@ -18447,7 +18447,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/19.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.123Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.637Z",
               "possessions": [
                 {
                   "id": "480a70ca-29ca-4764-be56-d60249408bfa",
@@ -18469,7 +18469,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/20.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.147Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.668Z",
               "possessions": [
                 {
                   "id": "15fb79e5-3375-4381-bad4-519b7eeae32e",
@@ -18491,7 +18491,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ippo-s4-la-loi-du-ring/21.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.182Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.698Z",
               "possessions": [
                 {
                   "id": "c3fbef64-a561-4b17-9049-2d9c55350e50",
@@ -21682,7 +21682,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/1.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.246Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.826Z",
               "possessions": [
                 {
                   "id": "cc91b5f2-b344-4f8a-bc1c-59a66bb0713a",
@@ -21704,7 +21704,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/2.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.278Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.869Z",
               "possessions": [
                 {
                   "id": "3734dc9f-8e25-41d0-a9f4-bc9088dcfa24",
@@ -21748,7 +21748,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/4.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.313Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.912Z",
               "possessions": []
             },
             {
@@ -21759,7 +21759,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/l-atelier-des-sorciers-edition-grimoire/5.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.337Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:46.950Z",
               "possessions": []
             }
           ]
@@ -22126,7 +22126,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/2.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.397Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.023Z",
               "possessions": [
                 {
                   "id": "f3325e4c-b4f5-4a7b-8d5f-0f7578296ca9",
@@ -22148,7 +22148,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/3.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.433Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.054Z",
               "possessions": [
                 {
                   "id": "3cce38c7-f749-4e5e-8b67-3d10e7eee3b2",
@@ -22170,7 +22170,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/4.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.465Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.086Z",
               "possessions": [
                 {
                   "id": "fea8c316-ee48-49d6-8fff-c88249708b8b",
@@ -22192,7 +22192,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/5.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.496Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.118Z",
               "possessions": [
                 {
                   "id": "be596835-2ffd-4f70-8661-2150ed62c269",
@@ -22214,7 +22214,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/6.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.527Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.148Z",
               "possessions": [
                 {
                   "id": "2bf5cdac-2c06-4e3a-8ff8-d6c23538f584",
@@ -22236,7 +22236,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/7.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.565Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.177Z",
               "possessions": [
                 {
                   "id": "83e5f564-8936-45dc-9c00-a35507d51831",
@@ -22258,7 +22258,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/8.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.598Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.208Z",
               "possessions": [
                 {
                   "id": "08aec149-27d7-42ff-aa89-b2fb5382f4ac",
@@ -22302,7 +22302,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/10.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.632Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.241Z",
               "possessions": [
                 {
                   "id": "ba14a198-11f9-46ef-ac7d-211b6d3b70dc",
@@ -22324,7 +22324,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/11.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.665Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.270Z",
               "possessions": [
                 {
                   "id": "a59bf98d-ea83-460b-bfa6-63a1937d3165",
@@ -22346,7 +22346,7 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/les-legendaires-saga/12.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-10T12:20:57.696Z",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.301Z",
               "possessions": [
                 {
                   "id": "baefe4fa-4c07-48a6-b674-aa45878f3075",
@@ -31335,9 +31335,9 @@
               "numero": 113,
               "date": "2026-09-23T00:00:00.000Z",
               "isbn": "9782344071120",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/113.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.139Z"
             },
             {
               "id": "81e804e7-6ecc-4663-8bea-1fc8b75aa28c",
@@ -31356,9 +31356,9 @@
               "isbn": "9782723488525",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/1.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:02:44.756Z",
               "possessions": [
                 {
                   "id": "dd929c36-c896-478f-9d6c-b3f4b1674a09",
@@ -31378,9 +31378,9 @@
               "isbn": "9782723489898",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/2.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.393Z",
               "possessions": [
                 {
                   "id": "5cc98352-19e9-454c-8e6b-8bea79bcd96b",
@@ -31400,9 +31400,9 @@
               "isbn": "9782723489904",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/3.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.426Z",
               "possessions": [
                 {
                   "id": "00465c26-0453-4ddd-ada5-1c319104f9cf",
@@ -31422,9 +31422,9 @@
               "isbn": "9782723489911",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/4.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.452Z",
               "possessions": [
                 {
                   "id": "ed0b6f47-ac73-474a-ae75-282f72c45bb9",
@@ -31444,9 +31444,9 @@
               "isbn": "9782723489928",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/5.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.488Z",
               "possessions": []
             },
             {
@@ -31455,9 +31455,9 @@
               "isbn": "9782723489935",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/6.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.519Z",
               "possessions": []
             },
             {
@@ -31466,9 +31466,9 @@
               "isbn": "9782723489942",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/7.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.548Z",
               "possessions": []
             },
             {
@@ -31477,9 +31477,9 @@
               "isbn": "9782723489959",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/8.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.580Z",
               "possessions": []
             },
             {
@@ -31488,9 +31488,9 @@
               "isbn": "9782723492539",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/9.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.610Z",
               "possessions": []
             },
             {
@@ -31499,9 +31499,9 @@
               "isbn": "9782723492553",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/10.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.642Z",
               "possessions": []
             },
             {
@@ -31510,9 +31510,9 @@
               "isbn": "9782723492560",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/11.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.672Z",
               "possessions": []
             },
             {
@@ -31521,9 +31521,9 @@
               "isbn": "9782723492577",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/12.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.703Z",
               "possessions": []
             },
             {
@@ -31532,9 +31532,9 @@
               "isbn": "9782723492584",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/13.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.735Z",
               "possessions": []
             },
             {
@@ -31543,9 +31543,9 @@
               "isbn": "9782723492591",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/14.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.765Z",
               "possessions": []
             },
             {
@@ -31554,9 +31554,9 @@
               "isbn": "9782723492607",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/15.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.795Z",
               "possessions": []
             },
             {
@@ -31565,9 +31565,9 @@
               "isbn": "9782723494724",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/16.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.828Z",
               "possessions": []
             },
             {
@@ -31576,9 +31576,9 @@
               "isbn": "9782723494731",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/17.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.856Z",
               "possessions": []
             },
             {
@@ -31587,9 +31587,9 @@
               "isbn": "9782723494748",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/18.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.887Z",
               "possessions": []
             },
             {
@@ -31598,9 +31598,9 @@
               "isbn": "9782723494755",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/19.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.918Z",
               "possessions": []
             },
             {
@@ -31609,9 +31609,9 @@
               "isbn": "9782723494762",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/20.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.952Z",
               "possessions": []
             },
             {
@@ -31620,9 +31620,9 @@
               "isbn": "9782723494779",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/21.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:47.981Z",
               "possessions": []
             },
             {
@@ -31631,9 +31631,9 @@
               "isbn": "9782723494786",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/22.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.012Z",
               "possessions": []
             },
             {
@@ -31642,9 +31642,9 @@
               "isbn": "9782723494793",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/23.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.043Z",
               "possessions": []
             },
             {
@@ -31653,9 +31653,9 @@
               "isbn": "9782723494809",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/24.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.073Z",
               "possessions": []
             },
             {
@@ -31664,9 +31664,9 @@
               "isbn": "9782723494816",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/25.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.104Z",
               "possessions": []
             },
             {
@@ -31675,9 +31675,9 @@
               "isbn": "9782723494823",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/26.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.135Z",
               "possessions": []
             },
             {
@@ -31686,9 +31686,9 @@
               "isbn": "9782723494830",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/27.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.166Z",
               "possessions": []
             },
             {
@@ -31697,9 +31697,9 @@
               "isbn": "9782723494847",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/28.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.197Z",
               "possessions": []
             },
             {
@@ -31708,9 +31708,9 @@
               "isbn": "9782723494854",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/29.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.228Z",
               "possessions": []
             },
             {
@@ -31719,9 +31719,9 @@
               "isbn": "9782723494861",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/30.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.259Z",
               "possessions": []
             },
             {
@@ -31730,9 +31730,9 @@
               "isbn": "9782723498593",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/31.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.289Z",
               "possessions": []
             },
             {
@@ -31741,9 +31741,9 @@
               "isbn": "9782723498609",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/32.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.330Z",
               "possessions": []
             },
             {
@@ -31752,9 +31752,9 @@
               "isbn": "9782723498616",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/33.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.367Z",
               "possessions": []
             },
             {
@@ -31763,9 +31763,9 @@
               "isbn": "9782723498623",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/34.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.397Z",
               "possessions": []
             },
             {
@@ -31774,9 +31774,9 @@
               "isbn": "9782723498630",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/35.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.428Z",
               "possessions": []
             },
             {
@@ -31785,9 +31785,9 @@
               "isbn": "9782723498647",
               "dateSortie": "2014-01-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/36.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.460Z",
               "possessions": []
             },
             {
@@ -31796,9 +31796,9 @@
               "isbn": "9782723498654",
               "dateSortie": "2014-01-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/37.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.491Z",
               "possessions": []
             },
             {
@@ -31807,9 +31807,9 @@
               "isbn": "9782723498661",
               "dateSortie": "2014-01-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/38.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.522Z",
               "possessions": []
             },
             {
@@ -31818,9 +31818,9 @@
               "isbn": "9782723498678",
               "dateSortie": "2014-01-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/39.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.553Z",
               "possessions": []
             },
             {
@@ -31829,9 +31829,9 @@
               "isbn": "9782723498685",
               "dateSortie": "2014-01-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/40.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.584Z",
               "possessions": []
             },
             {
@@ -31840,9 +31840,9 @@
               "isbn": "9782344001851",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/41.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31851,9 +31851,9 @@
               "isbn": "9782344001868",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/42.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31862,9 +31862,9 @@
               "isbn": "9782344001875",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/43.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31873,9 +31873,9 @@
               "isbn": "9782344001882",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/44.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31884,9 +31884,9 @@
               "isbn": "9782344001899",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/45.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31895,9 +31895,9 @@
               "isbn": "9782344001905",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/46.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31906,9 +31906,9 @@
               "isbn": "9782344001912",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/47.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31917,9 +31917,9 @@
               "isbn": "9782344001929",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/48.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31928,9 +31928,9 @@
               "isbn": "9782344001936",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/49.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31939,9 +31939,9 @@
               "isbn": "9782344001943",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/50.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31950,9 +31950,9 @@
               "isbn": "9782344001950",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/51.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31961,9 +31961,9 @@
               "isbn": "9782344001967",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/52.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31972,9 +31972,9 @@
               "isbn": "9782344001974",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/53.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31983,9 +31983,9 @@
               "isbn": "9782344001981",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/54.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -31994,9 +31994,9 @@
               "isbn": "9782344001998",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/55.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32005,9 +32005,9 @@
               "isbn": "9782344002001",
               "dateSortie": "2014-11-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/56.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32016,9 +32016,9 @@
               "isbn": "9782344002018",
               "dateSortie": "2014-11-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/57.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32027,9 +32027,9 @@
               "isbn": "9782344002025",
               "dateSortie": "2014-11-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/58.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32038,9 +32038,9 @@
               "isbn": "9782344002032",
               "dateSortie": "2014-11-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/59.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32049,9 +32049,9 @@
               "isbn": "9782344002049",
               "dateSortie": "2014-11-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/60.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32060,9 +32060,9 @@
               "isbn": "9782723486682",
               "dateSortie": "2015-10-28T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/61.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.614Z",
               "possessions": []
             },
             {
@@ -32071,9 +32071,9 @@
               "isbn": "9782723487689",
               "dateSortie": "2015-06-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/62.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.645Z",
               "possessions": []
             },
             {
@@ -32082,9 +32082,9 @@
               "isbn": "9782723487696",
               "dateSortie": "2015-06-30T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/63.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.676Z",
               "possessions": []
             },
             {
@@ -32093,9 +32093,9 @@
               "isbn": "9782723487702",
               "dateSortie": "2015-10-28T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/64.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.706Z",
               "possessions": []
             },
             {
@@ -32104,9 +32104,9 @@
               "isbn": "9782723493062",
               "dateSortie": "2015-05-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/65.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.736Z",
               "possessions": []
             },
             {
@@ -32115,9 +32115,9 @@
               "isbn": "9782723493260",
               "dateSortie": "2015-10-28T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/66.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.767Z",
               "possessions": []
             },
             {
@@ -32126,9 +32126,9 @@
               "isbn": "9782723495738",
               "dateSortie": "2013-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/67.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.798Z",
               "possessions": []
             },
             {
@@ -32137,9 +32137,9 @@
               "isbn": "9782723496766",
               "dateSortie": "2013-10-09T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/68.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.829Z",
               "possessions": []
             },
             {
@@ -32148,9 +32148,9 @@
               "isbn": "9782723498234",
               "dateSortie": "2014-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/69.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32159,9 +32159,9 @@
               "isbn": "9782723499330",
               "dateSortie": "2014-04-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/70.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.860Z",
               "possessions": []
             },
             {
@@ -32170,9 +32170,9 @@
               "isbn": "9782723499347",
               "dateSortie": "2014-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/71.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32181,9 +32181,9 @@
               "isbn": "9782344004319",
               "dateSortie": "2014-10-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/72.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -32192,9 +32192,9 @@
               "isbn": "9782344006450",
               "dateSortie": "2015-01-07T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/73.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.891Z",
               "possessions": []
             },
             {
@@ -32203,9 +32203,9 @@
               "isbn": "9782344006597",
               "dateSortie": "2015-04-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/74.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.922Z",
               "possessions": []
             },
             {
@@ -32214,9 +32214,9 @@
               "isbn": "9782344008393",
               "dateSortie": "2015-07-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/75.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.953Z",
               "possessions": []
             },
             {
@@ -32225,9 +32225,9 @@
               "isbn": "9782344008423",
               "dateSortie": "2015-09-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/76.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:48.984Z",
               "possessions": []
             },
             {
@@ -32236,9 +32236,9 @@
               "isbn": "9782344008430",
               "dateSortie": "2015-11-18T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/77.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.014Z",
               "possessions": []
             },
             {
@@ -32247,9 +32247,9 @@
               "isbn": "9782344013229",
               "dateSortie": "2016-03-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/78.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.045Z",
               "possessions": []
             },
             {
@@ -32258,9 +32258,9 @@
               "isbn": "9782344016374",
               "dateSortie": "2016-07-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/79.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.084Z",
               "possessions": []
             },
             {
@@ -32269,9 +32269,9 @@
               "isbn": "9782344017470",
               "dateSortie": "2016-10-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/80.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.124Z",
               "possessions": []
             },
             {
@@ -32280,9 +32280,9 @@
               "isbn": "9782344018286",
               "dateSortie": "2017-01-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/81.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.155Z",
               "possessions": []
             },
             {
@@ -32291,9 +32291,9 @@
               "isbn": "9782344020432",
               "dateSortie": "2017-04-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/82.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.185Z",
               "possessions": []
             },
             {
@@ -32302,9 +32302,9 @@
               "isbn": "9782344023211",
               "dateSortie": "2017-07-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/83.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.215Z",
               "possessions": []
             },
             {
@@ -32313,9 +32313,9 @@
               "isbn": "9782344025314",
               "dateSortie": "2017-10-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/84.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.247Z",
               "possessions": []
             },
             {
@@ -32324,9 +32324,9 @@
               "isbn": "9782344027509",
               "dateSortie": "2018-01-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/85.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.278Z",
               "possessions": []
             },
             {
@@ -32335,9 +32335,9 @@
               "isbn": "9782344027523",
               "dateSortie": "2018-04-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/86.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.310Z",
               "possessions": []
             },
             {
@@ -32346,9 +32346,9 @@
               "isbn": "9782344030042",
               "dateSortie": "2018-07-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/87.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.341Z",
               "possessions": []
             },
             {
@@ -32357,9 +32357,9 @@
               "isbn": "9782344030059",
               "dateSortie": "2018-10-17T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/88.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.373Z",
               "possessions": []
             },
             {
@@ -32368,9 +32368,9 @@
               "isbn": "9782344033586",
               "dateSortie": "2019-01-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/89.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.404Z",
               "possessions": []
             },
             {
@@ -32379,9 +32379,9 @@
               "isbn": "9782344033593",
               "dateSortie": "2019-04-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/90.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.435Z",
               "possessions": []
             },
             {
@@ -32390,9 +32390,9 @@
               "isbn": "9782344037102",
               "dateSortie": "2019-07-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/91.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.465Z",
               "possessions": []
             },
             {
@@ -32401,9 +32401,9 @@
               "isbn": "9782344038819",
               "dateSortie": "2019-10-16T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/92.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.495Z",
               "possessions": []
             },
             {
@@ -32412,9 +32412,9 @@
               "isbn": "9782344041451",
               "dateSortie": "2020-01-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/93.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.527Z",
               "possessions": []
             },
             {
@@ -32423,9 +32423,9 @@
               "isbn": "9782344042632",
               "dateSortie": "2020-05-27T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/94.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.557Z",
               "possessions": []
             },
             {
@@ -32434,9 +32434,9 @@
               "isbn": "9782344043301",
               "dateSortie": "2020-07-01T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/95.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.588Z",
               "possessions": []
             },
             {
@@ -32445,9 +32445,9 @@
               "isbn": "9782344044698",
               "dateSortie": "2020-10-07T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/96.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.618Z",
               "possessions": []
             },
             {
@@ -32456,9 +32456,9 @@
               "isbn": "9782344046388",
               "dateSortie": "2021-01-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/97.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.648Z",
               "possessions": []
             },
             {
@@ -32467,9 +32467,9 @@
               "isbn": "9782344047569",
               "dateSortie": "2021-05-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/98.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.679Z",
               "possessions": []
             },
             {
@@ -32478,9 +32478,9 @@
               "isbn": "9782344048740",
               "dateSortie": "2021-09-15T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/99.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.709Z",
               "possessions": []
             },
             {
@@ -32489,9 +32489,9 @@
               "isbn": "9782344049020",
               "dateSortie": "2021-12-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/100.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.740Z",
               "possessions": []
             },
             {
@@ -32500,9 +32500,9 @@
               "isbn": "9782344052143",
               "dateSortie": "2022-05-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/101.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.768Z",
               "possessions": []
             },
             {
@@ -32511,9 +32511,9 @@
               "isbn": "9782344052150",
               "dateSortie": "2022-09-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/102.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.802Z",
               "possessions": []
             },
             {
@@ -32522,9 +32522,9 @@
               "isbn": "9782344052167",
               "dateSortie": "2022-12-07T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/103.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.834Z",
               "possessions": []
             },
             {
@@ -32533,9 +32533,9 @@
               "isbn": "9782344052174",
               "dateSortie": "2023-04-19T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/104.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.864Z",
               "possessions": []
             },
             {
@@ -32544,9 +32544,9 @@
               "isbn": "9782344052181",
               "dateSortie": "2023-09-30T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/105.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.896Z",
               "possessions": []
             },
             {
@@ -32555,9 +32555,9 @@
               "isbn": "9782344052198",
               "dateSortie": "2023-12-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/106.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.927Z",
               "possessions": []
             },
             {
@@ -32566,9 +32566,9 @@
               "isbn": "9782344058916",
               "dateSortie": "2024-04-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/107.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.959Z",
               "possessions": []
             },
             {
@@ -32577,9 +32577,9 @@
               "isbn": "9782344061336",
               "dateSortie": "2024-10-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/108.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:49.989Z",
               "possessions": []
             },
             {
@@ -32588,9 +32588,9 @@
               "isbn": "9782344061343",
               "dateSortie": "2025-04-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/109.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.020Z",
               "possessions": []
             },
             {
@@ -32599,9 +32599,9 @@
               "isbn": "9782344062814",
               "dateSortie": "2025-09-27T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/110.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.051Z",
               "possessions": []
             },
             {
@@ -32610,9 +32610,9 @@
               "isbn": "9782344065662",
               "dateSortie": "2025-12-03T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/111.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.083Z",
               "possessions": []
             },
             {
@@ -32621,9 +32621,9 @@
               "isbn": "9782344068922",
               "dateSortie": "2026-04-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/112.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.113Z",
               "possessions": []
             }
           ]
@@ -46867,9 +46867,9 @@
               "isbn": "9782380714272",
               "dateSortie": "2023-07-06T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/1.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.236Z",
               "possessions": [
                 {
                   "id": "42c9594b-5cee-41f1-9f6e-6dd7e0d8d343",
@@ -46889,9 +46889,9 @@
               "isbn": "9782380715392",
               "dateSortie": "2023-10-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/2.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.268Z",
               "possessions": []
             },
             {
@@ -46900,9 +46900,9 @@
               "isbn": "9791042013981",
               "dateSortie": "2024-02-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/3.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.299Z",
               "possessions": []
             },
             {
@@ -46911,9 +46911,9 @@
               "isbn": "9791042014308",
               "dateSortie": "2024-07-04T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/4.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.329Z",
               "possessions": []
             },
             {
@@ -46922,9 +46922,9 @@
               "isbn": "9791042014728",
               "dateSortie": "2024-10-17T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/5.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.360Z",
               "possessions": []
             },
             {
@@ -46933,9 +46933,9 @@
               "isbn": "9791042018740",
               "dateSortie": "2025-02-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/6.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.390Z",
               "possessions": [
                 {
                   "id": "4b232d24-6614-4e01-81f9-6e1b85b4990b",
@@ -46955,9 +46955,9 @@
               "isbn": "9791042018757",
               "dateSortie": "2025-06-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/7.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.421Z",
               "possessions": []
             },
             {
@@ -46966,9 +46966,9 @@
               "isbn": "9791042018764",
               "dateSortie": "2025-10-09T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/8.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.451Z",
               "possessions": []
             },
             {
@@ -46977,9 +46977,9 @@
               "isbn": "9791042021924",
               "dateSortie": "2026-03-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/9.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.483Z",
               "possessions": []
             },
             {
@@ -46988,9 +46988,9 @@
               "isbn": "9791042021931",
               "dateSortie": "2026-07-02T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/10.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.513Z",
               "possessions": []
             }
           ]
@@ -48000,9 +48000,9 @@
               "isbn": "9782351423554",
               "dateSortie": "2009-01-15T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/1.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:02:44.756Z",
               "possessions": [
                 {
                   "id": "48e30350-e9c3-48c4-b9d4-fc3ca510579b",
@@ -48022,9 +48022,9 @@
               "isbn": "9782351423561",
               "dateSortie": "2009-03-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/2.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.574Z",
               "possessions": [
                 {
                   "id": "f7ffeaf6-7996-428d-ae8c-c2fefbdc7f91",
@@ -48044,9 +48044,9 @@
               "isbn": "9782351423578",
               "dateSortie": "2009-06-11T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/3.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:02:44.756Z",
               "possessions": [
                 {
                   "id": "d0090493-6124-403b-851e-8ea491e08250",
@@ -48066,9 +48066,9 @@
               "isbn": "9782351423585",
               "dateSortie": "2009-09-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/4.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:05:58.610Z",
               "possessions": [
                 {
                   "id": "38638c4b-6c41-4fb4-b10a-fdf61bb0a10b",
@@ -48088,9 +48088,9 @@
               "isbn": "9782351423592",
               "dateSortie": "2009-12-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/5.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:05:58.610Z",
               "possessions": []
             },
             {
@@ -48099,9 +48099,9 @@
               "isbn": "9782351425114",
               "dateSortie": "2010-03-11T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/6.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:05:58.610Z",
               "possessions": []
             },
             {
@@ -48110,9 +48110,9 @@
               "isbn": "9782351425350",
               "dateSortie": "2010-06-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/7.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.605Z",
               "possessions": []
             },
             {
@@ -48121,9 +48121,9 @@
               "isbn": "9782351425367",
               "dateSortie": "2010-10-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/8.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -48132,9 +48132,9 @@
               "isbn": "9782351426012",
               "dateSortie": "2011-03-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/9.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.636Z",
               "possessions": []
             },
             {
@@ -48143,9 +48143,9 @@
               "isbn": "9782351426814",
               "dateSortie": "2011-10-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/10.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.667Z",
               "possessions": []
             },
             {
@@ -48154,9 +48154,9 @@
               "isbn": "9782351427828",
               "dateSortie": "2012-12-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/11.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.693Z",
               "possessions": []
             },
             {
@@ -48165,9 +48165,9 @@
               "isbn": "9782351429297",
               "dateSortie": "2013-11-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/12.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.729Z",
               "possessions": []
             },
             {
@@ -48176,9 +48176,9 @@
               "isbn": "9782368520796",
               "dateSortie": "2014-11-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/13.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -48187,9 +48187,9 @@
               "isbn": "9782368520802",
               "dateSortie": "2015-03-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/14.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-16T10:07:00.234Z",
               "possessions": []
             },
             {
@@ -48198,9 +48198,9 @@
               "isbn": "9782368522097",
               "dateSortie": "2015-11-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/15.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.759Z",
               "possessions": []
             },
             {
@@ -48209,9 +48209,9 @@
               "isbn": "9782368522738",
               "dateSortie": "2016-05-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/16.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.785Z",
               "possessions": []
             },
             {
@@ -48220,9 +48220,9 @@
               "isbn": "9782368524176",
               "dateSortie": "2017-01-12T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/17.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.822Z",
               "possessions": []
             },
             {
@@ -48231,9 +48231,9 @@
               "isbn": "9782368524626",
               "dateSortie": "2017-09-14T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/18.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.853Z",
               "possessions": []
             },
             {
@@ -48242,9 +48242,9 @@
               "isbn": "9782368525869",
               "dateSortie": "2018-02-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/19.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.883Z",
               "possessions": []
             },
             {
@@ -48253,9 +48253,9 @@
               "isbn": "9782368526989",
               "dateSortie": "2018-11-15T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/20.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.914Z",
               "possessions": []
             },
             {
@@ -48264,9 +48264,9 @@
               "isbn": "9782368527269",
               "dateSortie": "2019-04-11T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/21.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.944Z",
               "possessions": []
             },
             {
@@ -48275,9 +48275,9 @@
               "isbn": "9782368528402",
               "dateSortie": "2019-12-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/22.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.970Z",
               "possessions": []
             },
             {
@@ -48286,9 +48286,9 @@
               "isbn": "9782368529614",
               "dateSortie": "2020-07-09T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/23.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.006Z",
               "possessions": []
             },
             {
@@ -48297,9 +48297,9 @@
               "isbn": "9782368529621",
               "dateSortie": "2021-04-08T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/24.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.037Z",
               "possessions": []
             },
             {
@@ -48308,9 +48308,9 @@
               "isbn": "9782380711516",
               "dateSortie": "2022-01-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/25.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.068Z",
               "possessions": []
             },
             {
@@ -48319,9 +48319,9 @@
               "isbn": "9782380713183",
               "dateSortie": "2022-11-10T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/26.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.098Z",
               "possessions": []
             },
             {
@@ -48330,9 +48330,9 @@
               "isbn": "9782380715453",
               "dateSortie": "2023-11-09T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/27.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.129Z",
               "possessions": []
             },
             {
@@ -48341,9 +48341,9 @@
               "isbn": "9791042014810",
               "dateSortie": "2024-12-05T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/28.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.161Z",
               "possessions": []
             },
             {
@@ -48352,9 +48352,9 @@
               "isbn": "9791042019396",
               "dateSortie": "2026-05-13T00:00:00.000Z",
               "prixCentimes": null,
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/vinland-saga/29.webp",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-16T09:45:51.193Z",
               "possessions": []
             }
           ]
