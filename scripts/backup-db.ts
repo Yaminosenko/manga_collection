@@ -25,6 +25,7 @@ type UtilisateurSauve = {
   id: string;
   email: string | null;
   identifiant: string | null;
+  identifiantAffiche: string | null;
   versionJeton: number;
   nom: string | null;
   role: RoleUtilisateur;
@@ -181,6 +182,7 @@ async function exporter() {
       id: utilisateur.id,
       email: utilisateur.email,
       identifiant: utilisateur.identifiant,
+      identifiantAffiche: utilisateur.identifiantAffiche,
       versionJeton: utilisateur.versionJeton,
       nom: utilisateur.nom,
       role: utilisateur.role,
@@ -313,6 +315,7 @@ async function restaurer() {
     id: utilisateur.id,
     email: utilisateur.email,
     identifiant: utilisateur.identifiant ?? null,
+    identifiantAffiche: utilisateur.identifiantAffiche ?? utilisateur.identifiant ?? null,
     versionJeton: utilisateur.versionJeton ?? 1,
     nom: utilisateur.nom,
     role: utilisateur.role,

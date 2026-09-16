@@ -186,7 +186,7 @@ export const LIBELLE_PROPRIETAIRE_ABSENT =
 export const LIBELLE_SIGNATURE_NON_CONFIGUREE =
   "Aucun secret de session n’est configuré : renseignez SESSION_SECRET dans l’environnement.";
 export const LIBELLE_IDENTIFIANT_INVALIDE =
-  `L’identifiant accepte les minuscules, les chiffres, le point, le tiret et le souligné, de ${LONGUEUR_IDENTIFIANT_MINIMALE} à ${LONGUEUR_IDENTIFIANT_MAXIMALE} caractères.`;
+  `L’identifiant accepte les lettres non accentuées, les chiffres, le point, le tiret et le souligné, de ${LONGUEUR_IDENTIFIANT_MINIMALE} à ${LONGUEUR_IDENTIFIANT_MAXIMALE} caractères.`;
 export const LIBELLE_IDENTIFIANT_PRIS = "Cet identifiant est déjà utilisé.";
 export const LIBELLE_EMAIL_INVALIDE = "Cette adresse email n’est pas valide.";
 export const LIBELLE_EMAIL_PRIS = "Cette adresse email est déjà utilisée.";

@@ -351,6 +351,17 @@ export function normaliserIdentifiant(brut: string): string {
   return brut.trim().toLowerCase();
 }
 
+export function identifiantAffiche(brut: string): string {
+  return brut.trim();
+}
+
+export function identifiantVisible(
+  affiche: string | null,
+  normalise: string | null,
+): string | null {
+  return affiche ?? normalise;
+}
+
 export function identifiantValide(identifiant: string): boolean {
   return (
     identifiant.length >= LONGUEUR_IDENTIFIANT_MINIMALE &&

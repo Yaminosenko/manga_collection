@@ -4,7 +4,9 @@ import { prisma } from "../lib/prisma";
 import { hacherMotDePasse } from "../lib/auth";
 import {
   emailValide,
+  identifiantAffiche,
   identifiantValide,
+  identifiantVisible,
   motDePasseAssezLong,
   normaliserEmail,
   normaliserIdentifiant,
@@ -101,7 +103,9 @@ async function lister(): Promise<void> {
   const utilisateurs = await prisma.utilisateur.findMany({ orderBy: { creeLe: "asc" } });
 
   for (const utilisateur of utilisateurs) {
-    const nom = utilisateur.identifiant ?? "(sans identifiant)";
+    const nom =
+      identifiantVisible(utilisateur.identifiantAffiche, utilisateur.identifiant) ??
+      "(sans identifiant)";
     const acces = utilisateur.motDePasseHash ? "mot de passe posé" : "SANS MOT DE PASSE";
     console.log(
       `${nom} · ${utilisateur.role} · ${utilisateur.email ?? "(sans email)"} · ${acces}`,
@@ -113,7 +117,9 @@ async function lister(): Promise<void> {
 }
 
 async function poserSurLeProprietaire(arguments_: string[]): Promise<void> {
-  const identifiant = normaliserIdentifiant(valeurOption(arguments_, OPTION_IDENTIFIANT) ?? "");
+  const saisi = valeurOption(arguments_, OPTION_IDENTIFIANT) ?? "";
+  const identifiant = normaliserIdentifiant(saisi);
+  const affiche = identifiantAffiche(saisi);
   if (!identifiantValide(identifiant)) {
     throw new Error(LIBELLE_IDENTIFIANT_INVALIDE);
   }
@@ -146,13 +152,14 @@ async function poserSurLeProprietaire(arguments_: string[]): Promise<void> {
     where: { id: proprietaire.id },
     data: {
       identifiant,
+      identifiantAffiche: affiche,
       motDePasseHash: await hacherMotDePasse(motDePasse),
       versionJeton: { increment: 1 },
       ...(email === null ? {} : { email }),
     },
   });
 
-  console.log(`Propriétaire ${proprietaire.id} : identifiant « ${identifiant} » posé.`);
+  console.log(`Propriétaire ${proprietaire.id} : identifiant « ${affiche} » posé.`);
   console.log(await compteursDe(proprietaire.id));
 }
 

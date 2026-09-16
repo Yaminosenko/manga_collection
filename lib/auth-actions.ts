@@ -25,6 +25,7 @@ import {
 } from "./constants";
 import {
   emailValide,
+  identifiantAffiche,
   identifiantValide,
   motDePasseAssezLong,
   normaliserEmail,
@@ -88,10 +89,12 @@ export async function sInscrire(
   _precedent: EtatInscription,
   donnees: FormData,
 ): Promise<EtatInscription> {
-  const identifiant = normaliserIdentifiant(texte(donnees, CHAMP_IDENTIFIANT));
+  const saisi = texte(donnees, CHAMP_IDENTIFIANT);
+  const identifiant = normaliserIdentifiant(saisi);
+  const affiche = identifiantAffiche(saisi);
   const email = normaliserEmail(texte(donnees, CHAMP_EMAIL));
   const motDePasse = texte(donnees, CHAMP_MOT_DE_PASSE);
-  const saisie = { identifiant, email };
+  const saisie = { identifiant: affiche, email };
 
   if (!identifiantValide(identifiant)) {
     return { erreur: LIBELLE_IDENTIFIANT_INVALIDE, ...saisie };
@@ -123,6 +126,7 @@ export async function sInscrire(
   const cree = await prisma.utilisateur.create({
     data: {
       identifiant,
+      identifiantAffiche: affiche,
       email,
       motDePasseHash: await hacherMotDePasse(motDePasse),
     },
@@ -144,7 +148,9 @@ export async function changerIdentite(
   donnees: FormData,
 ): Promise<EtatCompte> {
   const { utilisateurId } = await exigerAcces();
-  const identifiant = normaliserIdentifiant(texte(donnees, CHAMP_IDENTIFIANT));
+  const saisi = texte(donnees, CHAMP_IDENTIFIANT);
+  const identifiant = normaliserIdentifiant(saisi);
+  const affiche = identifiantAffiche(saisi);
   const email = normaliserEmail(texte(donnees, CHAMP_EMAIL));
   const nom = texte(donnees, CHAMP_NOM).trim();
 
@@ -174,7 +180,12 @@ export async function changerIdentite(
 
   await prisma.utilisateur.update({
     where: { id: utilisateurId },
-    data: { identifiant, email, nom: nom.length > 0 ? nom : null },
+    data: {
+      identifiant,
+      identifiantAffiche: affiche,
+      email,
+      nom: nom.length > 0 ? nom : null,
+    },
   });
 
   revalidatePath(CHEMIN_COMPTE);
