@@ -559,6 +559,13 @@ dans leurs textes, pas dans notre lecture. **Une demande d'autorisation est réd
 à `admin@mangadex.org`** — même posture que manga-news. Rien de massif n'est téléchargé avant
 réponse ; seul l'essai visuel de 75 couvertures a été fait, au titre de l'usage personnel.
 
+> **Le cron quotidien y retombe depuis le 16 septembre 2026, par décision du propriétaire prise
+> en connaissance de ce paragraphe.** Elle est écrite ici plutôt que tue : la demande reste non
+> envoyée et non répondue. Ce que ça couvre est borné — la BnF passe d'abord, MangaDex n'est
+> essayé que sur les éditions **sans marqueur** dont la numérotation est comparable, et le volume
+> mesuré au premier passage est de **40 images**. Ce n'est pas la récupération massive que les
+> CGU visent, mais ce n'est pas non plus une autorisation.
+
 **MangaDex est instable comme source** : ~7 000 titres et ~25 % des chapitres retirés sur
 notifications DMCA en mai 2025. Une couverture disponible aujourd'hui peut disparaître. La
 recopie dans Cloudflare R2 nous en rend indépendants une fois faite.
@@ -618,8 +625,14 @@ d'autorisation.
 
 **Le vrai verrou n'est pas la source, c'est l'ISBN.** Toutes les bonnes sources s'interrogent par
 EAN ; MangaDex n'a été retenu que faute d'EAN, d'où le sélecteur d'appariement par titre et ses
-ratés. Le constat tient toujours : sur les 16 tomes de la collection encore sans couverture,
+ratés. Le constat tient toujours : sur les 13 tomes de la collection encore sans couverture,
 **7 n'ont aucun ISBN en base** — rien à interroger.
+
+**Cette chaîne tourne dans le cron depuis le 16 septembre 2026**, BnF par EAN puis MangaDex, et
+`§5 « Rafraîchissement »` n'est donc plus une cible sur ce point. Le report d'un essai raté est
+porté par `Volume.couvertureTenteeLe` et `couvertureTentatives` — 7, 30 puis 90 jours — de sorte
+qu'un tome neuf passe en tête de file sans rien déclarer et qu'un tome sans notice se fait
+oublier tout seul.
 
 **Champ `sourceCouverture` — ajouté le 10 septembre 2026**, sur `Volume` **et sur `Sortie`**, la
 seconde parce que `promouvoir()` recopie la couverture de la sortie vers le tome. `null` veut dire
@@ -922,7 +935,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 10 septembre 2026.
+Dernière mise à jour : 16 septembre 2026.
 
 **La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
 nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
@@ -933,7 +946,7 @@ fuite. **Depuis §13.6 l'inscription y est libre**, d'où le `noindex` sur l'app
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
 
-**Le journal détaillé vit dans `JOURNAL.md`** — 48 entrées datées, de l'import du Sheet au
+**Le journal détaillé vit dans `JOURNAL.md`** — 75 entrées datées, de l'import du Sheet au
 déploiement : ce qui a été construit, les chiffres qui l'établissent, les défauts trouvés et
 leur cause. Il a été sorti d'ici le 7 septembre 2026 parce qu'il pesait les deux tiers de ce
 document et que ses rectifications successives finissaient par se contredire d'un bout à
@@ -946,7 +959,7 @@ l'autre du fichier.
 Ce qui suit regarde vers l'avant : l'état chiffré, les pièges qui se répètent, le travail
 restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 
-### L'état chiffré — lu en base le 10 septembre 2026
+### L'état chiffré — lu en base le 16 septembre 2026
 
 **Un seul tableau, relu à chaque fois plutôt que rectifié par empilement.** Les compteurs de §8
 ont bougé depuis l'import et c'est normal : le planning élargit des dénominateurs, la promotion
@@ -954,29 +967,35 @@ des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
 
 | | |
 |---|---|
-| Séries · Éditions | **112** · **116** |
-| Suivis (`SuiviEdition`) | **116**, tous sur le propriétaire — `EN_COURS` 89, `ABANDONNEE` 18, `EN_PAUSE` 5, `VENDUE` 4 |
-| `suivie = true` | **87** |
-| Utilisateurs | **1**, `PROPRIETAIRE`, `email` nul |
-| Tomes (`Volume`) | **1 770** |
-| Possessions | **1 719**, dont **1 162** possédées |
-| **Couvertures de tomes** | **1 754 / 1 770**, servies depuis Cloudflare R2 |
-| **Couvertures de sorties** | **14 / 16** |
-| `sourceCouverture` | **74 à `bnf`**, le reste à `null` = indéterminé, antérieur au champ |
-| ISBN | **1 547 / 1 770** |
-| Sorties annoncées (`Sortie`) | **16** |
+| Séries · Éditions | **116** · **120** |
+| Suivis (`SuiviEdition`) | **122** — `EN_COURS` 94, `ABANDONNEE` 19, `EN_PAUSE` 5, `VENDUE` 4 |
+| `suivie = true` | **91** |
+| Utilisateurs | **2** : le `PROPRIETAIRE` et un `UTILISATEUR` d'essai, tous deux avec un identifiant depuis §13.6 |
+| Tomes (`Volume`) | **1 941** |
+| Possessions | **1 735**, dont **1 174** possédées |
+| **Couvertures de tomes** | **1 928 / 1 941**, servies depuis Cloudflare R2 |
+| **Couvertures de sorties** | **15 / 19** |
+| `sourceCouverture` | **208 à `bnf`**, **40 à `mangadex`**, le reste à `null` = indéterminé, antérieur au champ |
+| ISBN | **1 718 / 1 941** |
+| Sorties annoncées (`Sortie`) | **19** |
 | Liens entre séries (`LienSerie`) | **28** sur 23 séries, dérivés de MangaBaka |
-| `Serie.idMangaBaka` | **109 / 112** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
-| `Serie.alias` · `aliasNormalises` | **1 121** libellés · **1 234** formes indexées, dont 86 séries avec une forme japonaise |
+| `Serie.idMangaBaka` | **113 / 116** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
+| `Serie.idMangaDex` | **4** : `bakuman`, `initial-d`, `one-piece`, `vinland-saga`. Écrit par le cron, **et seulement une fois les trois garde-fous tenus** — voir « Fait — les couvertures dans le cron » au journal |
+| `Volume.couvertureTenteeLe` | **53** tomes essayés par le cron, **1** tentative au plus ; les **13** encore sans image ont tous été essayés |
+| `Serie.alias` · `aliasNormalises` | **1 166** libellés · **1 283** formes indexées, formes japonaises comprises |
 | Abréviations captées | **60 séries** : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
-| Genres · Thèmes · Cible | **22** valeurs · **143** valeurs · `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
-| `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
-| `VignetteCatalogue` | **12 382 EAN interrogés**, **7 272 avec une image (59 %)** — le catalogue est couvert, il ne reste aucun groupe |
-| `Edition.creeeParId` | **3 / 116** renseignés. `null` veut dire « venu de l'import » ; ces 3 viennent de `/ajouter` |
-| `Edition.slugMangaNews` | **0 / 116**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
-| Éditions à zéro tome possédé | **5** : les 4 `VENDUE`, **plus une entrée de wish list** |
+| Genres · Thèmes · Cible | **22** valeurs · **157** valeurs · `Shonen` 82 · `Seinen` 26 · `Echi` 7 · `Shojo` 1 |
+| `AliasRecherche` | **1 ligne** le 10 septembre, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
+| `VignetteCatalogue` | **12 382 EAN interrogés**, **7 272 avec une image (59 %)** — mesuré le 10 septembre, le catalogue est couvert |
+| `Edition.creeeParId` | **7 / 120** renseignés. `null` veut dire « venu de l'import » ; ces 7 viennent de `/ajouter` |
+| `Edition.slugMangaNews` | **0 / 120**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
+| Éditions à zéro tome possédé | **7** : les 4 `VENDUE`, plus `bakuman`, `initial-d` et `blackrock-shooter-innocent-soul` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **52 009** parutions, **12 880 groupes**, **janvier 2000 → décembre 2026 sans un mois manquant** |
+
+Les quatre lignes de catalogue — `AliasRecherche`, `VignetteCatalogue`, `ParutionCatalogue` et
+les abréviations — sont celles du 10 septembre : `data/backup.json` ne porte pas ces tables,
+volontairement, elles se redérivent des CSV manga-news.
 
 **La sauvegarde se relance avant de s'appuyer sur ses chiffres** — elle a menti de deux tomes le
 7 septembre pour avoir été prise le 3. Et `data/backup.json` est dans la forme multi-compte
@@ -1045,6 +1064,12 @@ détail et les cas réels sont dans `JOURNAL.md`.
   `fetch_covers.py`, `fetch_publishers.py`, `generate_icons.py`. **Les importer suffisait à les
   exécuter en entier**, et c'est arrivé : un script de vérification qui importait
   `fetch_covers` a relancé la passe complète. La garde est posée sur les trois.
+- **Une colonne neuve qui n'entre pas dans `backup-db.ts` sort du filet en silence — deux fois.**
+  §13.1 l'avait posé en règle — « le filet doit couvrir la nouvelle forme avant qu'on en ait
+  besoin » — et la migration du 16 septembre l'a quand même oublié : `Serie.idMangaDex`,
+  `Volume.couvertureTenteeLe` et `couvertureTentatives` ont vécu une journée hors de la
+  sauvegarde. Rien ne le signale, les sept compteurs ne bougent pas, et c'est justement ce qui
+  rend le trou invisible. **La colonne et sa ligne d'export partent dans le même commit.**
 - **Le cache des couvertures est immuable un an.** Corriger une image ne suffit pas : un
   appareil qui a vu la mauvaise la garde. Et **supprimer un fichier ne nettoie pas la base** —
   toute suppression remet `couvertureUrl` à `null` dans le même geste.
@@ -1148,32 +1173,31 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
-- **Les couvertures** : **1 754 / 1 770** et **14 sorties sur 16**. **Les 16 tomes qui restent ne
-  sont pas un problème de source, c'en est un d'ISBN** — le verrou que §5 annonce depuis le
-  31 août :
+- **Les couvertures** : **1 928 / 1 941** et **15 sorties sur 19**. **Le remplissage n'est plus
+  manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
+  puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
 
   | Ce qui manque | Cause |
   |---|---|
-  | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à interroger |
-  | `ippo-s4` t.3–7 · `grimoire` t.3 · `initial-d` t.33–35 — **9 tomes** | ISBN connu, mais **pas de notice illustrée à la BnF**, et pas d'identifiant MangaDex pour ces éditions |
-  | `les-legendaires-saga` t.13 · `radiant` t.20 — **2 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
+  | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à demander à la BnF |
+  | `ippo-s4` t.3–7 · `grimoire` t.3 — **6 tomes** | ISBN connu mais **sans notice illustrée**, et **MangaDex leur est fermé par décision** : ce sont un découpage VF et une édition marquée, dont la numérotation n'est pas celle de la série de base |
+  | `les-legendaires-saga` t.13 · `one-piece` t.114 · `radiant` t.20 · `tsugai` t.11 — **4 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
 
-  Le chemin le plus rentable est donc **de leur trouver un ISBN dans `ParutionCatalogue`**, pas de
-  chercher une source de plus. Les 2 sorties se rempliront d'elles-mêmes à la parution, quand le
-  cron les promeut en tome.
+  Le chemin le plus rentable reste **de trouver un ISBN aux 7 premiers dans `ParutionCatalogue`**,
+  pas de chercher une source de plus. Les 4 sorties se rempliront d'elles-mêmes à la parution,
+  quand le cron les promeut en tome.
 
-  Le remplissage reste manuel et local : `db:backup`, puis `covers:fetch`, puis `covers:bnf`, puis
-  `covers:upload`. Y porter la tâche quotidienne demande de réécrire en TypeScript le sélecteur
-  MangaDex de `fetch_covers.py`, celui qui pénalise les fiches satellites — sans lui, un
-  appariement naïf fait repartir Bleach avec 1 tome sur 74. **Et son pont vers MangaDex passe
-  encore par AniList, qui est morte** : les 108 identifiants déjà résolus le sauvent, mais une
-  série neuve n'en obtiendra pas. Le remplacer par les titres romaji et natifs de MangaBaka, que
-  `data/mangabaka.json` porte déjà, est le petit chantier qui débloque la ligne suivante.
-- **Une série ajoutée n'a aucune couverture de tome**, rien n'étant posé à la création. Mais elle
-  n'est plus invisible pour autant : depuis le 10 septembre la recherche, le scanner et la wish
-  list lui trouvent une vignette via `VignetteCatalogue`. Ce qui manque est la **grille**, où les
-  tomes restent des pastilles jusqu'au prochain `covers:bnf`.
-- **`Edition.slugMangaNews` est nul sur les 116 éditions**, mais **le lien sortant s'affiche**
+  `covers:fetch`, `covers:bnf` et `covers:upload` restent au dépôt et gardent leur usage : un lot
+  massif, ou une reprise forcée que le cron ne sait pas demander. Mais **le cas nominal ne passe
+  plus par le poste**. Leur sélecteur MangaDex n'a pas été réécrit en TypeScript : le cron
+  n'apparie que sur `titre` et `titreVo`, refuse les éditions marquées et exige une numérotation
+  comparable, ce qui écarte les fiches satellites par une autre voie que la pénalité de
+  `fetch_covers.py`.
+- **Une série ajoutée n'a toujours aucune couverture de tome à la création**, mais **elle les a le
+  lendemain** : le cron sert en priorité les tomes jamais essayés. Entre-temps la recherche, le
+  scanner et la wish list lui trouvent une vignette via `VignetteCatalogue` ; seule la **grille**
+  reste en pastilles, et pour une nuit au plus.
+- **`Edition.slugMangaNews` est nul sur les 120 éditions**, mais **le lien sortant s'affiche**
   quand même : la page Édition construit une **recherche** manga-news sur le titre, elle n'a
   jamais utilisé ce champ. Le remplir ne ferait que remplacer une recherche par un lien direct
   vers la fiche — un confort, pas un trou. Le planning ne porte pas les slugs ; il faudrait les
@@ -1190,9 +1214,9 @@ Ce qui reste :
 
 #### Ce qui tourne en arrière-plan, ou pas
 
-- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` ne fait qu'une chose
-  depuis le 3 septembre : promouvoir les sorties dont le mois est clos. Restent les nouveaux
-  tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
+- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` en fait deux depuis le
+  16 septembre : promouvoir les sorties dont le mois est clos, puis **acquérir les couvertures
+  manquantes**. Restent les nouveaux tomes parus et la mise à jour d'`editionTerminee`.
 - **Dériver les `Sortie` depuis `ParutionCatalogue`** plutôt que du manifeste de planning. C'est
   déjà le cas **à la création** d'une série depuis le 9 septembre ; il reste à le faire pour les
   éditions existantes, et à faire glisser la fenêtre M-1 → M+6 de §13.1.
@@ -1209,6 +1233,12 @@ Ce qui reste :
 
 #### Échéances et environnement
 
+- **Les cinq `R2_*` sont posées dans Vercel** (16 septembre 2026), **à ne pas re-poser.** Elles y
+  sont devenues nécessaires le jour où le cron quotidien s'est mis à **déposer lui-même** les
+  couvertures qu'il acquiert : sans elles il lève **dès la première image obtenue** et
+  `/api/cron` répond 500, la promotion des sorties ayant déjà eu lieu. Les écrans, eux, n'en ont
+  toujours pas besoin — ils lisent les URL absolues stockées en base. `R2_ENDPOINT` se **recopie
+  tel qu'affiché**, jamais reconstruit depuis l'identifiant de compte.
 - **Supprimer le store Vercel Blob**, décidé le 3 septembre, mûr depuis le **~10 septembre 2026**.
   `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota
   d'opérations avancées.
@@ -1240,8 +1270,10 @@ Ce qui reste :
    `.env.example`, et **recopier `R2_ENDPOINT` tel qu'affiché, ne pas le reconstruire** — et
    `LOCAL_DATABASE_URL` pour travailler sur un Postgres local — **elle se passe en préfixe de
    commande, jamais dans `.env`**, voir « Pièges établis » : `lib/prisma.ts` la lit aussi, donc
-   elle détourne l'application entière en plus des scripts. **Aucune
-   variable `R2_*` n'est à renseigner dans Vercel** : l'application ne fait que lire les URL
+   elle détourne l'application entière en plus des scripts. **Les cinq `R2_*` sont en revanche
+   à renseigner dans Vercel depuis le 16 septembre 2026** : le cron quotidien dépose lui-même
+   les couvertures qu'il acquiert, et sans elles il lève dès la première image obtenue et la
+   route répond 500. Les écrans, eux, n'ont toujours besoin de rien — ils lisent les URL
    absolues stockées en base. **Aucun secret n'est dans le dépôt et n'y sera jamais.**
 4. `npm run dev`. **Ne pas relancer le seed** : la base Neon est remplie et fait foi, pas
    `data/collection.json` qui est figé au point zéro de l'import.
@@ -1295,7 +1327,7 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   À rouvrir seulement si une source de couvertures de tome manque un jour.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.slugMangaNews` est nul sur les 116 éditions.** Le Sheet ne le portait pas. Le lien
+- **`Edition.slugMangaNews` est nul sur les 120 éditions.** Le Sheet ne le portait pas. Le lien
   sortant s'affiche néanmoins, sous forme de **recherche** par titre : ce champ ne servirait
   qu'à pointer la fiche directement. Le planning ne porte pas les slugs non plus — il faudrait
   les déduire des titres, ou les saisir.

@@ -3750,3 +3750,93 @@ compteur est bien personnel.
 
 Au passage, « tomes parus **selon le catalogue** » devient « tomes parus » sur les lignes de
 résultat, et la section « changer le mot de passe » de `/compte` est masquée.
+
+---
+
+### Corrigé — une couverture de sortie écrite comme un tome
+
+**16 septembre 2026.** `fetch_covers_bnf.py` écrit les tomes **et** les sorties annoncées dans
+le même manifeste, alors qu'`upload-covers.ts` le lisait comme ne contenant que des tomes — les
+annonces ont leur propre fichier, `covers-annonces.json`. La conséquence était un
+`prisma.volume.update` sur un couple (édition, numéro) sans `Volume`, donc un **P2025 qui
+arrêtait l'écriture en cours de route, après l'envoi dans R2** : les images déposées, la base à
+moitié écrite.
+
+**Le défaut dormait depuis toujours et ne pouvait pas se déclarer avant** : aucune sortie
+annoncée n'avait jamais obtenu d'image de la BnF, faute de dépôt légal avant parution. One Piece
+t.113 est la première, et elle a suffi.
+
+L'écriture passe en `updateMany`, qui ne lève pas quand rien ne correspond, et ce qui n'est pas
+un tome est tenté sur `Sortie` avec les mêmes données — donc avec sa source et sa date de
+récupération, que `Sortie` porte depuis le 10 septembre précisément parce que `promouvoir()`
+recopie la couverture de la sortie vers le tome.
+
+**Vérifié par la reprise** : 0 envoi puisque tout était déjà dans le bucket, et l'écriture va au
+bout. **1 888 / 1 941** tomes illustrés contre 1 754 avant, **208** volumes marqués `bnf` contre
+74, et One Piece t.113 est la quinzième sortie illustrée.
+
+---
+
+### Fait — les couvertures dans le cron
+
+**16 septembre 2026.** §13.2 avait tranché le principe — *récupérer la couverture quand une série
+entre dans une collection* — et ça n'avait jamais été implémenté. Une série ajoutée depuis le
+téléphone arrivait avec son éditeur, son prix, son auteur, ses genres et l'ISBN sur 100 % de ses
+tomes, **mais aucune image**, et il fallait le poste local et deux scripts pour y remédier.
+`app/api/cron/route.ts` s'en charge désormais, après la promotion des sorties échues.
+
+**La BnF d'abord, par EAN, en 256×360** : elle redimensionne côté serveur, donc aucun traitement
+d'image n'est nécessaire et la fonction reste dans son budget. Le téléchargement est sorti de
+`fetch-vignettes.ts` vers `lib/couverture-bnf.ts`, distinction **absence attestée / injoignable**
+comprise — un 404 ou un 500 de la BnF veut dire « aucune image sur cette notice », tout le reste
+est une coupure qui ne doit rien écrire.
+
+**Puis MangaDex**, `fr` avant `ja` et jamais une troisième langue, sur ses vignettes `.256.jpg`
+qui tombent à notre cote sans redimensionnement. **Ce repli est demandé par le propriétaire en
+connaissance de §5**, qui dit que l'usage programmatique reste en attente d'autorisation : la
+décision est prise, elle est consignée telle quelle.
+
+**Le report remplace « les tomes ajoutés récemment »**, que le schéma ne savait pas exprimer
+faute de date de création sur `Volume`. `couvertureTenteeLe` et `couvertureTentatives` portent un
+intervalle qui s'allonge — **7, 30 puis 90 jours** — donc un tome neuf passe en tête de file sans
+rien déclarer, et un tome sans notice se fait oublier tout seul. Exiger un ISBN pour la jambe BnF
+suffit par ailleurs à écarter les 7 tomes qui n'en ont aucun, sans aucune comptabilité.
+
+**Le défaut trouvé en éprouvant, et c'est le sixième du même genre** : apparier au niveau `Serie`
+en acceptant les alias plaque une numérotation sur une autre. Les alias viennent de MangaBaka,
+qui apparie la série de **base**, donc « L'Atelier des sorciers - Édition grimoire » est tombé
+sur *Tongari Boushi no Atelier* et « IPPO – S4 LA LOI DU RING » sur *Hajime no Ippo*. Leur tome 3
+n'est pas le tome 3 de la série. **Deux couvertures fausses ont été écrites, puis annulées et
+leurs objets supprimés de R2** — le cache est immuable un an, les laisser aurait figé l'erreur.
+
+Trois garde-fous en réponse : l'appariement ne regarde plus que `titre` et `titreVo`, **jamais
+les alias** ; la jambe MangaDex est réservée aux **éditions sans marqueur** ; et le nombre de
+tomes doit rester **comparable**, ce qui refuse de plaquer 139 volumes japonais sur un découpage
+français de 27. L'identifiant n'est retenu sur la `Serie` qu'une fois ces conditions tenues,
+sinon la base affirmerait qu'`ippo-s4` **est** *Hajime no Ippo*.
+
+**Vérifié par des passages réels contre Neon.** **1 928 / 1 941** tomes illustrés contre 1 754 le
+matin même ; **40** images par MangaDex, **208** par la BnF. Le second passage examine **zéro**
+candidat, donc le report tient. Les **13** restants sont exactement les cas que la règle doit
+refuser : `ippo-s4` pour 11, `les-legendaires-saga` et le grimoire pour 1 chacun. Les images
+servies sont contrôlées une à une — 200, `image/jpeg`, cinq tailles distinctes sur cinq.
+
+#### Les deux suites, le lendemain de l'interruption
+
+La session s'était arrêtée avant de les traiter.
+
+**Les cinq `R2_*` sont désormais nécessaires dans Vercel**, et `.env.example` comme §12 disaient
+le contraire : « l'application ne fait que lire les URL absolues stockées en base ». C'était vrai
+jusqu'à ce cron, qui **dépose lui-même**. Sans elles, `exiger("R2_ENDPOINT")` lève **dès la
+première image obtenue** et `/api/cron` répond 500 — la promotion, elle, aura déjà eu lieu. Rien
+n'a échoué : le commit est sur `main` depuis 12 h 08 et le cron ne part qu'à 4 h. **Les cinq
+variables ont été posées dans Vercel le jour même**, avant le premier passage.
+
+**Le filet ne couvrait pas les trois colonnes neuves.** `scripts/backup-db.ts` ignorait
+`Serie.idMangaDex`, `Volume.couvertureTenteeLe` et `couvertureTentatives` — donc une restauration
+aurait perdu les appariements MangaDex retenus, c'est-à-dire précisément ce que les garde-fous
+ont coûté cher à valider, et remis toute la file à « jamais essayé ». Les trois entrent dans
+l'export et dans la restauration, avec le `?? null` / `?? 0` qui laisse relire une sauvegarde
+antérieure. **Vérifié par un `db:backup` réel** : 4 séries portent un `idMangaDex` —
+`bakuman`, `initial-d`, `one-piece`, `vinland-saga` —, 53 tomes ont été essayés, 1 tentative au
+plus, et les 13 sans image l'ont tous été. Les sept compteurs ne bougent pas.

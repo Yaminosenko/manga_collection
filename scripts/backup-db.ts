@@ -53,6 +53,8 @@ type VolumeSauve = {
   couvertureUrl: string | null;
   sourceCouverture: string | null;
   couvertureRecupereeLe: string | null;
+  couvertureTenteeLe: string | null;
+  couvertureTentatives: number;
   possessions: PossessionSauvee[];
 };
 
@@ -103,6 +105,7 @@ type SerieSauvee = {
   cible: string | null;
   couvertureUrl: string | null;
   idMangaBaka: number | null;
+  idMangaDex: string | null;
   editions: EditionSauvee[];
 };
 
@@ -203,6 +206,7 @@ async function exporter() {
       cible: serie.cible,
       couvertureUrl: serie.couvertureUrl,
       idMangaBaka: serie.idMangaBaka,
+      idMangaDex: serie.idMangaDex,
       editions: serie.editions.map((edition) => ({
         id: edition.id,
         slug: edition.slug,
@@ -239,6 +243,8 @@ async function exporter() {
           couvertureUrl: volume.couvertureUrl,
           sourceCouverture: volume.sourceCouverture,
           couvertureRecupereeLe: enISO(volume.couvertureRecupereeLe),
+          couvertureTenteeLe: enISO(volume.couvertureTenteeLe),
+          couvertureTentatives: volume.couvertureTentatives,
           possessions: volume.possessions.map((possession) => ({
             id: possession.id,
             utilisateurId: possession.utilisateurId,
@@ -336,6 +342,7 @@ async function restaurer() {
     cible: serie.cible,
     couvertureUrl: serie.couvertureUrl,
     idMangaBaka: serie.idMangaBaka ?? null,
+    idMangaDex: serie.idMangaDex ?? null,
   }));
 
   const editions = sauvegarde.series.flatMap((serie) =>
@@ -379,6 +386,8 @@ async function restaurer() {
         couvertureUrl: volume.couvertureUrl,
         sourceCouverture: volume.sourceCouverture ?? null,
         couvertureRecupereeLe: enDate(volume.couvertureRecupereeLe),
+        couvertureTenteeLe: enDate(volume.couvertureTenteeLe ?? null),
+        couvertureTentatives: volume.couvertureTentatives ?? 0,
       })),
     ),
   );
