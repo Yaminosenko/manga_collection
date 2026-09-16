@@ -1,6 +1,8 @@
 import {
   BUDGET_COUVERTURES_MS,
+  HAUTEUR_COUVERTURE,
   JOURS_AVANT_NOUVEL_ESSAI,
+  LARGEUR_COUVERTURE,
   MILLISECONDES_PAR_JOUR,
   NOM_EDITION_PAR_DEFAUT,
   PLAFOND_COUVERTURES_PAR_PASSAGE,
@@ -16,7 +18,7 @@ import {
   telechargerCouvertureMangaDex,
 } from "@/lib/couverture-mangadex";
 import { prisma } from "@/lib/prisma";
-import { deposer } from "@/lib/r2";
+import { cheminDepuisUrl, copierObjet, deposer } from "@/lib/r2";
 
 const HAUTEUR_MINIMALE = 60;
 const ECART_TOMES_TOLERE = 2;
@@ -45,15 +47,47 @@ type Candidat = {
   };
 };
 
+type Vignette = {
+  couvertureUrl: string;
+  source: string | null;
+  largeur: number | null;
+  hauteur: number | null;
+  recupereeLe: Date;
+};
+
 export type BilanCouvertures = {
   examines: number;
   obtenues: number;
+  parVignette: number;
   parBnf: number;
   parMangaDex: number;
   absentes: number;
   injoignables: number;
   restants: number;
 };
+
+function vignetteALaCote(vignette: Vignette): boolean {
+  if (vignette.largeur === null || vignette.hauteur === null) return false;
+  if (vignette.largeur > LARGEUR_COUVERTURE || vignette.hauteur > HAUTEUR_COUVERTURE) return false;
+  return vignette.largeur === LARGEUR_COUVERTURE || vignette.hauteur === HAUTEUR_COUVERTURE;
+}
+
+async function vignettesExploitables(isbns: string[]): Promise<Map<string, Vignette>> {
+  if (isbns.length === 0) return new Map();
+
+  const lignes = await prisma.vignetteCatalogue.findMany({
+    where: { ean: { in: isbns }, couvertureUrl: { not: null } },
+    select: { ean: true, couvertureUrl: true, source: true, largeur: true, hauteur: true, recupereeLe: true },
+  });
+
+  return new Map(
+    lignes.flatMap((ligne) =>
+      ligne.couvertureUrl === null
+        ? []
+        : [[ligne.ean, { ...ligne, couvertureUrl: ligne.couvertureUrl }] as const],
+    ),
+  );
+}
 
 function delaiAvantNouvelEssai(tentatives: number): number {
   const dernier = JOURS_AVANT_NOUVEL_ESSAI[JOURS_AVANT_NOUVEL_ESSAI.length - 1] ?? 0;
@@ -104,6 +138,38 @@ async function poser(candidat: Candidat, reponse: ReponseCouverture, source: str
   return url;
 }
 
+async function reprendre(candidat: Candidat, vignette: Vignette, maintenant: Date): Promise<boolean> {
+  const source = cheminDepuisUrl(vignette.couvertureUrl);
+  if (source === null) return false;
+
+  const point = source.lastIndexOf(".");
+  if (point === -1) return false;
+
+  const chemin =
+    `${PREFIXE_OBJETS_COUVERTURES}/${candidat.edition.slug}/` +
+    `${candidat.numero}.${source.slice(point + 1)}`;
+
+  let url: string;
+  try {
+    url = await copierObjet(source, chemin);
+  } catch {
+    return false;
+  }
+
+  await prisma.volume.update({
+    where: { id: candidat.id },
+    data: {
+      couvertureUrl: url,
+      sourceCouverture: vignette.source,
+      couvertureRecupereeLe: vignette.recupereeLe,
+      couvertureTenteeLe: maintenant,
+      couvertureTentatives: { increment: 1 },
+    },
+  });
+
+  return true;
+}
+
 export async function acquerirCouverturesManquantes(
   maintenant: Date = new Date(),
   budgetMs: number = BUDGET_COUVERTURES_MS,
@@ -143,9 +209,14 @@ export async function acquerirCouverturesManquantes(
     estDuPourUnEssai(brut, brut.couvertureTenteeLe, maintenant),
   );
 
+  const vignettes = await vignettesExploitables(
+    candidats.map((candidat) => candidat.isbn).filter((isbn): isbn is string => isbn !== null),
+  );
+
   const bilan: BilanCouvertures = {
     examines: 0,
     obtenues: 0,
+    parVignette: 0,
     parBnf: 0,
     parMangaDex: 0,
     absentes: 0,
@@ -162,7 +233,13 @@ export async function acquerirCouverturesManquantes(
     let obtenue = false;
     let injoignable = false;
 
-    if (candidat.isbn !== null) {
+    const vignette = candidat.isbn === null ? undefined : vignettes.get(candidat.isbn);
+    if (vignette !== undefined && vignetteALaCote(vignette)) {
+      obtenue = await reprendre(candidat, vignette, maintenant);
+      if (obtenue) bilan.parVignette += 1;
+    }
+
+    if (!obtenue && candidat.isbn !== null) {
       const reponse = await telechargerCouvertureBnf(candidat.isbn);
       if (imageExploitable(reponse)) {
         await poser(candidat, reponse, SOURCE_COUVERTURE_BNF, maintenant);

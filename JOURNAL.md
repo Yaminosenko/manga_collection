@@ -3864,3 +3864,71 @@ mais **le déploiement Vercel du 16 n'est toujours pas vérifié**. L'appel à `
 production a rendu **401**, et pas parce qu'il serait cassé : le `CRON_SECRET` de ce poste n'est
 pas celui de Vercel, exactement le piège que §12 consigne. `autorise()` rendant `false` dans les
 deux cas, un 401 ne distingue rien. La preuve viendra du passage de 4 h, ou du tableau de bord.
+
+---
+
+### Fait — le cron réemploie les vignettes de catalogue avant d'appeler la BnF
+
+**16 septembre 2026.** Question du propriétaire, et elle portait juste : la passe `vignettes:fetch`
+a pris « la couverture du tome 1 de la série / édition, ou la plus proche », or cette image
+n'alimentait **pas** la couverture de son tome — donc le tome restait sans image et on stockait
+des vignettes à rôle unique.
+
+**Le premier point à rectifier est la prémisse, et c'est ce qui rend la correction possible :
+`VignetteCatalogue` est clé par EAN.** Une vignette **est** la couverture d'un tome précis. « Le
+tome 1 ou le plus proche » décrivait la **stratégie de récupération** — une image par groupe de
+catalogue, en essayant jusqu'à 4 volumes — et l'image obtenue est écrite sous **l'EAN qui l'a
+produite**, pas sous un EAN représentatif du groupe. Le lien `Volume.isbn → VignetteCatalogue.ean`
+est donc exact, et il n'y avait rien à deviner.
+
+**L'ampleur, elle, était plus faible que supposé.** Mesuré en base :
+
+| | |
+|---|---|
+| Vignettes avec une image | **7 272** sur 12 382 EAN interrogés |
+| Tomes illustrés dont l'EAN porte aussi une vignette — image stockée deux fois | **70**, et **tous des tomes 1** |
+| Tomes sans image dont l'EAN a une vignette | **0** au moment de la mesure |
+| EAN de tomes **jamais interrogés** par `vignettes:fetch` | **1 660** |
+
+C'est structurel : `vignettes:fetch` n'a demandé **qu'un EAN par groupe**, en général le tome 1,
+alors qu'une collection est faite de tomes 2 à N. Les ~7 200 autres vignettes portent des groupes
+qu'aucun compte ne possède — elles ne peuvent pas alimenter un `Volume` qui n'existe pas, et
+elles font exactement le travail pour lequel elles ont été faites. **Le doublon réel est de 70
+images**, ~1,5 Mo.
+
+**Le gaspillage réel est ailleurs, et il est systématique** : le tome 1 d'une série fraîchement
+ajoutée a presque toujours sa vignette — c'est elle qui l'a fait trouver dans la recherche — et
+le cron la redemandait à la BnF pour redéposer un second objet. Vu en direct sur la passe du
+jour : `green-worldz` t.1 avait sa vignette `bnf`, et la couverture écrite est le **même fichier
+au même octet près**.
+
+**Le cron consulte donc `VignetteCatalogue` en premier**, et **recopie l'objet R2** —
+`CopyObjectCommand`, donc aucun téléchargement, aucun ré-encodage, et `Content-Type` comme
+`Cache-Control` préservés. La copie va sous `covers/<slug>/<n>`, pas un pointeur vers
+`vignettes/<ean>` : mélanger les deux cycles de vie ferait qu'une purge des vignettes casserait
+des couvertures de tome.
+
+**Le critère de réemploi est « l'image atteint notre cote sur au moins un côté »** — `largeur =
+256` **ou** `hauteur = 360`, jamais au-dessus. Il a été choisi sur mesure, pas supposé :
+**aucune des 7 272 ne dépasse 256×360**, la BnF redimensionnant côté serveur en respectant les
+proportions (256×354, 254×360, 253×360 sont les trois formes les plus fréquentes), et **515
+n'atteignent la cote sur aucun côté** parce que leur original est plus petit — 100×142, 140×191.
+Celles-là sont écartées et le tome repart au chemin normal, où MangaDex peut faire mieux.
+
+**La provenance recopiée est celle de la vignette, sa date comprise.** `couvertureRecupereeLe`
+prend `VignetteCatalogue.recupereeLe` et non l'heure de la copie : la Licence ouverte demande la
+date de récupération **auprès de la BnF**, pas celle d'un déplacement interne.
+
+**Écarté : se servir des échecs mémorisés pour sauter la BnF.** Une vignette à `couvertureUrl`
+nul dit « la BnF n'avait rien **ce jour-là** », et une notice s'illustre plus tard.
+`couvertureTenteeLe` rouvre déjà la question à 7, 30 puis 90 jours.
+
+**Vérifié fonctionnellement, pas au compteur.** `green-worldz` t.1 a été remis à `couvertureUrl`
+nul, puis une passe lancée : **1 examiné, 1 obtenu, `parVignette: 1`, `parBnf: 0`** — donc aucun
+appel externe. L'URL retombe sur la même clé, l'objet servi rend **200 / `image/jpeg` / 30 686
+octets**, exactement la taille d'avant, `Cache-Control: public, max-age=31536000` préservé, et
+l'image regardée à l'œil est bien Green Worldz t.01 chez Pika. `couvertureRecupereeLe` porte le
+**10 septembre**, la date de la vignette.
+
+Un dernier garde-fou : si la copie échoue — objet disparu du bucket —, `reprendre` rend `false`
+et le tome repart à la BnF, plutôt que de faire tomber toute la passe quotidienne.

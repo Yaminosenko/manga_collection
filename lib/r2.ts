@@ -1,4 +1,5 @@
 import {
+  CopyObjectCommand,
   DeleteObjectCommand,
   ListObjectsV2Command,
   PutObjectCommand,
@@ -63,6 +64,22 @@ export async function deposer(
     }),
   );
   return urlPublique(chemin);
+}
+
+export function cheminDepuisUrl(url: string): string | null {
+  const base = `${basePublique()}/`;
+  return url.startsWith(base) ? url.slice(base.length) : null;
+}
+
+export async function copierObjet(source: string, destination: string): Promise<string> {
+  await clientR2().send(
+    new CopyObjectCommand({
+      Bucket: bucket(),
+      Key: destination,
+      CopySource: encodeURI(`${bucket()}/${source}`),
+    }),
+  );
+  return urlPublique(destination);
 }
 
 export async function supprimerObjet(chemin: string): Promise<void> {

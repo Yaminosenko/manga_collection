@@ -588,9 +588,40 @@ manga-news n'a pas d'API. Une demande d'autorisation doit être envoyée avant t
 utilisation programmatique. En attendant, `slugMangaNews` ne sert qu'à construire un
 lien sortant vers la fiche officielle.
 
-### Ordre des sources de couverture — arrêté le 31 août, mesuré et révisé le 10 septembre 2026
+### Ordre des sources de couverture — arrêté le 31 août, mesuré et révisé le 10 et le 16 septembre 2026
 
-**La BnF d'abord, par EAN.** `openapi.bnf.fr/couverture/image/image/recupererImage`, interrogeable
+**Avant toute source externe : `VignetteCatalogue`, par EAN — ajouté le 16 septembre 2026.**
+La table est **clé par EAN**, donc une vignette *est* la couverture d'un tome précis, sans
+ambiguïté : « le tome 1 ou le plus proche » décrivait la **stratégie de récupération** de
+`vignettes:fetch` — une image par groupe de catalogue, en essayant jusqu'à 4 volumes —, jamais le
+stockage. Le cron joint donc `Volume.isbn` à `VignetteCatalogue.ean` et **recopie l'objet R2**
+plutôt que de redemander la même image à la BnF.
+
+**Le critère de réemploi est « l'image atteint notre cote sur au moins un côté »**, c'est-à-dire
+`largeur = 256` **ou** `hauteur = 360`, et jamais au-dessus. Mesuré sur les 7 272 vignettes
+illustrées : **aucune ne dépasse 256×360** — la BnF redimensionne côté serveur en respectant les
+proportions, d'où 256×354, 254×360, 253×360 — et **515 n'atteignent la cote sur aucun côté**,
+leur original étant plus petit (100×142, 140×191). Celles-là sont écartées et le tome repart au
+chemin normal, qui peut lui trouver mieux chez MangaDex.
+
+**La provenance recopiée est celle de la vignette, sa date comprise** — `couvertureRecupereeLe`
+prend `VignetteCatalogue.recupereeLe`, pas l'heure de la copie. C'est ce qu'exige la Licence
+ouverte : la date de récupération **auprès de la BnF**, pas celle d'un déplacement interne.
+
+**Le recoupement est faible et c'est structurel** : `vignettes:fetch` n'a interrogé **qu'un EAN
+par groupe**, en général le tome 1, alors qu'une collection est faite de tomes 2 à N. Mesuré le
+16 septembre : **70** tomes illustrés partagent leur EAN avec une vignette — **tous des tomes 1**,
+donc l'image stockée deux fois — et **1 660** EAN de tomes n'ont **jamais** été interrogés. Le
+réemploi ne vise donc pas un gros volume : il vise le **tome 1 de chaque série fraîchement
+ajoutée**, qui a presque toujours sa vignette puisque c'est elle qui l'a fait trouver dans la
+recherche.
+
+**Ce qui n'est délibérément pas fait : se servir des échecs mémorisés pour sauter la BnF.** Une
+vignette à `couvertureUrl` nul dit « la BnF n'avait rien **ce jour-là** » ; une notice s'illustre
+plus tard. `couvertureTenteeLe` rouvre déjà la question à 7, 30 puis 90 jours, et c'est le bon
+endroit pour ça.
+
+**La BnF ensuite, par EAN.** `openapi.bnf.fr/couverture/image/image/recupererImage`, interrogeable
 par `EAN=`, `ISBN=` ou `idArk=`, sans passer par l'ARK.
 
 | Ce qu'on demande | Ce qu'on obtient |
