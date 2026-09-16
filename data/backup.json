@@ -1,25 +1,36 @@
 {
-  "exporteeLe": "2026-09-16T09:14:37.431Z",
+  "exporteeLe": "2026-09-16T09:40:28.621Z",
   "compteurs": {
-    "series": 113,
-    "editions": 117,
-    "tomes": 1882,
-    "possedes": 1160,
-    "suivies": 86,
+    "series": 116,
+    "editions": 120,
+    "tomes": 1941,
+    "possedes": 1174,
+    "suivies": 91,
     "couvertures": 1754,
     "liens": 28
   },
   "utilisateurs": [
     {
       "id": "f087527f-bbda-41d2-ba57-0671ca0169fe",
-      "email": null,
-      "identifiant": null,
-      "identifiantAffiche": null,
-      "versionJeton": 1,
+      "email": "d.julliard.sin@gmail.com",
+      "identifiant": "tempestl",
+      "identifiantAffiche": "Tempestl",
+      "versionJeton": 2,
       "nom": null,
       "role": "PROPRIETAIRE",
       "aPaye": false,
       "creeLe": "2026-09-09T12:13:28.680Z"
+    },
+    {
+      "id": "54986f1b-9236-4aff-b1cb-e444140d3269",
+      "email": "test@gmail.com",
+      "identifiant": "testeur",
+      "identifiantAffiche": "Testeur",
+      "versionJeton": 1,
+      "nom": null,
+      "role": "UTILISATEUR",
+      "aPaye": false,
+      "creeLe": "2026-09-16T09:25:07.500Z"
     }
   ],
   "liens": [
@@ -376,6 +387,13 @@
           "creeeParId": null,
           "suivis": [
             {
+              "id": "60ccddea-e7d6-44ab-8cc2-a7e1d15a463e",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T09:28:42.828Z"
+            },
+            {
               "id": "9680409a-a267-44fb-9555-006c571a6602",
               "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
               "statut": "EN_COURS",
@@ -395,6 +413,16 @@
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
               "possessions": [
+                {
+                  "id": "f6d45930-c534-42d3-a39f-48d1d9988535",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                },
                 {
                   "id": "7de42168-fe08-4f4e-867d-44ccb645a972",
                   "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
@@ -418,6 +446,16 @@
               "couvertureRecupereeLe": null,
               "possessions": [
                 {
+                  "id": "f22509ab-5cd3-4646-8f0d-646e0cfe3458",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                },
+                {
                   "id": "c5ee1890-8902-4309-8c8a-15a7de5adf81",
                   "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
                   "possede": true,
@@ -440,6 +478,16 @@
               "couvertureRecupereeLe": null,
               "possessions": [
                 {
+                  "id": "5a594874-0bba-4b2a-ab4a-7b8c747e0ba6",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                },
+                {
                   "id": "52b3950f-6c1f-4536-852a-768abe35ee9b",
                   "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
                   "possede": true,
@@ -461,6 +509,16 @@
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
               "possessions": [
+                {
+                  "id": "8f9d5d68-8702-41a1-8ea3-cdfa8f64f174",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                },
                 {
                   "id": "7fb3b2b6-f86e-4e2a-b136-982c64db6c5f",
                   "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
@@ -505,6 +563,16 @@
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
               "possessions": [
+                {
+                  "id": "93800ed3-7d90-4544-9ed8-1206a79722e6",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                },
                 {
                   "id": "d8df8819-7519-4be2-8b89-581336752055",
                   "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
@@ -2466,6 +2534,302 @@
                   "note": null
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cc46e51d-ec26-4716-9eba-4fddf73e5916",
+      "slug": "bakuman",
+      "titre": "Bakuman",
+      "titreVo": "BAKUMAN。 バクマン。",
+      "auteur": "Tsugumi Ōba",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Romance",
+        "Slice of Life",
+        "Tragedy"
+      ],
+      "themes": [
+        "Dreams",
+        "Working",
+        "Coming of Age",
+        "Educational"
+      ],
+      "alias": [
+        "BAKUMAN。 バクマン。",
+        "바쿠만",
+        "Bakuman - Giấc mơ họa sĩ truyện tranh",
+        "Бакуман",
+        "Бақұман.",
+        "باكومان",
+        "बाकुमान",
+        "วัยซนคนการ์ตูน",
+        "バクマン。",
+        "爆漫-夢與現實 Baku Man",
+        "爆漫王。"
+      ],
+      "aliasNormalises": [
+        "bakuman",
+        "bakumanバクマン",
+        "바쿠만",
+        "bakumangiacmohoasitruyentranh",
+        "бакуман",
+        "бақұман",
+        "باكومان",
+        "बकमन",
+        "วยซนคนการตน",
+        "バクマン",
+        "爆漫夢與現實bakuman",
+        "爆漫王"
+      ],
+      "cible": "Shonen",
+      "couvertureUrl": null,
+      "idMangaBaka": 9765,
+      "editions": [
+        {
+          "id": "75d1086a-2285-4cd6-9c49-d5262130f15c",
+          "slug": "bakuman",
+          "nom": "Édition simple",
+          "editeur": "Kana",
+          "tomesParus": 20,
+          "editionTerminee": true,
+          "prixDefautCentimes": 685,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+          "suivis": [
+            {
+              "id": "c859d12f-adc3-4621-9c1e-eac9809d3caf",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T09:27:08.848Z"
+            }
+          ],
+          "sorties": [],
+          "volumes": [
+            {
+              "id": "650e5379-88eb-42c7-8b56-7de28175eb88",
+              "numero": 1,
+              "isbn": "9782505008262",
+              "dateSortie": "2010-07-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "573d03ca-fcf4-4fd0-bdc8-669d12af9811",
+              "numero": 2,
+              "isbn": "9782505008279",
+              "dateSortie": "2010-07-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "aaaf5630-ffc2-4ffe-ba9a-acf73a97e31e",
+              "numero": 3,
+              "isbn": "9782505009634",
+              "dateSortie": "2010-09-17T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "a2e3405b-fce0-4af9-a774-306f60a85c4f",
+              "numero": 4,
+              "isbn": "9782505009887",
+              "dateSortie": "2010-11-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "e96094c5-ee4a-4bf8-bb4e-9de4872cde2c",
+              "numero": 5,
+              "isbn": "9782505010302",
+              "dateSortie": "2011-01-07T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "e3d13317-d5d6-4a5d-a177-f8ca4f1d4ddc",
+              "numero": 6,
+              "isbn": "9782505010760",
+              "dateSortie": "2011-04-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "f64eb2fc-0de2-4c7a-acef-d059c70912d8",
+              "numero": 7,
+              "isbn": "9782505011699",
+              "dateSortie": "2011-07-01T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "e8282a50-e555-45bc-813e-134bd1ede04b",
+              "numero": 8,
+              "isbn": "9782505012412",
+              "dateSortie": "2011-10-07T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "db8828e0-7c0d-49c9-9f3f-aead08fc2617",
+              "numero": 9,
+              "isbn": "9782505049685",
+              "dateSortie": "2012-01-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "06fbc745-d8de-4255-9998-f1760b226039",
+              "numero": 10,
+              "isbn": "9782505014379",
+              "dateSortie": "2012-04-27T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "fa8f1dc2-f687-47fb-895b-ffb89f9a5e53",
+              "numero": 11,
+              "isbn": "9782505014799",
+              "dateSortie": "2012-07-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "e101545d-3f3e-4925-af08-3ee695d13304",
+              "numero": 12,
+              "isbn": "9782505015475",
+              "dateSortie": "2012-10-19T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "d448ff63-d306-4119-a30b-eb09550708b2",
+              "numero": 13,
+              "isbn": "9782505016847",
+              "dateSortie": "2013-01-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "0dd0d8f1-c515-4447-a3e4-c88f702e12e4",
+              "numero": 14,
+              "isbn": "9782505017271",
+              "dateSortie": "2013-04-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "e2b9874c-facc-4bbc-b2c7-3f4c27919ff7",
+              "numero": 15,
+              "isbn": "9782505017288",
+              "dateSortie": "2013-07-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "f58a8239-de6f-47c9-ab55-ab513fafede3",
+              "numero": 16,
+              "isbn": "9782505017295",
+              "dateSortie": "2013-10-18T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "8edcd24a-b9d8-4ad4-b70a-720f45335453",
+              "numero": 17,
+              "isbn": "9782505060062",
+              "dateSortie": "2014-01-24T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "8e5e1783-6dcc-4b47-9e2d-1b40ce33fb89",
+              "numero": 18,
+              "isbn": "9782505060444",
+              "dateSortie": "2014-04-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "98a424f5-161a-414d-9385-843d39def964",
+              "numero": 19,
+              "isbn": "9782505060451",
+              "dateSortie": "2014-07-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "f3ef4d0b-78fe-4493-a08a-a1ad0a72dd7a",
+              "numero": 20,
+              "isbn": "9782505060468",
+              "dateSortie": "2014-11-28T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
             }
           ]
         }
@@ -30951,6 +31315,13 @@
           "creeeParId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
           "suivis": [
             {
+              "id": "db4ea093-1a99-47d4-b93e-aa89cb0b0cdc",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T09:25:20.275Z"
+            },
+            {
               "id": "034a4229-cbbe-426b-94f5-d36db79d5b27",
               "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
               "statut": "EN_COURS",
@@ -30988,7 +31359,18 @@
               "couvertureUrl": null,
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "dd929c36-c896-478f-9d6c-b3f4b1674a09",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             },
             {
               "id": "95c57154-3f33-4cfb-9ff5-49e5c1fd3187",
@@ -30999,7 +31381,18 @@
               "couvertureUrl": null,
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "5cc98352-19e9-454c-8e6b-8bea79bcd96b",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             },
             {
               "id": "4ecf341f-b33a-41d0-86e1-0b6ee5ae007d",
@@ -31010,7 +31403,18 @@
               "couvertureUrl": null,
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "00465c26-0453-4ddd-ada5-1c319104f9cf",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             },
             {
               "id": "fdf7f5b9-a24a-4054-9b09-44e366b42fd9",
@@ -31021,7 +31425,18 @@
               "couvertureUrl": null,
               "sourceCouverture": null,
               "couvertureRecupereeLe": null,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "ed0b6f47-ac73-474a-ae75-282f72c45bb9",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             },
             {
               "id": "9197e2bb-6675-404b-ad68-2d3de7852277",
@@ -46361,6 +46776,228 @@
       ]
     },
     {
+      "id": "7a8da092-2079-499f-883b-a463bf1938e9",
+      "slug": "tsugai-daemons-of-the-shadow-realm",
+      "titre": "Tsugai - Daemons of the Shadow Realm",
+      "titreVo": "ヨミツガ",
+      "auteur": "Hiromu Arakawa",
+      "genres": [
+        "Fantasy",
+        "Supernatural",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Tragedy"
+      ],
+      "themes": [
+        "Military",
+        "Secret Organizations",
+        "Summoning",
+        "Monsters"
+      ],
+      "alias": [
+        "ヨミツガ",
+        "황천의 츠가이",
+        "Araf Şeytanları",
+        "Daemons of the Shadow Realm",
+        "Das Band der Unterwelt",
+        "Espíritus del inframundo",
+        "Kontraduety z zaświatów",
+        "Song linh Minh giới",
+        "Song Mệnh cõi Hoàng Tuyền",
+        "Tsugai of the Underworld",
+        "Underworld ke Tsugai",
+        "Yomi no Tsugai"
+      ],
+      "aliasNormalises": [
+        "tsugaidaemonsoftheshadowrealm",
+        "ヨミツガ",
+        "황천의츠가이",
+        "arafseytanları",
+        "daemonsoftheshadowrealm",
+        "dasbandderunterwelt",
+        "espiritusdelinframundo",
+        "kontraduetyzzaswiatow",
+        "songlinhminhgioi",
+        "songmenhcoihoangtuyen",
+        "tsugaioftheunderworld",
+        "underworldketsugai",
+        "yominotsugai"
+      ],
+      "cible": "Shonen",
+      "couvertureUrl": null,
+      "idMangaBaka": 1360,
+      "editions": [
+        {
+          "id": "1beba2c4-c4df-4503-b4b2-11b5620ddb4f",
+          "slug": "tsugai-daemons-of-the-shadow-realm",
+          "nom": "Édition simple",
+          "editeur": "Kurokawa",
+          "tomesParus": 10,
+          "editionTerminee": false,
+          "prixDefautCentimes": 730,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+          "suivis": [
+            {
+              "id": "e721935f-a5db-48cd-8fb1-fee735c0e187",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T09:26:38.912Z"
+            }
+          ],
+          "sorties": [
+            {
+              "id": "2072da07-58bc-4340-9499-e41d318f9ca0",
+              "numero": 11,
+              "date": "2026-11-12T00:00:00.000Z",
+              "isbn": "9791042021948",
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null
+            }
+          ],
+          "volumes": [
+            {
+              "id": "6f3da038-2fc8-4c3a-8587-ae185b7370c5",
+              "numero": 1,
+              "isbn": "9782380714272",
+              "dateSortie": "2023-07-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": [
+                {
+                  "id": "42c9594b-5cee-41f1-9f6e-6dd7e0d8d343",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "f8c65406-5038-462f-a2ee-50fea39a8bb6",
+              "numero": 2,
+              "isbn": "9782380715392",
+              "dateSortie": "2023-10-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "95aca881-0932-481d-85b0-e6162a30d5b6",
+              "numero": 3,
+              "isbn": "9791042013981",
+              "dateSortie": "2024-02-08T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "a15336ba-7654-4505-983d-f7513a88f960",
+              "numero": 4,
+              "isbn": "9791042014308",
+              "dateSortie": "2024-07-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "599f12ba-5033-43c2-a3f7-6b8131a07e8d",
+              "numero": 5,
+              "isbn": "9791042014728",
+              "dateSortie": "2024-10-17T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "93d1fc72-3fe5-4516-be7e-4bb8f96d0053",
+              "numero": 6,
+              "isbn": "9791042018740",
+              "dateSortie": "2025-02-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": [
+                {
+                  "id": "4b232d24-6614-4e01-81f9-6e1b85b4990b",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "a38fc42e-56e5-495b-9549-6cd9dcbe884e",
+              "numero": 7,
+              "isbn": "9791042018757",
+              "dateSortie": "2025-06-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "81c00e65-d291-4151-b7c0-ea69e1174273",
+              "numero": 8,
+              "isbn": "9791042018764",
+              "dateSortie": "2025-10-09T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "db81b4f8-084b-45f1-a401-027fc7ab2dda",
+              "numero": 9,
+              "isbn": "9791042021924",
+              "dateSortie": "2026-03-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "14711c63-cca9-4375-a836-0d27d8947725",
+              "numero": 10,
+              "isbn": "9791042021931",
+              "dateSortie": "2026-07-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "6a4933ca-75d0-4b7a-b7c9-a5ae296b1ea5",
       "slug": "tsugumi-project",
       "titre": "TSUGUMI PROJECT",
@@ -47276,6 +47913,449 @@
                   "note": null
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "89b953cb-1ac2-4453-a93c-0070069b0b2a",
+      "slug": "vinland-saga",
+      "titre": "Vinland Saga",
+      "titreVo": "VINLAND SAGA",
+      "auteur": "Makoto Yukimura",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Psychological",
+        "Tragedy",
+        "Historical"
+      ],
+      "themes": [
+        "Language Barrier",
+        "Ecology",
+        "Politics",
+        "Religion",
+        "Coming of Age",
+        "Philosophy",
+        "War"
+      ],
+      "alias": [
+        "빈란드 사가",
+        "Saga Winlandzka",
+        "Vinland Destanı",
+        "Vinrando Saga",
+        "Винланд дастаны",
+        "Сага о Винланде",
+        "Сага про Вінланд",
+        "فينلاند ساغا",
+        "وِنلینڈ ساگا",
+        "ヴィンランド・サガ",
+        "海盗战记"
+      ],
+      "aliasNormalises": [
+        "vinlandsaga",
+        "빈란드사가",
+        "sagawinlandzka",
+        "vinlanddestanı",
+        "vinrandosaga",
+        "винланддастаны",
+        "сагаовинланде",
+        "сагапровінланд",
+        "فينلاندساغا",
+        "ونلینڈساگا",
+        "ヴィンランドサガ",
+        "海盗战记"
+      ],
+      "cible": "Seinen",
+      "couvertureUrl": null,
+      "idMangaBaka": 3248,
+      "editions": [
+        {
+          "id": "118962b7-a46a-4438-9d74-0751cfd8cc84",
+          "slug": "vinland-saga",
+          "nom": "Édition simple",
+          "editeur": "Kurokawa",
+          "tomesParus": 29,
+          "editionTerminee": false,
+          "prixDefautCentimes": 895,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+          "suivis": [
+            {
+              "id": "d41030d3-3b17-4079-8dab-9680499d4bbd",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T09:25:45.066Z"
+            }
+          ],
+          "sorties": [],
+          "volumes": [
+            {
+              "id": "b8906059-c8a9-4968-878a-1f28c06bafb3",
+              "numero": 1,
+              "isbn": "9782351423554",
+              "dateSortie": "2009-01-15T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": [
+                {
+                  "id": "48e30350-e9c3-48c4-b9d4-fc3ca510579b",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "a83f111c-61f2-4ab7-a706-aa47bed564ef",
+              "numero": 2,
+              "isbn": "9782351423561",
+              "dateSortie": "2009-03-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": [
+                {
+                  "id": "f7ffeaf6-7996-428d-ae8c-c2fefbdc7f91",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "ba36ca96-802f-445e-9b9a-66a605087bde",
+              "numero": 3,
+              "isbn": "9782351423578",
+              "dateSortie": "2009-06-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": [
+                {
+                  "id": "d0090493-6124-403b-851e-8ea491e08250",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "c16c1530-e266-4615-b7ab-f46e88ebeede",
+              "numero": 4,
+              "isbn": "9782351423585",
+              "dateSortie": "2009-09-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": [
+                {
+                  "id": "38638c4b-6c41-4fb4-b10a-fdf61bb0a10b",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": false,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "a96b2783-c84f-4364-b6b0-ec503beb3049",
+              "numero": 5,
+              "isbn": "9782351423592",
+              "dateSortie": "2009-12-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "02a1b3b4-e1e2-4f79-a397-f625c4fee717",
+              "numero": 6,
+              "isbn": "9782351425114",
+              "dateSortie": "2010-03-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "aaf2723a-2a62-4dc1-8d90-4107b86cec20",
+              "numero": 7,
+              "isbn": "9782351425350",
+              "dateSortie": "2010-06-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "aeb7de90-894d-4208-9902-5ec4a85805d0",
+              "numero": 8,
+              "isbn": "9782351425367",
+              "dateSortie": "2010-10-14T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "96717e40-aa7a-408e-bedc-250434784cab",
+              "numero": 9,
+              "isbn": "9782351426012",
+              "dateSortie": "2011-03-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "c9caef60-30b2-49ca-88af-9bb4b0ea62df",
+              "numero": 10,
+              "isbn": "9782351426814",
+              "dateSortie": "2011-10-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "9ece60c9-cc83-429e-abf2-bacbed00e086",
+              "numero": 11,
+              "isbn": "9782351427828",
+              "dateSortie": "2012-12-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "282fd133-4e20-4ec3-95ee-ee02c85902e6",
+              "numero": 12,
+              "isbn": "9782351429297",
+              "dateSortie": "2013-11-14T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "d8750cc6-3623-465f-bc99-ff15f3085b95",
+              "numero": 13,
+              "isbn": "9782368520796",
+              "dateSortie": "2014-11-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "762b42ef-0812-4cdc-9709-7ac1ffd62c69",
+              "numero": 14,
+              "isbn": "9782368520802",
+              "dateSortie": "2015-03-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "abbe7fdd-7c4a-4310-8f05-530e6ea87c9f",
+              "numero": 15,
+              "isbn": "9782368522097",
+              "dateSortie": "2015-11-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "d40c88e5-01a2-4722-80c3-e1cf4381d250",
+              "numero": 16,
+              "isbn": "9782368522738",
+              "dateSortie": "2016-05-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "5832b755-3f2e-4f89-a203-e9cb8059eabe",
+              "numero": 17,
+              "isbn": "9782368524176",
+              "dateSortie": "2017-01-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "07dbd52c-f868-46cb-b6fb-1a3dddf9bd5e",
+              "numero": 18,
+              "isbn": "9782368524626",
+              "dateSortie": "2017-09-14T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "643da8e7-2e4b-44ab-bea6-3646c8528fc3",
+              "numero": 19,
+              "isbn": "9782368525869",
+              "dateSortie": "2018-02-08T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "f3c38e81-3eff-4310-a811-402d51f349fd",
+              "numero": 20,
+              "isbn": "9782368526989",
+              "dateSortie": "2018-11-15T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "efab34c0-0098-403b-b315-e1d307876c25",
+              "numero": 21,
+              "isbn": "9782368527269",
+              "dateSortie": "2019-04-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "12d24d70-8bf5-4fa2-988e-6013064e0f32",
+              "numero": 22,
+              "isbn": "9782368528402",
+              "dateSortie": "2019-12-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "c11fc408-3f92-4d05-a5cb-8ed85fa8e012",
+              "numero": 23,
+              "isbn": "9782368529614",
+              "dateSortie": "2020-07-09T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "b4eca602-b939-4a66-813f-03f473759628",
+              "numero": 24,
+              "isbn": "9782368529621",
+              "dateSortie": "2021-04-08T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "a324736d-d32d-4fae-bb43-5ddb2248d21a",
+              "numero": 25,
+              "isbn": "9782380711516",
+              "dateSortie": "2022-01-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "e66c01e2-474e-4c22-a89c-a0d209b00f82",
+              "numero": 26,
+              "isbn": "9782380713183",
+              "dateSortie": "2022-11-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "b8e07dcd-8df3-48c9-a92d-0bba51339bae",
+              "numero": 27,
+              "isbn": "9782380715453",
+              "dateSortie": "2023-11-09T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "4e5f756b-898f-471c-bd4b-07f8eb0284bf",
+              "numero": 28,
+              "isbn": "9791042014810",
+              "dateSortie": "2024-12-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
+            },
+            {
+              "id": "9eec1fb4-3ad2-48e8-8447-32984af5a9ad",
+              "numero": 29,
+              "isbn": "9791042019396",
+              "dateSortie": "2026-05-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": null,
+              "sourceCouverture": null,
+              "couvertureRecupereeLe": null,
+              "possessions": []
             }
           ]
         }

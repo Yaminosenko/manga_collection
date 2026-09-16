@@ -143,6 +143,7 @@ async function ecrireEnBase(urls: Map<string, string>, couvertures: Couverture[]
 
   const absents: string[] = [];
   let ecrits = 0;
+  let annoncees = 0;
 
   for (const [slug, liste] of parSlug) {
     const edition = await prisma.edition.findUnique({ where: { slug }, select: { id: true } });
@@ -151,20 +152,29 @@ async function ecrireEnBase(urls: Map<string, string>, couvertures: Couverture[]
       continue;
     }
     for (const couverture of liste) {
-      await prisma.volume.update({
-        where: { editionId_numero: { editionId: edition.id, numero: couverture.numero } },
-        data: {
-          couvertureUrl: urls.get(couverture.chemin),
-          ...(couverture.source === null
-            ? {}
-            : { sourceCouverture: couverture.source, couvertureRecupereeLe: new Date() }),
-        },
+      const donnees = {
+        couvertureUrl: urls.get(couverture.chemin),
+        ...(couverture.source === null
+          ? {}
+          : { sourceCouverture: couverture.source, couvertureRecupereeLe: new Date() }),
+      };
+      const tome = await prisma.volume.updateMany({
+        where: { editionId: edition.id, numero: couverture.numero },
+        data: donnees,
       });
-      ecrits += 1;
+      if (tome.count > 0) {
+        ecrits += tome.count;
+        continue;
+      }
+      const annonce = await prisma.sortie.updateMany({
+        where: { editionId: edition.id, numero: couverture.numero },
+        data: donnees,
+      });
+      annoncees += annonce.count;
     }
   }
 
-  return { ecrits, absents };
+  return { ecrits, annoncees, absents };
 }
 
 async function effacerEnBase(couvertures: Couverture[]) {
@@ -248,8 +258,8 @@ async function main() {
     CONCURRENCE,
   );
 
-  const { ecrits, absents } = await ecrireEnBase(urls, couvertures);
-  const sortiesEcrites = await ecrireSorties(urls, annonces);
+  const { ecrits, annoncees, absents } = await ecrireEnBase(urls, couvertures);
+  const sortiesEcrites = annoncees + (await ecrireSorties(urls, annonces));
   writeFileSync(MANIFESTE_STOCKAGE, `${JSON.stringify({ base }, null, 2)}\n`);
 
   const avecCouverture = await prisma.volume.count({ where: { couvertureUrl: { not: null } } });
