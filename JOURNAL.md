@@ -4485,3 +4485,118 @@ joue rien sur Neon, ce lot ne touchant pas au schéma.
 **Puis validé sur téléphone par le propriétaire**, en production. C'est ce que le poste ne
 pouvait pas trancher : les écritures réelles n'ont volontairement pas été essayées depuis ici,
 l'une changeant l'adresse email du propriétaire et l'autre coupant toutes ses sessions.
+
+---
+
+### Fait — l'espace collection à trois panneaux (10 et 17 septembre 2026)
+
+**Deux lots, sept jours d'écart, une branche.** Le premier a réuni la Collection, les Manquants
+et la Wish list derrière une bande de pastilles ; le second a rattrapé `main`, puis refait
+l'en-tête sur demande du propriétaire, écran après écran. Le glissement horizontal natif reste
+délibérément hors périmètre : il change la mécanique de défilement de toute l'application, donc
+il vient après, quand celle-ci est jugée bonne à l'usage.
+
+#### Le premier lot — 10 septembre
+
+`chargerCollection`, `chargerManquants` et `chargerWishList` deviennent
+**`chargerEspaceCollection`** : une seule lecture de `SuiviEdition` nourrit les trois panneaux,
+là où visiter les trois onglets faisait trois requêtes dont deux sur tous les volumes. Changer
+de panneau ne coûte plus aucune navigation, là où Manquants demandait ~700 ms de chargement de
+route. La barre du bas passe de cinq onglets à trois, `/manquants` et `/wishlist` survivant en
+liens profonds.
+
+#### Le rattrapage — 17 septembre
+
+Vingt-huit commits étaient passés sur `main` : le multi-compte, le renommage en Zenkan, les
+couvertures dans le cron, l'onglet « Moi ». **Deux conflits sur treize fichiers touchés des deux
+côtés**, les onze autres se recollant seuls.
+
+`components/tab-bar.tsx` : les trois onglets de la branche plus « Moi », et la prop
+`lectureSeule` tombe avec le rôle invité. `lib/use-scroll-memory.ts` : la branche restaurait
+zéro faute de position connue, `main` avait corrigé l'écrasement de la position mémorisée par le
+scroll de restauration. **Les deux gardés, avec une nuance** — le drapeau ne s'arme que si la
+position visée diffère de la position courante, sinon un `scrollTo(0, 0)` sans effet le laissait
+armé et le premier défilement de l'utilisateur était avalé.
+
+`lib/editions.ts` ne conflictait pas et le merge est juste : le seul commit de `main` à y
+toucher depuis la base porte sur `chargerEdition`, pas sur les trois fonctions fondues.
+
+**Revérifié à l'écran contre la base**, l'ancienne vérification ayant été conduite en mode
+invité, qui n'existe plus : Collection 1 160 tomes · 111 éditions · 8 862,36 €, Manquants 116 ·
+16, Wish list 2, Vendues 4. Les chiffres viennent d'un parcours Prisma indépendant du code
+d'écran.
+
+#### L'en-tête, refait en quatre passes
+
+| Demande | Ce qui a été fait |
+|---|---|
+| les pastilles sous la recherche et les chiffres | l'ordre du bandeau s'inverse, la bande reste `sticky` et se colle seule en haut |
+| les chiffres en deux lignes à gauche, la valeur à droite | `components/panel-stats.tsx`, nourri par l'espace et sorti des trois panneaux |
+| « on dirait que la page bouge » | deux causes mesurées, deux corrections |
+| un fond distinct pour la zone ancrée | token `--color-header`, et les chiffres redescendent dans le contenu défilant |
+| escamoter le bandeau au défilement | `lib/use-header-visibility.ts` |
+| le compte dans le bandeau | pastille ronde à gauche du champ, barre du bas à trois onglets |
+
+#### Corrigé — trois mouvements au changement de panneau, dont deux étaient invisibles
+
+Le propriétaire a vu la page bouger en passant à la Wish list, et a posé les deux bonnes
+questions : la barre de défilement, ou la ligne unique ? **Les deux**, et un troisième par
+dessus.
+
+| | Collection | Manquants | Wish list |
+|---|---|---|---|
+| largeur du viewport | 1905 | 1905 | **1920** |
+| colonne des chiffres | 44 px | 44 px | **40 px** |
+| haut de la bande | 114 | 114 | **110** |
+
+**La barre de défilement**, d'abord : le document de la Wish list tient dans l'écran, le viewport
+gagne ses 15 px et le contenu centré glisse de 7,5. `scrollbar-gutter: stable` sur `html`.
+**Sans objet sur mobile**, où les barres sont en surimpression — mais c'est le poste qui sert à
+juger le rendu.
+
+**La hauteur du bloc de chiffres**, ensuite, et la cote posée la veille était fausse : deux
+lignes mesurent 48 px là où un `leading` de 22 px en annonce 44, les enfants en 17 et 12 px
+débordant le strut du bloc. La géométrie ne se déduit donc plus de la police — `h-[24px]` par
+ligne, `h-[48px]` sur la colonne, et le prix en `leading-[48px]`, ce qui le tient égal à la
+hauteur du bloc de gauche.
+
+**Le troisième reste**, non corrigé : le champ de recherche gagne 46 px là où le bouton de tri
+s'efface. C'est une valeur absolue, donc **proportionnellement plus visible sur téléphone**, et
+le propriétaire a choisi d'en juger là-bas avant de trancher.
+
+#### Fait — le bandeau escamotable, et deux gardes-fous qui ont coûté une mesure
+
+`useEnTeteEscamotable` compare chaque position à la précédente. Quatre gardes : visible près du
+haut, seuil pris sur la **hauteur mesurée** du bandeau et non sur une constante ; 8 px de
+mouvement minimum, sans déplacer la référence, pour que les petits gestes s'accumulent ; **150 ms
+ignorées après un montage ou un changement de panneau**, la fenêtre où `useMemoireDefilement`
+restaure sa position ; et visibilité forcée tant que le menu de tri est ouvert.
+
+**La première version ignorait les sauts de plus de 300 px** pour distinguer une restauration
+d'un geste. Une trace des événements l'a condamnée : **un cran de molette produit un seul
+événement de 300 px**, donc un défilement rapide serait passé pour une restauration et n'aurait
+rien escamoté. Viser la fenêtre de temps plutôt que la taille du saut ne se trompe pas de cause.
+
+**Piège Tailwind v4, à retenir** : `-translate-y-full` écrit la propriété CSS `translate`, **pas**
+`transform`. Une transition sur `transform` ne l'anime donc pas — le bandeau sautait hors de
+l'écran pendant que seule l'opacité fondait, ce qui ressemblait assez à un fondu réussi pour
+passer inaperçu.
+
+#### Ce qui n'a pas été fait, et pourquoi
+
+- **Le champ de recherche qui s'élargit de 46 px** — à juger sur téléphone.
+- **La pastille du compte fait 38 px**, sous les 44 px de cible tactile du projet. C'est
+  l'alignement sur la ligne de recherche qui l'impose ; même verdict, sur l'appareil.
+- **Le compte n'est plus accessible depuis le Planning ni depuis Rechercher**, le bandeau
+  n'existant que sur l'espace collection. **Accepté explicitement** par le propriétaire.
+- **Le retour d'une page Édition ramène sur le panneau Collection** même en venant des
+  Manquants. Ce n'est pas une régression — `<Link href="/">` depuis toujours — et les trois
+  issues restent écrites, en attente d'arbitrage.
+- **Rien n'a été vu sur téléphone.** Tout ce qui précède est mesuré sur le poste.
+
+#### Une erreur de méthode, notée pour ne pas la refaire
+
+`npx prettier --write` a été lancé sur deux fichiers alors que **le projet n'a pas prettier en
+dépendance** : npx l'a téléchargé et reformaté à 80 colonnes, ce qui n'est pas la convention du
+dépôt. Annulé par `git checkout`, les modifications refaites à la main. **Un outil de formatage
+absent du `package.json` n'a pas de configuration à respecter** — il impose la sienne.

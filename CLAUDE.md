@@ -188,7 +188,47 @@ et `Decimal` parce qu'il ne traverse pas la frontière serveur/client de React.
 
 ## 4. Écrans V1
 
-### Collection — écran principal
+### L'espace collection — trois panneaux sous un bandeau
+
+> **Construit les 10 et 17 septembre 2026.** La Collection, les Manquants et la Wish list
+> étaient trois écrans et trois onglets ; ce sont **trois panneaux d'un même écran**, derrière
+> une bande de pastilles. Le détail et les chiffres sont dans `JOURNAL.md`.
+
+**Une seule lecture nourrit les trois.** `chargerEspaceCollection` remplace `chargerCollection`,
+`chargerManquants` et `chargerWishList` : un seul parcours de `SuiviEdition` produit les trois
+panneaux, là où visiter les trois onglets faisait trois requêtes dont deux sur tous les volumes.
+Changer de panneau ne coûte donc **aucune navigation**.
+
+**Le bandeau est ancré, et il le montre.** Il porte, de gauche à droite et de haut en bas : la
+pastille ronde du compte, le champ de recherche, le bouton de tri, puis la bande des trois
+pastilles de panneau. Il vit sur son propre fond — `--color-header`, entre le fond de page et la
+surface — parce que sans cette teinte rien ne disait ce qui allait rester en place. La barre du
+bas porte la même, de sorte que les deux bords fixes se répondent.
+
+- **La bande de pastilles remplace le titre « Collection »** : la pastille active *est* le titre
+  de l'écran, ce qui évite une rangée d'en-tête de plus à 430 px.
+- **Le bandeau s'escamote vers le haut quand on descend** et revient dès qu'on remonte. Quatre
+  gardes le protègent des faux déclenchements — voir `lib/use-header-visibility.ts` et
+  `JOURNAL.md`. Ce qui reste collé en haut fait **105 px**, contre 44 quand seules les pastilles
+  l'étaient : c'est le prix d'avoir la recherche toujours sous la main.
+- **La recherche est un champ unique** qui filtre le panneau visible, et son terme survit au
+  changement de panneau.
+- **Le menu de tri ne concerne que la Collection** et disparaît ailleurs : un tri qui ne trie
+  rien est un mensonge. Conséquence connue, non tranchée : le champ de recherche s'élargit de
+  46 px là où le bouton s'efface.
+- **Les chiffres ne sont pas dans le bandeau** : ils sont en tête du contenu et défilent avec
+  lui, chaque panneau parlant du sien — tomes, éditions et valeur pour la Collection, tomes et
+  éditions pour les Manquants, séries pour la Wish list. Le nombre est en 17 px sur son mot en
+  12 px ; la valeur est à droite en 30 px, interlignée à la hauteur exacte des deux lignes de
+  gauche.
+- **`/manquants` et `/wishlist` survivent en liens profonds**, chacune ouvrant l'espace sur son
+  panneau. Ça préserve les signets et les `revalidatePath` déjà posés.
+- **La barre du bas est à trois onglets** — Collection, Planning, Rechercher. Le compte a quitté
+  la barre pour la pastille du bandeau : **il n'est donc plus accessible depuis le Planning ni
+  depuis Rechercher**, ce qui est assumé.
+- **Chaque panneau garde sa position de défilement**, sous une clé par panneau.
+
+### Collection — le panneau par défaut
 Liste des éditions. Une ligne par édition.
 
 - Couverture du **dernier tome possédé**
@@ -197,7 +237,7 @@ Liste des éditions. Une ligne par édition.
 - Barre à trois zones
 - Terminée : badge de complétion, pas de hachuré
 - Abandonnée / en pause : icône dédiée + désaturation
-- En-tête : compteurs globaux, recherche, menu de tri
+- En tête du panneau : tomes possédés, éditions, valeur
 - Tri : alphabétique, tomes possédés, % de complétion, ajout récent.
   Sens inversable, choix mémorisé.
 - Bas de liste : section « Vendues », repliée par défaut
@@ -247,8 +287,8 @@ Tous les tomes non possédés et déjà parus, groupés par édition.
 conditions que le Planning. Pas de section repliée : ce qu'on ne veut pas voir, on ne le suit pas.
 
 ### Wish list
-Les séries qu'on compte acheter et dont on ne possède encore aucun tome. **Cinquième onglet de
-la barre du bas**, entre Planning et Ajouter.
+Les séries qu'on compte acheter et dont on ne possède encore aucun tome. **Troisième panneau de
+l'espace collection**, après Manquants.
 
 **L'appartenance est déduite, jamais stockée** : `possédés = 0 ET suivie ET statut ≠ VENDUE`.
 Aucun champ à maintenir, aucun état à désynchroniser — cocher un tome fait basculer en
@@ -1230,6 +1270,19 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
+- **L'espace collection attend son jugement sur téléphone**, et quatre points en dépendent —
+  voir `JOURNAL.md`, « Fait — l'espace collection à trois panneaux » :
+
+  | En suspens | État |
+  |---|---|
+  | le champ de recherche gagne 46 px là où le bouton de tri s'efface | mesuré, non corrigé, **à juger sur l'appareil** |
+  | la pastille du compte fait 38 px, sous les 44 px de cible tactile | idem, l'alignement sur la ligne de recherche l'impose |
+  | 105 px de bandeau ancré, plus la barre du bas | le prix d'avoir la recherche sous la main |
+  | le retour d'une page Édition ramène sur le panneau Collection | pas une régression, trois issues écrites, **en attente d'arbitrage** |
+
+  **Et le glissement horizontal entre panneaux reste à construire** : c'était le lot 2 dès le
+  départ, séquencé après celui-ci parce qu'il change la mécanique de défilement de toute
+  l'application.
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
@@ -2306,7 +2359,7 @@ garde `exigerProprietaire()`.
 | **Le propriétaire reprend sa ligne par script local** | déterministe, rien au dépôt, et c'est le motif de tous les autres scripts du projet |
 | **`definirParution` reste propriétaire seul** | la lettre de §13.2. La **création** depuis le catalogue, elle, reste libre et marquée |
 | **Le hash n'entre pas dans `data/backup.json`** | le dépôt est public (§7) : un hash publié s'attaque hors ligne, sans limite de tentatives |
-| **Sixième onglet « Moi »** | — |
+| **Sixième onglet « Moi »** | **devenu la pastille ronde du bandeau de l'espace collection le 17 septembre 2026** — voir §4 |
 
 #### Ce qui a été écarté, avec le motif
 
