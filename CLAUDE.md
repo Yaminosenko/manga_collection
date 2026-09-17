@@ -213,20 +213,55 @@ bas porte la même, de sorte que les deux bords fixes se répondent.
   l'étaient : c'est le prix d'avoir la recherche toujours sous la main.
 - **La recherche est un champ unique** qui filtre le panneau visible, et son terme survit au
   changement de panneau.
-- **Le menu de tri ne concerne que la Collection** et disparaît ailleurs : un tri qui ne trie
-  rien est un mensonge. Conséquence connue, non tranchée : le champ de recherche s'élargit de
-  46 px là où le bouton s'efface.
+- **Le bouton de tri est sur les trois panneaux, et chacun a son propre menu.** Il ne s'efface
+  plus — le bandeau gardait sinon deux géométries et le champ de recherche sautait de 46 px au
+  milieu d'un glissement. Mais « un tri qui ne trie rien est un mensonge » tient toujours, donc
+  **un panneau ne propose que les critères qui le discriminent** : Manquants trie par **tomes
+  manquants** là où la Collection trie par tomes possédés, et la Wish list, dont toutes les
+  lignes sont à zéro tome, n'offre que l'alphabétique et l'ajout récent. **La préférence est
+  mémorisée par panneau**, sous trois clés : un tri par tomes manquants n'a rien à faire sur la
+  Collection. Les trois listes sont triées chacune avec la sienne, de sorte qu'aucun panneau ne
+  se réordonne sous les yeux pendant un glissement.
 - **Les chiffres ne sont pas dans le bandeau** : ils sont en tête du contenu et défilent avec
   lui, chaque panneau parlant du sien — tomes, éditions et valeur pour la Collection, tomes et
   éditions pour les Manquants, séries pour la Wish list. Le nombre est en 17 px sur son mot en
   12 px ; la valeur est à droite en 30 px, interlignée à la hauteur exacte des deux lignes de
   gauche.
 - **`/manquants` et `/wishlist` survivent en liens profonds**, chacune ouvrant l'espace sur son
-  panneau. Ça préserve les signets et les `revalidatePath` déjà posés.
+  panneau. Ça préserve les signets et les `revalidatePath` déjà posés. **Et l'URL suit le
+  panneau** : atteindre un panneau la réécrit par l'History API, que Next synchronise avec
+  `usePathname` — donc aucune navigation, aucune requête, et la barre du bas garde son onglet
+  Collection actif sur les trois routes.
 - **La barre du bas est à trois onglets** — Collection, Planning, Rechercher. Le compte a quitté
   la barre pour la pastille du bandeau : **il n'est donc plus accessible depuis le Planning ni
   depuis Rechercher**, ce qui est assumé.
-- **Chaque panneau garde sa position de défilement**, sous une clé par panneau.
+- **Chaque panneau garde sa position de défilement**, sous une clé par panneau — et il la garde
+  désormais **de lui-même**, chacun étant son propre conteneur défilant.
+
+**Les trois panneaux sont montés côte à côte dans une piste horizontale**, en `scroll-snap`
+natif : le geste, son inertie, son élastique et le verrou d'axe sont ceux du navigateur, sans
+dépendance et sans un seul gestionnaire de `touch` écrit à la main. Une pastille **fait défiler
+la piste** au lieu de changer un état, et c'est la position de la piste qui dit quel panneau est
+actif : une seule source de vérité, donc la pastille ne peut pas mentir sur ce qu'on voit.
+
+**Ça coûte le défilement du document, et c'est la vraie décision.** Une piste ne peut pas
+laisser la fenêtre porter le défilement vertical — sa hauteur serait celle du plus grand
+panneau, et on défilerait dans le vide depuis la Wish list. L'espace collection est donc une
+colonne à hauteur de fenêtre : le bandeau passe en **surimpression** et s'escamote sans
+relayouter la liste, la barre du bas n'a plus besoin d'être `sticky`, et chaque panneau défile
+pour son compte. **Les autres onglets gardent le défilement du document** — la règle ne s'arme
+que sur les pages qui se déclarent plein écran. Conséquence connue : hors application installée,
+la barre d'adresse mobile ne se rétracte plus. Le manifeste étant en `standalone`, la cible ne
+la voit pas.
+
+**Les panneaux hors écran sont `inert`** : montés tous les trois, leurs liens entraient sinon
+dans l'ordre de tabulation et le navigateur faisait défiler la piste pour amener l'élément
+focalisé à l'écran, sans qu'aucun geste l'ait demandé.
+
+**Mesuré, là où `IDEES.md` disait de ne pas supposer** : les panneaux voisins **chargent bien**
+leurs images à l'ouverture — 15/15 pour Manquants, 2/2 pour la Wish list, contre 35 sur 111 pour
+la Collection, qui elle défile. Le `loading="lazy"` ne protège donc pas horizontalement. Le
+volume reste petit et les URL recoupent celles de la Collection.
 
 ### Collection — le panneau par défaut
 Liste des éditions. Une ligne par édition.
@@ -1275,14 +1310,21 @@ Ce qui reste :
 
   | En suspens | État |
   |---|---|
-  | le champ de recherche gagne 46 px là où le bouton de tri s'efface | mesuré, non corrigé, **à juger sur l'appareil** |
-  | la pastille du compte fait 38 px, sous les 44 px de cible tactile | idem, l'alignement sur la ligne de recherche l'impose |
+  | ~~le champ de recherche gagne 46 px là où le bouton de tri s'efface~~ | **réglé** : le bouton est sur les trois panneaux, le bandeau n'a plus qu'une géométrie |
+  | la pastille du compte fait 38 px, sous les 44 px de cible tactile | mesuré, non corrigé, **à juger sur l'appareil** — l'alignement sur la ligne de recherche l'impose |
   | 105 px de bandeau ancré, plus la barre du bas | le prix d'avoir la recherche sous la main |
-  | le retour d'une page Édition ramène sur le panneau Collection | pas une régression, trois issues écrites, **en attente d'arbitrage** |
+  | ~~le retour d'une page Édition ramène sur le panneau Collection~~ | **réglé de biais** : l'URL suivant le panneau, `<Link href="/">` depuis les Manquants renvoie sur `/manquants`. À confirmer à l'usage |
 
-  **Et le glissement horizontal entre panneaux reste à construire** : c'était le lot 2 dès le
-  départ, séquencé après celui-ci parce qu'il change la mécanique de défilement de toute
-  l'application.
+  **Le glissement horizontal est construit** — branche `glissement-panneaux`, voir §4 et
+  `JOURNAL.md`. Vérifié sur le poste : piste, pastilles, URL, liens profonds, mémoire de
+  défilement par panneau, menus de tri. **Le geste lui-même ne l'est pas** — il est natif, donc
+  il ne se juge que sur l'appareil, et trois points l'attendent :
+
+  | À juger sur téléphone | Pourquoi |
+  |---|---|
+  | le glissement depuis le bord gauche, sur le panneau Collection | il entre en concurrence avec le geste système « retour » d'iOS, et ça ne se contourne pas proprement |
+  | le saut d'une frame à l'ouverture de `/manquants` et `/wishlist` | la piste se positionne dans un effet, donc après la première peinture |
+  | `inert` sur les panneaux hors écran | il bloque le clic ; qu'il ne bloque pas le défilement tactile du panneau entrant reste à voir |
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :

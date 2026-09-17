@@ -4600,3 +4600,110 @@ passer inaperçu.
 dépendance** : npx l'a téléchargé et reformaté à 80 colonnes, ce qui n'est pas la convention du
 dépôt. Annulé par `git checkout`, les modifications refaites à la main. **Un outil de formatage
 absent du `package.json` n'a pas de configuration à respecter** — il impose la sienne.
+
+### Fait — le glissement horizontal entre panneaux (17 septembre 2026)
+
+**Le lot 2 de l'espace collection**, séquencé après le premier parce qu'il change la mécanique
+de défilement de toute l'application. Branche `glissement-panneaux`, quatre commits.
+
+#### Ce que la fonctionnalité change vraiment, et ce n'est pas le geste
+
+Le document portait le défilement : `useMemoireDefilement` lisait `window.scrollY`,
+`useEnTeteEscamotable` écoutait `window`, le bandeau était `sticky top-0` et la barre du bas
+`sticky bottom-0` dans une colonne `min-h-dvh`. Ça tenait parce qu'**un seul panneau était monté
+à la fois**.
+
+Une piste horizontale met les trois côte à côte, donc sa hauteur devient celle du plus grand :
+depuis la Wish list, qui fait deux lignes, on défilerait sur toute la hauteur de la Collection,
+qui en fait 111. **Chaque panneau devient donc son propre conteneur défilant et le document
+cesse de défiler.** C'est la difficulté 3 que `IDEES.md` avait posée le 4 septembre, et c'est
+tout le travail — le geste, lui, est trois déclarations CSS.
+
+#### L'option retenue, et celle qui a été écartée
+
+`scroll-snap` natif, comme `IDEES.md` l'avait vu. L'alternative était de garder le défilement du
+document et d'animer un `translateX` à la main : elle conserve la barre d'adresse rétractable,
+mais au prix d'un gestionnaire de `touch` écrit à la main — seuil de vélocité, verrou d'axe,
+élastique aux extrémités — c'est-à-dire **exactement la catégorie de code que ce document sait
+ne pas pouvoir juger depuis le poste**. Le natif rend l'inertie, l'élastique et le verrou d'axe
+d'iOS et d'Android, et il marche au trackpad.
+
+**Le prix est nommé** : sans défilement du document, la barre d'adresse mobile ne se rétracte
+plus. Le manifeste étant en `display: standalone`, **la cible installée n'en a pas** ; le coût
+n'est payé qu'en onglet de navigateur et sur le poste.
+
+#### Quatre commits, du plus risqué au plus cosmétique
+
+| Commit | Ce qu'il fait |
+|---|---|
+| le panneau défile au lieu du document | isole le changement de mécanique, **sans piste** : rendu quasi identique, donc relisible seul |
+| la piste | trois panneaux montés, `scroll-snap`, pastilles, URL |
+| `inert` | sort les panneaux hors écran de la tabulation |
+| un menu de tri par panneau | la conséquence du bouton posé partout |
+
+**Le bandeau passe en surimpression et sa hauteur voyage en variable CSS**, mesurée par
+`ResizeObserver` avec une valeur par défaut en base. L'escamoter par une hauteur animée aurait
+relayouté la liste à chaque frame ; en surimpression c'est le `translate` déjà en place, et les
+panneaux prennent la hauteur en `padding-top`.
+
+**Les autres onglets gardent le défilement du document.** La règle ne s'arme que sur les pages
+qui se déclarent plein écran, par un `:has()` en base : mesuré, le Planning garde ses 65 px de
+débordement de document et sa barre du bas `sticky`, là où l'espace collection tombe à zéro.
+
+#### Corrigé avant d'être vu — l'index du panneau était dupliqué
+
+La première version tenait l'index du panneau actif dans la fermeture du listener **en plus** de
+l'état React. Deux copies de la même vérité, donc deux copies qui peuvent diverger, et la
+pastille aurait menti sur ce qu'on voit. Supprimé : le listener appelle le `setState` à chaque
+franchissement et React abandonne le rendu quand la valeur ne change pas, `replaceState` n'étant
+appelé que si le chemin diffère.
+
+#### Établi — les panneaux voisins chargent bien leurs images
+
+La difficulté 4 de `IDEES.md` disait de le **mesurer à l'onglet réseau, pas de le supposer**.
+Mesuré sur une ouverture à froid de `/` :
+
+| Panneau | Images dans le DOM | Chargées |
+|---|---|---|
+| Collection | 111 | **35** |
+| Manquants | 15 | **15** |
+| Wish list | 2 | **2** |
+
+`loading="lazy"` protège donc verticalement et **pas horizontalement** : un panneau voisin, à une
+largeur d'écran, est dans la marge de déclenchement. Le volume reste petit — 17 images — et leurs
+URL recoupent largement celles de la Collection, qui sont en cache immuable d'un an.
+
+#### Une sonde qui a menti, pour la sixième fois
+
+Une série de `piste.scrollTo()` en JavaScript n'a rien déclenché : ni événement `scroll`, ni
+changement de pastille, ni d'URL. Assez pour conclure à un défaut. La cause n'était pas dans le
+code — **l'onglet était `hidden`**, donc sans `requestAnimationFrame`, donc sans distribution
+d'événements de défilement. Les mêmes gestes en clic réel, écran visible, marchaient déjà.
+
+**Le corollaire est celui que ce document répète** : une sonde ne prouve rien. Ici il s'affine —
+**vérifier que l'onglet est visible avant de conclure qu'un événement n'a pas été émis**, et
+`document.visibilityState` le dit en une ligne.
+
+#### Vérifié sur le poste, contre l'écran
+
+Piste à 1 290 px pour trois panneaux de 430, pastille et titre suivant la position, URL passant
+à `/manquants` et `/wishlist` sans navigation, liens profonds ouvrant sur le bon panneau,
+position de défilement conservée par panneau à travers un rechargement, menu de tri des
+Manquants triant bien par tomes manquants décroissants — CLAYMORE 21, ORIENT 15, CALL OF THE
+NIGHT 12 — et menu de la Wish list réduit à ses deux critères.
+
+**`scrollbar-gutter: stable` a dû descendre sur les panneaux** : sans lui, la Collection et les
+Manquants faisaient 415 px de contenu contre 430 pour la Wish list, qui n'a pas de barre. C'est
+le même défaut que le 17 septembre au matin, un cran plus bas, et la même correction.
+
+#### Ce qui n'a pas été fait, et pourquoi
+
+- **Rien n'a été vu sur téléphone**, et c'est là que le geste se juge. Trois points l'attendent :
+  la concurrence avec le geste système « retour » d'iOS au bord gauche du premier panneau, le
+  saut d'une frame à l'ouverture d'un lien profond — la piste se positionne dans un effet, donc
+  après la première peinture — et le fait qu'`inert` ne bloque pas le défilement tactile du
+  panneau entrant.
+- **Le champ de recherche ne saute plus de 46 px**, mais pas par la correction prévue : le bouton
+  de tri est simplement posé sur les trois panneaux. Il fallait de toute façon que le bandeau
+  n'ait qu'une géométrie, sans quoi il aurait tressailli au milieu de chaque glissement.
+- **La pastille du compte fait toujours 38 px**, sous la cible tactile du projet.

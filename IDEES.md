@@ -41,6 +41,15 @@ L'arbitrage vient après.
 
 ### Refonte de la Collection en panneaux glissants — 4 septembre 2026
 
+> **Le glissement horizontal est construit le 17 septembre 2026** — `CLAUDE.md` §4 et
+> `JOURNAL.md`. La piste `scroll-snap` décrite ci-dessous est bien ce qui a été fait, sans
+> dépendance. Des cinq difficultés, la 3 était la bonne — le défilement par panneau a coûté tout
+> le travail —, la 4 est **mesurée** et la réponse est *oui, les panneaux voisins chargent leurs
+> images*, et la 5 est réglée depuis que les chiffres ont quitté le bandeau. **Ce qui reste
+> ouvert ici est la pile à lire** (difficulté 2), donc une quatrième pastille et un geste que
+> rien n'écrit — et la difficulté 1, les couvertures d'une série de wish list, que le cron
+> quotidien a réglée depuis le 16 septembre.
+
 Référence fournie en capture : l'application de référence pose une **bande de pastilles
 horizontale, elle-même défilable**, sous la recherche, la pastille active en plein accent —
 « PILE À LIRE · COLLECTION · COMPLÉTER · EN… ». La recherche et le tri restent au-dessus.
