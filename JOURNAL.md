@@ -4944,3 +4944,56 @@ migration**. C'est la deuxième fusion de la journée après `glissement-panneau
 qui livre un écran que la spécification ne prévoyait pas : §9 listait « multi-utilisateur,
 partage, fonctions sociales » hors périmètre V1, et la consultation en lecture seule en est
 sortie par l'arbitrage de §13.7, nommément et sans emporter le reste.
+
+### Fait — se retirer de Communauté, et la colonne partie avec son filet (17 septembre 2026)
+
+**Demande du propriétaire dans la foulée de Communauté, branche `visibilite-compte`.** Un booléen
+`Utilisateur.visible`, `@default(true)`, qu'on change depuis sa page de compte. C'est exactement
+le remède qu'`IDEES.md` décrivait deux heures plus tôt sous « Se rendre invisible » — arbitré
+avant que le cas se présente, parce qu'il coûtait une colonne et un interrupteur.
+
+**La question ouverte que l'idée portait est tranchée, et c'était la seule qui comptait** : un
+compte retiré reste-t-il visitable par son adresse directe ? **Non.** Le filtre porte sur
+`compteParIdentifiant` autant que sur `classerComptes`. Ne l'avoir mis qu'au classement aurait
+donné un réglage cosmétique : l'adresse d'un compte **est** son identifiant, donc devinable par
+quiconque l'a vu passer une fois.
+
+**La première migration depuis trois jours, et la règle appliquée sans qu'on ait à la
+redécouvrir** : `CLAUDE.md` dit deux fois qu'une colonne neuve absente de `backup-db.ts` sort du
+filet en silence — rien ne le signale, les compteurs ne bougent pas, et c'est ce qui rend le trou
+invisible. **La colonne et ses deux lignes d'export sont donc parties dans le même commit**, avec
+un `?? true` à la restauration pour qu'une sauvegarde d'avant remonte au même défaut. Vérifié en
+relançant `db:backup` : les deux comptes ressortent avec `visible: true` dans `data/backup.json`.
+
+**Le défaut reste la visibilité.** Se retirer est un geste actif, et §13.7 n'en est pas révisée :
+la forme « sur autorisation », qui inverserait le défaut, reste écartée pour le même motif — elle
+rendrait le classement impossible.
+
+**Un compte retiré ne se voit plus lui-même dans la liste**, et c'est délibéré : l'écran montre
+alors ce que les autres voient, ce qui est le meilleur retour possible sur un réglage dont l'effet
+est ailleurs. L'interrupteur, lui, dit l'état, et la phrase sous lui change avec.
+
+#### Vérifié — les deux côtés séparément, faute de pouvoir se connecter au compte d'essai
+
+| Ce qui a été fait | L'écran | La base |
+|---|---|---|
+| migration sur Neon | — | `Appliquee : 20260917160000_visibilite_compte`, les deux comptes à `true` |
+| `db:backup` relancé | — | `visible` présent sur les deux lignes du fichier |
+| `testeur` mis à `false` | il disparaît de `/communaute`, un seul lien reste | — |
+| `/communaute/testeur` | page « introuvable », **34 190 octets** — la taille de `/communaute/inconnu` | — |
+| `/communaute/tempestl` au même moment | **418 914 octets**, intact | le filtre vise bien un compte, pas tous |
+| l'interrupteur basculé sur `/compte` | la phrase passe à « vous n'apparaissez dans aucune liste » | `tempestl=false` |
+| rebasculé | — | `tempestl=true`, état rendu au rechargement (`aria-checked="true"`) |
+| cible tactile | — | **44 px** mesurés au `getBoundingClientRect`, la cote du projet |
+
+**Un piège évité de justesse, et il vaut d'être écrit.** Le cookie de session est **httpOnly** :
+`document.cookie = "collection.acces=…"` depuis la console est **ignoré en silence**, la page
+continue de rendre la session déjà en place. La vérification a donc démarré connectée en
+`tempestl` — le propriétaire — alors qu'elle se croyait en `testeur`, et basculer l'interrupteur
+à cet instant aurait rendu le compte du propriétaire invisible sans que rien ne le dise.
+`document.cookie` rendant `""` est le signe qui l'a trahi. **Corollaire** : un cookie forgé ne
+sert qu'à `curl`, pas au navigateur dès qu'une vraie session existe — et la lecture de
+`document.cookie` est le contrôle à faire avant de cliquer, pas après.
+
+La branche `visibilite-compte` est fusionnée dans `main` — un commit, onze fichiers, **une
+migration**, purement additive.

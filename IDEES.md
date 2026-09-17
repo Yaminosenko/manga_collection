@@ -94,26 +94,6 @@ panneaux, un clic sur une pastille faisant un `scrollIntoView({ behavior: "smoot
 utilisateur sur `SuiviEdition` et `Possession` ; construire l'écran d'abord obligerait à écrire
 les requêtes deux fois.
 
-### Se rendre invisible dans Communauté — 17 septembre 2026
-
-**Ce qui reste de « la visibilité entre comptes » une fois la forme publique par défaut
-arbitrée** (§13.7). L'écran Communauté liste tous les comptes et laisse visiter chacun :
-**personne ne peut s'y soustraire**, et il n'y a aujourd'hui aucun réglage.
-
-Ça ne gêne pas à deux comptes qui se connaissent. Ce qui le rendra nécessaire est écrit
-d'avance : **le jour où un inconnu s'inscrit** — l'inscription est libre et le domaine public —,
-il voit la liste des séries du propriétaire sans avoir rien demandé. Ce qui est déjà borné :
-l'argent ne sort pas, les manquants et la wish list non plus.
-
-Les formes possibles, par coût croissant : un booléen `visible` sur `Utilisateur`, qui retire du
-classement et rend la visite introuvable ; ou la table `PartageCollection` écartée en §13.7, qui
-inverse le défaut — on n'est visible que de qui on a autorisé. Le booléen est un ajout, donc sans
-prix d'attente au sens de §13.1.
-
-**Question qui vient avec** : un compte retiré du classement doit-il rester visitable par URL
-directe ? Non si le réglage veut dire quelque chose — mais alors il faut le contrôler dans
-`compteParIdentifiant`, pas seulement dans `classerComptes`.
-
 ### Montrer sa collection à quelqu'un qui n'a pas de compte — 17 septembre 2026
 
 Le lien opaque, écarté en §13.7 parce qu'il rouvrait une session en lecture seule que §13.6
@@ -306,3 +286,9 @@ Trace de sortie, pour qu'une session qui se souvient de la discussion sache où 
   dans « Écarté » avec leur motif, et les deux besoins qu'elles portaient et que la V1 ne couvre
   pas sont remontés en attente d'arbitrage : se rendre invisible, et montrer sa collection sans
   compte.
+- **Se rendre invisible dans Communauté** — posé le 17 septembre 2026 en attente d'arbitrage,
+  **arbitré le jour même**, avant que le cas se présente : c'est le booléen `Utilisateur.visible`,
+  `@default(true)`, réglable depuis `/compte`. La question qui venait avec — un compte retiré
+  reste-t-il visitable par son adresse directe ? — est tranchée **non** : le filtre porte sur
+  `compteParIdentifiant` autant que sur `classerComptes`, sans quoi le réglage serait cosmétique,
+  l'adresse d'un compte étant son identifiant. Voir §2, §4 et §13.7.

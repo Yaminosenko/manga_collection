@@ -382,6 +382,12 @@ export const LIBELLE_COMMUNAUTE_VIDE = "Aucun compte ne correspond.";
 export const LIBELLE_COMMUNAUTE_AUCUN_COMPTE = "Aucune autre collection pour le moment.";
 export const LIBELLE_COLLECTION_VIDE_AUTRE = "Ce compte n’a encore aucun tome.";
 export const LIBELLE_RETOUR_COMMUNAUTE = "Retour à la communauté";
+export const TITRE_SECTION_VISIBILITE = "Visibilité";
+export const LIBELLE_VISIBLE_DANS_COMMUNAUTE = "Visible dans Communauté";
+export const MENTION_VISIBILITE_ACTIVE =
+  "Les autres comptes vous trouvent dans Communauté et peuvent consulter votre collection en lecture seule. Ni la valeur ni les prix ne leur sont montrés.";
+export const MENTION_VISIBILITE_COUPEE =
+  "Vous n’apparaissez dans aucune liste et votre collection n’est ouvrable par personne, même par son adresse directe.";
 export const MENTION_COLLECTION_LECTURE_SEULE = "Collection consultée en lecture seule.";
 
 export const SOURCE_COUVERTURE_BNF = "bnf";

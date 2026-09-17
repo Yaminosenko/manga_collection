@@ -35,7 +35,7 @@ Edition      (id, serieId, slug, nom, editeur, tomesParus, editionTerminee,
               prixDefautCentimes, slugMangaNews, couvertureUrl, creeeParId)
 Volume       (id, editionId, numero, isbn, dateSortie, prixCentimes, couvertureUrl)
 
-Utilisateur  (id, email, nom, role, aPaye, creeLe)
+Utilisateur  (id, email, nom, role, aPaye, visible, creeLe)
 SuiviEdition (id, utilisateurId, editionId, statut, suivie, ajouteeLe)
 Possession   (id, utilisateurId, volumeId, possede, dateAchat, prixPayeCentimes,
               etat, lu, note)
@@ -101,9 +101,14 @@ envoyeur n'existe avant le lot 2 de §13.6.
 
 **Il n'y a plus de rôle invité** : chacun se connecte avec son compte. Montrer sa collection se
 fait depuis le 17 septembre 2026 par l'écran **Communauté**, qui est la forme retenue de la
-visibilité entre comptes — **publique par défaut entre comptes connectés**, voir §13.7. Un
-compte est donc consultable par tous les autres, sans réglage et sans possibilité de s'y
-soustraire.
+visibilité entre comptes — **publique par défaut entre comptes connectés**, voir §13.7.
+
+`visible` est le retrait de cette publication. **`@default(true)`** : un compte est visible tant
+qu'il ne dit pas le contraire, ce qui est la lecture littérale de « publique par défaut » et ce
+qui évite un backfill. Il se change depuis `/compte`, et **il porte sur les deux chemins** — le
+classement *et* l'ouverture d'une collection par son adresse directe. Ne le filtrer que dans le
+classement en ferait un réglage cosmétique : l'adresse d'un compte est son identifiant, donc
+devinable.
 
 ### Volume
 Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date,
@@ -562,7 +567,8 @@ Détective Conan en a 107. Une liste noire écrite à la main, dans l'esprit de
 
 **Quatrième onglet de la barre du bas.** L'écran liste les **dix plus grosses collections**, un
 compte par ligne : son nom visible, puis `N tomes · N éditions`. C'est l'état au repos, sans
-saisie.
+saisie. **Les comptes à `visible = false` n'y sont pas**, ni au classement, ni à la recherche, ni
+par leur adresse directe — voir §2 et l'écran de compte ci-dessous.
 
 **Une barre de recherche, sur le motif de Rechercher** — `bg-surface`, 38 px, action serveur,
 debounce de `DELAI_RECHERCHE_MS`, deux caractères minimum. Elle cherche **tous les comptes**, pas
@@ -604,6 +610,21 @@ que la Collection, par le même composant.
 qu'affichée : toutes les actions de `lib/actions.ts` écrivent sur `idUtilisateurCourant()` et
 **aucune n'accepte un identifiant de compte en paramètre**. Il n'existe donc pas de chemin par
 lequel une visite écrirait chez l'hôte.
+
+#### Se retirer — l'interrupteur de `/compte`
+
+Une section « Visibilité » sur la page de compte, un interrupteur de 44 px, et sous lui **la
+phrase change avec l'état** : visible, elle dit ce que les autres voient et rappelle que l'argent
+ne leur est pas montré ; coupée, elle dit qu'on n'apparaît nulle part et que la collection n'est
+ouvrable par personne. C'est le seul endroit qui décrit la conséquence, donc elle est écrite là
+plutôt que dans un libellé de bouton.
+
+`changerVisibilite` n'exige qu'`exigerAcces()` et écrit sur `idUtilisateurCourant()` — comme tout
+le reste, elle ne sait pas viser un autre compte. Elle revalide `/compte` et `/communaute`.
+
+**Un compte retiré ne se voit plus lui-même dans la liste**, et c'est délibéré : l'écran montre
+alors exactement ce que les autres voient, ce qui est le meilleur retour possible sur un réglage
+dont l'effet est ailleurs. L'interrupteur, lui, dit l'état.
 
 ---
 
@@ -2596,10 +2617,16 @@ publique par défaut entre comptes connectés.**
 | par lien opaque | non | la seule qui marche **sans compte**, donc la seule qui remplace vraiment l'invité — mais elle rouvre une session en lecture seule, c'est-à-dire exactement ce que §13.6 venait de supprimer, et elle publie une collection à qui détient l'URL |
 
 **Ce que ça expose, et qui est le prix assumé.** L'inscription est libre (§13.6) et le domaine de
-production est public (§7) : **tout compte inscrit est donc visible de tout compte inscrit**, sans
-réglage et sans retrait possible. La contrepartie est que **l'argent ne sort pas** — ni valeur
-totale ni prix, voir §4. C'est ce qui rend la forme tenable : ce qu'on publie est une liste de
-séries, pas un patrimoine.
+production est public (§7) : **tout compte inscrit est donc visible de tout compte inscrit**. La
+contrepartie est que **l'argent ne sort pas** — ni valeur totale ni prix, voir §4. C'est ce qui
+rend la forme tenable : ce qu'on publie est une liste de séries, pas un patrimoine.
+
+**Et le retrait existe depuis le même jour** : `Utilisateur.visible`, `@default(true)`, réglable
+depuis `/compte`. C'est le booléen que cette section annonçait comme remède « le jour où quelqu'un
+veut ne pas être vu » — il est arrivé le jour même, avant que le cas se présente, parce qu'il
+coûtait une colonne et un interrupteur. **Il ne change rien à la forme retenue** : le défaut reste
+la visibilité, et se retirer est un geste actif. La forme « sur autorisation » reste donc écartée,
+et pour le même motif — elle inverse le défaut, et rend le classement impossible.
 
 **Ce que le code a coûté : beaucoup moins que prévu.** `IDEES.md` annonçait la reprise des douze
 requêtes d'écran, toutes parties de `idUtilisateurCourant()`. La visite se bornant à la liste,
@@ -2621,8 +2648,9 @@ les plus grosses collections » —, donc le risque s'inverse : c'est le **conte
 doit rester borné à ce que l'hôte accepte de montrer, et c'est pourquoi la valeur, les vendues,
 les manquants et la wish list en sont exclus.
 
-**Reste ouvert**, et vit dans `IDEES.md` : se rendre invisible, la visibilité sans compte, et
-tout ce que §13.3 met derrière le mur — comparaison, suivi d'autres comptes, badges.
+**Reste ouvert**, et vit dans `IDEES.md` : la visibilité **sans compte** — la seule chose que
+l'invité savait faire et qui n'est jamais revenue —, et tout ce que §13.3 met derrière le mur :
+comparaison, suivi d'autres comptes, badges.
 
 ---
 

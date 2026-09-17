@@ -39,6 +39,7 @@ model Utilisateur {
   nom                String?
   role               RoleUtilisateur @default(UTILISATEUR)
   aPaye              Boolean         @default(false)
+  visible            Boolean         @default(true)
   creeLe             DateTime        @default(now())
   suivis             SuiviEdition[]
   possessions        Possession[]

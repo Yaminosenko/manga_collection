@@ -12,6 +12,7 @@ export async function chargerCompteCourant(): Promise<CompteAffiche> {
       identifiantAffiche: true,
       email: true,
       nom: true,
+      visible: true,
     },
   });
 
@@ -23,5 +24,6 @@ export async function chargerCompteCourant(): Promise<CompteAffiche> {
     email: utilisateur.email,
     nom: utilisateur.nom,
     proprietaire: role === "PROPRIETAIRE",
+    visible: utilisateur.visible,
   };
 }

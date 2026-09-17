@@ -53,6 +53,7 @@ export async function classerComptes(terme: string): Promise<LigneCommunaute[]> 
       FROM "Utilisateur" u
       LEFT JOIN par_suivi t ON t.uid = u.id
      WHERE u.identifiant IS NOT NULL
+       AND u.visible
        ${filtre}
      GROUP BY u.id, u.identifiant, u."identifiantAffiche"
      ORDER BY tomes DESC, u.identifiant ASC
@@ -74,10 +75,10 @@ export async function compteParIdentifiant(identifiant: string): Promise<CompteV
 
   const compte = await prisma.utilisateur.findUnique({
     where: { identifiant: recherche },
-    select: { id: true, identifiant: true, identifiantAffiche: true },
+    select: { id: true, identifiant: true, identifiantAffiche: true, visible: true },
   });
 
-  if (compte === null || compte.identifiant === null) {
+  if (compte === null || compte.identifiant === null || !compte.visible) {
     return null;
   }
 

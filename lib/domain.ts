@@ -276,6 +276,7 @@ export type CompteAffiche = {
   email: string | null;
   nom: string | null;
   proprietaire: boolean;
+  visible: boolean;
 };
 
 export function dernierTomePossede(tomes: Tome[]): Tome | null {

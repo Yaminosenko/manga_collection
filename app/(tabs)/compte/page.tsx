@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AccountVisibilityToggle } from "@/components/account-visibility-toggle";
 import { CLASSE_BOUTON_DISCRET, CLASSE_BOUTON_SOUS_PAGE } from "@/components/champ";
 import { CaretRight } from "@/components/icons";
 import { seDeconnecter } from "@/lib/auth-actions";
@@ -14,6 +15,7 @@ import {
   LIBELLE_NOM_AFFICHE,
   LIBELLE_ROLE_PROPRIETAIRE,
   TITRE_COMPTE,
+  TITRE_SECTION_VISIBILITE,
 } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
@@ -35,6 +37,13 @@ export default async function Page() {
           <Ligne cle={LIBELLE_IDENTIFIANT} valeur={compte.identifiant} />
           <Ligne cle={LIBELLE_EMAIL} valeur={compte.email} />
           <Ligne cle={LIBELLE_NOM_AFFICHE} valeur={compte.nom} />
+        </section>
+
+        <section className="flex flex-col gap-[10px]">
+          <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
+            {TITRE_SECTION_VISIBILITE}
+          </h2>
+          <AccountVisibilityToggle visible={compte.visible} />
         </section>
 
         <div className="flex flex-col gap-[10px]">
