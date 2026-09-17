@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState, type RefObject } from "react";
 import Link from "next/link";
 import { CollectionPanel } from "@/components/collection-panel";
 import { MissingPanel } from "@/components/missing-panel";
@@ -32,6 +32,11 @@ import { useHauteurBandeau } from "@/lib/use-header-height";
 import { useEnTeteEscamotable } from "@/lib/use-header-visibility";
 import { useMemoireDefilement } from "@/lib/use-scroll-memory";
 import { usePreferenceTri } from "@/lib/use-sort-preference";
+import {
+  comportementDefilement,
+  indexDuPanneau,
+  usePanneauVisible,
+} from "@/lib/use-visible-panel";
 import type { EspaceCollection, LigneCollection } from "@/lib/domain";
 
 function tauxCompletion(ligne: LigneCollection): number {
@@ -111,12 +116,32 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
   const [preference, appliquerPreference] = usePreferenceTri();
   const [menuOuvert, setMenuOuvert] = useState(false);
   const bandeau = useRef<HTMLDivElement>(null);
-  const scroller = useRef<HTMLDivElement>(null);
+  const piste = useRef<HTMLDivElement>(null);
+  const panneauCollection = useRef<HTMLDivElement>(null);
+  const panneauManquants = useRef<HTMLDivElement>(null);
+  const panneauWishlist = useRef<HTMLDivElement>(null);
+  const scrollers: Record<ClePanneau, RefObject<HTMLDivElement | null>> = {
+    collection: panneauCollection,
+    manquants: panneauManquants,
+    wishlist: panneauWishlist,
+  };
   const enTeteVisible =
-    useEnTeteEscamotable(bandeau, scroller, CLES_STOCKAGE_DEFILEMENT[panneau]) || menuOuvert;
+    useEnTeteEscamotable(bandeau, scrollers[panneau], CLES_STOCKAGE_DEFILEMENT[panneau]) ||
+    menuOuvert;
 
   useHauteurBandeau(bandeau);
-  useMemoireDefilement(scroller, CLES_STOCKAGE_DEFILEMENT[panneau]);
+  useMemoireDefilement(panneauCollection, CLES_STOCKAGE_DEFILEMENT.collection);
+  useMemoireDefilement(panneauManquants, CLES_STOCKAGE_DEFILEMENT.manquants);
+  useMemoireDefilement(panneauWishlist, CLES_STOCKAGE_DEFILEMENT.wishlist);
+  usePanneauVisible(piste, panneauInitial, setPanneau);
+
+  const allerAuPanneau = useCallback((cle: ClePanneau) => {
+    const rail = piste.current;
+    if (rail === null) {
+      return;
+    }
+    rail.scrollTo({ left: indexDuPanneau(cle) * rail.clientWidth, behavior: comportementDefilement() });
+  }, []);
 
   const lignes = useMemo(() => {
     const filtrees = espace.collection.lignes.filter((ligne) =>
@@ -145,8 +170,6 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
   );
 
   const libelleActif = PANNEAUX.find((option) => option.cle === panneau)?.libelle ?? "";
-
-  const { stats, prix } = statsDuPanneau(espace, panneau);
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col">
@@ -178,67 +201,63 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
             />
           </label>
 
-          {panneau === "collection" ? (
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setMenuOuvert((ouvert) => !ouvert)}
-                aria-label="Trier"
-                aria-expanded={menuOuvert}
-                className="text-accent flex size-[38px] items-center justify-center rounded-md border border-neutral-800"
-              >
-                <SortAscending
-                  className={`size-[16px] ${preference.croissant ? "" : "rotate-180"}`}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setMenuOuvert((ouvert) => !ouvert)}
+              aria-label="Trier"
+              aria-expanded={menuOuvert}
+              className="text-accent flex size-[38px] items-center justify-center rounded-md border border-neutral-800"
+            >
+              <SortAscending className={`size-[16px] ${preference.croissant ? "" : "rotate-180"}`} />
+            </button>
+
+            {menuOuvert ? (
+              <>
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setMenuOuvert(false)}
+                  aria-hidden="true"
                 />
-              </button>
+                <div className="bg-surface absolute top-[42px] right-0 z-20 flex w-[220px] flex-col rounded-md border border-neutral-800 py-[4px]">
+                  {TRIS.map((option) => (
+                    <button
+                      key={option.cle}
+                      type="button"
+                      onClick={() => {
+                        appliquerPreference({
+                          tri: option.cle,
+                          croissant: CROISSANT_PAR_DEFAUT[option.cle],
+                        });
+                        setMenuOuvert(false);
+                      }}
+                      className="hover:text-accent-200 flex min-h-11 items-center justify-between gap-[8px] px-[12px] text-left text-[13px] text-neutral-300"
+                    >
+                      {option.libelle}
+                      {option.cle === preference.tri ? (
+                        <Check className="text-accent size-[12px] flex-none" />
+                      ) : null}
+                    </button>
+                  ))}
 
-              {menuOuvert ? (
-                <>
-                  <div
-                    className="fixed inset-0 z-10"
-                    onClick={() => setMenuOuvert(false)}
-                    aria-hidden="true"
-                  />
-                  <div className="bg-surface absolute top-[42px] right-0 z-20 flex w-[220px] flex-col rounded-md border border-neutral-800 py-[4px]">
-                    {TRIS.map((option) => (
-                      <button
-                        key={option.cle}
-                        type="button"
-                        onClick={() => {
-                          appliquerPreference({
-                            tri: option.cle,
-                            croissant: CROISSANT_PAR_DEFAUT[option.cle],
-                          });
-                          setMenuOuvert(false);
-                        }}
-                        className="hover:text-accent-200 flex min-h-11 items-center justify-between gap-[8px] px-[12px] text-left text-[13px] text-neutral-300"
-                      >
-                        {option.libelle}
-                        {option.cle === preference.tri ? (
-                          <Check className="text-accent size-[12px] flex-none" />
-                        ) : null}
-                      </button>
-                    ))}
-
-                    <div className="border-divider mt-[4px] border-t pt-[4px]">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          appliquerPreference({
-                            tri: preference.tri,
-                            croissant: !preference.croissant,
-                          })
-                        }
-                        className="hover:text-accent-200 flex min-h-11 w-full items-center px-[12px] text-left text-[13px] text-neutral-300"
-                      >
-                        {preference.croissant ? LIBELLE_SENS_DECROISSANT : LIBELLE_SENS_CROISSANT}
-                      </button>
-                    </div>
+                  <div className="border-divider mt-[4px] border-t pt-[4px]">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        appliquerPreference({
+                          tri: preference.tri,
+                          croissant: !preference.croissant,
+                        })
+                      }
+                      className="hover:text-accent-200 flex min-h-11 w-full items-center px-[12px] text-left text-[13px] text-neutral-300"
+                    >
+                      {preference.croissant ? LIBELLE_SENS_DECROISSANT : LIBELLE_SENS_CROISSANT}
+                    </button>
                   </div>
-                </>
-              ) : null}
-            </div>
-          ) : null}
+                </div>
+              </>
+            ) : null}
+          </div>
         </div>
 
         <nav
@@ -251,7 +270,7 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
               <button
                 key={cle}
                 type="button"
-                onClick={() => setPanneau(cle)}
+                onClick={() => allerAuPanneau(cle)}
                 aria-current={actif ? "page" : undefined}
                 className="flex min-h-11 flex-none items-center"
               >
@@ -269,25 +288,38 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
       </div>
 
       <div
-        ref={scroller}
-        className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain px-[18px] pt-[calc(var(--hauteur-bandeau)+12px)] pb-[18px]"
+        ref={piste}
+        className="piste-panneaux flex min-h-0 flex-1 snap-x snap-mandatory overflow-x-auto overscroll-x-contain"
       >
-        <PanelStats stats={stats} prix={prix} />
-        {panneau === "collection" ? (
-          <CollectionPanel
-            collection={espace.collection}
-            lignes={lignes}
-            vendues={vendues}
-          />
-        ) : null}
+        {PANNEAUX.map(({ cle, libelle }) => {
+          const { stats, prix } = statsDuPanneau(espace, cle);
+          return (
+            <section
+              key={cle}
+              ref={scrollers[cle]}
+              aria-label={libelle}
+              className="panneau-defilant flex w-full flex-none snap-start flex-col overflow-y-auto overscroll-y-contain px-[18px] pt-[calc(var(--hauteur-bandeau)+12px)] pb-[18px]"
+            >
+              <PanelStats stats={stats} prix={prix} />
 
-        {panneau === "manquants" ? (
-          <MissingPanel manquants={espace.manquants} editions={editionsManquantes} />
-        ) : null}
+              {cle === "collection" ? (
+                <CollectionPanel
+                  collection={espace.collection}
+                  lignes={lignes}
+                  vendues={vendues}
+                />
+              ) : null}
 
-        {panneau === "wishlist" ? (
-          <WishlistPanel wishList={espace.wishList} lignes={souhaitees} />
-        ) : null}
+              {cle === "manquants" ? (
+                <MissingPanel manquants={espace.manquants} editions={editionsManquantes} />
+              ) : null}
+
+              {cle === "wishlist" ? (
+                <WishlistPanel wishList={espace.wishList} lignes={souhaitees} />
+              ) : null}
+            </section>
+          );
+        })}
       </div>
     </div>
   );
