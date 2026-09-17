@@ -81,7 +81,7 @@ export async function promouvoirSortie(
   instant: Date,
 ): Promise<SortiePromue | null> {
   const sortie = await prisma.sortie.findFirst({
-    where: { numero, edition: { slug } },
+    where: { numero, edition: { slug, suivis: { some: { utilisateurId } } } },
     select: SORTIE_COMPLETE,
   });
 

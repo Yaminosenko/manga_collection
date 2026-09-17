@@ -11,6 +11,7 @@ import { promouvoirSortie } from "@/lib/promotion";
 import { exigerAcces, exigerProprietaire } from "@/lib/guard";
 import { idUtilisateurCourant } from "@/lib/utilisateur";
 import { estPossede, selectionPossession } from "@/lib/possession";
+import { estSuivie, selectionSuivi } from "@/lib/suivi";
 import { rebondir } from "@/lib/rebond";
 import { couvertureDIdentification, vignettesParIsbn } from "@/lib/vignettes";
 import { normaliserAlias } from "@/lib/normalisation";
@@ -94,16 +95,16 @@ export async function basculerTome(
 ): Promise<void> {
   await exigerAcces();
 
+  const utilisateurId = await idUtilisateurCourant();
+
   const volume = await prisma.volume.findFirst({
-    where: { numero, edition: { slug } },
+    where: { numero, edition: { slug, suivis: { some: { utilisateurId } } } },
     select: { id: true },
   });
 
   if (!volume) {
     throw new Error(`Tome ${numero} introuvable pour l'édition ${slug}`);
   }
-
-  const utilisateurId = await idUtilisateurCourant();
 
   await prisma.possession.upsert({
     where: { utilisateurId_volumeId: { utilisateurId, volumeId: volume.id } },
@@ -117,16 +118,16 @@ export async function basculerTome(
 export async function definirTousLesTomes(slug: string, possede: boolean): Promise<void> {
   await exigerAcces();
 
-  const edition = await prisma.edition.findUnique({
-    where: { slug },
+  const utilisateurId = await idUtilisateurCourant();
+
+  const edition = await prisma.edition.findFirst({
+    where: { slug, suivis: { some: { utilisateurId } } },
     select: { tomesParus: true, volumes: { select: { id: true, numero: true } } },
   });
 
   if (!edition) {
     throw new Error(`Édition ${slug} introuvable`);
   }
-
-  const utilisateurId = await idUtilisateurCourant();
 
   const identifiants = edition.volumes
     .filter((volume) => volume.numero <= edition.tomesParus)
@@ -387,6 +388,18 @@ async function suivreEditionExistante(slug: string): Promise<void> {
     update: {},
   });
 }
+export async function adopterEditionScannee(slug: string, isbn: string | null): Promise<void> {
+  await exigerAcces();
+
+  await suivreEditionExistante(slug);
+  if (isbn !== null) {
+    await marquerTomeParIsbn(slug, isbn);
+  }
+
+  revaliderApresAjout();
+  redirect(`/edition/${slug}`);
+}
+
 function racineDuTitre(titreNotice: string): string {
   return titreNotice.replace(/[\s.:,-]*\d{1,3}\s*$/, "").trim();
 }
@@ -404,7 +417,14 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     select: {
       numero: true,
       possessions: selectionPossession(utilisateurId),
-      edition: { select: { slug: true, nom: true, serie: { select: { titre: true } } } },
+      edition: {
+        select: {
+          slug: true,
+          nom: true,
+          serie: { select: { titre: true } },
+          suivis: selectionSuivi(utilisateurId),
+        },
+      },
     },
   });
   if (volume) {
@@ -416,6 +436,7 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
       nom: volume.edition.nom,
       numero: volume.numero,
       possede: estPossede(volume),
+      dansMaCollection: estSuivie(volume.edition),
     };
   }
 
@@ -424,7 +445,13 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
     select: {
       numero: true,
       date: true,
-      edition: { select: { slug: true, serie: { select: { titre: true } } } },
+      edition: {
+        select: {
+          slug: true,
+          serie: { select: { titre: true } },
+          suivis: selectionSuivi(utilisateurId),
+        },
+      },
     },
   });
   if (sortie) {
@@ -435,6 +462,7 @@ export async function resoudreIsbn(brut: string): Promise<ResultatScan | null> {
       titre: sortie.edition.serie.titre,
       numero: sortie.numero,
       date: sortie.date.toISOString(),
+      dansMaCollection: estSuivie(sortie.edition),
     };
   }
 

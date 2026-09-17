@@ -22,7 +22,8 @@ type Fiche = {
 };
 
 type Manifeste = Record<string, Fiche>;
-type EtatAvant = Record<string, { tomesParus: number }>;
+type TomeAvant = { isbn: string | null; dateSortie: string | null };
+type EtatAvant = Record<string, { tomesParus: number; tomes?: Record<string, TomeAvant> }>;
 
 function charger<T>(chemin: string, defaut: T): T {
   return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as T) : defaut;
@@ -44,23 +45,43 @@ async function restaurer() {
   }
 
   let supprimes = 0;
+  let remis = 0;
+  const sansDetail: string[] = [];
+
   for (const [slug, etat] of Object.entries(avant)) {
     const edition = await prisma.edition.findUnique({ where: { slug }, select: { id: true } });
     if (!edition) continue;
     const { count } = await prisma.volume.deleteMany({
       where: { editionId: edition.id, numero: { gt: etat.tomesParus } },
     });
-    await prisma.volume.updateMany({
-      where: { editionId: edition.id },
-      data: { isbn: null, dateSortie: null },
-    });
+    if (etat.tomes) {
+      for (const [brut, tome] of Object.entries(etat.tomes)) {
+        await prisma.volume.updateMany({
+          where: { editionId: edition.id, numero: Number(brut) },
+          data: {
+            isbn: tome.isbn,
+            dateSortie: tome.dateSortie === null ? null : new Date(tome.dateSortie),
+          },
+        });
+        remis += 1;
+      }
+    } else {
+      sansDetail.push(slug);
+    }
     await prisma.sortie.deleteMany({ where: { editionId: edition.id } });
     await prisma.edition.update({ where: { slug }, data: { tomesParus: etat.tomesParus } });
     supprimes += count;
   }
+
   console.log(
-    `${Object.keys(avant).length} editions restaurees, ${supprimes} tomes supprimes, ISBN et dates effaces`,
+    `${Object.keys(avant).length} editions restaurees, ${supprimes} tomes supprimes, ${remis} tomes remis a leur ISBN et date d'avant`,
   );
+  if (sansDetail.length > 0) {
+    console.log(
+      `${sansDetail.length} editions sauvegardees avant que l'etat par tome soit memorise : leurs ISBN et dates sont laisses tels quels`,
+    );
+    for (const slug of sansDetail) console.log(`  ${slug}`);
+  }
 }
 
 async function main() {
@@ -76,13 +97,25 @@ async function main() {
 
   const editions = await prisma.edition.findMany({
     where: { slug: { in: Object.keys(manifeste) } },
-    select: { id: true, slug: true, tomesParus: true },
+    select: {
+      id: true,
+      slug: true,
+      tomesParus: true,
+      volumes: { select: { numero: true, isbn: true, dateSortie: true } },
+    },
   });
 
   const avant = charger<EtatAvant>(SAUVEGARDE, {});
   const ajoutees = editions.filter((edition) => !(edition.slug in avant));
   for (const edition of ajoutees) {
-    avant[edition.slug] = { tomesParus: edition.tomesParus };
+    const tomes: Record<string, TomeAvant> = {};
+    for (const volume of edition.volumes) {
+      tomes[String(volume.numero)] = {
+        isbn: volume.isbn,
+        dateSortie: volume.dateSortie === null ? null : volume.dateSortie.toISOString(),
+      };
+    }
+    avant[edition.slug] = { tomesParus: edition.tomesParus, tomes };
   }
   if (ajoutees.length > 0) {
     writeFileSync(SAUVEGARDE, `${JSON.stringify(avant, null, 2)}\n`);

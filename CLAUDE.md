@@ -276,6 +276,13 @@ qui remplit la même barre.
 | 4 | BnF par ISBN | notice seule → candidat manuel |
 | 5 | rien | l'écran le dit et s'arrête — **pas de saisie manuelle**, voir ci-dessous |
 
+**Les cinq rangs cherchent dans le catalogue entier, et les deux premiers portent donc
+`dansMaCollection`** — c'est la distinction décrite plus bas, appliquée au scan le
+17 septembre 2026. Une édition trouvée mais non suivie n'ouvre pas sa fiche et ne coche pas un
+tome : elle propose de l'**adopter**, ce qui crée le `SuiviEdition` avant d'écrire quoi que ce
+soit. Sans ça le rang 1 écrivait une `Possession` que les six écrans ignorent, et le rang 2
+supprimait du catalogue partagé une `Sortie` au profit de personne — voir `JOURNAL.md`.
+
 **Pas de saisie manuelle, tranché le 9 septembre 2026.** Un tome que ni le catalogue ni la BnF
 ne connaissent ne s'ajoute pas : l'écran le dit et s'arrête. `creerEdition`,
 `creerSerieAvecEdition` et la recherche de prix par titre ont été **supprimés**, pas laissés en
@@ -1327,7 +1334,7 @@ Ce qui reste :
 | `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout. **Ne sauvegarde aucun mot de passe** — une restauration laisse les comptes sans accès |
 | `npm run compte` | les accès. `-- --lister` (lecture seule) montre chaque compte et ses compteurs ; `-- --proprietaire --identifiant <pseudo> [--email <adresse>]` pose un accès **sur la ligne `PROPRIETAIRE` existante**, sans déplacer une seule ligne de collection ; `-- --reinitialiser <pseudo>` repose un mot de passe et coupe les sessions. Le mot de passe est demandé sans écho |
 | `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste — **relire aussi `data/planning-divergences.json`** |
-| `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
+| `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées. `-- --revert` remonte `data/editions-avant-planning.json`, qui porte l'état **par tome** depuis le 17 septembre 2026 — les éditions sauvegardées avant gardent leurs ISBN tels quels, le script les nomme |
 | `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
 | `npm run catalogue:apply` | écrit `ParutionCatalogue`. `-- --dry-run` d'abord ; `-- --recalculer` réécrit les champs dérivés depuis `titreBrut` sans retélécharger un CSV |
 | `npm run vignettes:fetch` | **une couverture par groupe de catalogue**, depuis la BnF par EAN, en 256×360. Reprenable, `-- --max <n>` plafonne, `-- --tout` enchaîne les 12 000, `-- --dry-run` montre les cibles. Trie par **taille de groupe décroissante** et essaie jusqu'à 4 volumes avant de renoncer. Mémorise aussi les échecs, sinon un EAN sans image serait redemandé à chaque recherche |

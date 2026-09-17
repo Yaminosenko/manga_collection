@@ -3932,3 +3932,69 @@ l'image regardée à l'œil est bien Green Worldz t.01 chez Pika. `couvertureRec
 
 Un dernier garde-fou : si la copie échoue — objet disparu du bucket —, `reprendre` rend `false`
 et le tome repart à la BnF, plutôt que de faire tomber toute la passe quotidienne.
+
+---
+
+### Corrigé — la résolution par ISBN ignorait le suivi, et `--revert` effaçait des ISBN
+
+**17 septembre 2026.** Les trois premiers constats de la revue du 16 septembre, ceux qui font
+perdre des données. Ils ont une racine commune sur les deux premiers : la distinction que §4 dit
+avoir posée le 11 septembre — *cette édition existe-t-elle au catalogue* contre *est-elle à moi* —
+n'avait jamais été appliquée aux **rangs 1 et 2** de la table de résolution par EAN.
+
+**Rang 1, le tome déjà connu.** `resoudreIsbn` cherchait `Volume.isbn` sur tout le catalogue et
+rendait un `slug` sans demander si l'édition était suivie par celui qui scanne. Les deux boutons
+qu'il proposait étaient faux l'un et l'autre : « Ouvrir » menait à `/edition/<slug>`, dont
+`chargerEdition` part de `SuiviEdition` et rend donc `notFound()` — « cette édition n'existe pas »
+sur une fiche que l'écran venait de montrer ; « Marquer possédé » appelait `basculerTome`, qui
+écrivait une `Possession` **sans `SuiviEdition`**, invisible des six écrans puisqu'ils partent
+tous du suivi. Un tome en base que rien n'affiche.
+
+**Rang 2, la sortie annoncée.** Même angle mort, avec un dégât de plus : la `Sortie` est une
+ligne de **catalogue partagé**. `promouvoirSortie` ne contrôlait que la date. Un compte qui
+promeut la sortie d'une édition qu'il ne suit pas la supprime du Planning de celui qui la suit et
+incrémente `tomesParus`, sans que la possession écrite n'apparaisse nulle part chez lui. §13.1
+assume bien qu'« un clic retire la sortie du Planning de l'autre », mais entre comptes **qui
+suivent la même édition** ; ici la moitié utile de l'opération était perdue.
+
+**Le correctif est celui que le chemin catalogue applique déjà** : `ResultatScan` porte
+`dansMaCollection` sur ses deux premiers rangs, et quand il est faux le scanner propose
+`adopterEditionScannee` — le `SuiviEdition` créé puis, s'il y a un tome, sa possession, puis la
+fiche. C'est exactement ce que fait `ajouterCandidatDirect` pour un candidat de catalogue
+reconnu, et ça réemploie ses deux helpers, `suivreEditionExistante` et `marquerTomeParIsbn`.
+
+**Et l'invariant est rendu physique côté serveur, pas seulement côté écran.** `basculerTome` et
+`definirTousLesTomes` résolvent leur cible par `suivis: { some: { utilisateurId } }`, et
+`promouvoirSortie` cherche la sortie sous la même condition — une Server Action appelée
+directement ne peut donc plus écrire une possession orpheline ni promouvoir la sortie d'autrui.
+`promouvoirSortiesEchues`, qui passe `utilisateurId` nul, n'est pas concernée : c'est le cron, et
+il n'a pas de collection.
+
+**`apply-planning --revert` détruisait des ISBN qu'il n'avait jamais écrits.** Son `updateMany`
+remettait `isbn` et `dateSortie` à `null` sur **toute** l'édition, alors que `EtatAvant` ne
+mémorisait que `tomesParus` : les EAN qu'une édition tient de `ParutionCatalogue` — donc toute
+édition née de `/ajouter` — partaient sans retour, et §12 fait de l'ISBN le préalable de toute
+couverture. Le sidecar porte désormais l'état **par tome**, et le retour arrière repose chaque
+valeur au lieu d'effacer. Les éditions sauvegardées avant ce changement n'ont pas ce détail :
+leurs ISBN sont **laissés tels quels** et le script les nomme, plutôt que de les effacer faute de
+savoir quoi remettre.
+
+**Vérifié sur le banc, écran et base, à deux comptes.** Le banc porte la sauvegarde du
+16 septembre, ses deux comptes et leurs mots de passe reposés.
+
+| Ce qui a été fait, connecté en `Testeur` | Ce que la base dit |
+|---|---|
+| scan de `9782368779545` — JK HARU t.1, suivi par le seul `Tempestl` | l'écran ne propose plus « Ouvrir » mais « Ajouter et cocher ce tome » |
+| tap dessus | la fiche s'ouvre à **1 / 7** ; `SuiviEdition` créé pour `Testeur`, sa possession du t.1 écrite, **les 7 de `Tempestl` intactes** |
+| scan de `9782505142829` — KAGURABACHI t.10, sortie annoncée de la seule collection de `Tempestl` | « Ajouter cette édition à ma collection » ; après le tap, `tomesParus` **reste 9** et la `Sortie` t.10 est **toujours là** |
+| `promouvoirSortie` appelée directement pour `Testeur` sur `les-legendaires-saga` t.13, qu'il ne suit pas | rend `null`, `tomesParus` reste 12, la sortie survit |
+| compte des `Possession` sans `SuiviEdition` correspondant, sur toute la base | **0** |
+
+Et pour le retour arrière : empreinte des **1 510 tomes** des 83 éditions du manifeste — 1 451
+ISBN, 1 451 dates —, `planning:apply` avec un sidecar neuf, puis `-- --revert`. Le script annonce
+« 1 510 tomes remis à leur ISBN et date d'avant » et l'empreinte est **identique au caractère
+près**. L'ancien code en aurait mis 1 510 à `null`.
+
+**Ce que ça ne corrige pas, et qui reste à la revue** : la purge des `Sortie` du même `--revert`
+n'a toujours qu'une borne haute (constat 10), et le scanner ne fait toujours qu'un scan par
+chargement de page (constat 4).

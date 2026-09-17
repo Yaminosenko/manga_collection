@@ -23,8 +23,17 @@ export type ResultatScan =
       nom: string;
       numero: number;
       possede: boolean;
+      dansMaCollection: boolean;
     }
-  | { type: "annonce"; isbn: string; slug: string; titre: string; numero: number; date: string }
+  | {
+      type: "annonce";
+      isbn: string;
+      slug: string;
+      titre: string;
+      numero: number;
+      date: string;
+      dansMaCollection: boolean;
+    }
   | { type: "catalogue"; isbn: string; prepare: CandidatPrepare }
   | {
       type: "notice";

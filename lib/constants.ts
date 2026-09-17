@@ -272,6 +272,9 @@ export const CANDIDATS_SCAN_MAX = 3;
 export const CHEMIN_RECHERCHE = "/ajouter";
 
 export const LIBELLE_SCAN_AJOUTER_ET_COCHER = "Ajouter et cocher ce tome";
+export const MENTION_SCAN_EDITION_CONNUE =
+  "Cette édition existe au catalogue mais n’est pas dans votre collection.";
+export const LIBELLE_SCAN_SUIVRE_EDITION = "Ajouter cette édition à ma collection";
 
 export const LIBELLE_SCAN_INDISPONIBLE =
   "Le scan par la caméra n’est disponible que sur Android. Saisissez l’ISBN à la main.";

@@ -4,7 +4,12 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { Check, MagnifyingGlass, WarningCircle } from "@/components/icons";
 import { Cover } from "@/components/cover";
-import { ajouterCandidatDirect, basculerTome, resoudreIsbn } from "@/lib/actions";
+import {
+  adopterEditionScannee,
+  ajouterCandidatDirect,
+  basculerTome,
+  resoudreIsbn,
+} from "@/lib/actions";
 import {
   CANDIDATS_SCAN_MAX,
   CLE_STOCKAGE_CAMERA,
@@ -20,6 +25,8 @@ import {
   LIBELLE_SCAN_INVITE,
   LIBELLE_SCAN_ISBN_INVALIDE,
   LIBELLE_SCAN_OUVRIR_EDITION,
+  LIBELLE_SCAN_SUIVRE_EDITION,
+  MENTION_SCAN_EDITION_CONNUE,
   MENTION_NOTICE_SANS_CATALOGUE,
   MENTION_CHOIX_CAMERA,
   ZOOM_RAPPROCHE,
@@ -355,6 +362,32 @@ export function Scanner() {
   );
 }
 
+function Adoption({
+  slug,
+  isbn,
+  libelle,
+}: {
+  slug: string;
+  isbn: string | null;
+  libelle: string;
+}) {
+  const [enCours, demarrer] = useTransition();
+
+  return (
+    <>
+      <span className="text-[11.5px]/[1.5] text-neutral-600">{MENTION_SCAN_EDITION_CONNUE}</span>
+      <button
+        type="button"
+        disabled={enCours}
+        onClick={() => demarrer(async () => await adopterEditionScannee(slug, isbn))}
+        className={`${BOUTON} mt-[4px] disabled:opacity-50`}
+      >
+        {enCours ? LIBELLE_AJOUT_EN_COURS : libelle}
+      </button>
+    </>
+  );
+}
+
 function Resultat({ resultat }: { resultat: ResultatScan }) {
   const [possede, setPossede] = useState(resultat.type === "tome" ? resultat.possede : false);
   const [enCours, demarrer] = useTransition();
@@ -366,26 +399,34 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
           {resultat.titre} · tome {resultat.numero}
         </span>
         <span className="text-[12px] text-neutral-500">{resultat.nom}</span>
-        <div className="flex gap-[8px]">
-          <button
-            type="button"
-            disabled={enCours}
-            onClick={() =>
-              demarrer(async () => {
-                const cible = !possede;
-                setPossede(cible);
-                await basculerTome(resultat.slug, resultat.numero, cible);
-              })
-            }
-            className={`${BOUTON} flex-1 gap-[6px]`}
-          >
-            {possede ? <Check className="size-[13px]" /> : null}
-            {possede ? "Possédé" : "Marquer possédé"}
-          </button>
-          <Link href={`/edition/${resultat.slug}`} className={`${BOUTON} flex-none`}>
-            Ouvrir
-          </Link>
-        </div>
+        {resultat.dansMaCollection ? (
+          <div className="flex gap-[8px]">
+            <button
+              type="button"
+              disabled={enCours}
+              onClick={() =>
+                demarrer(async () => {
+                  const cible = !possede;
+                  setPossede(cible);
+                  await basculerTome(resultat.slug, resultat.numero, cible);
+                })
+              }
+              className={`${BOUTON} flex-1 gap-[6px]`}
+            >
+              {possede ? <Check className="size-[13px]" /> : null}
+              {possede ? "Possédé" : "Marquer possédé"}
+            </button>
+            <Link href={`/edition/${resultat.slug}`} className={`${BOUTON} flex-none`}>
+              Ouvrir
+            </Link>
+          </div>
+        ) : (
+          <Adoption
+            isbn={resultat.isbn}
+            slug={resultat.slug}
+            libelle={LIBELLE_SCAN_AJOUTER_ET_COCHER}
+          />
+        )}
       </article>
     );
   }
@@ -399,9 +440,13 @@ function Resultat({ resultat }: { resultat: ResultatScan }) {
         <span className="text-accent text-[12.5px] font-medium">
           À paraître · {formaterMoisSortie(resultat.date)}
         </span>
-        <Link href={`/edition/${resultat.slug}`} className={`${BOUTON} mt-[4px]`}>
-          Ouvrir l’édition
-        </Link>
+        {resultat.dansMaCollection ? (
+          <Link href={`/edition/${resultat.slug}`} className={`${BOUTON} mt-[4px]`}>
+            {LIBELLE_SCAN_OUVRIR_EDITION}
+          </Link>
+        ) : (
+          <Adoption isbn={null} slug={resultat.slug} libelle={LIBELLE_SCAN_SUIVRE_EDITION} />
+        )}
       </article>
     );
   }
