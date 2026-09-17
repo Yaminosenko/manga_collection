@@ -45,6 +45,10 @@
 }
 
 @layer base {
+  :root {
+    --hauteur-bandeau: 105px;
+  }
+
   html {
     scrollbar-gutter: stable;
   }
@@ -61,6 +65,26 @@
 }
 
 @layer components {
+  .colonne-onglets:has(.espace-plein-ecran) {
+    height: calc(100dvh - env(safe-area-inset-top));
+  }
+
+  .colonne-onglets:has(.espace-plein-ecran) > .contenu-onglets {
+    min-height: 0;
+  }
+
+  .piste-panneaux {
+    scrollbar-width: none;
+  }
+
+  .piste-panneaux::-webkit-scrollbar {
+    display: none;
+  }
+
+  .panneau-defilant {
+    scrollbar-gutter: stable;
+  }
+
   .titre-serie {
     text-transform: uppercase;
   }

@@ -183,6 +183,7 @@ export type EditionManquante = {
   manquants: number[];
   dernierNumeroPossede: number | null;
   couvertureUrl: string | null;
+  ajouteeLe: number;
 };
 
 export type Manquants = {

@@ -4600,3 +4600,238 @@ passer inaperçu.
 dépendance** : npx l'a téléchargé et reformaté à 80 colonnes, ce qui n'est pas la convention du
 dépôt. Annulé par `git checkout`, les modifications refaites à la main. **Un outil de formatage
 absent du `package.json` n'a pas de configuration à respecter** — il impose la sienne.
+
+### Fait — le glissement horizontal entre panneaux (17 septembre 2026)
+
+**Le lot 2 de l'espace collection**, séquencé après le premier parce qu'il change la mécanique
+de défilement de toute l'application. Branche `glissement-panneaux`, quatre commits.
+
+#### Ce que la fonctionnalité change vraiment, et ce n'est pas le geste
+
+Le document portait le défilement : `useMemoireDefilement` lisait `window.scrollY`,
+`useEnTeteEscamotable` écoutait `window`, le bandeau était `sticky top-0` et la barre du bas
+`sticky bottom-0` dans une colonne `min-h-dvh`. Ça tenait parce qu'**un seul panneau était monté
+à la fois**.
+
+Une piste horizontale met les trois côte à côte, donc sa hauteur devient celle du plus grand :
+depuis la Wish list, qui fait deux lignes, on défilerait sur toute la hauteur de la Collection,
+qui en fait 111. **Chaque panneau devient donc son propre conteneur défilant et le document
+cesse de défiler.** C'est la difficulté 3 que `IDEES.md` avait posée le 4 septembre, et c'est
+tout le travail — le geste, lui, est trois déclarations CSS.
+
+#### L'option retenue, et celle qui a été écartée
+
+`scroll-snap` natif, comme `IDEES.md` l'avait vu. L'alternative était de garder le défilement du
+document et d'animer un `translateX` à la main : elle conserve la barre d'adresse rétractable,
+mais au prix d'un gestionnaire de `touch` écrit à la main — seuil de vélocité, verrou d'axe,
+élastique aux extrémités — c'est-à-dire **exactement la catégorie de code que ce document sait
+ne pas pouvoir juger depuis le poste**. Le natif rend l'inertie, l'élastique et le verrou d'axe
+d'iOS et d'Android, et il marche au trackpad.
+
+**Le prix est nommé** : sans défilement du document, la barre d'adresse mobile ne se rétracte
+plus. Le manifeste étant en `display: standalone`, **la cible installée n'en a pas** ; le coût
+n'est payé qu'en onglet de navigateur et sur le poste.
+
+#### Quatre commits, du plus risqué au plus cosmétique
+
+| Commit | Ce qu'il fait |
+|---|---|
+| le panneau défile au lieu du document | isole le changement de mécanique, **sans piste** : rendu quasi identique, donc relisible seul |
+| la piste | trois panneaux montés, `scroll-snap`, pastilles, URL |
+| `inert` | sort les panneaux hors écran de la tabulation |
+| un menu de tri par panneau | la conséquence du bouton posé partout |
+
+**Le bandeau passe en surimpression et sa hauteur voyage en variable CSS**, mesurée par
+`ResizeObserver` avec une valeur par défaut en base. L'escamoter par une hauteur animée aurait
+relayouté la liste à chaque frame ; en surimpression c'est le `translate` déjà en place, et les
+panneaux prennent la hauteur en `padding-top`.
+
+**Les autres onglets gardent le défilement du document.** La règle ne s'arme que sur les pages
+qui se déclarent plein écran, par un `:has()` en base : mesuré, le Planning garde ses 65 px de
+débordement de document et sa barre du bas `sticky`, là où l'espace collection tombe à zéro.
+
+#### Corrigé avant d'être vu — l'index du panneau était dupliqué
+
+La première version tenait l'index du panneau actif dans la fermeture du listener **en plus** de
+l'état React. Deux copies de la même vérité, donc deux copies qui peuvent diverger, et la
+pastille aurait menti sur ce qu'on voit. Supprimé : le listener appelle le `setState` à chaque
+franchissement et React abandonne le rendu quand la valeur ne change pas, `replaceState` n'étant
+appelé que si le chemin diffère.
+
+#### Établi — les panneaux voisins chargent bien leurs images
+
+La difficulté 4 de `IDEES.md` disait de le **mesurer à l'onglet réseau, pas de le supposer**.
+Mesuré sur une ouverture à froid de `/` :
+
+| Panneau | Images dans le DOM | Chargées |
+|---|---|---|
+| Collection | 111 | **35** |
+| Manquants | 15 | **15** |
+| Wish list | 2 | **2** |
+
+`loading="lazy"` protège donc verticalement et **pas horizontalement** : un panneau voisin, à une
+largeur d'écran, est dans la marge de déclenchement. Le volume reste petit — 17 images — et leurs
+URL recoupent largement celles de la Collection, qui sont en cache immuable d'un an.
+
+#### Une sonde qui a menti, pour la sixième fois
+
+Une série de `piste.scrollTo()` en JavaScript n'a rien déclenché : ni événement `scroll`, ni
+changement de pastille, ni d'URL. Assez pour conclure à un défaut. La cause n'était pas dans le
+code — **l'onglet était `hidden`**, donc sans `requestAnimationFrame`, donc sans distribution
+d'événements de défilement. Les mêmes gestes en clic réel, écran visible, marchaient déjà.
+
+**Le corollaire est celui que ce document répète** : une sonde ne prouve rien. Ici il s'affine —
+**vérifier que l'onglet est visible avant de conclure qu'un événement n'a pas été émis**, et
+`document.visibilityState` le dit en une ligne.
+
+#### Vérifié sur le poste, contre l'écran
+
+Piste à 1 290 px pour trois panneaux de 430, pastille et titre suivant la position, URL passant
+à `/manquants` et `/wishlist` sans navigation, liens profonds ouvrant sur le bon panneau,
+position de défilement conservée par panneau à travers un rechargement, menu de tri des
+Manquants triant bien par tomes manquants décroissants — CLAYMORE 21, ORIENT 15, CALL OF THE
+NIGHT 12 — et menu de la Wish list réduit à ses deux critères.
+
+**`scrollbar-gutter: stable` a dû descendre sur les panneaux** : sans lui, la Collection et les
+Manquants faisaient 415 px de contenu contre 430 pour la Wish list, qui n'a pas de barre. C'est
+le même défaut que le 17 septembre au matin, un cran plus bas, et la même correction.
+
+#### Ce qui n'a pas été fait, et pourquoi
+
+- **Rien n'a été vu sur téléphone**, et c'est là que le geste se juge. Trois points l'attendent :
+  la concurrence avec le geste système « retour » d'iOS au bord gauche du premier panneau, le
+  saut d'une frame à l'ouverture d'un lien profond — la piste se positionne dans un effet, donc
+  après la première peinture — et le fait qu'`inert` ne bloque pas le défilement tactile du
+  panneau entrant.
+- **Le champ de recherche ne saute plus de 46 px**, mais pas par la correction prévue : le bouton
+  de tri est simplement posé sur les trois panneaux. Il fallait de toute façon que le bandeau
+  n'ait qu'une géométrie, sans quoi il aurait tressailli au milieu de chaque glissement.
+- **La pastille du compte fait toujours 38 px**, sous la cible tactile du projet.
+
+### Fait — le sens du tri se règle en retapant le critère (17 septembre 2026)
+
+**Demande du propriétaire, dans la foulée du glissement.** Le menu de tri portait une rangée
+« Ordre croissant / décroissant » en pied, séparée des critères. Elle disparaît : **un premier
+tap sur un critère le sélectionne avec son sens par défaut, les suivants l'inversent**, et une
+**flèche haut ou bas remplace la coche** sur le critère actif.
+
+Ce que ça corrige, au-delà du geste : la rangée portait un état — le sens courant — **sans dire
+de quoi**, à distance du critère auquel il s'appliquait, et son libellé disait l'action et non
+l'état, ce qui se lit à l'envers une fois sur deux. La flèche dit l'état, là où il s'applique.
+
+**Conséquence assumée : le menu ne se ferme plus sur une sélection**, sans quoi retaper serait
+impossible. Il se ferme d'un tap en dehors, par le voile déjà en place.
+
+**Et l'icône du bouton du bandeau cesse de pivoter**, demandé dans la foulée. Elle basculait de
+180° avec le sens : un mouvement dans la zone ancrée, à chaque tap, pour une information que la
+flèche du menu porte désormais au bon endroit. Vérifié sur quatre changements de sens
+consécutifs, `rotate` et `transform` restent à `none` pendant que le critère actif, lui, suit.
+
+Deux icônes Phosphor ajoutées à `components/icons.tsx`, `ArrowUp` et `ArrowDown` ; le sens est
+aussi écrit en `sr-only` à côté de la flèche, les deux libellés de l'ancienne rangée y servant.
+
+**Vérifié à l'écran, contre la liste et contre `localStorage`** : Alphabétique croissant donne
+ACT-AGE en tête, un tap donne YUNA DE LA PENSION YURAGI et `{"croissant":false}`, un second
+ramène ACT-AGE. Un tap sur « Tomes possédés » le prend à son défaut décroissant — BLEACH 74,
+MY HERO ACADEMIA 42, BLACK CLOVER 37 — et un tap de plus, en clic réel cette fois, l'inverse :
+flèche vers le haut, et les éditions à zéro tome remontent en tête. Le menu est resté ouvert
+aux quatre taps.
+
+**Et une coordonnée de capture a encore menti.** Un clic posé aux coordonnées lues sur une
+capture à l'échelle 0,6 a atterri sur la pastille « Wish list » au lieu du premier élément du
+menu, qui la recouvre à deux pixels près — la piste a glissé, l'URL a changé, et il a fallu
+`document.elementFromPoint` pour établir que **le menu était bien au-dessus** et que seul le
+clic était mal placé. Les refs d'éléments évitent le calcul d'échelle ; les coordonnées ne
+valent que juste après une capture, et pas quand deux cibles se superposent.
+
+### Corrigé — le téléphone recevait le HTML sans le JavaScript (17 septembre 2026)
+
+**Premier essai du glissement sur téléphone, par l'IP du poste**, le port USB de l'appareil étant
+cassé et rien n'étant déployé. Rapport du propriétaire : le défilement répond, mais on reste
+« indéfiniment dans Collection » — la pastille ne change pas, on n'atteint pas les Manquants, et
+rien ne se sélectionne dans la Wish list.
+
+**La première hypothèse était fausse, et elle était séduisante** : `inert` sur les panneaux hors
+écran, basculant au milieu du geste et annulant le défilement tactile. Le document l'avait même
+écrit la veille comme un point à juger sur l'appareil. C'était un défaut plausible, spécifique au
+tactile, et qui expliquait les symptômes.
+
+**La cause était ailleurs, et le serveur la disait depuis le début** :
+
+```
+⚠ Blocked cross-origin request to Next.js dev resource /_next/static/chunks/_09bcc1e._.js
+  from "10.40.30.64".
+```
+
+`next.config.ts` portait `allowedDevOrigins: ["192.168.1.*", "192.168.0.*", "10.0.0.*"]`. Le poste
+est en **10.40.30.64**, qui ne correspond à aucun. Next a donc servi le HTML et **refusé les
+chunks JavaScript**. Ce qui est en CSS pur marchait — le défilement vertical, le calage de la
+piste — et tout React était mort : pastilles muettes, aucun changement d'état, aucune réécriture
+d'URL. Et les deux panneaux inactifs restaient `inert` **tels que le serveur les avait rendus**,
+puisque rien ne venait mettre l'attribut à jour : injoignables pour toujours.
+
+**Le signe qui aurait dû trancher plus tôt** : le log ne montre **aucune requête `?_rsc=`**.
+`/edition/ajin`, `/planning`, `/` arrivent en chargements complets. Le routeur client de Next ne
+tournait pas, et ça se lit en une ligne de log — bien avant toute théorie sur le tactile.
+
+**Deux corrections, et une seule est la panne.** Le sous-réseau du poste entre dans
+`allowedDevOrigins`, vérifié : un chunk `/_next/static/chunks/…` rend 200 depuis l'IP du poste et
+le log ne porte plus un seul blocage.
+
+**Et `inert` est retiré quand même**, pour un motif que l'incident a mis en évidence et qui ne
+dépend pas de lui : **un `inert` piloté par l'état client est déjà dans le HTML du serveur.**
+Tant que React n'a pas repris la main, deux panneaux sur trois ne défilent pas et ne se tapent
+pas. En production le JavaScript arrive, mais la fenêtre existe, et sur un téléphone lent elle
+n'est pas nulle. Le problème qu'`inert` réglait — la tabulation qui entre dans un panneau hors
+écran et fait glisser la piste — est un problème de clavier sur une application pensée pour le
+pouce. **S'il faut y revenir, ce sera un `inert` posé après le montage, jamais rendu par le
+serveur.**
+
+`scrollTo({ behavior: "instant" })` perd son `behavior` au passage : la valeur n'est pas connue
+des Safari d'avant 15.4, où un membre d'énumération invalide **lève**, et sans `scroll-behavior`
+sur l'élément l'omettre donne exactement le même défilement immédiat. Ce n'était pas la panne,
+c'en était une en puissance sur un appareil plus ancien.
+
+### Corrigé — un geste ne franchit plus qu'un panneau (17 septembre 2026)
+
+**Premier retour d'usage réel, une fois le JavaScript servi au téléphone.** Le glissement marche,
+mais un geste franc part en inertie jusqu'au **dernier** panneau : viser les Manquants en
+glissant un peu fort fait atterrir sur la Wish list, et l'erreur est fréquente.
+
+`scroll-snap-stop: always` sur chaque panneau. Le navigateur ne peut plus dépasser le point de
+calage suivant, quelle que soit la vélocité. Aller de la Collection à la Wish list demande donc
+**deux gestes** — c'est ce qui est voulu, et c'est le prix de ne jamais se tromper de panneau.
+
+**Le risque qui allait avec, vérifié avant de conclure** : la règle aurait pu s'appliquer au
+défilement programmé et transformer un tap sur « Wish list » en deux sauts, ou pire, en arrêt aux
+Manquants. Elle ne s'y applique pas — depuis la Collection, le tap atterrit directement sur la
+Wish list, URL et pastille comprises. C'est ce que dit la spécification, mais le document a la
+leçon assez de fois pour ne pas s'en contenter.
+
+**Et la mesure a encore failli mentir.** Deux relevés successifs ont donné la piste immobile à
+l'index 0 après un tap : l'onglet Chrome était passé `hidden` entre le clic et la lecture, donc
+sans `requestAnimationFrame`, donc **le défilement doux était gelé à mi-course**. Ce n'est pas le
+même symptôme que la fois précédente — là c'étaient les événements qui ne partaient pas, ici
+c'est l'animation qui ne progresse pas — mais c'est la même cause et le même remède : conclure
+sur une capture d'écran, qui rend l'onglet visible, plutôt que sur une sonde.
+
+### Établi — le glissement jugé sur téléphone, et fusionné (17 septembre 2026)
+
+**Le geste est natif, donc il ne se jugeait que là.** Verdict du propriétaire après usage réel
+sur l'appareil, par l'IP du poste : bon. Les deux réserves écrites la veille **ne se sont pas
+manifestées** — ni la concurrence entre le glissement au bord gauche et le geste système
+« retour », ni un saut visible d'une frame à l'ouverture de `/manquants` et `/wishlist`, que la
+piste corrige dans un effet, donc après la première peinture. Elles restent des causes connues :
+si l'une reparaît un jour, elle est déjà décrite.
+
+**Deux défauts sont sortis de cet essai, et un seul était dans la fonctionnalité** : le blocage
+des chunks de développement par `allowedDevOrigins`, qui n'a rien à voir avec elle, et l'inertie
+qui emportait jusqu'au dernier panneau, réglée par `scroll-snap-stop: always`. Les deux ont leur
+entrée ci-dessus.
+
+**Ce qui n'a pas été levé** : la pastille du compte fait toujours 38 px, sous les 44 px de cible
+tactile du projet. L'alignement sur la ligne de recherche l'impose, et personne ne s'en est
+plaint à l'usage.
+
+La branche `glissement-panneaux` est fusionnée dans `main` — huit commits, dix-neuf fichiers,
+**aucune migration**.

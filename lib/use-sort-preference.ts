@@ -1,12 +1,13 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import {
-  CLE_STOCKAGE_TRI,
+  CLES_STOCKAGE_TRI,
   CROISSANT_PAR_DEFAUT,
-  TRIS,
+  TRIS_PAR_PANNEAU,
   TRI_PAR_DEFAUT,
   type CleTri,
+  type ClePanneau,
 } from "@/lib/constants";
 
 export type PreferenceTri = { tri: CleTri; croissant: boolean };
@@ -17,17 +18,16 @@ const PREFERENCE_PAR_DEFAUT: PreferenceTri = {
 };
 
 const abonnes = new Set<() => void>();
+const brutsEnCache = new Map<string, string | null>();
+const preferencesEnCache = new Map<string, PreferenceTri>();
 
-let brutEnCache: string | null = null;
-let preferenceEnCache: PreferenceTri = PREFERENCE_PAR_DEFAUT;
-
-function analyser(brut: string | null): PreferenceTri {
+function analyser(brut: string | null, panneau: ClePanneau): PreferenceTri {
   if (!brut) {
     return PREFERENCE_PAR_DEFAUT;
   }
   try {
     const valeur = JSON.parse(brut) as PreferenceTri;
-    return TRIS.some((option) => option.cle === valeur.tri) &&
+    return TRIS_PAR_PANNEAU[panneau].includes(valeur.tri) &&
       typeof valeur.croissant === "boolean"
       ? valeur
       : PREFERENCE_PAR_DEFAUT;
@@ -36,9 +36,9 @@ function analyser(brut: string | null): PreferenceTri {
   }
 }
 
-function lireBrut(): string | null {
+function lireBrut(cle: string): string | null {
   try {
-    return window.localStorage.getItem(CLE_STOCKAGE_TRI);
+    return window.localStorage.getItem(cle);
   } catch {
     return null;
   }
@@ -59,30 +59,38 @@ function souscrire(surChangement: () => void): () => void {
   };
 }
 
-function instantane(): PreferenceTri {
-  const brut = lireBrut();
-  if (brut !== brutEnCache) {
-    brutEnCache = brut;
-    preferenceEnCache = analyser(brut);
+function instantane(panneau: ClePanneau): PreferenceTri {
+  const cle = CLES_STOCKAGE_TRI[panneau];
+  const brut = lireBrut(cle);
+  if (brut !== brutsEnCache.get(cle)) {
+    brutsEnCache.set(cle, brut);
+    preferencesEnCache.set(cle, analyser(brut, panneau));
   }
-  return preferenceEnCache;
+  return preferencesEnCache.get(cle) ?? PREFERENCE_PAR_DEFAUT;
+}
+
+function memoriser(panneau: ClePanneau, preference: PreferenceTri): void {
+  const cle = CLES_STOCKAGE_TRI[panneau];
+  try {
+    window.localStorage.setItem(cle, JSON.stringify(preference));
+  } catch {
+    brutsEnCache.set(cle, null);
+    preferencesEnCache.set(cle, preference);
+  }
+  notifier();
 }
 
 function instantaneServeur(): PreferenceTri {
   return PREFERENCE_PAR_DEFAUT;
 }
 
-function memoriser(preference: PreferenceTri): void {
-  try {
-    window.localStorage.setItem(CLE_STOCKAGE_TRI, JSON.stringify(preference));
-  } catch {
-    brutEnCache = null;
-    preferenceEnCache = preference;
-  }
-  notifier();
-}
-
-export function usePreferenceTri(): [PreferenceTri, (preference: PreferenceTri) => void] {
-  const preference = useSyncExternalStore(souscrire, instantane, instantaneServeur);
-  return [preference, memoriser];
+export function usePreferenceTri(
+  panneau: ClePanneau,
+): [PreferenceTri, (preference: PreferenceTri) => void] {
+  const lire = useCallback(() => instantane(panneau), [panneau]);
+  const ecrire = useCallback(
+    (preference: PreferenceTri) => memoriser(panneau, preference),
+    [panneau],
+  );
+  return [useSyncExternalStore(souscrire, lire, instantaneServeur), ecrire];
 }

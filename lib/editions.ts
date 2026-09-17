@@ -366,6 +366,7 @@ export async function chargerEspaceCollection(): Promise<EspaceCollection> {
         manquants,
         dernierNumeroPossede: parusPossedes.at(-1)?.numero ?? null,
         couvertureUrl: couvertureDeProgression(parusPossedes) ?? edition.couvertureUrl,
+        ajouteeLe: ligne.ajouteeLe,
       });
     }
   }

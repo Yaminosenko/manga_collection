@@ -25,6 +25,7 @@ export const LIBELLE_FICHE_MANGA_NEWS = "Fiche manga-news";
 export const TRIS = [
   { cle: "alphabetique", libelle: "Alphabétique" },
   { cle: "tomesPossedes", libelle: "Tomes possédés" },
+  { cle: "tomesManquants", libelle: "Tomes manquants" },
   { cle: "completion", libelle: "% de complétion" },
   { cle: "ajoutRecent", libelle: "Ajout récent" },
 ] as const;
@@ -46,6 +47,7 @@ export const LIBELLE_COLLECTION_VIDE =
 export const CROISSANT_PAR_DEFAUT: Record<CleTri, boolean> = {
   alphabetique: true,
   tomesPossedes: false,
+  tomesManquants: false,
   completion: false,
   ajoutRecent: false,
 };
@@ -148,6 +150,20 @@ export const CLES_STOCKAGE_DEFILEMENT: Record<ClePanneau, string> = {
   manquants: `${CLE_STOCKAGE_DEFILEMENT}.manquants`,
   wishlist: `${CLE_STOCKAGE_DEFILEMENT}.wishlist`,
 };
+
+export const CLES_STOCKAGE_TRI: Record<ClePanneau, string> = {
+  collection: CLE_STOCKAGE_TRI,
+  manquants: `${CLE_STOCKAGE_TRI}.manquants`,
+  wishlist: `${CLE_STOCKAGE_TRI}.wishlist`,
+};
+
+export const TRIS_PAR_PANNEAU: Record<ClePanneau, readonly CleTri[]> = {
+  collection: ["alphabetique", "tomesPossedes", "completion", "ajoutRecent"],
+  manquants: ["alphabetique", "tomesManquants", "completion", "ajoutRecent"],
+  wishlist: ["alphabetique", "ajoutRecent"],
+};
+
+export const VARIABLE_HAUTEUR_BANDEAU = "--hauteur-bandeau";
 
 export const LIBELLE_PANNEAUX = "Panneaux de la collection";
 export const LIBELLE_COMPTEUR_TOMES = "tomes";
