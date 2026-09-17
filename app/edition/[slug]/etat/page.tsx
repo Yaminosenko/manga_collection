@@ -10,11 +10,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page({ params }: PageProps<"/edition/[slug]/etat">) {
   const { slug } = await params;
-
-  if (!(await estProprietaire())) {
-    notFound();
-  }
-
+  const proprietaire = await estProprietaire();
   const edition = await chargerEtatEdition(slug);
 
   if (!edition) {
@@ -44,6 +40,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/etat">
         statut={edition.statut}
         editionTerminee={edition.editionTerminee}
         suivie={edition.suivie}
+        parutionModifiable={proprietaire}
       />
     </main>
   );

@@ -40,7 +40,8 @@ function enCandidat(ligne: LigneGroupe, instant: Date): CandidatEdition {
     lignes: Number(ligne.lignes),
     derniereParution: ligne.derniereParution?.toISOString() ?? null,
     editionTerminee: estTerminee(ligne.derniereParution, instant),
-    slugEnCollection: null,
+    slugEdition: null,
+    dansMaCollection: false,
     couvertureUrl: ligne.couvertureUrl,
   };
 }
@@ -63,6 +64,7 @@ const PARUTIONS_AVEC_VIGNETTE = Prisma.sql`
   LEFT JOIN "VignetteCatalogue" v ON v."ean" = pc."ean"`;
 
 export async function rechercherCandidats(
+  utilisateurId: string,
   terme: string,
   instant = new Date(),
 ): Promise<CandidatEdition[]> {
@@ -84,10 +86,14 @@ export async function rechercherCandidats(
       count(*) DESC
     LIMIT ${CANDIDATS_RECHERCHE_MAX}`;
 
-  return marquerCeuxEnCollection(groupes.map((groupe) => enCandidat(groupe, instant)));
+  return rattacherAuxEditions(
+    utilisateurId,
+    groupes.map((groupe) => enCandidat(groupe, instant)),
+  );
 }
 
 export async function candidatParEan(
+  utilisateurId: string,
   ean: string,
   instant = new Date(),
 ): Promise<CandidatEdition | null> {
@@ -100,6 +106,7 @@ export async function candidatParEan(
     return null;
   }
   return candidatParGroupe(
+    utilisateurId,
     cible.serieNormalise,
     cible.marqueurEdition === null ? null : cible.marqueurEdition.toLowerCase(),
     instant,
@@ -107,6 +114,7 @@ export async function candidatParEan(
 }
 
 export async function candidatParGroupe(
+  utilisateurId: string,
   serieNormalise: string,
   marqueurNormalise: string | null,
   instant = new Date(),
@@ -122,7 +130,7 @@ export async function candidatParGroupe(
   if (!groupe) {
     return null;
   }
-  return (await marquerCeuxEnCollection([enCandidat(groupe, instant)]))[0] ?? null;
+  return (await rattacherAuxEditions(utilisateurId, [enCandidat(groupe, instant)]))[0] ?? null;
 }
 
 export async function tomesDuGroupe(
@@ -180,7 +188,8 @@ async function ligneSansNumero(
   return lignes[0] ?? null;
 }
 
-async function marquerCeuxEnCollection(
+async function rattacherAuxEditions(
+  utilisateurId: string,
   candidats: CandidatEdition[],
 ): Promise<CandidatEdition[]> {
   if (candidats.length === 0) {
@@ -194,11 +203,15 @@ async function marquerCeuxEnCollection(
       serieNormalise: string;
       marqueurNormalise: string | null;
       slug: string;
+      suivie: boolean;
       couvertureCollection: string | null;
     }[]
   >`
     SELECT DISTINCT pc."serieNormalise", lower(pc."marqueurEdition") AS "marqueurNormalise",
            e."slug",
+           EXISTS (SELECT 1 FROM "SuiviEdition" su
+                    WHERE su."editionId" = e."id"
+                      AND su."utilisateurId" = ${utilisateurId}) AS "suivie",
            (SELECT tome."couvertureUrl"
               FROM "Volume" tome
              WHERE tome."editionId" = e."id" AND tome."couvertureUrl" IS NOT NULL
@@ -209,12 +222,20 @@ async function marquerCeuxEnCollection(
     JOIN "Edition" e ON e."id" = v."editionId"
     WHERE pc."serieNormalise" = ANY(${series})`;
 
-  const parGroupe = new Map<string, { slug: string; couverture: string | null }>();
+  const parGroupe = new Map<
+    string,
+    { slug: string; suivie: boolean; couverture: string | null }
+  >();
   for (const connu of connus) {
-    parGroupe.set(`${connu.serieNormalise} ${connu.marqueurNormalise ?? ""}`, {
-      slug: connu.slug,
-      couverture: connu.couvertureCollection,
-    });
+    const cle = `${connu.serieNormalise} ${connu.marqueurNormalise ?? ""}`;
+    const retenu = parGroupe.get(cle);
+    if (retenu === undefined || (connu.suivie && !retenu.suivie)) {
+      parGroupe.set(cle, {
+        slug: connu.slug,
+        suivie: connu.suivie,
+        couverture: connu.couvertureCollection,
+      });
+    }
   }
 
   return candidats.map((candidat) => {
@@ -223,7 +244,8 @@ async function marquerCeuxEnCollection(
     );
     return {
       ...candidat,
-      slugEnCollection: connu?.slug ?? null,
+      slugEdition: connu?.slug ?? null,
+      dansMaCollection: connu?.suivie ?? false,
       couvertureUrl: candidat.couvertureUrl ?? connu?.couverture ?? null,
     };
   });

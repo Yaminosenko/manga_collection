@@ -2,8 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BooksFill, CalendarBlank, MagnifyingGlass } from "@/components/icons";
 import {
+  BooksFill,
+  CalendarBlank,
+  MagnifyingGlass,
+  User,
+} from "@/components/icons";
+import {
+  CHEMIN_COMPTE,
+  LIBELLE_ONGLET_COMPTE,
   PANNEAUX,
   TITRE_COLLECTION,
   TITRE_PLANNING,
@@ -16,15 +23,15 @@ const ONGLETS = [
   { href: "/", libelle: TITRE_COLLECTION, Icone: BooksFill },
   { href: "/planning", libelle: TITRE_PLANNING, Icone: CalendarBlank },
   { href: "/ajouter", libelle: TITRE_RECHERCHER, Icone: MagnifyingGlass },
+  { href: CHEMIN_COMPTE, libelle: LIBELLE_ONGLET_COMPTE, Icone: User },
 ] as const;
 
-export function TabBar({ lectureSeule }: { lectureSeule: boolean }) {
+export function TabBar() {
   const chemin = usePathname();
-  const onglets = lectureSeule ? ONGLETS.filter((o) => o.href !== "/ajouter") : ONGLETS;
 
   return (
     <nav className="bg-surface border-divider sticky bottom-0 flex border-t pt-[8px] pb-[calc(18px+env(safe-area-inset-bottom))]">
-      {onglets.map(({ href, libelle, Icone }) => {
+      {ONGLETS.map(({ href, libelle, Icone }) => {
         const actif =
           href === "/" ? CHEMINS_ESPACE_COLLECTION.includes(chemin) : chemin.startsWith(href);
         return (

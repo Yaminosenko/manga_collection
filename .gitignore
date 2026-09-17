@@ -42,3 +42,9 @@ tsconfig.tsbuildinfo
 # manifestes de catalogue : donnees manga-news, jamais republiees dans un depot public
 data/catalogue.json
 data/catalogue-controles.json
+
+# revue de code : rapports locaux, jamais commites
+revue/
+
+# icones regenerees a la demande : seules les copies servies sont versionnees
+design/zenkan/icons/

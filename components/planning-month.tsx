@@ -15,11 +15,9 @@ function sousTitre(sortie: SortiePlanning): string {
 
 export function PlanningMonth({
   sorties,
-  proprietaire,
   instant,
 }: {
   sorties: SortiePlanning[];
-  proprietaire: boolean;
   instant: string;
 }) {
   const maintenant = new Date(instant);
@@ -70,7 +68,7 @@ export function PlanningMonth({
           </span>
         </Link>
 
-          {proprietaire && sortieEstParue(sortie.date, maintenant) ? (
+          {sortieEstParue(sortie.date, maintenant) ? (
             <PlanningClaim slug={sortie.slug} numero={sortie.numero} />
           ) : null}
         </div>

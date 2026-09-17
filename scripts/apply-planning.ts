@@ -22,18 +22,22 @@ type Fiche = {
 };
 
 type Manifeste = Record<string, Fiche>;
-type EtatAvant = Record<string, { tomesParus: number }>;
+type TomeAvant = { isbn: string | null; dateSortie: string | null };
+type EtatAvant = Record<string, { tomesParus: number; tomes?: Record<string, TomeAvant> }>;
 
 function charger<T>(chemin: string, defaut: T): T {
   return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as T) : defaut;
 }
 
-function finDeFenetre(manifeste: Manifeste): Date | null {
+function fenetre(manifeste: Manifeste): { debut: Date; fin: Date } | null {
   const dates = Object.values(manifeste)
     .flatMap((fiche) => [...Object.values(fiche.tomes), ...Object.values(fiche.aParaitre ?? {})])
     .map((tome) => tome.date);
   if (dates.length === 0) return null;
-  return new Date(dates.reduce((plusTardive, date) => (date > plusTardive ? date : plusTardive)));
+  return {
+    debut: new Date(dates.reduce((plusTot, date) => (date < plusTot ? date : plusTot))),
+    fin: new Date(dates.reduce((plusTardive, date) => (date > plusTardive ? date : plusTardive))),
+  };
 }
 
 async function restaurer() {
@@ -44,23 +48,43 @@ async function restaurer() {
   }
 
   let supprimes = 0;
+  let remis = 0;
+  const sansDetail: string[] = [];
+
   for (const [slug, etat] of Object.entries(avant)) {
     const edition = await prisma.edition.findUnique({ where: { slug }, select: { id: true } });
     if (!edition) continue;
     const { count } = await prisma.volume.deleteMany({
       where: { editionId: edition.id, numero: { gt: etat.tomesParus } },
     });
-    await prisma.volume.updateMany({
-      where: { editionId: edition.id },
-      data: { isbn: null, dateSortie: null },
-    });
+    if (etat.tomes) {
+      for (const [brut, tome] of Object.entries(etat.tomes)) {
+        await prisma.volume.updateMany({
+          where: { editionId: edition.id, numero: Number(brut) },
+          data: {
+            isbn: tome.isbn,
+            dateSortie: tome.dateSortie === null ? null : new Date(tome.dateSortie),
+          },
+        });
+        remis += 1;
+      }
+    } else {
+      sansDetail.push(slug);
+    }
     await prisma.sortie.deleteMany({ where: { editionId: edition.id } });
     await prisma.edition.update({ where: { slug }, data: { tomesParus: etat.tomesParus } });
     supprimes += count;
   }
+
   console.log(
-    `${Object.keys(avant).length} editions restaurees, ${supprimes} tomes supprimes, ISBN et dates effaces`,
+    `${Object.keys(avant).length} editions restaurees, ${supprimes} tomes supprimes, ${remis} tomes remis a leur ISBN et date d'avant`,
   );
+  if (sansDetail.length > 0) {
+    console.log(
+      `${sansDetail.length} editions sauvegardees avant que l'etat par tome soit memorise : leurs ISBN et dates sont laisses tels quels`,
+    );
+    for (const slug of sansDetail) console.log(`  ${slug}`);
+  }
 }
 
 async function main() {
@@ -76,13 +100,25 @@ async function main() {
 
   const editions = await prisma.edition.findMany({
     where: { slug: { in: Object.keys(manifeste) } },
-    select: { id: true, slug: true, tomesParus: true },
+    select: {
+      id: true,
+      slug: true,
+      tomesParus: true,
+      volumes: { select: { numero: true, isbn: true, dateSortie: true } },
+    },
   });
 
   const avant = charger<EtatAvant>(SAUVEGARDE, {});
   const ajoutees = editions.filter((edition) => !(edition.slug in avant));
   for (const edition of ajoutees) {
-    avant[edition.slug] = { tomesParus: edition.tomesParus };
+    const tomes: Record<string, TomeAvant> = {};
+    for (const volume of edition.volumes) {
+      tomes[String(volume.numero)] = {
+        isbn: volume.isbn,
+        dateSortie: volume.dateSortie === null ? null : volume.dateSortie.toISOString(),
+      };
+    }
+    avant[edition.slug] = { tomesParus: edition.tomesParus, tomes };
   }
   if (ajoutees.length > 0) {
     writeFileSync(SAUVEGARDE, `${JSON.stringify(avant, null, 2)}\n`);
@@ -98,10 +134,13 @@ async function main() {
   let sortiesRemplacees = 0;
   const elargies: string[] = [];
 
-  const fin = finDeFenetre(manifeste);
-  const horsFenetre = fin
+  const couverte = fenetre(manifeste);
+  const horsFenetre = couverte
     ? await prisma.sortie.count({
-        where: { editionId: { in: editions.map((edition) => edition.id) }, date: { gt: fin } },
+        where: {
+          editionId: { in: editions.map((edition) => edition.id) },
+          OR: [{ date: { gt: couverte.fin } }, { date: { lt: couverte.debut } }],
+        },
       })
     : 0;
 
@@ -131,9 +170,12 @@ async function main() {
       }
     }
 
-    if (fin) {
+    if (couverte) {
       const { count } = await prisma.sortie.deleteMany({
-        where: { editionId: edition.id, date: { lte: fin } },
+        where: {
+          editionId: edition.id,
+          date: { gte: couverte.debut, lte: couverte.fin },
+        },
       });
       sortiesRemplacees += count;
     }
@@ -161,12 +203,17 @@ async function main() {
   console.log(
     `${sortiesEcrites} sorties annoncees enregistrees, ${sortiesRemplacees} remplacees dans la fenetre du manifeste`,
   );
-  if (fin) {
+  if (couverte) {
     console.log(
-      `fenetre couverte jusqu'au ${fin.toISOString().slice(0, 10)} : ${horsFenetre} sorties posterieures conservees`,
+      `fenetre couverte du ${couverte.debut.toISOString().slice(0, 10)} au ${couverte.fin.toISOString().slice(0, 10)} : ${horsFenetre} sorties hors fenetre conservees`,
     );
   }
   console.log(`compteurs : ${JSON.stringify(compteurs)}`);
 }
 
-main().finally(() => prisma.$disconnect());
+main()
+  .catch((erreur) => {
+    console.error(erreur instanceof Error ? erreur.message : erreur);
+    process.exitCode = 1;
+  })
+  .finally(() => prisma.$disconnect());

@@ -11,6 +11,7 @@
     "db:migrate": "tsx scripts/apply-migrations.ts",
     "db:seed": "tsx prisma/seed.ts",
     "db:backup": "tsx scripts/backup-db.ts",
+    "compte": "tsx scripts/compte.ts",
     "covers:fetch": "python scripts/fetch_covers.py",
     "covers:bnf": "python scripts/fetch_covers_bnf.py",
     "vignettes:fetch": "tsx scripts/fetch-vignettes.ts",

@@ -1,4 +1,4 @@
-# Manga Collection — journal
+# Zenkan — journal
 
 Le détail de ce qui a été construit, mesuré et vérifié, entrée par entrée, de l'import du
 Google Sheet au déploiement. Sorti de `CLAUDE.md` le 7 septembre 2026, où il pesait les deux
@@ -3545,3 +3545,943 @@ Ce qui a ete corrige :
 Deux entrees neuves au reste a faire : `AliasRecherche` n'expire jamais et aucun ecran ne la
 montre ; et « aot » trouve SAOTOME LOVE & BOXING par le `contains` sur le titre, donc n'atteint
 jamais le rebond.
+
+---
+
+### Fait — le catalogue a ses vignettes, et deux diagnostics rates en chemin
+
+**10 et 11 septembre 2026.** Le magasin `VignetteCatalogue` est rempli pour l'integralite du
+catalogue : **12 382 EAN interroges, 7 272 vignettes, soit 59 %**. Il ne reste aucun groupe a
+traiter. Verifie a l'ecran, pas seulement au compteur.
+
+#### Le remplissage
+
+Un superviseur relance `vignettes:fetch -- --tout` jusqu'a epuisement : un tour complet sans
+incident reseau signifie qu'il ne reste rien, un tour ecourte declenche une pause de dix minutes
+puis une reprise. **3 h 20 pour le premier tour**, 11 902 groupes, 6 978 images a 23,9 Ko de
+moyenne.
+
+**Le mecanisme de reprise a servi des la premiere nuit** : le premier tour a reporte **2 groupes**
+pour cause reseau, le second les a reprises — une image, une absence — puis s'est arrete de
+lui-meme. Sans le correctif du meme jour, ces deux groupes auraient ete inscrits « sans image » a
+tort et perdus definitivement.
+
+Cloudflare, mesure par l'API : **8 880 objets, 208 Mo, 2,03 % des 10 Go**, et ~7 100 ecritures sur
+le million mensuel. Les ~189 Mo estimes contre 208 reels — l'ecart vient du poids moyen, 23,9 Ko
+au lieu de 22,3. Aucun palier approche, et l'ambition maximale d'une couverture par tome du
+catalogue tiendrait encore dans 5,9 %.
+
+#### Le defaut que la verification a l'ecran a trouve
+
+**One Piece n'avait pas de vignette alors que son tome 2 en a une**, mesure a la main la veille.
+La cause est chronologique et n'aurait jamais ete vue par les compteurs : One Piece est **premier**
+dans le tri par taille de groupe, donc traite dans un lot de l'apres-midi, **avant l'ajout du
+repli sur quatre volumes**. Sa ligne d'echec existait deja, et le grand passage de la nuit l'a
+sautee — le script ne redemande jamais une ligne existante.
+
+Ce n'etait pas isole : **364 echecs n'avaient jamais vu le repli**, et c'etaient exactement les
+plus gros groupes — One Piece, Detective Conan, Gintama, Bleach, Naruto, Fairy Tail, Inu Yasha,
+Jojo's, Doraemon. Le pire sous-ensemble possible, precisement parce que le tri les sert en
+premier.
+
+Les 364 lignes d'echec ont ete supprimees — du cache recalculable, les 139 images de la meme
+periode ayant ete verifiees a la bonne cote avant — puis reprises : **165 vignettes recuperees,
+dont 44 par le repli**. Le taux passe de 57 a 59 %.
+
+**La lecon generale** : quand une regle d'acquisition change, les lignes ecrites avant ne sont pas
+seulement incompletes, elles sont **protegees** par l'idempotence. Il faut les invalider
+explicitement, et le faire en distinguant ce qui est recalculable — un echec — de ce qui ne l'est
+pas.
+
+#### Detective Conan reste vide, et c'est structurel
+
+Ses quatre EAN essayes sont les **tomes 19 a 22** : l'archive de catalogue commence en janvier
+2000, or la serie a demarre en France avant, donc son premier EAN connu est le tome 19. Le repli
+essaie donc quatre parutions du debut des annees 2000, l'epoque ou la BnF ne couvre que 36 %.
+Rien a corriger — c'est la limite de l'archive, pas du script.
+
+#### Deux diagnostics rates, et ce qu'ils apprennent
+
+J'ai lu trois captures d'ecran comme des cases vides et propose deux explications, fausses toutes
+les deux, avant de mesurer.
+
+La premiere : « l'URL `r2.dev` est limitee en debit, les images mettent du temps a apparaitre ».
+Je l'ai repetee toute la journee en m'appuyant sur un avertissement de §12 — sans jamais la
+verifier. **Mesure : 20 requetes simultanees, 20 fois 200, en 501 ms.** L'avertissement de §12
+porte sur le debit soutenu et l'absence de cache, pas sur une latence au premier acces.
+
+La seconde : un verrouillage d'erreur dans `Cover`, qui aurait fige le placeholder apres un echec.
+Dementi par l'inspection du DOM : **5 images presentes, `complete: true`, 232 a 255 px de large**,
+et 6 placeholders correspondant aux absences reelles.
+
+Les captures etaient simplement prises avant que les images ne soient peintes. **Le DOM tranche,
+une capture ne tranche pas** — et une explication reprise du depot sans mesure est une hypothese,
+pas un fait. Meme motif que « la BnF plafonne a 150 px » la veille.
+
+#### Ce qui reste ouvert
+
+- **Les vignettes de la grille.** Un tome possede sans couverture affiche toujours sa pastille :
+  `VignetteCatalogue` sert la recherche, le scanner, la wish list et les en-tetes, pas la grille.
+- **41 % des groupes n'ont pas de vignette**, et c'est un plancher : l'absence se joue par titre
+  chez la BnF, le repli sur d'autres volumes ne rend que 12 % des echecs. Aller au-dela demanderait
+  un appariement par titre chez MangaBaka ou MangaDex, que ce depot a vu echouer cinq fois.
+
+---
+
+### Fait — l'identité et les comptes, éprouvés à deux comptes sur le banc
+
+**11 septembre 2026, branche `comptes-utilisateurs`, rien sur la production.** Le lot 1 de
+§13.6 est construit et vérifié sur le banc : on se connecte avec un compte, l'inscription est
+libre, chacun voit sa collection. Le rôle invité est supprimé, code compris.
+
+#### Ce que l'état des lieux a trouvé, et qui décide de tout
+
+La migration du 9 septembre avait déjà fait la moitié du travail sans que ça se voie : les
+12 requêtes d'écran partent de `SuiviEdition`, et `data/backup.json` le confirme —
+**116 suivis, 1 719 possessions, un seul `utilisateurId` distinct**. Le cron était déjà propre,
+il promeut avec `utilisateurId: null`. Les onze pages sont `force-dynamic`, donc aucun rendu
+n'est mis en cache et partagé.
+
+**Le vrai défaut était ailleurs : le cookie ne portait pas d'identité, le rôle *était* le
+jeton.** Les dix actions gardées de `lib/actions.ts` appelaient toutes `exigerProprietaire()`,
+`basculerTome` compris. Un compte `UTILISATEUR` aurait été refusé jusqu'à cocher ses propres
+tomes. **Neuf passent à `exigerAcces()` ; seul `definirParution` reste propriétaire.**
+
+#### Ce qui a été construit
+
+Une migration **purement additive** — `identifiant`, `motDePasseHash`, `versionJeton` —, un
+jeton signé portant `utilisateurId:versionJeton:expiration`, un hachage `scrypt` de
+`node:crypto` sans aucune dépendance, et la garde à **deux** niveaux et non trois :
+`exigerUtilisateur()` aurait été le jumeau exact d'`exigerAcces()` une fois l'invité parti.
+
+**Le rôle n'est pas dans le cookie**, il se lit sur la ligne, mémoïsé par requête avec `cache()`
+de React — le motif que la documentation Next prescrit pour un `verifySession`. C'est une
+requête par rendu au lieu de zéro, et en échange un changement de rôle ou de mot de passe prend
+effet tout de suite.
+
+Trois écrans — connexion, inscription, `/compte` — un sixième onglet « Moi » avec son icône, et
+`npm run compte`, seul chemin de reprise de la collection existante. Sont supprimés : la
+bannière invité, `entrerEnInvite`, `quitterInvite`, `jetonInvite`, `ACCESS_PASSWORD` et les cinq
+libellés qui allaient avec.
+
+**La section « changer le mot de passe » de `/compte` est masquée**, décidé en fin de journée.
+`changerMotDePasse` reste en place et c'est elle qui a servi à éprouver la révocation
+ci-dessous ; l'écran ne l'expose simplement pas encore. `npm run compte -- --reinitialiser`
+est donc aujourd'hui le seul chemin visible pour changer un mot de passe.
+
+#### Ce que la vérification a établi, à deux comptes réels
+
+Banc monté sur `prisma dev`, restauration fidèle — **sept compteurs concordants** — puis la
+migration en attente, puis `npm run compte -- --proprietaire`.
+
+| Contrôle | Résultat |
+|---|---|
+| le script pose l'accès sur la bonne ligne | `f087527f-…`, celle qui porte **116 suivis et 1 719 possessions** |
+| le propriétaire se connecte | **1 162 tomes · 111 éditions · 2 5 590,41 €**, inchangés |
+| un compte B s'inscrit | **0 tome · 0 édition · 0,00 €** ; en base, 0 suivi |
+| B coche un tome | `Possession` sur **l'id de B**, les 1 719 de A intactes |
+| B ajoute une édition | `Serie` existante réutilisée, **seule l'`Edition` est créée**, `creeeParId` = B |
+| A ouvre l'`/etat` de l'édition de B | **« Cette édition n'existe pas »** — le cloisonnement tient dans les deux sens |
+| B ouvre un `/etat` | statut et suivi actifs, **parution verrouillée** avec sa mention |
+| A change la parution | `definirParution("gantz", true)` passe, la base suit |
+| jeton à version périmée | `NEXT_REDIRECT;replace;/acces` et **aucune donnée servie** |
+| jeton expiré · signature falsifiée | **307 vers `/acces`**, arrêtés par le proxy |
+| les six onglets à 432 px | tiennent sans troncature |
+
+#### Deux défauts trouvés parce qu'on a cliqué pour de vrai
+
+**Le formulaire d'inscription se vidait à chaque erreur.** Une faute de frappe sur le mot de
+passe obligeait à retaper l'identifiant et l'email. L'état de l'action les renvoie désormais, et
+l'écran a au passage prouvé la normalisation : « Ami » revient en « ami ».
+
+**Une session révoquée servait une page d'erreur en 200.** La garde bloquait bien — aucune
+donnée de compte — mais `exigerAcces()` levait une erreur au lieu de renvoyer à la connexion.
+Elle fait maintenant `redirect(CHEMIN_ACCES)`.
+
+#### Un doublon de catalogue, et ce n'est pas le multi-compte
+
+Taper « GANTZ · Édition simple » au catalogue a créé **`gantz-2` à 37 tomes à côté du `gantz` de
+l'import à 18 tomes**. Premier réflexe : l'anti-doublon serait par compte. C'est faux —
+`slugEnCollection` est calculé **globalement**. La cause est ailleurs et elle était déjà
+écrite : la reconnaissance passe par `ParutionCatalogue.ean → Volume.isbn`, et **les 18 tomes de
+`gantz` n'ont aucun ISBN**. Rien à joindre, donc le candidat sort comme inconnu. Même angle mort
+que `editions:audit`, simplement plus probable à plusieurs comptes.
+
+#### Ce qui n'est pas prouvé, et il faut le dire
+
+**Le refus de `definirParution` pour un non-propriétaire n'a pas été éprouvé de bout en bout.**
+Ce qui est établi : le serveur classe bien B comme non-propriétaire — c'est lui qui a rendu la
+variante verrouillée et sa mention —, la garde tient en une condition, et son chemin positif
+passe pour A. Ce qui manque : une écriture réellement refusée. Deux tentatives ont échoué sans
+rien prouver, exactement comme le piège des six clics d'automatisation le prédit — le premier
+essai a cliqué dans un onglet dont le moteur de rendu ne répondait plus, le second a vu React
+remettre l'attribut `disabled` avant le clic. Une troisième piste, forcer le drapeau dans la
+page, a été **écartée** : elle affaiblissait la garde dans le code, et c'est la dernière chose à
+laisser traîner dans un arbre de travail.
+
+#### Un serveur de développement tué en chemin
+
+Next refuse un second serveur pour le même dossier. Celui du port 3001, laissé par une session
+antérieure, servait le code de la branche **contre Neon**, où les trois colonnes n'existent pas
+encore. Il a été tué après accord, et le banc relancé sur le 3005.
+
+#### Corrigé le même jour — « déjà dans la collection » était global
+
+Trouvé à l'usage, sur le banc, par le propriétaire : connecté en second compte, une série que
+lui seul possède portait « **Déjà dans la collection** », et la taper rendait « **cette édition
+n'existe pas** ».
+
+**Une seule cause pour les deux symptômes.** `slugEnCollection` répondait à une question
+globale — « une `Edition` existe-t-elle pour ce groupe de catalogue ? » — et servait à répondre
+à une question personnelle. Le libellé exposait donc la collection d'autrui, et
+`ajouterCandidatDirect` redirigeait vers une fiche que les requêtes, parties de `SuiviEdition`,
+refusaient au second compte.
+
+Le champ est scindé en deux : **`slugEdition`**, global, qui empêche le doublon, et
+**`dansMaCollection`**, par compte, qui pilote le libellé. Le cas qui manquait — l'édition
+existe mais n'est pas à moi — **crée maintenant le seul `SuiviEdition`** et ouvre la fiche.
+`rechercherCandidats`, `candidatParEan` et `candidatParGroupe` prennent l'`utilisateurId` en
+premier argument plutôt que de le deviner.
+
+**Vérifié en base** : `ami` tape BLEACH, que seul `dimitry` possède. Il reste **une seule
+`Edition` bleach** et il y a désormais **deux `SuiviEdition`**, une par compte, chacune avec son
+statut. La page s'ouvre, et elle affiche **4 / 74 pour `ami`** là où `dimitry` en a 74 — le
+compteur est bien personnel.
+
+Au passage, « tomes parus **selon le catalogue** » devient « tomes parus » sur les lignes de
+résultat, et la section « changer le mot de passe » de `/compte` est masquée.
+
+---
+
+### Corrigé — une couverture de sortie écrite comme un tome
+
+**16 septembre 2026.** `fetch_covers_bnf.py` écrit les tomes **et** les sorties annoncées dans
+le même manifeste, alors qu'`upload-covers.ts` le lisait comme ne contenant que des tomes — les
+annonces ont leur propre fichier, `covers-annonces.json`. La conséquence était un
+`prisma.volume.update` sur un couple (édition, numéro) sans `Volume`, donc un **P2025 qui
+arrêtait l'écriture en cours de route, après l'envoi dans R2** : les images déposées, la base à
+moitié écrite.
+
+**Le défaut dormait depuis toujours et ne pouvait pas se déclarer avant** : aucune sortie
+annoncée n'avait jamais obtenu d'image de la BnF, faute de dépôt légal avant parution. One Piece
+t.113 est la première, et elle a suffi.
+
+L'écriture passe en `updateMany`, qui ne lève pas quand rien ne correspond, et ce qui n'est pas
+un tome est tenté sur `Sortie` avec les mêmes données — donc avec sa source et sa date de
+récupération, que `Sortie` porte depuis le 10 septembre précisément parce que `promouvoir()`
+recopie la couverture de la sortie vers le tome.
+
+**Vérifié par la reprise** : 0 envoi puisque tout était déjà dans le bucket, et l'écriture va au
+bout. **1 888 / 1 941** tomes illustrés contre 1 754 avant, **208** volumes marqués `bnf` contre
+74, et One Piece t.113 est la quinzième sortie illustrée.
+
+---
+
+### Fait — les couvertures dans le cron
+
+**16 septembre 2026.** §13.2 avait tranché le principe — *récupérer la couverture quand une série
+entre dans une collection* — et ça n'avait jamais été implémenté. Une série ajoutée depuis le
+téléphone arrivait avec son éditeur, son prix, son auteur, ses genres et l'ISBN sur 100 % de ses
+tomes, **mais aucune image**, et il fallait le poste local et deux scripts pour y remédier.
+`app/api/cron/route.ts` s'en charge désormais, après la promotion des sorties échues.
+
+**La BnF d'abord, par EAN, en 256×360** : elle redimensionne côté serveur, donc aucun traitement
+d'image n'est nécessaire et la fonction reste dans son budget. Le téléchargement est sorti de
+`fetch-vignettes.ts` vers `lib/couverture-bnf.ts`, distinction **absence attestée / injoignable**
+comprise — un 404 ou un 500 de la BnF veut dire « aucune image sur cette notice », tout le reste
+est une coupure qui ne doit rien écrire.
+
+**Puis MangaDex**, `fr` avant `ja` et jamais une troisième langue, sur ses vignettes `.256.jpg`
+qui tombent à notre cote sans redimensionnement. **Ce repli est demandé par le propriétaire en
+connaissance de §5**, qui dit que l'usage programmatique reste en attente d'autorisation : la
+décision est prise, elle est consignée telle quelle.
+
+**Le report remplace « les tomes ajoutés récemment »**, que le schéma ne savait pas exprimer
+faute de date de création sur `Volume`. `couvertureTenteeLe` et `couvertureTentatives` portent un
+intervalle qui s'allonge — **7, 30 puis 90 jours** — donc un tome neuf passe en tête de file sans
+rien déclarer, et un tome sans notice se fait oublier tout seul. Exiger un ISBN pour la jambe BnF
+suffit par ailleurs à écarter les 7 tomes qui n'en ont aucun, sans aucune comptabilité.
+
+**Le défaut trouvé en éprouvant, et c'est le sixième du même genre** : apparier au niveau `Serie`
+en acceptant les alias plaque une numérotation sur une autre. Les alias viennent de MangaBaka,
+qui apparie la série de **base**, donc « L'Atelier des sorciers - Édition grimoire » est tombé
+sur *Tongari Boushi no Atelier* et « IPPO – S4 LA LOI DU RING » sur *Hajime no Ippo*. Leur tome 3
+n'est pas le tome 3 de la série. **Deux couvertures fausses ont été écrites, puis annulées et
+leurs objets supprimés de R2** — le cache est immuable un an, les laisser aurait figé l'erreur.
+
+Trois garde-fous en réponse : l'appariement ne regarde plus que `titre` et `titreVo`, **jamais
+les alias** ; la jambe MangaDex est réservée aux **éditions sans marqueur** ; et le nombre de
+tomes doit rester **comparable**, ce qui refuse de plaquer 139 volumes japonais sur un découpage
+français de 27. L'identifiant n'est retenu sur la `Serie` qu'une fois ces conditions tenues,
+sinon la base affirmerait qu'`ippo-s4` **est** *Hajime no Ippo*.
+
+**Vérifié par des passages réels contre Neon.** **1 928 / 1 941** tomes illustrés contre 1 754 le
+matin même ; **40** images par MangaDex, **208** par la BnF. Le second passage examine **zéro**
+candidat, donc le report tient. Les **13** restants sont exactement les cas que la règle doit
+refuser : `ippo-s4` pour 11, `les-legendaires-saga` et le grimoire pour 1 chacun. Les images
+servies sont contrôlées une à une — 200, `image/jpeg`, cinq tailles distinctes sur cinq.
+
+#### Les deux suites, le lendemain de l'interruption
+
+La session s'était arrêtée avant de les traiter.
+
+**Les cinq `R2_*` sont désormais nécessaires dans Vercel**, et `.env.example` comme §12 disaient
+le contraire : « l'application ne fait que lire les URL absolues stockées en base ». C'était vrai
+jusqu'à ce cron, qui **dépose lui-même**. Sans elles, `exiger("R2_ENDPOINT")` lève **dès la
+première image obtenue** et `/api/cron` répond 500 — la promotion, elle, aura déjà eu lieu. Rien
+n'a échoué : le commit est sur `main` depuis 12 h 08 et le cron ne part qu'à 4 h. **Les cinq
+variables ont été posées dans Vercel le jour même**, avant le premier passage.
+
+**Le filet ne couvrait pas les trois colonnes neuves.** `scripts/backup-db.ts` ignorait
+`Serie.idMangaDex`, `Volume.couvertureTenteeLe` et `couvertureTentatives` — donc une restauration
+aurait perdu les appariements MangaDex retenus, c'est-à-dire précisément ce que les garde-fous
+ont coûté cher à valider, et remis toute la file à « jamais essayé ». Les trois entrent dans
+l'export et dans la restauration, avec le `?? null` / `?? 0` qui laisse relire une sauvegarde
+antérieure. **Vérifié par un `db:backup` réel** : 4 séries portent un `idMangaDex` —
+`bakuman`, `initial-d`, `one-piece`, `vinland-saga` —, 53 tomes ont été essayés, 1 tentative au
+plus, et les 13 sans image l'ont tous été. Les sept compteurs ne bougent pas.
+
+#### Éprouvé sur une série neuve, ajoutée par le second compte
+
+C'est le cas que §13.2 décrivait depuis toujours — *récupérer la couverture quand une série entre
+dans une collection* — et il s'est présenté tout seul : `Testeur` a ajouté **Jujutsu Kaisen
+(30 tomes)** et **Green Worldz (8 tomes)** depuis `/ajouter`, soit **38 volumes sans une seule
+image**, tous à `couvertureTenteeLe` nul donc **en tête de file** sans que rien ne les ait
+déclarés.
+
+Une passe : **38 examinés, 38 obtenues — 18 par la BnF, 20 par MangaDex, 0 absente, 0
+injoignable.** Il ne reste que les 13 connus, et **plus aucun tome n'est « jamais essayé »**.
+
+**Contrôlé sur l'image, pas sur le compteur.** Six URL servies en 200 / `image/jpeg`, six tailles
+distinctes, et les deux tomes 1 regardés à l'œil : Jujutsu Kaisen t.01 est bien **l'édition
+Ki-oon**, logo français compris — donc la couverture `fr` de MangaDex et non la japonaise —, et
+Green Worldz t.01 bien **Pika Édition**. L'identifiant retenu sur `jujutsu-kaisen` est celui de
+la bonne série ; les garde-fous du matin tiennent sur un cas qu'ils n'avaient pas vu.
+
+**Ce que cette passe ne prouve pas, et il faut le dire :** elle a tourné **depuis le poste, contre
+Neon**, comme celles du matin. La base est la même, donc les couvertures sont bien en production —
+mais **le déploiement Vercel du 16 n'est toujours pas vérifié**. L'appel à `/api/cron` en
+production a rendu **401**, et pas parce qu'il serait cassé : le `CRON_SECRET` de ce poste n'est
+pas celui de Vercel, exactement le piège que §12 consigne. `autorise()` rendant `false` dans les
+deux cas, un 401 ne distingue rien. La preuve viendra du passage de 4 h, ou du tableau de bord.
+
+---
+
+### Fait — le cron réemploie les vignettes de catalogue avant d'appeler la BnF
+
+**16 septembre 2026.** Question du propriétaire, et elle portait juste : la passe `vignettes:fetch`
+a pris « la couverture du tome 1 de la série / édition, ou la plus proche », or cette image
+n'alimentait **pas** la couverture de son tome — donc le tome restait sans image et on stockait
+des vignettes à rôle unique.
+
+**Le premier point à rectifier est la prémisse, et c'est ce qui rend la correction possible :
+`VignetteCatalogue` est clé par EAN.** Une vignette **est** la couverture d'un tome précis. « Le
+tome 1 ou le plus proche » décrivait la **stratégie de récupération** — une image par groupe de
+catalogue, en essayant jusqu'à 4 volumes — et l'image obtenue est écrite sous **l'EAN qui l'a
+produite**, pas sous un EAN représentatif du groupe. Le lien `Volume.isbn → VignetteCatalogue.ean`
+est donc exact, et il n'y avait rien à deviner.
+
+**L'ampleur, elle, était plus faible que supposé.** Mesuré en base :
+
+| | |
+|---|---|
+| Vignettes avec une image | **7 272** sur 12 382 EAN interrogés |
+| Tomes illustrés dont l'EAN porte aussi une vignette — image stockée deux fois | **70**, et **tous des tomes 1** |
+| Tomes sans image dont l'EAN a une vignette | **0** au moment de la mesure |
+| EAN de tomes **jamais interrogés** par `vignettes:fetch` | **1 660** |
+
+C'est structurel : `vignettes:fetch` n'a demandé **qu'un EAN par groupe**, en général le tome 1,
+alors qu'une collection est faite de tomes 2 à N. Les ~7 200 autres vignettes portent des groupes
+qu'aucun compte ne possède — elles ne peuvent pas alimenter un `Volume` qui n'existe pas, et
+elles font exactement le travail pour lequel elles ont été faites. **Le doublon réel est de 70
+images**, ~1,5 Mo.
+
+**Le gaspillage réel est ailleurs, et il est systématique** : le tome 1 d'une série fraîchement
+ajoutée a presque toujours sa vignette — c'est elle qui l'a fait trouver dans la recherche — et
+le cron la redemandait à la BnF pour redéposer un second objet. Vu en direct sur la passe du
+jour : `green-worldz` t.1 avait sa vignette `bnf`, et la couverture écrite est le **même fichier
+au même octet près**.
+
+**Le cron consulte donc `VignetteCatalogue` en premier**, et **recopie l'objet R2** —
+`CopyObjectCommand`, donc aucun téléchargement, aucun ré-encodage, et `Content-Type` comme
+`Cache-Control` préservés. La copie va sous `covers/<slug>/<n>`, pas un pointeur vers
+`vignettes/<ean>` : mélanger les deux cycles de vie ferait qu'une purge des vignettes casserait
+des couvertures de tome.
+
+**Le critère de réemploi est « l'image atteint notre cote sur au moins un côté »** — `largeur =
+256` **ou** `hauteur = 360`, jamais au-dessus. Il a été choisi sur mesure, pas supposé :
+**aucune des 7 272 ne dépasse 256×360**, la BnF redimensionnant côté serveur en respectant les
+proportions (256×354, 254×360, 253×360 sont les trois formes les plus fréquentes), et **515
+n'atteignent la cote sur aucun côté** parce que leur original est plus petit — 100×142, 140×191.
+Celles-là sont écartées et le tome repart au chemin normal, où MangaDex peut faire mieux.
+
+**La provenance recopiée est celle de la vignette, sa date comprise.** `couvertureRecupereeLe`
+prend `VignetteCatalogue.recupereeLe` et non l'heure de la copie : la Licence ouverte demande la
+date de récupération **auprès de la BnF**, pas celle d'un déplacement interne.
+
+**Écarté : se servir des échecs mémorisés pour sauter la BnF.** Une vignette à `couvertureUrl`
+nul dit « la BnF n'avait rien **ce jour-là** », et une notice s'illustre plus tard.
+`couvertureTenteeLe` rouvre déjà la question à 7, 30 puis 90 jours.
+
+**Vérifié fonctionnellement, pas au compteur.** `green-worldz` t.1 a été remis à `couvertureUrl`
+nul, puis une passe lancée : **1 examiné, 1 obtenu, `parVignette: 1`, `parBnf: 0`** — donc aucun
+appel externe. L'URL retombe sur la même clé, l'objet servi rend **200 / `image/jpeg` / 30 686
+octets**, exactement la taille d'avant, `Cache-Control: public, max-age=31536000` préservé, et
+l'image regardée à l'œil est bien Green Worldz t.01 chez Pika. `couvertureRecupereeLe` porte le
+**10 septembre**, la date de la vignette.
+
+Un dernier garde-fou : si la copie échoue — objet disparu du bucket —, `reprendre` rend `false`
+et le tome repart à la BnF, plutôt que de faire tomber toute la passe quotidienne.
+
+---
+
+### Corrigé — la résolution par ISBN ignorait le suivi, et `--revert` effaçait des ISBN
+
+**17 septembre 2026.** Les trois premiers constats de la revue du 16 septembre, ceux qui font
+perdre des données. Ils ont une racine commune sur les deux premiers : la distinction que §4 dit
+avoir posée le 11 septembre — *cette édition existe-t-elle au catalogue* contre *est-elle à moi* —
+n'avait jamais été appliquée aux **rangs 1 et 2** de la table de résolution par EAN.
+
+**Rang 1, le tome déjà connu.** `resoudreIsbn` cherchait `Volume.isbn` sur tout le catalogue et
+rendait un `slug` sans demander si l'édition était suivie par celui qui scanne. Les deux boutons
+qu'il proposait étaient faux l'un et l'autre : « Ouvrir » menait à `/edition/<slug>`, dont
+`chargerEdition` part de `SuiviEdition` et rend donc `notFound()` — « cette édition n'existe pas »
+sur une fiche que l'écran venait de montrer ; « Marquer possédé » appelait `basculerTome`, qui
+écrivait une `Possession` **sans `SuiviEdition`**, invisible des six écrans puisqu'ils partent
+tous du suivi. Un tome en base que rien n'affiche.
+
+**Rang 2, la sortie annoncée.** Même angle mort, avec un dégât de plus : la `Sortie` est une
+ligne de **catalogue partagé**. `promouvoirSortie` ne contrôlait que la date. Un compte qui
+promeut la sortie d'une édition qu'il ne suit pas la supprime du Planning de celui qui la suit et
+incrémente `tomesParus`, sans que la possession écrite n'apparaisse nulle part chez lui. §13.1
+assume bien qu'« un clic retire la sortie du Planning de l'autre », mais entre comptes **qui
+suivent la même édition** ; ici la moitié utile de l'opération était perdue.
+
+**Le correctif est celui que le chemin catalogue applique déjà** : `ResultatScan` porte
+`dansMaCollection` sur ses deux premiers rangs, et quand il est faux le scanner propose
+`adopterEditionScannee` — le `SuiviEdition` créé puis, s'il y a un tome, sa possession, puis la
+fiche. C'est exactement ce que fait `ajouterCandidatDirect` pour un candidat de catalogue
+reconnu, et ça réemploie ses deux helpers, `suivreEditionExistante` et `marquerTomeParIsbn`.
+
+**Et l'invariant est rendu physique côté serveur, pas seulement côté écran.** `basculerTome` et
+`definirTousLesTomes` résolvent leur cible par `suivis: { some: { utilisateurId } }`, et
+`promouvoirSortie` cherche la sortie sous la même condition — une Server Action appelée
+directement ne peut donc plus écrire une possession orpheline ni promouvoir la sortie d'autrui.
+`promouvoirSortiesEchues`, qui passe `utilisateurId` nul, n'est pas concernée : c'est le cron, et
+il n'a pas de collection.
+
+**`apply-planning --revert` détruisait des ISBN qu'il n'avait jamais écrits.** Son `updateMany`
+remettait `isbn` et `dateSortie` à `null` sur **toute** l'édition, alors que `EtatAvant` ne
+mémorisait que `tomesParus` : les EAN qu'une édition tient de `ParutionCatalogue` — donc toute
+édition née de `/ajouter` — partaient sans retour, et §12 fait de l'ISBN le préalable de toute
+couverture. Le sidecar porte désormais l'état **par tome**, et le retour arrière repose chaque
+valeur au lieu d'effacer. Les éditions sauvegardées avant ce changement n'ont pas ce détail :
+leurs ISBN sont **laissés tels quels** et le script les nomme, plutôt que de les effacer faute de
+savoir quoi remettre.
+
+**Vérifié sur le banc, écran et base, à deux comptes.** Le banc porte la sauvegarde du
+16 septembre, ses deux comptes et leurs mots de passe reposés.
+
+| Ce qui a été fait, connecté en `Testeur` | Ce que la base dit |
+|---|---|
+| scan de `9782368779545` — JK HARU t.1, suivi par le seul `Tempestl` | l'écran ne propose plus « Ouvrir » mais « Ajouter et cocher ce tome » |
+| tap dessus | la fiche s'ouvre à **1 / 7** ; `SuiviEdition` créé pour `Testeur`, sa possession du t.1 écrite, **les 7 de `Tempestl` intactes** |
+| scan de `9782505142829` — KAGURABACHI t.10, sortie annoncée de la seule collection de `Tempestl` | « Ajouter cette édition à ma collection » ; après le tap, `tomesParus` **reste 9** et la `Sortie` t.10 est **toujours là** |
+| `promouvoirSortie` appelée directement pour `Testeur` sur `les-legendaires-saga` t.13, qu'il ne suit pas | rend `null`, `tomesParus` reste 12, la sortie survit |
+| compte des `Possession` sans `SuiviEdition` correspondant, sur toute la base | **0** |
+
+Et pour le retour arrière : empreinte des **1 510 tomes** des 83 éditions du manifeste — 1 451
+ISBN, 1 451 dates —, `planning:apply` avec un sidecar neuf, puis `-- --revert`. Le script annonce
+« 1 510 tomes remis à leur ISBN et date d'avant » et l'empreinte est **identique au caractère
+près**. L'ancien code en aurait mis 1 510 à `null`.
+
+**Ce que ça ne corrige pas, et qui reste à la revue** : la purge des `Sortie` du même `--revert`
+n'a toujours qu'une borne haute (constat 10), et le scanner ne fait toujours qu'un scan par
+chargement de page (constat 4).
+
+---
+
+### Corrigé — le cron repayait chaque jour le même échec
+
+**17 septembre 2026.** Constats 8 et 9 de la revue du 16. Le passage quotidien a bien lieu — c'est
+le but —, mais dans ces deux cas il travaillait sans rien produire **et se garantissait de refaire
+exactement la même chose le lendemain**.
+
+**Une source injoignable n'était jamais enregistrée.** La boucle d'acquisition a trois issues :
+image obtenue, **absente** — la BnF atteste qu'il n'y a rien sur la notice —, et **injoignable** —
+la source n'a pas répondu. Les deux premières écrivaient `couvertureTenteeLe` ; la troisième
+faisait `continue` sans rien écrire. Or la sélection trie `couvertureTenteeLe asc nulls first` et
+prend 80 lignes : un tome jamais marqué est toujours « dû » et revient **en tête** de file le
+lendemain. Tant que la source est coupée, la file ne bouge pas d'un cran et aucun autre tome n'est
+servi. Le report 7 / 30 / 90 jours ne s'enclenchait jamais, et le seul indice était le compteur
+`injoignables` du bilan, que personne ne lit.
+
+Aujourd'hui l'effet serait petit — 13 tomes sans image. Il mord le jour du 16 septembre, où
+`Testeur` a fait entrer **38 volumes** d'un coup à `couvertureTenteeLe` nul : une coupure ce
+jour-là, et ces 38 monopolisent la file.
+
+**Le correctif écrit `couvertureTenteeLe` sans incrémenter `couvertureTentatives`**, et la
+distinction est le fond de l'affaire : une coupure réseau n'est pas une réponse sur la notice. Le
+tome quitte la tête de file, mais il ne se fait pas pousser vers 30 puis 90 jours à cause de
+**notre** panne — il revient au premier délai, 7 jours, autant de fois qu'il le faut. La question
+n'a pas reçu de réponse, donc elle reste ouverte au même rythme.
+
+**Et la même question était posée à MangaDex une fois par tome.** `identifiantMangaDex` rend
+`Serie.idMangaDex` s'il existe, sinon appelle `resoudreMangaDex`, qui fait **une requête `/manga`
+par titre** — le titre puis le titre VO. Deux choses empêchaient la réponse de servir au tome
+suivant : `couverturesParSerie` mémoïse la **liste des couvertures**, pas la résolution, et
+`retenirIdentifiant` n'écrit `idMangaDex` **que si la numérotation est comparable** — garde-fou
+posé le 16 septembre, et qu'il ne fallait surtout pas lever : sans lui la base affirmerait
+qu'`ippo-s4` *est* *Hajime no Ippo*. Il restait que chaque candidat porte son **propre** objet
+`serie` : même une fois l'identifiant écrit en base, les tomes suivants du même passage le
+redemandaient, et redemandaient l'écriture avec.
+
+**Une `Map` par série, locale au passage, et un `Set` des identifiants déjà écrits.** Rien n'est
+mémorisé d'un jour sur l'autre, donc le garde-fou est intact : ce qui est évité, c'est de poser
+treize fois la même question dans la même minute.
+
+**Ce qui n'est délibérément pas fait : mémoriser l'échec de résolution d'un passage à l'autre.**
+Il faudrait une colonne — `idMangaDex` nul veut dire « on ne sait pas », pas « on a demandé et il
+n'y a rien » — et c'est la même prudence que §5 énonce pour les vignettes : une source qui n'a
+rien aujourd'hui peut avoir quelque chose dans six mois.
+
+**Mesuré sur le banc, deux passages réels, sources détournées vers un bouchon local** qui compte
+les requêtes et refuse les images. Cible : `black-lagoon`, **13 tomes**, `Édition simple`, titre
+et titre VO renseignés — donc deux requêtes `/manga` par résolution — remis à `couvertureUrl`
+nul, `couvertureTenteeLe` nul et `idMangaDex` nul avant chaque passage.
+
+| | avant | après |
+|---|---|---|
+| requêtes `/manga`, série non résolue | **26** | **2** |
+| requêtes `/manga`, série résolue et comparable | **26** | **2** |
+| tomes marqués après un passage tout en injoignable | **0** | **13** |
+| `couvertureTentatives` après ce passage | 0 | **0** — la coupure n'est pas comptée |
+| second passage le même jour | **13 réexaminés** | **0** |
+
+Et le contrôle qui compte autant que le gain : sur la série résolue et comparable,
+`Serie.idMangaDex` est **toujours retenu**. Le garde-fou du 16 septembre n'a pas été entamé.
+
+---
+
+### Corrigé — deux effets de bord silencieux : le budget du cron et la mémoire de défilement
+
+**17 septembre 2026.** Constats 7 et 12 de la revue du 16. Deux défauts sans rapport l'un avec
+l'autre, réunis parce qu'ils ont la même signature : rien ne casse, rien ne se journalise, et le
+résultat est simplement faux.
+
+**Le budget du cron ne comptait pas la promotion.** `maxDuration` vaut 60 s et
+`BUDGET_COUVERTURES_MS` 45 s, mais l'échéance était calculée à l'entrée de la passe de
+couvertures, c'est-à-dire **après** `promouvoirSortiesEchues`. Une promotion de 10 s donnait donc
+55 s à la requête, avant même qu'une itération ne déborde de son propre délai externe. Et comme
+`revalidatePath` venait **après** la passe, une fonction tuée à 60 s laissait la promotion
+**commitée mais non revalidée** : le Planning continuait d'afficher des sorties déjà promues et
+Manquants ignorait les tomes créés, jusqu'à ce qu'une autre écriture revalide. Aucun log ne le
+signalait.
+
+Deux gestes, tous deux gratuits : les `revalidatePath` de la promotion passent **avant** la passe
+de couvertures, et le budget est compté **depuis l'entrée de la requête** —
+`BUDGET_COUVERTURES_MS - (Date.now() - debut)`. Un budget négatif n'a pas besoin de cas
+particulier : la boucle sort à la première vérification.
+
+**Ce que ça ne fait pas, et il faut le dire** : aucune valeur de budget ne borne **une**
+itération, dont les délais externes sont de 20 s chacun et dont la pagination MangaDex n'est pas
+bornée. Ce qui est garanti maintenant, c'est que la promotion et sa revalidation sont acquises
+avant qu'on prenne ce risque.
+
+**Éprouvé sur le banc**, sources détournées vers un bouchon qui répond en 1 s, 120 tomes remis
+sans couverture et les 7 sorties datées dans le passé : `/api/cron` rend **200**, promeut les 7
+— `one-piece` t.113 et t.114, `kagurabachi` t.10, `tsugai` t.11, et trois autres —, puis examine
+**50** couvertures et s'arrête net. **46,9 s au total** pour un budget de 45 s compté depuis
+l'entrée. Ce qui n'est pas vérifiable ici : la survie de la revalidation à une coupure à 60 s, qui
+ne se produit que sur Vercel.
+
+**La mémoire de défilement s'écrasait elle-même.** `useMemoireDefilement` appelle
+`window.scrollTo(0, position)` puis branche son écouteur. L'événement `scroll` que ce `scrollTo`
+déclenche est **asynchrone** : il arrive après, et l'écouteur le reçoit. Or au montage le
+document n'a pas encore sa hauteur finale — le navigateur borne donc le défilement, et
+l'événement qui suit mémorise **la valeur bornée** à la place de la vraie. La position se dégrade
+à chaque aller-retour.
+
+L'écouteur ignore désormais le premier événement quand une restauration vient d'être demandée.
+Un `scrollTo` qui ne bouge rien n'émet pas d'événement, et rien n'est alors ignoré : le drapeau ne
+tombe qu'au premier défilement réel, qui en produit des dizaines.
+
+**Reproduit et corrigé dans le navigateur**, connecté en `Tempestl` — 111 éditions, document de
+15 687 px. Même séquence les deux fois : poser 99 999 dans `sessionStorage`, recharger la page,
+attendre que la restauration ait eu lieu, relire.
+
+| | avant | après |
+|---|---|---|
+| valeur posée | 99 999 | 99 999 |
+| position après restauration, bornée par le navigateur | 14 832 | 14 832 |
+| valeur mémorisée ensuite | **14 832 — écrasée** | **99 999 — intacte** |
+
+Et le fonctionnement normal est intact : une molette réelle sur la Collection mémorise bien
+`12 832` après le correctif. **Mesuré à la molette, pas au `scrollTo`** — un défilement
+programmatique depuis le pilote n'émet aucun événement de défilement dans la page, et une première
+tentative a conclu à tort que rien n'était mémorisé. Septième fois que la sonde ment.
+
+---
+
+### Corrigé — « -- No Image -- » devenait un pâté dans les petites cases
+
+**17 septembre 2026.** Constats 11 et 15 de la revue du 16, c'est-à-dire la veille : le
+placeholder du 16 septembre dessine la mention en SVG mis à l'échelle de la case, avec
+`viewBox="0 0 100 141"` et `preserveAspectRatio`. Le texte n'a donc pas de taille propre, il a
+celle de la boîte.
+
+**Le calcul est net et il condamne l'idée à petite cote.** Dans les Manquants la case fait
+`40×56`, soit un facteur de `min(40/100, 56/141) ≈ 0,397` : les 11 unités de `TAILLE_MENTION`
+rendent **≈ 4,4 px CSS**, sous le seuil de lisibilité de tout navigateur — et ce pâté est dessiné
+**sous la pastille du numéro de tome**, déjà présente. Même effet en recherche à `56×80`,
+≈ 6,2 px. Avant le commit de la veille, ces cases affichaient juste le numéro, proprement.
+
+**Aucun réglage ne sauve la mention à cette cote** : 14 glyphes lisibles ne tiennent pas dans
+40 px, quelle que soit la façon de les dessiner. Le choix arbitré par le propriétaire est donc
+**une marque courte là où la phrase ne tient pas** — `MARQUE_SANS_COUVERTURE`, un point
+d'interrogation — plutôt que de laisser une case vide, qui était précisément ce que le
+16 septembre voulait corriger.
+
+**Le seuil est une requête de conteneur, pas une propriété passée de main en main.** `84px`, la
+cote à laquelle la revue juge la mention lisible et celle de la Collection, du Planning et de la
+wish list. Aucun appelant n'a à déclarer sa taille : la case se mesure elle-même.
+
+**Le piège en chemin, et il a coûté un aller-retour** : posé sur `.cover-placeholder`, qui porte
+le padding des appelants, `container-type: inline-size` fait porter la requête sur la **boîte de
+contenu**. Les 84 px de la Collection en devenaient **72**, et la ligne de Collection affichait le
+point d'interrogation au lieu de la mention. Le conteneur est donc une couche `absolute inset-0`
+sans padding — `.zone-sans-couverture` —, dont la largeur est celle de la case.
+
+**Deux défauts du même bloc réglés au passage.** `textLength` était appliqué avec le
+`lengthAdjust` par défaut, `spacing` : le moteur atteint exactement 76 unités **en jouant
+uniquement sur l'espacement entre glyphes**, donc sur une plateforme dont la police sans-serif est
+plus large que celle mesurée, l'ajustement devient négatif et les glyphes se chevauchent.
+`spacingAndGlyphs` supprime le risque. Et le placeholder était `aria-hidden` **sans équivalent
+textuel** : un lecteur d'écran parcourant `/ajouter` annonçait un élément muet là où un voyant
+voit l'emplacement d'une couverture. Le conteneur porte désormais `role="img"` et le **même
+libellé que l'`alt` de la branche image** — les deux branches disent enfin la même chose.
+
+**Vérifié à l'œil sur les quatre cotes**, connecté en `Tempestl`, après avoir retiré les
+couvertures de `d-gray-man` et `berserk` sur le banc :
+
+| Cote | Où | Rendu |
+|---|---|---|
+| 40×56 | Manquants | **`?`** centré, la pastille du numéro intacte à côté |
+| 56×80 | Recherche | **`?`** centré, sur les cinq résultats |
+| 84×120 | Collection | **`-- No Image --`**, lisible |
+| ~190×269 | grille des tomes | **`-- No Image --`**, inchangé |
+
+---
+
+### Corrigé — le filet se cassait en deux, et dix scripts mouraient sans rien dire
+
+**17 septembre 2026.** Constat 5 de la revue du 16, le plus sévère de ceux qui restaient : il
+porte sur `scripts/backup-db.ts`, c'est-à-dire sur **le seul filet du projet** — §7 le dit sans
+détour, « un export JSON régulier, versionné dans le dépôt, est le seul filet ».
+
+**La restauration vidait tout, puis réécrivait hors transaction.** Deux `deleteMany` suivis de
+**huit** `ecrireParLots` séquentiels, chacun par lots de 500. Une coupure de la WebSocket sur le
+443, ou la base qui s'endort au bout de 5 minutes (§7), et la base reste **vidée et restaurée à
+moitié**. Pire : le contrôle de compteurs des dernières lignes — le seul garde-fou du script —
+n'était atteint qu'**après** les écritures, donc une divergence était constatée sur une base déjà
+écrite, et le `throw` n'annulait rien.
+
+**Les deux `deleteMany`, les huit lots et le contrôle de compteurs sont maintenant dans une seule
+transaction.** Ce n'est pas seulement l'atomicité qui change : le contrôle passant **à
+l'intérieur**, une divergence de compteur **annule la restauration** au lieu de la commenter. Le
+délai est relevé à 300 s, les 5 s par défaut de Prisma n'ayant aucun rapport avec une opération
+de maintenance de 1 979 tomes et 1 741 possessions.
+
+**Et `main()` n'avait pas de `.catch`.** Une promesse rejetée donnait une trace brute
+d'`unhandledRejection`, sans dire ce qui avait été écrit. Le motif était partagé par **dix
+scripts** — `apply-mangabaka`, `apply-planning`, `apply-publication`, `apply-publishers`,
+`apply-relations`, `apply-titles`, `backup-db`, `fetch-mangabaka`, `fetch-vignettes`,
+`migrate-covers-r2`, `upload-covers`. Tous rendent désormais le message de l'erreur et un code de
+sortie **1**, ce qui compte pour un script qu'on enchaîne.
+
+**`apply-relations` avait la même forme destructive** : `deleteMany({})` puis `createMany`, sans
+transaction. Une coupure entre les deux laissait les 28 liens de séries **supprimés et non
+réécrits**. Les deux sont maintenant dans une transaction, et le compte d'après est lu dedans.
+
+**Éprouvé sur le banc, dans les deux sens.** Le banc portait 1 986 tomes, 1 181 possédés, 126
+suivis et 0 sortie — l'état laissé par les essais de la journée.
+
+| Ce qui a été fait | Ce que la base dit |
+|---|---|
+| `compteurs.tomes` de `data/backup.json` faussé à 1 986, puis `db:backup -- --restore --reset` | le script supprime, réécrit ses 1 979 tomes, **constate la divergence et annule** : « compteurs divergents : tomes — rien n'est ecrit », **code de sortie 1** |
+| état du banc juste après cet échec | **118 / 122 / 1 986 / 1 181 / 126 / 0** — identique au caractère près, rien n'a été supprimé |
+| sauvegarde remise, restauration normale | 1 979 tomes, 1 180 possédés, 124 suivis, 19 sorties, **« les compteurs correspondent »** |
+| `relations:apply` avec sa transaction | 28 liens avant, 28 après |
+
+L'ancien code, lui, aurait laissé la base vidée et à moitié réécrite sur le premier cas, et son
+message aurait été une trace de promesse rejetée.
+
+---
+
+### Corrigé — le scanner ne faisait qu'un scan par chargement de page
+
+**17 septembre 2026.** Constat 4 de la revue du 16, et c'est celui qui coûte le plus en
+librairie : §4 décrit le cochage comme « le geste que l'utilisateur répète des dizaines de fois »,
+et le scanner obligeait à **recharger la page entre deux tomes**.
+
+À la détection, la boucle coupait le flux et repassait `camera` à `"inconnue"` — trois lignes —,
+et **rien ne le rouvrait** : l'effet d'ouverture ne dépend que de `[choixCamera]`, et le sélecteur
+de caméra qui aurait pu le relancer n'est rendu que si `camera === "active"`, donc il venait de
+disparaître avec l'aperçu. Il n'existait aucun bouton « scanner à nouveau ». Et le texte sous le
+cadre continuait d'afficher `LIBELLE_SCAN_INVITE` — « Placez le code-barres du dos du tome dans le
+cadre » — alors qu'il n'y avait plus ni cadre ni caméra.
+
+**Le flux n'est plus coupé du tout.** L'aperçu reste vivant, le résultat s'affiche dessous, et
+lever le tome suivant suffit : la carte se remplace. C'est l'automatisme que le propriétaire avait
+demandé pour `/ajouter` le 9 septembre — *« c'est bien pour une appli manuelle, mais là on vise de
+l'automatisme »* — appliqué au scanner.
+
+**Ce qu'il fallait pour que ça tienne : ne pas re-résoudre le tome qu'on vient de scanner.** Un
+code-barres resté dans le cadre serait redétecté toutes les 400 ms. `dernierScan` retient le
+dernier ISBN soumis et la boucle ignore un code identique ; il est posé dans `resoudre`, donc la
+saisie manuelle et la détection partagent le même garde-fou et ne se déclenchent pas l'une l'autre.
+
+**Vérifié ce qui est vérifiable depuis le poste, et pas plus.** `BarcodeDetector` n'existe pas sur
+Chrome de bureau et il n'y a pas de caméra utile : **la réouverture de l'aperçu entre deux tomes
+ne peut pas être éprouvée ici**, exactement comme les trois pistes de mise au point de §12. Ce qui
+l'a été, connecté en `Tempestl` : la dégradation sans caméra — la mention s'affiche, l'aperçu est
+masqué, aucun sélecteur, le champ ISBN reste —, et **deux résolutions successives dans le même
+chargement de page**, `9782368779545` → JK HARU t.1 « Possédé / Ouvrir », puis `9782505142829` →
+KAGURABACHI t.10 « À paraître · sept 26 », la carte se remplaçant sans rechargement.
+
+**À juger sur téléphone**, avec le reste de ce qui attend un appareil : la netteté de près, le
+sélecteur de caméra, et maintenant l'enchaînement de deux tomes.
+
+---
+
+### Corrigé — le planning fabriquait des tomes fantômes et purgeait ce qu'il ne couvrait pas
+
+**17 septembre 2026.** Constats 6 et 10 de la revue du 16, qui portent tous deux sur la `Sortie`
+et sur la même faute : **agir au-delà de ce qu'on sait**.
+
+**Une annonce hors séquence fabriquait des tomes vides.** `promouvoir()` comble **tout**
+l'intervalle entre `tomesParus` et le numéro de la sortie, puis écrit
+`max(tomesParus, sortie.numero)`. Une édition à 10 tomes portant une `Sortie` pour le tome 15 —
+le planning manga-news annonce parfois un coffret ou un tome lointain, et `creerDepuisCandidat`
+crée toutes les annonces de la fenêtre sans vérifier la contiguïté — se retrouvait avec les tomes
+11 à 14 **créés vides** et `tomesParus = 15`. Ces quatre remontaient dans Manquants comme des
+trous à combler et gonflaient le dénominateur `X / 15` partout, sans que rien ne les distingue
+d'un vrai manque.
+
+**Le partage retenu tient à qui promeut, et c'est la lettre de §13.1.** Le cron n'a pour preuve
+qu'une date dans un CSV : il **refuse** désormais une sortie qui n'est pas le tome suivant, la
+laisse au Planning et la nomme dans son bilan (`horsSequence`, rendu par `/api/cron`). « Je l'ai »,
+lui, est l'**enregistrement d'un fait** par quelqu'un qui tient le tome — si le 15 est dans ses
+mains, les 11 à 14 sont parus, et combler l'intervalle est correct. C'est exactement la distinction
+que §13.1 invoque pour autoriser un utilisateur à promouvoir : *« ce n'est pas une modification
+éditoriale mais l'enregistrement d'un fait »*.
+
+**Et la purge des `Sortie` de `apply-planning` n'avait qu'une borne haute.** `fin` est la date la
+plus tardive du manifeste, et le `deleteMany` prenait tout ce qui est `<= fin` — donc **tout le
+passé**, y compris les sorties dérivées sur-le-champ par `creerDepuisCandidat` pour des mois que
+le manifeste ne couvre pas. §12 énonce pourtant la règle : *« le silence d'un import ne vaut pas
+suppression ; toute purge se borne à la fenêtre que le manifeste couvre réellement »*. La fenêtre
+a maintenant ses deux bornes, et le compte de sorties conservées les compte des deux côtés.
+
+**Vérifié sur le banc, les deux fois par comparaison avec le code d'avant.**
+
+Pour la promotion, sur `black-lagoon`, 13 tomes parus :
+
+| Ce qui a été fait | Résultat |
+|---|---|
+| `Sortie` t.18 datée dans le passé, puis le cron | **promues = [], horsSequence = ["black-lagoon t18 sur 13"]** ; `tomesParus` reste **13**, 13 volumes, la sortie **survit** |
+| `Sortie` t.14, puis le cron | promue normalement : `tomesParus = 14`, 14 volumes, sortie consommée |
+| « Je l'ai » sur un t.18 alors que l'édition est à 14 | comble l'intervalle comme avant : `tomesParus = 18`, 18 volumes |
+
+L'ancien code aurait créé quatre volumes vides et posé 18 dès la première ligne.
+
+Pour la purge, un témoin posé sur `act-age` au **2 janvier 2000**, antérieur au début de la
+fenêtre du manifeste — **2000-04-01 → 2024-01-24** :
+
+| Code | Ce que le script dit | Le témoin |
+|---|---|---|
+| corrigé | « fenetre couverte du 2000-04-01 au 2024-01-24 : 13 sorties hors fenetre conservees » | **présent** |
+| d'avant | « 1 remplacees dans la fenetre du manifeste » | **supprimé** |
+
+---
+
+### Corrigé — l'identité se changeait sans mot de passe, et le mot de passe ne se changeait pas du tout
+
+**17 septembre 2026.** Constats 13 et 14 de la revue du 16, les deux derniers. Ils se tiennent :
+l'un laissait faire ce qu'il ne fallait pas, l'autre empêchait ce qu'il fallait.
+
+**`changerIdentite` repointait l'email sans rien redemander.** Elle ne vérifiait
+qu'`exigerAcces()`, et le cookie de session vit `DUREE_ACCES_SECONDES`, soit **un an**. Un cookie
+récupéré sur un téléphone prêté ou un poste partagé suffisait donc à changer l'adresse du compte
+sans connaître le mot de passe. Aujourd'hui l'impact est contenu ; le jour où le **lot 2 de
+§13.6** branche la réinitialisation par email — décrite précisément comme « la preuve de
+possession de la boîte » —, ce geste devient le **chemin complet de reprise de compte**, et il
+aura pu être fait des mois plus tôt. Le formulaire d'identité redemande donc le mot de passe
+courant, et l'action refuse avant toute écriture.
+
+**Le mot de passe courant est exigé pour tout le formulaire, pas seulement quand l'email change.**
+C'est un écran qu'on visite une fois ; une exigence conditionnelle demanderait une interface qui
+change sous les doigts pour économiser une saisie rare.
+
+**Et `changerMotDePasse` n'avait aucun appelant.** La fonction était écrite, gardée, correcte —
+elle vérifie le mot de passe actuel, la longueur, la confirmation, incrémente `versionJeton` et
+repose le cookie — mais `components/account-form.tsx` ne rendait que le formulaire d'identité et
+le bouton de déconnexion. Un compte qui pensait son mot de passe compromis n'avait **aucun
+recours** : le lot 2 n'existe pas, et il ne restait que
+`npm run compte -- --reinitialiser <pseudo>` depuis le poste du propriétaire — autrement dit,
+personne d'autre que lui ne pouvait changer son mot de passe. L'onglet « Moi » porte maintenant sa
+section, trois champs et un bouton.
+
+**Vérifié écran et base, connecté en `Tempestl` sur le banc.**
+
+| Ce qui a été fait | L'écran | La base |
+|---|---|---|
+| email repointé vers `voleur@example.com` avec un mauvais mot de passe | « Le mot de passe actuel est incorrect. » | email **inchangé**, `d.julliard.sin@gmail.com` |
+| le même avec le bon mot de passe | « Enregistré. » | email à `essai-du-banc@example.com` |
+| changement de mot de passe avec un mauvais mot de passe actuel | « Le mot de passe actuel est incorrect. » | `versionJeton` **reste 3** |
+| le même avec le bon | « Enregistré. » | `versionJeton` passe à **4** |
+| navigation après le changement | la Collection s'affiche | la session courante survit, `poserCookie` l'ayant reposée |
+
+Le quatrième point est celui qui compte à deux appareils : `versionJeton` coupe **tous les
+autres**, et c'est exactement ce que §13.6 attend de lui — « un changement de mot de passe coupe
+toutes les sessions d'un coup, sans table de sessions ».
+
+---
+
+### Fait — l'application s'appelle Zenkan, et porte son icône
+
+**17 septembre 2026.** Renommage et changement d'icône, demandés par le propriétaire. Le nom
+est **Zenkan** — 全巻, « tous les volumes » —, le domaine `zenkanapp.com` est envisagé et pas
+acheté, et l'icône est fournie sous forme d'un jeu complet : un Z au pinceau, style sumi-e, sur
+fond papier, avec un sceau 全巻.
+
+**Le nom n'a coûté que deux constantes.** `NOM_APPLICATION` et `NOM_APPLICATION_COURT`
+(`lib/constants.ts`) alimentent le manifeste et les quatre balises de `app/layout.tsx` — titre,
+`application-name`, `apple-mobile-web-app-title`. Aucun écran ne l'écrivait en dur ; la
+recherche n'a rien rendu d'autre. Les deux valent « Zenkan », là où l'ancien couple distinguait
+« Collection de mangas » de « Collection ». La collision qui existait — le nom de
+l'application était aussi celui de son premier onglet — disparaît au passage.
+
+**Le vrai piège était `proxy.ts`, et il ne se voit pas depuis une session connectée.** Son
+matcher sort les fichiers publics de la garde d'accès **en les nommant un par un**, et il
+nommait `icon-192.png` et `icon-512.png`. Les icônes déplacées dans `public/icons/` seraient
+donc passées derrière la garde — invisibles à l'invite d'installation, qui est précisément
+l'écran qu'on voit avant de se connecter. Le matcher exclut maintenant `icons/`.
+
+**Vérifié sans cookie sur le serveur de développement**, dans les deux sens : ce qui doit passer
+passe, ce qui doit être gardé l'est toujours.
+
+| Chemin | Réponse |
+|---|---|
+| `/manifest.webmanifest` | 200 · `application/manifest+json` |
+| `/icons/icon-192.png`, `-384`, `-512`, `-maskable-192`, `-maskable-512` | 200 · `image/png` |
+| `/apple-icon.png` · `/favicon.ico` | 200 · `image/png` · `image/x-icon` |
+| `/collection` | **307** — la garde tient |
+
+Et le manifeste servi dit bien `"name":"Zenkan"`, `"short_name":"Zenkan"`, ses cinq icônes ;
+les balises rendues portent `<title>Zenkan</title>`, `application-name` et
+`apple-mobile-web-app-title`.
+
+**Deux arbitrages pris avec l'icône, contre ce que proposait le jeu fourni.**
+
+Son `manifest-icons.json` donnait `background_color` à `#f4efe4` — le papier — et `theme_color`
+à `#9184d9` — le sceau. Les deux sont restés à `#161826`. La V1 est en **mode sombre
+uniquement** (§7) : un fond de manifeste clair ferait un flash blanc au lancement avant une
+application sombre, et le violet en `theme_color` teinterait la barre d'état au-dessus d'une
+interface qui ne l'est pas. Le sceau `#9184d9` est de toute façon **exactement**
+`--color-accent` de `app/globals.css` : l'icône est déjà dans la palette sans qu'on déplace un
+token.
+
+Et c'est la **variante claire** qui est servie, pas la sombre, qui existe pourtant dans le jeu.
+Une icône d'écran d'accueil se pose sur le fond d'écran de l'utilisateur, pas sur celui de
+l'application : l'encre sombre ferait un trou sur un fond sombre. Un manifeste ne sait pas non
+plus choisir une icône selon le thème — les deux ne peuvent pas coexister.
+
+**Les deux jeux `any` et `maskable` sont nécessaires et ne sont pas un doublon.** Android
+découpe l'icône selon la forme du lanceur, et le sceau est dans un coin : une icône `any`
+rognée le perd. Les `maskable` portent 14 % de marge sur chaque bord.
+
+**`scripts/generate_icons.py` a été supprimé, pas laissé en dormance.** Il dessinait l'ancienne
+icône à trois tranches et écrivait dans `app/apple-icon.png` : le relancer aurait écrasé
+Zenkan. Même raisonnement que pour AniList le 10 septembre. Les sources partent dans
+`design/zenkan/` — six SVG et le générateur du jeu, avec sa racine pointée sur son propre
+dossier et son `icons/` ignoré par git, pour qu'une régénération ne remplace jamais en silence
+ce qui est servi. Le dossier porte son README.
+
+**Ce générateur n'a pas été éprouvé ici, et c'est écrit dans son README plutôt que tue.** Il
+exige `cairosvg`, qui réclame les bibliothèques Cairo et n'est pas acquis sous Windows ; il
+n'est ni installé ni ajouté à `requirements.txt`. Les PNG livrés ont été rendus ailleurs, et
+les SVG s'ouvrent dans un navigateur pour juger un changement sans rien installer. Seul
+`app/favicon.ico` a été reconstruit sur le poste, avec Pillow, en 16 · 32 · 48 depuis le niveau
+de détail « trait seul » — le sceau perd ses caractères sous 76 px et le trait seul est ce qui
+survit à 16.
+
+**Ce que ça ne change pas** : l'URL de production reste `manga-collection-wcj8.vercel.app`, le
+dépôt et le dossier de travail gardent leur nom `manga_collection`, et une PWA déjà installée
+ne se renomme pas toute seule — il faut la désinstaller et la réinstaller.
+
+**Déployé et vérifié en production le même jour**, sans cookie : le manifeste servi porte
+`"name":"Zenkan"`, les cinq icônes, `apple-icon.png` et `favicon.ico` rendent 200 aux tailles
+exactes des fichiers commités — donc pas un cache —, et `/collection` rend toujours 307.
+
+**Puis vérifié sur téléphone, réinstallation faite.** C'était le seul point que le poste ne
+pouvait pas trancher : le nom et l'icône sont ceux attendus, et **la découpe `maskable` du
+lanceur épargne le sceau**, qui est dans le coin bas-droit et donc le premier attaqué par une
+découpe en cercle. Les 14 % de marge font ce qu'on leur demande.
+
+---
+
+### Fait — l'identité et le mot de passe en sous-pages du compte
+
+**17 septembre 2026.** L'onglet « Moi » portait ses deux formulaires en pleine longueur : neuf
+champs de saisie empilés sur l'écran qu'on ouvre pour *regarder* son compte, dont quatre mots de
+passe. Le geste qu'on y fait est rare — on change d'adresse email une fois — et il occupait tout
+l'écran en permanence.
+
+**La page ne garde que le résumé et deux boutons.** Identifiant, adresse email et nom affiché en
+lecture seule, dans le motif `clé / valeur` du pied de la page Édition — **une ligne vide
+disparaît** au lieu d'afficher un tiret, ce qui est déjà le cas du nom, nul sur le propriétaire.
+Puis deux boutons pleine largeur à chevron, et « Se déconnecter » en bas, inchangé.
+
+**Le motif est celui de « Modifier l'état », repris à la lettre** : les deux sous-pages vivent
+**hors du groupe `(tabs)`** — donc plein écran, sans barre du bas, avec la flèche de retour en
+en-tête, exactement comme `/edition/<slug>/etat`. C'est ce que la demande disait, et c'est le
+seul motif de sous-page que l'application ait déjà.
+
+| Route | Ce qu'elle porte |
+|---|---|
+| `/compte` | le résumé, les deux boutons, la déconnexion |
+| `/compte/identite` | identifiant, email, nom, plus le mot de passe actuel en confirmation |
+| `/compte/mot-de-passe` | actuel, nouveau, confirmation |
+
+**`app/(tabs)/compte/page.tsx` et `app/compte/` coexistent sans conflit** : un groupe de routes
+est transparent pour le chemin, donc `/compte` n'est défini qu'une fois et `/compte/identite`
+non plus. Rien à déclarer côté garde — le matcher de `proxy.ts` prend tout par défaut, et les
+trois chemins rendent bien **307** vers `/acces` sans cookie.
+
+**Aucune action serveur n'a bougé** : mêmes noms de champs, mêmes validations, même
+`revalidatePath(CHEMIN_COMPTE)` — le résumé est donc juste au retour de la sous-page. Le
+libellé du bouton de soumission passe à « Enregistrer » sur les deux, « Changer le mot de
+passe » restant le libellé du bouton de **navigation**.
+
+**Deux choses remontent dans `components/champ.tsx` au lieu d'être répétées.**
+`CLASSE_BOUTON_SOUS_PAGE` était écrite en dur dans la page Édition, qui la consomme désormais —
+vérifié au caractère près dans le HTML rendu, le bouton « Modifier l'état » garde ses classes.
+Et `MessageFormulaire` y vit aussi, les deux sous-pages ayant le même retour d'action.
+`components/account-form.tsx` est **supprimé**, remplacé par `account-identity-form.tsx` et
+`account-password-form.tsx` ; la page `/compte` redevient entièrement serveur, `seDeconnecter`
+ne demandant pas de client.
+
+**Vérifié au rendu, session forgée à l'appui**, d'abord en local : `/compte` ne contient plus
+**aucun `<input>` de saisie** — seul le champ caché de l'action de déconnexion —, porte les deux
+liens, et chaque sous-page rend ses champs, son retour et son pré-remplissage. `tsc` et `eslint`
+passent.
+
+**Puis en production, et le contrôle a servi.** `/compte/identite` rendait encore **404** aux
+deux premiers essais après le `git push`, **200** au troisième : la route n'existait pas tant
+que Vercel n'avait pas fini, et sans ce guet on aurait conclu à un cache. Le déploiement ne
+joue rien sur Neon, ce lot ne touchant pas au schéma.
+
+**Puis validé sur téléphone par le propriétaire**, en production. C'est ce que le poste ne
+pouvait pas trancher : les écritures réelles n'ont volontairement pas été essayées depuis ici,
+l'une changeant l'adresse email du propriétaire et l'autre coupant toutes ses sessions.

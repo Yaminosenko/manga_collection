@@ -64,6 +64,28 @@
     background: linear-gradient(160deg, var(--color-neutral-900), var(--color-surface));
   }
 
+  .zone-sans-couverture {
+    container-type: inline-size;
+  }
+
+  .mention-sans-couverture {
+    display: none;
+  }
+
+  .marque-sans-couverture {
+    display: flex;
+  }
+
+  @container (min-width: 84px) {
+    .mention-sans-couverture {
+      display: block;
+    }
+
+    .marque-sans-couverture {
+      display: none;
+    }
+  }
+
   .zone-a-paraitre {
     background: repeating-linear-gradient(
       115deg,

@@ -1,4 +1,10 @@
-import { ListObjectsV2Command, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  CopyObjectCommand,
+  DeleteObjectCommand,
+  ListObjectsV2Command,
+  PutObjectCommand,
+  S3Client,
+} from "@aws-sdk/client-s3";
 
 const REGION_R2 = "auto";
 const PAGE_LISTE = 1000;
@@ -58,6 +64,26 @@ export async function deposer(
     }),
   );
   return urlPublique(chemin);
+}
+
+export function cheminDepuisUrl(url: string): string | null {
+  const base = `${basePublique()}/`;
+  return url.startsWith(base) ? url.slice(base.length) : null;
+}
+
+export async function copierObjet(source: string, destination: string): Promise<string> {
+  await clientR2().send(
+    new CopyObjectCommand({
+      Bucket: bucket(),
+      Key: destination,
+      CopySource: encodeURI(`${bucket()}/${source}`),
+    }),
+  );
+  return urlPublique(destination);
+}
+
+export async function supprimerObjet(chemin: string): Promise<void> {
+  await clientR2().send(new DeleteObjectCommand({ Bucket: bucket(), Key: chemin }));
 }
 
 export async function listerObjets(prefixe: string): Promise<{ chemins: Set<string>; pages: number }> {

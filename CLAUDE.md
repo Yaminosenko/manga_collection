@@ -1,7 +1,15 @@
-# Manga Collection — spécification
+# Zenkan — spécification
 
 Application personnelle de suivi de collection de mangas, mono-utilisateur.
 Ce document est la source de vérité du projet. Le lire en entier au début de chaque session.
+
+**L'application s'appelle Zenkan depuis le 17 septembre 2026** — 全巻, « tous les volumes ».
+Le nom vit dans `NOM_APPLICATION` et `NOM_APPLICATION_COURT` (`lib/constants.ts`), d'où le
+manifeste et les balises de `app/layout.tsx` le tirent ; aucun écran ne l'écrit en dur. **Le
+dépôt, le dossier de travail et le projet Vercel gardent leur nom `manga_collection`** : les
+renommer casserait les chemins de tous les postes et l'URL de production pour un affichage.
+**Aucun domaine n'a été acheté** : l'idée d'un `zenkanapp.com` est posée et non tranchée, elle
+vit dans `IDEES.md`.
 
 ---
 
@@ -35,8 +43,8 @@ Possession   (id, utilisateurId, volumeId, possede, dateAchat, prixPayeCentimes,
 
 **La séparation catalogue / suivi est faite depuis le 9 septembre 2026** — voir §13.1 et
 `JOURNAL.md`. Le catalogue porte des faits objectifs, identiques pour tout le monde ; le suivi
-porte une ligne par utilisateur. Il n'y a qu'un compte, le propriétaire, et l'invité est résolu
-vers lui en lecture seule.
+porte une ligne par utilisateur. **Depuis le 11 septembre 2026 chaque compte se connecte avec
+son propre identifiant** et l'inscription est libre — voir §13.6.
 
 **« Ma collection » = ce pour quoi j'ai une ligne `SuiviEdition`**, plus « toutes les
 `Edition` ». Toute requête d'écran part donc de `SuiviEdition` et joint `Edition`, jamais
@@ -82,10 +90,18 @@ Le rapport **personnel** à une édition. Une ligne par utilisateur et par édit
 - `ajouteeLe` — ajoutée à **ma** collection, pas au catalogue. Sert au tri « Ajout récent ».
 
 ### Utilisateur
-Un seul compte aujourd'hui, le propriétaire, créé par la migration avec un `email` nul — le
-dépôt est public. `role` distingue `PROPRIETAIRE` de `UTILISATEUR` ; `aPaye` est posé d'avance
-pour §13.4. **L'invité n'est pas une ligne `Utilisateur`** : c'est un rôle de jeton, résolu vers
-l'id du propriétaire en lecture seule par `lib/utilisateur.ts`.
+Le propriétaire a été créé par la migration du 9 septembre avec un `email` nul — le dépôt est
+public. `role` distingue `PROPRIETAIRE` de `UTILISATEUR` ; `aPaye` est posé d'avance pour §13.4.
+
+`identifiant` est le **pseudo** de connexion, stocké normalisé et unique ; `motDePasseHash` est
+un `scrypt` ; `versionJeton` invalide toutes les sessions d'un compte quand son mot de passe
+change. Les trois sont nullables : la ligne du propriétaire les a nuls jusqu'au passage de
+`npm run compte`. **`email` est obligatoire à l'inscription mais reste non vérifié** — aucun
+envoyeur n'existe avant le lot 2 de §13.6.
+
+**Il n'y a plus de rôle invité** : chacun se connecte avec son compte. Montrer sa collection à
+quelqu'un n'est donc plus possible, et son remplacement — la visibilité entre comptes — n'est
+pas tranché, il vit dans `IDEES.md`.
 
 ### Volume
 Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date,
@@ -268,6 +284,13 @@ qui remplit la même barre.
 | 4 | BnF par ISBN | notice seule → candidat manuel |
 | 5 | rien | l'écran le dit et s'arrête — **pas de saisie manuelle**, voir ci-dessous |
 
+**Les cinq rangs cherchent dans le catalogue entier, et les deux premiers portent donc
+`dansMaCollection`** — c'est la distinction décrite plus bas, appliquée au scan le
+17 septembre 2026. Une édition trouvée mais non suivie n'ouvre pas sa fiche et ne coche pas un
+tome : elle propose de l'**adopter**, ce qui crée le `SuiviEdition` avant d'écrire quoi que ce
+soit. Sans ça le rang 1 écrivait une `Possession` que les six écrans ignorent, et le rang 2
+supprimait du catalogue partagé une `Sortie` au profit de personne — voir `JOURNAL.md`.
+
 **Pas de saisie manuelle, tranché le 9 septembre 2026.** Un tome que ni le catalogue ni la BnF
 ne connaissent ne s'ajoute pas : l'écran le dit et s'arrête. `creerEdition`,
 `creerSerieAvecEdition` et la recherche de prix par titre ont été **supprimés**, pas laissés en
@@ -353,8 +376,21 @@ avec leur ISBN et leur date, les `Sortie` à venir, et **aucune `Possession`** �
 atterrit en wish list jusqu'au premier tome coché. Par `/scanner`, le tome scanné est coché et
 elle entre directement en Collection.
 
-**Taper une édition déjà présente n'en crée pas une seconde** : l'action reconnaît
-`slugEnCollection` et redirige vers la fiche existante.
+**Taper une édition déjà présente n'en crée pas une seconde**, et le multi-compte oblige à
+distinguer **deux questions que le code confondait** (corrigé le 11 septembre 2026) :
+
+| Question | Champ | Ce qu'elle pilote |
+|---|---|---|
+| cette édition existe-t-elle **au catalogue** ? | `slugEdition` | ne pas créer de doublon |
+| est-elle dans **ma** collection ? | `dansMaCollection` | le libellé « Déjà dans la collection », et le dédoublonnage des deux sections |
+
+`slugEdition` se calcule **globalement**, par la jointure `ParutionCatalogue.ean → Volume.isbn`.
+Trois cas, donc : elle est à moi, on ouvre la fiche ; elle existe mais n'est pas à moi, **on
+crée seulement le `SuiviEdition`** et on ouvre la fiche ; elle n'existe pas, on la crée.
+
+Le cas du milieu est celui qui manquait : avec un seul champ global, un second compte voyait
+« Déjà dans la collection » sur les éditions d'un autre — et le tap le renvoyait vers une fiche
+que ses requêtes, parties de `SuiviEdition`, lui refusaient : **« cette édition n'existe pas »**.
 
 **Conséquence à connaître** : `nom` et `tomesParus` n'ont plus d'endroit où se corriger dans
 l'application. Le formulaire était le seul, et l'écran État ne propose que statut, parution et
@@ -538,6 +574,13 @@ dans leurs textes, pas dans notre lecture. **Une demande d'autorisation est réd
 à `admin@mangadex.org`** — même posture que manga-news. Rien de massif n'est téléchargé avant
 réponse ; seul l'essai visuel de 75 couvertures a été fait, au titre de l'usage personnel.
 
+> **Le cron quotidien y retombe depuis le 16 septembre 2026, par décision du propriétaire prise
+> en connaissance de ce paragraphe.** Elle est écrite ici plutôt que tue : la demande reste non
+> envoyée et non répondue. Ce que ça couvre est borné — la BnF passe d'abord, MangaDex n'est
+> essayé que sur les éditions **sans marqueur** dont la numérotation est comparable, et le volume
+> mesuré au premier passage est de **40 images**. Ce n'est pas la récupération massive que les
+> CGU visent, mais ce n'est pas non plus une autorisation.
+
 **MangaDex est instable comme source** : ~7 000 titres et ~25 % des chapitres retirés sur
 notifications DMCA en mai 2025. Une couverture disponible aujourd'hui peut disparaître. La
 recopie dans Cloudflare R2 nous en rend indépendants une fois faite.
@@ -560,9 +603,40 @@ manga-news n'a pas d'API. Une demande d'autorisation doit être envoyée avant t
 utilisation programmatique. En attendant, `slugMangaNews` ne sert qu'à construire un
 lien sortant vers la fiche officielle.
 
-### Ordre des sources de couverture — arrêté le 31 août, mesuré et révisé le 10 septembre 2026
+### Ordre des sources de couverture — arrêté le 31 août, mesuré et révisé le 10 et le 16 septembre 2026
 
-**La BnF d'abord, par EAN.** `openapi.bnf.fr/couverture/image/image/recupererImage`, interrogeable
+**Avant toute source externe : `VignetteCatalogue`, par EAN — ajouté le 16 septembre 2026.**
+La table est **clé par EAN**, donc une vignette *est* la couverture d'un tome précis, sans
+ambiguïté : « le tome 1 ou le plus proche » décrivait la **stratégie de récupération** de
+`vignettes:fetch` — une image par groupe de catalogue, en essayant jusqu'à 4 volumes —, jamais le
+stockage. Le cron joint donc `Volume.isbn` à `VignetteCatalogue.ean` et **recopie l'objet R2**
+plutôt que de redemander la même image à la BnF.
+
+**Le critère de réemploi est « l'image atteint notre cote sur au moins un côté »**, c'est-à-dire
+`largeur = 256` **ou** `hauteur = 360`, et jamais au-dessus. Mesuré sur les 7 272 vignettes
+illustrées : **aucune ne dépasse 256×360** — la BnF redimensionne côté serveur en respectant les
+proportions, d'où 256×354, 254×360, 253×360 — et **515 n'atteignent la cote sur aucun côté**,
+leur original étant plus petit (100×142, 140×191). Celles-là sont écartées et le tome repart au
+chemin normal, qui peut lui trouver mieux chez MangaDex.
+
+**La provenance recopiée est celle de la vignette, sa date comprise** — `couvertureRecupereeLe`
+prend `VignetteCatalogue.recupereeLe`, pas l'heure de la copie. C'est ce qu'exige la Licence
+ouverte : la date de récupération **auprès de la BnF**, pas celle d'un déplacement interne.
+
+**Le recoupement est faible et c'est structurel** : `vignettes:fetch` n'a interrogé **qu'un EAN
+par groupe**, en général le tome 1, alors qu'une collection est faite de tomes 2 à N. Mesuré le
+16 septembre : **70** tomes illustrés partagent leur EAN avec une vignette — **tous des tomes 1**,
+donc l'image stockée deux fois — et **1 660** EAN de tomes n'ont **jamais** été interrogés. Le
+réemploi ne vise donc pas un gros volume : il vise le **tome 1 de chaque série fraîchement
+ajoutée**, qui a presque toujours sa vignette puisque c'est elle qui l'a fait trouver dans la
+recherche.
+
+**Ce qui n'est délibérément pas fait : se servir des échecs mémorisés pour sauter la BnF.** Une
+vignette à `couvertureUrl` nul dit « la BnF n'avait rien **ce jour-là** » ; une notice s'illustre
+plus tard. `couvertureTenteeLe` rouvre déjà la question à 7, 30 puis 90 jours, et c'est le bon
+endroit pour ça.
+
+**La BnF ensuite, par EAN.** `openapi.bnf.fr/couverture/image/image/recupererImage`, interrogeable
 par `EAN=`, `ISBN=` ou `idArk=`, sans passer par l'ARK.
 
 | Ce qu'on demande | Ce qu'on obtient |
@@ -597,8 +671,14 @@ d'autorisation.
 
 **Le vrai verrou n'est pas la source, c'est l'ISBN.** Toutes les bonnes sources s'interrogent par
 EAN ; MangaDex n'a été retenu que faute d'EAN, d'où le sélecteur d'appariement par titre et ses
-ratés. Le constat tient toujours : sur les 16 tomes de la collection encore sans couverture,
+ratés. Le constat tient toujours : sur les 13 tomes de la collection encore sans couverture,
 **7 n'ont aucun ISBN en base** — rien à interroger.
+
+**Cette chaîne tourne dans le cron depuis le 16 septembre 2026**, BnF par EAN puis MangaDex, et
+`§5 « Rafraîchissement »` n'est donc plus une cible sur ce point. Le report d'un essai raté est
+porté par `Volume.couvertureTenteeLe` et `couvertureTentatives` — 7, 30 puis 90 jours — de sorte
+qu'un tome neuf passe en tête de file sans rien déclarer et qu'un tome sans notice se fait
+oublier tout seul.
 
 **Champ `sourceCouverture` — ajouté le 10 septembre 2026**, sur `Volume` **et sur `Sortie`**, la
 seconde parce que `promouvoir()` recopie la couverture de la sortie vers le tome. `null` veut dire
@@ -714,7 +794,7 @@ allumée en permanence. Tout ce qui suit découle de là.
 | Base | PostgreSQL sur Neon | Free — 0,5 Go, 100 CU-h/mois, veille après 5 min |
 | Hébergement | Vercel | Hobby — usage personnel, sans carte, non facturable |
 | Couvertures | Cloudflare R2 | Free — 10 Go, 1 M écritures/mois, egress gratuit, ~39 Mo nécessaires |
-| Accès privé | Garde applicative : mot de passe pour écrire, bouton invité pour consulter | Hobby ne sait pas protéger la production |
+| Accès privé | Garde applicative : un compte par personne, pseudo et mot de passe, inscription libre | Hobby ne sait pas protéger la production |
 | Mobile | PWA installable | — |
 
 Alternative écartée : FastAPI + React séparés. Deux déploiements, une couche API à écrire et
@@ -787,6 +867,9 @@ Le dossier `design/` contient les maquettes HTML et le design system dont elles 
 - `design/design_handoff_page_edition/nocturne/` — les tokens et composants du design system.
   Lire `readme.md` avant d'écrire du style ; toute couleur, espacement et rayon vient de
   `styles.css` via `var(--*)`.
+- `design/zenkan/` — **l'icône de l'application**, ses SVG sources et son générateur. Seul
+  dossier de `design/` dont quelque chose est **servi** : les PNG rendus sont recopiés dans
+  `public/icons/`, `app/apple-icon.png` et `app/favicon.ico`. Lire son README avant d'y toucher.
 - `design/README.md` — index du dossier et journal de ce qui est repris ou écarté de
   l'application de référence.
 
@@ -901,17 +984,18 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 10 septembre 2026.
+Dernière mise à jour : 17 septembre 2026.
 
 **La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
 nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
-déploiement sans la demander. Elle est publique — la garde est applicative, et la page `/acces`
-répond 200 à tout le monde ; c'est le trou assumé de §7, pas une fuite.
+déploiement sans la demander. Elle est publique — la garde est applicative, et les pages
+`/acces` et `/inscription` répondent 200 à tout le monde ; c'est le trou assumé de §7, pas une
+fuite. **Depuis §13.6 l'inscription y est libre**, d'où le `noindex` sur l'application.
 
 Ce document est la mémoire du projet. Il est versionné : une session ouverte sur un autre
 poste le retrouve intact. Rien d'utile ne doit vivre ailleurs.
 
-**Le journal détaillé vit dans `JOURNAL.md`** — 48 entrées datées, de l'import du Sheet au
+**Le journal détaillé vit dans `JOURNAL.md`** — 75 entrées datées, de l'import du Sheet au
 déploiement : ce qui a été construit, les chiffres qui l'établissent, les défauts trouvés et
 leur cause. Il a été sorti d'ici le 7 septembre 2026 parce qu'il pesait les deux tiers de ce
 document et que ses rectifications successives finissaient par se contredire d'un bout à
@@ -924,7 +1008,7 @@ l'autre du fichier.
 Ce qui suit regarde vers l'avant : l'état chiffré, les pièges qui se répètent, le travail
 restant, la reprise sur un poste neuf, les décisions encore ouvertes.
 
-### L'état chiffré — lu en base le 10 septembre 2026
+### L'état chiffré — lu en base le 16 septembre 2026
 
 **Un seul tableau, relu à chaque fois plutôt que rectifié par empilement.** Les compteurs de §8
 ont bougé depuis l'import et c'est normal : le planning élargit des dénominateurs, la promotion
@@ -932,29 +1016,35 @@ des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
 
 | | |
 |---|---|
-| Séries · Éditions | **112** · **116** |
-| Suivis (`SuiviEdition`) | **116**, tous sur le propriétaire — `EN_COURS` 89, `ABANDONNEE` 18, `EN_PAUSE` 5, `VENDUE` 4 |
-| `suivie = true` | **87** |
-| Utilisateurs | **1**, `PROPRIETAIRE`, `email` nul |
-| Tomes (`Volume`) | **1 770** |
-| Possessions | **1 719**, dont **1 162** possédées |
-| **Couvertures de tomes** | **1 754 / 1 770**, servies depuis Cloudflare R2 |
-| **Couvertures de sorties** | **14 / 16** |
-| `sourceCouverture` | **74 à `bnf`**, le reste à `null` = indéterminé, antérieur au champ |
-| ISBN | **1 547 / 1 770** |
-| Sorties annoncées (`Sortie`) | **16** |
+| Séries · Éditions | **118** · **122** |
+| Suivis (`SuiviEdition`) | **124** — `EN_COURS` 96, `ABANDONNEE` 19, `EN_PAUSE` 5, `VENDUE` 4. Plus de suivis que d'éditions : les deux comptes en partagent |
+| `suivie = true` | **94** |
+| Utilisateurs | **2** : le `PROPRIETAIRE` et un `UTILISATEUR` d'essai, tous deux avec un identifiant depuis §13.6 |
+| Tomes (`Volume`) | **1 979** |
+| Possessions | **1 741**, dont **1 180** possédées |
+| **Couvertures de tomes** | **1 966 / 1 979**, servies depuis Cloudflare R2 |
+| **Couvertures de sorties** | **15 / 19** |
+| `sourceCouverture` | **226 à `bnf`**, **60 à `mangadex`**, le reste à `null` = indéterminé, antérieur au champ |
+| ISBN | **1 756 / 1 979** |
+| Sorties annoncées (`Sortie`) | **19** |
 | Liens entre séries (`LienSerie`) | **28** sur 23 séries, dérivés de MangaBaka |
-| `Serie.idMangaBaka` | **109 / 112** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
-| `Serie.alias` · `aliasNormalises` | **1 121** libellés · **1 234** formes indexées, dont 86 séries avec une forme japonaise |
+| `Serie.idMangaBaka` | **115 / 118** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
+| `Serie.idMangaDex` | **5** : `bakuman`, `initial-d`, `jujutsu-kaisen`, `one-piece`, `vinland-saga`. Écrit par le cron, **et seulement une fois les trois garde-fous tenus** — voir « Fait — les couvertures dans le cron » au journal |
+| `Volume.couvertureTenteeLe` | **91** tomes essayés par le cron, **1** tentative au plus ; **plus aucun tome n'est « jamais essayé »**, et les 13 sans image l'ont tous été |
+| `Serie.alias` · `aliasNormalises` | **1 180** libellés · **1 299** formes indexées, formes japonaises comprises |
 | Abréviations captées | **60 séries** : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
-| Genres · Thèmes · Cible | **22** valeurs · **143** valeurs · `Shonen` 79 · `Seinen` 22 · `Echi` 7 · `Shojo` 1 |
-| `AliasRecherche` | **1 ligne**, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
-| `VignetteCatalogue` | **463 EAN interrogés**, **111 avec une image** — il en reste **11 942** |
-| `Edition.creeeParId` | **3 / 116** renseignés. `null` veut dire « venu de l'import » ; ces 3 viennent de `/ajouter` |
-| `Edition.slugMangaNews` | **0 / 116** — le lien sortant de la page Édition ne s'affiche donc jamais |
-| Éditions à zéro tome possédé | **5** : les 4 `VENDUE`, **plus une entrée de wish list** |
+| Genres · Thèmes · Cible | **22** valeurs · **165** valeurs · `Shonen` 84 · `Seinen` 26 · `Echi` 7 · `Shojo` 1 |
+| `AliasRecherche` | **1 ligne** le 10 septembre, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
+| `VignetteCatalogue` | **12 382 EAN interrogés**, **7 272 avec une image (59 %)** — mesuré le 10 septembre, le catalogue est couvert |
+| `Edition.creeeParId` | **9 / 122** renseignés. `null` veut dire « venu de l'import » ; ces 9 viennent de `/ajouter` |
+| `Edition.slugMangaNews` | **0 / 122**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
+| Éditions à zéro tome possédé | **7** : les 4 `VENDUE`, plus `bakuman`, `initial-d` et `blackrock-shooter-innocent-soul` |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0** — la V1 ne les écrit pas |
 | `ParutionCatalogue` | **52 009** parutions, **12 880 groupes**, **janvier 2000 → décembre 2026 sans un mois manquant** |
+
+Les quatre lignes de catalogue — `AliasRecherche`, `VignetteCatalogue`, `ParutionCatalogue` et
+les abréviations — sont celles du 10 septembre : `data/backup.json` ne porte pas ces tables,
+volontairement, elles se redérivent des CSV manga-news.
 
 **La sauvegarde se relance avant de s'appuyer sur ses chiffres** — elle a menti de deux tomes le
 7 septembre pour avoir été prise le 3. Et `data/backup.json` est dans la forme multi-compte
@@ -1020,9 +1110,23 @@ détail et les cas réels sont dans `JOURNAL.md`.
   MangaDex. Corollaire général : **un script qui déduit son état d'un dossier ignoré par git
   repartira de zéro sur un autre poste.**
 - **Trois scripts Python appelaient `main()` sans garde `if __name__ == "__main__"`** —
-  `fetch_covers.py`, `fetch_publishers.py`, `generate_icons.py`. **Les importer suffisait à les
-  exécuter en entier**, et c'est arrivé : un script de vérification qui importait
-  `fetch_covers` a relancé la passe complète. La garde est posée sur les trois.
+  `fetch_covers.py`, `fetch_publishers.py`, `generate_icons.py` (ce dernier **supprimé le
+  17 septembre 2026** avec l'ancienne icône). **Les importer suffisait à les exécuter en
+  entier**, et c'est arrivé : un script de vérification qui importait `fetch_covers` a relancé
+  la passe complète. La garde est posée sur les deux qui restent.
+- **`proxy.ts` nomme les fichiers publics un par un, donc déplacer un actif le fait passer
+  derrière la garde d'accès.** Son matcher liste `favicon.ico`, `apple-icon.png`,
+  `manifest.webmanifest` et — depuis le 17 septembre 2026 — `icons/`, là où il nommait
+  `icon-192.png` et `icon-512.png`. Ce qui se casse est invisible depuis une session connectée :
+  les icônes du manifeste sont demandées **avant** la connexion, à l'invite d'installation. Toute
+  vérification se fait donc **sans cookie**, et elle doit contrôler les deux sens — l'actif rend
+  200, et une page d'application rend toujours 307.
+- **Une colonne neuve qui n'entre pas dans `backup-db.ts` sort du filet en silence — deux fois.**
+  §13.1 l'avait posé en règle — « le filet doit couvrir la nouvelle forme avant qu'on en ait
+  besoin » — et la migration du 16 septembre l'a quand même oublié : `Serie.idMangaDex`,
+  `Volume.couvertureTenteeLe` et `couvertureTentatives` ont vécu une journée hors de la
+  sauvegarde. Rien ne le signale, les sept compteurs ne bougent pas, et c'est justement ce qui
+  rend le trou invisible. **La colonne et sa ligne d'export partent dans le même commit.**
 - **Le cache des couvertures est immuable un an.** Corriger une image ne suffit pas : un
   appareil qui a vu la mauvaise la garde. Et **supprimer un fichier ne nettoie pas la base** —
   toute suppression remet `couvertureUrl` à `null` dans le même geste.
@@ -1077,6 +1181,11 @@ Ce qui reste :
 
 #### Ce qui améliore le chemin automatique
 
+- **Quand une règle d'acquisition change, les lignes déjà écrites sont *protégées* par
+  l'idempotence, pas seulement incomplètes.** Le 11 septembre, 364 groupes — dont One Piece,
+  Détective Conan, Bleach, Naruto — portaient un échec écrit **avant** l'ajout du repli sur
+  quatre volumes, et le grand passage les a sautés. Il faut invalider explicitement, en
+  distinguant ce qui est recalculable (un échec) de ce qui ne l'est pas (une image).
 - **`AliasRecherche` n'expire jamais et aucun écran ne la montre.** Une traduction fausse s'y
   installe à demeure, et seule une suppression en base la déloge. C'est le résidu du rebond —
   voir §13.3 pour le mécanisme, `JOURNAL.md` pour ce qui a été fait.
@@ -1101,6 +1210,15 @@ Ce qui reste :
   porté sur des groupes dont le catalogue connaît les ISBN. Un groupe à `tomesParus = 1` déduit
   d'une absence de numéro et sans EAN créerait un tome nu ; le code le prévoit, personne ne l'a
   vu tourner.
+- **Une édition sans aucun ISBN se fait dupliquer par un tap au catalogue** — constaté sur le
+  banc le 11 septembre 2026 en éprouvant §13.6. Taper « GANTZ · Édition simple » a créé
+  `gantz-2` à 37 tomes **à côté** du `gantz` de l'import à 18 tomes. La cause n'est pas le
+  multi-compte : `slugEnCollection` est bien calculé **globalement**, mais par la jointure
+  `ParutionCatalogue.ean → Volume.isbn`, et les 18 tomes de `gantz` **n'ont aucun ISBN** — rien
+  à joindre, donc le candidat sort comme inconnu. C'est le même angle mort que
+  `editions:audit`, « aveugle sur les 23 éditions sans ISBN », et il devient plus probable à
+  plusieurs comptes, chacun pouvant taper le même groupe. Le chemin rentable est le même que
+  pour les couvertures : **trouver un ISBN à ces éditions dans `ParutionCatalogue`**.
 
 #### Ce qui manque à l'application
 
@@ -1112,36 +1230,54 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
-- **Les couvertures** : **1 754 / 1 770** et **14 sorties sur 16**. **Les 16 tomes qui restent ne
-  sont pas un problème de source, c'en est un d'ISBN** — le verrou que §5 annonce depuis le
-  31 août :
+- **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
+  manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
+  puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
 
   | Ce qui manque | Cause |
   |---|---|
-  | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à interroger |
-  | `ippo-s4` t.3–7 · `grimoire` t.3 · `initial-d` t.33–35 — **9 tomes** | ISBN connu, mais **pas de notice illustrée à la BnF**, et pas d'identifiant MangaDex pour ces éditions |
-  | `les-legendaires-saga` t.13 · `radiant` t.20 — **2 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
+  | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à demander à la BnF |
+  | `ippo-s4` t.3–7 · `grimoire` t.3 — **6 tomes** | ISBN connu mais **sans notice illustrée**, et **MangaDex leur est fermé par décision** : ce sont un découpage VF et une édition marquée, dont la numérotation n'est pas celle de la série de base |
+  | `les-legendaires-saga` t.13 · `one-piece` t.114 · `radiant` t.20 · `tsugai` t.11 — **4 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
 
-  Le chemin le plus rentable est donc **de leur trouver un ISBN dans `ParutionCatalogue`**, pas de
-  chercher une source de plus. Les 2 sorties se rempliront d'elles-mêmes à la parution, quand le
-  cron les promeut en tome.
+  Le chemin le plus rentable reste **de trouver un ISBN aux 7 premiers dans `ParutionCatalogue`**,
+  pas de chercher une source de plus. Les 4 sorties se rempliront d'elles-mêmes à la parution,
+  quand le cron les promeut en tome.
 
-  Le remplissage reste manuel et local : `db:backup`, puis `covers:fetch`, puis `covers:bnf`, puis
-  `covers:upload`. Y porter la tâche quotidienne demande de réécrire en TypeScript le sélecteur
-  MangaDex de `fetch_covers.py`, celui qui pénalise les fiches satellites — sans lui, un
-  appariement naïf fait repartir Bleach avec 1 tome sur 74. **Et son pont vers MangaDex passe
-  encore par AniList, qui est morte** : les 108 identifiants déjà résolus le sauvent, mais une
-  série neuve n'en obtiendra pas. Le remplacer par les titres romaji et natifs de MangaBaka, que
-  `data/mangabaka.json` porte déjà, est le petit chantier qui débloque la ligne suivante.
-- **Une série ajoutée n'a aucune couverture de tome**, rien n'étant posé à la création. Mais elle
-  n'est plus invisible pour autant : depuis le 10 septembre la recherche, le scanner et la wish
-  list lui trouvent une vignette via `VignetteCatalogue`. Ce qui manque est la **grille**, où les
-  tomes restent des pastilles jusqu'au prochain `covers:bnf`.
-- **`Edition.slugMangaNews` est nul sur les 116 éditions**, donc le lien sortant de la page
-  Édition ne s'affiche jamais. Le planning ne porte pas les slugs ; il faudrait les déduire des
-  titres ou les saisir.
+  `covers:fetch`, `covers:bnf` et `covers:upload` restent au dépôt et gardent leur usage : un lot
+  massif, ou une reprise forcée que le cron ne sait pas demander. Mais **le cas nominal ne passe
+  plus par le poste**. Leur sélecteur MangaDex n'a pas été réécrit en TypeScript : le cron
+  n'apparie que sur `titre` et `titreVo`, refuse les éditions marquées et exige une numérotation
+  comparable, ce qui écarte les fiches satellites par une autre voie que la pénalité de
+  `fetch_covers.py`.
+- **Une série ajoutée n'a toujours aucune couverture de tome à la création**, mais **elle les a le
+  lendemain** : le cron sert en priorité les tomes jamais essayés. Entre-temps la recherche, le
+  scanner et la wish list lui trouvent une vignette via `VignetteCatalogue` ; seule la **grille**
+  reste en pastilles, et pour une nuit au plus.
+- **`Edition.slugMangaNews` est nul sur les 122 éditions**, mais **le lien sortant s'affiche**
+  quand même : la page Édition construit une **recherche** manga-news sur le titre, elle n'a
+  jamais utilisé ce champ. Le remplir ne ferait que remplacer une recherche par un lien direct
+  vers la fiche — un confort, pas un trou. Le planning ne porte pas les slugs ; il faudrait les
+  déduire des titres ou les saisir.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis en
   cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
+
+  **Les icônes sont celles de Zenkan depuis le 17 septembre 2026** — un Z au pinceau sur fond
+  papier, sceau 全巻 dans l'accent Nocturne `#9184d9`, qui est exactement `--color-accent`. Cinq
+  PNG servis depuis `public/icons/` (3 `any`, 2 `maskable`), plus `app/apple-icon.png` et
+  `app/favicon.ico` par les conventions de fichiers de Next. Les sources — SVG et générateur —
+  vivent dans `design/zenkan/`, qui porte son propre README.
+
+  Deux choses tranchées avec elles : **`background_color` et `theme_color` restent `#161826`**
+  et non le papier `#f4efe4` proposé par le jeu d'icônes, sinon le lancement ferait un flash
+  clair avant une application qui est en mode sombre uniquement (§7) ; et **c'est la variante
+  claire qui est servie**, une icône d'écran d'accueil se posant sur le fond d'écran de
+  l'utilisateur et non sur celui de l'application. La variante sombre existe dans
+  `design/zenkan/svg/` et n'est pas servie : un manifeste ne sait pas choisir son icône selon
+  le thème.
+
+  **Une PWA déjà installée ne se renomme pas toute seule** : il faut désinstaller et
+  réinstaller depuis le navigateur.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
 - **Thèmes** : **143 valeurs**, dont les 99 françaises d'origine avec leurs coupures d'import
@@ -1152,9 +1288,9 @@ Ce qui reste :
 
 #### Ce qui tourne en arrière-plan, ou pas
 
-- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` ne fait qu'une chose
-  depuis le 3 septembre : promouvoir les sorties dont le mois est clos. Restent les nouveaux
-  tomes parus, la mise à jour d'`editionTerminee` et les couvertures manquantes.
+- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` en fait deux depuis le
+  16 septembre : promouvoir les sorties dont le mois est clos, puis **acquérir les couvertures
+  manquantes**. Restent les nouveaux tomes parus et la mise à jour d'`editionTerminee`.
 - **Dériver les `Sortie` depuis `ParutionCatalogue`** plutôt que du manifeste de planning. C'est
   déjà le cas **à la création** d'une série depuis le 9 septembre ; il reste à le faire pour les
   éditions existantes, et à faire glisser la fenêtre M-1 → M+6 de §13.1.
@@ -1171,14 +1307,27 @@ Ce qui reste :
 
 #### Échéances et environnement
 
+- **Les cinq `R2_*` sont posées dans Vercel** (16 septembre 2026), **à ne pas re-poser.** Elles y
+  sont devenues nécessaires le jour où le cron quotidien s'est mis à **déposer lui-même** les
+  couvertures qu'il acquiert : sans elles il lève **dès la première image obtenue** et
+  `/api/cron` répond 500, la promotion des sorties ayant déjà eu lieu. Les écrans, eux, n'en ont
+  toujours pas besoin — ils lisent les URL absolues stockées en base. `R2_ENDPOINT` se **recopie
+  tel qu'affiché**, jamais reconstruit depuis l'identifiant de compte.
 - **Supprimer le store Vercel Blob**, décidé le 3 septembre, mûr depuis le **~10 septembre 2026**.
   `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota
   d'opérations avancées.
 - **Brancher un domaine personnalisé sur le bucket R2.** L'URL `r2.dev` est **limitée en débit et
-  non mise en cache** par Cloudflare. Le basculement est gratuit et sans réenvoi —
+  non mise en cache** par Cloudflare. **Ce n'est pas une latence au premier accès** : mesuré le
+  11 septembre, 20 requêtes simultanées rendent 20 fois 200 en 501 ms. Ne pas mettre une case vide
+  sur son compte sans avoir regardé le DOM. Le basculement est gratuit et sans réenvoi —
   `covers:migrate` ne réécrit que les URL. Le frein est §7 : un domaine est une dépense
   **certaine et récurrente** (~10 $/an), pas un palier hors d'atteinte, donc l'amendement du
   1er septembre ne le couvre pas.
+
+  **L'achat d'un nom de domaine `zenkanapp.com` a été posé le 17 septembre 2026 et
+  délibérément non tranché** — il vit dans `IDEES.md`, avec ce qu'il débloquerait et ce qu'il
+  coûte à la contrainte de §7. Rien dans le code ne l'attend : la production reste sur
+  `manga-collection-wcj8.vercel.app`.
 - **`CRON_SECRET` est posé dans Vercel** (3 septembre, confirmé le 9), **à ne pas re-poser**.
   Deux pièges : `autorise()` rend `false` aussi bien quand le secret est absent que quand
   l'en-tête est faux, donc `/api/cron` répond `401` dans les deux cas et **le sonder ne prouve
@@ -1194,14 +1343,16 @@ Ce qui reste :
    |---|---|
    | `DATABASE_URL` | Neon → *Connect*, interrupteur **Connection pooling** activé |
    | `DIRECT_URL` | le même, **sans** le pooling. Sert aux migrations |
-   | `ACCESS_PASSWORD` | le mot de passe de la garde. **Le même que dans Vercel**, sinon les deux divergent |
+   | `SESSION_SECRET` | le secret qui signe les cookies de session. **Le même que dans Vercel**, sinon un cookie posé d'un côté est refusé de l'autre. N'importe quelle chaîne longue et aléatoire ; la changer déconnecte tout le monde |
 
    Les autres sont facultatives : les cinq variables `R2_*` pour déposer des couvertures — voir
    `.env.example`, et **recopier `R2_ENDPOINT` tel qu'affiché, ne pas le reconstruire** — et
    `LOCAL_DATABASE_URL` pour travailler sur un Postgres local — **elle se passe en préfixe de
    commande, jamais dans `.env`**, voir « Pièges établis » : `lib/prisma.ts` la lit aussi, donc
-   elle détourne l'application entière en plus des scripts. **Aucune
-   variable `R2_*` n'est à renseigner dans Vercel** : l'application ne fait que lire les URL
+   elle détourne l'application entière en plus des scripts. **Les cinq `R2_*` sont en revanche
+   à renseigner dans Vercel depuis le 16 septembre 2026** : le cron quotidien dépose lui-même
+   les couvertures qu'il acquiert, et sans elles il lève dès la première image obtenue et la
+   route répond 500. Les écrans, eux, n'ont toujours besoin de rien — ils lisent les URL
    absolues stockées en base. **Aucun secret n'est dans le dépôt et n'y sera jamais.**
 4. `npm run dev`. **Ne pas relancer le seed** : la base Neon est remplie et fait foi, pas
    `data/collection.json` qui est figé au point zéro de l'import.
@@ -1221,9 +1372,10 @@ Ce qui reste :
 
 | Commande | Rôle |
 |---|---|
-| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout |
+| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout **dans une seule transaction, contrôle de compteurs compris** (17 septembre 2026) : une coupure ou une divergence n'écrit rien du tout, au lieu de laisser la base vidée à moitié. **Ne sauvegarde aucun mot de passe** — une restauration laisse les comptes sans accès |
+| `npm run compte` | les accès. `-- --lister` (lecture seule) montre chaque compte et ses compteurs ; `-- --proprietaire --identifiant <pseudo> [--email <adresse>]` pose un accès **sur la ligne `PROPRIETAIRE` existante**, sans déplacer une seule ligne de collection ; `-- --reinitialiser <pseudo>` repose un mot de passe et coupe les sessions. Le mot de passe est demandé sans écho |
 | `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste — **relire aussi `data/planning-divergences.json`** |
-| `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées |
+| `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées. `-- --revert` remonte `data/editions-avant-planning.json`, qui porte l'état **par tome** depuis le 17 septembre 2026 — les éditions sauvegardées avant gardent leurs ISBN tels quels, le script les nomme |
 | `npm run catalogue:import <dossier>` | lit les mêmes CSV pour le **catalogue entier**, sans aucun filtre de collection — **relire `data/catalogue-controles.json`** |
 | `npm run catalogue:apply` | écrit `ParutionCatalogue`. `-- --dry-run` d'abord ; `-- --recalculer` réécrit les champs dérivés depuis `titreBrut` sans retélécharger un CSV |
 | `npm run vignettes:fetch` | **une couverture par groupe de catalogue**, depuis la BnF par EAN, en 256×360. Reprenable, `-- --max <n>` plafonne, `-- --tout` enchaîne les 12 000, `-- --dry-run` montre les cibles. Trie par **taille de groupe décroissante** et essaie jusqu'à 4 volumes avant de renoncer. Mémorise aussi les échecs, sinon un EAN sans image serait redemandé à chaque recherche |
@@ -1254,9 +1406,10 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   À rouvrir seulement si une source de couvertures de tome manque un jour.
 - **Contradiction dans le handoff** : l'option retenue y est nommée `2b` en tête et `1b` en pied.
   Cosmétique, la description est la même.
-- **`Edition.slugMangaNews` est nul sur les 116 éditions.** Le Sheet ne le portait pas, et le
-  lien sortant de la page Édition ne s'affiche donc jamais. Le planning ne porte pas les slugs
-  non plus — il faudrait les déduire des titres, ou les saisir.
+- **`Edition.slugMangaNews` est nul sur les 122 éditions.** Le Sheet ne le portait pas. Le lien
+  sortant s'affiche néanmoins, sous forme de **recherche** par titre : ce champ ne servirait
+  qu'à pointer la fiche directement. Le planning ne porte pas les slugs non plus — il faudrait
+  les déduire des titres, ou les saisir.
 - **Les 29 éditions dont la BnF n'a rendu aucun numéro** gardent le `tomesParus` du Sheet. Elles
   peuvent être périmées sans qu'on le sache ; le planning en couvre une partie, pas toutes.
 - **Mise au point de la caméra du scanner — les trois pistes sont écrites et le scan a
@@ -1285,6 +1438,13 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   champ ISBN. Si la netteté redevient un problème de près, la piste suivante n'est pas la mise
   au point mais **la lumière** : `torch` est largement supportée sur Android et n'est pas
   implémentée.
+
+  **Une quatrième chose est à juger dans le même passage sur téléphone, ajoutée le 17 septembre
+  2026 : l'enchaînement de deux tomes.** Le flux n'est plus coupé à la détection — il l'était, et
+  rien ne le rouvrait, donc il fallait **recharger la page entre deux tomes**. L'aperçu reste
+  désormais vivant, le résultat s'affiche dessous, et lever le tome suivant suffit. Un code resté
+  dans le cadre n'est pas re-résolu : `dernierScan` retient le dernier ISBN soumis, et il est posé
+  dans `resoudre`, donc la saisie manuelle et la détection partagent le même garde-fou.
 
 ---
 
@@ -1736,6 +1896,15 @@ refuse déjà une date future côté serveur, et le cron fait la même chose san
 Effet assumé : quand l'un clique, la sortie quitte le Planning de l'autre et le tome entre dans
 ses Manquants — ce qui est correct, le tome est bien sorti.
 
+**Deux limites posées le 17 septembre 2026, du même raisonnement.** `promouvoirSortie` exige
+désormais un `SuiviEdition` : on ne promeut pas la sortie partagée d'une édition qu'on ne suit
+pas, sinon l'autre perd sa sortie au profit de personne. Et **le cron refuse une sortie qui n'est
+pas le tome suivant** — une annonce pour le tome 15 sur une édition à 10 créait quatre volumes
+vides et posait `tomesParus = 15`. Il la laisse au Planning et la nomme dans son bilan
+(`horsSequence`). « Je l'ai » comble l'intervalle comme avant, et c'est la même phrase qui le
+justifie : celui qui tient le tome 15 atteste que les 11 à 14 sont parus ; le cron, lui, n'a
+qu'une date dans un CSV.
+
 ##### Une décision d'écran que le schéma force
 
 Une page `/edition/<slug>` **hors de ma collection** devient possible — le cas n'existe pas
@@ -1800,19 +1969,24 @@ sort du jeton.
 Ça referme au passage le trou assumé du 30 août : aujourd'hui quiconque connaît l'URL
 consulte la collection, prix et valeur totale compris.
 
-#### Les trois rôles
+#### Les deux rôles
 
-| | Invité | Utilisateur | Propriétaire |
+> **Il y en avait trois jusqu'au 11 septembre 2026.** L'invité a été supprimé avec §13.6 : on
+> consulte avec son propre compte, pas avec un rôle de jeton. La colonne est gardée ici parce
+> qu'elle dit ce qu'il savait faire, et donc ce qu'il faudra redonner à la visibilité entre
+> comptes — qui n'est pas tranchée, voir `IDEES.md`.
+
+| | ~~Invité~~ | Utilisateur | Propriétaire |
 |---|---|---|---|
-| Consulter | oui | oui | oui |
-| Cocher ses tomes, changer son statut | non | oui | oui |
-| Ajouter une série au catalogue | non | oui, marquée | oui |
-| Modifier nom, éditeur, tomes parus, parution | non | non | oui |
-| Importer le planning, lancer les scripts | non | non | oui |
-| Relire les ajouts marqués | non | non | oui |
+| Consulter | ~~oui~~ | oui | oui |
+| Cocher ses tomes, changer son statut | ~~non~~ | oui | oui |
+| Ajouter une série au catalogue | ~~non~~ | oui, marquée | oui |
+| Modifier nom, éditeur, tomes parus, parution | ~~non~~ | non | oui |
+| Importer le planning, lancer les scripts | ~~non~~ | non | oui |
+| Relire les ajouts marqués | ~~non~~ | non | oui |
 
-Le motif existe déjà et il est prouvé : `roleDuJeton`, `exigerAcces` pour lire,
-`exigerProprietaire` pour écrire. Ajouter un rôle est une extension, pas une refonte.
+Le motif existe déjà et il est prouvé : `exigerAcces` pour toute écriture personnelle,
+`exigerProprietaire` pour le catalogue. Ajouter un rôle est une extension, pas une refonte.
 
 **La frontière reste dans les Server Actions**, jamais dans l'interface — vérifié le
 30 août en appelant `definirParution` avec un cookie invité : 500 et aucune écriture.
@@ -2092,6 +2266,132 @@ décision, et une session future ne saurait plus ce qui fait foi.
 Une idée n'entre en §13 **qu'une fois arbitrée**, avec ce qui a été écarté et pourquoi. Une
 entrée n'entre dans `JOURNAL.md` **qu'une fois vérifiée fonctionnellement** — le document a
 quatre fois la preuve qu'une sonde ne prouve rien.
+
+---
+
+### 13.6 L'identité et les comptes — arbitré le 11 septembre 2026
+
+> **En cours, sur la branche `comptes-utilisateurs`.** Ce qui suit est tranché ; `JOURNAL.md`
+> fera foi sur ce qui est fait et vérifié. Le lot 2 — la réinitialisation par email — est
+> délibérément hors de ce chantier, voir la fin de section.
+
+#### Le point de départ, et pourquoi c'est un chantier et pas un ajout
+
+§13.1 a livré la moitié du travail sans que ça se voie : `SuiviEdition` et `Possession`
+portent un `utilisateurId`, et les **12 requêtes d'écran partent déjà de `SuiviEdition`**.
+Mesuré dans `data/backup.json` : 116 suivis et 1 719 possessions, **un seul `utilisateurId`
+distinct**. L'isolation par compte est donc faite côté données — un second compte verrait déjà
+sa propre collection sans qu'une requête bouge.
+
+Ce qui manque est l'identité, et le défaut est net : **le cookie ne porte pas qui vous êtes,
+le rôle *est* le jeton.** `lib/auth.ts` signe deux HMAC du même `ACCESS_PASSWORD` sur les
+messages fixes `"acces"` et `"invite"`. Conséquence mécanique : **les dix actions gardées de
+`lib/actions.ts` — 7 écritures et 3 lectures — appellent toutes `exigerProprietaire()`**,
+`basculerTome` compris, qui est pourtant une écriture strictement personnelle. Un compte
+`UTILISATEUR` créé aujourd'hui serait refusé partout, jusqu'à cocher ses propres tomes.
+**C'est là qu'est le coût du chantier, pas dans le SQL** — exactement comme les 19 sites de
+lecture de §13.1. Neuf de ces dix appels passent à `exigerAcces()` ; seul `definirParution`
+garde `exigerProprietaire()`.
+
+#### Ce qui est tranché
+
+| Décision | Motif |
+|---|---|
+| **Mot de passe par compte, et rien d'autre en V1** | choix du propriétaire. À savoir pour ne pas refaire l'enquête : « Sign in with Google » / OAuth 2.0 **est gratuit** et sans palier ; ce qui est payant est *Identity Platform*, un service **managé** qu'un OAuth écrit à la main ne touche pas, et les 90 jours sont le crédit de 300 $ du Google Cloud Free Program, qui ne s'applique qu'aux produits facturables |
+| **Auto-inscription libre** | et c'est peu exposé : la suppression de la saisie manuelle le 9 septembre borne un compte inconnu à `ParutionCatalogue` et à la BnF. **Il ne peut pas inventer une fiche**, seulement en adopter une qui existe |
+| **Identifiant = pseudo unique**, email obligatoire à l'inscription | le pseudo évite toute collision d'identité ; l'email ne sert qu'au lot 2 |
+| **Le rôle invité est supprimé, code compris** | `IDEES.md` du 9 septembre : on consultera la collection d'un autre **avec son propre compte**. La consultation d'autrui remplace le rôle, elle ne s'y ajoute pas |
+| **Jeton autoportant, `versionJeton` en base** | un changement de mot de passe coupe **toutes** les sessions d'un coup, sans table de sessions ni requête par navigation sur une base qui s'endort (§7) |
+| **Le rôle n'est pas dans le cookie** | il se lit sur la ligne, mémoïsé par requête : un changement de rôle ou de mot de passe prend effet immédiatement, au prix d'une requête par rendu sur des pages qui interrogent déjà la base |
+| **Le propriétaire reprend sa ligne par script local** | déterministe, rien au dépôt, et c'est le motif de tous les autres scripts du projet |
+| **`definirParution` reste propriétaire seul** | la lettre de §13.2. La **création** depuis le catalogue, elle, reste libre et marquée |
+| **Le hash n'entre pas dans `data/backup.json`** | le dépôt est public (§7) : un hash publié s'attaque hors ligne, sans limite de tentatives |
+| **Sixième onglet « Moi »** | — |
+
+#### Ce qui a été écarté, avec le motif
+
+- **Rapprocher automatiquement deux moyens de connexion par email identique.** Sans envoyeur,
+  l'email d'un compte mot de passe n'est vérifié par personne : quelqu'un inscrit avec votre
+  adresse récupérerait ensuite votre session. La liaison n'est donc possible que **depuis
+  « mon compte », déjà connecté** — et elle attend de toute façon qu'un second moyen existe.
+- **« Le premier compte créé devient propriétaire ».** Le domaine de production est public et
+  indexé (§7, §12) : le premier arrivant n'est pas forcément le propriétaire.
+- **Une garde à trois niveaux.** `exigerUtilisateur()` serait aujourd'hui le **jumeau exact**
+  d'`exigerAcces()` : une fois l'invité parti, aucune session en lecture seule n'existe plus.
+  Il naîtra avec la visibilité entre comptes, quand il aura une différence à porter.
+- **Une table `Session`.** Révocation appareil par appareil, mais une requête de plus à chaque
+  navigation. `versionJeton` achète la révocation qui compte — celle du changement de mot de
+  passe — pour une colonne.
+- **Un formulaire d'invitation, et un écran de gestion des comptes.** Hors de ce lot par
+  décision ; `npm run compte -- --lister` tient le besoin depuis le poste. Voir `IDEES.md`.
+
+#### Le schéma, purement additif
+
+`Utilisateur` **gagne** `identifiant String? @unique` (le pseudo, stocké normalisé),
+`motDePasseHash String?` et `versionJeton Int @default(1)`. `email` est déjà `@unique`.
+
+Aucune colonne ne bouge, aucun backfill, aucun `DROP` : au sens du critère de §13.1, **c'est
+un ajout, donc sans pénalité**. `identifiant` reste nullable parce que la ligne du
+propriétaire l'a nul jusqu'au passage du script, et Postgres tolère plusieurs `NULL` sous un
+index unique.
+
+Le hachage est `scrypt` de `node:crypto`, sel de 16 octets, vérification par
+`timingSafeEqual` — **aucune dépendance**, comme le reste du projet.
+
+#### La reprise de la collection existante : rien ne se déplace
+
+C'est le point à ne pas se laisser raconter autrement : **la collection est déjà attachée à un
+compte.** Cette ligne n'a simplement aucun moyen de se connecter. « Migrer » veut donc dire
+poser un credential sur une ligne qui existe :
+
+```sql
+UPDATE "Utilisateur" SET identifiant = …, email = …, "motDePasseHash" = …
+ WHERE role = 'PROPRIETAIRE';
+```
+
+`npm run compte` l'enveloppe : il refuse s'il trouve autre chose qu'un seul `PROPRIETAIRE`,
+demande le mot de passe **sans écho** — un argument entrerait dans l'historique du shell — et
+affiche les compteurs de la ligne qu'il vient de modifier, **seul contrôle qui prouve qu'on a
+touché la bonne**.
+
+**Le piège, et il est unique : passer par le formulaire d'inscription avant le script crée un
+compte neuf et vide.** Rien n'est perdu, les 116 éditions restent sur l'autre ligne, mais il
+faut alors supprimer le compte parasite. D'où l'ordre : sauvegarde, script, connexion, et
+**on vérifie qu'on voit 116 éditions**. Une collection vide à la première connexion est le
+signal qu'on s'est trompé de ligne.
+
+#### Trois conséquences assumées
+
+**On ne peut plus montrer sa collection à personne.** L'invité était le seul moyen ; un
+visiteur qui s'inscrit voit sa propre collection vide. Le remplacement est une **visibilité
+entre comptes**, qui n'est pas dessinée — elle vit dans `IDEES.md`, et c'est le prix de
+l'avoir sortie d'ici.
+
+**Une adresse email squattée bloque son vrai titulaire.** `email` est `@unique` : si quelqu'un
+s'inscrit avec votre adresse, aucun autre compte ne peut la porter. **C'est le lot 2 qui
+dénoue ça** — demander une réinitialisation sur cette adresse prouve la possession de la boîte
+et rend le compte. D'ici là, le script.
+
+**Une restauration remonte les comptes sans aucun mot de passe.** Le hash n'étant pas
+sauvegardé, plus personne ne peut se connecter après un `db:backup -- --restore` avant un
+passage de `npm run compte`. Les sept compteurs de la sauvegarde ne bougent pas, donc le
+contrôle de restauration reste valable.
+
+#### Lot 2 — la réinitialisation par email
+
+Hors de ce chantier, et **sans pénalité : c'est un ajout**. Deux colonnes de code, trois
+surfaces — demander, saisir le code, choisir le nouveau mot de passe —, `nodemailer` et le
+**SMTP de Gmail avec un mot de passe d'application**.
+
+Le choix de l'expéditeur est arbitré et il vaut d'être su : **Resend exige un domaine vérifié
+pour écrire à une adresse arbitraire** — sans domaine il n'écrit qu'au titulaire du compte, donc
+il ne peut pas servir un ami. Brevo et Mailjet acceptent de vérifier **une adresse seule**,
+mais un envoi depuis un `@gmail.com` via leurs serveurs n'est aligné ni SPF ni DKIM : c'est le
+cas nominal du classement en indésirable. Gmail est aligné par construction.
+
+**Et ce maillon ne s'éprouve qu'en production.** `api.mangabaka.org` se ferme déjà à ce réseau
+par interception TLS (§12) : un 587 sortant depuis le poste ne prouverait rien, ni dans un sens
+ni dans l'autre.
 
 ---
 

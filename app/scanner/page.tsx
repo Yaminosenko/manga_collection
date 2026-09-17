@@ -1,17 +1,11 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { ArrowLeft } from "@/components/icons";
 import { Scanner } from "@/components/scanner";
-import { estProprietaire } from "@/lib/guard";
 import { TITRE_SCANNER } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
-export default async function Page() {
-  if (!(await estProprietaire())) {
-    notFound();
-  }
-
+export default function Page() {
   return (
     <main className="flex min-h-dvh flex-col">
       <header className="flex items-center gap-[12px] px-[18px] pt-[22px] pb-[16px]">

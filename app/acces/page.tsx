@@ -1,6 +1,6 @@
 import { AccessForm } from "@/components/access-form";
-import { accesConfigure } from "@/lib/auth";
-import { LIBELLE_ACCES_NON_CONFIGURE, TITRE_ACCES } from "@/lib/constants";
+import { signatureConfiguree } from "@/lib/auth";
+import { LIBELLE_SIGNATURE_NON_CONFIGUREE, TITRE_ACCES } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
@@ -10,11 +10,11 @@ export default function Page() {
       <h1 className="text-[15px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
         {TITRE_ACCES}
       </h1>
-      {accesConfigure() ? (
+      {signatureConfiguree() ? (
         <AccessForm />
       ) : (
         <p className="text-center text-[13px] text-neutral-400">
-          {LIBELLE_ACCES_NON_CONFIGURE}
+          {LIBELLE_SIGNATURE_NON_CONFIGUREE}
         </p>
       )}
     </main>
