@@ -159,7 +159,7 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
           <Link
             href={CHEMIN_COMPTE}
             aria-label={LIBELLE_ONGLET_COMPTE}
-            className="bg-accent text-bg flex size-[38px] flex-none items-center justify-center rounded-full"
+            className="text-accent border-accent flex size-[38px] flex-none items-center justify-center rounded-full border"
           >
             <User className="size-[18px]" />
           </Link>
