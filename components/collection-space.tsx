@@ -1,16 +1,19 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { CollectionPanel } from "@/components/collection-panel";
 import { MissingPanel } from "@/components/missing-panel";
 import { PanelStats } from "@/components/panel-stats";
 import { WishlistPanel } from "@/components/wishlist-panel";
-import { Check, MagnifyingGlass, SortAscending } from "@/components/icons";
+import { Check, MagnifyingGlass, SortAscending, User } from "@/components/icons";
 import {
+  CHEMIN_COMPTE,
   CLES_STOCKAGE_DEFILEMENT,
   CROISSANT_PAR_DEFAUT,
   LIBELLE_COMPTEUR_EDITIONS,
   LIBELLE_COMPTEUR_TOMES,
+  LIBELLE_ONGLET_COMPTE,
   LIBELLE_PANNEAUX,
   LIBELLE_SENS_CROISSANT,
   LIBELLE_SENS_DECROISSANT,
@@ -225,6 +228,14 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
               ) : null}
             </div>
           ) : null}
+
+          <Link
+            href={CHEMIN_COMPTE}
+            aria-label={LIBELLE_ONGLET_COMPTE}
+            className="bg-accent text-bg flex size-[38px] flex-none items-center justify-center rounded-full"
+          >
+            <User className="size-[18px]" />
+          </Link>
         </div>
 
         <nav

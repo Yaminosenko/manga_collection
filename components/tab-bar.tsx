@@ -2,15 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BooksFill, CalendarBlank, MagnifyingGlass } from "@/components/icons";
 import {
-  BooksFill,
-  CalendarBlank,
-  MagnifyingGlass,
-  User,
-} from "@/components/icons";
-import {
-  CHEMIN_COMPTE,
-  LIBELLE_ONGLET_COMPTE,
   PANNEAUX,
   TITRE_COLLECTION,
   TITRE_PLANNING,
@@ -23,7 +16,6 @@ const ONGLETS = [
   { href: "/", libelle: TITRE_COLLECTION, Icone: BooksFill },
   { href: "/planning", libelle: TITRE_PLANNING, Icone: CalendarBlank },
   { href: "/ajouter", libelle: TITRE_RECHERCHER, Icone: MagnifyingGlass },
-  { href: CHEMIN_COMPTE, libelle: LIBELLE_ONGLET_COMPTE, Icone: User },
 ] as const;
 
 export function TabBar() {
