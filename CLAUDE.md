@@ -1410,11 +1410,6 @@ Ce qui reste :
   le geste système « retour » au bord gauche, et un éventuel saut d'une frame à l'ouverture de
   `/manquants` et `/wishlist` — **ne se sont pas manifestées à l'usage**. Reste de cette liste la
   seule qui n'ait pas été levée : la pastille du compte à 38 px.
-- **La barre du bas à quatre onglets n'a pas été jugée sur téléphone** (17 septembre 2026). Le
-  calcul donne ~107 px par onglet à 430 px, très au-dessus des 44 px de cible tactile, et rien
-  d'anormal au rendu de bureau — mais c'est un écran fait pour le pouce, et le libellé
-  « Communauté » est le plus long des quatre en 10 px. **À juger dans le même passage que la
-  pastille du compte** ci-dessus.
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :

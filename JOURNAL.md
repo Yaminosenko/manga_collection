@@ -4923,3 +4923,24 @@ Lire l'en-tête avec `-D -` plutôt que fabriquer un format qui commence par `/`
 Le calcul dit ~107 px par onglet, très au-dessus des 44 px de cible tactile, et le rendu de
 bureau ne montre rien d'anormal — mais c'est un écran conçu pour le pouce, et §4 a déjà une
 pastille de compte à 38 px qui n'a été vue qu'une fois sur l'appareil.
+
+### Établi — les quatre onglets jugés sur téléphone, et Communauté fusionnée (17 septembre 2026)
+
+**Jugé par le propriétaire sur son téléphone**, sur le serveur de développement du poste atteint
+par l'IP du réseau local. La seule réserve que la construction avait laissée ouverte est levée :
+**les quatre onglets tiennent à 430 px**, « Communauté » compris, qui est le libellé le plus long
+des quatre en 10 px. Le calcul de ~107 px par onglet était juste, mais il ne valait pas un pouce —
+c'est la même leçon que la pastille du compte à 38 px, qui elle n'a toujours été que mesurée.
+
+L'entrée « la barre du bas à quatre onglets n'a pas été jugée sur téléphone » quitte donc
+« Reste à faire » de §12. **Ce qui y demeure de cette famille : la pastille du compte à 38 px**,
+sous les 44 px de cible tactile du projet, mesurée le 17 septembre et jamais corrigée.
+
+**Rien d'autre n'a bougé.** Aucun défaut n'est ressorti du passage sur l'appareil, et le journal
+du serveur n'a rien émis pendant le test.
+
+La branche `communaute` est fusionnée dans `main` — deux commits, quinze fichiers, **aucune
+migration**. C'est la deuxième fusion de la journée après `glissement-panneaux`, et la première
+qui livre un écran que la spécification ne prévoyait pas : §9 listait « multi-utilisateur,
+partage, fonctions sociales » hors périmètre V1, et la consultation en lecture seule en est
+sortie par l'arbitrage de §13.7, nommément et sans emporter le reste.
