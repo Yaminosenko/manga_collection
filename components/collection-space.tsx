@@ -3,21 +3,28 @@
 import { useMemo, useState } from "react";
 import { CollectionPanel } from "@/components/collection-panel";
 import { MissingPanel } from "@/components/missing-panel";
+import { PanelStats } from "@/components/panel-stats";
 import { WishlistPanel } from "@/components/wishlist-panel";
 import { Check, MagnifyingGlass, SortAscending } from "@/components/icons";
 import {
   CLES_STOCKAGE_DEFILEMENT,
   CROISSANT_PAR_DEFAUT,
+  LIBELLE_COMPTEUR_EDITIONS,
+  LIBELLE_COMPTEUR_TOMES,
   LIBELLE_PANNEAUX,
   LIBELLE_SENS_CROISSANT,
   LIBELLE_SENS_DECROISSANT,
+  LIBELLE_WISHLIST_COMPTEUR_PLURIEL,
+  LIBELLE_WISHLIST_COMPTEUR_SINGULIER,
   PANNEAUX,
   PLACEHOLDER_RECHERCHE,
+  PREFIXE_VALEUR_PARTIELLE,
   TRIS,
   type CleTri,
   type ClePanneau,
 } from "@/lib/constants";
 import { correspondALaRecherche } from "@/lib/domain";
+import { formaterNombre, formaterPrix } from "@/lib/format";
 import { useMemoireDefilement } from "@/lib/use-scroll-memory";
 import { usePreferenceTri } from "@/lib/use-sort-preference";
 import type { EspaceCollection, LigneCollection } from "@/lib/domain";
@@ -37,6 +44,55 @@ function comparer(a: LigneCollection, b: LigneCollection, tri: CleTri): number {
     case "ajoutRecent":
       return a.ajouteeLe - b.ajouteeLe;
   }
+}
+
+function statsDuPanneau(espace: EspaceCollection, panneau: ClePanneau) {
+  if (panneau === "collection") {
+    const { collection } = espace;
+    if (collection.lignes.length === 0 && collection.vendues.length === 0) {
+      return { stats: [], prix: null };
+    }
+    const valeur = formaterPrix(collection.valeurCentimes);
+    return {
+      stats: [
+        { valeur: formaterNombre(collection.tomesPossedes), libelle: LIBELLE_COMPTEUR_TOMES },
+        { valeur: formaterNombre(collection.nombreEditions), libelle: LIBELLE_COMPTEUR_EDITIONS },
+      ],
+      prix:
+        valeur === null
+          ? null
+          : `${collection.tomesSansPrix > 0 ? PREFIXE_VALEUR_PARTIELLE : ""}${valeur}`,
+    };
+  }
+
+  if (panneau === "manquants") {
+    const { manquants } = espace;
+    if (manquants.editions.length === 0) {
+      return { stats: [], prix: null };
+    }
+    return {
+      stats: [
+        { valeur: formaterNombre(manquants.tomesManquants), libelle: LIBELLE_COMPTEUR_TOMES },
+        { valeur: formaterNombre(manquants.editions.length), libelle: LIBELLE_COMPTEUR_EDITIONS },
+      ],
+      prix: null,
+    };
+  }
+
+  const total = espace.wishList.lignes.length;
+  if (total === 0) {
+    return { stats: [], prix: null };
+  }
+  return {
+    stats: [
+      {
+        valeur: formaterNombre(total),
+        libelle:
+          total === 1 ? LIBELLE_WISHLIST_COMPTEUR_SINGULIER : LIBELLE_WISHLIST_COMPTEUR_PLURIEL,
+      },
+    ],
+    prix: null,
+  };
 }
 
 type CollectionSpaceProps = {
@@ -80,34 +136,10 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
 
   const libelleActif = PANNEAUX.find((option) => option.cle === panneau)?.libelle ?? "";
 
+  const { stats, prix } = statsDuPanneau(espace, panneau);
+
   return (
     <>
-      <nav
-        aria-label={LIBELLE_PANNEAUX}
-        className="bg-bg border-divider sticky top-0 z-30 flex gap-[6px] overflow-x-auto border-b px-[18px]"
-      >
-        {PANNEAUX.map(({ cle, libelle }) => {
-          const actif = cle === panneau;
-          return (
-            <button
-              key={cle}
-              type="button"
-              onClick={() => setPanneau(cle)}
-              aria-current={actif ? "page" : undefined}
-              className="flex min-h-11 flex-none items-center"
-            >
-              <span
-                className={`rounded-full px-[12px] py-[6px] text-[13px] whitespace-nowrap transition-colors ${
-                  actif ? "bg-accent text-bg font-medium" : "text-neutral-500"
-                }`}
-              >
-                {libelle}
-              </span>
-            </button>
-          );
-        })}
-      </nav>
-
       <h1 className="sr-only">{libelleActif}</h1>
 
       <div className="flex gap-[8px] px-[18px] pt-[12px] pb-[10px]">
@@ -185,7 +217,35 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
         ) : null}
       </div>
 
-      <div className="flex flex-1 flex-col px-[18px] pb-[18px]">
+      <PanelStats stats={stats} prix={prix} />
+
+      <nav
+        aria-label={LIBELLE_PANNEAUX}
+        className="bg-bg border-divider sticky top-0 z-30 flex gap-[6px] overflow-x-auto border-b px-[18px]"
+      >
+        {PANNEAUX.map(({ cle, libelle }) => {
+          const actif = cle === panneau;
+          return (
+            <button
+              key={cle}
+              type="button"
+              onClick={() => setPanneau(cle)}
+              aria-current={actif ? "page" : undefined}
+              className="flex min-h-11 flex-none items-center"
+            >
+              <span
+                className={`rounded-full px-[12px] py-[6px] text-[13px] whitespace-nowrap transition-colors ${
+                  actif ? "bg-accent text-bg font-medium" : "text-neutral-500"
+                }`}
+              >
+                {libelle}
+              </span>
+            </button>
+          );
+        })}
+      </nav>
+
+      <div className="flex flex-1 flex-col px-[18px] pt-[12px] pb-[18px]">
         {panneau === "collection" ? (
           <CollectionPanel
             collection={espace.collection}

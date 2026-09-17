@@ -150,8 +150,8 @@ export const CLES_STOCKAGE_DEFILEMENT: Record<ClePanneau, string> = {
 };
 
 export const LIBELLE_PANNEAUX = "Panneaux de la collection";
-export const LIBELLE_MANQUANTS_COMPTEUR_TOMES = "tomes";
-export const LIBELLE_MANQUANTS_COMPTEUR_EDITIONS = "éditions";
+export const LIBELLE_COMPTEUR_TOMES = "tomes";
+export const LIBELLE_COMPTEUR_EDITIONS = "éditions";
 
 export const CANDIDATS_RECHERCHE_MAX = 25;
 export const SIMILARITE_CATALOGUE_MIN = 0.35;
