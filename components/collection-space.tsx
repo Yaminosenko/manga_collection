@@ -144,7 +144,7 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
 
       <div className="bg-header border-divider sticky top-0 z-30 border-b">
         <div className="flex gap-[8px] px-[18px] pt-[12px] pb-[10px]">
-          <label className="bg-surface flex h-[38px] flex-1 items-center gap-[8px] rounded-md px-[12px]">
+          <label className="bg-bg flex h-[38px] flex-1 items-center gap-[8px] rounded-md px-[12px]">
             <MagnifyingGlass className="size-[15px] flex-none text-neutral-500" />
             <input
               type="search"
