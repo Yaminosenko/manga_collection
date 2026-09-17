@@ -1,6 +1,7 @@
 export const LIBELLE_A_PARAITRE = "À paraître";
 
 export const MENTION_SANS_COUVERTURE = "-- No Image --";
+export const MARQUE_SANS_COUVERTURE = "?";
 
 export const COLONNES_GRILLE = 2;
 

@@ -4120,3 +4120,53 @@ Et le fonctionnement normal est intact : une molette réelle sur la Collection m
 `12 832` après le correctif. **Mesuré à la molette, pas au `scrollTo`** — un défilement
 programmatique depuis le pilote n'émet aucun événement de défilement dans la page, et une première
 tentative a conclu à tort que rien n'était mémorisé. Septième fois que la sonde ment.
+
+---
+
+### Corrigé — « -- No Image -- » devenait un pâté dans les petites cases
+
+**17 septembre 2026.** Constats 11 et 15 de la revue du 16, c'est-à-dire la veille : le
+placeholder du 16 septembre dessine la mention en SVG mis à l'échelle de la case, avec
+`viewBox="0 0 100 141"` et `preserveAspectRatio`. Le texte n'a donc pas de taille propre, il a
+celle de la boîte.
+
+**Le calcul est net et il condamne l'idée à petite cote.** Dans les Manquants la case fait
+`40×56`, soit un facteur de `min(40/100, 56/141) ≈ 0,397` : les 11 unités de `TAILLE_MENTION`
+rendent **≈ 4,4 px CSS**, sous le seuil de lisibilité de tout navigateur — et ce pâté est dessiné
+**sous la pastille du numéro de tome**, déjà présente. Même effet en recherche à `56×80`,
+≈ 6,2 px. Avant le commit de la veille, ces cases affichaient juste le numéro, proprement.
+
+**Aucun réglage ne sauve la mention à cette cote** : 14 glyphes lisibles ne tiennent pas dans
+40 px, quelle que soit la façon de les dessiner. Le choix arbitré par le propriétaire est donc
+**une marque courte là où la phrase ne tient pas** — `MARQUE_SANS_COUVERTURE`, un point
+d'interrogation — plutôt que de laisser une case vide, qui était précisément ce que le
+16 septembre voulait corriger.
+
+**Le seuil est une requête de conteneur, pas une propriété passée de main en main.** `84px`, la
+cote à laquelle la revue juge la mention lisible et celle de la Collection, du Planning et de la
+wish list. Aucun appelant n'a à déclarer sa taille : la case se mesure elle-même.
+
+**Le piège en chemin, et il a coûté un aller-retour** : posé sur `.cover-placeholder`, qui porte
+le padding des appelants, `container-type: inline-size` fait porter la requête sur la **boîte de
+contenu**. Les 84 px de la Collection en devenaient **72**, et la ligne de Collection affichait le
+point d'interrogation au lieu de la mention. Le conteneur est donc une couche `absolute inset-0`
+sans padding — `.zone-sans-couverture` —, dont la largeur est celle de la case.
+
+**Deux défauts du même bloc réglés au passage.** `textLength` était appliqué avec le
+`lengthAdjust` par défaut, `spacing` : le moteur atteint exactement 76 unités **en jouant
+uniquement sur l'espacement entre glyphes**, donc sur une plateforme dont la police sans-serif est
+plus large que celle mesurée, l'ajustement devient négatif et les glyphes se chevauchent.
+`spacingAndGlyphs` supprime le risque. Et le placeholder était `aria-hidden` **sans équivalent
+textuel** : un lecteur d'écran parcourant `/ajouter` annonçait un élément muet là où un voyant
+voit l'emplacement d'une couverture. Le conteneur porte désormais `role="img"` et le **même
+libellé que l'`alt` de la branche image** — les deux branches disent enfin la même chose.
+
+**Vérifié à l'œil sur les quatre cotes**, connecté en `Tempestl`, après avoir retiré les
+couvertures de `d-gray-man` et `berserk` sur le banc :
+
+| Cote | Où | Rendu |
+|---|---|---|
+| 40×56 | Manquants | **`?`** centré, la pastille du numéro intacte à côté |
+| 56×80 | Recherche | **`?`** centré, sur les cinq résultats |
+| 84×120 | Collection | **`-- No Image --`**, lisible |
+| ~190×269 | grille des tomes | **`-- No Image --`**, inchangé |

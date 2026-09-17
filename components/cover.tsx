@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { MENTION_SANS_COUVERTURE } from "@/lib/constants";
+import { MARQUE_SANS_COUVERTURE, MENTION_SANS_COUVERTURE } from "@/lib/constants";
 
 const LARGEUR_REPERE = 100;
 const HAUTEUR_REPERE = 141;
@@ -46,26 +46,33 @@ export function Cover({
 
   return (
     <div
+      role="img"
+      aria-label={numero === null ? titre : `${titre} — tome ${numero}`}
       className={`cover-placeholder relative flex h-full w-full items-end justify-end font-medium ${placeholderClassName}`}
     >
-      <svg
-        viewBox={`0 0 ${LARGEUR_REPERE} ${HAUTEUR_REPERE}`}
-        preserveAspectRatio="xMidYMid meet"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full"
-      >
-        <text
-          x={LARGEUR_REPERE / 2}
-          y={HAUTEUR_REPERE / 2}
-          textLength={LARGEUR_MENTION}
-          fontSize={TAILLE_MENTION}
-          textAnchor="middle"
-          dominantBaseline="central"
-          fill="currentColor"
+      <span aria-hidden="true" className="zone-sans-couverture absolute inset-0">
+        <svg
+          viewBox={`0 0 ${LARGEUR_REPERE} ${HAUTEUR_REPERE}`}
+          preserveAspectRatio="xMidYMid meet"
+          className="mention-sans-couverture h-full w-full"
         >
-          {MENTION_SANS_COUVERTURE}
-        </text>
-      </svg>
+          <text
+            x={LARGEUR_REPERE / 2}
+            y={HAUTEUR_REPERE / 2}
+            textLength={LARGEUR_MENTION}
+            lengthAdjust="spacingAndGlyphs"
+            fontSize={TAILLE_MENTION}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill="currentColor"
+          >
+            {MENTION_SANS_COUVERTURE}
+          </text>
+        </svg>
+        <span className="marque-sans-couverture h-full w-full items-center justify-center text-[14px]">
+          {MARQUE_SANS_COUVERTURE}
+        </span>
+      </span>
       {afficherNumero && numero !== null ? <span className="relative">{numero}</span> : null}
     </div>
   );
