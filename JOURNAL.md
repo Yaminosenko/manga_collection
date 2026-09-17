@@ -4428,3 +4428,60 @@ exactes des fichiers commités — donc pas un cache —, et `/collection` rend 
 pouvait pas trancher : le nom et l'icône sont ceux attendus, et **la découpe `maskable` du
 lanceur épargne le sceau**, qui est dans le coin bas-droit et donc le premier attaqué par une
 découpe en cercle. Les 14 % de marge font ce qu'on leur demande.
+
+---
+
+### Fait — l'identité et le mot de passe en sous-pages du compte
+
+**17 septembre 2026.** L'onglet « Moi » portait ses deux formulaires en pleine longueur : neuf
+champs de saisie empilés sur l'écran qu'on ouvre pour *regarder* son compte, dont quatre mots de
+passe. Le geste qu'on y fait est rare — on change d'adresse email une fois — et il occupait tout
+l'écran en permanence.
+
+**La page ne garde que le résumé et deux boutons.** Identifiant, adresse email et nom affiché en
+lecture seule, dans le motif `clé / valeur` du pied de la page Édition — **une ligne vide
+disparaît** au lieu d'afficher un tiret, ce qui est déjà le cas du nom, nul sur le propriétaire.
+Puis deux boutons pleine largeur à chevron, et « Se déconnecter » en bas, inchangé.
+
+**Le motif est celui de « Modifier l'état », repris à la lettre** : les deux sous-pages vivent
+**hors du groupe `(tabs)`** — donc plein écran, sans barre du bas, avec la flèche de retour en
+en-tête, exactement comme `/edition/<slug>/etat`. C'est ce que la demande disait, et c'est le
+seul motif de sous-page que l'application ait déjà.
+
+| Route | Ce qu'elle porte |
+|---|---|
+| `/compte` | le résumé, les deux boutons, la déconnexion |
+| `/compte/identite` | identifiant, email, nom, plus le mot de passe actuel en confirmation |
+| `/compte/mot-de-passe` | actuel, nouveau, confirmation |
+
+**`app/(tabs)/compte/page.tsx` et `app/compte/` coexistent sans conflit** : un groupe de routes
+est transparent pour le chemin, donc `/compte` n'est défini qu'une fois et `/compte/identite`
+non plus. Rien à déclarer côté garde — le matcher de `proxy.ts` prend tout par défaut, et les
+trois chemins rendent bien **307** vers `/acces` sans cookie.
+
+**Aucune action serveur n'a bougé** : mêmes noms de champs, mêmes validations, même
+`revalidatePath(CHEMIN_COMPTE)` — le résumé est donc juste au retour de la sous-page. Le
+libellé du bouton de soumission passe à « Enregistrer » sur les deux, « Changer le mot de
+passe » restant le libellé du bouton de **navigation**.
+
+**Deux choses remontent dans `components/champ.tsx` au lieu d'être répétées.**
+`CLASSE_BOUTON_SOUS_PAGE` était écrite en dur dans la page Édition, qui la consomme désormais —
+vérifié au caractère près dans le HTML rendu, le bouton « Modifier l'état » garde ses classes.
+Et `MessageFormulaire` y vit aussi, les deux sous-pages ayant le même retour d'action.
+`components/account-form.tsx` est **supprimé**, remplacé par `account-identity-form.tsx` et
+`account-password-form.tsx` ; la page `/compte` redevient entièrement serveur, `seDeconnecter`
+ne demandant pas de client.
+
+**Vérifié au rendu, session forgée à l'appui**, d'abord en local : `/compte` ne contient plus
+**aucun `<input>` de saisie** — seul le champ caché de l'action de déconnexion —, porte les deux
+liens, et chaque sous-page rend ses champs, son retour et son pré-remplissage. `tsc` et `eslint`
+passent.
+
+**Puis en production, et le contrôle a servi.** `/compte/identite` rendait encore **404** aux
+deux premiers essais après le `git push`, **200** au troisième : la route n'existait pas tant
+que Vercel n'avait pas fini, et sans ce guet on aurait conclu à un cache. Le déploiement ne
+joue rien sur Neon, ce lot ne touchant pas au schéma.
+
+**Puis validé sur téléphone par le propriétaire**, en production. C'est ce que le poste ne
+pouvait pas trancher : les écritures réelles n'ont volontairement pas été essayées depuis ici,
+l'une changeant l'adresse email du propriétaire et l'autre coupant toutes ses sessions.
