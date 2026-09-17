@@ -4814,3 +4814,24 @@ sans `requestAnimationFrame`, donc **le défilement doux était gelé à mi-cour
 même symptôme que la fois précédente — là c'étaient les événements qui ne partaient pas, ici
 c'est l'animation qui ne progresse pas — mais c'est la même cause et le même remède : conclure
 sur une capture d'écran, qui rend l'onglet visible, plutôt que sur une sonde.
+
+### Établi — le glissement jugé sur téléphone, et fusionné (17 septembre 2026)
+
+**Le geste est natif, donc il ne se jugeait que là.** Verdict du propriétaire après usage réel
+sur l'appareil, par l'IP du poste : bon. Les deux réserves écrites la veille **ne se sont pas
+manifestées** — ni la concurrence entre le glissement au bord gauche et le geste système
+« retour », ni un saut visible d'une frame à l'ouverture de `/manquants` et `/wishlist`, que la
+piste corrige dans un effet, donc après la première peinture. Elles restent des causes connues :
+si l'une reparaît un jour, elle est déjà décrite.
+
+**Deux défauts sont sortis de cet essai, et un seul était dans la fonctionnalité** : le blocage
+des chunks de développement par `allowedDevOrigins`, qui n'a rien à voir avec elle, et l'inertie
+qui emportait jusqu'au dernier panneau, réglée par `scroll-snap-stop: always`. Les deux ont leur
+entrée ci-dessus.
+
+**Ce qui n'a pas été levé** : la pastille du compte fait toujours 38 px, sous les 44 px de cible
+tactile du projet. L'alignement sur la ligne de recherche l'impose, et personne ne s'en est
+plaint à l'usage.
+
+La branche `glissement-panneaux` est fusionnée dans `main` — huit commits, dix-neuf fichiers,
+**aucune migration**.

@@ -1334,8 +1334,8 @@ Ce qui reste :
 - **Trancher le vocabulaire de « Terminée par choix ».** L'écran État dit « Suivie / Non
   suivie », la Collection et la page Édition disent encore « Terminée par choix » pour le même
   drapeau. Le rendu n'a pas bougé volontairement, mais les deux mots désignent une seule chose.
-- **L'espace collection attend son jugement sur téléphone**, et quatre points en dépendent —
-  voir `JOURNAL.md`, « Fait — l'espace collection à trois panneaux » :
+- **L'espace collection a été jugé sur téléphone le 17 septembre 2026** et deux des quatre points
+  en suspens sont tombés — voir `JOURNAL.md`, « Fait — l'espace collection à trois panneaux » :
 
   | En suspens | État |
   |---|---|
@@ -1344,15 +1344,11 @@ Ce qui reste :
   | 105 px de bandeau ancré, plus la barre du bas | le prix d'avoir la recherche sous la main |
   | ~~le retour d'une page Édition ramène sur le panneau Collection~~ | **réglé de biais** : l'URL suivant le panneau, `<Link href="/">` depuis les Manquants renvoie sur `/manquants`. À confirmer à l'usage |
 
-  **Le glissement horizontal est construit** — branche `glissement-panneaux`, voir §4 et
-  `JOURNAL.md`. Vérifié sur le poste : piste, pastilles, URL, liens profonds, mémoire de
-  défilement par panneau, menus de tri. **Le geste lui-même ne l'est pas** — il est natif, donc
-  il ne se juge que sur l'appareil, et trois points l'attendent :
-
-  | À juger sur téléphone | Pourquoi |
-  |---|---|
-  | le glissement depuis le bord gauche, sur le panneau Collection | il entre en concurrence avec le geste système « retour » d'iOS, et ça ne se contourne pas proprement |
-  | le saut d'une frame à l'ouverture de `/manquants` et `/wishlist` | la piste se positionne dans un effet, donc après la première peinture |
+  **Le glissement horizontal est fait, jugé sur téléphone et fusionné** le 17 septembre 2026 —
+  voir §4 et `JOURNAL.md`. Les deux réserves qui restaient après le poste — la concurrence avec
+  le geste système « retour » au bord gauche, et un éventuel saut d'une frame à l'ouverture de
+  `/manquants` et `/wishlist` — **ne se sont pas manifestées à l'usage**. Reste de cette liste la
+  seule qui n'ait pas été levée : la pastille du compte à 38 px.
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
