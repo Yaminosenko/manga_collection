@@ -8,8 +8,8 @@ Le nom vit dans `NOM_APPLICATION` et `NOM_APPLICATION_COURT` (`lib/constants.ts`
 manifeste et les balises de `app/layout.tsx` le tirent ; aucun écran ne l'écrit en dur. **Le
 dépôt, le dossier de travail et le projet Vercel gardent leur nom `manga_collection`** : les
 renommer casserait les chemins de tous les postes et l'URL de production pour un affichage.
-Le domaine `zenkanapp.com` est **une intention, pas un achat** — voir « Échéances et
-environnement ».
+**Aucun domaine n'a été acheté** : l'idée d'un `zenkanapp.com` est posée et non tranchée, elle
+vit dans `IDEES.md`.
 
 ---
 
@@ -1324,11 +1324,10 @@ Ce qui reste :
   **certaine et récurrente** (~10 $/an), pas un palier hors d'atteinte, donc l'amendement du
   1er septembre ne le couvre pas.
 
-  **`zenkanapp.com` est envisagé depuis le 17 septembre 2026, et pas encore acheté.** S'il
-  l'est, le frein tombe de lui-même : le coût est alors déjà engagé pour le nom, et un
-  sous-domaine de plus — `covers.zenkanapp.com` — ne coûte rien. **Ce n'est pas une raison
-  d'acheter le domaine**, c'est ce qu'il débloquerait s'il l'était. Rien dans le code n'attend
-  ce domaine : la production reste sur `manga-collection-wcj8.vercel.app`.
+  **L'achat d'un nom de domaine `zenkanapp.com` a été posé le 17 septembre 2026 et
+  délibérément non tranché** — il vit dans `IDEES.md`, avec ce qu'il débloquerait et ce qu'il
+  coûte à la contrainte de §7. Rien dans le code ne l'attend : la production reste sur
+  `manga-collection-wcj8.vercel.app`.
 - **`CRON_SECRET` est posé dans Vercel** (3 septembre, confirmé le 9), **à ne pas re-poser**.
   Deux pièges : `autorise()` rend `false` aussi bien quand le secret est absent que quand
   l'en-tête est faux, donc `/api/cron` répond `401` dans les deux cas et **le sonder ne prouve

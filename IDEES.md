@@ -205,6 +205,45 @@ précède n'est mesuré — la répartition entre réveil de Neon, latence de la
 inconnue. Si le réveil domine, la réponse n'est pas le cache mais un ping de maintien, et ce
 chantier tombe. Le document a quatre fois la leçon qu'une sonde ne prouve rien.
 
+### Acheter `zenkanapp.com` — 17 septembre 2026
+
+Venue avec le renommage en Zenkan. **Le domaine n'est pas acheté, et la décision est
+explicitement reportée** ce même jour. Ce qui suit est ce qu'il faudra peser le jour où on la
+reprend.
+
+**Le frein est unique et il est dans §7** : un domaine est une dépense **certaine et
+récurrente**, de l'ordre de 10 à 15 $/an. L'amendement du 1er septembre 2026 — « coût zéro, et
+aucun débit possible sans franchir un palier hors d'atteinte » — ne le couvre pas, et c'est
+écrit noir sur blanc : il « ne vaut que pour un service dont le palier gratuit est à deux
+ordres de grandeur du besoin ». Un nom de domaine n'a pas de palier gratuit du tout. Acheter
+`zenkanapp.com`, c'est donc **franchir la contrainte fondatrice du projet**, pas l'aménager.
+Petite somme, mais la première.
+
+**Ce que ça débloquerait, et qui n'est pas rien — trois choses déjà écrites ailleurs :**
+
+- **Le domaine personnalisé sur le bucket R2.** C'est le seul « reste à faire » de §12 dont le
+  frein est *uniquement* le coût du nom : l'URL `r2.dev` est limitée en débit et non mise en
+  cache par Cloudflare, le basculement est gratuit et sans réenvoi, et `covers:migrate` ne fait
+  que réécrire les URL. Un `covers.zenkanapp.com` sur un nom déjà payé ne coûte **rien de
+  plus**.
+- **Resend pour le lot 2 de §13.6.** Il a été écarté pour une raison unique — « Resend exige un
+  domaine vérifié pour écrire à une adresse arbitraire » —, ce qui a fait retenir le SMTP de
+  Gmail avec un mot de passe d'application. Un domaine vérifié supprime ce motif, et avec lui la
+  gêne SPF/DKIM qui avait fait écarter Brevo et Mailjet.
+- **Une URL qu'on peut dire à quelqu'un.** `manga-collection-wcj8.vercel.app` porte encore
+  l'ancien nom et un suffixe généré. Confort pur, mais il devient réel le jour où un second
+  compte n'est pas un compte d'essai.
+
+**Ce que ça ne débloque pas, et qu'il ne faut pas s'imaginer :** rien dans le code n'attend ce
+domaine, l'application fonctionne et se déploie telle quelle, et l'APK par Bubblewrap n'en a
+pas besoin — `assetlinks.json` se sert très bien depuis `vercel.app`. Ça ne touche pas non plus
+les quatre échéances de §13.4 : un domaine n'est pas un euro encaissé.
+
+**La bonne question n'est donc pas « est-ce que ça vaut 12 $ »** — évidemment oui pour ce que ça
+rend — **mais « est-ce qu'on ouvre la ligne des dépenses récurrentes »**, et à quoi on la ferme
+ensuite. Le projet a tenu quinze ans de catalogue et 12 880 groupes sans payer un centime ; le
+jour où un abonnement annuel existe, le suivant se justifie plus facilement.
+
 ## Questions ouvertes
 
 - **La pile à lire arrive-t-elle dans ce lot ou après ?** C'est la seule des quatre pastilles
