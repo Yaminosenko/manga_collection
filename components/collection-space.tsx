@@ -250,7 +250,7 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
               aria-expanded={menuOuvert}
               className="text-accent flex size-[38px] items-center justify-center rounded-md border border-neutral-800"
             >
-              <SortAscending className={`size-[16px] ${preference.croissant ? "" : "rotate-180"}`} />
+              <SortAscending className="size-[16px]" />
             </button>
 
             {menuOuvert ? (

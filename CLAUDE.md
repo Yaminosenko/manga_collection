@@ -227,7 +227,9 @@ bas porte la même, de sorte que les deux bords fixes se répondent.
   sur le critère actif — le sens se lit donc là où il s'applique, au lieu d'une rangée
   « Ordre croissant / décroissant » en pied de menu qui portait un état sans dire de quoi.
   Conséquence : **le menu ne se ferme plus sur une sélection**, sans quoi on ne pourrait pas
-  retaper ; il se ferme d'un tap en dehors.
+  retaper ; il se ferme d'un tap en dehors. **Et l'icône du bouton du bandeau ne bouge plus** —
+  elle pivotait de 180° selon le sens, ce qui faisait tressaillir un bandeau ancré pour une
+  information que la flèche du menu porte déjà, et mieux.
 - **Les chiffres ne sont pas dans le bandeau** : ils sont en tête du contenu et défilent avec
   lui, chaque panneau parlant du sien — tomes, éditions et valeur pour la Collection, tomes et
   éditions pour les Manquants, séries pour la Wish list. Le nombre est en 17 px sur son mot en

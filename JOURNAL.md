@@ -4722,6 +4722,11 @@ l'état, ce qui se lit à l'envers une fois sur deux. La flèche dit l'état, l�
 **Conséquence assumée : le menu ne se ferme plus sur une sélection**, sans quoi retaper serait
 impossible. Il se ferme d'un tap en dehors, par le voile déjà en place.
 
+**Et l'icône du bouton du bandeau cesse de pivoter**, demandé dans la foulée. Elle basculait de
+180° avec le sens : un mouvement dans la zone ancrée, à chaque tap, pour une information que la
+flèche du menu porte désormais au bon endroit. Vérifié sur quatre changements de sens
+consécutifs, `rotate` et `transform` restent à `none` pendant que le critère actif, lui, suit.
+
 Deux icônes Phosphor ajoutées à `components/icons.tsx`, `ArrowUp` et `ArrowDown` ; le sens est
 aussi écrit en `sr-only` à côté de la flèche, les deux libellés de l'ancienne rangée y servant.
 
