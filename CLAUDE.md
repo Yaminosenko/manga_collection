@@ -1,7 +1,15 @@
-# Manga Collection — spécification
+# Zenkan — spécification
 
 Application personnelle de suivi de collection de mangas, mono-utilisateur.
 Ce document est la source de vérité du projet. Le lire en entier au début de chaque session.
+
+**L'application s'appelle Zenkan depuis le 17 septembre 2026** — 全巻, « tous les volumes ».
+Le nom vit dans `NOM_APPLICATION` et `NOM_APPLICATION_COURT` (`lib/constants.ts`), d'où le
+manifeste et les balises de `app/layout.tsx` le tirent ; aucun écran ne l'écrit en dur. **Le
+dépôt, le dossier de travail et le projet Vercel gardent leur nom `manga_collection`** : les
+renommer casserait les chemins de tous les postes et l'URL de production pour un affichage.
+Le domaine `zenkanapp.com` est **une intention, pas un achat** — voir « Échéances et
+environnement ».
 
 ---
 
@@ -859,6 +867,9 @@ Le dossier `design/` contient les maquettes HTML et le design system dont elles 
 - `design/design_handoff_page_edition/nocturne/` — les tokens et composants du design system.
   Lire `readme.md` avant d'écrire du style ; toute couleur, espacement et rayon vient de
   `styles.css` via `var(--*)`.
+- `design/zenkan/` — **l'icône de l'application**, ses SVG sources et son générateur. Seul
+  dossier de `design/` dont quelque chose est **servi** : les PNG rendus sont recopiés dans
+  `public/icons/`, `app/apple-icon.png` et `app/favicon.ico`. Lire son README avant d'y toucher.
 - `design/README.md` — index du dossier et journal de ce qui est repris ou écarté de
   l'application de référence.
 
@@ -973,7 +984,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 16 septembre 2026.
+Dernière mise à jour : 17 septembre 2026.
 
 **La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
 nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
@@ -1099,9 +1110,17 @@ détail et les cas réels sont dans `JOURNAL.md`.
   MangaDex. Corollaire général : **un script qui déduit son état d'un dossier ignoré par git
   repartira de zéro sur un autre poste.**
 - **Trois scripts Python appelaient `main()` sans garde `if __name__ == "__main__"`** —
-  `fetch_covers.py`, `fetch_publishers.py`, `generate_icons.py`. **Les importer suffisait à les
-  exécuter en entier**, et c'est arrivé : un script de vérification qui importait
-  `fetch_covers` a relancé la passe complète. La garde est posée sur les trois.
+  `fetch_covers.py`, `fetch_publishers.py`, `generate_icons.py` (ce dernier **supprimé le
+  17 septembre 2026** avec l'ancienne icône). **Les importer suffisait à les exécuter en
+  entier**, et c'est arrivé : un script de vérification qui importait `fetch_covers` a relancé
+  la passe complète. La garde est posée sur les deux qui restent.
+- **`proxy.ts` nomme les fichiers publics un par un, donc déplacer un actif le fait passer
+  derrière la garde d'accès.** Son matcher liste `favicon.ico`, `apple-icon.png`,
+  `manifest.webmanifest` et — depuis le 17 septembre 2026 — `icons/`, là où il nommait
+  `icon-192.png` et `icon-512.png`. Ce qui se casse est invisible depuis une session connectée :
+  les icônes du manifeste sont demandées **avant** la connexion, à l'invite d'installation. Toute
+  vérification se fait donc **sans cookie**, et elle doit contrôler les deux sens — l'actif rend
+  200, et une page d'application rend toujours 307.
 - **Une colonne neuve qui n'entre pas dans `backup-db.ts` sort du filet en silence — deux fois.**
   §13.1 l'avait posé en règle — « le filet doit couvrir la nouvelle forme avant qu'on en ait
   besoin » — et la migration du 16 septembre l'a quand même oublié : `Serie.idMangaDex`,
@@ -1242,6 +1261,23 @@ Ce qui reste :
   déduire des titres ou les saisir.
 - **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis en
   cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
+
+  **Les icônes sont celles de Zenkan depuis le 17 septembre 2026** — un Z au pinceau sur fond
+  papier, sceau 全巻 dans l'accent Nocturne `#9184d9`, qui est exactement `--color-accent`. Cinq
+  PNG servis depuis `public/icons/` (3 `any`, 2 `maskable`), plus `app/apple-icon.png` et
+  `app/favicon.ico` par les conventions de fichiers de Next. Les sources — SVG et générateur —
+  vivent dans `design/zenkan/`, qui porte son propre README.
+
+  Deux choses tranchées avec elles : **`background_color` et `theme_color` restent `#161826`**
+  et non le papier `#f4efe4` proposé par le jeu d'icônes, sinon le lancement ferait un flash
+  clair avant une application qui est en mode sombre uniquement (§7) ; et **c'est la variante
+  claire qui est servie**, une icône d'écran d'accueil se posant sur le fond d'écran de
+  l'utilisateur et non sur celui de l'application. La variante sombre existe dans
+  `design/zenkan/svg/` et n'est pas servie : un manifeste ne sait pas choisir son icône selon
+  le thème.
+
+  **Une PWA déjà installée ne se renomme pas toute seule** : il faut désinstaller et
+  réinstaller depuis le navigateur.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
   côté garde ; restent le keystore et `assetlinks.json`.
 - **Thèmes** : **143 valeurs**, dont les 99 françaises d'origine avec leurs coupures d'import
@@ -1287,6 +1323,12 @@ Ce qui reste :
   `covers:migrate` ne réécrit que les URL. Le frein est §7 : un domaine est une dépense
   **certaine et récurrente** (~10 $/an), pas un palier hors d'atteinte, donc l'amendement du
   1er septembre ne le couvre pas.
+
+  **`zenkanapp.com` est envisagé depuis le 17 septembre 2026, et pas encore acheté.** S'il
+  l'est, le frein tombe de lui-même : le coût est alors déjà engagé pour le nom, et un
+  sous-domaine de plus — `covers.zenkanapp.com` — ne coûte rien. **Ce n'est pas une raison
+  d'acheter le domaine**, c'est ce qu'il débloquerait s'il l'était. Rien dans le code n'attend
+  ce domaine : la production reste sur `manga-collection-wcj8.vercel.app`.
 - **`CRON_SECRET` est posé dans Vercel** (3 septembre, confirmé le 9), **à ne pas re-poser**.
   Deux pièges : `autorise()` rend `false` aussi bien quand le secret est absent que quand
   l'en-tête est faux, donc `/api/cron` répond `401` dans les deux cas et **le sonder ne prouve

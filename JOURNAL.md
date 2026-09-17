@@ -1,4 +1,4 @@
-# Manga Collection — journal
+# Zenkan — journal
 
 Le détail de ce qui a été construit, mesuré et vérifié, entrée par entrée, de l'import du
 Google Sheet au déploiement. Sorti de `CLAUDE.md` le 7 septembre 2026, où il pesait les deux
@@ -4345,3 +4345,77 @@ section, trois champs et un bouton.
 Le quatrième point est celui qui compte à deux appareils : `versionJeton` coupe **tous les
 autres**, et c'est exactement ce que §13.6 attend de lui — « un changement de mot de passe coupe
 toutes les sessions d'un coup, sans table de sessions ».
+
+---
+
+### Fait — l'application s'appelle Zenkan, et porte son icône
+
+**17 septembre 2026.** Renommage et changement d'icône, demandés par le propriétaire. Le nom
+est **Zenkan** — 全巻, « tous les volumes » —, le domaine `zenkanapp.com` est envisagé et pas
+acheté, et l'icône est fournie sous forme d'un jeu complet : un Z au pinceau, style sumi-e, sur
+fond papier, avec un sceau 全巻.
+
+**Le nom n'a coûté que deux constantes.** `NOM_APPLICATION` et `NOM_APPLICATION_COURT`
+(`lib/constants.ts`) alimentent le manifeste et les quatre balises de `app/layout.tsx` — titre,
+`application-name`, `apple-mobile-web-app-title`. Aucun écran ne l'écrivait en dur ; la
+recherche n'a rien rendu d'autre. Les deux valent « Zenkan », là où l'ancien couple distinguait
+« Collection de mangas » de « Collection ». La collision qui existait — le nom de
+l'application était aussi celui de son premier onglet — disparaît au passage.
+
+**Le vrai piège était `proxy.ts`, et il ne se voit pas depuis une session connectée.** Son
+matcher sort les fichiers publics de la garde d'accès **en les nommant un par un**, et il
+nommait `icon-192.png` et `icon-512.png`. Les icônes déplacées dans `public/icons/` seraient
+donc passées derrière la garde — invisibles à l'invite d'installation, qui est précisément
+l'écran qu'on voit avant de se connecter. Le matcher exclut maintenant `icons/`.
+
+**Vérifié sans cookie sur le serveur de développement**, dans les deux sens : ce qui doit passer
+passe, ce qui doit être gardé l'est toujours.
+
+| Chemin | Réponse |
+|---|---|
+| `/manifest.webmanifest` | 200 · `application/manifest+json` |
+| `/icons/icon-192.png`, `-384`, `-512`, `-maskable-192`, `-maskable-512` | 200 · `image/png` |
+| `/apple-icon.png` · `/favicon.ico` | 200 · `image/png` · `image/x-icon` |
+| `/collection` | **307** — la garde tient |
+
+Et le manifeste servi dit bien `"name":"Zenkan"`, `"short_name":"Zenkan"`, ses cinq icônes ;
+les balises rendues portent `<title>Zenkan</title>`, `application-name` et
+`apple-mobile-web-app-title`.
+
+**Deux arbitrages pris avec l'icône, contre ce que proposait le jeu fourni.**
+
+Son `manifest-icons.json` donnait `background_color` à `#f4efe4` — le papier — et `theme_color`
+à `#9184d9` — le sceau. Les deux sont restés à `#161826`. La V1 est en **mode sombre
+uniquement** (§7) : un fond de manifeste clair ferait un flash blanc au lancement avant une
+application sombre, et le violet en `theme_color` teinterait la barre d'état au-dessus d'une
+interface qui ne l'est pas. Le sceau `#9184d9` est de toute façon **exactement**
+`--color-accent` de `app/globals.css` : l'icône est déjà dans la palette sans qu'on déplace un
+token.
+
+Et c'est la **variante claire** qui est servie, pas la sombre, qui existe pourtant dans le jeu.
+Une icône d'écran d'accueil se pose sur le fond d'écran de l'utilisateur, pas sur celui de
+l'application : l'encre sombre ferait un trou sur un fond sombre. Un manifeste ne sait pas non
+plus choisir une icône selon le thème — les deux ne peuvent pas coexister.
+
+**Les deux jeux `any` et `maskable` sont nécessaires et ne sont pas un doublon.** Android
+découpe l'icône selon la forme du lanceur, et le sceau est dans un coin : une icône `any`
+rognée le perd. Les `maskable` portent 14 % de marge sur chaque bord.
+
+**`scripts/generate_icons.py` a été supprimé, pas laissé en dormance.** Il dessinait l'ancienne
+icône à trois tranches et écrivait dans `app/apple-icon.png` : le relancer aurait écrasé
+Zenkan. Même raisonnement que pour AniList le 10 septembre. Les sources partent dans
+`design/zenkan/` — six SVG et le générateur du jeu, avec sa racine pointée sur son propre
+dossier et son `icons/` ignoré par git, pour qu'une régénération ne remplace jamais en silence
+ce qui est servi. Le dossier porte son README.
+
+**Ce générateur n'a pas été éprouvé ici, et c'est écrit dans son README plutôt que tue.** Il
+exige `cairosvg`, qui réclame les bibliothèques Cairo et n'est pas acquis sous Windows ; il
+n'est ni installé ni ajouté à `requirements.txt`. Les PNG livrés ont été rendus ailleurs, et
+les SVG s'ouvrent dans un navigateur pour juger un changement sans rien installer. Seul
+`app/favicon.ico` a été reconstruit sur le poste, avec Pillow, en 16 · 32 · 48 depuis le niveau
+de détail « trait seul » — le sceau perd ses caractères sous 76 px et le trait seul est ce qui
+survit à 16.
+
+**Ce que ça ne change pas** : l'URL de production reste `manga-collection-wcj8.vercel.app`, le
+dépôt et le dossier de travail gardent leur nom `manga_collection`, et une PWA déjà installée
+ne se renomme pas toute seule — il faut la désinstaller et la réinstaller.

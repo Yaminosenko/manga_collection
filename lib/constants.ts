@@ -145,8 +145,8 @@ export const LIBELLE_RECHERCHE_VIDE = "Aucun résultat.";
 export const LIBELLE_INVITE_RECHERCHE = "Cherchez une série par son titre.";
 export const PREFIXE_TERME_RESOLU = "Trouvé sous ";
 
-export const NOM_APPLICATION = "Collection de mangas";
-export const NOM_APPLICATION_COURT = "Collection";
+export const NOM_APPLICATION = "Zenkan";
+export const NOM_APPLICATION_COURT = "Zenkan";
 export const COULEUR_FOND_APPLICATION = "#161826";
 
 export const CHEMIN_ACCES = "/acces";

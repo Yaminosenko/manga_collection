@@ -20,6 +20,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|api/cron|\.well-known|favicon\.ico|icon-192\.png|icon-512\.png|apple-icon\.png|manifest\.webmanifest).*)",
+    "/((?!_next/static|_next/image|api/cron|\.well-known|favicon\.ico|icons/|apple-icon\.png|manifest\.webmanifest).*)",
   ],
 };

@@ -45,3 +45,6 @@ data/catalogue-controles.json
 
 # revue de code : rapports locaux, jamais commites
 revue/
+
+# icones regenerees a la demande : seules les copies servies sont versionnees
+design/zenkan/icons/

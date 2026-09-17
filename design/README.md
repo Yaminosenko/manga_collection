@@ -3,6 +3,12 @@
 Ce dossier sert de référence **visuelle**. Le code applicatif ne reprend ni le balisage,
 ni les classes, ni les styles de ces fichiers — voir `CLAUDE.md`, section 7.
 
+**Une exception, `zenkan/` : quelque chose en est servi.** C'est l'icône de l'application — SVG
+sources et générateur —, dont les PNG rendus sont recopiés dans `public/icons/`,
+`app/apple-icon.png` et `app/favicon.ico`. Lire `zenkan/README.md` avant d'y toucher : la
+régénération ne met pas à jour les copies servies, et `proxy.ts` doit laisser passer leurs
+chemins.
+
 ## Maquettes
 
 Maquettes HTML produites pour ce projet. Elles font foi sur le rendu.
