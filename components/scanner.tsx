@@ -147,6 +147,7 @@ type Detecteur = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: str
 
 export function Scanner() {
   const video = useRef<HTMLVideoElement>(null);
+  const dernierScan = useRef<string | null>(null);
   const [flux, setFlux] = useState<MediaStream | null>(null);
   const [camera, setCamera] = useState<"inconnue" | "active" | "indisponible">("inconnue");
   const [cameras, setCameras] = useState<MediaDeviceInfo[]>([]);
@@ -158,6 +159,7 @@ export function Scanner() {
   const [enCours, demarrer] = useTransition();
 
   const resoudre = useCallback((isbn: string) => {
+    dernierScan.current = isbn;
     setInvalide(false);
     demarrer(async () => {
       const trouve = await resoudreIsbn(isbn);
@@ -254,10 +256,7 @@ export function Scanner() {
       try {
         const codes = await detecteur.detect(element);
         const code = codes.find((c) => isbnValide(c.rawValue));
-        if (code) {
-          flux.getTracks().forEach((piste) => piste.stop());
-          setFlux(null);
-          setCamera("inconnue");
+        if (code && code.rawValue !== dernierScan.current) {
           setSaisie(code.rawValue);
           resoudre(code.rawValue);
         }

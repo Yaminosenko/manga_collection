@@ -4215,3 +4215,39 @@ suivis et 0 sortie — l'état laissé par les essais de la journée.
 
 L'ancien code, lui, aurait laissé la base vidée et à moitié réécrite sur le premier cas, et son
 message aurait été une trace de promesse rejetée.
+
+---
+
+### Corrigé — le scanner ne faisait qu'un scan par chargement de page
+
+**17 septembre 2026.** Constat 4 de la revue du 16, et c'est celui qui coûte le plus en
+librairie : §4 décrit le cochage comme « le geste que l'utilisateur répète des dizaines de fois »,
+et le scanner obligeait à **recharger la page entre deux tomes**.
+
+À la détection, la boucle coupait le flux et repassait `camera` à `"inconnue"` — trois lignes —,
+et **rien ne le rouvrait** : l'effet d'ouverture ne dépend que de `[choixCamera]`, et le sélecteur
+de caméra qui aurait pu le relancer n'est rendu que si `camera === "active"`, donc il venait de
+disparaître avec l'aperçu. Il n'existait aucun bouton « scanner à nouveau ». Et le texte sous le
+cadre continuait d'afficher `LIBELLE_SCAN_INVITE` — « Placez le code-barres du dos du tome dans le
+cadre » — alors qu'il n'y avait plus ni cadre ni caméra.
+
+**Le flux n'est plus coupé du tout.** L'aperçu reste vivant, le résultat s'affiche dessous, et
+lever le tome suivant suffit : la carte se remplace. C'est l'automatisme que le propriétaire avait
+demandé pour `/ajouter` le 9 septembre — *« c'est bien pour une appli manuelle, mais là on vise de
+l'automatisme »* — appliqué au scanner.
+
+**Ce qu'il fallait pour que ça tienne : ne pas re-résoudre le tome qu'on vient de scanner.** Un
+code-barres resté dans le cadre serait redétecté toutes les 400 ms. `dernierScan` retient le
+dernier ISBN soumis et la boucle ignore un code identique ; il est posé dans `resoudre`, donc la
+saisie manuelle et la détection partagent le même garde-fou et ne se déclenchent pas l'une l'autre.
+
+**Vérifié ce qui est vérifiable depuis le poste, et pas plus.** `BarcodeDetector` n'existe pas sur
+Chrome de bureau et il n'y a pas de caméra utile : **la réouverture de l'aperçu entre deux tomes
+ne peut pas être éprouvée ici**, exactement comme les trois pistes de mise au point de §12. Ce qui
+l'a été, connecté en `Tempestl` : la dégradation sans caméra — la mention s'affiche, l'aperçu est
+masqué, aucun sélecteur, le champ ISBN reste —, et **deux résolutions successives dans le même
+chargement de page**, `9782368779545` → JK HARU t.1 « Possédé / Ouvrir », puis `9782505142829` →
+KAGURABACHI t.10 « À paraître · sept 26 », la carte se remplaçant sans rechargement.
+
+**À juger sur téléphone**, avec le reste de ce qui attend un appareil : la netteté de près, le
+sélecteur de caméra, et maintenant l'enchaînement de deux tomes.
