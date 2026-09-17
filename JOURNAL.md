@@ -4060,3 +4060,63 @@ nul, `couvertureTenteeLe` nul et `idMangaDex` nul avant chaque passage.
 
 Et le contrôle qui compte autant que le gain : sur la série résolue et comparable,
 `Serie.idMangaDex` est **toujours retenu**. Le garde-fou du 16 septembre n'a pas été entamé.
+
+---
+
+### Corrigé — deux effets de bord silencieux : le budget du cron et la mémoire de défilement
+
+**17 septembre 2026.** Constats 7 et 12 de la revue du 16. Deux défauts sans rapport l'un avec
+l'autre, réunis parce qu'ils ont la même signature : rien ne casse, rien ne se journalise, et le
+résultat est simplement faux.
+
+**Le budget du cron ne comptait pas la promotion.** `maxDuration` vaut 60 s et
+`BUDGET_COUVERTURES_MS` 45 s, mais l'échéance était calculée à l'entrée de la passe de
+couvertures, c'est-à-dire **après** `promouvoirSortiesEchues`. Une promotion de 10 s donnait donc
+55 s à la requête, avant même qu'une itération ne déborde de son propre délai externe. Et comme
+`revalidatePath` venait **après** la passe, une fonction tuée à 60 s laissait la promotion
+**commitée mais non revalidée** : le Planning continuait d'afficher des sorties déjà promues et
+Manquants ignorait les tomes créés, jusqu'à ce qu'une autre écriture revalide. Aucun log ne le
+signalait.
+
+Deux gestes, tous deux gratuits : les `revalidatePath` de la promotion passent **avant** la passe
+de couvertures, et le budget est compté **depuis l'entrée de la requête** —
+`BUDGET_COUVERTURES_MS - (Date.now() - debut)`. Un budget négatif n'a pas besoin de cas
+particulier : la boucle sort à la première vérification.
+
+**Ce que ça ne fait pas, et il faut le dire** : aucune valeur de budget ne borne **une**
+itération, dont les délais externes sont de 20 s chacun et dont la pagination MangaDex n'est pas
+bornée. Ce qui est garanti maintenant, c'est que la promotion et sa revalidation sont acquises
+avant qu'on prenne ce risque.
+
+**Éprouvé sur le banc**, sources détournées vers un bouchon qui répond en 1 s, 120 tomes remis
+sans couverture et les 7 sorties datées dans le passé : `/api/cron` rend **200**, promeut les 7
+— `one-piece` t.113 et t.114, `kagurabachi` t.10, `tsugai` t.11, et trois autres —, puis examine
+**50** couvertures et s'arrête net. **46,9 s au total** pour un budget de 45 s compté depuis
+l'entrée. Ce qui n'est pas vérifiable ici : la survie de la revalidation à une coupure à 60 s, qui
+ne se produit que sur Vercel.
+
+**La mémoire de défilement s'écrasait elle-même.** `useMemoireDefilement` appelle
+`window.scrollTo(0, position)` puis branche son écouteur. L'événement `scroll` que ce `scrollTo`
+déclenche est **asynchrone** : il arrive après, et l'écouteur le reçoit. Or au montage le
+document n'a pas encore sa hauteur finale — le navigateur borne donc le défilement, et
+l'événement qui suit mémorise **la valeur bornée** à la place de la vraie. La position se dégrade
+à chaque aller-retour.
+
+L'écouteur ignore désormais le premier événement quand une restauration vient d'être demandée.
+Un `scrollTo` qui ne bouge rien n'émet pas d'événement, et rien n'est alors ignoré : le drapeau ne
+tombe qu'au premier défilement réel, qui en produit des dizaines.
+
+**Reproduit et corrigé dans le navigateur**, connecté en `Tempestl` — 111 éditions, document de
+15 687 px. Même séquence les deux fois : poser 99 999 dans `sessionStorage`, recharger la page,
+attendre que la restauration ait eu lieu, relire.
+
+| | avant | après |
+|---|---|---|
+| valeur posée | 99 999 | 99 999 |
+| position après restauration, bornée par le navigateur | 14 832 | 14 832 |
+| valeur mémorisée ensuite | **14 832 — écrasée** | **99 999 — intacte** |
+
+Et le fonctionnement normal est intact : une molette réelle sur la Collection mémorise bien
+`12 832` après le correctif. **Mesuré à la molette, pas au `scrollTo`** — un défilement
+programmatique depuis le pilote n'émet aucun événement de défilement dans la page, et une première
+tentative a conclu à tort que rien n'était mémorisé. Septième fois que la sonde ment.

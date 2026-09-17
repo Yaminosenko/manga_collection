@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
+import { BUDGET_COUVERTURES_MS } from "@/lib/constants";
 import { acquerirCouverturesManquantes } from "@/lib/couvertures";
 import { promouvoirSortiesEchues } from "@/lib/promotion";
 
@@ -21,9 +22,9 @@ export async function GET(request: NextRequest) {
     return new NextResponse(null, { status: 401 });
   }
 
+  const debut = Date.now();
   const maintenant = new Date();
   const promues = await promouvoirSortiesEchues(maintenant);
-  const couvertures = await acquerirCouverturesManquantes(maintenant);
 
   if (promues.length > 0) {
     revalidatePath("/planning");
@@ -34,6 +35,11 @@ export async function GET(request: NextRequest) {
       revalidatePath(`/edition/${promue.slug}/tomes`);
     }
   }
+
+  const couvertures = await acquerirCouverturesManquantes(
+    maintenant,
+    BUDGET_COUVERTURES_MS - (Date.now() - debut),
+  );
 
   if (couvertures.obtenues > 0) {
     revalidatePath("/");

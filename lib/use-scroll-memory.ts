@@ -26,11 +26,20 @@ function memoriser(cle: string, position: number): void {
 export function useMemoireDefilement(cle: string): void {
   useEffect(() => {
     const position = lire(cle);
+    let restauration = position !== null;
+
     if (position !== null) {
       window.scrollTo(0, position);
     }
 
-    const surDefilement = () => memoriser(cle, window.scrollY);
+    const surDefilement = () => {
+      if (restauration) {
+        restauration = false;
+        return;
+      }
+      memoriser(cle, window.scrollY);
+    };
+
     window.addEventListener("scroll", surDefilement, { passive: true });
     return () => window.removeEventListener("scroll", surDefilement);
   }, [cle]);
