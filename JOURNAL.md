@@ -4419,3 +4419,12 @@ survit à 16.
 **Ce que ça ne change pas** : l'URL de production reste `manga-collection-wcj8.vercel.app`, le
 dépôt et le dossier de travail gardent leur nom `manga_collection`, et une PWA déjà installée
 ne se renomme pas toute seule — il faut la désinstaller et la réinstaller.
+
+**Déployé et vérifié en production le même jour**, sans cookie : le manifeste servi porte
+`"name":"Zenkan"`, les cinq icônes, `apple-icon.png` et `favicon.ico` rendent 200 aux tailles
+exactes des fichiers commités — donc pas un cache —, et `/collection` rend toujours 307.
+
+**Puis vérifié sur téléphone, réinstallation faite.** C'était le seul point que le poste ne
+pouvait pas trancher : le nom et l'icône sont ceux attendus, et **la découpe `maskable` du
+lanceur épargne le sceau**, qui est dans le coin bas-droit et donc le premier attaqué par une
+découpe en cercle. Les 14 % de marge font ce qu'on leur demande.
