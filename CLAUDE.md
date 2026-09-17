@@ -252,6 +252,12 @@ dépendance et sans un seul gestionnaire de `touch` écrit à la main. Une pasti
 la piste** au lieu de changer un état, et c'est la position de la piste qui dit quel panneau est
 actif : une seule source de vérité, donc la pastille ne peut pas mentir sur ce qu'on voit.
 
+**Un geste ne fait jamais qu'un panneau** — `scroll-snap-stop: always`. Sans lui, l'inertie d'un
+geste franc emporte jusqu'au dernier panneau, et viser les Manquants en glissant trop fort fait
+atterrir sur la Wish list. Aller de la Collection à la Wish list demande donc **deux gestes**,
+et c'est le prix assumé de ne jamais se tromper de panneau. **Le tap sur une pastille, lui, saute
+directement** : la règle ne s'applique qu'au geste, pas au défilement programmé — vérifié.
+
 **Ça coûte le défilement du document, et c'est la vraie décision.** Une piste ne peut pas
 laisser la fenêtre porter le défilement vertical — sa hauteur serait celle du plus grand
 panneau, et on défilerait dans le vide depuis la Wish list. L'espace collection est donc une

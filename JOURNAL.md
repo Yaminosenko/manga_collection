@@ -4791,3 +4791,26 @@ serveur.**
 des Safari d'avant 15.4, où un membre d'énumération invalide **lève**, et sans `scroll-behavior`
 sur l'élément l'omettre donne exactement le même défilement immédiat. Ce n'était pas la panne,
 c'en était une en puissance sur un appareil plus ancien.
+
+### Corrigé — un geste ne franchit plus qu'un panneau (17 septembre 2026)
+
+**Premier retour d'usage réel, une fois le JavaScript servi au téléphone.** Le glissement marche,
+mais un geste franc part en inertie jusqu'au **dernier** panneau : viser les Manquants en
+glissant un peu fort fait atterrir sur la Wish list, et l'erreur est fréquente.
+
+`scroll-snap-stop: always` sur chaque panneau. Le navigateur ne peut plus dépasser le point de
+calage suivant, quelle que soit la vélocité. Aller de la Collection à la Wish list demande donc
+**deux gestes** — c'est ce qui est voulu, et c'est le prix de ne jamais se tromper de panneau.
+
+**Le risque qui allait avec, vérifié avant de conclure** : la règle aurait pu s'appliquer au
+défilement programmé et transformer un tap sur « Wish list » en deux sauts, ou pire, en arrêt aux
+Manquants. Elle ne s'y applique pas — depuis la Collection, le tap atterrit directement sur la
+Wish list, URL et pastille comprises. C'est ce que dit la spécification, mais le document a la
+leçon assez de fois pour ne pas s'en contenter.
+
+**Et la mesure a encore failli mentir.** Deux relevés successifs ont donné la piste immobile à
+l'index 0 après un tap : l'onglet Chrome était passé `hidden` entre le clic et la lecture, donc
+sans `requestAnimationFrame`, donc **le défilement doux était gelé à mi-course**. Ce n'est pas le
+même symptôme que la fois précédente — là c'étaient les événements qui ne partaient pas, ici
+c'est l'animation qui ne progresse pas — mais c'est la même cause et le même remède : conclure
+sur une capture d'écran, qui rend l'onglet visible, plutôt que sur une sonde.
