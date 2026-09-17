@@ -92,16 +92,28 @@ export async function promouvoirSortie(
   return promouvoir(sortie, utilisateurId);
 }
 
-export async function promouvoirSortiesEchues(instant: Date): Promise<SortiePromue[]> {
+export type BilanPromotion = {
+  promues: SortiePromue[];
+  horsSequence: string[];
+};
+
+export async function promouvoirSortiesEchues(instant: Date): Promise<BilanPromotion> {
   const echues = await prisma.sortie.findMany({
     where: { date: { lt: debutDuMois(instant) } },
     orderBy: [{ date: "asc" }, { numero: "asc" }],
-    select: SORTIE_COMPLETE,
+    select: { ...SORTIE_COMPLETE, edition: { select: { slug: true, tomesParus: true } } },
   });
 
   const promues: SortiePromue[] = [];
+  const horsSequence: string[] = [];
+
   for (const sortie of echues) {
+    if (sortie.numero > sortie.edition.tomesParus + 1) {
+      horsSequence.push(`${sortie.edition.slug} t${sortie.numero} sur ${sortie.edition.tomesParus}`);
+      continue;
+    }
     promues.push(await promouvoir(sortie, null));
   }
-  return promues;
+
+  return { promues, horsSequence };
 }

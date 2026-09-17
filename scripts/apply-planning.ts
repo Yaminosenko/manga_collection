@@ -29,12 +29,15 @@ function charger<T>(chemin: string, defaut: T): T {
   return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as T) : defaut;
 }
 
-function finDeFenetre(manifeste: Manifeste): Date | null {
+function fenetre(manifeste: Manifeste): { debut: Date; fin: Date } | null {
   const dates = Object.values(manifeste)
     .flatMap((fiche) => [...Object.values(fiche.tomes), ...Object.values(fiche.aParaitre ?? {})])
     .map((tome) => tome.date);
   if (dates.length === 0) return null;
-  return new Date(dates.reduce((plusTardive, date) => (date > plusTardive ? date : plusTardive)));
+  return {
+    debut: new Date(dates.reduce((plusTot, date) => (date < plusTot ? date : plusTot))),
+    fin: new Date(dates.reduce((plusTardive, date) => (date > plusTardive ? date : plusTardive))),
+  };
 }
 
 async function restaurer() {
@@ -131,10 +134,13 @@ async function main() {
   let sortiesRemplacees = 0;
   const elargies: string[] = [];
 
-  const fin = finDeFenetre(manifeste);
-  const horsFenetre = fin
+  const couverte = fenetre(manifeste);
+  const horsFenetre = couverte
     ? await prisma.sortie.count({
-        where: { editionId: { in: editions.map((edition) => edition.id) }, date: { gt: fin } },
+        where: {
+          editionId: { in: editions.map((edition) => edition.id) },
+          OR: [{ date: { gt: couverte.fin } }, { date: { lt: couverte.debut } }],
+        },
       })
     : 0;
 
@@ -164,9 +170,12 @@ async function main() {
       }
     }
 
-    if (fin) {
+    if (couverte) {
       const { count } = await prisma.sortie.deleteMany({
-        where: { editionId: edition.id, date: { lte: fin } },
+        where: {
+          editionId: edition.id,
+          date: { gte: couverte.debut, lte: couverte.fin },
+        },
       });
       sortiesRemplacees += count;
     }
@@ -194,9 +203,9 @@ async function main() {
   console.log(
     `${sortiesEcrites} sorties annoncees enregistrees, ${sortiesRemplacees} remplacees dans la fenetre du manifeste`,
   );
-  if (fin) {
+  if (couverte) {
     console.log(
-      `fenetre couverte jusqu'au ${fin.toISOString().slice(0, 10)} : ${horsFenetre} sorties posterieures conservees`,
+      `fenetre couverte du ${couverte.debut.toISOString().slice(0, 10)} au ${couverte.fin.toISOString().slice(0, 10)} : ${horsFenetre} sorties hors fenetre conservees`,
     );
   }
   console.log(`compteurs : ${JSON.stringify(compteurs)}`);

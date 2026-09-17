@@ -4251,3 +4251,54 @@ KAGURABACHI t.10 « À paraître · sept 26 », la carte se remplaçant sans rec
 
 **À juger sur téléphone**, avec le reste de ce qui attend un appareil : la netteté de près, le
 sélecteur de caméra, et maintenant l'enchaînement de deux tomes.
+
+---
+
+### Corrigé — le planning fabriquait des tomes fantômes et purgeait ce qu'il ne couvrait pas
+
+**17 septembre 2026.** Constats 6 et 10 de la revue du 16, qui portent tous deux sur la `Sortie`
+et sur la même faute : **agir au-delà de ce qu'on sait**.
+
+**Une annonce hors séquence fabriquait des tomes vides.** `promouvoir()` comble **tout**
+l'intervalle entre `tomesParus` et le numéro de la sortie, puis écrit
+`max(tomesParus, sortie.numero)`. Une édition à 10 tomes portant une `Sortie` pour le tome 15 —
+le planning manga-news annonce parfois un coffret ou un tome lointain, et `creerDepuisCandidat`
+crée toutes les annonces de la fenêtre sans vérifier la contiguïté — se retrouvait avec les tomes
+11 à 14 **créés vides** et `tomesParus = 15`. Ces quatre remontaient dans Manquants comme des
+trous à combler et gonflaient le dénominateur `X / 15` partout, sans que rien ne les distingue
+d'un vrai manque.
+
+**Le partage retenu tient à qui promeut, et c'est la lettre de §13.1.** Le cron n'a pour preuve
+qu'une date dans un CSV : il **refuse** désormais une sortie qui n'est pas le tome suivant, la
+laisse au Planning et la nomme dans son bilan (`horsSequence`, rendu par `/api/cron`). « Je l'ai »,
+lui, est l'**enregistrement d'un fait** par quelqu'un qui tient le tome — si le 15 est dans ses
+mains, les 11 à 14 sont parus, et combler l'intervalle est correct. C'est exactement la distinction
+que §13.1 invoque pour autoriser un utilisateur à promouvoir : *« ce n'est pas une modification
+éditoriale mais l'enregistrement d'un fait »*.
+
+**Et la purge des `Sortie` de `apply-planning` n'avait qu'une borne haute.** `fin` est la date la
+plus tardive du manifeste, et le `deleteMany` prenait tout ce qui est `<= fin` — donc **tout le
+passé**, y compris les sorties dérivées sur-le-champ par `creerDepuisCandidat` pour des mois que
+le manifeste ne couvre pas. §12 énonce pourtant la règle : *« le silence d'un import ne vaut pas
+suppression ; toute purge se borne à la fenêtre que le manifeste couvre réellement »*. La fenêtre
+a maintenant ses deux bornes, et le compte de sorties conservées les compte des deux côtés.
+
+**Vérifié sur le banc, les deux fois par comparaison avec le code d'avant.**
+
+Pour la promotion, sur `black-lagoon`, 13 tomes parus :
+
+| Ce qui a été fait | Résultat |
+|---|---|
+| `Sortie` t.18 datée dans le passé, puis le cron | **promues = [], horsSequence = ["black-lagoon t18 sur 13"]** ; `tomesParus` reste **13**, 13 volumes, la sortie **survit** |
+| `Sortie` t.14, puis le cron | promue normalement : `tomesParus = 14`, 14 volumes, sortie consommée |
+| « Je l'ai » sur un t.18 alors que l'édition est à 14 | comble l'intervalle comme avant : `tomesParus = 18`, 18 volumes |
+
+L'ancien code aurait créé quatre volumes vides et posé 18 dès la première ligne.
+
+Pour la purge, un témoin posé sur `act-age` au **2 janvier 2000**, antérieur au début de la
+fenêtre du manifeste — **2000-04-01 → 2024-01-24** :
+
+| Code | Ce que le script dit | Le témoin |
+|---|---|---|
+| corrigé | « fenetre couverte du 2000-04-01 au 2024-01-24 : 13 sorties hors fenetre conservees » | **présent** |
+| d'avant | « 1 remplacees dans la fenetre du manifeste » | **supprimé** |
