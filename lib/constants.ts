@@ -152,6 +152,8 @@ export const COULEUR_FOND_APPLICATION = "#161826";
 export const CHEMIN_ACCES = "/acces";
 export const CHEMIN_INSCRIPTION = "/inscription";
 export const CHEMIN_COMPTE = "/compte";
+export const CHEMIN_COMPTE_IDENTITE = "/compte/identite";
+export const CHEMIN_COMPTE_MOT_DE_PASSE = "/compte/mot-de-passe";
 export const COOKIE_ACCES = "collection.acces";
 export const DUREE_ACCES_SECONDES = 31_536_000;
 
@@ -184,8 +186,10 @@ export const LIBELLE_CREER_COMPTE = "Créer le compte";
 export const LIBELLE_VERS_INSCRIPTION = "Pas encore de compte ? En créer un";
 export const LIBELLE_VERS_ACCES = "Déjà un compte ? Se connecter";
 export const LIBELLE_ENREGISTRER = "Enregistrer";
+export const LIBELLE_MODIFIER_IDENTITE = "Modifier l’identité";
 export const LIBELLE_CHANGER_MOT_DE_PASSE = "Changer le mot de passe";
 export const LIBELLE_DECONNEXION = "Se déconnecter";
+export const LIBELLE_RETOUR_COMPTE = "Retour à mon compte";
 
 export const LIBELLE_ACCES_REFUSE = "Identifiant ou mot de passe incorrect.";
 export const LIBELLE_SESSION_EXPIREE = "Session expirée : reconnectez-vous.";

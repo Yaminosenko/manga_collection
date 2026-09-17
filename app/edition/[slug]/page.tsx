@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CLASSE_BOUTON_SOUS_PAGE } from "@/components/champ";
 import { Cover } from "@/components/cover";
 import { ProgressBar } from "@/components/progress-bar";
 import { ArrowLeft, ArrowUpRight, CaretRight } from "@/components/icons";
@@ -256,7 +257,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
 
         <Link
           href={`/edition/${edition.slug}/etat`}
-          className="flex min-h-11 w-full items-center justify-center gap-[8px] rounded-md border border-neutral-800 text-[13px] font-medium tracking-[0.06em] text-neutral-300 uppercase transition-colors hover:border-accent-600 hover:text-accent-200"
+          className={CLASSE_BOUTON_SOUS_PAGE}
         >
           {LIBELLE_MODIFIER_ETAT}
           <CaretRight className="size-[12px]" />
