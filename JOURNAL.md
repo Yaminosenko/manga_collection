@@ -4743,3 +4743,51 @@ menu, qui la recouvre à deux pixels près — la piste a glissé, l'URL a chang
 `document.elementFromPoint` pour établir que **le menu était bien au-dessus** et que seul le
 clic était mal placé. Les refs d'éléments évitent le calcul d'échelle ; les coordonnées ne
 valent que juste après une capture, et pas quand deux cibles se superposent.
+
+### Corrigé — le téléphone recevait le HTML sans le JavaScript (17 septembre 2026)
+
+**Premier essai du glissement sur téléphone, par l'IP du poste**, le port USB de l'appareil étant
+cassé et rien n'étant déployé. Rapport du propriétaire : le défilement répond, mais on reste
+« indéfiniment dans Collection » — la pastille ne change pas, on n'atteint pas les Manquants, et
+rien ne se sélectionne dans la Wish list.
+
+**La première hypothèse était fausse, et elle était séduisante** : `inert` sur les panneaux hors
+écran, basculant au milieu du geste et annulant le défilement tactile. Le document l'avait même
+écrit la veille comme un point à juger sur l'appareil. C'était un défaut plausible, spécifique au
+tactile, et qui expliquait les symptômes.
+
+**La cause était ailleurs, et le serveur la disait depuis le début** :
+
+```
+⚠ Blocked cross-origin request to Next.js dev resource /_next/static/chunks/_09bcc1e._.js
+  from "10.40.30.64".
+```
+
+`next.config.ts` portait `allowedDevOrigins: ["192.168.1.*", "192.168.0.*", "10.0.0.*"]`. Le poste
+est en **10.40.30.64**, qui ne correspond à aucun. Next a donc servi le HTML et **refusé les
+chunks JavaScript**. Ce qui est en CSS pur marchait — le défilement vertical, le calage de la
+piste — et tout React était mort : pastilles muettes, aucun changement d'état, aucune réécriture
+d'URL. Et les deux panneaux inactifs restaient `inert` **tels que le serveur les avait rendus**,
+puisque rien ne venait mettre l'attribut à jour : injoignables pour toujours.
+
+**Le signe qui aurait dû trancher plus tôt** : le log ne montre **aucune requête `?_rsc=`**.
+`/edition/ajin`, `/planning`, `/` arrivent en chargements complets. Le routeur client de Next ne
+tournait pas, et ça se lit en une ligne de log — bien avant toute théorie sur le tactile.
+
+**Deux corrections, et une seule est la panne.** Le sous-réseau du poste entre dans
+`allowedDevOrigins`, vérifié : un chunk `/_next/static/chunks/…` rend 200 depuis l'IP du poste et
+le log ne porte plus un seul blocage.
+
+**Et `inert` est retiré quand même**, pour un motif que l'incident a mis en évidence et qui ne
+dépend pas de lui : **un `inert` piloté par l'état client est déjà dans le HTML du serveur.**
+Tant que React n'a pas repris la main, deux panneaux sur trois ne défilent pas et ne se tapent
+pas. En production le JavaScript arrive, mais la fenêtre existe, et sur un téléphone lent elle
+n'est pas nulle. Le problème qu'`inert` réglait — la tabulation qui entre dans un panneau hors
+écran et fait glisser la piste — est un problème de clavier sur une application pensée pour le
+pouce. **S'il faut y revenir, ce sera un `inert` posé après le montage, jamais rendu par le
+serveur.**
+
+`scrollTo({ behavior: "instant" })` perd son `behavior` au passage : la valeur n'est pas connue
+des Safari d'avant 15.4, où un membre d'énumération invalide **lève**, et sans `scroll-behavior`
+sur l'élément l'omettre donne exactement le même défilement immédiat. Ce n'était pas la panne,
+c'en était une en puissance sur un appareil plus ancien.

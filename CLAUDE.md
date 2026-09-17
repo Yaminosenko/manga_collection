@@ -262,9 +262,15 @@ que sur les pages qui se déclarent plein écran. Conséquence connue : hors app
 la barre d'adresse mobile ne se rétracte plus. Le manifeste étant en `standalone`, la cible ne
 la voit pas.
 
-**Les panneaux hors écran sont `inert`** : montés tous les trois, leurs liens entraient sinon
-dans l'ordre de tabulation et le navigateur faisait défiler la piste pour amener l'élément
-focalisé à l'écran, sans qu'aucun geste l'ait demandé.
+**Les panneaux hors écran ne sont pas `inert`, et c'est une décision.** Ils l'ont été une
+journée : montés tous les trois, leurs liens entrent sinon dans l'ordre de tabulation et le
+navigateur fait défiler la piste pour amener l'élément focalisé à l'écran, sans qu'aucun geste
+l'ait demandé. Mais un `inert` piloté par l'état client **est déjà dans le HTML du serveur** :
+tant que React n'a pas repris la main, deux panneaux sur trois sont morts — ni défilables, ni
+tapables. Le 17 septembre 2026 ça a rendu l'application inutilisable sur téléphone pendant que
+le JavaScript ne se chargeait pas, et transformé une gêne en panne. L'ordre de tabulation est un
+problème de clavier sur une application pensée pour le pouce ; **s'il faut y revenir, ce sera un
+`inert` posé après le montage, jamais rendu par le serveur.**
 
 **Mesuré, là où `IDEES.md` disait de ne pas supposer** : les panneaux voisins **chargent bien**
 leurs images à l'ouverture — 15/15 pour Manquants, 2/2 pour la Wish list, contre 35 sur 111 pour
@@ -1221,6 +1227,15 @@ détail et les cas réels sont dans `JOURNAL.md`.
   poste avait déjà rendu `SELF_SIGNED_CERT_IN_CHAIN` par intermittence sur cet hôte. **Tout
   script qui parle à MangaBaka doit donc être reprenable**, et `mangabaka:fetch` l'est : il ne
   recalcule pas une entrée déjà écrite au manifeste.
+- **Un téléphone qui atteint `next dev` par l'IP du poste reçoit le HTML sans le JavaScript**, si
+  son sous-réseau n'est pas dans `allowedDevOrigins` (`next.config.ts`). Next bloque les
+  ressources `/_next/static/*` en dev pour toute origine autre que celle d'où il a été lancé, le
+  dit **dans le log du serveur et nulle part ailleurs**, et la page s'affiche normalement. Ce qui
+  est en CSS pur marche donc — défilement, calage de la piste — et **tout ce qui est React est
+  muet**. Constaté le 17 septembre 2026, avec une demi-heure passée à chercher un défaut tactile
+  qui n'existait pas. Deux signes qui ne trompent pas : le log dit `Blocked cross-origin request
+  to Next.js dev resource`, et **aucune requête `?_rsc=` n'apparaît** — chaque navigation est un
+  chargement complet, preuve que le routeur client ne tourne pas.
 - **Après un `git pull` touchant au schéma, `npx prisma generate`** — `lib/generated/` est
   ignoré par git. Après un déplacement de route, purger `.next`, et le redémarrer si un serveur
   de développement tournait.
@@ -1332,7 +1347,6 @@ Ce qui reste :
   |---|---|
   | le glissement depuis le bord gauche, sur le panneau Collection | il entre en concurrence avec le geste système « retour » d'iOS, et ça ne se contourne pas proprement |
   | le saut d'une frame à l'ouverture de `/manquants` et `/wishlist` | la piste se positionne dans un effet, donc après la première peinture |
-  | `inert` sur les panneaux hors écran | il bloque le clic ; qu'il ne bloque pas le défilement tactile du panneau entrant reste à voir |
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :

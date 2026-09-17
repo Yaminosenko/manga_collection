@@ -23,10 +23,7 @@ export function usePanneauVisible(
       return;
     }
 
-    rail.scrollTo({
-      left: indexDuPanneau(panneauInitial) * rail.clientWidth,
-      behavior: "instant",
-    });
+    rail.scrollTo({ left: indexDuPanneau(panneauInitial) * rail.clientWidth });
 
     const surDefilement = () => {
       const atteint = PANNEAUX[Math.round(rail.scrollLeft / rail.clientWidth)];

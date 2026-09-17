@@ -336,7 +336,6 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
               key={cle}
               ref={scrollers[cle]}
               aria-label={libelle}
-              inert={cle !== panneau}
               className="panneau-defilant flex w-full flex-none snap-start flex-col overflow-y-auto overscroll-y-contain px-[18px] pt-[calc(var(--hauteur-bandeau)+12px)] pb-[18px]"
             >
               <PanelStats stats={stats} prix={prix} />
