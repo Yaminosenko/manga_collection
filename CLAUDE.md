@@ -1331,7 +1331,7 @@ Ce qui reste :
 
 | Commande | Rôle |
 |---|---|
-| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout. **Ne sauvegarde aucun mot de passe** — une restauration laisse les comptes sans accès |
+| `npm run db:backup` | **avant toute manipulation de masse.** `-- --restore --reset` remonte tout **dans une seule transaction, contrôle de compteurs compris** (17 septembre 2026) : une coupure ou une divergence n'écrit rien du tout, au lieu de laisser la base vidée à moitié. **Ne sauvegarde aucun mot de passe** — une restauration laisse les comptes sans accès |
 | `npm run compte` | les accès. `-- --lister` (lecture seule) montre chaque compte et ses compteurs ; `-- --proprietaire --identifiant <pseudo> [--email <adresse>]` pose un accès **sur la ligne `PROPRIETAIRE` existante**, sans déplacer une seule ligne de collection ; `-- --reinitialiser <pseudo>` repose un mot de passe et coupe les sessions. Le mot de passe est demandé sans écho |
 | `npm run planning:import <dossier>` | lit les CSV manga-news, n'écrit qu'un manifeste — **relire aussi `data/planning-divergences.json`** |
 | `npm run planning:apply` | écrit `tomesParus`, ISBN, dates et sorties annoncées. `-- --revert` remonte `data/editions-avant-planning.json`, qui porte l'état **par tome** depuis le 17 septembre 2026 — les éditions sauvegardées avant gardent leurs ISBN tels quels, le script les nomme |
@@ -1397,6 +1397,13 @@ Le blocage du port 5432 décrit en §7 est propre au poste professionnel. Sur un
   champ ISBN. Si la netteté redevient un problème de près, la piste suivante n'est pas la mise
   au point mais **la lumière** : `torch` est largement supportée sur Android et n'est pas
   implémentée.
+
+  **Une quatrième chose est à juger dans le même passage sur téléphone, ajoutée le 17 septembre
+  2026 : l'enchaînement de deux tomes.** Le flux n'est plus coupé à la détection — il l'était, et
+  rien ne le rouvrait, donc il fallait **recharger la page entre deux tomes**. L'aperçu reste
+  désormais vivant, le résultat s'affiche dessous, et lever le tome suivant suffit. Un code resté
+  dans le cadre n'est pas re-résolu : `dernierScan` retient le dernier ISBN soumis, et il est posé
+  dans `resoudre`, donc la saisie manuelle et la détection partagent le même garde-fou.
 
 ---
 
@@ -1847,6 +1854,15 @@ modification éditoriale mais l'enregistrement d'un fait** : le tome est paru. `
 refuse déjà une date future côté serveur, et le cron fait la même chose sans personne derrière.
 Effet assumé : quand l'un clique, la sortie quitte le Planning de l'autre et le tome entre dans
 ses Manquants — ce qui est correct, le tome est bien sorti.
+
+**Deux limites posées le 17 septembre 2026, du même raisonnement.** `promouvoirSortie` exige
+désormais un `SuiviEdition` : on ne promeut pas la sortie partagée d'une édition qu'on ne suit
+pas, sinon l'autre perd sa sortie au profit de personne. Et **le cron refuse une sortie qui n'est
+pas le tome suivant** — une annonce pour le tome 15 sur une édition à 10 créait quatre volumes
+vides et posait `tomesParus = 15`. Il la laisse au Planning et la nomme dans son bilan
+(`horsSequence`). « Je l'ai » comble l'intervalle comme avant, et c'est la même phrase qui le
+justifie : celui qui tient le tome 15 atteste que les 11 à 14 sont parus ; le cron, lui, n'a
+qu'une date dans un CSV.
 
 ##### Une décision d'écran que le schéma force
 
