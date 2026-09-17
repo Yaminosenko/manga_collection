@@ -222,6 +222,12 @@ bas porte la même, de sorte que les deux bords fixes se répondent.
   mémorisée par panneau**, sous trois clés : un tri par tomes manquants n'a rien à faire sur la
   Collection. Les trois listes sont triées chacune avec la sienne, de sorte qu'aucun panneau ne
   se réordonne sous les yeux pendant un glissement.
+- **Le sens n'a pas de ligne à lui : on retape le critère.** Un premier tap le sélectionne avec
+  son sens par défaut, les suivants l'inversent, et **une flèche haut ou bas remplace la coche**
+  sur le critère actif — le sens se lit donc là où il s'applique, au lieu d'une rangée
+  « Ordre croissant / décroissant » en pied de menu qui portait un état sans dire de quoi.
+  Conséquence : **le menu ne se ferme plus sur une sélection**, sans quoi on ne pourrait pas
+  retaper ; il se ferme d'un tap en dehors.
 - **Les chiffres ne sont pas dans le bandeau** : ils sont en tête du contenu et défilent avec
   lui, chaque panneau parlant du sien — tomes, éditions et valeur pour la Collection, tomes et
   éditions pour les Manquants, séries pour la Wish list. Le nombre est en 17 px sur son mot en

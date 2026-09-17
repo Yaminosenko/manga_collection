@@ -4707,3 +4707,34 @@ le même défaut que le 17 septembre au matin, un cran plus bas, et la même cor
   de tri est simplement posé sur les trois panneaux. Il fallait de toute façon que le bandeau
   n'ait qu'une géométrie, sans quoi il aurait tressailli au milieu de chaque glissement.
 - **La pastille du compte fait toujours 38 px**, sous la cible tactile du projet.
+
+### Fait — le sens du tri se règle en retapant le critère (17 septembre 2026)
+
+**Demande du propriétaire, dans la foulée du glissement.** Le menu de tri portait une rangée
+« Ordre croissant / décroissant » en pied, séparée des critères. Elle disparaît : **un premier
+tap sur un critère le sélectionne avec son sens par défaut, les suivants l'inversent**, et une
+**flèche haut ou bas remplace la coche** sur le critère actif.
+
+Ce que ça corrige, au-delà du geste : la rangée portait un état — le sens courant — **sans dire
+de quoi**, à distance du critère auquel il s'appliquait, et son libellé disait l'action et non
+l'état, ce qui se lit à l'envers une fois sur deux. La flèche dit l'état, là où il s'applique.
+
+**Conséquence assumée : le menu ne se ferme plus sur une sélection**, sans quoi retaper serait
+impossible. Il se ferme d'un tap en dehors, par le voile déjà en place.
+
+Deux icônes Phosphor ajoutées à `components/icons.tsx`, `ArrowUp` et `ArrowDown` ; le sens est
+aussi écrit en `sr-only` à côté de la flèche, les deux libellés de l'ancienne rangée y servant.
+
+**Vérifié à l'écran, contre la liste et contre `localStorage`** : Alphabétique croissant donne
+ACT-AGE en tête, un tap donne YUNA DE LA PENSION YURAGI et `{"croissant":false}`, un second
+ramène ACT-AGE. Un tap sur « Tomes possédés » le prend à son défaut décroissant — BLEACH 74,
+MY HERO ACADEMIA 42, BLACK CLOVER 37 — et un tap de plus, en clic réel cette fois, l'inverse :
+flèche vers le haut, et les éditions à zéro tome remontent en tête. Le menu est resté ouvert
+aux quatre taps.
+
+**Et une coordonnée de capture a encore menti.** Un clic posé aux coordonnées lues sur une
+capture à l'échelle 0,6 a atterri sur la pastille « Wish list » au lieu du premier élément du
+menu, qui la recouvre à deux pixels près — la piste a glissé, l'URL a changé, et il a fallu
+`document.elementFromPoint` pour établir que **le menu était bien au-dessus** et que seul le
+clic était mal placé. Les refs d'éléments évitent le calcul d'échelle ; les coordonnées ne
+valent que juste après une capture, et pas quand deux cibles se superposent.

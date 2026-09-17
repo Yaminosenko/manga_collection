@@ -31,6 +31,22 @@ export function ArrowUpRight({ className }: IconProps) {
   );
 }
 
+export function ArrowUp({ className }: IconProps) {
+  return (
+    <Icon className={className}>
+      <path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z" />
+    </Icon>
+  );
+}
+
+export function ArrowDown({ className }: IconProps) {
+  return (
+    <Icon className={className}>
+      <path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z" />
+    </Icon>
+  );
+}
+
 export function DotsThreeOutline({ className }: IconProps) {
   return (
     <Icon className={className}>

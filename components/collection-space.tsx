@@ -6,7 +6,7 @@ import { CollectionPanel } from "@/components/collection-panel";
 import { MissingPanel } from "@/components/missing-panel";
 import { PanelStats } from "@/components/panel-stats";
 import { WishlistPanel } from "@/components/wishlist-panel";
-import { Check, MagnifyingGlass, SortAscending, User } from "@/components/icons";
+import { ArrowDown, ArrowUp, MagnifyingGlass, SortAscending, User } from "@/components/icons";
 import {
   CHEMIN_COMPTE,
   CLES_STOCKAGE_DEFILEMENT,
@@ -261,40 +261,37 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
                   aria-hidden="true"
                 />
                 <div className="bg-surface absolute top-[42px] right-0 z-20 flex w-[220px] flex-col rounded-md border border-neutral-800 py-[4px]">
-                  {optionsDeTri.map((option) => (
-                    <button
-                      key={option.cle}
-                      type="button"
-                      onClick={() => {
-                        appliquerPreference({
-                          tri: option.cle,
-                          croissant: CROISSANT_PAR_DEFAUT[option.cle],
-                        });
-                        setMenuOuvert(false);
-                      }}
-                      className="hover:text-accent-200 flex min-h-11 items-center justify-between gap-[8px] px-[12px] text-left text-[13px] text-neutral-300"
-                    >
-                      {option.libelle}
-                      {option.cle === preference.tri ? (
-                        <Check className="text-accent size-[12px] flex-none" />
-                      ) : null}
-                    </button>
-                  ))}
-
-                  <div className="border-divider mt-[4px] border-t pt-[4px]">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        appliquerPreference({
-                          tri: preference.tri,
-                          croissant: !preference.croissant,
-                        })
-                      }
-                      className="hover:text-accent-200 flex min-h-11 w-full items-center px-[12px] text-left text-[13px] text-neutral-300"
-                    >
-                      {preference.croissant ? LIBELLE_SENS_DECROISSANT : LIBELLE_SENS_CROISSANT}
-                    </button>
-                  </div>
+                  {optionsDeTri.map((option) => {
+                    const actif = option.cle === preference.tri;
+                    const Fleche = preference.croissant ? ArrowUp : ArrowDown;
+                    return (
+                      <button
+                        key={option.cle}
+                        type="button"
+                        onClick={() =>
+                          appliquerPreference({
+                            tri: option.cle,
+                            croissant: actif
+                              ? !preference.croissant
+                              : CROISSANT_PAR_DEFAUT[option.cle],
+                          })
+                        }
+                        className="hover:text-accent-200 flex min-h-11 items-center justify-between gap-[8px] px-[12px] text-left text-[13px] text-neutral-300"
+                      >
+                        {option.libelle}
+                        {actif ? (
+                          <>
+                            <span className="sr-only">
+                              {preference.croissant
+                                ? LIBELLE_SENS_CROISSANT
+                                : LIBELLE_SENS_DECROISSANT}
+                            </span>
+                            <Fleche className="text-accent size-[12px] flex-none" />
+                          </>
+                        ) : null}
+                      </button>
+                    );
+                  })}
                 </div>
               </>
             ) : null}
