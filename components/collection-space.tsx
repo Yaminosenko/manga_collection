@@ -23,6 +23,7 @@ import {
   PLACEHOLDER_RECHERCHE,
   PREFIXE_VALEUR_PARTIELLE,
   TRIS,
+  TRIS_PAR_PANNEAU,
   type CleTri,
   type ClePanneau,
 } from "@/lib/constants";
@@ -31,29 +32,47 @@ import { formaterNombre, formaterPrix } from "@/lib/format";
 import { useHauteurBandeau } from "@/lib/use-header-height";
 import { useEnTeteEscamotable } from "@/lib/use-header-visibility";
 import { useMemoireDefilement } from "@/lib/use-scroll-memory";
-import { usePreferenceTri } from "@/lib/use-sort-preference";
+import { usePreferenceTri, type PreferenceTri } from "@/lib/use-sort-preference";
 import {
   comportementDefilement,
   indexDuPanneau,
   usePanneauVisible,
 } from "@/lib/use-visible-panel";
-import type { EspaceCollection, LigneCollection } from "@/lib/domain";
+import type { EspaceCollection } from "@/lib/domain";
 
-function tauxCompletion(ligne: LigneCollection): number {
-  return ligne.tomesParus === 0 ? 0 : ligne.possedes / ligne.tomesParus;
+type LigneTriable = {
+  titre: string;
+  tomesParus: number;
+  ajouteeLe: number;
+  possedes?: number;
+  manquants?: number[];
+};
+
+function tauxCompletion(ligne: LigneTriable): number {
+  return ligne.tomesParus === 0 ? 0 : (ligne.possedes ?? 0) / ligne.tomesParus;
 }
 
-function comparer(a: LigneCollection, b: LigneCollection, tri: CleTri): number {
+function comparer(a: LigneTriable, b: LigneTriable, tri: CleTri): number {
   switch (tri) {
     case "alphabetique":
       return a.titre.localeCompare(b.titre, "fr");
     case "tomesPossedes":
-      return a.possedes - b.possedes;
+      return (a.possedes ?? 0) - (b.possedes ?? 0);
+    case "tomesManquants":
+      return (a.manquants?.length ?? 0) - (b.manquants?.length ?? 0);
     case "completion":
       return tauxCompletion(a) - tauxCompletion(b);
     case "ajoutRecent":
       return a.ajouteeLe - b.ajouteeLe;
   }
+}
+
+function trier<T extends LigneTriable>(lignes: T[], preference: PreferenceTri): T[] {
+  const sens = preference.croissant ? 1 : -1;
+  return lignes.sort((a, b) => {
+    const principal = comparer(a, b, preference.tri) * sens;
+    return principal !== 0 ? principal : a.titre.localeCompare(b.titre, "fr");
+  });
 }
 
 function statsDuPanneau(espace: EspaceCollection, panneau: ClePanneau) {
@@ -113,8 +132,22 @@ type CollectionSpaceProps = {
 export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps) {
   const [panneau, setPanneau] = useState<ClePanneau>(panneauInitial);
   const [recherche, setRecherche] = useState("");
-  const [preference, appliquerPreference] = usePreferenceTri();
+  const [triCollection, appliquerTriCollection] = usePreferenceTri("collection");
+  const [triManquants, appliquerTriManquants] = usePreferenceTri("manquants");
+  const [triWishlist, appliquerTriWishlist] = usePreferenceTri("wishlist");
   const [menuOuvert, setMenuOuvert] = useState(false);
+  const preferences: Record<ClePanneau, PreferenceTri> = {
+    collection: triCollection,
+    manquants: triManquants,
+    wishlist: triWishlist,
+  };
+  const applications: Record<ClePanneau, (preference: PreferenceTri) => void> = {
+    collection: appliquerTriCollection,
+    manquants: appliquerTriManquants,
+    wishlist: appliquerTriWishlist,
+  };
+  const preference = preferences[panneau];
+  const appliquerPreference = applications[panneau];
   const bandeau = useRef<HTMLDivElement>(null);
   const piste = useRef<HTMLDivElement>(null);
   const panneauCollection = useRef<HTMLDivElement>(null);
@@ -143,16 +176,14 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
     rail.scrollTo({ left: indexDuPanneau(cle) * rail.clientWidth, behavior: comportementDefilement() });
   }, []);
 
-  const lignes = useMemo(() => {
-    const filtrees = espace.collection.lignes.filter((ligne) =>
-      correspondALaRecherche(ligne, recherche),
-    );
-    const sens = preference.croissant ? 1 : -1;
-    return filtrees.sort((a, b) => {
-      const principal = comparer(a, b, preference.tri) * sens;
-      return principal !== 0 ? principal : a.titre.localeCompare(b.titre, "fr");
-    });
-  }, [espace.collection.lignes, recherche, preference]);
+  const lignes = useMemo(
+    () =>
+      trier(
+        espace.collection.lignes.filter((ligne) => correspondALaRecherche(ligne, recherche)),
+        triCollection,
+      ),
+    [espace.collection.lignes, recherche, triCollection],
+  );
 
   const vendues = useMemo(
     () => espace.collection.vendues.filter((ligne) => correspondALaRecherche(ligne, recherche)),
@@ -160,16 +191,26 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
   );
 
   const editionsManquantes = useMemo(
-    () => espace.manquants.editions.filter((edition) => correspondALaRecherche(edition, recherche)),
-    [espace.manquants.editions, recherche],
+    () =>
+      trier(
+        espace.manquants.editions.filter((edition) => correspondALaRecherche(edition, recherche)),
+        triManquants,
+      ),
+    [espace.manquants.editions, recherche, triManquants],
   );
 
   const souhaitees = useMemo(
-    () => espace.wishList.lignes.filter((ligne) => correspondALaRecherche(ligne, recherche)),
-    [espace.wishList.lignes, recherche],
+    () =>
+      trier(
+        espace.wishList.lignes.filter((ligne) => correspondALaRecherche(ligne, recherche)),
+        triWishlist,
+      ),
+    [espace.wishList.lignes, recherche, triWishlist],
   );
 
   const libelleActif = PANNEAUX.find((option) => option.cle === panneau)?.libelle ?? "";
+
+  const optionsDeTri = TRIS.filter((option) => TRIS_PAR_PANNEAU[panneau].includes(option.cle));
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col">
@@ -220,7 +261,7 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
                   aria-hidden="true"
                 />
                 <div className="bg-surface absolute top-[42px] right-0 z-20 flex w-[220px] flex-col rounded-md border border-neutral-800 py-[4px]">
-                  {TRIS.map((option) => (
+                  {optionsDeTri.map((option) => (
                     <button
                       key={option.cle}
                       type="button"
