@@ -156,6 +156,14 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
         }`}
       >
         <div className="flex gap-[8px] px-[18px] pt-[12px] pb-[10px]">
+          <Link
+            href={CHEMIN_COMPTE}
+            aria-label={LIBELLE_ONGLET_COMPTE}
+            className="bg-accent text-bg flex size-[38px] flex-none items-center justify-center rounded-full"
+          >
+            <User className="size-[18px]" />
+          </Link>
+
           <label className="bg-bg flex h-[38px] flex-1 items-center gap-[8px] rounded-md px-[12px]">
             <MagnifyingGlass className="size-[15px] flex-none text-neutral-500" />
             <input
@@ -228,14 +236,6 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
               ) : null}
             </div>
           ) : null}
-
-          <Link
-            href={CHEMIN_COMPTE}
-            aria-label={LIBELLE_ONGLET_COMPTE}
-            className="bg-accent text-bg flex size-[38px] flex-none items-center justify-center rounded-full"
-          >
-            <User className="size-[18px]" />
-          </Link>
         </div>
 
         <nav
