@@ -9,6 +9,7 @@ import type {
   StatutEdition,
   TypeLienSerie,
 } from "../lib/generated/prisma/enums";
+import type { TransactionClient } from "../lib/generated/prisma/internal/prismaNamespace";
 
 const urlLocale = process.env["LOCAL_DATABASE_URL"];
 
@@ -20,6 +21,8 @@ const SAUVEGARDE = join(process.cwd(), "data", "backup.json");
 const RESTAURATION = "--restore";
 const ECRASEMENT = "--reset";
 const LOT_ECRITURE = 500;
+const DELAI_TRANSACTION_MS = 300_000;
+const ATTENTE_TRANSACTION_MS = 30_000;
 
 type UtilisateurSauve = {
   id: string;
@@ -142,15 +145,15 @@ function enDate(valeur: string | null): Date | null {
   return valeur === null ? null : new Date(valeur);
 }
 
-async function compter(): Promise<Compteurs> {
+async function compter(client: TransactionClient = prisma): Promise<Compteurs> {
   return {
-    series: await prisma.serie.count(),
-    editions: await prisma.edition.count(),
-    tomes: await prisma.volume.count(),
-    possedes: await prisma.possession.count({ where: { possede: true } }),
-    suivies: await prisma.suiviEdition.count({ where: { suivie: true } }),
-    couvertures: await prisma.volume.count({ where: { couvertureUrl: { not: null } } }),
-    liens: await prisma.lienSerie.count(),
+    series: await client.serie.count(),
+    editions: await client.edition.count(),
+    tomes: await client.volume.count(),
+    possedes: await client.possession.count({ where: { possede: true } }),
+    suivies: await client.suiviEdition.count({ where: { suivie: true } }),
+    couvertures: await client.volume.count({ where: { couvertureUrl: { not: null } } }),
+    liens: await client.lienSerie.count(),
   };
 }
 
@@ -312,11 +315,6 @@ async function restaurer() {
   console.log(`sauvegarde du ${sauvegarde.exporteeLe}`);
   console.log(`attendu : ${JSON.stringify(sauvegarde.compteurs)}`);
 
-  if (existantes > 0) {
-    await prisma.serie.deleteMany();
-    await prisma.utilisateur.deleteMany();
-  }
-
   const utilisateurs = sauvegarde.utilisateurs.map((utilisateur) => ({
     id: utilisateur.id,
     email: utilisateur.email,
@@ -425,34 +423,47 @@ async function restaurer() {
     ),
   );
 
-  await ecrireParLots("utilisateurs", utilisateurs, (lot) =>
-    prisma.utilisateur.createMany({ data: lot }),
-  );
-  await ecrireParLots("series", series, (lot) => prisma.serie.createMany({ data: lot }));
-  await ecrireParLots("editions", editions, (lot) => prisma.edition.createMany({ data: lot }));
-  await ecrireParLots("suivis d'edition", suivis, (lot) =>
-    prisma.suiviEdition.createMany({ data: lot }),
-  );
-  await ecrireParLots("tomes", volumes, (lot) => prisma.volume.createMany({ data: lot }));
-  await ecrireParLots("possessions", possessions, (lot) =>
-    prisma.possession.createMany({ data: lot }),
-  );
-  await ecrireParLots("sorties annoncees", sorties, (lot) =>
-    prisma.sortie.createMany({ data: lot }),
-  );
-  await ecrireParLots("liens de series", sauvegarde.liens ?? [], (lot) =>
-    prisma.lienSerie.createMany({ data: lot }),
+  await prisma.$transaction(
+    async (tx) => {
+      if (existantes > 0) {
+        await tx.serie.deleteMany();
+        await tx.utilisateur.deleteMany();
+      }
+
+      await ecrireParLots("utilisateurs", utilisateurs, (lot) =>
+        tx.utilisateur.createMany({ data: lot }),
+      );
+      await ecrireParLots("series", series, (lot) => tx.serie.createMany({ data: lot }));
+      await ecrireParLots("editions", editions, (lot) => tx.edition.createMany({ data: lot }));
+      await ecrireParLots("suivis d'edition", suivis, (lot) =>
+        tx.suiviEdition.createMany({ data: lot }),
+      );
+      await ecrireParLots("tomes", volumes, (lot) => tx.volume.createMany({ data: lot }));
+      await ecrireParLots("possessions", possessions, (lot) =>
+        tx.possession.createMany({ data: lot }),
+      );
+      await ecrireParLots("sorties annoncees", sorties, (lot) =>
+        tx.sortie.createMany({ data: lot }),
+      );
+      await ecrireParLots("liens de series", sauvegarde.liens ?? [], (lot) =>
+        tx.lienSerie.createMany({ data: lot }),
+      );
+
+      const obtenus = await compter(tx);
+      console.log(`obtenu  : ${JSON.stringify(obtenus)}`);
+
+      const ecarts = Object.entries(obtenus).filter(
+        ([cle, valeur]) => sauvegarde.compteurs[cle as keyof Compteurs] !== valeur,
+      );
+      if (ecarts.length > 0) {
+        throw new Error(
+          `compteurs divergents : ${ecarts.map(([cle]) => cle).join(", ")} — rien n'est ecrit`,
+        );
+      }
+    },
+    { timeout: DELAI_TRANSACTION_MS, maxWait: ATTENTE_TRANSACTION_MS },
   );
 
-  const obtenus = await compter();
-  console.log(`obtenu  : ${JSON.stringify(obtenus)}`);
-
-  const ecarts = Object.entries(obtenus).filter(
-    ([cle, valeur]) => sauvegarde.compteurs[cle as keyof Compteurs] !== valeur,
-  );
-  if (ecarts.length > 0) {
-    throw new Error(`compteurs divergents : ${ecarts.map(([cle]) => cle).join(", ")}`);
-  }
   console.log("les compteurs correspondent");
   console.log(
     "aucun mot de passe n'est sauvegarde (depot public) : poser les acces avec npm run compte",
@@ -471,4 +482,9 @@ async function main() {
   await exporter();
 }
 
-main().finally(() => prisma.$disconnect());
+main()
+  .catch((erreur: unknown) => {
+    console.error(erreur instanceof Error ? erreur.message : erreur);
+    process.exitCode = 1;
+  })
+  .finally(() => prisma.$disconnect());

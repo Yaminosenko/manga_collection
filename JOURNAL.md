@@ -4170,3 +4170,48 @@ couvertures de `d-gray-man` et `berserk` sur le banc :
 | 56×80 | Recherche | **`?`** centré, sur les cinq résultats |
 | 84×120 | Collection | **`-- No Image --`**, lisible |
 | ~190×269 | grille des tomes | **`-- No Image --`**, inchangé |
+
+---
+
+### Corrigé — le filet se cassait en deux, et dix scripts mouraient sans rien dire
+
+**17 septembre 2026.** Constat 5 de la revue du 16, le plus sévère de ceux qui restaient : il
+porte sur `scripts/backup-db.ts`, c'est-à-dire sur **le seul filet du projet** — §7 le dit sans
+détour, « un export JSON régulier, versionné dans le dépôt, est le seul filet ».
+
+**La restauration vidait tout, puis réécrivait hors transaction.** Deux `deleteMany` suivis de
+**huit** `ecrireParLots` séquentiels, chacun par lots de 500. Une coupure de la WebSocket sur le
+443, ou la base qui s'endort au bout de 5 minutes (§7), et la base reste **vidée et restaurée à
+moitié**. Pire : le contrôle de compteurs des dernières lignes — le seul garde-fou du script —
+n'était atteint qu'**après** les écritures, donc une divergence était constatée sur une base déjà
+écrite, et le `throw` n'annulait rien.
+
+**Les deux `deleteMany`, les huit lots et le contrôle de compteurs sont maintenant dans une seule
+transaction.** Ce n'est pas seulement l'atomicité qui change : le contrôle passant **à
+l'intérieur**, une divergence de compteur **annule la restauration** au lieu de la commenter. Le
+délai est relevé à 300 s, les 5 s par défaut de Prisma n'ayant aucun rapport avec une opération
+de maintenance de 1 979 tomes et 1 741 possessions.
+
+**Et `main()` n'avait pas de `.catch`.** Une promesse rejetée donnait une trace brute
+d'`unhandledRejection`, sans dire ce qui avait été écrit. Le motif était partagé par **dix
+scripts** — `apply-mangabaka`, `apply-planning`, `apply-publication`, `apply-publishers`,
+`apply-relations`, `apply-titles`, `backup-db`, `fetch-mangabaka`, `fetch-vignettes`,
+`migrate-covers-r2`, `upload-covers`. Tous rendent désormais le message de l'erreur et un code de
+sortie **1**, ce qui compte pour un script qu'on enchaîne.
+
+**`apply-relations` avait la même forme destructive** : `deleteMany({})` puis `createMany`, sans
+transaction. Une coupure entre les deux laissait les 28 liens de séries **supprimés et non
+réécrits**. Les deux sont maintenant dans une transaction, et le compte d'après est lu dedans.
+
+**Éprouvé sur le banc, dans les deux sens.** Le banc portait 1 986 tomes, 1 181 possédés, 126
+suivis et 0 sortie — l'état laissé par les essais de la journée.
+
+| Ce qui a été fait | Ce que la base dit |
+|---|---|
+| `compteurs.tomes` de `data/backup.json` faussé à 1 986, puis `db:backup -- --restore --reset` | le script supprime, réécrit ses 1 979 tomes, **constate la divergence et annule** : « compteurs divergents : tomes — rien n'est ecrit », **code de sortie 1** |
+| état du banc juste après cet échec | **118 / 122 / 1 986 / 1 181 / 126 / 0** — identique au caractère près, rien n'a été supprimé |
+| sauvegarde remise, restauration normale | 1 979 tomes, 1 180 possédés, 124 suivis, 19 sorties, **« les compteurs correspondent »** |
+| `relations:apply` avec sa transaction | 28 liens avant, 28 après |
+
+L'ancien code, lui, aurait laissé la base vidée et à moitié réécrite sur le premier cas, et son
+message aurait été une trace de promesse rejetée.

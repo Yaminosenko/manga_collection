@@ -65,9 +65,11 @@ async function main() {
   }
 
   const avant = await prisma.lienSerie.count();
-  await prisma.lienSerie.deleteMany({});
-  await prisma.lienSerie.createMany({ data: aEcrire });
-  const apres = await prisma.lienSerie.count();
+  const apres = await prisma.$transaction(async (tx) => {
+    await tx.lienSerie.deleteMany({});
+    await tx.lienSerie.createMany({ data: aEcrire });
+    return tx.lienSerie.count();
+  });
 
   const parId = new Map(series.map((serie) => [serie.id, serie.titre]));
   for (const lien of aEcrire) {
@@ -83,4 +85,9 @@ async function main() {
   }
 }
 
-main().finally(() => prisma.$disconnect());
+main()
+  .catch((erreur) => {
+    console.error(erreur instanceof Error ? erreur.message : erreur);
+    process.exitCode = 1;
+  })
+  .finally(() => prisma.$disconnect());

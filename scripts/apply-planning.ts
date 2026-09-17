@@ -202,4 +202,9 @@ async function main() {
   console.log(`compteurs : ${JSON.stringify(compteurs)}`);
 }
 
-main().finally(() => prisma.$disconnect());
+main()
+  .catch((erreur) => {
+    console.error(erreur instanceof Error ? erreur.message : erreur);
+    process.exitCode = 1;
+  })
+  .finally(() => prisma.$disconnect());

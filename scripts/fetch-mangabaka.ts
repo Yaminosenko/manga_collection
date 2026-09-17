@@ -282,4 +282,9 @@ async function main() {
   console.log("Relire le manifeste avant d'ecrire en base.");
 }
 
-main().finally(() => prisma.$disconnect());
+main()
+  .catch((erreur) => {
+    console.error(erreur instanceof Error ? erreur.message : erreur);
+    process.exitCode = 1;
+  })
+  .finally(() => prisma.$disconnect());
