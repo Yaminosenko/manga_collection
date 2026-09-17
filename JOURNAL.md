@@ -4302,3 +4302,46 @@ fenêtre du manifeste — **2000-04-01 → 2024-01-24** :
 |---|---|---|
 | corrigé | « fenetre couverte du 2000-04-01 au 2024-01-24 : 13 sorties hors fenetre conservees » | **présent** |
 | d'avant | « 1 remplacees dans la fenetre du manifeste » | **supprimé** |
+
+---
+
+### Corrigé — l'identité se changeait sans mot de passe, et le mot de passe ne se changeait pas du tout
+
+**17 septembre 2026.** Constats 13 et 14 de la revue du 16, les deux derniers. Ils se tiennent :
+l'un laissait faire ce qu'il ne fallait pas, l'autre empêchait ce qu'il fallait.
+
+**`changerIdentite` repointait l'email sans rien redemander.** Elle ne vérifiait
+qu'`exigerAcces()`, et le cookie de session vit `DUREE_ACCES_SECONDES`, soit **un an**. Un cookie
+récupéré sur un téléphone prêté ou un poste partagé suffisait donc à changer l'adresse du compte
+sans connaître le mot de passe. Aujourd'hui l'impact est contenu ; le jour où le **lot 2 de
+§13.6** branche la réinitialisation par email — décrite précisément comme « la preuve de
+possession de la boîte » —, ce geste devient le **chemin complet de reprise de compte**, et il
+aura pu être fait des mois plus tôt. Le formulaire d'identité redemande donc le mot de passe
+courant, et l'action refuse avant toute écriture.
+
+**Le mot de passe courant est exigé pour tout le formulaire, pas seulement quand l'email change.**
+C'est un écran qu'on visite une fois ; une exigence conditionnelle demanderait une interface qui
+change sous les doigts pour économiser une saisie rare.
+
+**Et `changerMotDePasse` n'avait aucun appelant.** La fonction était écrite, gardée, correcte —
+elle vérifie le mot de passe actuel, la longueur, la confirmation, incrémente `versionJeton` et
+repose le cookie — mais `components/account-form.tsx` ne rendait que le formulaire d'identité et
+le bouton de déconnexion. Un compte qui pensait son mot de passe compromis n'avait **aucun
+recours** : le lot 2 n'existe pas, et il ne restait que
+`npm run compte -- --reinitialiser <pseudo>` depuis le poste du propriétaire — autrement dit,
+personne d'autre que lui ne pouvait changer son mot de passe. L'onglet « Moi » porte maintenant sa
+section, trois champs et un bouton.
+
+**Vérifié écran et base, connecté en `Tempestl` sur le banc.**
+
+| Ce qui a été fait | L'écran | La base |
+|---|---|---|
+| email repointé vers `voleur@example.com` avec un mauvais mot de passe | « Le mot de passe actuel est incorrect. » | email **inchangé**, `d.julliard.sin@gmail.com` |
+| le même avec le bon mot de passe | « Enregistré. » | email à `essai-du-banc@example.com` |
+| changement de mot de passe avec un mauvais mot de passe actuel | « Le mot de passe actuel est incorrect. » | `versionJeton` **reste 3** |
+| le même avec le bon | « Enregistré. » | `versionJeton` passe à **4** |
+| navigation après le changement | la Collection s'affiche | la session courante survit, `poserCookie` l'ayant reposée |
+
+Le quatrième point est celui qui compte à deux appareils : `versionJeton` coupe **tous les
+autres**, et c'est exactement ce que §13.6 attend de lui — « un changement de mot de passe coupe
+toutes les sessions d'un coup, sans table de sessions ».

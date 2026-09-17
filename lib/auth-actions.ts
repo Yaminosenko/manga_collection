@@ -154,6 +154,19 @@ export async function changerIdentite(
   const email = normaliserEmail(texte(donnees, CHAMP_EMAIL));
   const nom = texte(donnees, CHAMP_NOM).trim();
 
+  const utilisateur = await prisma.utilisateur.findUniqueOrThrow({
+    where: { id: utilisateurId },
+    select: { motDePasseHash: true },
+  });
+
+  if (!utilisateur.motDePasseHash) {
+    return { erreur: LIBELLE_MOT_DE_PASSE_ABSENT, message: null };
+  }
+  if (
+    !(await motDePasseCorrespond(texte(donnees, CHAMP_MOT_DE_PASSE_ACTUEL), utilisateur.motDePasseHash))
+  ) {
+    return { erreur: LIBELLE_MOT_DE_PASSE_ACTUEL_FAUX, message: null };
+  }
   if (!identifiantValide(identifiant)) {
     return { erreur: LIBELLE_IDENTIFIANT_INVALIDE, message: null };
   }

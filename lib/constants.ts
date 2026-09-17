@@ -165,6 +165,11 @@ export const TITRE_ACCES = "Collection privée";
 export const TITRE_INSCRIPTION = "Créer un compte";
 export const TITRE_COMPTE = "Mon compte";
 export const TITRE_SECTION_IDENTITE = "Identité";
+export const TITRE_SECTION_MOT_DE_PASSE = "Mot de passe";
+export const MENTION_MOT_DE_PASSE_IDENTITE =
+  "Le mot de passe est redemandé parce que l’adresse email est ce qui permettra un jour de reprendre le compte.";
+export const MENTION_MOT_DE_PASSE_SESSIONS =
+  "Changer le mot de passe déconnecte tous les autres appareils.";
 export const LIBELLE_ONGLET_COMPTE = "Moi";
 export const LIBELLE_ROLE_PROPRIETAIRE = "Propriétaire";
 export const LIBELLE_IDENTIFIANT = "Identifiant";
