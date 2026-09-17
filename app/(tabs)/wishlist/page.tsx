@@ -7,7 +7,7 @@ export default async function Page() {
   const espace = await chargerEspaceCollection();
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="espace-plein-ecran flex min-h-0 flex-1 flex-col">
       <CollectionSpace espace={espace} panneauInitial="wishlist" />
     </main>
   );

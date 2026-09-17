@@ -28,6 +28,7 @@ import {
 } from "@/lib/constants";
 import { correspondALaRecherche } from "@/lib/domain";
 import { formaterNombre, formaterPrix } from "@/lib/format";
+import { useHauteurBandeau } from "@/lib/use-header-height";
 import { useEnTeteEscamotable } from "@/lib/use-header-visibility";
 import { useMemoireDefilement } from "@/lib/use-scroll-memory";
 import { usePreferenceTri } from "@/lib/use-sort-preference";
@@ -110,10 +111,12 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
   const [preference, appliquerPreference] = usePreferenceTri();
   const [menuOuvert, setMenuOuvert] = useState(false);
   const bandeau = useRef<HTMLDivElement>(null);
+  const scroller = useRef<HTMLDivElement>(null);
   const enTeteVisible =
-    useEnTeteEscamotable(bandeau, CLES_STOCKAGE_DEFILEMENT[panneau]) || menuOuvert;
+    useEnTeteEscamotable(bandeau, scroller, CLES_STOCKAGE_DEFILEMENT[panneau]) || menuOuvert;
 
-  useMemoireDefilement(CLES_STOCKAGE_DEFILEMENT[panneau]);
+  useHauteurBandeau(bandeau);
+  useMemoireDefilement(scroller, CLES_STOCKAGE_DEFILEMENT[panneau]);
 
   const lignes = useMemo(() => {
     const filtrees = espace.collection.lignes.filter((ligne) =>
@@ -146,12 +149,12 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
   const { stats, prix } = statsDuPanneau(espace, panneau);
 
   return (
-    <>
+    <div className="relative flex min-h-0 flex-1 flex-col">
       <h1 className="sr-only">{libelleActif}</h1>
 
       <div
         ref={bandeau}
-        className={`bg-header border-divider sticky top-0 z-30 border-b transition-[translate,opacity] duration-200 ${
+        className={`bg-header border-divider absolute inset-x-0 top-0 z-30 border-b transition-[translate,opacity] duration-200 ${
           enTeteVisible ? "" : "-translate-y-full opacity-0"
         }`}
       >
@@ -265,7 +268,10 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
         </nav>
       </div>
 
-      <div className="flex flex-1 flex-col px-[18px] pt-[12px] pb-[18px]">
+      <div
+        ref={scroller}
+        className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain px-[18px] pt-[calc(var(--hauteur-bandeau)+12px)] pb-[18px]"
+      >
         <PanelStats stats={stats} prix={prix} />
         {panneau === "collection" ? (
           <CollectionPanel
@@ -283,6 +289,6 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
           <WishlistPanel wishList={espace.wishList} lignes={souhaitees} />
         ) : null}
       </div>
-    </>
+    </div>
   );
 }

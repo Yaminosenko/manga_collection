@@ -149,6 +149,8 @@ export const CLES_STOCKAGE_DEFILEMENT: Record<ClePanneau, string> = {
   wishlist: `${CLE_STOCKAGE_DEFILEMENT}.wishlist`,
 };
 
+export const VARIABLE_HAUTEUR_BANDEAU = "--hauteur-bandeau";
+
 export const LIBELLE_PANNEAUX = "Panneaux de la collection";
 export const LIBELLE_COMPTEUR_TOMES = "tomes";
 export const LIBELLE_COMPTEUR_EDITIONS = "éditions";

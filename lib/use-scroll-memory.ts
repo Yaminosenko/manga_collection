@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type RefObject } from "react";
 
 function lire(cle: string): number | null {
   try {
@@ -23,13 +23,21 @@ function memoriser(cle: string, position: number): void {
   }
 }
 
-export function useMemoireDefilement(cle: string): void {
+export function useMemoireDefilement(
+  reference: RefObject<HTMLElement | null>,
+  cle: string,
+): void {
   useEffect(() => {
+    const scroller = reference.current;
+    if (scroller === null) {
+      return;
+    }
+
     const position = lire(cle) ?? 0;
-    let restauration = position !== window.scrollY;
+    let restauration = position !== scroller.scrollTop;
 
     if (restauration) {
-      window.scrollTo(0, position);
+      scroller.scrollTo(0, position);
     }
 
     const surDefilement = () => {
@@ -37,10 +45,10 @@ export function useMemoireDefilement(cle: string): void {
         restauration = false;
         return;
       }
-      memoriser(cle, window.scrollY);
+      memoriser(cle, scroller.scrollTop);
     };
 
-    window.addEventListener("scroll", surDefilement, { passive: true });
-    return () => window.removeEventListener("scroll", surDefilement);
-  }, [cle]);
+    scroller.addEventListener("scroll", surDefilement, { passive: true });
+    return () => scroller.removeEventListener("scroll", surDefilement);
+  }, [reference, cle]);
 }
