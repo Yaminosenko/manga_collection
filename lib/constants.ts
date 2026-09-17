@@ -374,6 +374,16 @@ export const MARQUEURS_SATELLITE = [
   "parody",
 ];
 
+export const CHEMIN_COMMUNAUTE = "/communaute";
+export const TITRE_COMMUNAUTE = "Communauté";
+export const COMPTES_CLASSEMENT_MAX = 10;
+export const PLACEHOLDER_RECHERCHE_COMPTE = "Chercher un compte";
+export const LIBELLE_COMMUNAUTE_VIDE = "Aucun compte ne correspond.";
+export const LIBELLE_COMMUNAUTE_AUCUN_COMPTE = "Aucune autre collection pour le moment.";
+export const LIBELLE_COLLECTION_VIDE_AUTRE = "Ce compte n’a encore aucun tome.";
+export const LIBELLE_RETOUR_COMMUNAUTE = "Retour à la communauté";
+export const MENTION_COLLECTION_LECTURE_SEULE = "Collection consultée en lecture seule.";
+
 export const SOURCE_COUVERTURE_BNF = "bnf";
 export const SOURCE_COUVERTURE_MANGADEX = "mangadex";
 export const PREFIXE_OBJETS_COUVERTURES = "covers";

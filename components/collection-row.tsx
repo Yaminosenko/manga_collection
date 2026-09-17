@@ -12,6 +12,7 @@ import {
 import { LIBELLES_STATUT } from "@/lib/constants";
 
 const PLACEHOLDER_LIGNE = "p-[6px] text-[12px] text-neutral-700";
+const CLASSE_LIGNE = "border-row-divider flex items-center gap-[14px] border-b py-[9px]";
 
 function IconeEtat({ ligne }: { ligne: LigneCollection }) {
   const className = "size-[14px] flex-none text-neutral-600";
@@ -32,17 +33,14 @@ function EtiquetteStatut({ ligne, libelle }: { ligne: LigneCollection; libelle: 
   );
 }
 
-export function CollectionRow({ ligne }: { ligne: LigneCollection }) {
+function ContenuLigne({ ligne }: { ligne: LigneCollection }) {
   const desature = ligne.statut === "ABANDONNEE" || ligne.statut === "EN_PAUSE";
   const vendue = ligne.statut === "VENDUE";
   const statut = etiquetteStatutLigne(ligne);
   const complete = estComplete(ligne);
 
   return (
-    <Link
-      href={`/edition/${ligne.slug}`}
-      className="border-row-divider flex items-center gap-[14px] border-b py-[9px] transition-colors hover:bg-text/2"
-    >
+    <>
       <div
         className={`shadow-edge h-[120px] w-[84px] flex-none overflow-hidden rounded-cover ${
           desature ? "opacity-50" : ""
@@ -100,6 +98,27 @@ export function CollectionRow({ ligne }: { ligne: LigneCollection }) {
           </div>
         )}
       </div>
+    </>
+  );
+}
+
+type CollectionRowProps = {
+  ligne: LigneCollection;
+  inerte?: boolean;
+};
+
+export function CollectionRow({ ligne, inerte = false }: CollectionRowProps) {
+  if (inerte) {
+    return (
+      <div className={CLASSE_LIGNE}>
+        <ContenuLigne ligne={ligne} />
+      </div>
+    );
+  }
+
+  return (
+    <Link href={`/edition/${ligne.slug}`} className={`${CLASSE_LIGNE} transition-colors hover:bg-text/2`}>
+      <ContenuLigne ligne={ligne} />
     </Link>
   );
 }

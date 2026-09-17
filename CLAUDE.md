@@ -99,9 +99,11 @@ change. Les trois sont nullables : la ligne du propriétaire les a nuls jusqu'au
 `npm run compte`. **`email` est obligatoire à l'inscription mais reste non vérifié** — aucun
 envoyeur n'existe avant le lot 2 de §13.6.
 
-**Il n'y a plus de rôle invité** : chacun se connecte avec son compte. Montrer sa collection à
-quelqu'un n'est donc plus possible, et son remplacement — la visibilité entre comptes — n'est
-pas tranché, il vit dans `IDEES.md`.
+**Il n'y a plus de rôle invité** : chacun se connecte avec son compte. Montrer sa collection se
+fait depuis le 17 septembre 2026 par l'écran **Communauté**, qui est la forme retenue de la
+visibilité entre comptes — **publique par défaut entre comptes connectés**, voir §13.7. Un
+compte est donc consultable par tous les autres, sans réglage et sans possibilité de s'y
+soustraire.
 
 ### Volume
 Un tome de l'édition. Généré de 1 à `tomesParus`. Enrichi progressivement (ISBN, date,
@@ -240,9 +242,14 @@ bas porte la même, de sorte que les deux bords fixes se répondent.
   panneau** : atteindre un panneau la réécrit par l'History API, que Next synchronise avec
   `usePathname` — donc aucune navigation, aucune requête, et la barre du bas garde son onglet
   Collection actif sur les trois routes.
-- **La barre du bas est à trois onglets** — Collection, Planning, Rechercher. Le compte a quitté
-  la barre pour la pastille du bandeau : **il n'est donc plus accessible depuis le Planning ni
-  depuis Rechercher**, ce qui est assumé.
+- **La barre du bas est à quatre onglets** — Collection, Planning, Rechercher, Communauté.
+  Elle en a porté trois du 17 septembre 2026 au même jour : Communauté s'y est ajoutée avec
+  §13.7, faute d'un meilleur endroit — la ranger derrière la pastille du compte l'aurait rendue
+  invisible, et une quatrième pastille de bandeau aurait mélangé ma collection et celle des
+  autres dans un même écran. À 430 px, quatre onglets font ~107 px chacun, très au-dessus des
+  44 px de cible tactile. Le compte, lui, a quitté la barre pour la pastille du bandeau :
+  **il n'est donc plus accessible depuis le Planning, Rechercher ni Communauté**, ce qui est
+  assumé.
 - **Chaque panneau garde sa position de défilement**, sous une clé par panneau — et il la garde
   désormais **de lui-même**, chacun étant son propre conteneur défilant.
 
@@ -546,6 +553,57 @@ Inrocks, Made in Japan et Dream Team sortent donc dans les résultats. Aucune r�
 n'est fiable — l'éditeur ne suffit pas, Glénat en publie, et le nombre de tomes non plus,
 Détective Conan en a 107. Une liste noire écrite à la main, dans l'esprit de
 `RECHERCHES_MANUELLES`, viendra plus tard.
+
+### Communauté — consulter la collection d'un autre
+
+> **Arbitré et construit le 17 septembre 2026.** C'est la forme retenue de la visibilité entre
+> comptes, restée ouverte dans `IDEES.md` depuis le 11 septembre — le motif, les deux formes
+> écartées et ce que ça coûte sont en §13.7.
+
+**Quatrième onglet de la barre du bas.** L'écran liste les **dix plus grosses collections**, un
+compte par ligne : son nom visible, puis `N tomes · N éditions`. C'est l'état au repos, sans
+saisie.
+
+**Une barre de recherche, sur le motif de Rechercher** — `bg-surface`, 38 px, action serveur,
+debounce de `DELAI_RECHERCHE_MS`, deux caractères minimum. Elle cherche **tous les comptes**, pas
+seulement les dix affichés : un compte à 4 tomes se trouve par son nom alors qu'il n'entre jamais
+au classement. Vider le champ **ne rappelle pas le serveur** — le classement initial est déjà là.
+Le terme est normalisé comme un identifiant (`normaliserIdentifiant`), donc la casse est
+indifférente, et **les jokers SQL sont échappés** : taper `%` ne liste pas tout le monde.
+
+**Les deux compteurs sont ceux que le compte visité voit chez lui**, et c'est une contrainte, pas
+une coïncidence : ils reproduisent la règle de `chargerEspaceCollection` — hors vendues, hors
+wish list. Les écrire autrement ferait mentir la ligne. Une requête unique les calcule pour tout
+le monde ; le contrôle est de comparer les deux chemins, et il fait partie de la vérification.
+
+#### La visite — `/communaute/<identifiant>`
+
+**La liste de ses éditions, et rien d'autre.** Couverture de progression, titre,
+`Nom d'édition · Éditeur`, `X / Y` et la barre à trois zones : c'est la même anatomie de ligne
+que la Collection, par le même composant.
+
+- **Aucune ligne ne mène nulle part.** `CollectionRow` prend une prop `inerte` qui remplace le
+  `<Link>` par un `<div>`. Sans elle, chaque ligne pointerait `/edition/<slug>`, où
+  `chargerEdition` rendrait « cette édition n'existe pas » — le visiteur n'a pas de
+  `SuiviEdition` dessus. Un cul-de-sac, pas une fuite, mais un cul-de-sac quand même.
+- **Ni valeur totale, ni prix.** `PanelStats` reçoit `prix={null}` : le montant **n'est pas
+  calculé côté vue et n'atteint jamais le navigateur**, il n'est pas masqué en CSS. C'est le seul
+  endroit où la visite montre moins que la Collection, et c'est le prix de la forme « publique
+  par défaut » — §7 assume un dépôt public, pas la publication de la valeur d'une collection à
+  tout compte inscrit.
+- **La section « Vendues » n'est pas rendue.** Une vendue est un réglage personnel ; celle d'un
+  autre n'apprend rien.
+- **Ni Manquants ni Wish list.** Ce sont une liste de courses et des envies d'achat — montrer ce
+  qu'on possède n'oblige pas à montrer ce qu'on convoite. À rouvrir si le besoin se présente.
+- Compte inconnu ⇒ la page « introuvable », par `notFound()`. **Le statut reste 200 en
+  développement**, exactement comme `/edition/<slug inexistant>` : le rendu en flux a déjà envoyé
+  les en-têtes quand `notFound()` est levé. C'est le comportement de toute l'application, pas une
+  particularité de cet écran.
+
+**Aucune écriture n'est ajoutée nulle part**, et c'est ce qui rend la lecture seule vraie plutôt
+qu'affichée : toutes les actions de `lib/actions.ts` écrivent sur `idUtilisateurCourant()` et
+**aucune n'accepte un identifiant de compte en paramètre**. Il n'existe donc pas de chemin par
+lequel une visite écrirait chez l'hôte.
 
 ---
 
@@ -1047,7 +1105,10 @@ Décidé, à ne pas réintroduire sans arbitrage :
 - Écran « Sorties à venir » — dépend de l'autorisation manga-news
 - Scan de code-barres — après les quatre écrans de base
 - Statistiques détaillées
-- Multi-utilisateur, partage, fonctions sociales
+- Multi-utilisateur, partage, fonctions sociales — **sauf la consultation en lecture seule de la
+  collection d'un autre compte, sortie de cette liste par l'arbitrage du 17 septembre 2026**
+  (§4 « Communauté », §13.7). Le reste y demeure : comparaison, suivi d'autres utilisateurs,
+  badges, stats partagées
 
 ---
 
@@ -1349,6 +1410,11 @@ Ce qui reste :
   le geste système « retour » au bord gauche, et un éventuel saut d'une frame à l'ouverture de
   `/manquants` et `/wishlist` — **ne se sont pas manifestées à l'usage**. Reste de cette liste la
   seule qui n'ait pas été levée : la pastille du compte à 38 px.
+- **La barre du bas à quatre onglets n'a pas été jugée sur téléphone** (17 septembre 2026). Le
+  calcul donne ~107 px par onglet à 430 px, très au-dessus des 44 px de cible tactile, et rien
+  d'anormal au rendu de bureau — mais c'est un écran fait pour le pouce, et le libellé
+  « Communauté » est le plus long des quatre en 10 px. **À juger dans le même passage que la
+  pastille du compte** ci-dessus.
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
@@ -2486,6 +2552,11 @@ visiteur qui s'inscrit voit sa propre collection vide. Le remplacement est une *
 entre comptes**, qui n'est pas dessinée — elle vit dans `IDEES.md`, et c'est le prix de
 l'avoir sortie d'ici.
 
+> **Levé le 17 septembre 2026 par l'écran Communauté** — §4 et §13.7. Le trou aura vécu six
+> jours. Ce qui n'est pas revenu, et ne reviendra pas sous cette forme : **montrer sa collection
+> à quelqu'un qui n'a pas de compte.** La forme retenue est entre comptes connectés ; seul le
+> lien opaque savait faire sans compte, et il est écarté (§13.7).
+
 **Une adresse email squattée bloque son vrai titulaire.** `email` est `@unique` : si quelqu'un
 s'inscrit avec votre adresse, aucun autre compte ne peut la porter. **C'est le lot 2 qui
 dénoue ça** — demander une réinitialisation sur cette adresse prouve la possession de la boîte
@@ -2511,6 +2582,52 @@ cas nominal du classement en indésirable. Gmail est aligné par construction.
 **Et ce maillon ne s'éprouve qu'en production.** `api.mangabaka.org` se ferme déjà à ce réseau
 par interception TLS (§12) : un 587 sortant depuis le poste ne prouverait rien, ni dans un sens
 ni dans l'autre.
+
+---
+
+### 13.7 La visibilité entre comptes — arbitré le 17 septembre 2026
+
+> **Fait le jour même.** L'écran est décrit en §4 « Communauté » ; `JOURNAL.md` fait foi sur ce
+> qui a été vérifié. Cette section porte le **choix** et ce qu'il écarte.
+
+Ouvert le 11 septembre par la suppression du rôle invité, qui était le seul moyen de montrer sa
+collection. `IDEES.md` posait trois formes, aucune écartée. **La forme retenue est la première :
+publique par défaut entre comptes connectés.**
+
+| Forme | Retenue ? | Motif |
+|---|---|---|
+| **publique par défaut** | **oui** | rien à accorder, rien à maintenir, aucune table. C'est la seule qui rend un classement possible : un top 10 suppose de pouvoir regarder tout le monde |
+| sur autorisation | non | « la forme juste, et la plus chère » disait `IDEES.md`, et c'est toujours vrai — une table `PartageCollection`, un écran pour accorder, un autre pour retirer, et une condition de plus dans chaque requête de visite. **À rouvrir le jour où quelqu'un veut ne pas être vu**, ce qui n'est pas arrivé à deux comptes |
+| par lien opaque | non | la seule qui marche **sans compte**, donc la seule qui remplace vraiment l'invité — mais elle rouvre une session en lecture seule, c'est-à-dire exactement ce que §13.6 venait de supprimer, et elle publie une collection à qui détient l'URL |
+
+**Ce que ça expose, et qui est le prix assumé.** L'inscription est libre (§13.6) et le domaine de
+production est public (§7) : **tout compte inscrit est donc visible de tout compte inscrit**, sans
+réglage et sans retrait possible. La contrepartie est que **l'argent ne sort pas** — ni valeur
+totale ni prix, voir §4. C'est ce qui rend la forme tenable : ce qu'on publie est une liste de
+séries, pas un patrimoine.
+
+**Ce que le code a coûté : beaucoup moins que prévu.** `IDEES.md` annonçait la reprise des douze
+requêtes d'écran, toutes parties de `idUtilisateurCourant()`. La visite se bornant à la liste,
+**un seul point d'injection a suffi** : `chargerEspaceCollectionDe(utilisateurId)` extrait de
+`chargerEspaceCollection`, qui délègue. Aucun appelant n'a bougé, et **aucune migration** — le
+schéma multi-compte du 9 septembre portait déjà tout. L'élargir à la fiche d'édition ou aux trois
+panneaux ferait ressortir le coût annoncé, une requête à la fois.
+
+**`exigerUtilisateur()` ne naît toujours pas**, contrairement à ce que §13.6 prévoyait. Le motif
+y était « le jour où il aura une différence à porter face à `exigerAcces()` » — et il n'en a pas.
+Un visiteur est un compte ordinaire qui lit ; **la lecture seule ne tient pas à une garde mais à
+l'absence de chemin d'écriture**, aucune action de `lib/actions.ts` n'acceptant un identifiant de
+compte en paramètre. Une garde de plus aurait donné l'illusion d'une protection là où c'est la
+forme des actions qui protège.
+
+**Le défaut à surveiller est celui de `slugEnCollection`** (`JOURNAL.md`, 11 septembre) : une
+réponse globale servie à une question personnelle. Ici la question *est* globale — « quelles sont
+les plus grosses collections » —, donc le risque s'inverse : c'est le **contenu** de la visite qui
+doit rester borné à ce que l'hôte accepte de montrer, et c'est pourquoi la valeur, les vendues,
+les manquants et la wish list en sont exclus.
+
+**Reste ouvert**, et vit dans `IDEES.md` : se rendre invisible, la visibilité sans compte, et
+tout ce que §13.3 met derrière le mur — comparaison, suivi d'autres comptes, badges.
 
 ---
 

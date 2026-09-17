@@ -94,37 +94,34 @@ panneaux, un clic sur une pastille faisant un `scrollIntoView({ behavior: "smoot
 utilisateur sur `SuiviEdition` et `Possession` ; construire l'écran d'abord obligerait à écrire
 les requêtes deux fois.
 
-### La visibilité entre comptes, et montrer sa collection — 11 septembre 2026
+### Se rendre invisible dans Communauté — 17 septembre 2026
 
-**Ce qui reste de l'entrée du 9 septembre sur le rôle invité, une fois sa suppression
-arbitrée.** Le rôle s'en va avec le chantier des comptes ; ce qu'il rendait possible n'a pas
-de remplaçant, et c'est ça qui n'est pas tranché.
+**Ce qui reste de « la visibilité entre comptes » une fois la forme publique par défaut
+arbitrée** (§13.7). L'écran Communauté liste tous les comptes et laisse visiter chacun :
+**personne ne peut s'y soustraire**, et il n'y a aujourd'hui aucun réglage.
 
-**Le trou est net, et il est ouvert dès la livraison du lot 1** : l'invité était **le seul
-moyen de montrer sa collection à quelqu'un**. Après, un visiteur qui s'inscrit voit sa propre
-collection vide. Il n'y a plus d'écran qui montre la collection d'un autre, et aucune URL
-partageable.
+Ça ne gêne pas à deux comptes qui se connaissent. Ce qui le rendra nécessaire est écrit
+d'avance : **le jour où un inconnu s'inscrit** — l'inscription est libre et le domaine public —,
+il voit la liste des séries du propriétaire sans avoir rien demandé. Ce qui est déjà borné :
+l'argent ne sort pas, les manquants et la wish list non plus.
 
-**Ce n'est pas un rôle, c'est une relation entre comptes**, et personne ne l'a dessinée.
-Les trois formes possibles, aucune écartée :
+Les formes possibles, par coût croissant : un booléen `visible` sur `Utilisateur`, qui retire du
+classement et rend la visite introuvable ; ou la table `PartageCollection` écartée en §13.7, qui
+inverse le défaut — on n'est visible que de qui on a autorisé. Le booléen est un ajout, donc sans
+prix d'attente au sens de §13.1.
 
-- **publique par défaut** — chaque compte est consultable par les autres comptes connectés.
-  Simple, mais expose les prix payés et la valeur totale, que §7 n'assume que pour un
-  dépôt public sans lecteur ;
-- **sur autorisation** — une table `PartageCollection`, donc un écran pour l'accorder et le
-  retirer. C'est la forme juste, et la plus chère ;
-- **par lien** — un jeton opaque dans l'URL, consultable **sans compte**. C'est le retour de
-  l'invité sous une forme bornée à une collection, et la seule des trois qui fonctionne pour
-  montrer sa collection à quelqu'un qui n'aura jamais de compte.
+**Question qui vient avec** : un compte retiré du classement doit-il rester visitable par URL
+directe ? Non si le réglage veut dire quelque chose — mais alors il faut le contrôler dans
+`compteParIdentifiant`, pas seulement dans `classerComptes`.
 
-**Ce que ça coûte au code** : les 12 requêtes d'écran partent de `idUtilisateurCourant()` et
-supposent toutes « ma » collection. Une visibilité veut dire **un id regardé distinct de l'id
-qui regarde**, donc reprendre ces 12 signatures. C'est l'inverse du critère de §13.1 — ça ne
-déplace aucune ligne, donc ça n'a pas de prix d'attente.
+### Montrer sa collection à quelqu'un qui n'a pas de compte — 17 septembre 2026
 
-**Question qui vient avec** : un compte en visite peut-il cocher ? Non, évidemment — mais
-c'est précisément la session en lecture seule que le lot 1 supprime, et ce sera le jour où
-`exigerUtilisateur()` aura enfin une différence à porter face à `exigerAcces()`.
+Le lien opaque, écarté en §13.7 parce qu'il rouvrait une session en lecture seule que §13.6
+venait de supprimer. **Le besoin, lui, n'est pas mort** : Communauté ne sert qu'entre comptes
+inscrits, et l'invité savait faire sans compte — c'est la seule chose qu'il savait faire et qui
+n'est jamais revenue.
+
+À rouvrir si le cas se présente pour de vrai. Il ne s'est pas présenté depuis le 11 septembre.
 
 ### La gestion des comptes côté propriétaire — 11 septembre 2026
 
@@ -274,7 +271,18 @@ jour où un abonnement annuel existe, le suivant se justifie plus facilement.
 
 ## Écarté
 
-_(à remplir — garder le motif, il évite de reproposer)_
+- **La visibilité entre comptes « sur autorisation »** — une table `PartageCollection`, un écran
+  pour accorder, un autre pour retirer. **Écartée le 17 septembre 2026** au profit du public par
+  défaut : c'est la forme juste et la plus chère, et surtout **elle rend le classement
+  impossible** — un top 10 suppose de pouvoir regarder tout le monde. Le motif de l'écarter est
+  donc le coût, pas la justesse : si quelqu'un demande un jour à ne pas être vu, c'est elle ou
+  un simple booléen qu'il faudra, voir « Se rendre invisible ». Voir §13.7.
+- **La visibilité entre comptes « par lien opaque »** — un jeton dans l'URL, consultable **sans
+  compte**. **Écartée le 17 septembre 2026** : c'est le retour d'une session en lecture seule,
+  exactement ce que §13.6 venait de supprimer, et elle publie une collection à qui détient
+  l'URL. C'était pourtant **la seule des trois qui remplaçait vraiment l'invité** — d'où l'entrée
+  « Montrer sa collection à quelqu'un qui n'a pas de compte », qui garde le besoin ouvert.
+  Voir §13.7.
 
 ---
 
@@ -291,3 +299,10 @@ Trace de sortie, pour qu'une session qui se souvient de la discussion sache où 
   code compris — `jetonInvite`, `entrerEnInvite`, `quitterInvite`, la bannière, et la
   résolution invité → propriétaire de `lib/utilisateur.ts`. Voir §13.6. Ce qu'il rendait
   possible et qui n'a pas de remplaçant est resté ici, sous « La visibilité entre comptes ».
+- **La visibilité entre comptes** — posée le 11 septembre avec trois formes et aucune écartée,
+  **arbitrée le 17 septembre 2026** : c'est la forme **publique par défaut**, livrée comme l'écran
+  **Communauté** — classement des dix plus grosses collections, recherche sur tous les comptes,
+  visite en lecture seule sans l'argent. Voir §4 et §13.7. Les deux autres formes sont descendues
+  dans « Écarté » avec leur motif, et les deux besoins qu'elles portaient et que la V1 ne couvre
+  pas sont remontés en attente d'arbitrage : se rendre invisible, et montrer sa collection sans
+  compte.
