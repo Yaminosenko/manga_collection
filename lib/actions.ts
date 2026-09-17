@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { candidatParEan, candidatParGroupe, rechercherCandidats, tomesDuGroupe } from "@/lib/catalogue";
+import { classerComptes } from "@/lib/communaute";
 import { enrichirDepuisTomes, enrichirSerieParTitre } from "@/lib/enrichissement";
 import { chercherParIsbn } from "@/lib/bnf";
 import { creerDepuisCandidat } from "@/lib/creation";
@@ -31,6 +32,7 @@ import type {
   ResultatRecherche,
   ResultatScan,
 } from "@/lib/domain";
+import type { LigneCommunaute } from "@/lib/communaute";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
 function revaliderEdition(slug: string): void {
@@ -143,6 +145,11 @@ export async function definirTousLesTomes(slug: string, possede: boolean): Promi
   });
 
   revaliderEdition(slug);
+}
+
+export async function rechercherDesComptes(terme: string): Promise<LigneCommunaute[]> {
+  await exigerAcces();
+  return classerComptes(terme.trim());
 }
 
 export async function rechercherAuCatalogue(terme: string): Promise<ResultatRecherche> {

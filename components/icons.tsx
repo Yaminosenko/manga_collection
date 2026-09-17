@@ -191,6 +191,61 @@ export function User({ className }: IconProps) {
   );
 }
 
+export function UsersThree({ className }: IconProps) {
+  return (
+    <Icon className={className}>
+      <circle
+        cx="128"
+        cy="140"
+        r="32"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <path
+        d="M84,200a56,56,0,0,1,88,0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="60"
+        cy="80"
+        r="28"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <path
+        d="M16,140a48,48,0,0,1,60-13"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="196"
+        cy="80"
+        r="28"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+      <path
+        d="M180,127a48,48,0,0,1,60,13"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="16"
+        strokeLinecap="round"
+      />
+    </Icon>
+  );
+}
+
 export function BookmarkSimple({ className }: IconProps) {
   return (
     <Icon className={className}>

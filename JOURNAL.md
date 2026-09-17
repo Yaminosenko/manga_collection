@@ -4835,3 +4835,112 @@ plaint à l'usage.
 
 La branche `glissement-panneaux` est fusionnée dans `main` — huit commits, dix-neuf fichiers,
 **aucune migration**.
+
+### Fait — la page Communauté, et la visibilité entre comptes tranchée (17 septembre 2026)
+
+**Demande du propriétaire, branche `communaute`, rien sur la production à cette heure.** Une page
+qui liste les dix plus grosses collections, une barre de recherche qui trouve n'importe quel
+compte, et la visite en lecture seule de la collection d'un autre.
+
+**Ce n'était pas un ajout : c'était un arbitrage qui attendait depuis six jours.** La suppression
+du rôle invité, le 11 septembre, avait laissé un trou nommé — « la visibilité entre comptes » —
+avec trois formes dans `IDEES.md` et aucune écartée. La demande décrit la première, **publique par
+défaut entre comptes connectés**, et c'est elle qui est retenue. Les deux autres descendent dans
+« Écarté » avec leur motif : *sur autorisation* rend un classement impossible, puisqu'un top 10
+suppose de pouvoir regarder tout le monde ; *par lien opaque* rouvre la session en lecture seule
+que §13.6 venait de supprimer. Voir §13.7.
+
+**Le coût annoncé ne s'est pas matérialisé.** `IDEES.md` prévenait qu'une visibilité obligerait à
+reprendre les douze requêtes d'écran, toutes parties de `idUtilisateurCourant()`. La visite se
+bornant à la liste des éditions, **un seul point d'injection a suffi** :
+`chargerEspaceCollectionDe(utilisateurId)` extrait de `chargerEspaceCollection`, qui délègue.
+Aucun appelant existant n'a bougé, et **aucune migration** — le schéma multi-compte du 9 septembre
+portait déjà tout. Rien n'entre donc dans `backup-db.ts`, pour une fois sans avoir à y penser.
+
+**Les deux compteurs devaient être ceux que le compte visité voit chez lui**, sinon la ligne du
+classement aurait menti sur l'en-tête de sa propre Collection. Le classement est une requête SQL
+unique qui transcrit la règle de `chargerEspaceCollection` — hors vendues, et hors wish list, ce
+qui s'écrit `possedes > 0 OR NOT suivie`. **Le contrôle est d'avoir comparé les deux chemins**, et
+c'est le seul qui prouve quelque chose ici.
+
+**Trois décisions d'écran, prises avec le propriétaire avant d'écrire une ligne** : la visite
+montre la liste et rien de cliquable ; elle ne montre pas l'argent ; Communauté prend un quatrième
+onglet dans la barre du bas, ce qui révise la décision « trois onglets » du matin même (§4).
+
+**Conséquence assumée, écrite plutôt que tue** : l'inscription est libre et le domaine public,
+donc **tout compte inscrit est visible de tout compte inscrit**, sans réglage ni retrait. Ce qui
+la rend tenable est que l'argent ne sort pas — ce qu'on publie est une liste de séries, pas un
+patrimoine. Se rendre invisible est remonté dans `IDEES.md`.
+
+**`exigerUtilisateur()` ne naît toujours pas**, contrairement à ce que §13.6 annonçait pour ce
+jour-là. Il n'a pas de différence à porter : un visiteur est un compte ordinaire qui lit, et **la
+lecture seule ne tient pas à une garde mais à l'absence de chemin d'écriture** — aucune action de
+`lib/actions.ts` n'accepte un identifiant de compte en paramètre. Une garde de plus aurait donné
+l'illusion d'une protection là où c'est la forme des actions qui protège.
+
+#### Vérifié — la base d'abord, puis l'écran, en tapant pour de vrai
+
+En lecture seule sur la base de production, les deux chemins comparés compte par compte :
+
+| Compte | Classement SQL | `chargerEspaceCollectionDe` | |
+|---|---|---|---|
+| `tempestl` | 1 160 tomes · 111 éditions | 1 160 · 111 | **identique** |
+| `testeur` | 22 tomes · 7 éditions | 22 · 7 | **identique** |
+
+Les 1 160 / 111 recoupent le relevé fait à l'écran le matin même. La recherche, éprouvée sur les
+termes réels : `temp` → `tempestl`, `TEST` → `testeur` (la casse est normalisée), `  est  ` → les
+deux (sous-chaîne au milieu, espaces rognés), `zzz` → rien. Et **`%`, `_` et `e%r` ne rendent
+rien** : les jokers SQL sont échappés, taper `%` ne liste pas tout le monde.
+
+Puis à l'écran, connecté en `testeur`, cookie de session forgé faute de connaître son mot de passe
+— la sauvegarde n'en porte aucun (§13.6) :
+
+| Ce qui a été fait | L'écran | Le DOM |
+|---|---|---|
+| ouvrir `/communaute` | Tempestl 1 160 · 111, Testeur 22 · 7, onglet Communauté allumé | — |
+| taper `test` | la liste se réduit à Testeur | l'action serveur et le debounce répondent |
+| taper `zzz` | « Aucun compte ne correspond. » | — |
+| vider le champ | le classement revient | **sans rappeler le serveur** |
+| taper Tempestl | sa collection, « consultée en lecture seule » | **111 lignes**, égal à son compteur |
+| cliquer une ligne | rien ne se passe | l'URL n'a pas bougé, **0 lien `/edition/`**, un seul lien en tout : le retour |
+| chercher l'argent | aucun montant | **0 signe `€`** dans le texte rendu — il n'est pas calculé, pas masqué en CSS |
+| `/edition/ajin` en `testeur` | « introuvable » | même page que `/edition/slug-bidon`, au millier d'octets près — **le cloisonnement du 11 septembre tient** |
+| `/communaute` sans cookie | — | **307 vers `/acces`** |
+| revenir en `tempestl` sur `/` | 1 160 · 111, la valeur en euros toujours là | **129 liens `/edition/`** — les lignes restent cliquables chez moi |
+
+**Un détail relevé en chemin, et qui n'est pas de cet écran** : `/communaute/inconnu` rend la page
+« introuvable » mais avec un **statut 200**, et `/edition/slug-bidon` fait exactement pareil. Le
+rendu en flux a déjà envoyé les en-têtes quand `notFound()` est levé. C'est le comportement de
+toute l'application, constaté ici sans avoir été cherché ; une route qui n'existe pas du tout,
+elle, rend bien 404.
+
+**Et un piège d'outillage, pour la prochaine fois** : sous Git Bash, `curl -w "/chemin -> %{http_code}"`
+voit son format converti en chemin Windows — `C:/Program Files/Git/chemin` — et `\n` sort en `/n`.
+Les premiers relevés de statut étaient donc illisibles et ont failli faire conclure à un défaut.
+Lire l'en-tête avec `-D -` plutôt que fabriquer un format qui commence par `/`.
+
+**Ce qui n'a pas été jugé, et ne peut pas l'être depuis le poste** : les quatre onglets à 430 px.
+Le calcul dit ~107 px par onglet, très au-dessus des 44 px de cible tactile, et le rendu de
+bureau ne montre rien d'anormal — mais c'est un écran conçu pour le pouce, et §4 a déjà une
+pastille de compte à 38 px qui n'a été vue qu'une fois sur l'appareil.
+
+### Établi — les quatre onglets jugés sur téléphone, et Communauté fusionnée (17 septembre 2026)
+
+**Jugé par le propriétaire sur son téléphone**, sur le serveur de développement du poste atteint
+par l'IP du réseau local. La seule réserve que la construction avait laissée ouverte est levée :
+**les quatre onglets tiennent à 430 px**, « Communauté » compris, qui est le libellé le plus long
+des quatre en 10 px. Le calcul de ~107 px par onglet était juste, mais il ne valait pas un pouce —
+c'est la même leçon que la pastille du compte à 38 px, qui elle n'a toujours été que mesurée.
+
+L'entrée « la barre du bas à quatre onglets n'a pas été jugée sur téléphone » quitte donc
+« Reste à faire » de §12. **Ce qui y demeure de cette famille : la pastille du compte à 38 px**,
+sous les 44 px de cible tactile du projet, mesurée le 17 septembre et jamais corrigée.
+
+**Rien d'autre n'a bougé.** Aucun défaut n'est ressorti du passage sur l'appareil, et le journal
+du serveur n'a rien émis pendant le test.
+
+La branche `communaute` est fusionnée dans `main` — deux commits, quinze fichiers, **aucune
+migration**. C'est la deuxième fusion de la journée après `glissement-panneaux`, et la première
+qui livre un écran que la spécification ne prévoyait pas : §9 listait « multi-utilisateur,
+partage, fonctions sociales » hors périmètre V1, et la consultation en lecture seule en est
+sortie par l'arbitrage de §13.7, nommément et sans emporter le reste.

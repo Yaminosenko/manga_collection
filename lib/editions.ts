@@ -248,8 +248,12 @@ export async function chargerEtatEdition(slug: string): Promise<EtatEdition | nu
 }
 
 export async function chargerEspaceCollection(): Promise<EspaceCollection> {
-  const utilisateurId = await idUtilisateurCourant();
+  return chargerEspaceCollectionDe(await idUtilisateurCourant());
+}
 
+export async function chargerEspaceCollectionDe(
+  utilisateurId: string,
+): Promise<EspaceCollection> {
   const suivis = await prisma.suiviEdition.findMany({
     where: { utilisateurId },
     select: {
