@@ -10,7 +10,7 @@ type PanelStatsProps = {
 
 export function PanelStats({ stats, prix }: PanelStatsProps) {
   return (
-    <div className="flex items-center justify-between gap-[12px] px-[18px] pb-[10px]">
+    <div className="flex items-center justify-between gap-[12px] pb-[10px]">
       <div className="flex h-[48px] flex-col justify-center">
         {stats.map(({ valeur, libelle }) => (
           <span key={libelle} className="block h-[24px] leading-[22px]">

@@ -142,110 +142,111 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
     <>
       <h1 className="sr-only">{libelleActif}</h1>
 
-      <div className="flex gap-[8px] px-[18px] pt-[12px] pb-[10px]">
-        <label className="bg-surface flex h-[38px] flex-1 items-center gap-[8px] rounded-md px-[12px]">
-          <MagnifyingGlass className="size-[15px] flex-none text-neutral-500" />
-          <input
-            type="search"
-            value={recherche}
-            onChange={(evenement) => setRecherche(evenement.target.value)}
-            placeholder={PLACEHOLDER_RECHERCHE}
-            className="text-text w-full bg-transparent text-[13px] outline-none placeholder:text-neutral-500"
-          />
-        </label>
+      <div className="bg-header border-divider sticky top-0 z-30 border-b">
+        <div className="flex gap-[8px] px-[18px] pt-[12px] pb-[10px]">
+          <label className="bg-surface flex h-[38px] flex-1 items-center gap-[8px] rounded-md px-[12px]">
+            <MagnifyingGlass className="size-[15px] flex-none text-neutral-500" />
+            <input
+              type="search"
+              value={recherche}
+              onChange={(evenement) => setRecherche(evenement.target.value)}
+              placeholder={PLACEHOLDER_RECHERCHE}
+              className="text-text w-full bg-transparent text-[13px] outline-none placeholder:text-neutral-500"
+            />
+          </label>
 
-        {panneau === "collection" ? (
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setMenuOuvert((ouvert) => !ouvert)}
-              aria-label="Trier"
-              aria-expanded={menuOuvert}
-              className="text-accent flex size-[38px] items-center justify-center rounded-md border border-neutral-800"
-            >
-              <SortAscending
-                className={`size-[16px] ${preference.croissant ? "" : "rotate-180"}`}
-              />
-            </button>
-
-            {menuOuvert ? (
-              <>
-                <div
-                  className="fixed inset-0 z-10"
-                  onClick={() => setMenuOuvert(false)}
-                  aria-hidden="true"
+          {panneau === "collection" ? (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setMenuOuvert((ouvert) => !ouvert)}
+                aria-label="Trier"
+                aria-expanded={menuOuvert}
+                className="text-accent flex size-[38px] items-center justify-center rounded-md border border-neutral-800"
+              >
+                <SortAscending
+                  className={`size-[16px] ${preference.croissant ? "" : "rotate-180"}`}
                 />
-                <div className="bg-surface absolute top-[42px] right-0 z-20 flex w-[220px] flex-col rounded-md border border-neutral-800 py-[4px]">
-                  {TRIS.map((option) => (
-                    <button
-                      key={option.cle}
-                      type="button"
-                      onClick={() => {
-                        appliquerPreference({
-                          tri: option.cle,
-                          croissant: CROISSANT_PAR_DEFAUT[option.cle],
-                        });
-                        setMenuOuvert(false);
-                      }}
-                      className="hover:text-accent-200 flex min-h-11 items-center justify-between gap-[8px] px-[12px] text-left text-[13px] text-neutral-300"
-                    >
-                      {option.libelle}
-                      {option.cle === preference.tri ? (
-                        <Check className="text-accent size-[12px] flex-none" />
-                      ) : null}
-                    </button>
-                  ))}
+              </button>
 
-                  <div className="border-divider mt-[4px] border-t pt-[4px]">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        appliquerPreference({
-                          tri: preference.tri,
-                          croissant: !preference.croissant,
-                        })
-                      }
-                      className="hover:text-accent-200 flex min-h-11 w-full items-center px-[12px] text-left text-[13px] text-neutral-300"
-                    >
-                      {preference.croissant ? LIBELLE_SENS_DECROISSANT : LIBELLE_SENS_CROISSANT}
-                    </button>
+              {menuOuvert ? (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setMenuOuvert(false)}
+                    aria-hidden="true"
+                  />
+                  <div className="bg-surface absolute top-[42px] right-0 z-20 flex w-[220px] flex-col rounded-md border border-neutral-800 py-[4px]">
+                    {TRIS.map((option) => (
+                      <button
+                        key={option.cle}
+                        type="button"
+                        onClick={() => {
+                          appliquerPreference({
+                            tri: option.cle,
+                            croissant: CROISSANT_PAR_DEFAUT[option.cle],
+                          });
+                          setMenuOuvert(false);
+                        }}
+                        className="hover:text-accent-200 flex min-h-11 items-center justify-between gap-[8px] px-[12px] text-left text-[13px] text-neutral-300"
+                      >
+                        {option.libelle}
+                        {option.cle === preference.tri ? (
+                          <Check className="text-accent size-[12px] flex-none" />
+                        ) : null}
+                      </button>
+                    ))}
+
+                    <div className="border-divider mt-[4px] border-t pt-[4px]">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          appliquerPreference({
+                            tri: preference.tri,
+                            croissant: !preference.croissant,
+                          })
+                        }
+                        className="hover:text-accent-200 flex min-h-11 w-full items-center px-[12px] text-left text-[13px] text-neutral-300"
+                      >
+                        {preference.croissant ? LIBELLE_SENS_DECROISSANT : LIBELLE_SENS_CROISSANT}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </>
-            ) : null}
-          </div>
-        ) : null}
+                </>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+
+        <nav
+          aria-label={LIBELLE_PANNEAUX}
+          className="flex gap-[6px] overflow-x-auto px-[18px]"
+        >
+          {PANNEAUX.map(({ cle, libelle }) => {
+            const actif = cle === panneau;
+            return (
+              <button
+                key={cle}
+                type="button"
+                onClick={() => setPanneau(cle)}
+                aria-current={actif ? "page" : undefined}
+                className="flex min-h-11 flex-none items-center"
+              >
+                <span
+                  className={`rounded-full px-[12px] py-[6px] text-[13px] whitespace-nowrap transition-colors ${
+                    actif ? "bg-accent text-bg font-medium" : "text-neutral-500"
+                  }`}
+                >
+                  {libelle}
+                </span>
+              </button>
+            );
+          })}
+        </nav>
       </div>
 
-      <PanelStats stats={stats} prix={prix} />
-
-      <nav
-        aria-label={LIBELLE_PANNEAUX}
-        className="bg-bg border-divider sticky top-0 z-30 flex gap-[6px] overflow-x-auto border-b px-[18px]"
-      >
-        {PANNEAUX.map(({ cle, libelle }) => {
-          const actif = cle === panneau;
-          return (
-            <button
-              key={cle}
-              type="button"
-              onClick={() => setPanneau(cle)}
-              aria-current={actif ? "page" : undefined}
-              className="flex min-h-11 flex-none items-center"
-            >
-              <span
-                className={`rounded-full px-[12px] py-[6px] text-[13px] whitespace-nowrap transition-colors ${
-                  actif ? "bg-accent text-bg font-medium" : "text-neutral-500"
-                }`}
-              >
-                {libelle}
-              </span>
-            </button>
-          );
-        })}
-      </nav>
-
       <div className="flex flex-1 flex-col px-[18px] pt-[12px] pb-[18px]">
+        <PanelStats stats={stats} prix={prix} />
         {panneau === "collection" ? (
           <CollectionPanel
             collection={espace.collection}
