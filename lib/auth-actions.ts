@@ -8,6 +8,7 @@ import { exigerAcces } from "./guard";
 import { prisma } from "./prisma";
 import {
   CHEMIN_ACCES,
+  CHEMIN_COMMUNAUTE,
   CHEMIN_COMPTE,
   COOKIE_ACCES,
   DUREE_ACCES_SECONDES,
@@ -141,6 +142,18 @@ export async function seDeconnecter() {
   const magasin = await cookies();
   magasin.delete(COOKIE_ACCES);
   redirect(CHEMIN_ACCES);
+}
+
+export async function changerVisibilite(visible: boolean): Promise<void> {
+  const { utilisateurId } = await exigerAcces();
+
+  await prisma.utilisateur.update({
+    where: { id: utilisateurId },
+    data: { visible },
+  });
+
+  revalidatePath(CHEMIN_COMPTE);
+  revalidatePath(CHEMIN_COMMUNAUTE);
 }
 
 export async function changerIdentite(

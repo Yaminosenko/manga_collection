@@ -1,12 +1,12 @@
 {
-  "exporteeLe": "2026-09-16T12:29:18.246Z",
+  "exporteeLe": "2026-09-17T16:00:30.215Z",
   "compteurs": {
-    "series": 118,
-    "editions": 122,
-    "tomes": 1979,
-    "possedes": 1180,
-    "suivies": 94,
-    "couvertures": 1966,
+    "series": 119,
+    "editions": 123,
+    "tomes": 2004,
+    "possedes": 1182,
+    "suivies": 95,
+    "couvertures": 1991,
     "liens": 28
   },
   "utilisateurs": [
@@ -19,6 +19,7 @@
       "nom": null,
       "role": "PROPRIETAIRE",
       "aPaye": false,
+      "visible": true,
       "creeLe": "2026-09-09T12:13:28.680Z"
     },
     {
@@ -30,6 +31,7 @@
       "nom": null,
       "role": "UTILISATEUR",
       "aPaye": false,
+      "visible": true,
       "creeLe": "2026-09-16T09:25:07.500Z"
     }
   ],
@@ -18483,8 +18485,8 @@
               "prixCentimes": null,
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/green-worldz/1.jpg",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-16T12:27:45.920Z",
-              "couvertureTenteeLe": "2026-09-16T12:27:45.920Z",
+              "couvertureRecupereeLe": "2026-09-10T15:52:18.042Z",
+              "couvertureTenteeLe": "2026-09-16T12:56:05.939Z",
               "couvertureTentatives": 1,
               "possessions": []
             },
@@ -24177,7 +24179,18 @@
               "couvertureRecupereeLe": "2026-09-16T09:45:46.912Z",
               "couvertureTenteeLe": null,
               "couvertureTentatives": 0,
-              "possessions": []
+              "possessions": [
+                {
+                  "id": "6fc45593-a80f-4a39-8096-a835477c3005",
+                  "utilisateurId": "f087527f-bbda-41d2-ba57-0671ca0169fe",
+                  "possede": false,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
             },
             {
               "id": "a79bd8fd-0689-44dd-b5fe-984c21c6b287",
@@ -47971,6 +47984,431 @@
                   "note": null
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "46132692-f7ab-4d9f-ad5a-464c8749d46a",
+      "slug": "sun-ken-rock",
+      "titre": "Sun-Ken Rock",
+      "titreVo": "サンケンロック",
+      "auteur": "Boichi",
+      "genres": [
+        "Adult",
+        "Ecchi",
+        "Action",
+        "Adventure",
+        "Comedy",
+        "Drama",
+        "Martial Arts",
+        "Romance",
+        "Tragedy"
+      ],
+      "themes": [
+        "Gourmet"
+      ],
+      "alias": [
+        "サンケンロック",
+        "선켄락",
+        "Dango Knight: Awaking",
+        "Trigun: The Lost Plant",
+        "Yumin",
+        "Скала Кен",
+        "Скала Кэн",
+        "सन केन रक",
+        "คนเดือด เมืองดิบ",
+        "คนเดือดเมืองดิบ (SIC)",
+        "最強不良傳說"
+      ],
+      "aliasNormalises": [
+        "sunkenrock",
+        "サンケンロック",
+        "선켄락",
+        "dangoknightawaking",
+        "trigunthelostplant",
+        "yumin",
+        "скалакен",
+        "скалакэн",
+        "सनकनरक",
+        "คนเดอดเมองดบ",
+        "คนเดอดเมองดบsic",
+        "最強不良傳說"
+      ],
+      "cible": "Seinen",
+      "couvertureUrl": null,
+      "idMangaBaka": 4089,
+      "idMangaDex": "d8de5f5f-692d-4d8f-9275-2d8cb98b702b",
+      "editions": [
+        {
+          "id": "940f9bb8-6bc9-4d81-92a8-9c28a6c30680",
+          "slug": "sun-ken-rock",
+          "nom": "Édition simple",
+          "editeur": "Bamboo édition",
+          "tomesParus": 25,
+          "editionTerminee": true,
+          "prixDefautCentimes": 750,
+          "slugMangaNews": null,
+          "couvertureUrl": null,
+          "creeeParId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+          "suivis": [
+            {
+              "id": "3cf68c2d-eb61-446b-8731-0c08f5861a1f",
+              "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+              "statut": "EN_COURS",
+              "suivie": true,
+              "ajouteeLe": "2026-09-16T14:50:05.699Z"
+            }
+          ],
+          "sorties": [],
+          "volumes": [
+            {
+              "id": "55c1c6b2-dd50-4325-9d24-59bf7af5ad1a",
+              "numero": 1,
+              "isbn": "9782350785127",
+              "dateSortie": "2008-06-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/1.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-11T06:31:44.318Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "79dda84e-139f-40a6-bac1-c2ac3e9f7103",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "1a721b0b-51e1-4f9f-b9d4-2627e1c7f923",
+              "numero": 2,
+              "isbn": "9782350785295",
+              "dateSortie": "2008-08-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/2.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": [
+                {
+                  "id": "44d141ca-1d7b-47fc-99cd-8741e7ca4199",
+                  "utilisateurId": "54986f1b-9236-4aff-b1cb-e444140d3269",
+                  "possede": true,
+                  "dateAchat": null,
+                  "prixPayeCentimes": null,
+                  "etat": null,
+                  "lu": false,
+                  "note": null
+                }
+              ]
+            },
+            {
+              "id": "a1d2eef9-2128-4964-b361-5a0c12dcad1e",
+              "numero": 3,
+              "isbn": "9782350785585",
+              "dateSortie": "2008-12-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/3.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "1e2c357f-41ae-4d3f-a4ac-45c89e4db801",
+              "numero": 4,
+              "isbn": "9782350786117",
+              "dateSortie": "2009-03-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/4.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "70a7acfe-d198-49cf-a079-9121ea567ab9",
+              "numero": 5,
+              "isbn": "9782350786698",
+              "dateSortie": "2009-06-17T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/5.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "ff4de712-d6ee-4a67-a13e-0ce03aa3dbf3",
+              "numero": 6,
+              "isbn": "9782350787183",
+              "dateSortie": "2009-09-16T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/6.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "73d7be4a-7101-4729-bbf3-ebe50a7580f2",
+              "numero": 7,
+              "isbn": "9782350787930",
+              "dateSortie": "2009-12-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/7.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "1a1a74ea-c229-4e83-a454-5a5302b5eb79",
+              "numero": 8,
+              "isbn": "9782350788807",
+              "dateSortie": "2010-03-10T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/8.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "36ccf162-5c97-48dd-9d0a-ea0df291b1d2",
+              "numero": 9,
+              "isbn": "9782818900345",
+              "dateSortie": "2010-09-08T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/9.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "285eb71d-9059-4898-aea7-acd54891f1d8",
+              "numero": 10,
+              "isbn": "9782818902646",
+              "dateSortie": "2011-01-12T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/10.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "9d4aec4d-e914-4a4a-a049-4f92b6c439bf",
+              "numero": 11,
+              "isbn": "9782818905975",
+              "dateSortie": "2011-06-08T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/11.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "19614f65-d429-447e-a584-2f5127435118",
+              "numero": 12,
+              "isbn": "9782818908228",
+              "dateSortie": "2011-11-09T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/12.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "5f207503-ab30-4f8f-9b5d-ff57cdffdfc9",
+              "numero": 13,
+              "isbn": "9782818909195",
+              "dateSortie": "2012-04-11T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/13.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "c4d987b5-d84b-45be-ad91-8a4e108f4a4a",
+              "numero": 14,
+              "isbn": "9782818920091",
+              "dateSortie": "2012-07-04T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/14.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "370d3585-62cb-4c7e-948c-943e5a41c8cf",
+              "numero": 15,
+              "isbn": "9782818922149",
+              "dateSortie": "2012-11-28T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/15.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "f587ec4d-c97c-4940-aaf7-7b6323c4f3ed",
+              "numero": 16,
+              "isbn": "9782818923092",
+              "dateSortie": "2013-03-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/16.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "2d7e1535-9240-426f-b4d2-2a539ce9d219",
+              "numero": 17,
+              "isbn": "9782818924167",
+              "dateSortie": "2013-07-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/17.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "c6c82254-87ce-4a7e-a5a3-a3b05bfd336b",
+              "numero": 18,
+              "isbn": "9782818924969",
+              "dateSortie": "2013-10-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/18.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "a987938e-9eea-4765-bae8-000f00cc3ae6",
+              "numero": 19,
+              "isbn": "9782818925690",
+              "dateSortie": "2014-02-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/19.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "7b2a5edb-c76b-4c0c-88c8-4567c2c90a4c",
+              "numero": 20,
+              "isbn": "9782818931189",
+              "dateSortie": "2014-07-02T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/20.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "56b5e815-d2de-428f-a30d-1c21d1cbb2d7",
+              "numero": 21,
+              "isbn": "9782818932209",
+              "dateSortie": "2014-11-05T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/21.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "98b0728a-9f7a-4ad2-93f8-b5875cd7211f",
+              "numero": 22,
+              "isbn": "9782818932995",
+              "dateSortie": "2015-06-03T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/22.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "1240f8eb-2c6d-4496-a5bc-f56ee5684497",
+              "numero": 23,
+              "isbn": "9782818933756",
+              "dateSortie": "2016-01-13T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/23.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "26348ebf-c6c0-4c39-abd7-258be7933cee",
+              "numero": 24,
+              "isbn": "9782818936344",
+              "dateSortie": "2016-07-06T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/24.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
+            },
+            {
+              "id": "bc632a6d-fdf5-4aaf-be09-714fa9ec72a5",
+              "numero": 25,
+              "isbn": "9782818940396",
+              "dateSortie": "2016-11-09T00:00:00.000Z",
+              "prixCentimes": null,
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/sun-ken-rock/25.jpg",
+              "sourceCouverture": "bnf",
+              "couvertureRecupereeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTenteeLe": "2026-09-17T04:24:42.221Z",
+              "couvertureTentatives": 1,
+              "possessions": []
             }
           ]
         }

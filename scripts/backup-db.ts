@@ -33,6 +33,7 @@ type UtilisateurSauve = {
   nom: string | null;
   role: RoleUtilisateur;
   aPaye: boolean;
+  visible: boolean;
   creeLe: string;
 };
 
@@ -193,6 +194,7 @@ async function exporter() {
       nom: utilisateur.nom,
       role: utilisateur.role,
       aPaye: utilisateur.aPaye,
+      visible: utilisateur.visible,
       creeLe: utilisateur.creeLe.toISOString(),
     })),
     liens,
@@ -324,6 +326,7 @@ async function restaurer() {
     nom: utilisateur.nom,
     role: utilisateur.role,
     aPaye: utilisateur.aPaye,
+    visible: utilisateur.visible ?? true,
     creeLe: new Date(utilisateur.creeLe),
   }));
 
