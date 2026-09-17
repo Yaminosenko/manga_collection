@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { CollectionPanel } from "@/components/collection-panel";
 import { MissingPanel } from "@/components/missing-panel";
 import { PanelStats } from "@/components/panel-stats";
@@ -25,6 +25,7 @@ import {
 } from "@/lib/constants";
 import { correspondALaRecherche } from "@/lib/domain";
 import { formaterNombre, formaterPrix } from "@/lib/format";
+import { useEnTeteEscamotable } from "@/lib/use-header-visibility";
 import { useMemoireDefilement } from "@/lib/use-scroll-memory";
 import { usePreferenceTri } from "@/lib/use-sort-preference";
 import type { EspaceCollection, LigneCollection } from "@/lib/domain";
@@ -105,6 +106,9 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
   const [recherche, setRecherche] = useState("");
   const [preference, appliquerPreference] = usePreferenceTri();
   const [menuOuvert, setMenuOuvert] = useState(false);
+  const bandeau = useRef<HTMLDivElement>(null);
+  const enTeteVisible =
+    useEnTeteEscamotable(bandeau, CLES_STOCKAGE_DEFILEMENT[panneau]) || menuOuvert;
 
   useMemoireDefilement(CLES_STOCKAGE_DEFILEMENT[panneau]);
 
@@ -142,7 +146,12 @@ export function CollectionSpace({ espace, panneauInitial }: CollectionSpaceProps
     <>
       <h1 className="sr-only">{libelleActif}</h1>
 
-      <div className="bg-header border-divider sticky top-0 z-30 border-b">
+      <div
+        ref={bandeau}
+        className={`bg-header border-divider sticky top-0 z-30 border-b transition-[translate,opacity] duration-200 ${
+          enTeteVisible ? "" : "-translate-y-full opacity-0"
+        }`}
+      >
         <div className="flex gap-[8px] px-[18px] pt-[12px] pb-[10px]">
           <label className="bg-bg flex h-[38px] flex-1 items-center gap-[8px] rounded-md px-[12px]">
             <MagnifyingGlass className="size-[15px] flex-none text-neutral-500" />
