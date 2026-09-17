@@ -106,14 +106,28 @@ function imageExploitable(reponse: ReponseCouverture): boolean {
   return mesure === null || mesure.hauteur >= HAUTEUR_MINIMALE;
 }
 
-async function identifiantMangaDex(serie: Candidat["edition"]["serie"]): Promise<string | null> {
-  return serie.idMangaDex ?? (await resoudreMangaDex(serie));
+async function identifiantMangaDex(
+  serie: Candidat["edition"]["serie"],
+  resolus: Map<string, string | null>,
+): Promise<string | null> {
+  if (serie.idMangaDex !== null) return serie.idMangaDex;
+
+  const dejaResolu = resolus.get(serie.id);
+  if (dejaResolu !== undefined) return dejaResolu;
+
+  const identifiant = await resoudreMangaDex(serie);
+  resolus.set(serie.id, identifiant);
+  return identifiant;
 }
 
-async function retenirIdentifiant(serie: Candidat["edition"]["serie"], identifiant: string) {
-  if (serie.idMangaDex === identifiant) return;
+async function retenirIdentifiant(
+  serie: Candidat["edition"]["serie"],
+  identifiant: string,
+  retenus: Set<string>,
+) {
+  if (serie.idMangaDex === identifiant || retenus.has(serie.id)) return;
   await prisma.serie.update({ where: { id: serie.id }, data: { idMangaDex: identifiant } });
-  serie.idMangaDex = identifiant;
+  retenus.add(serie.id);
 }
 
 async function poser(candidat: Candidat, reponse: ReponseCouverture, source: string, maintenant: Date) {
@@ -225,6 +239,8 @@ export async function acquerirCouverturesManquantes(
   };
 
   const couverturesParSerie = new Map<string, Map<number, string>>();
+  const identifiantsParSerie = new Map<string, string | null>();
+  const identifiantsRetenus = new Set<string>();
 
   for (const candidat of candidats) {
     if (Date.now() >= echeance) break;
@@ -252,7 +268,7 @@ export async function acquerirCouverturesManquantes(
 
     if (!obtenue && candidat.edition.nom === NOM_EDITION_PAR_DEFAUT) {
       const serie = candidat.edition.serie;
-      const identifiant = await identifiantMangaDex(serie);
+      const identifiant = await identifiantMangaDex(serie, identifiantsParSerie);
       if (identifiant !== null) {
         let fichiers = couverturesParSerie.get(identifiant);
         if (!fichiers) {
@@ -266,7 +282,7 @@ export async function acquerirCouverturesManquantes(
           tomesMangaDex,
         );
         if (comparable) {
-          await retenirIdentifiant(serie, identifiant);
+          await retenirIdentifiant(serie, identifiant, identifiantsRetenus);
         }
         const fichier = comparable ? fichiers.get(candidat.numero) : undefined;
         if (fichier !== undefined) {
@@ -289,6 +305,10 @@ export async function acquerirCouverturesManquantes(
 
     if (injoignable) {
       bilan.injoignables += 1;
+      await prisma.volume.update({
+        where: { id: candidat.id },
+        data: { couvertureTenteeLe: maintenant },
+      });
       continue;
     }
 

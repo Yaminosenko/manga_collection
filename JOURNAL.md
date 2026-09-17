@@ -3998,3 +3998,65 @@ près**. L'ancien code en aurait mis 1 510 à `null`.
 **Ce que ça ne corrige pas, et qui reste à la revue** : la purge des `Sortie` du même `--revert`
 n'a toujours qu'une borne haute (constat 10), et le scanner ne fait toujours qu'un scan par
 chargement de page (constat 4).
+
+---
+
+### Corrigé — le cron repayait chaque jour le même échec
+
+**17 septembre 2026.** Constats 8 et 9 de la revue du 16. Le passage quotidien a bien lieu — c'est
+le but —, mais dans ces deux cas il travaillait sans rien produire **et se garantissait de refaire
+exactement la même chose le lendemain**.
+
+**Une source injoignable n'était jamais enregistrée.** La boucle d'acquisition a trois issues :
+image obtenue, **absente** — la BnF atteste qu'il n'y a rien sur la notice —, et **injoignable** —
+la source n'a pas répondu. Les deux premières écrivaient `couvertureTenteeLe` ; la troisième
+faisait `continue` sans rien écrire. Or la sélection trie `couvertureTenteeLe asc nulls first` et
+prend 80 lignes : un tome jamais marqué est toujours « dû » et revient **en tête** de file le
+lendemain. Tant que la source est coupée, la file ne bouge pas d'un cran et aucun autre tome n'est
+servi. Le report 7 / 30 / 90 jours ne s'enclenchait jamais, et le seul indice était le compteur
+`injoignables` du bilan, que personne ne lit.
+
+Aujourd'hui l'effet serait petit — 13 tomes sans image. Il mord le jour du 16 septembre, où
+`Testeur` a fait entrer **38 volumes** d'un coup à `couvertureTenteeLe` nul : une coupure ce
+jour-là, et ces 38 monopolisent la file.
+
+**Le correctif écrit `couvertureTenteeLe` sans incrémenter `couvertureTentatives`**, et la
+distinction est le fond de l'affaire : une coupure réseau n'est pas une réponse sur la notice. Le
+tome quitte la tête de file, mais il ne se fait pas pousser vers 30 puis 90 jours à cause de
+**notre** panne — il revient au premier délai, 7 jours, autant de fois qu'il le faut. La question
+n'a pas reçu de réponse, donc elle reste ouverte au même rythme.
+
+**Et la même question était posée à MangaDex une fois par tome.** `identifiantMangaDex` rend
+`Serie.idMangaDex` s'il existe, sinon appelle `resoudreMangaDex`, qui fait **une requête `/manga`
+par titre** — le titre puis le titre VO. Deux choses empêchaient la réponse de servir au tome
+suivant : `couverturesParSerie` mémoïse la **liste des couvertures**, pas la résolution, et
+`retenirIdentifiant` n'écrit `idMangaDex` **que si la numérotation est comparable** — garde-fou
+posé le 16 septembre, et qu'il ne fallait surtout pas lever : sans lui la base affirmerait
+qu'`ippo-s4` *est* *Hajime no Ippo*. Il restait que chaque candidat porte son **propre** objet
+`serie` : même une fois l'identifiant écrit en base, les tomes suivants du même passage le
+redemandaient, et redemandaient l'écriture avec.
+
+**Une `Map` par série, locale au passage, et un `Set` des identifiants déjà écrits.** Rien n'est
+mémorisé d'un jour sur l'autre, donc le garde-fou est intact : ce qui est évité, c'est de poser
+treize fois la même question dans la même minute.
+
+**Ce qui n'est délibérément pas fait : mémoriser l'échec de résolution d'un passage à l'autre.**
+Il faudrait une colonne — `idMangaDex` nul veut dire « on ne sait pas », pas « on a demandé et il
+n'y a rien » — et c'est la même prudence que §5 énonce pour les vignettes : une source qui n'a
+rien aujourd'hui peut avoir quelque chose dans six mois.
+
+**Mesuré sur le banc, deux passages réels, sources détournées vers un bouchon local** qui compte
+les requêtes et refuse les images. Cible : `black-lagoon`, **13 tomes**, `Édition simple`, titre
+et titre VO renseignés — donc deux requêtes `/manga` par résolution — remis à `couvertureUrl`
+nul, `couvertureTenteeLe` nul et `idMangaDex` nul avant chaque passage.
+
+| | avant | après |
+|---|---|---|
+| requêtes `/manga`, série non résolue | **26** | **2** |
+| requêtes `/manga`, série résolue et comparable | **26** | **2** |
+| tomes marqués après un passage tout en injoignable | **0** | **13** |
+| `couvertureTentatives` après ce passage | 0 | **0** — la coupure n'est pas comptée |
+| second passage le même jour | **13 réexaminés** | **0** |
+
+Et le contrôle qui compte autant que le gain : sur la série résolue et comparable,
+`Serie.idMangaDex` est **toujours retenu**. Le garde-fou du 16 septembre n'a pas été entamé.
