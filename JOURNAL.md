@@ -5038,3 +5038,41 @@ avec le reste. Si un jour quelqu'un d'autre installe Zenkan, c'est la première 
 
 Un commit sur `main`, trois fichiers, aucune migration. `CLAUDE.md` §12 porte la décision et ses
 limites.
+
+### Fait — les mentions retirées du compte et de l'identité (18 septembre 2026)
+
+Demande du propriétaire : trois phrases explicatives disparaissent. Celle qui vivait sous
+l'interrupteur « Visible dans Communauté », et les deux de l'écran Identité — l'email qui « ne
+sert qu'à réinitialiser votre mot de passe », et le mot de passe actuel « redemandé parce que
+l'adresse email est ce qui permettra un jour de reprendre le compte ».
+
+| Ce qui tombe | Où |
+|---|---|
+| `MENTION_VISIBILITE_ACTIVE` · `MENTION_VISIBILITE_COUPEE` | `components/account-visibility-toggle.tsx` |
+| `MENTION_MOT_DE_PASSE_IDENTITE` | `components/account-identity-form.tsx` |
+| la mention sous le champ email | le même formulaire — **la constante, elle, survit** |
+
+**`MENTION_EMAIL_INSCRIPTION` reste**, et c'est le seul arbitrage du lot : `signup-form.tsx`
+l'affiche toujours à l'inscription, où la phrase garde son sens — on y demande une adresse à
+quelqu'un qui ne connaît pas encore l'application. Les trois autres constantes n'avaient plus de
+lecteur et partent avec le texte. `grep` avant suppression, pas après.
+
+**Un `div` est tombé avec la phrase.** Il n'enveloppait l'interrupteur que pour l'espacer de son
+paragraphe (`flex flex-col gap-[8px]`) : sans second enfant, il ne réglait plus rien. Le
+composant rend le bouton seul.
+
+**Ce que le retrait coûte, et pourquoi c'est en §4 plutôt qu'ici.** Le libellé ne dit ni que la
+valeur et les prix restent cachés au visiteur, ni que couper l'interrupteur ferme **aussi**
+l'adresse directe et pas seulement le classement. La seconde est la moins devinable des deux —
+c'est justement celle que §2 insiste à faire porter sur les deux chemins, faute de quoi le
+réglage serait cosmétique. `CLAUDE.md` disait de cette phrase qu'elle était « le seul endroit qui
+décrit la conséquence » ; elle a donc été rectifiée dans le même geste, et **le remède y est nommé
+d'avance** : si le réglage se révèle mal compris à l'usage, on allonge le libellé, on ne remet pas
+le paragraphe. Sans cette ligne, une session future rouvrirait le débat en restaurant simplement
+ce qui vient d'être enlevé.
+
+**Jugé sur téléphone par le propriétaire**, qui est le seul contrôle qui vaut sur un changement
+dont tout l'effet est à l'écran. Sur le poste, `tsc --noEmit` et `eslint` passent — ce qui ne
+prouve que l'absence de référence morte, pas le rendu.
+
+Deux commits sur `main`, quatre fichiers, aucune migration.
