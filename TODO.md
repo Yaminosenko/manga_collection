@@ -224,6 +224,15 @@ Ce qui reste :
 
 ## Décisions encore ouvertes
 
+- **Ce qu'une barre de recherche montre pendant qu'elle cherche — à trancher pour Rechercher et
+  Communauté ensemble.** Les deux écrans gardent aujourd'hui les résultats du terme précédent
+  pendant les 350 ms de `DELAI_RECHERCHE_MS` et l'aller-retour serveur : taper un nouveau terme
+  affiche brièvement les lignes de l'ancien, sans rien qui le signale. Estampiller le résultat de
+  son terme corrige le mensonge mais vide la liste à chaque frappe ; garder l'ancienne évite le
+  clignotement mais ment. Une troisième voie existe — un état de chargement, qu'aucun des deux
+  écrans n'a. Relevé à la revue du 18 septembre 2026 sur `community.tsx`, **non corrigé parce que
+  `search-series.tsx` a le même schéma** et que §4 fait de l'un le motif de l'autre : corriger un
+  seul côté les ferait diverger.
 - **Clé d'API Google Books : devenue sans objet.** §5 la voulait pour l'ISBN et la date de
   parution par tome ; le planning manga-news donne les deux, en meilleure qualité et sans clé.
   À rouvrir seulement si une source de couvertures de tome manque un jour.

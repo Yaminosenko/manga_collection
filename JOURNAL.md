@@ -5133,6 +5133,66 @@ porte sa marge.
 
 Un commit sur `main`, 17 fichiers, aucune migration.
 
+### Corrigé — quatre constats de la revue des écrans de septembre
+
+**18 septembre 2026.** Revue de `git diff ab238c4^..HEAD`, c'est-à-dire de tout ce qui est entré
+depuis la revue du 16 — les trois panneaux de l'espace collection, Communauté et la visibilité,
+les sous-pages identité et mot de passe, le renommage Zenkan, le blocage du zoom, et les
+correctifs de la revue précédente. **66 fichiers de code, cinq constats, quatre corrigés.**
+
+**`promouvoirSortiesEchues` jugeait la séquence sur un instantané périmé.** Le cron charge les
+sorties échues en une fois, puis `promouvoir()` incrémente `Edition.tomesParus` en base à chaque
+tour de boucle — mais le test « est-ce bien le tome suivant ? » relisait le `tomesParus` de
+l'instantané. Deux échues sur la même édition, t6 puis t7 à partir de 5 : t6 passe, la base
+monte à 6, et t7 est comparé au 5 périmé, donc classé `horsSequence` et laissé au Planning alors
+qu'il est exactement le tome suivant. Le bilan annonçait un faux hors-séquence et il fallait un
+passage de cron par tome. Une `Map` par édition, amorcée de l'instantané et mise à jour du
+`tomesParus` que rend chaque promotion, et le message cite désormais la valeur courante.
+**Le défaut n'était pas actif** : 0 sortie échue en base ce jour-là sur 21 sorties. Il se
+déclenche au premier mois à deux échues sur une même édition, typiquement après un cron manqué —
+c'est-à-dire exactement quand le garde-fou du 17 septembre doit servir.
+
+**La soustraction du safe-area n'avait jamais lieu, et la cause est la cascade de couches.**
+`.colonne-onglets:has(.espace-plein-ecran) { height: calc(100dvh - env(safe-area-inset-top)) }`
+vit dans `@layer components`, et `min-h-dvh` — posé sur le même élément — dans `@layer
+utilities`, qui passe **après quelle que soit la spécificité**. `min-height: 100dvh` gagnait
+donc toujours, et comme `body` porte déjà `pt-[env(safe-area-inset-top)]`, une encoche en
+`standalone` faisait déborder la page de la hauteur de l'inset et poussait la barre du bas sous
+le pli. Le `min-height` descend dans `components` sur `.colonne-onglets`, l'utilitaire quitte le
+layout, et l'expression devient un token `--hauteur-utile` à côté de `--hauteur-bandeau`.
+Mesuré, serveur lancé : sur `/` le plein écran a enfin `min-height: 0` et `height` = hauteur de
+fenêtre, débordement nul ; sur `/planning` la colonne garde son `min-height`, s'étire à 787 px
+sur 722 de fenêtre et la barre du bas reste à 722. **L'encoche vaut 0 sur ce poste, donc la
+soustraction elle-même reste à juger sur téléphone** — le changement est nul là où l'inset l'est.
+
+**Le classement de Communauté agrégeait toute la table des possessions avant de filtrer.** La
+CTE `par_suivi` joignait `SuiviEdition × Volume × Possession` pour **tous** les comptes, le
+`LIKE` sur l'identifiant n'arrivant qu'en requête externe : chaque frappe débouncée de la
+recherche payait l'agrégation entière. C'est la forme que §13.2 signale déjà pour `resoudreIsbn`
+et l'anti-doublon. Une CTE `comptes` porte maintenant le filtre et `par_suivi` la joint.
+**Vérifié trois fois** : sortie identique à l'octet sur six termes, jokers SQL compris — `%` et
+`_` ne listent toujours personne ; `EXPLAIN ANALYZE` sur un terme filtrant montre `Volume` et
+`Possession` en *never executed* là où ils étaient scannés à 2 351 et 1 754 lignes, 2,87 ms →
+0,15 ms ; et l'écran réel rend le même classement qu'avant — Tempestl 1 160 · 112, Testeur
+31 · 15, dythic 0 · 0 — la recherche « dy » ne ramenant que le compte attendu.
+
+**L'interrupteur de visibilité mentait en cas d'échec.** `setActif` était optimiste et n'était
+jamais rétabli si `changerVisibilite` rejetait : la bascule affichait « Visible » avec la colonne
+à `false`. C'est précisément le réglage dont §4 dit qu'il ferme **aussi** l'adresse directe, donc
+celui dont l'effet n'est pas observable depuis l'écran. Un `catch` remet l'état antérieur ; le
+retour en arrière *est* le signal, il n'y a pas d'autre surface d'erreur sur cette page.
+
+**Le cinquième constat n'est pas corrigé, et c'est un arbitrage, pas un oubli.** `community.tsx`
+garde les résultats du terme précédent pendant les 350 ms de debounce et l'aller-retour : taper
+un nouveau terme affiche brièvement la ligne de l'ancien. Mais `search-series.tsx` a exactement
+le même schéma, et §4 dit que la barre de Communauté est faite « sur le motif de Rechercher » —
+corriger d'un côté ferait diverger les deux écrans. Et la correction a un coût réel : estampiller
+le résultat de son terme vide la liste à chaque frappe, là où elle garde aujourd'hui l'ancienne.
+C'est une décision d'affichage à prendre pour les deux écrans ensemble ; elle vit dans `TODO.md`.
+
+`tsc --noEmit` et `eslint` passent. Un commit sur `main`, 5 fichiers de code et 3 de
+documentation, aucune migration.
+
 ---
 
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)

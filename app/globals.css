@@ -47,6 +47,7 @@
 @layer base {
   :root {
     --hauteur-bandeau: 105px;
+    --hauteur-utile: calc(100dvh - env(safe-area-inset-top));
   }
 
   html {
@@ -66,8 +67,13 @@
 }
 
 @layer components {
+  .colonne-onglets {
+    min-height: var(--hauteur-utile);
+  }
+
   .colonne-onglets:has(.espace-plein-ecran) {
-    height: calc(100dvh - env(safe-area-inset-top));
+    height: var(--hauteur-utile);
+    min-height: 0;
   }
 
   .colonne-onglets:has(.espace-plein-ecran) > .contenu-onglets {

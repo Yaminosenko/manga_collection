@@ -1160,6 +1160,12 @@ détail et les cas réels sont dans `JOURNAL.md`.
 - **Une frontière client qui importe un module tirant Prisma casse le build** — le bundle
   navigateur réclame `node:module`. Les types et les règles pures vivent dans `lib/domain.ts`,
   les requêtes dans `lib/editions.ts`.
+- **Une utilité Tailwind gagne toujours sur une règle de `@layer components`, quelle que soit la
+  spécificité** — `utilities` passe après `components` dans la cascade de couches. Une règle de
+  `globals.css` qui contredit une classe posée sur le même élément est donc **morte sans que rien
+  ne le dise** : c'est ce qui a neutralisé la soustraction du safe-area sur `.colonne-onglets`, où
+  `min-h-dvh` écrasait un `height: calc(100dvh - env(safe-area-inset-top))` du 17 septembre au
+  18 septembre 2026. Quand les deux doivent coexister, **les deux vont dans `components`**.
 - **`proxy.ts` nomme les fichiers publics un par un, donc déplacer un actif le fait passer
   derrière la garde d'accès.** Ce qui se casse est invisible depuis une session connectée : les
   icônes du manifeste sont demandées **avant** la connexion, à l'invite d'installation. Toute

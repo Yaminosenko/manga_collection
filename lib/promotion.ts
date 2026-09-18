@@ -106,13 +106,19 @@ export async function promouvoirSortiesEchues(instant: Date): Promise<BilanPromo
 
   const promues: SortiePromue[] = [];
   const horsSequence: string[] = [];
+  const tomesParusCourants = new Map<string, number>();
 
   for (const sortie of echues) {
-    if (sortie.numero > sortie.edition.tomesParus + 1) {
-      horsSequence.push(`${sortie.edition.slug} t${sortie.numero} sur ${sortie.edition.tomesParus}`);
+    const tomesParus = tomesParusCourants.get(sortie.editionId) ?? sortie.edition.tomesParus;
+
+    if (sortie.numero > tomesParus + 1) {
+      horsSequence.push(`${sortie.edition.slug} t${sortie.numero} sur ${tomesParus}`);
       continue;
     }
-    promues.push(await promouvoir(sortie, null));
+
+    const promue = await promouvoir(sortie, null);
+    tomesParusCourants.set(sortie.editionId, promue.tomesParus);
+    promues.push(promue);
   }
 
   return { promues, horsSequence };

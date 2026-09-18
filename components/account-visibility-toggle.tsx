@@ -12,7 +12,11 @@ export function AccountVisibilityToggle({ visible }: { visible: boolean }) {
     const souhaite = !actif;
     setActif(souhaite);
     demarrer(async () => {
-      await changerVisibilite(souhaite);
+      try {
+        await changerVisibilite(souhaite);
+      } catch {
+        setActif(!souhaite);
+      }
     });
   }
 

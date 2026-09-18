@@ -35,28 +35,35 @@ export async function classerComptes(terme: string): Promise<LigneCommunaute[]> 
       : Prisma.sql`AND u.identifiant LIKE ${`%${echapperLike(requete)}%`} ESCAPE '\\'`;
 
   const lignes = await prisma.$queryRaw<LigneClassement[]>`
-    WITH par_suivi AS (
+    WITH comptes AS (
+      SELECT u.id AS id,
+             u.identifiant AS identifiant,
+             u."identifiantAffiche" AS affiche
+        FROM "Utilisateur" u
+       WHERE u.identifiant IS NOT NULL
+         AND u.visible
+         ${filtre}
+    ),
+    par_suivi AS (
       SELECT s."utilisateurId" AS uid,
              s.suivie AS suivie,
              COUNT(p.id) FILTER (WHERE p.possede) AS possedes
         FROM "SuiviEdition" s
+        JOIN comptes c ON c.id = s."utilisateurId"
         LEFT JOIN "Volume" v ON v."editionId" = s."editionId"
         LEFT JOIN "Possession" p
                ON p."volumeId" = v.id AND p."utilisateurId" = s."utilisateurId"
        WHERE s.statut <> 'VENDUE'
        GROUP BY s.id, s."utilisateurId", s.suivie
     )
-    SELECT u.identifiant AS identifiant,
-           u."identifiantAffiche" AS affiche,
+    SELECT c.identifiant AS identifiant,
+           c.affiche AS affiche,
            COALESCE(SUM(t.possedes), 0)::int AS tomes,
            COUNT(t.uid) FILTER (WHERE t.possedes > 0 OR NOT t.suivie)::int AS editions
-      FROM "Utilisateur" u
-      LEFT JOIN par_suivi t ON t.uid = u.id
-     WHERE u.identifiant IS NOT NULL
-       AND u.visible
-       ${filtre}
-     GROUP BY u.id, u.identifiant, u."identifiantAffiche"
-     ORDER BY tomes DESC, u.identifiant ASC
+      FROM comptes c
+      LEFT JOIN par_suivi t ON t.uid = c.id
+     GROUP BY c.id, c.identifiant, c.affiche
+     ORDER BY tomes DESC, c.identifiant ASC
      LIMIT ${COMPTES_CLASSEMENT_MAX}`;
 
   return lignes.map((ligne) => ({
