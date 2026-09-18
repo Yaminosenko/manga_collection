@@ -1431,6 +1431,18 @@ Ce qui reste :
   le geste système « retour » au bord gauche, et un éventuel saut d'une frame à l'ouverture de
   `/manquants` et `/wishlist` — **ne se sont pas manifestées à l'usage**. Reste de cette liste la
   seule qui n'ait pas été levée : la pastille du compte à 38 px.
+- **Le zoom est bloqué depuis le 18 septembre 2026, et ça n'a pas été jugé sur téléphone.** Deux
+  verrous, parce qu'aucun ne couvre tout : `maximum-scale=1` et `user-scalable=no` par l'export
+  `viewport` de `app/layout.tsx`, et `touch-action: pan-x pan-y` sur `html`, qui retire le
+  pincement **et** le double-tap là où la balise seule ne suffit pas. Ce que ça vaut dépend de
+  l'appareil : **Safari iOS en navigateur ignore `user-scalable=no`** depuis iOS 10 et laisse
+  pincer — le blocage n'y tient qu'en **PWA installée**, qui est la cible. Effet de bord voulu :
+  l'auto-zoom d'iOS au focus d'un champ disparaît dans le même périmètre, les cinq champs de
+  saisie étant en 13 px, sous le seuil de 16 px qui le déclenche. **C'est une régression
+  d'accessibilité assumée** — WCAG 1.4.4, plus de recours pour qui a besoin d'agrandir — prise en
+  connaissance de cause sur une application personnelle. Reste à vérifier au doigt : pincement,
+  double-tap, focus du champ de recherche, et que le glissement entre panneaux survive à
+  `pan-x pan-y`.
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :

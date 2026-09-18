@@ -51,6 +51,7 @@
 
   html {
     scrollbar-gutter: stable;
+    touch-action: pan-x pan-y;
   }
 
   *:focus-visible {
