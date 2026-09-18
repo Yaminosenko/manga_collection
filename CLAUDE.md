@@ -613,11 +613,21 @@ lequel une visite écrirait chez l'hôte.
 
 #### Se retirer — l'interrupteur de `/compte`
 
-Une section « Visibilité » sur la page de compte, un interrupteur de 44 px, et sous lui **la
-phrase change avec l'état** : visible, elle dit ce que les autres voient et rappelle que l'argent
-ne leur est pas montré ; coupée, elle dit qu'on n'apparaît nulle part et que la collection n'est
-ouvrable par personne. C'est le seul endroit qui décrit la conséquence, donc elle est écrite là
-plutôt que dans un libellé de bouton.
+Une section « Visibilité » sur la page de compte, et un interrupteur de 44 px qui porte le seul
+libellé « Visible dans Communauté ».
+
+**Il a porté sous lui une phrase qui changeait avec l'état** — visible, elle disait ce que les
+autres voient et rappelait que l'argent ne leur est pas montré ; coupée, elle disait qu'on
+n'apparaît nulle part et que la collection n'est ouvrable par personne. **Elle a été retirée le
+18 septembre 2026, par décision du propriétaire**, avec les deux mentions de l'écran Identité et
+dans le même geste : l'application explique moins et affirme davantage.
+
+**Ce que ça coûte est écrit ici parce que plus rien ne le porte à l'écran** : le libellé ne dit
+ni que la valeur et les prix restent cachés au visiteur, ni que couper l'interrupteur ferme
+**aussi** l'adresse directe et pas seulement le classement. Cette seconde conséquence est la
+moins devinable des deux — c'est celle que §2 insiste à faire porter sur les deux chemins. Si le
+réglage se révèle mal compris à l'usage, le remède n'est pas de remettre le paragraphe mais
+**d'allonger le libellé**, qui est lu.
 
 `changerVisibilite` n'exige qu'`exigerAcces()` et écrit sur `idUtilisateurCourant()` — comme tout
 le reste, elle ne sait pas viser un autre compte. Elle revalide `/compte` et `/communaute`.
