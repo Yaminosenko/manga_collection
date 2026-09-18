@@ -145,10 +145,14 @@ Ce qui reste :
   cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
 
   **Les icônes sont celles de Zenkan depuis le 17 septembre 2026** — un Z au pinceau sur fond
-  papier, sceau 全巻 dans l'accent Nocturne `#9184d9`, qui est exactement `--color-accent`. Cinq
-  PNG servis depuis `public/icons/` (3 `any`, 2 `maskable`), plus `app/apple-icon.png` et
-  `app/favicon.ico` par les conventions de fichiers de Next. Les sources — SVG et générateur —
-  vivent dans `design/zenkan/`, qui porte son propre README.
+  papier. Cinq PNG servis depuis `public/icons/` (3 `any`, 2 `maskable`), plus
+  `app/apple-icon.png` et `app/favicon.ico` par les conventions de fichiers de Next. Les
+  sources — SVG et générateur — vivent dans `design/zenkan/`, qui porte son propre README.
+
+  **Le sceau 全巻 a été retiré le 18 septembre 2026**, et avec lui le seul violet de l'icône : le
+  trait est agrandi de 12 % et recentré sur le vide que le sceau laissait. `--color-accent` reste
+  `#9184d9` côté interface, mais l'icône ne le porte plus — l'égalité entre les deux, qui était
+  la justification d'origine, n'existe plus.
 
   Deux choses tranchées avec elles : **`background_color` et `theme_color` restent `#161826`**
   et non le papier `#f4efe4` proposé par le jeu d'icônes, sinon le lancement ferait un flash

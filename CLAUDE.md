@@ -1568,6 +1568,8 @@ là où c'est la forme des actions qui protège.
 l'invité savait faire et qui n'est jamais revenue —, et tout ce que §13.3 met derrière le mur :
 comparaison, suivi d'autres comptes, badges.
 
+<!-- BEGIN:nextjs-agent-rules -->
+
 # This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.

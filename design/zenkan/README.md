@@ -1,7 +1,13 @@
 # Icône Zenkan
 
-Un Z au pinceau, style sumi-e, sur fond papier. Sceau 全巻 — « tous les volumes » — dans
-l'accent Nocturne `#9184d9`, qui est exactement `--color-accent` de `app/globals.css`.
+Un Z au pinceau, style sumi-e, sur fond papier. Rien d'autre : deux couleurs, un trait.
+
+**Le sceau 全巻 a été retiré le 18 septembre 2026.** Il portait l'accent Nocturne `#9184d9` dans
+le coin bas droit ; sans lui le trait est agrandi de 12 % et recentré, parce qu'il flottait dans
+le cadre et laissait ce coin vide. **L'icône ne porte donc plus aucun violet**, alors que
+`--color-accent` de `app/globals.css` reste `#9184d9` : le lien entre l'icône et l'accent de
+l'interface est rompu, et c'est le seul endroit qui le dit. Le manifeste n'est pas concerné —
+son `theme_color` est `COULEUR_FOND_APPLICATION`, le fond de l'application, jamais l'accent.
 
 ## Ce qui est servi, et d'où
 
@@ -21,18 +27,24 @@ justement l'écran qu'on voit avant de se connecter.
 
 ## Le maskable n'est pas un doublon
 
-Android découpe l'icône selon la forme du lanceur — cercle, carré arrondi, goutte. Une icône
-`any` rognée perd son sceau, qui est dans le coin. Les versions `maskable` portent 14 % de
-marge sur chaque bord pour survivre à n'importe quelle découpe. Les deux jeux sont nécessaires.
+Android découpe l'icône selon la forme du lanceur — cercle, carré arrondi, goutte. Le trait
+touche presque le bord depuis qu'il a été agrandi de 12 %, donc une icône `any` rognée y perd
+ses extrémités. Les versions `maskable` portent 14 % de marge sur chaque bord pour survivre à
+n'importe quelle découpe. Les deux jeux sont nécessaires.
 
-## Trois niveaux de détail, et pourquoi
+## Trois niveaux de détail, dont deux servis
 
 Le dessin n'est pas le même selon la taille, parce que le détail devient de la bouillie en
 dessous d'un certain rendu :
 
-- **512 à 180 px** — complet : traits, pinceau sec, éclaboussures, sceau avec 全巻
-- **144 à 72 px** — le sceau perd ses caractères, les éclaboussures et les fibres sautent
+- **512 à 180 px** — complet : traits, pinceau sec, éclaboussures, fibres de papier
+- **144 à 72 px** — les éclaboussures et les fibres sautent, le pinceau sec reste
 - **48 px et moins** — le trait seul, et c'est ce que porte `favicon.ico`
+
+**Le palier du milieu n'est servi nulle part** : le manifeste ne demande que 192, 384 et 512, et
+l'application ne pose aucune balise en 144, 96 ou 72. Le générateur rend ces trois cotes quand
+même, et elles restent dans `icons/`, que git ignore. Le retrait du sceau n'a pas supprimé ce
+palier — il lui a retiré un de ses deux motifs, le sceau y perdait ses caractères.
 
 ## Régénérer
 
@@ -50,12 +62,21 @@ développement** : il réclame les bibliothèques Cairo, ce qui n'est pas acquis
 PNG livrés ont été rendus ailleurs, et les SVG de `svg/` se rouvrent dans n'importe quel
 navigateur pour juger un changement sans rien installer.
 
+**Et le générateur ne produit aucun `.ico`.** Il rend `favicon-16.png`, `favicon-32.png` et
+`icon-48.png` ; `app/favicon.ico` est un conteneur qu'il faut assembler à partir des trois, avec
+leurs octets PNG embarqués tels quels — c'est un format que tous les navigateurs actuels lisent.
+Oublier cette étape laisse l'ancienne icône dans l'onglet alors que tout le reste a changé, et
+rien ne le signale.
+
 ## Couleurs
 
 - Papier `#f4efe4`
 - Encre `#16130f`
-- Sceau `#9184d9` — ses caractères sont **en encre, pas en blanc** : le blanc sur ce violet
-  tombe à 2,8:1 et disparaît sous 76 px.
+
+Il n'y en a plus que deux. `SCEAU`, `POLICE_CJK` et la fonction `sceau()` ont été retirés du
+générateur en même temps que les appels : le jeu livré les laissait en place sans les appeler,
+et du code mort dans un script qu'on relance une fois par an ne se distingue pas d'un code
+vivant.
 
 La variante sombre (`svg/zenkan-icone-sombre.svg`) existe et n'est pas servie. Une icône
 d'écran d'accueil se pose sur le fond d'écran de l'utilisateur, pas sur celui de l'application :

@@ -7,7 +7,6 @@ RACINE = os.path.dirname(os.path.abspath(__file__))
 
 PAPIER = "#f4efe4"
 ENCRE = "#16130f"
-SCEAU = "#9184d9"
 FIBRES_CLAIR = "#d8cfbd"
 FIBRES_SOMBRE = "#2a251d"
 
@@ -49,37 +48,11 @@ FIBRES = (
     '<rect x="164" y="62" width="58" height="1.1"/>'
 )
 
-POLICE_CJK = "Noto Serif CJK JP, Noto Serif CJK SC, serif"
-
-
-def sceau(avec_caracteres, contraste):
-    filet = (
-        f'<rect x="7" y="7" width="60" height="60" rx="3" fill="none" '
-        f'stroke="{contraste}" stroke-width="3.2"/>'
-    )
-    caracteres = ""
-    if avec_caracteres:
-        caracteres = (
-            f'<text x="37" y="34" text-anchor="middle" font-family="{POLICE_CJK}" '
-            f'font-size="25" fill="{contraste}">\u5168</text>'
-            f'<text x="37" y="61" text-anchor="middle" font-family="{POLICE_CJK}" '
-            f'font-size="25" fill="{contraste}">\u5dfb</text>'
-        )
-    else:
-        filet = ""
-    return (
-        '<g transform="translate(398, 398)">'
-        f'<rect x="0" y="0" width="74" height="74" rx="7" fill="{SCEAU}"/>'
-        f'{filet}{caracteres}</g>'
-    )
-
-
 def construire(detail, sombre=False, fond=True, marge=0):
     """detail: 'complet' | 'moyen' | 'minimal'."""
     encre = PAPIER if sombre else ENCRE
     papier = ENCRE if sombre else PAPIER
     fibres = FIBRES_SOMBRE if sombre else FIBRES_CLAIR
-    contraste_sceau = ENCRE
 
     echelle = 1 - 2 * marge
     corps = []
@@ -90,11 +63,12 @@ def construire(detail, sombre=False, fond=True, marge=0):
         corps.append(f'<g fill="{papier}" opacity="0.34">{KASURE}</g>')
     if detail == "complet":
         corps.append(f'<g fill="{encre}">{ECLABOUSSURES}</g>')
-        corps.append(sceau(True, contraste_sceau))
-    elif detail == "moyen":
-        corps.append(sceau(False, contraste_sceau))
 
-    interieur = "".join(corps)
+    interieur = (
+        '<g transform="translate(256,256) scale(1.12) translate(-266,-252)">'
+        + "".join(corps)
+        + "</g>"
+    )
     if marge:
         decalage = 512 * marge
         interieur = f'<g transform="translate({decalage},{decalage}) scale({echelle})">{interieur}</g>'
