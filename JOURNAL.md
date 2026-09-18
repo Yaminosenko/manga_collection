@@ -5079,6 +5079,62 @@ Deux commits sur `main`, quatre fichiers, aucune migration.
 
 ---
 
+### Fait — l'icône passe à la variante sans sceau
+
+**18 septembre 2026.** Demandé par le propriétaire, qui a fourni le jeu complet — le même
+dessin que la veille, dépouillé de son sceau 全巻. Sans lui le trait flottait dans le cadre et
+laissait le coin bas droit vide : il est agrandi de 12 % et recentré. Cinq PNG servis, l'apple
+icon, les six SVG sources et le générateur viennent du jeu ; le `favicon.ico` est assemblé ici,
+le jeu n'en contient pas.
+
+**Le premier `favicon.ico` a fait tomber l'application.** Toutes les pages ont rendu **500** —
+`Format error decoding Ico: The PNG is not in RGBA format!`. Les PNG livrés sont en
+`colorType = 2`, truecolor **sans couche alpha**, et le décodeur d'icônes de Next exige du
+RGBA. Convertis avec Pillow avant d'être embarqués, le conteneur passe : trois entrées
+16 · 32 · 48, payloads PNG, 2 573 octets. **Rien ne le signalait avant de lancer le serveur** —
+le conteneur était structurellement valide, les cotes justes, et un typecheck laisse passer.
+Une fois de plus, seule une vérification fonctionnelle a prouvé quelque chose — mais c'est la
+première où le défaut crie au lieu de se taire : les autres se contentaient de ne rien faire.
+
+**Deux corrections sur les fichiers livrés, faites avant de les commiter.** `RACINE` pointait
+`/home/claude/zenkan-icones-sans-sceau`, le chemin de la machine où le script a été écrit : le
+dépôt avait `os.path.dirname(os.path.abspath(__file__))`, rétabli, sinon une régénération sur ce
+poste écrirait dans un `C:\home\claude\…` inexistant. Et `SCEAU`, `POLICE_CJK` et la fonction
+`sceau()` restaient en place alors que leurs appels avaient disparu — supprimés, comme AniList
+le 10 septembre et la saisie manuelle la veille : du code mort dans un script qu'on relance une
+fois par an ne se distingue pas d'un code vivant.
+
+**Ce que ça révise du 17 septembre.** L'entrée de la veille justifiait les `maskable` par « le
+sceau est dans un coin : une icône `any` rognée le perd », et le contrôle sur téléphone avait
+vérifié que la découpe l'épargnait. Le motif tombe avec le sceau. Les deux jeux restent
+nécessaires pour une autre raison : **le trait touche presque le bord depuis qu'il a été
+agrandi**, et c'est lui que la découpe attaque maintenant. Les 14 % de marge servent au même
+but, pas au même motif. **Non vérifié sur téléphone** — une PWA installée garde son icône
+jusqu'à réinstallation, donc ce contrôle-là reste à faire.
+
+**Et l'icône ne porte plus aucun violet**, alors que `--color-accent` reste `#9184d9`.
+L'égalité exacte entre le sceau et l'accent de l'interface était la justification d'origine du
+choix de couleur ; elle n'existe plus, et c'est écrit dans le README de `design/zenkan/` parce
+qu'aucun fichier ne le montre. Le manifeste n'est pas concerné : son `theme_color` est
+`COULEUR_FOND_APPLICATION`, le fond de l'application, et l'a toujours été — le `#16130f` que
+propose le README du jeu livré ne vaut que pour son propre manifeste d'exemple.
+
+**Un défaut de dépôt trouvé au passage, sans rapport avec les icônes.** Le marqueur
+`<!-- BEGIN:nextjs-agent-rules -->` manquait de `CLAUDE.md` alors que le `END` y était. La
+détection de `node_modules/next/dist/server/lib/generate-agent-files.js` se fait sur le
+`BEGIN` : chaque `next dev` y ajoutait donc **une copie entière** de son bloc, et salissait
+l'arbre à chaque lancement. Marqueur remis, relance vérifiée — le fichier ne bouge plus.
+
+**Vérifié serveur lancé, sans cookie**, dans les deux sens que `proxy.ts` impose : les cinq
+icônes, `apple-icon.png`, `favicon.ico` et le manifeste rendent **200**, `/` et `/communaute`
+rendent **307**. Les octets servis sont au bit près ceux des fichiers commités — md5 comparés,
+donc pas un cache. Le 512 et le maskable ont été regardés : c'est bien le Z seul, et le maskable
+porte sa marge.
+
+Un commit sur `main`, 17 fichiers, aucune migration.
+
+---
+
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)
 
 `CLAUDE.md` faisait **184 700 caractères**, soit 4,6 fois le seuil au-delà duquel une session
