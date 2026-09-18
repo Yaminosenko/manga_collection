@@ -9,8 +9,6 @@ import {
   LIBELLE_IDENTIFIANT,
   LIBELLE_MOT_DE_PASSE_ACTUEL,
   LIBELLE_NOM_AFFICHE,
-  MENTION_EMAIL_INSCRIPTION,
-  MENTION_MOT_DE_PASSE_IDENTITE,
 } from "@/lib/constants";
 import type { CompteAffiche, EtatCompte } from "@/lib/domain";
 
@@ -36,7 +34,6 @@ export function AccountIdentityForm({ compte }: { compte: CompteAffiche }) {
         type="email"
         autoComplete="email"
         valeurInitiale={compte.email ?? ""}
-        mention={MENTION_EMAIL_INSCRIPTION}
       />
       <Champ
         nom="nom"
@@ -50,7 +47,6 @@ export function AccountIdentityForm({ compte }: { compte: CompteAffiche }) {
         libelle={LIBELLE_MOT_DE_PASSE_ACTUEL}
         type="password"
         autoComplete="current-password"
-        mention={MENTION_MOT_DE_PASSE_IDENTITE}
       />
       <button type="submit" disabled={enCours} className={CLASSE_BOUTON}>
         {LIBELLE_ENREGISTRER}
