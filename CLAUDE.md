@@ -1016,6 +1016,18 @@ neutre. Changer de stack ne le remet pas en cause.
 
 Contraintes transverses :
 - Mobile d'abord. Cible tactile minimale 44 px.
+- **Le zoom est bloqué, depuis le 18 septembre 2026 et par décision du propriétaire.** Deux
+  verrous, parce qu'aucun ne couvre tout seul : `maximum-scale=1` et `user-scalable=no` par
+  l'export `viewport` de `app/layout.tsx`, et **`touch-action: pan-x pan-y` sur `html`**, qui
+  retire le pincement **et** le double-tap là où la balise seule ne suffit pas sur Chromium.
+  **`manipulation` ne convient pas** — il ne retire que le double-tap et laisse pincer ; et
+  `none` tuerait le glissement entre panneaux, d'où les deux axes nommés. **Jugé dans la PWA
+  installée** ; ce qui reste non éprouvé est Safari iOS **en navigateur**, qui ignore
+  `user-scalable=no` depuis iOS 10 — la cible étant le manifeste `standalone`, ça ne gêne pas.
+  Effet de bord voulu : l'auto-zoom d'iOS au focus d'un champ disparaît, les cinq champs de
+  saisie étant en 13 px, sous le seuil de 16 px qui le déclenche. **C'est une régression
+  d'accessibilité assumée** — WCAG 1.4.4, plus de recours pour qui a besoin d'agrandir — et
+  c'est la première ligne à rouvrir si l'application sort du cercle personnel.
 - **Dépôt public, assumé.** `data/export.csv` et `data/collection.json` exposent donc les prix
   payés et la valeur de la collection. Décision prise en connaissance de cause. La conséquence
   à tenir est ailleurs : aucun secret ne doit jamais entrer dans le dépôt — jetons Neon et Blob
@@ -1161,7 +1173,7 @@ Chaque étape est utilisable seule. Après l'étape 2, l'application est déjà 
 
 ## 12. État d'avancement
 
-Dernière mise à jour : 17 septembre 2026.
+Dernière mise à jour : 18 septembre 2026.
 
 **La production est sur `https://manga-collection-wcj8.vercel.app`.** L'URL n'était écrite
 nulle part avant le 9 septembre, ni ici ni dans `JOURNAL.md` : impossible de vérifier un
@@ -1431,18 +1443,6 @@ Ce qui reste :
   le geste système « retour » au bord gauche, et un éventuel saut d'une frame à l'ouverture de
   `/manquants` et `/wishlist` — **ne se sont pas manifestées à l'usage**. Reste de cette liste la
   seule qui n'ait pas été levée : la pastille du compte à 38 px.
-- **Le zoom est bloqué depuis le 18 septembre 2026, et ça n'a pas été jugé sur téléphone.** Deux
-  verrous, parce qu'aucun ne couvre tout : `maximum-scale=1` et `user-scalable=no` par l'export
-  `viewport` de `app/layout.tsx`, et `touch-action: pan-x pan-y` sur `html`, qui retire le
-  pincement **et** le double-tap là où la balise seule ne suffit pas. Ce que ça vaut dépend de
-  l'appareil : **Safari iOS en navigateur ignore `user-scalable=no`** depuis iOS 10 et laisse
-  pincer — le blocage n'y tient qu'en **PWA installée**, qui est la cible. Effet de bord voulu :
-  l'auto-zoom d'iOS au focus d'un champ disparaît dans le même périmètre, les cinq champs de
-  saisie étant en 13 px, sous le seuil de 16 px qui le déclenche. **C'est une régression
-  d'accessibilité assumée** — WCAG 1.4.4, plus de recours pour qui a besoin d'agrandir — prise en
-  connaissance de cause sur une application personnelle. Reste à vérifier au doigt : pincement,
-  double-tap, focus du champ de recherche, et que le glissement entre panneaux survive à
-  `pan-x pan-y`.
 - **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
   manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
   puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :

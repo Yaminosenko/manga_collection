@@ -4997,3 +4997,44 @@ sert qu'à `curl`, pas au navigateur dès qu'une vraie session existe — et la 
 
 La branche `visibilite-compte` est fusionnée dans `main` — un commit, onze fichiers, **une
 migration**, purement additive.
+
+### Fait — le zoom bloqué, jugé dans la PWA installée (18 septembre 2026)
+
+Demande du propriétaire : on ne doit pas pouvoir zoomer sur téléphone. **Deux verrous, parce
+qu'aucun des deux ne couvre tout seul** — et c'est la seule chose à retenir si la question se
+rouvre.
+
+| Verrou | Où | Ce qu'il retire |
+|---|---|---|
+| `maximum-scale=1` · `user-scalable=no` | l'export `viewport` de `app/layout.tsx` | le zoom du viewport, et l'auto-zoom d'iOS au focus d'un champ |
+| `touch-action: pan-x pan-y` | `html`, dans `@layer base` de `app/globals.css` | le pincement **et** le double-tap, là où la balise seule ne suffit pas sur Chromium |
+
+**`pan-x pan-y` et non `manipulation`**, qui était le réflexe : `manipulation` ne retire que les
+gestes non standard — le double-tap — et **laisse le pincement**. Et il fallait nommer les deux
+axes plutôt que `none` : l'espace collection est une piste `scroll-snap` horizontale de panneaux
+qui défilent verticalement, `touch-action: none` aurait tué le geste même qui fait l'écran.
+
+**Vérifié servi, puis jugé au doigt.** Sur le poste : la balise rendue sur `/acces` et
+`touch-action: pan-x pan-y` présent dans la feuille servie. En production après déploiement, les
+deux à nouveau — le premier sondage, 25 s après le push, rendait encore l'ancienne balise, ce qui
+est le déploiement en cours et pas un défaut. **Puis le propriétaire a jugé sur téléphone, dans
+la PWA installée : ça fonctionne.**
+
+**Ce qui n'est pas éprouvé, et ne l'a pas été** : Safari iOS **en navigateur**, où
+`user-scalable=no` est ignoré depuis iOS 10 et où seul `touch-action` pourrait porter. Le
+téléphone de test est Android — c'est déjà ce qui borne le scanner, `BarcodeDetector` n'existant
+que là — donc cette limite reste une lecture de la documentation, pas une mesure. La cible étant
+le manifeste `standalone`, elle ne gêne pas.
+
+**Effet de bord voulu, et c'est peut-être le vrai gain** : les cinq champs de saisie de
+l'application sont en 13 px, sous le seuil de 16 px qui déclenche l'auto-zoom d'iOS au focus.
+`maximum-scale=1` le supprime sans toucher au dessin du bandeau, là où le remède universel aurait
+été de passer les champs à 16 px et de refaire la géométrie de la ligne de recherche.
+
+**Une régression d'accessibilité, écrite plutôt que tue** : WCAG 1.4.4 demande qu'on puisse
+agrandir jusqu'à 200 %, et ce commit retire ce recours. Le propriétaire l'a prise en connaissance
+de cause sur une application personnelle, mono-utilisateur de fait ; elle est consignée en §12
+avec le reste. Si un jour quelqu'un d'autre installe Zenkan, c'est la première ligne à rouvrir.
+
+Un commit sur `main`, trois fichiers, aucune migration. `CLAUDE.md` §12 porte la décision et ses
+limites.
