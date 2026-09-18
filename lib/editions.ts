@@ -375,6 +375,7 @@ export async function chargerEspaceCollectionDe(
     }
   }
 
+  lignes.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
   editionsManquantes.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
   souhaitees.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
 
