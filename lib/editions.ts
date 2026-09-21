@@ -405,24 +405,35 @@ function cleTomeAnnonce(editionId: string, numero: number): string {
   return `${editionId}#${numero}`;
 }
 
-async function tomesAnnoncesDejaPossedes(
+type TomeAnnonce = { possede: boolean; couvertureUrl: string | null };
+
+async function tomesDesAnnonces(
   utilisateurId: string,
   sorties: { editionId: string; numero: number }[],
-): Promise<Set<string>> {
+): Promise<Map<string, TomeAnnonce>> {
   if (sorties.length === 0) {
-    return new Set();
+    return new Map();
   }
 
   const volumes = await prisma.volume.findMany({
     where: {
       editionId: { in: [...new Set(sorties.map((sortie) => sortie.editionId))] },
       numero: { in: [...new Set(sorties.map((sortie) => sortie.numero))] },
-      possessions: { some: { utilisateurId, possede: true } },
     },
-    select: { editionId: true, numero: true },
+    select: {
+      editionId: true,
+      numero: true,
+      couvertureUrl: true,
+      possessions: selectionPossession(utilisateurId),
+    },
   });
 
-  return new Set(volumes.map((volume) => cleTomeAnnonce(volume.editionId, volume.numero)));
+  return new Map(
+    volumes.map((volume) => [
+      cleTomeAnnonce(volume.editionId, volume.numero),
+      { possede: estPossede(volume), couvertureUrl: volume.couvertureUrl },
+    ]),
+  );
 }
 
 export async function chargerPlanning(): Promise<SortiePlanning[]> {
@@ -454,10 +465,10 @@ export async function chargerPlanningPour(utilisateurId: string): Promise<Sortie
     },
   });
 
-  const attendues = await tomesAnnoncesDejaPossedes(utilisateurId, sorties);
+  const tomes = await tomesDesAnnonces(utilisateurId, sorties);
 
   return sorties
-    .filter((sortie) => !attendues.has(cleTomeAnnonce(sortie.editionId, sortie.numero)))
+    .filter((sortie) => !tomes.get(cleTomeAnnonce(sortie.editionId, sortie.numero))?.possede)
     .map((sortie) => ({
       slug: sortie.edition.slug,
       titre: sortie.edition.serie.titre,
@@ -465,7 +476,10 @@ export async function chargerPlanningPour(utilisateurId: string): Promise<Sortie
       editeur: sortie.edition.editeur,
       numero: sortie.numero,
       date: sortie.date.toISOString(),
-      couvertureUrl: sortie.couvertureUrl,
+      couvertureUrl:
+        sortie.couvertureUrl ??
+        tomes.get(cleTomeAnnonce(sortie.editionId, sortie.numero))?.couvertureUrl ??
+        null,
       editionsDeLaSerie: sortie.edition.serie._count.editions,
     }));
 }
