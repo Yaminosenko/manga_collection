@@ -70,6 +70,8 @@ type SortieSauvee = {
   couvertureUrl: string | null;
   sourceCouverture: string | null;
   couvertureRecupereeLe: string | null;
+  couvertureTenteeLe: string | null;
+  couvertureTentatives: number;
 };
 
 type SuiviSauve = {
@@ -238,6 +240,8 @@ async function exporter() {
           couvertureUrl: sortie.couvertureUrl,
           sourceCouverture: sortie.sourceCouverture,
           couvertureRecupereeLe: enISO(sortie.couvertureRecupereeLe),
+          couvertureTenteeLe: enISO(sortie.couvertureTenteeLe),
+          couvertureTentatives: sortie.couvertureTentatives,
         })),
         volumes: edition.volumes.map((volume) => ({
           id: volume.id,
@@ -404,6 +408,8 @@ async function restaurer() {
         couvertureUrl: sortie.couvertureUrl,
         sourceCouverture: sortie.sourceCouverture ?? null,
         couvertureRecupereeLe: enDate(sortie.couvertureRecupereeLe),
+        couvertureTenteeLe: enDate(sortie.couvertureTenteeLe ?? null),
+        couvertureTentatives: sortie.couvertureTentatives ?? 0,
       })),
     ),
   );

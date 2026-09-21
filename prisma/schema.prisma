@@ -127,9 +127,12 @@ model Sortie {
   couvertureUrl         String?
   sourceCouverture      String?
   couvertureRecupereeLe DateTime?
+  couvertureTenteeLe    DateTime?
+  couvertureTentatives  Int       @default(0)
 
   @@unique([editionId, numero])
   @@index([date])
+  @@index([couvertureUrl, couvertureTenteeLe])
 }
 
 model Volume {

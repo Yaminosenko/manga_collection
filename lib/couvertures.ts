@@ -64,6 +64,18 @@ export type BilanCouvertures = {
   absentes: number;
   injoignables: number;
   restants: number;
+  annonces: BilanAnnonces;
+};
+
+export type BilanAnnonces = {
+  examinees: number;
+  obtenues: number;
+  parVignette: number;
+  parBnf: number;
+  parMangaDex: number;
+  absentes: number;
+  injoignables: number;
+  restantes: number;
 };
 
 function vignetteALaCote(vignette: Vignette): boolean {
@@ -95,9 +107,9 @@ function delaiAvantNouvelEssai(tentatives: number): number {
   return jours * MILLISECONDES_PAR_JOUR;
 }
 
-function estDuPourUnEssai(candidat: Candidat, tenteeLe: Date | null, maintenant: Date): boolean {
+function estDuPourUnEssai(tentatives: number, tenteeLe: Date | null, maintenant: Date): boolean {
   if (tenteeLe === null) return true;
-  return maintenant.getTime() - tenteeLe.getTime() >= delaiAvantNouvelEssai(candidat.couvertureTentatives);
+  return maintenant.getTime() - tenteeLe.getTime() >= delaiAvantNouvelEssai(tentatives);
 }
 
 function imageExploitable(reponse: ReponseCouverture): boolean {
@@ -184,12 +196,229 @@ async function reprendre(candidat: Candidat, vignette: Vignette, maintenant: Dat
   return true;
 }
 
+type EditionDuCandidat = Candidat["edition"];
+
+type CacheMangaDex = {
+  couverturesParSerie: Map<string, Map<number, string>>;
+  identifiantsParSerie: Map<string, string | null>;
+  identifiantsRetenus: Set<string>;
+};
+
+function cacheMangaDexVide(): CacheMangaDex {
+  return {
+    couverturesParSerie: new Map(),
+    identifiantsParSerie: new Map(),
+    identifiantsRetenus: new Set(),
+  };
+}
+
+async function couvertureMangaDexPour(
+  edition: EditionDuCandidat,
+  numero: number,
+  cache: CacheMangaDex,
+): Promise<ReponseCouverture | null> {
+  if (edition.nom !== NOM_EDITION_PAR_DEFAUT) return null;
+
+  const identifiant = await identifiantMangaDex(edition.serie, cache.identifiantsParSerie);
+  if (identifiant === null) return null;
+
+  let fichiers = cache.couverturesParSerie.get(identifiant);
+  if (!fichiers) {
+    fichiers = await couverturesMangaDex(identifiant);
+    cache.couverturesParSerie.set(identifiant, fichiers);
+  }
+
+  const tomesMangaDex = Math.max(0, ...fichiers.keys());
+  const comparable = numerotationComparable(edition.nom, edition.tomesParus, tomesMangaDex);
+  if (comparable) {
+    await retenirIdentifiant(edition.serie, identifiant, cache.identifiantsRetenus);
+  }
+
+  const fichier = comparable ? fichiers.get(numero) : undefined;
+  if (fichier === undefined) return null;
+
+  return telechargerCouvertureMangaDex(identifiant, fichier);
+}
+
+type CandidatAnnonce = {
+  id: string;
+  numero: number;
+  isbn: string | null;
+  couvertureTentatives: number;
+  couvertureTenteeLe: Date | null;
+  edition: EditionDuCandidat;
+};
+
+async function poserSurAnnonce(
+  candidat: CandidatAnnonce,
+  reponse: ReponseCouverture,
+  source: string,
+  maintenant: Date,
+): Promise<void> {
+  if (reponse.etat !== "image") return;
+
+  const chemin =
+    `${PREFIXE_OBJETS_COUVERTURES}/${candidat.edition.slug}/` +
+    `${candidat.numero}.${reponse.image.extension}`;
+  const url = await deposer(chemin, reponse.image.octets, reponse.image.type);
+
+  await prisma.sortie.update({
+    where: { id: candidat.id },
+    data: {
+      couvertureUrl: url,
+      sourceCouverture: source,
+      couvertureRecupereeLe: maintenant,
+      couvertureTenteeLe: maintenant,
+      couvertureTentatives: { increment: 1 },
+    },
+  });
+}
+
+async function acquerirCouverturesAnnoncees(
+  maintenant: Date,
+  echeance: number,
+  plafond: number,
+  cache: CacheMangaDex,
+): Promise<BilanAnnonces> {
+  const delaiMinimal = (JOURS_AVANT_NOUVEL_ESSAI[0] ?? 0) * MILLISECONDES_PAR_JOUR;
+  const seuil = new Date(maintenant.getTime() - delaiMinimal);
+
+  const bruts = await prisma.sortie.findMany({
+    where: {
+      couvertureUrl: null,
+      OR: [{ couvertureTenteeLe: null }, { couvertureTenteeLe: { lt: seuil } }],
+    },
+    orderBy: [{ couvertureTenteeLe: { sort: "asc", nulls: "first" } }, { date: "asc" }],
+    take: plafond,
+    select: {
+      id: true,
+      numero: true,
+      isbn: true,
+      couvertureTentatives: true,
+      couvertureTenteeLe: true,
+      edition: {
+        select: {
+          slug: true,
+          nom: true,
+          tomesParus: true,
+          serie: { select: { id: true, titre: true, titreVo: true, idMangaDex: true } },
+        },
+      },
+    },
+  });
+
+  const candidats = bruts.filter((brut) =>
+    estDuPourUnEssai(brut.couvertureTentatives, brut.couvertureTenteeLe, maintenant),
+  );
+
+  const vignettes = await vignettesExploitables(
+    candidats.map((candidat) => candidat.isbn).filter((isbn): isbn is string => isbn !== null),
+  );
+
+  const bilan: BilanAnnonces = {
+    examinees: 0,
+    obtenues: 0,
+    parVignette: 0,
+    parBnf: 0,
+    parMangaDex: 0,
+    absentes: 0,
+    injoignables: 0,
+    restantes: 0,
+  };
+
+  for (const candidat of candidats) {
+    if (Date.now() >= echeance) break;
+    bilan.examinees += 1;
+
+    let obtenue = false;
+    let injoignable = false;
+
+    const vignette = candidat.isbn === null ? undefined : vignettes.get(candidat.isbn);
+    if (vignette !== undefined && vignetteALaCote(vignette)) {
+      const source = cheminDepuisUrl(vignette.couvertureUrl);
+      const point = source === null ? -1 : source.lastIndexOf(".");
+      if (source !== null && point !== -1) {
+        const chemin =
+          `${PREFIXE_OBJETS_COUVERTURES}/${candidat.edition.slug}/` +
+          `${candidat.numero}.${source.slice(point + 1)}`;
+        try {
+          const url = await copierObjet(source, chemin);
+          await prisma.sortie.update({
+            where: { id: candidat.id },
+            data: {
+              couvertureUrl: url,
+              sourceCouverture: vignette.source,
+              couvertureRecupereeLe: vignette.recupereeLe,
+              couvertureTenteeLe: maintenant,
+              couvertureTentatives: { increment: 1 },
+            },
+          });
+          bilan.parVignette += 1;
+          obtenue = true;
+        } catch {
+          obtenue = false;
+        }
+      }
+    }
+
+    if (!obtenue && candidat.isbn !== null) {
+      const reponse = await telechargerCouvertureBnf(candidat.isbn);
+      if (imageExploitable(reponse)) {
+        await poserSurAnnonce(candidat, reponse, SOURCE_COUVERTURE_BNF, maintenant);
+        bilan.parBnf += 1;
+        obtenue = true;
+      } else if (reponse.etat === "injoignable") {
+        injoignable = true;
+      }
+    }
+
+    if (!obtenue) {
+      const reponse = await couvertureMangaDexPour(candidat.edition, candidat.numero, cache);
+      if (reponse !== null) {
+        if (imageExploitable(reponse)) {
+          await poserSurAnnonce(candidat, reponse, SOURCE_COUVERTURE_MANGADEX, maintenant);
+          bilan.parMangaDex += 1;
+          obtenue = true;
+        } else if (reponse.etat === "injoignable") {
+          injoignable = true;
+        }
+      }
+    }
+
+    if (obtenue) {
+      bilan.obtenues += 1;
+      continue;
+    }
+
+    if (injoignable) {
+      bilan.injoignables += 1;
+      await prisma.sortie.update({
+        where: { id: candidat.id },
+        data: { couvertureTenteeLe: maintenant },
+      });
+      continue;
+    }
+
+    bilan.absentes += 1;
+    await prisma.sortie.update({
+      where: { id: candidat.id },
+      data: { couvertureTenteeLe: maintenant, couvertureTentatives: { increment: 1 } },
+    });
+  }
+
+  bilan.restantes = await prisma.sortie.count({ where: { couvertureUrl: null } });
+  return bilan;
+}
+
 export async function acquerirCouverturesManquantes(
   maintenant: Date = new Date(),
   budgetMs: number = BUDGET_COUVERTURES_MS,
   plafond: number = PLAFOND_COUVERTURES_PAR_PASSAGE,
 ): Promise<BilanCouvertures> {
   const echeance = Date.now() + budgetMs;
+  const cache = cacheMangaDexVide();
+  const annonces = await acquerirCouverturesAnnoncees(maintenant, echeance, plafond, cache);
+
   const delaiMinimal = (JOURS_AVANT_NOUVEL_ESSAI[0] ?? 0) * MILLISECONDES_PAR_JOUR;
   const seuil = new Date(maintenant.getTime() - delaiMinimal);
 
@@ -220,7 +449,7 @@ export async function acquerirCouverturesManquantes(
   });
 
   const candidats = bruts.filter((brut) =>
-    estDuPourUnEssai(brut, brut.couvertureTenteeLe, maintenant),
+    estDuPourUnEssai(brut.couvertureTentatives, brut.couvertureTenteeLe, maintenant),
   );
 
   const vignettes = await vignettesExploitables(
@@ -236,11 +465,8 @@ export async function acquerirCouverturesManquantes(
     absentes: 0,
     injoignables: 0,
     restants: 0,
+    annonces,
   };
-
-  const couverturesParSerie = new Map<string, Map<number, string>>();
-  const identifiantsParSerie = new Map<string, string | null>();
-  const identifiantsRetenus = new Set<string>();
 
   for (const candidat of candidats) {
     if (Date.now() >= echeance) break;
@@ -266,34 +492,15 @@ export async function acquerirCouverturesManquantes(
       }
     }
 
-    if (!obtenue && candidat.edition.nom === NOM_EDITION_PAR_DEFAUT) {
-      const serie = candidat.edition.serie;
-      const identifiant = await identifiantMangaDex(serie, identifiantsParSerie);
-      if (identifiant !== null) {
-        let fichiers = couverturesParSerie.get(identifiant);
-        if (!fichiers) {
-          fichiers = await couverturesMangaDex(identifiant);
-          couverturesParSerie.set(identifiant, fichiers);
-        }
-        const tomesMangaDex = Math.max(0, ...fichiers.keys());
-        const comparable = numerotationComparable(
-          candidat.edition.nom,
-          candidat.edition.tomesParus,
-          tomesMangaDex,
-        );
-        if (comparable) {
-          await retenirIdentifiant(serie, identifiant, identifiantsRetenus);
-        }
-        const fichier = comparable ? fichiers.get(candidat.numero) : undefined;
-        if (fichier !== undefined) {
-          const reponse = await telechargerCouvertureMangaDex(identifiant, fichier);
-          if (imageExploitable(reponse)) {
-            await poser(candidat, reponse, SOURCE_COUVERTURE_MANGADEX, maintenant);
-            bilan.parMangaDex += 1;
-            obtenue = true;
-          } else if (reponse.etat === "injoignable") {
-            injoignable = true;
-          }
+    if (!obtenue) {
+      const reponse = await couvertureMangaDexPour(candidat.edition, candidat.numero, cache);
+      if (reponse !== null) {
+        if (imageExploitable(reponse)) {
+          await poser(candidat, reponse, SOURCE_COUVERTURE_MANGADEX, maintenant);
+          bilan.parMangaDex += 1;
+          obtenue = true;
+        } else if (reponse.etat === "injoignable") {
+          injoignable = true;
         }
       }
     }

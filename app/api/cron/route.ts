@@ -49,6 +49,10 @@ export async function GET(request: NextRequest) {
     revalidatePath("/");
   }
 
+  if (couvertures.annonces.obtenues > 0) {
+    revalidatePath("/planning");
+  }
+
   return NextResponse.json({
     promues: promues.length,
     sorties: promues.map((promue) => `${promue.slug} t${promue.numero}`),
