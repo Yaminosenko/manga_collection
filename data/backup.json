@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-09-21T09:54:21.970Z",
+  "exporteeLe": "2026-09-21T11:48:05.984Z",
   "compteurs": {
     "series": 130,
     "editions": 135,
@@ -9379,7 +9379,9 @@
               "isbn": "9782820356574",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/blue-exorcist/33.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -10492,27 +10494,33 @@
               "numero": 35,
               "date": "2026-10-28T00:00:00.000Z",
               "isbn": "9791043306617",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/blue-lock/35.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             },
             {
               "id": "223d48d7-9673-4ddb-b1b4-bed7abcc253f",
               "numero": 36,
               "date": "2026-12-02T00:00:00.000Z",
               "isbn": "9791043311277",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/blue-lock/36.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             },
             {
               "id": "e0b2bd78-6af5-4590-8e7f-2fd96e045e72",
               "numero": 37,
               "date": "2027-02-03T00:00:00.000Z",
               "isbn": "9791043312540",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/blue-lock/37.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -11118,7 +11126,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 5415,
-      "idMangaDex": null,
+      "idMangaDex": "259dfd8a-f06a-4825-8fa6-a2dcd7274230",
       "editions": [
         {
           "id": "e31b0cc6-1e80-4f07-bec1-0282207c99d6",
@@ -11146,9 +11154,11 @@
               "numero": 19,
               "date": "2026-11-12T00:00:00.000Z",
               "isbn": "9791042021221",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/call-of-the-night/19.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -11679,7 +11689,9 @@
               "isbn": "9782820300348",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/chainsaw-man/23.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -12645,7 +12657,7 @@
       "cible": "Echi",
       "couvertureUrl": null,
       "idMangaBaka": 83338,
-      "idMangaDex": null,
+      "idMangaDex": "b3949b7e-a3c1-4532-b571-279b0f44a01d",
       "editions": [
         {
           "id": "21e27c05-5918-4601-b19f-721975aaa577",
@@ -12673,9 +12685,11 @@
               "numero": 22,
               "date": "2026-12-02T00:00:00.000Z",
               "isbn": "9791041121885",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/classroom-for-heroes/22.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -15030,7 +15044,9 @@
               "isbn": "9791042021399",
               "couvertureUrl": null,
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -24078,7 +24094,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 676,
-      "idMangaDex": null,
+      "idMangaDex": "dea77c2d-dbaa-434a-b0af-0c116642434c",
       "editions": [
         {
           "id": "d07b6bf6-515d-454b-8fc2-81175c536cc6",
@@ -24106,9 +24122,11 @@
               "numero": 5,
               "date": "2026-09-03T00:00:00.000Z",
               "isbn": "9791032723524",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/itchi-the-witch/5.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -24285,7 +24303,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 29748,
-      "idMangaDex": null,
+      "idMangaDex": "0fa5dab2-250a-4f69-bd15-9ceea54176fa",
       "editions": [
         {
           "id": "3751fd78-61d2-4a16-b8b9-1676b87df7bf",
@@ -24313,9 +24331,11 @@
               "numero": 7,
               "date": "2026-12-02T00:00:00.000Z",
               "isbn": "9791041121892",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/je-suis-un-assassin-et-je-surpasse-le-heros/7.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -25495,7 +25515,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 708,
-      "idMangaDex": null,
+      "idMangaDex": "d65c0332-3764-4c89-84bd-b1a4e7278ad7",
       "editions": [
         {
           "id": "87c9e603-265c-49a2-9f34-2526fbc41495",
@@ -25525,16 +25545,20 @@
               "isbn": "9782505142829",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/kagurabachi/10.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             },
             {
               "id": "acaa42ea-c818-4b04-99ba-f2a5941f4d4a",
               "numero": 11,
               "date": "2026-11-06T00:00:00.000Z",
               "isbn": "9782505144656",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/kagurabachi/11.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -25844,7 +25868,9 @@
               "isbn": "9791042021528",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/kaijin-reijoh/15.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -27388,7 +27414,9 @@
               "isbn": "9791032723395",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/kindergarten-wars/16.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -30812,7 +30840,9 @@
               "isbn": "9782413093466",
               "couvertureUrl": null,
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -32571,7 +32601,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 89,
-      "idMangaDex": null,
+      "idMangaDex": "d7037b2a-874a-4360-8a7b-07f2899152fd",
       "editions": [
         {
           "id": "914bfe57-eea6-4dd2-b960-26400891b3ea",
@@ -32601,7 +32631,9 @@
               "isbn": "9782384967247",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/marimashita-iruma-kun/36.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             },
             {
               "id": "87e995d2-4efc-4f4c-8e99-a1c490faf88e",
@@ -32610,16 +32642,20 @@
               "isbn": "9782384967261",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/marimashita-iruma-kun/37.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             },
             {
               "id": "e2506426-6dee-4119-8dd3-1904ad70da06",
               "numero": 38,
               "date": "2027-02-03T00:00:00.000Z",
               "isbn": "9782384968572",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/marimashita-iruma-kun/38.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -34575,7 +34611,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 670,
-      "idMangaDex": null,
+      "idMangaDex": "e05dd982-6d09-4f3d-8e8e-6c9ae65b5857",
       "editions": [
         {
           "id": "38673a2e-cb79-481c-9bb6-ee4663aaf5fc",
@@ -34603,9 +34639,11 @@
               "numero": 5,
               "date": "2026-11-12T00:00:00.000Z",
               "isbn": "9782413094524",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/mission-in-the-apocalypse/5.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -34919,7 +34957,7 @@
       "cible": "Echi",
       "couvertureUrl": null,
       "idMangaBaka": 7134,
-      "idMangaDex": null,
+      "idMangaDex": "65498ee8-3c32-4228-b433-73a4d08f8927",
       "editions": [
         {
           "id": "3f2716e5-db06-4219-b27b-0eef066a2903",
@@ -34949,16 +34987,20 @@
               "isbn": "9782377176465",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/monster-musume-everyday-life-with-monster-girls/19.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             },
             {
               "id": "6692e52b-557e-485d-9a07-ad19f6dee8f3",
               "numero": 20,
               "date": "2026-11-20T00:00:00.000Z",
               "isbn": "9782377176823",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/monster-musume-everyday-life-with-monster-girls/20.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -40801,16 +40843,20 @@
               "isbn": "9782344071120",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/113.webp",
               "sourceCouverture": "bnf",
-              "couvertureRecupereeLe": "2026-09-16T09:45:50.139Z"
+              "couvertureRecupereeLe": "2026-09-16T09:45:50.139Z",
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             },
             {
               "id": "81e804e7-6ecc-4663-8bea-1fc8b75aa28c",
               "numero": 114,
               "date": "2026-12-02T00:00:00.000Z",
               "isbn": "9782344071137",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-piece/114.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -42408,7 +42454,9 @@
               "isbn": "9791042021672",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/one-puch-man/35.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -45536,7 +45584,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 2416,
-      "idMangaDex": null,
+      "idMangaDex": "8de2456c-95ef-4958-8f27-af7a4cc275b7",
       "editions": [
         {
           "id": "ac121022-10e8-4f32-8b9d-b0e67f50a18c",
@@ -45566,7 +45614,9 @@
               "isbn": "9791033570103",
               "couvertureUrl": null,
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -46107,7 +46157,9 @@
               "isbn": "9782505144649",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ragna-crimson/17.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -46568,7 +46620,9 @@
               "isbn": "9791032723579",
               "couvertureUrl": null,
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             },
             {
               "id": "07666723-58ce-4ea8-b0f8-bfa6cc2ff75b",
@@ -46577,7 +46631,9 @@
               "isbn": "9791032723173",
               "couvertureUrl": null,
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -47479,7 +47535,9 @@
               "isbn": "9782344053508",
               "couvertureUrl": null,
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -48518,7 +48576,9 @@
               "isbn": "9782344071717",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/ruridragon/5.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -52270,7 +52330,9 @@
               "isbn": "9782505144434",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/smoking-behind-the-supermarket/7.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -54003,7 +54065,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 1288,
-      "idMangaDex": null,
+      "idMangaDex": "6b958848-c885-4735-9201-12ee77abcb3c",
       "editions": [
         {
           "id": "643af1cc-5a8b-409c-bf65-3f42b13852b0",
@@ -54031,9 +54093,11 @@
               "numero": 17,
               "date": "2026-11-12T00:00:00.000Z",
               "isbn": "9791042021870",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/spy-x-family/17.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -55966,7 +56030,9 @@
               "isbn": "9782372876308",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/the-ancient-magus-bride/24.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
@@ -56991,7 +57057,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 272,
-      "idMangaDex": null,
+      "idMangaDex": "a8dbdba7-6904-46cb-b03b-cf869b11110b",
       "editions": [
         {
           "id": "384f2aa9-65a8-4670-b223-44d08b157123",
@@ -57019,9 +57085,11 @@
               "numero": 24,
               "date": "2026-12-10T00:00:00.000Z",
               "isbn": "9791042021153",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/the-heroic-legend-of-arslan/24.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -59072,7 +59140,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 1360,
-      "idMangaDex": null,
+      "idMangaDex": "b340d77a-6bfe-4f33-8352-4d305ecf264c",
       "editions": [
         {
           "id": "1beba2c4-c4df-4503-b4b2-11b5620ddb4f",
@@ -59100,9 +59168,11 @@
               "numero": 11,
               "date": "2026-11-12T00:00:00.000Z",
               "isbn": "9791042021948",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/tsugai-daemons-of-the-shadow-realm/11.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureTentatives": 1
             }
           ],
           "volumes": [
@@ -61428,7 +61498,9 @@
               "isbn": "9791041119974",
               "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/why-nobody-remember-my-world/14.webp",
               "sourceCouverture": null,
-              "couvertureRecupereeLe": null
+              "couvertureRecupereeLe": null,
+              "couvertureTenteeLe": null,
+              "couvertureTentatives": 0
             }
           ],
           "volumes": [
