@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default function Page() {
   return (
-    <main className="flex min-h-dvh flex-col">
+    <main className="flex flex-1 flex-col">
       <header className="flex items-center gap-[12px] px-[18px] pt-[22px] pb-[16px]">
         <Link href="/ajouter" aria-label="Retour à l’ajout" className="text-accent flex min-h-11 items-center">
           <ArrowLeft className="size-[18px]" />

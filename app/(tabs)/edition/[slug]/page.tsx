@@ -46,7 +46,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]">) {
   const prochaine = edition.sorties.at(0) ?? null;
 
   return (
-    <main className="flex min-h-dvh flex-col">
+    <main className="flex flex-1 flex-col">
       <nav className="flex items-center justify-between px-[18px] py-[10px]">
         <Link href="/" aria-label="Retour" className="flex min-h-11 items-center text-accent">
           <ArrowLeft className="size-[18px]" />

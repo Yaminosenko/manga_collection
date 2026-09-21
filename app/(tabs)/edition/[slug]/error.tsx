@@ -2,7 +2,7 @@
 
 export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center gap-[14px] px-[18px] text-center">
+    <div className="flex flex-1 flex-col items-center justify-center gap-[14px] px-[18px] text-center">
       <p className="text-[13px] text-neutral-400">
         Cette édition n’a pas pu être chargée.
       </p>

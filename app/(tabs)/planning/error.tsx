@@ -4,7 +4,7 @@ import { LIBELLE_PLANNING_ERREUR } from "@/lib/constants";
 
 export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center gap-[14px] px-[18px] text-center">
+    <div className="flex flex-1 flex-col items-center justify-center gap-[14px] px-[18px] text-center">
       <p className="text-[13px] text-neutral-400">{LIBELLE_PLANNING_ERREUR}</p>
       <button
         type="button"

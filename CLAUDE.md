@@ -264,6 +264,16 @@ bas porte la même, de sorte que les deux bords fixes se répondent.
   44 px de cible tactile. Le compte, lui, a quitté la barre pour la pastille du bandeau :
   **il n'est donc plus accessible depuis le Planning, Rechercher ni Communauté**, ce qui est
   assumé.
+- **Et depuis le 21 septembre 2026 elle est sur toutes les pages de l'application**, pas
+  seulement sur les quatre onglets : la page Édition, « Mes tomes », État, le scanner et les
+  deux sous-pages de compte la portent aussi. Elle n'y est pas conditionnelle — **c'est
+  l'arborescence qui la pose** : ces routes vivent sous le groupe `app/(tabs)/`, qui ne fait pas
+  partie de l'URL, donc rien de ce qui pointe vers elles ne change. **Seuls `/acces` et
+  `/inscription` restent dehors** : sans session, les quatre onglets ne mènent qu'à une
+  redirection vers l'écran qu'on regarde. Conséquence à connaître : une page ainsi accueillie ne
+  peut plus réclamer `min-h-dvh` — elle est dans un `flex-1` sous la barre, et 100 dvh la
+  pousserait hors du pli. **Et aucun onglet ne s'allume** sur ces pages, faute de savoir d'où
+  l'on vient.
 - **Chaque panneau garde sa position de défilement**, sous une clé par panneau — et il la garde
   désormais **de lui-même**, chacun étant son propre conteneur défilant.
 

@@ -5379,6 +5379,43 @@ hydratée depuis longtemps, il passe. **Et c'est la base qui a conclu, pas la ca
 
 `tsc --noEmit` et `eslint` passent. Aucune migration : le retrait ne touche pas au schéma.
 
+### Fait — la barre du bas sur toutes les pages de l'application (21 septembre 2026)
+
+Demandé par le propriétaire : *« garder la barre du bas (Collection, Planning, Rechercher,
+Communauté) accessible et visible peu importe la page »*. Elle ne vivait que sur les six routes
+du groupe `(tabs)` ; la page Édition, « Mes tomes », État, le scanner et les deux sous-pages de
+compte n'avaient que leur flèche de retour, qui remonte d'un cran et pas ailleurs.
+
+**La barre reste posée par le groupe de routes, pas par une condition dans le composant.**
+`app/edition/`, `app/scanner/`, `app/compte/identite/` et `app/compte/mot-de-passe/` sont passés
+sous `app/(tabs)/`. Un groupe de routes ne fait pas partie de l'URL : les sept chemins répondent
+à l'identique, les signets et les `revalidatePath` déjà posés tiennent, et `proxy.ts` — qui
+raisonne sur les chemins — n'est pas touché. L'alternative, un `usePathname` dans `TabBar` qui
+se cache sur `/acces` et `/inscription`, aurait mis la règle dans le composant le plus rendu de
+l'application au lieu de l'arborescence, où elle se lit.
+
+**`/acces` et `/inscription` restent dehors**, et c'est le seul choix de la journée : sans
+session, les quatre onglets ne mènent qu'à une redirection vers l'écran qu'on regarde déjà.
+
+**`min-h-dvh` → `flex-1` sur les pages déplacées, et c'est ce qui aurait cassé.** `.contenu-onglets`
+est un `flex flex-1 flex-col` ; un `<main>` qui réclame 100 dvh à l'intérieur pousse la barre
+sous le pli et fait défiler chaque page de la hauteur de la barre — la barre serait « présente »
+et invisible, exactement ce qu'on venait de corriger. **Trois fichiers portaient déjà ce défaut
+alors qu'ils étaient déjà dans le groupe** — `app/(tabs)/error.tsx`, `loading.tsx` et
+`planning/error.tsx` —, corrigés dans le même geste. Rien d'autre n'a bougé : le seul `fixed` de
+l'application est l'écran de fermeture du menu de tri, et aucune de ces pages n'est
+`espace-plein-ecran`, donc la colonne garde son `min-height` et son défilement de document.
+
+**Aucun onglet ne s'allume sur ces pages**, et c'est laissé tel quel : `chemin.startsWith(href)`
+ne reconnaît ni `/edition/…` ni `/compte/identite`, et on arrive sur une édition depuis la
+Collection, les Manquants, le Planning ou Rechercher indifféremment — allumer Collection serait
+un pari sur d'où l'on vient.
+
+`.next` purgé avant vérification, le piège du déplacement de route (§12). `tsc --noEmit` et
+`eslint` passent, `next-env.d.ts` n'a pas bougé. **Rendu jugé par le propriétaire sur le 3001**,
+sur les pages déplacées. Aucune migration, aucune écriture : le changement est une arborescence
+et treize classes.
+
 ---
 
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)

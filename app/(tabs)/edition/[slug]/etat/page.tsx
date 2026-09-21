@@ -18,7 +18,7 @@ export default async function Page({ params }: PageProps<"/edition/[slug]/etat">
   }
 
   return (
-    <main className="flex min-h-dvh flex-col">
+    <main className="flex flex-1 flex-col">
       <header className="flex items-center gap-[12px] px-[18px] pt-[22px] pb-[20px]">
         <Link
           href={`/edition/${edition.slug}`}
