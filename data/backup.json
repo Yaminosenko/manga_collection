@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-09-21T11:48:05.984Z",
+  "exporteeLe": "2026-09-21T11:57:03.323Z",
   "compteurs": {
     "series": 130,
     "editions": 135,
@@ -46590,7 +46590,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 1982,
-      "idMangaDex": null,
+      "idMangaDex": "cd60cf1e-6775-4546-8b84-949502a2b113",
       "editions": [
         {
           "id": "0c299918-c21a-4722-9741-54693e3edbf6",
@@ -46618,10 +46618,10 @@
               "numero": 3,
               "date": "2026-09-03T00:00:00.000Z",
               "isbn": "9791032723579",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
-              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/rai-rai-rai/3.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:56:48.088Z",
+              "couvertureTenteeLe": "2026-09-21T11:56:48.088Z",
               "couvertureTentatives": 1
             },
             {
@@ -46629,10 +46629,10 @@
               "numero": 4,
               "date": "2026-12-03T00:00:00.000Z",
               "isbn": "9791032723173",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
-              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/rai-rai-rai/4.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T11:56:48.088Z",
+              "couvertureTenteeLe": "2026-09-21T11:56:48.088Z",
               "couvertureTentatives": 1
             }
           ],
