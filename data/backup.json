@@ -1,5 +1,5 @@
 {
-  "exporteeLe": "2026-09-21T11:57:03.323Z",
+  "exporteeLe": "2026-09-21T12:02:22.368Z",
   "compteurs": {
     "series": 130,
     "editions": 135,
@@ -15014,7 +15014,7 @@
       "cible": "Shonen",
       "couvertureUrl": null,
       "idMangaBaka": 883,
-      "idMangaDex": null,
+      "idMangaDex": "e1e38166-20e4-4468-9370-187f985c550e",
       "editions": [
         {
           "id": "a098b340-0e66-4122-8e11-a7e03d8f199b",
@@ -15042,10 +15042,10 @@
               "numero": 21,
               "date": "2026-12-10T00:00:00.000Z",
               "isbn": "9791042021399",
-              "couvertureUrl": null,
-              "sourceCouverture": null,
-              "couvertureRecupereeLe": null,
-              "couvertureTenteeLe": "2026-09-21T11:47:28.895Z",
+              "couvertureUrl": "https://pub-6b4c6ced62da41fd8cd7ee692a16a5c4.r2.dev/covers/demon-slave/21.jpg",
+              "sourceCouverture": "mangadex",
+              "couvertureRecupereeLe": "2026-09-21T12:02:07.836Z",
+              "couvertureTenteeLe": "2026-09-21T12:02:07.836Z",
               "couvertureTentatives": 1
             }
           ],
