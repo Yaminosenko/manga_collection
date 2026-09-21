@@ -5328,6 +5328,57 @@ Sept commits sur `main`, une migration — `couvertureTenteeLe` et `couvertureTe
 `Sortie` —, et un skill `planning-manga-news` versionné de force, `.claude/` étant exclu par le
 gitignore global du poste.
 
+### Fait — retirer une édition de sa collection (21 septembre 2026)
+
+**Le trou est signalé par le propriétaire, et il datait du premier jour** : *« il est impossible
+d'enlever une série de notre collection. J'avais mis One Piece en suivi, puis je l'ai enlevé.
+Sans ajouter un seul tome je me retrouve avec la série présente dans ma collection alors que je
+ne l'ai pas. »* L'écran Rechercher sait ajouter en un tap depuis le 9 septembre ; rien n'a jamais
+su défaire ce tap. `suivie = false` ne retire pas une édition, **il la fait taire** — elle reste
+en Collection à `0 / N`, ce que la dernière ligne du tableau de §3 décrit sans en donner la
+sortie.
+
+**Une action, un bouton, et rien d'autre.** `retirerDeMaCollection(slug)` exige `exigerAcces()`,
+écrit sur `idUtilisateurCourant()` comme toutes les autres — donc elle ne sait pas viser un autre
+compte —, et fait deux `deleteMany` **dans une transaction** : mes `Possession` sur les tomes de
+l'édition, puis mon `SuiviEdition`. L'`Edition`, ses `Volume` et ses `Sortie` ne sont pas touchés :
+c'est du catalogue partagé. Puis `revaliderEdition(slug)` et un `redirect` vers la Collection, la
+page qu'on vient de quitter n'existant plus pour ce compte.
+
+**Deux taps.** C'est la seule action destructrice de l'application. Le premier arme, le second
+confirme, la mention sous le bouton change pour dire ce que le second détruit, et « Annuler »
+désarme. Écartée : une couleur de danger — **Nocturne n'a pas de rampe rouge**, et les erreurs de
+`access-form` et `champ` s'affichent déjà en `neutral-400` ; le bouton armé prend l'accent plein,
+qui ne sert nulle part ailleurs sur cet écran.
+
+#### Éprouvé sur le banc, avec deux comptes, et lu en base
+
+Banc remonté par `db:migrate` puis `db:backup -- --restore --reset` — compteurs identiques à la
+sauvegarde du jour —, serveur sur le 3001 avec `LOCAL_DATABASE_URL` en préfixe.
+
+- **Le cas du propriétaire, à l'identique** : `one-piece`, `suivie = false`, zéro tome. Après le
+  retrait, `SuiviEdition` passe de 139 à 138, la ligne de `testeur` sur la même édition **et ses
+  4 possessions** sont intactes, l'édition garde ses 112 tomes et ses 2 sorties. La Collection
+  affiche 111 éditions au lieu de 112, à tomes constants.
+- **Le cas qui compte, celui des possessions** : `chainsaw-man`, suivie par `tempestl` (22 tomes)
+  et `moonwalker` (22 tomes). Après le retrait par le premier : `Possession` 1 880 → 1 858,
+  **les 22 lignes de `moonwalker` sont là**, et `Volume`, `Edition`, `Serie`, `Sortie` ne bougent
+  pas. L'écran passe à 1 139 tomes et 110 éditions.
+- **Le retour** : `/edition/chainsaw-man` rend « Cette édition n'existe pas », comme toute édition
+  hors de ma collection. Et la recherche la retrouve — elle sort sous « Au catalogue » et non sous
+  « Déjà dans la collection », puisque `dansMaCollection` est faux —, le tap appelle
+  `ajouterCandidatDirect`, **ne crée pas de doublon** (135 éditions avant et après, même
+  identifiant d'édition) et repose un `SuiviEdition` à zéro possession. La série repart en wish
+  list.
+- Banc restauré après l'essai, les sept compteurs reviennent à l'identique.
+
+**Le premier clic d'automatisation n'a rien déclenché** — aucun `POST` dans le journal du serveur,
+l'écran inchangé, la base inchangée. C'est le piège de §12, une fois de plus : la mise en page
+avait changé d'échelle entre la capture et le clic. Repris par référence d'élément après `find`, la page étant
+hydratée depuis longtemps, il passe. **Et c'est la base qui a conclu, pas la capture.**
+
+`tsc --noEmit` et `eslint` passent. Aucune migration : le retrait ne touche pas au schéma.
+
 ---
 
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)

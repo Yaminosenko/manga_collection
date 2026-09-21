@@ -166,6 +166,8 @@ La dernière ligne manquait au tableau d'origine et a été trouvée à l'usage 
 une édition abandonnée dont on décoche tous les tomes n'est **pas** une envie d'achat, donc elle
 reste en Collection. C'est cohérent avec la règle « une série reste en Collection tant qu'elle a
 des tomes possédés **ou en a eu** » — la wish list demande `suivie`, c'est-à-dire une intention.
+**Ce qui manquait à cette ligne est la sortie** : une édition qu'on n'a jamais eue y restait
+faute de pouvoir la retirer. C'est le retrait du 21 septembre 2026, décrit en §4 « État ».
 
 **Une entrée de wish list ne remonte ni dans Manquants ni dans le Planning**, et les deux écrans
 l'excluent par la même condition — *au moins un tome possédé*. Sans elle, mettre une série de
@@ -351,6 +353,37 @@ a tranché pour 2, confirmé le 31 août sur couvertures réelles — voir `JOUR
 de repli si la vue d'ensemble manque sur les séries longues — à 2 colonnes, Berserk occupe
 21 rangées et Bleach 37 — sous forme d'un second mode d'affichage basculable depuis l'en-tête.
 
+### État — la sous-page de réglage
+Trois réglages personnels et un retrait, atteints par « Modifier l'état » depuis la page
+Édition : **où j'en suis** (le statut), **la parution** (réservée au propriétaire, c'est une
+donnée de catalogue) et **le suivi**. Puis, depuis le 21 septembre 2026, **le retrait**.
+
+**Retirer, c'est supprimer mon `SuiviEdition` et mes `Possession` sur les tomes de cette
+édition — rien d'autre.** L'`Edition`, ses `Volume` et ses `Sortie` sont du catalogue partagé :
+les effacer retirerait la série aux autres comptes. Mesuré sur le banc en retirant une édition
+suivie par deux comptes — les 22 possessions de l'autre compte et les 135 éditions sont
+intactes, seules les 22 lignes du compte qui retire sont parties.
+
+**Ce geste manquait, et son absence était une impasse.** `suivie = false` ne retire pas une
+édition, il la fait taire : une série ajoutée par curiosité puis dépossédée restait en
+Collection à `0 / N` pour toujours — c'est la dernière ligne du tableau de §3, qui dit qu'une
+édition non suivie à zéro tome n'est pas une envie d'achat. Rien ne permettait de dire « je ne
+l'ai pas ». **Le trou date du premier jour** : l'écran Rechercher sait ajouter en un tap depuis
+le 9 septembre 2026, et rien n'a jamais su défaire ce tap.
+
+**Deux taps, pas un.** C'est la seule action destructrice de l'application, et le cochage d'un
+tome — enregistrement au fil de l'eau, sans confirmation — ne fait pas jurisprudence ici : il
+se défait d'un tap, le retrait non. Le premier tap arme, le second confirme, et la mention sous
+le bouton change pour dire ce que le second va détruire. Écartée : une couleur de danger.
+**Nocturne n'a pas de rampe rouge** (§7) et la dériver est un travail de design à part entière ;
+le bouton armé prend donc l'accent plein, qui ne sert nulle part ailleurs sur cet écran.
+
+**Ce que ça laisse** : une `Edition` que plus personne ne suit reste au catalogue. Elle n'est
+orpheline que du point de vue des comptes — la recherche la retrouve par les EAN de ses tomes,
+et un tap la ré-adopte **sans créer de doublon**, en ne posant que le `SuiviEdition`. Vérifié :
+l'édition reprise porte le même identifiant, le compte des éditions ne bouge pas, et la
+collection repart à zéro tome dessus, donc en wish list.
+
 ### Manquants
 Tous les tomes non possédés et déjà parus, groupés par édition.
 **Ne montre que les éditions `suivie` dont on possède au moins un tome** — le même couple de
@@ -479,7 +512,8 @@ formulaire de confirmation avec deux boutons « Ajouter » et « Suivre ». Le p
 **Un tap sur un résultat de catalogue crée l'édition et ouvre sa page.** Rien à remplir, rien à
 confirmer. La page d'édition est déjà celle qu'il faut : elle porte le bouton `X / Y TOMES` qui
 mène à la grille de cochage, et « Modifier l'état » qui règle le statut, la parution et le
-**suivi**. Les deux gestes que l'ancien formulaire prétendait anticiper y sont, au bon endroit.
+**suivi**, et qui **retire l'édition** depuis le 21 septembre 2026. Les deux gestes que
+l'ancien formulaire prétendait anticiper y sont, au bon endroit — et le tap se défait.
 
 Ce que ça écrit reste ce que §4 décrivait : `Serie`, `Edition`, `SuiviEdition`, les `Volume`
 avec leur ISBN et leur date, les `Sortie` à venir, et **aucune `Possession`** — donc la série
@@ -1142,10 +1176,12 @@ détail et les cas réels sont dans `JOURNAL.md`.
   qui rend 400 n'a jamais atteint l'application, et **cliquer une case hors écran ne déclenche
   rien sans que rien ne le signale**. Cliquer pour de vrai, sur un élément visible, puis regarder
   l'écran **et** la base.
-- **Un clic d'automatisation ne prouve rien — sixième fois.** Aux coordonnées d'une capture
+- **Un clic d'automatisation ne prouve rien — septième fois.** Aux coordonnées d'une capture
   périmée il tombe hors de l'écran ; par référence d'élément juste après une navigation il
   précède l'hydratation. Dans les deux cas : aucune erreur, aucun log, l'écran inchangé.
-  Recapturer juste avant de cliquer, et **ne conclure que sur la base**.
+  Recapturer juste avant de cliquer, et **ne conclure que sur la base**. Le 21 septembre 2026,
+  la mise en page a changé d'échelle **entre la capture et le clic** sans que rien ne bouge à
+  l'écran : c'est le journal du serveur, muet de tout `POST`, qui l'a dit.
 - **Un seuil de similarité ne remplace pas une table écrite à la main — cinq fois.** Sur AniList
   la bonne réponse marquait 0,000 (`BLUE EYES SWORD` → *Hinowa ga Yuku!*), tronquer un titre
   produit des faux appariements confiants, et sur le planning quatre candidats sur cinq au-dessus

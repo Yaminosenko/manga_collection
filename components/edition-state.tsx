@@ -1,7 +1,12 @@
 "use client";
 
-import { useOptimistic, useTransition } from "react";
-import { definirParution, definirStatut, definirSuivie } from "@/lib/actions";
+import { useOptimistic, useState, useTransition } from "react";
+import {
+  definirParution,
+  definirStatut,
+  definirSuivie,
+  retirerDeMaCollection,
+} from "@/lib/actions";
 import {
   LIBELLES_STATUT,
   LIBELLE_NON_SUIVIE,
@@ -9,11 +14,17 @@ import {
   LIBELLE_PARUTION_EN_COURS,
   LIBELLE_PARUTION_INCONNUE,
   LIBELLE_PARUTION_TERMINEE,
+  LIBELLE_RETIRER,
+  LIBELLE_RETRAIT,
+  LIBELLE_RETRAIT_ANNULER,
+  LIBELLE_RETRAIT_CONFIRMER,
   LIBELLE_STATUT_PERSONNEL,
   LIBELLE_SUIVI,
   LIBELLE_SUIVIE,
   MENTION_PARUTION,
   MENTION_RESERVE_PROPRIETAIRE,
+  MENTION_RETRAIT,
+  MENTION_RETRAIT_CONFIRMATION,
   MENTION_SUIVI,
   STATUTS_EDITION,
 } from "@/lib/constants";
@@ -39,6 +50,8 @@ const CHOIX =
   "min-h-11 flex-1 rounded-md border px-[10px] text-[12.5px] font-medium transition-colors";
 const CHOIX_ACTIF = "border-accent bg-accent/12 text-accent";
 const CHOIX_INACTIF = "border-neutral-800 text-neutral-400 hover:border-neutral-700";
+const CHOIX_RETRAIT = "border-neutral-800 text-neutral-500 hover:border-neutral-700";
+const CHOIX_RETRAIT_ARME = "border-accent bg-accent text-bg";
 
 export function EditionState({
   slug,
@@ -48,6 +61,7 @@ export function EditionState({
   parutionModifiable,
 }: EditionStateProps) {
   const [enCours, demarrer] = useTransition();
+  const [retraitArme, armerRetrait] = useState(false);
   const [etat, appliquer] = useOptimistic<Etat, Partial<Etat>>(
     { statut, editionTerminee, suivie },
     (precedent, modification) => ({ ...precedent, ...modification }),
@@ -66,6 +80,12 @@ export function EditionState({
     demarrer(async () => {
       appliquer({ editionTerminee: valeur });
       await definirParution(slug, valeur);
+    });
+  }
+
+  function retirer() {
+    demarrer(async () => {
+      await retirerDeMaCollection(slug);
     });
   }
 
@@ -138,6 +158,42 @@ export function EditionState({
           {etat.suivie ? LIBELLE_SUIVIE : LIBELLE_NON_SUIVIE}
         </button>
         <p className="text-[11px]/[1.5] text-neutral-600">{MENTION_SUIVI}</p>
+      </section>
+
+      <section className="flex flex-col gap-[9px]">
+        <h2 className="text-[13px] font-medium tracking-[0.08em] text-neutral-500 uppercase">
+          {LIBELLE_RETRAIT}
+        </h2>
+        {retraitArme ? (
+          <div className="flex gap-[7px]">
+            <button
+              type="button"
+              disabled={enCours}
+              onClick={retirer}
+              className={`${CHOIX} ${CHOIX_RETRAIT_ARME} disabled:opacity-50`}
+            >
+              {LIBELLE_RETRAIT_CONFIRMER}
+            </button>
+            <button
+              type="button"
+              onClick={() => armerRetrait(false)}
+              className={`${CHOIX} ${CHOIX_INACTIF}`}
+            >
+              {LIBELLE_RETRAIT_ANNULER}
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => armerRetrait(true)}
+            className={`${CHOIX} ${CHOIX_RETRAIT}`}
+          >
+            {LIBELLE_RETIRER}
+          </button>
+        )}
+        <p className="text-[11px]/[1.5] text-neutral-600">
+          {retraitArme ? MENTION_RETRAIT_CONFIRMATION : MENTION_RETRAIT}
+        </p>
       </section>
     </div>
   );

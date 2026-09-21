@@ -18,6 +18,7 @@ import { couvertureDIdentification, vignettesParIsbn } from "@/lib/vignettes";
 import { normaliserAlias } from "@/lib/normalisation";
 import {
   CANDIDATS_RECHERCHE_MAX,
+  CHEMIN_COLLECTION,
   LIBELLE_AUTEUR_INCONNU,
   LIBELLE_CANDIDAT_INTROUVABLE,
   LONGUEUR_RECHERCHE_MIN,
@@ -88,6 +89,19 @@ export async function definirSuivie(slug: string, suivie: boolean): Promise<void
   });
   revaliderEdition(slug);
   revalidatePath("/planning");
+}
+
+export async function retirerDeMaCollection(slug: string): Promise<void> {
+  await exigerAcces();
+  const { utilisateurId, editionId } = await editionSuivie(slug);
+
+  await prisma.$transaction([
+    prisma.possession.deleteMany({ where: { utilisateurId, volume: { editionId } } }),
+    prisma.suiviEdition.deleteMany({ where: { utilisateurId, editionId } }),
+  ]);
+
+  revaliderEdition(slug);
+  redirect(CHEMIN_COLLECTION);
 }
 
 export async function basculerTome(

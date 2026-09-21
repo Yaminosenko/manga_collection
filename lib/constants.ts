@@ -295,6 +295,15 @@ export const MENTION_SUIVI =
 export const MENTION_RESERVE_PROPRIETAIRE =
   "Seul le propriétaire modifie une donnée de catalogue.";
 
+export const LIBELLE_RETRAIT = "Retrait";
+export const LIBELLE_RETIRER = "Retirer de ma collection";
+export const LIBELLE_RETRAIT_CONFIRMER = "Confirmer le retrait";
+export const LIBELLE_RETRAIT_ANNULER = "Annuler";
+export const MENTION_RETRAIT =
+  "L’édition reste au catalogue ; seuls votre suivi et vos tomes cochés disparaissent. La rajouter depuis Rechercher repart d’une collection vide sur cette édition.";
+export const MENTION_RETRAIT_CONFIRMATION =
+  "Ce retrait est immédiat et sans retour : vos tomes cochés sur cette édition sont supprimés avec elle.";
+
 export const TITRE_PLANNING = "Planning";
 export const LIBELLE_PLANNING_VIDE =
   "Aucune sortie annoncée pour vos éditions. Importez les planning des mois à venir.";
@@ -317,6 +326,7 @@ export const MENTION_NOTICE_SANS_CATALOGUE =
 export const LIBELLE_SCAN_CANDIDATS_TITRE = "Séries du catalogue au titre proche :";
 export const CANDIDATS_SCAN_MAX = 3;
 export const CHEMIN_RECHERCHE = "/ajouter";
+export const CHEMIN_COLLECTION = "/";
 
 export const LIBELLE_SCAN_AJOUTER_ET_COCHER = "Ajouter et cocher ce tome";
 export const MENTION_SCAN_EDITION_CONNUE =
