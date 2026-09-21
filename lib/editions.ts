@@ -149,11 +149,13 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
       edition.couvertureUrl ??
       edition.serie.couvertureUrl,
     prixDefautCentimes: edition.prixDefautCentimes,
-    sorties: edition.sorties.map((sortie) => ({
-      numero: sortie.numero,
-      date: sortie.date.toISOString(),
-      couvertureUrl: sortie.couvertureUrl,
-    })),
+    sorties: edition.sorties
+      .filter((sortie) => sortie.numero > edition.tomesParus)
+      .map((sortie) => ({
+        numero: sortie.numero,
+        date: sortie.date.toISOString(),
+        couvertureUrl: sortie.couvertureUrl,
+      })),
     tomes: edition.volumes.map((volume) => ({
       numero: volume.numero,
       possede: estPossede(volume),
@@ -399,9 +401,35 @@ export async function chargerEspaceCollectionDe(
   };
 }
 
-export async function chargerPlanning(): Promise<SortiePlanning[]> {
-  const utilisateurId = await idUtilisateurCourant();
+function cleTomeAnnonce(editionId: string, numero: number): string {
+  return `${editionId}#${numero}`;
+}
 
+async function tomesAnnoncesDejaPossedes(
+  utilisateurId: string,
+  sorties: { editionId: string; numero: number }[],
+): Promise<Set<string>> {
+  if (sorties.length === 0) {
+    return new Set();
+  }
+
+  const volumes = await prisma.volume.findMany({
+    where: {
+      editionId: { in: [...new Set(sorties.map((sortie) => sortie.editionId))] },
+      numero: { in: [...new Set(sorties.map((sortie) => sortie.numero))] },
+      possessions: { some: { utilisateurId, possede: true } },
+    },
+    select: { editionId: true, numero: true },
+  });
+
+  return new Set(volumes.map((volume) => cleTomeAnnonce(volume.editionId, volume.numero)));
+}
+
+export async function chargerPlanning(): Promise<SortiePlanning[]> {
+  return chargerPlanningPour(await idUtilisateurCourant());
+}
+
+export async function chargerPlanningPour(utilisateurId: string): Promise<SortiePlanning[]> {
   const sorties = await prisma.sortie.findMany({
     where: {
       edition: {
@@ -414,6 +442,7 @@ export async function chargerPlanning(): Promise<SortiePlanning[]> {
       numero: true,
       date: true,
       couvertureUrl: true,
+      editionId: true,
       edition: {
         select: {
           slug: true,
@@ -425,14 +454,18 @@ export async function chargerPlanning(): Promise<SortiePlanning[]> {
     },
   });
 
-  return sorties.map((sortie) => ({
-    slug: sortie.edition.slug,
-    titre: sortie.edition.serie.titre,
-    nom: sortie.edition.nom,
-    editeur: sortie.edition.editeur,
-    numero: sortie.numero,
-    date: sortie.date.toISOString(),
-    couvertureUrl: sortie.couvertureUrl,
-    editionsDeLaSerie: sortie.edition.serie._count.editions,
-  }));
+  const attendues = await tomesAnnoncesDejaPossedes(utilisateurId, sorties);
+
+  return sorties
+    .filter((sortie) => !attendues.has(cleTomeAnnonce(sortie.editionId, sortie.numero)))
+    .map((sortie) => ({
+      slug: sortie.edition.slug,
+      titre: sortie.edition.serie.titre,
+      nom: sortie.edition.nom,
+      editeur: sortie.edition.editeur,
+      numero: sortie.numero,
+      date: sortie.date.toISOString(),
+      couvertureUrl: sortie.couvertureUrl,
+      editionsDeLaSerie: sortie.edition.serie._count.editions,
+    }));
 }

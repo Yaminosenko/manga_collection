@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { debutDuMois } from "@/lib/domain";
+import { debutRetroactivitePlanning } from "@/lib/domain";
 
 export type SortiePromue = {
   slug: string;
@@ -13,6 +13,8 @@ const SORTIE_COMPLETE = {
   date: true,
   isbn: true,
   couvertureUrl: true,
+  sourceCouverture: true,
+  couvertureRecupereeLe: true,
   editionId: true,
   edition: { select: { slug: true } },
 } as const;
@@ -23,6 +25,8 @@ type SortieChargee = {
   date: Date;
   isbn: string | null;
   couvertureUrl: string | null;
+  sourceCouverture: string | null;
+  couvertureRecupereeLe: Date | null;
   editionId: string;
   edition: { slug: string };
 };
@@ -52,6 +56,9 @@ async function promouvoir(
         isbn: sortie.isbn ?? undefined,
         dateSortie: sortie.date,
         couvertureUrl: sortie.couvertureUrl ?? undefined,
+        sourceCouverture: sortie.couvertureUrl === null ? undefined : sortie.sourceCouverture,
+        couvertureRecupereeLe:
+          sortie.couvertureUrl === null ? undefined : sortie.couvertureRecupereeLe,
       },
       select: { id: true },
     });
@@ -68,9 +75,22 @@ async function promouvoir(
       await tx.edition.update({ where: { id: sortie.editionId }, data: { tomesParus: cible } });
     }
 
-    await tx.sortie.delete({ where: { id: sortie.id } });
-
     return { slug: sortie.edition.slug, numero: sortie.numero, tomesParus: cible };
+  });
+}
+
+async function reprendreCouverture(sortie: SortieChargee): Promise<void> {
+  if (sortie.couvertureUrl === null) {
+    return;
+  }
+
+  await prisma.volume.updateMany({
+    where: { editionId: sortie.editionId, numero: sortie.numero, couvertureUrl: null },
+    data: {
+      couvertureUrl: sortie.couvertureUrl,
+      sourceCouverture: sortie.sourceCouverture,
+      couvertureRecupereeLe: sortie.couvertureRecupereeLe,
+    },
   });
 }
 
@@ -95,11 +115,12 @@ export async function promouvoirSortie(
 export type BilanPromotion = {
   promues: SortiePromue[];
   horsSequence: string[];
+  retirees: string[];
 };
 
 export async function promouvoirSortiesEchues(instant: Date): Promise<BilanPromotion> {
-  const echues = await prisma.sortie.findMany({
-    where: { date: { lt: debutDuMois(instant) } },
+  const parues = await prisma.sortie.findMany({
+    where: { date: { lte: instant } },
     orderBy: [{ date: "asc" }, { numero: "asc" }],
     select: { ...SORTIE_COMPLETE, edition: { select: { slug: true, tomesParus: true } } },
   });
@@ -108,8 +129,13 @@ export async function promouvoirSortiesEchues(instant: Date): Promise<BilanPromo
   const horsSequence: string[] = [];
   const tomesParusCourants = new Map<string, number>();
 
-  for (const sortie of echues) {
+  for (const sortie of parues) {
     const tomesParus = tomesParusCourants.get(sortie.editionId) ?? sortie.edition.tomesParus;
+
+    if (sortie.numero <= tomesParus) {
+      await reprendreCouverture(sortie);
+      continue;
+    }
 
     if (sortie.numero > tomesParus + 1) {
       horsSequence.push(`${sortie.edition.slug} t${sortie.numero} sur ${tomesParus}`);
@@ -121,5 +147,20 @@ export async function promouvoirSortiesEchues(instant: Date): Promise<BilanPromo
     promues.push(promue);
   }
 
-  return { promues, horsSequence };
+  const perimees = await prisma.sortie.findMany({
+    where: { date: { lt: debutRetroactivitePlanning(instant) } },
+    orderBy: [{ date: "asc" }, { numero: "asc" }],
+    select: { id: true, numero: true, edition: { select: { slug: true, tomesParus: true } } },
+  });
+
+  const retirees: string[] = [];
+  for (const sortie of perimees) {
+    if (sortie.numero > sortie.edition.tomesParus) {
+      continue;
+    }
+    await prisma.sortie.delete({ where: { id: sortie.id } });
+    retirees.push(`${sortie.edition.slug} t${sortie.numero}`);
+  }
+
+  return { promues, horsSequence, retirees };
 }

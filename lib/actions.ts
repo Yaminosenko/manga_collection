@@ -42,13 +42,13 @@ function revaliderEdition(slug: string): void {
   revalidatePath("/");
   revalidatePath("/manquants");
   revalidatePath("/wishlist");
+  revalidatePath("/planning");
 }
 
 export async function marquerSortieObtenue(slug: string, numero: number): Promise<void> {
   await exigerAcces();
   await promouvoirSortie(slug, numero, await idUtilisateurCourant(), new Date());
   revaliderEdition(slug);
-  revalidatePath("/planning");
 }
 
 async function editionSuivie(slug: string): Promise<{ utilisateurId: string; editionId: string }> {

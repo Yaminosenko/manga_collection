@@ -24,7 +24,11 @@ export async function GET(request: NextRequest) {
 
   const debut = Date.now();
   const maintenant = new Date();
-  const { promues, horsSequence } = await promouvoirSortiesEchues(maintenant);
+  const { promues, horsSequence, retirees } = await promouvoirSortiesEchues(maintenant);
+
+  if (retirees.length > 0) {
+    revalidatePath("/planning");
+  }
 
   if (promues.length > 0) {
     revalidatePath("/planning");
@@ -49,6 +53,7 @@ export async function GET(request: NextRequest) {
     promues: promues.length,
     sorties: promues.map((promue) => `${promue.slug} t${promue.numero}`),
     horsSequence,
+    retirees,
     couvertures,
   });
 }

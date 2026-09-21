@@ -8,6 +8,7 @@ import {
   LONGUEUR_IDENTIFIANT_MINIMALE,
   LONGUEUR_ISBN,
   LONGUEUR_MOT_DE_PASSE_MINIMALE,
+  MOIS_AU_PLANNING_APRES_PARUTION,
   MOTIF_EMAIL,
   MOTIF_IDENTIFIANT,
   PREFIXES_ISBN,
@@ -373,6 +374,16 @@ export function isbnValide(brut: string): boolean {
 
 export function debutDuMois(instant: Date): Date {
   return new Date(Date.UTC(instant.getUTCFullYear(), instant.getUTCMonth(), 1));
+}
+
+export function debutRetroactivitePlanning(instant: Date): Date {
+  return new Date(
+    Date.UTC(
+      instant.getUTCFullYear(),
+      instant.getUTCMonth() - (MOIS_AU_PLANNING_APRES_PARUTION - 1),
+      1,
+    ),
+  );
 }
 
 export function sortieEstParue(date: string, instant: Date): boolean {

@@ -13,6 +13,7 @@ SOURCE_BASE = "data/backup.json"
 FICHIER_MANIFESTE = "data/planning.json"
 FICHIER_DIVERGENCES = "data/planning-divergences.json"
 NOM_EDITION_SIMPLE = "editionsimple"
+MOIS_AU_PLANNING_APRES_PARUTION = 2
 
 MOIS = {
     "janvier": 1, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6,
@@ -91,6 +92,15 @@ def lire_date(brut):
         return None
 
 
+def debut_retroactivite(aujourd_hui):
+    mois = aujourd_hui.month - (MOIS_AU_PLANNING_APRES_PARUTION - 1)
+    annee = aujourd_hui.year
+    while mois < 1:
+        mois += 12
+        annee -= 1
+    return datetime.date(annee, mois, 1)
+
+
 def porte_autre_edition(titre):
     reduit = normaliser(titre)
     return any(normaliser(marqueur) in reduit for marqueur in MARQUEURS_AUTRE_EDITION)
@@ -147,9 +157,12 @@ def main():
             "les telecharger, puis passer le dossier en argument ou definir PLANNING_DIR."
         )
     aujourd_hui = datetime.date.today()
+    seuil_retroactivite = debut_retroactivite(aujourd_hui)
     index = editions_simples()
     fichiers, lignes = lire_planning(dossier)
     print(f"{len(fichiers)} fichiers, {len(lignes)} lignes, {len(index)} editions simples en base")
+    print(f"tomes parus jusqu'au {aujourd_hui}, et gardes au planning depuis le "
+          f"{seuil_retroactivite} ({MOIS_AU_PLANNING_APRES_PARUTION} mois de retroactivite)")
     print(f"{len(REEDITIONS)} editions ecartees car possedees en reedition : {', '.join(REEDITIONS)}")
 
     manifeste = {}
@@ -201,7 +214,7 @@ def main():
                 "tomes": {},
             })
             fiche["tomes"][str(numero)] = entree
-        else:
+        if date >= seuil_retroactivite:
             a_paraitre.setdefault(cible["slug"], {})[str(numero)] = entree
 
     for slug, fiche in manifeste.items():
@@ -232,7 +245,7 @@ def main():
 
     print(f"{ignores_marqueur} lignes ecartees par un marqueur d'autre edition")
     print(f"{len(manifeste)} editions appariees, {tomes} tomes dates, {avec_isbn} avec ISBN")
-    print(f"{futurs} sorties a venir")
+    print(f"{futurs} lignes au planning, a venir ou parues depuis le {seuil_retroactivite}")
 
     if divergences:
         print(f"\n{len(divergences)} lignes ecartees sur divergence d'editeur "

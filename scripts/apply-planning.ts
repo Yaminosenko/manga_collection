@@ -29,6 +29,10 @@ function charger<T>(chemin: string, defaut: T): T {
   return existsSync(chemin) ? (JSON.parse(readFileSync(chemin, "utf-8")) as T) : defaut;
 }
 
+function jour(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}
+
 function fenetre(manifeste: Manifeste): { debut: Date; fin: Date } | null {
   const dates = Object.values(manifeste)
     .flatMap((fiche) => [...Object.values(fiche.tomes), ...Object.values(fiche.aParaitre ?? {})])
@@ -105,6 +109,17 @@ async function main() {
       slug: true,
       tomesParus: true,
       volumes: { select: { numero: true, isbn: true, dateSortie: true } },
+      sorties: {
+        select: {
+          id: true,
+          numero: true,
+          date: true,
+          isbn: true,
+          couvertureUrl: true,
+          sourceCouverture: true,
+          couvertureRecupereeLe: true,
+        },
+      },
     },
   });
 
@@ -130,9 +145,12 @@ async function main() {
   let tomesCrees = 0;
   let isbnEcrits = 0;
   let datesEcrites = 0;
-  let sortiesEcrites = 0;
-  let sortiesRemplacees = 0;
+  let sortiesCreees = 0;
+  let sortiesInchangees = 0;
+  let couverturesReprises = 0;
   const elargies: string[] = [];
+  const ajustees: string[] = [];
+  const retirees: string[] = [];
 
   const couverte = fenetre(manifeste);
   const horsFenetre = couverte
@@ -170,22 +188,70 @@ async function main() {
       }
     }
 
-    if (couverte) {
-      const { count } = await prisma.sortie.deleteMany({
-        where: {
-          editionId: edition.id,
-          date: { gte: couverte.debut, lte: couverte.fin },
+    const annoncees = new Map<number, Tome>();
+    for (const [brut, annonce] of Object.entries(fiche.aParaitre ?? {})) {
+      annoncees.set(Number(brut), annonce);
+    }
+
+    for (const [numero, annonce] of annoncees) {
+      const existante = edition.sorties.find((sortie) => sortie.numero === numero);
+      const date = new Date(annonce.date);
+
+      if (!existante) {
+        await prisma.sortie.create({
+          data: { editionId: edition.id, numero, date, isbn: annonce.isbn },
+        });
+        sortiesCreees += 1;
+        continue;
+      }
+
+      const dateChangee = existante.date.getTime() !== date.getTime();
+      const isbnChange = annonce.isbn !== null && annonce.isbn !== existante.isbn;
+      if (!dateChangee && !isbnChange) {
+        sortiesInchangees += 1;
+        continue;
+      }
+
+      await prisma.sortie.update({
+        where: { id: existante.id },
+        data: {
+          date: dateChangee ? date : undefined,
+          isbn: isbnChange ? annonce.isbn : undefined,
         },
       });
-      sortiesRemplacees += count;
+
+      const changements: string[] = [];
+      if (dateChangee) changements.push(`${jour(existante.date)} -> ${annonce.date}`);
+      if (isbnChange) changements.push(`ISBN ${existante.isbn ?? "absent"} -> ${annonce.isbn}`);
+      const couverture = existante.couvertureUrl ? ", couverture conservee" : "";
+      ajustees.push(`${edition.slug} t${numero} : ${changements.join(", ")}${couverture}`);
     }
-    for (const [brut, annonce] of Object.entries(fiche.aParaitre ?? {})) {
-      const numero = Number(brut);
-      if (numero <= cible) continue;
-      await prisma.sortie.create({
-        data: { editionId: edition.id, numero, date: new Date(annonce.date), isbn: annonce.isbn },
-      });
-      sortiesEcrites += 1;
+
+    for (const sortie of edition.sorties) {
+      if (annoncees.has(sortie.numero)) continue;
+      const dansLaFenetre =
+        couverte !== null &&
+        sortie.date.getTime() >= couverte.debut.getTime() &&
+        sortie.date.getTime() <= couverte.fin.getTime();
+      if (!dansLaFenetre) continue;
+
+      let reprise = false;
+      if (sortie.couvertureUrl !== null) {
+        const { count } = await prisma.volume.updateMany({
+          where: { editionId: edition.id, numero: sortie.numero, couvertureUrl: null },
+          data: {
+            couvertureUrl: sortie.couvertureUrl,
+            sourceCouverture: sortie.sourceCouverture,
+            couvertureRecupereeLe: sortie.couvertureRecupereeLe,
+          },
+        });
+        reprise = count > 0;
+        if (reprise) couverturesReprises += 1;
+      }
+
+      await prisma.sortie.delete({ where: { id: sortie.id } });
+      const image = reprise ? ", couverture reprise sur le tome" : "";
+      retirees.push(`${edition.slug} t${sortie.numero} du ${jour(sortie.date)}${image}`);
     }
   }
 
@@ -201,11 +267,15 @@ async function main() {
   for (const ligne of elargies) console.log(`  ${ligne}`);
   console.log(`${isbnEcrits} ISBN et ${datesEcrites} dates de sortie ecrits`);
   console.log(
-    `${sortiesEcrites} sorties annoncees enregistrees, ${sortiesRemplacees} remplacees dans la fenetre du manifeste`,
+    `sorties : ${sortiesCreees} creees, ${ajustees.length} ajustees, ` +
+      `${sortiesInchangees} inchangees, ${retirees.length} retirees, ` +
+      `${couverturesReprises} couvertures reprises sur le tome promu`,
   );
+  for (const ligne of ajustees) console.log(`  ${ligne}`);
+  for (const ligne of retirees) console.log(`  ${ligne}`);
   if (couverte) {
     console.log(
-      `fenetre couverte du ${couverte.debut.toISOString().slice(0, 10)} au ${couverte.fin.toISOString().slice(0, 10)} : ${horsFenetre} sorties hors fenetre conservees`,
+      `fenetre couverte du ${jour(couverte.debut)} au ${jour(couverte.fin)} : ${horsFenetre} sorties hors fenetre conservees`,
     );
   }
   console.log(`compteurs : ${JSON.stringify(compteurs)}`);

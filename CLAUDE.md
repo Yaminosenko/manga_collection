@@ -1251,18 +1251,37 @@ et cinq colonnes personnelles sorties d'`Edition`. Le schéma est lisible dans
   promotion en tome, sous une **rétention glissante de M-1 à M+6**. **La fenêtre porte sur
   `Sortie`, jamais sur `ParutionCatalogue`** : purger l'archive supprimerait la résolution
   ISBN → série, c'est-à-dire ce qui a fait passer le scanner de 9,2 % à 87 %.
-- **Le mois de grâce est délibéré.** Le cron promeut dès que le mois est clos, donc un tome sorti
-  le mois dernier reste au Planning au lieu de basculer dans Manquants — il y est avec son bouton
-  « Je l'ai », et les dates manga-news glissent : un tome annoncé le 3 peut arriver le 12.
-- **« Je l'ai » est à cheval sur les deux mondes, et l'autorisation vient de la date, pas du
-  rôle.** `promouvoir()` crée le `Volume`, incrémente `tomesParus` et supprime la `Sortie` — du
-  catalogue, visible de tous — puis pose *ma* possession, là où §13.2 réserve « modifier les
-  tomes parus » au propriétaire. Ce n'est pas une modification éditoriale mais **l'enregistrement
-  d'un fait** : le tome est paru. Deux limites posées le 17 septembre 2026 du même raisonnement —
-  `promouvoirSortie` exige un `SuiviEdition`, sinon l'autre perd sa sortie au profit de personne ;
-  et **le cron refuse une sortie qui n'est pas le tome suivant**, la laisse au Planning et la
-  nomme dans son bilan (`horsSequence`). « Je l'ai » comble l'intervalle comme avant : celui qui
-  tient le tome 15 atteste que les 11 à 14 sont parus, le cron n'a qu'une date dans un CSV.
+- **Un `Volume` et sa `Sortie` coexistent, et c'est le cœur du modèle** — arbitré le 21 septembre
+  2026. Un tome paru devient un `Volume` **le jour de sa date**, donc il est cochable dans la
+  grille et compte dans `tomesParus` : quelqu'un qui vient d'ajouter la série coche toute sa
+  collection sans passer par le Planning. **Sa `Sortie` n'est pas supprimée pour autant** : elle
+  ne dit plus « ce tome va paraître » mais **« ce tome vient de paraître »**, et c'est la seule
+  information qu'elle porte encore. Les deux tables ne s'excluent plus.
+- **La `Sortie` vit deux mois après la parution.** `MOIS_AU_PLANNING_APRES_PARUTION` (2) pilote
+  `debutRetroactivitePlanning()` : le cron supprime une `Sortie` antérieure au premier jour du
+  mois **précédent**, à condition que son tome existe. Un tome sorti en septembre quitte donc le
+  Planning le 1er novembre. Le motif est qu'une parution **se voit mieux au Planning que dans
+  Manquants** — elle y porte sa date, sa couverture et son bouton « Je l'ai », là où Manquants ne
+  donne qu'une ligne parmi les trous. Conséquence à connaître : pendant ces deux mois le tome est
+  **dans les deux écrans**, et c'est voulu.
+- **La disparition par compte est une lecture, jamais une écriture.** `chargerPlanning` retire les
+  annonces dont je possède déjà le tome ; la ligne `Sortie`, elle, ne bouge pas. **C'est ce qui
+  corrige un défaut réel** : jusqu'au 21 septembre 2026, `promouvoirSortie` faisait
+  `sortie.delete()`, donc **un compte cliquant « Je l'ai » retirait la sortie du Planning de tous
+  les autres**. Personne ne l'avait vu parce qu'il n'y avait qu'un compte quand le bouton a été
+  écrit. `Possession` était déjà par compte ; c'est `Sortie`, table de catalogue, qui ne pouvait
+  pas l'être — et elle n'a pas besoin de l'être.
+- **« Je l'ai » ne fait donc plus qu'une chose : poser ma possession** (en créant le `Volume` s'il
+  manque encore, par exemple le jour même de la parution avant le passage du cron). C'est
+  exactement ce que fait un tap dans « Mes tomes », et les deux gestes ont le même effet sur le
+  Planning. L'autorisation vient toujours de la date, pas du rôle : `promouvoirSortie` exige un
+  `SuiviEdition`, et **le cron refuse une sortie qui n'est pas le tome suivant**, la laisse au
+  Planning et la nomme dans son bilan (`horsSequence`). « Je l'ai » comble l'intervalle comme
+  avant : celui qui tient le tome 15 atteste que les 11 à 14 sont parus.
+- **La constante est dupliquée entre `lib/constants.ts` et `import_planning.py`** — même nom, un
+  `grep MOIS_AU_PLANNING_APRES_PARUTION` les trouve, elles doivent bouger ensemble. Côté script,
+  une ligne de date passée entre dans `tomes` **et** dans `aParaitre` si elle est dans la fenêtre :
+  elle fait grandir `tomesParus` et laisse une `Sortie` derrière elle.
 - **Piège sur les enums** : `apply-migrations.ts` enveloppe chaque fichier dans une transaction,
   et PostgreSQL interdit d'**utiliser** une valeur d'enum dans la transaction qui l'ajoute. Une
   migration qui ferait `ALTER TYPE … ADD VALUE` puis un `UPDATE` s'en servant échouerait. Il faut
