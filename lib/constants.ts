@@ -357,6 +357,7 @@ export const DEPOT_MANGADEX = "https://uploads.mangadex.org/covers";
 export const VIGNETTE_MANGADEX = ".256.jpg";
 export const LANGUES_COUVERTURE = ["fr", "ja"];
 export const RESULTATS_RECHERCHE_MANGADEX = 10;
+export const CLASSIFICATIONS_MANGADEX = ["safe", "suggestive", "erotica", "pornographic"];
 export const LOT_COUVERTURES_MANGADEX = 100;
 export const DELAI_MANGADEX_MS = 20_000;
 export const AGENT_UTILISATEUR =

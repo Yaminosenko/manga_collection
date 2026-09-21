@@ -1,6 +1,7 @@
 import {
   AGENT_UTILISATEUR,
   API_MANGADEX,
+  CLASSIFICATIONS_MANGADEX,
   DELAI_MANGADEX_MS,
   DEPOT_MANGADEX,
   LANGUES_COUVERTURE,
@@ -71,6 +72,9 @@ export async function resoudreMangaDex(serie: SerieAApparier): Promise<string | 
       title: terme,
       limit: String(RESULTATS_RECHERCHE_MANGADEX),
     });
+    for (const classification of CLASSIFICATIONS_MANGADEX) {
+      parametres.append("contentRating[]", classification);
+    }
     const charge = await interroger<{ data: Manga[] }>(`/manga?${parametres}`);
     for (const manga of charge?.data ?? []) {
       if (estFicheSatellite(manga)) continue;
