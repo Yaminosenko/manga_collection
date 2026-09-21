@@ -22,11 +22,13 @@ import { cheminDepuisUrl, copierObjet, deposer } from "@/lib/r2";
 
 const HAUTEUR_MINIMALE = 60;
 const ECART_TOMES_TOLERE = 2;
+const AVANCE_JAPONAISE_TOLEREE = 8;
 
 function numerotationComparable(nom: string, tomesParus: number, tomesMangaDex: number): boolean {
   if (nom !== NOM_EDITION_PAR_DEFAUT) return false;
   if (tomesMangaDex === 0) return false;
-  return tomesMangaDex <= tomesParus * ECART_TOMES_TOLERE;
+  if (tomesMangaDex <= tomesParus * ECART_TOMES_TOLERE) return true;
+  return tomesMangaDex - tomesParus <= AVANCE_JAPONAISE_TOLEREE;
 }
 
 type Candidat = {
