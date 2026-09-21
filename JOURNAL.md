@@ -5193,6 +5193,141 @@ C'est une décision d'affichage à prendre pour les deux écrans ensemble ; elle
 `tsc --noEmit` et `eslint` passent. Un commit sur `main`, 5 fichiers de code et 3 de
 documentation, aucune migration.
 
+### Fait — le planning de septembre 2026 à février 2027, et ce qu'il a révélé
+
+**21 septembre 2026.** Six CSV manga-news retéléchargés. Ce qui devait être un import de routine a
+ouvert quatre chantiers, dont un défaut de fond du multi-compte.
+
+#### Ce que le lot change, comparé avant d'écrire
+
+Les anciens CSV de ces mois n'existaient plus sur le poste : la comparaison s'est donc faite
+**contre `ParutionCatalogue`**, sur la clé `(titreBrut, date)`. **229 lignes nouvelles, 96
+disparues, zéro ligne modifiée à clé identique** — manga-news ne retouche jamais un EAN ou un
+éditeur en place, il déplace ou retire des lignes entières.
+
+**Les 96 disparues sont 67 reports de date, 8 retitrages à EAN constant et 21 absences de la
+fenêtre.** Et c'est le sixième fichier qui a tranché : avec cinq j'en comptais 27, février en a
+effacé 6 d'un coup — dont *The Ancient Magus Bride* t24, **même EAN 9782372876308**, repoussé du
+17 septembre au 11 février. **Un retrait n'est jamais qu'une absence de la fenêtre téléchargée**,
+et le propriétaire l'a posé en règle : au-delà de deux mois une annonce n'est pas fiable.
+
+Écrit en base : 2 éditions élargies — `kagurabachi` 9 → 10, `les-legendaires-saga` 12 → 13 —, 13
+sorties créées, 2 ajustées, 21 inchangées, **aucune retirée et aucune couverture perdue**. 36
+sorties contre 23. Zéro divergence d'éditeur. Côté catalogue, **229 parutions insérées sur 1 148
+lues**, la table passe à 52 238 et couvre jusqu'au 26 février 2027.
+
+#### Corrigé — `apply-planning` détruisait 14 couvertures sur 15 à chaque passage
+
+Le script purgeait les `Sortie` de la fenêtre puis les recréait avec `{ editionId, numero, date,
+isbn }` — **sans `couvertureUrl`**. Sur ce lot, 22 des 23 sorties tombaient dans la fenêtre : 14
+images seraient parties, à réacquérir.
+
+Il réconcilie désormais par `(edition, numero)` : absente → créée ; date décalée → **`UPDATE` de
+la date seule**, l'`id` et la couverture survivent ; identique → **pas une requête** ; plus
+annoncée et dans la fenêtre → supprimée. Mesuré sur le banc : **17 lignes gardent leur `id`, 15
+images au départ et 15 à l'arrivée**.
+
+Un second trou trouvé en éprouvant : **le `Volume` créé par `apply-planning` ne récupérait jamais
+la couverture de son annonce**, le cron le sautant comme déjà matérialisé. `reprendreCouverture()`
+la recopie avec sa provenance et sa date, et seulement si le tome n'en a pas.
+
+#### Arbitré — un tome paru reste au Planning deux mois, et son annonce survit
+
+Deux décisions du propriétaire, prises l'une après l'autre en regardant le résultat.
+
+La première : **deux mois de rétroactivité au lieu d'un**, parce qu'une parution se voit mieux au
+Planning — avec sa date, sa couverture et son bouton « Je l'ai » — que dans Manquants, où elle
+n'est qu'une ligne parmi les trous. `MOIS_AU_PLANNING_APRES_PARUTION` pilote
+`debutRetroactivitePlanning()`.
+
+La seconde, qui a refait la première : **le tome doit exister quand même**, pour que quelqu'un qui
+vient d'ajouter la série coche toute sa collection sans passer par le Planning. Donc `Volume` et
+`Sortie` **coexistent** — le tome est créé le jour de sa date, et l'annonce ne dit plus « va
+paraître » mais « vient de paraître ». Elles s'excluaient depuis l'origine ; c'est le changement
+de modèle de la journée.
+
+Cycle joué sur le banc aux 23 septembre, 1er octobre, 1er novembre et 1er décembre : **1 puis 2
+promotions sans aucun retrait**, puis 6 et 11 retraits. Un tome de septembre quitte le Planning le
+1er novembre.
+
+#### Corrigé — « Je l'ai » retirait la sortie du Planning de tout le monde
+
+**C'est le défaut de fond, et il a été trouvé par une question du propriétaire** : *« on est
+d'accord que le statut sortie / possédé n'est pas lié entre utilisateur ? »*. Non, il l'était.
+
+`promouvoirSortie` faisait `tx.sortie.delete()` sur une table de **catalogue**, partagée. Un compte
+qui cliquait « Je l'ai » sur One Piece t113 le retirait du Planning des quatre autres. Personne ne
+l'avait vu parce qu'il n'y avait **qu'un seul compte le jour où le bouton a été écrit** — et
+`CLAUDE.md` §13.1 assumait explicitement la suppression partagée, au motif que c'était
+« l'enregistrement d'un fait ». Ce motif tenait tant que la `Sortie` n'existait que pour devenir un
+`Volume` ; il tombe dès qu'elle porte « vient de paraître ».
+
+**La disparition devient une lecture, jamais une écriture** : `chargerPlanning` retire les annonces
+dont je possède déjà le tome, la ligne ne bouge pas. C'est l'esprit de la wish list — *l'appartenance
+est déduite, jamais stockée*. Éprouvé sur le banc avec deux comptes réels sur `kagurabachi` t10 :
+après le clic du premier, la `Sortie` est toujours en base et le second la voit encore ; cocher le
+tome depuis « Mes tomes » a exactement le même effet, et pour lui seul.
+
+`chargerPlanningPour(utilisateurId)` est extrait sur le motif de `creerDepuisCandidatPour`, pour
+éprouver le vrai code avec deux comptes au lieu d'une sonde.
+
+#### Fait — les couvertures, et trois défauts de l'appariement MangaDex
+
+**Une passe locale a comblé 134 images en 80 secondes** — le cron aurait mis trois nuits, son
+plafond de 80 tenant au budget de 45 s qui tient lui-même au maximum de 60 s d'une fonction Vercel
+Hobby. Depuis le poste il n'y a pas ce plafond : le même code avec un `take` de 300. **2 209 →
+2 343 couvertures sur 2 415, soit 97,0 %**, 92 par la BnF et 42 par MangaDex.
+
+**Le cron n'illustrait pas les `Sortie`** : les 15 images d'annonces venaient de `fetch_covers.py`,
+lancé à la main. Il les traite désormais **avant les tomes**, sous le même budget, avec la même
+chaîne et les deux mêmes colonnes de report. **La BnF y est structurellement muette** — 18 EAN à
+venir, 18 réponses 500 : elle enregistre au dépôt légal, donc après parution. MangaDex a rendu
+**15 des 21** annonces en 16 secondes.
+
+Puis deux questions du propriétaire ont trouvé deux vrais défauts :
+
+- **RAI RAI RAI** avait ses couvertures chez MangaDex et ne les recevait pas :
+  `numerotationComparable` refusait, 7 volumes japonais dépassant `3 × 2`. L'écart est normal pour
+  une série jeune. La règle devient **« ratio ×2 ou avance d'au plus 8 volumes »**. Vérifié sur les
+  7 éditions que le cron essaiera encore : elle n'ouvre **qu'une porte**. Et le garde-fou reste
+  porteur — `ippo-s4` est **résolu** par son `titreVo` はじめの一歩, donc c'est la seule chose qui
+  le bloque, à 145 volumes contre 27.
+- **DEMON SLAVE** ressortait « absente de MangaDex » sur trois graphies. **Elle y est** :
+  `e1e38166`, 23 couvertures jusqu'au volume 21, « Demon Slave » parmi ses titres alternatifs. Ce
+  qui la cachait est notre requête — `/manga` applique par défaut `contentRating = safe,
+  suggestive, erotica`, et cette série est classée `pornographic` chez eux. `resoudreMangaDex` n'en
+  passait aucun. **Trois requêtes qui partagent un défaut ne font qu'une mesure.**
+
+Au passage : **la recherche MangaDex par titre japonais natif ne rend rien** — `魔都精兵のスレイブ`
+donne zéro quelle que soit la classification. Seuls le titre latin et les titres alternatifs
+indexent, donc interroger `titreVo` est inutile quand il est en kanji.
+
+**Les 21 appariements MangaDex sont contrôlés un à un** — `kagurabachi / カグラバチ`,
+`spy-x-family / SPY×FAMILY`, `iruma / 魔入りました！入間くん`, `arslan / Arslan Senki`. Le garde-fou
+« titre et `titreVo`, jamais les alias » tient. Onze images servies depuis R2 vérifiées : 200,
+`image/jpeg`, onze tailles distinctes.
+
+**33 annonces illustrées sur 36.** La seule qui manque au Planning du propriétaire est
+`radiant` t20, dont MangaDex a la série mais pas encore le volume.
+
+#### Ce qui reste, et ce qu'on a appris à ne plus faire
+
+Les **72 tomes sans image** sont exactement ceux que les règles doivent refuser : 58 de
+`fairy-tail-edition-collector` — 57 sans ISBN et un marqueur qui ferme MangaDex —, 11 d'`ippo-s4`,
+2 des Légendaires et le tome 3 du grimoire.
+
+Deux pièges neufs entrent en §12 : **le banc isole la base, pas R2** — une passe d'essai dépose
+dans le bucket de production —, et **une absence mesurée n'est pas une absence** quand les requêtes
+partagent un filtre implicite.
+
+`fetch_covers.py` n'a **pas** été relancé : sa résolution MangaDex passe par un seuil de similarité
+sur les titres alternatifs, c'est-à-dire le mécanisme remplacé le 16 septembre après deux
+couvertures fausses.
+
+Sept commits sur `main`, une migration — `couvertureTenteeLe` et `couvertureTentatives` sur
+`Sortie` —, et un skill `planning-manga-news` versionné de force, `.claude/` étant exclu par le
+gitignore global du poste.
+
 ---
 
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)

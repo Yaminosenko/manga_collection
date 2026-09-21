@@ -769,12 +769,43 @@ attente d'autorisation.
 
 **Le vrai verrou n'est pas la source, c'est l'ISBN.** Toutes les bonnes sources s'interrogent par
 EAN ; MangaDex n'a été retenu que faute d'EAN, d'où le sélecteur d'appariement par titre et ses
-ratés. Sur les 13 tomes encore sans couverture, **7 n'ont aucun ISBN en base** — rien à
+ratés. Sur les 72 tomes encore sans couverture, **64 n'ont aucun ISBN en base** — rien à
 interroger.
 
 **Cette chaîne tourne dans le cron depuis le 16 septembre 2026.** Le report d'un essai raté est
-porté par `Volume.couvertureTenteeLe` et `couvertureTentatives` — 7, 30 puis 90 jours — de sorte
-qu'un tome neuf passe en tête de file et qu'un tome sans notice se fait oublier tout seul.
+porté par `couvertureTenteeLe` et `couvertureTentatives` — 7, 30 puis 90 jours — de sorte qu'un
+tome neuf passe en tête de file et qu'un tome sans notice se fait oublier tout seul.
+
+**Depuis le 21 septembre 2026, la même chaîne sert aussi les `Sortie`**, dans le même passage et
+sous le même budget, et **avant les tomes** : elles sont peu nombreuses et bornées là où un afflux
+de tomes neufs les affamerait. La table porte donc les deux mêmes colonnes de report.
+
+**La BnF ne peut rien sur une annonce, et c'est structurel** : elle enregistre au **dépôt légal**,
+donc *après* parution. Mesuré sur les 18 EAN à venir de la base — **18 réponses 500**, c'est-à-dire
+« aucune image sur cette notice », et aucun n'est dans `VignetteCatalogue`, peuplée depuis la même
+source. **Seule MangaDex illustre un tome à paraître**, parce qu'elle publie la jaquette japonaise
+avant la sortie française : elle a rendu **15 des 21** annonces en une passe, la BnF zéro.
+
+**Deux choses à savoir sur l'interrogation de MangaDex**, apprises le 21 septembre 2026 :
+
+- **Son endpoint `/manga` applique par défaut `contentRating = safe, suggestive, erotica`**, donc
+  une série classée `pornographic` chez eux est **invisible sans que rien ne le signale**. C'est ce
+  qui a fait conclure trois fois que *Mato Seihei no Slave* n'existait pas, alors qu'elle est là
+  avec 23 couvertures et « Demon Slave » parmi ses titres alternatifs. `CLASSIFICATIONS_MANGADEX`
+  passe les quatre valeurs : la classification ne dit rien de « est-ce la bonne série », qui se
+  tranche par égalité exacte de titre, et les fiches parasites sont déjà écartées par
+  `MARQUEURS_SATELLITE`.
+- **La recherche par titre japonais natif ne rend rien** — `魔都精兵のスレイブ` donne zéro résultat
+  quelle que soit la classification. Seuls le titre latin et les titres alternatifs indexent, donc
+  interroger `titreVo` est inutile quand il est en kanji, ce qui est le cas de la plupart de nos
+  séries. Le romaji de MangaBaka est déjà en base et ferait un meilleur second terme.
+
+**Le garde-fou de numérotation tolère l'avance japonaise depuis le 21 septembre 2026.** La règle
+était `tomesMangaDex ≤ tomesParus × 2` ; sur une série jeune, un écart de 4 volumes suffit à la
+franchir — RAI RAI RAI est à 3 tomes en France et 7 au Japon. Elle devient donc **« ratio ×2 ou
+avance d'au plus 8 volumes »**. Ce garde-fou reste porteur et ne doit pas être retiré :
+`ippo-s4-la-loi-du-ring` est **résolu** par son `titreVo` はじめの一歩, qui correspond exactement à
+*Hajime no Ippo*, et c'est **la seule chose qui le bloque** — 145 volumes contre 27.
 
 **Champ `sourceCouverture`** — sur `Volume` **et sur `Sortie`**, la seconde parce que
 `promouvoir()` recopie la couverture de la sortie vers le tome. `null` veut dire **« indéterminé,
@@ -1052,39 +1083,42 @@ restent ici. Le travail restant et les décisions encore ouvertes sont dans `TOD
 sur un poste neuf dans `README.md` — sortis d'ici le 18 septembre 2026 pour le même motif que le
 journal l'avait été le 7.
 
-### L'état chiffré — lu en base le 16 septembre 2026
+### L'état chiffré — lu en base le 21 septembre 2026
 
 **Un seul tableau, relu à chaque fois plutôt que rectifié par empilement.** Les compteurs de §8
 ont bougé depuis l'import et c'est normal : le planning élargit des dénominateurs, la promotion
-des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries.
+des sorties échues crée des tomes, et l'écran Rechercher ajoute des séries. **Le bond du
+16 au 21 septembre vient d'ailleurs** — trois comptes se sont inscrits et ont ajouté 13 éditions,
+dont Kingdom à 77 tomes et Fairy Tail à 63.
 
 | | |
 |---|---|
-| Séries · Éditions | **118** · **122** |
-| Suivis (`SuiviEdition`) | **124** — `EN_COURS` 96, `ABANDONNEE` 19, `EN_PAUSE` 5, `VENDUE` 4. Plus de suivis que d'éditions : les deux comptes en partagent |
-| `suivie = true` | **94** |
-| Utilisateurs | **2** : le `PROPRIETAIRE` et un `UTILISATEUR` d'essai, tous deux avec un identifiant depuis §13.6 |
-| Tomes (`Volume`) | **1 979** |
-| Possessions | **1 741**, dont **1 180** possédées |
-| **Couvertures de tomes** | **1 966 / 1 979**, servies depuis Cloudflare R2 |
-| **Couvertures de sorties** | **15 / 19** |
-| `sourceCouverture` | **226 à `bnf`**, **60 à `mangadex`**, le reste à `null` = indéterminé, antérieur au champ |
-| ISBN | **1 756 / 1 979** |
-| Sorties annoncées (`Sortie`) | **19** |
+| Séries · Éditions | **130** · **135** |
+| Suivis (`SuiviEdition`) | **139** — `EN_COURS` 111, `ABANDONNEE` 19, `EN_PAUSE` 5, `VENDUE` 4. Plus de suivis que d'éditions : les comptes en partagent |
+| `suivie = true` | **100** |
+| Utilisateurs | **5** : le `PROPRIETAIRE` et 4 `UTILISATEUR`, dont un compte d'essai et trois personnes réelles inscrites les 17 et 18 septembre |
+| Tomes (`Volume`) | **2 415** |
+| Possessions | **1 880**, dont **1 315** possédées |
+| **Couvertures de tomes** | **2 343 / 2 415**, soit **97,0 %**, servies depuis Cloudflare R2 |
+| **Couvertures de sorties** | **33 / 36** |
+| `sourceCouverture` sur `Volume` | **515 à `bnf`**, **148 à `mangadex`**, **1 752 à `null`** = indéterminé, antérieur au champ |
+| `sourceCouverture` sur `Sortie` | **18 à `mangadex`**, **1 à `bnf`**, **17 à `null`** — la BnF ne peut rien sur une annonce, voir §5 |
+| ISBN | **2 135 / 2 415** |
+| Sorties annoncées (`Sortie`) | **36** — dont 4 dont le tome existe déjà, la coexistence étant le modèle depuis §13.1 |
 | Liens entre séries (`LienSerie`) | **28** sur 23 séries, dérivés de MangaBaka |
-| `Serie.idMangaBaka` | **115 / 118** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
-| `Serie.idMangaDex` | **5** : `bakuman`, `initial-d`, `jujutsu-kaisen`, `one-piece`, `vinland-saga`. Écrit par le cron, **et seulement une fois les trois garde-fous tenus** — voir « Fait — les couvertures dans le cron » au journal |
-| `Volume.couvertureTenteeLe` | **91** tomes essayés par le cron, **1** tentative au plus ; **plus aucun tome n'est « jamais essayé »**, et les 13 sans image l'ont tous été |
-| `Serie.alias` · `aliasNormalises` | **1 180** libellés · **1 299** formes indexées, formes japonaises comprises |
-| Abréviations captées | **60 séries** : AYNK, B★SIS, CSM, DBZ, DGM, Dグレ, FMA, KGB, MHA, BnHA, OPM, SxF, TPN, Aoex, Magi… |
-| Genres · Thèmes · Cible | **22** valeurs · **165** valeurs · `Shonen` 84 · `Seinen` 26 · `Echi` 7 · `Shojo` 1 |
-| `AliasRecherche` | **1 ligne** le 10 septembre, écrite par le premier rebond réel : `jjk` → Jujutsu Kaisen |
+| `Serie.idMangaBaka` | **127 / 130** — les 3 sans sont `les-legendaires-saga`, `my-hero-academia-ultra-archive`, `pandora-heart-8-5`, absentes de leur catalogue |
+| `Serie.idMangaDex` | **21**, contre 5 le 16 septembre. Écrit par le cron, **et seulement une fois les trois garde-fous tenus** — voir « Fait — les couvertures dans le cron » au journal |
+| `Volume.couvertureTenteeLe` | **527** tomes essayés, **1** tentative au plus ; **plus aucun tome n'est « jamais essayé »** |
+| Tomes sans image | **72**, dont **64 sans aucun ISBN** — 58 sur `fairy-tail-edition-collector`, 11 sur `ippo-s4`, 2 sur `les-legendaires-saga`, 1 sur le grimoire. Aucun n'est récupérable, voir §5 |
+| `Serie.alias` · `aliasNormalises` | **1 307** libellés · **1 438** formes indexées, formes japonaises comprises |
+| Genres · Thèmes · Cible | **22** valeurs · **187** valeurs · `Shonen` 92 · `Seinen` 30 · `Echi` 7 · `Shojo` 1 |
+| `AliasRecherche` | **6 lignes**, écrites par les rebonds réels de la recherche |
 | `VignetteCatalogue` | **12 382 EAN interrogés**, **7 272 avec une image (59 %)** — mesuré le 10 septembre, le catalogue est couvert |
-| `Edition.creeeParId` | **9 / 122** renseignés. `null` veut dire « venu de l'import » ; ces 9 viennent de `/ajouter` |
-| `Edition.slugMangaNews` | **0 / 122**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
-| Éditions à zéro tome possédé | **7** : les 4 `VENDUE`, plus `bakuman`, `initial-d` et `blackrock-shooter-innocent-soul` |
+| `Edition.creeeParId` | **22 / 135** renseignés. `null` veut dire « venu de l'import » ; ces 22 viennent de `/ajouter` |
+| `Edition.slugMangaNews` | **0 / 135**, et **ce n'est pas ce qui construit le lien** : la page Édition pointe sur une **recherche** manga-news par titre, donc le lien s'affiche toujours |
+| Éditions à zéro tome possédé | **8** |
 | Possessions portant `dateAchat` ou `prixPayeCentimes` | **0** — la V1 ne les écrit pas |
-| `ParutionCatalogue` | **52 009** parutions, **12 880 groupes**, **janvier 2000 → décembre 2026 sans un mois manquant** |
+| `ParutionCatalogue` | **52 238** parutions, **janvier 2000 → février 2027 sans un mois manquant** |
 
 Les quatre lignes de catalogue — `AliasRecherche`, `VignetteCatalogue`, `ParutionCatalogue` et
 les abréviations — sont celles du 10 septembre : `data/backup.json` ne porte pas ces tables,
@@ -1122,6 +1156,16 @@ détail et les cas réels sont dans `JOURNAL.md`.
   rééditions dont le planning décrit un *autre objet physique*, purge de `Sortie` par un import
   qui ne les couvre pas. Corollaire : **le silence d'un import ne vaut pas suppression** — toute
   purge se borne à la fenêtre que le manifeste couvre réellement.
+- **Une absence mesurée n'est pas une absence — les filtres par défaut d'une API sont invisibles.**
+  Le 21 septembre 2026, trois recherches MangaDex ont rendu zéro sur *Demon Slave* et la spec a
+  failli enregistrer « absente, vraisemblablement retirée sur DMCA ». Les trois portaient le même
+  `contentRating` implicite. **Trois requêtes qui partagent un défaut ne font qu'une mesure**, et
+  la seule façon de le voir est de lire la documentation de l'endpoint — c'est la variante API du
+  piège suivant.
+- **Le banc isole la base, pas Cloudflare R2.** `lib/r2.ts` lit le même `.env` quelle que soit la
+  cible de `LOCAL_DATABASE_URL`, donc **une passe d'essai dépose dans le bucket de production**.
+  Sans conséquence quand elle réécrit les mêmes octets au même chemin, mais le cache des
+  couvertures est immuable un an : une image d'essai différente y resterait.
 - **Avant de conclure qu'une API ne sait pas faire quelque chose, chercher sa documentation.**
   « La BnF plafonne à 150 px » a vécu dans ce document du 31 août au 10 septembre, et une sonde
   l'a « confirmée » en devinant le nom du paramètre — `couverture=2`, `3`, `4` au lieu de

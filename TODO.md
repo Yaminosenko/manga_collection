@@ -112,19 +112,21 @@ Ce qui reste :
   le geste système « retour » au bord gauche, et un éventuel saut d'une frame à l'ouverture de
   `/manquants` et `/wishlist` — **ne se sont pas manifestées à l'usage**. Reste de cette liste la
   seule qui n'ait pas été levée : la pastille du compte à 38 px.
-- **Les couvertures** : **1 966 / 1 979** et **15 sorties sur 19**. **Le remplissage n'est plus
-  manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF par EAN
-  puis MangaDex. Les 13 tomes qui restent sont exactement ceux que ses garde-fous refusent :
+- **Les couvertures** : **2 343 / 2 415**, soit 97,0 %, et **33 sorties sur 36**. **Le remplissage
+  n'est plus manuel depuis le 16 septembre 2026** — le cron quotidien acquiert ce qui manque, BnF
+  par EAN puis MangaDex — **et il sert les annonces depuis le 21 septembre**, dans la même passe.
+  Les 72 tomes qui restent sont exactement ceux que ses garde-fous refusent :
 
   | Ce qui manque | Cause |
   |---|---|
+  | `fairy-tail-edition-collector` — **58 tomes** | **57 sans aucun ISBN**, et son marqueur d'édition ferme MangaDex alors même que la série est appariée. Cette fiche vient de `/ajouter` et porte 63 tomes comme l'édition simple : **c'est probablement un artefact de groupe de catalogue**, à vérifier avant de chercher une source |
   | `ippo-s4` t.22–27 · `les-legendaires-saga` t.9 — **7 tomes** | **aucun ISBN en base**, donc rien à demander à la BnF |
-  | `ippo-s4` t.3–7 · `grimoire` t.3 — **6 tomes** | ISBN connu mais **sans notice illustrée**, et **MangaDex leur est fermé par décision** : ce sont un découpage VF et une édition marquée, dont la numérotation n'est pas celle de la série de base |
-  | `les-legendaires-saga` t.13 · `one-piece` t.114 · `radiant` t.20 · `tsugai` t.11 — **4 sorties** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier tome paru |
+  | `ippo-s4` t.3–7 · `grimoire` t.3 — **6 tomes** | ISBN connu mais **sans notice illustrée**. `ippo-s4` est en plus le seul cas où le garde-fou de numérotation est la **seule** protection : il est résolu par son `titreVo` はじめの一歩, donc exactement *Hajime no Ippo* |
+  | `radiant` t.20 — **1 sortie** | **structurel** : pas de dépôt légal avant parution, et MangaDex s'arrête au dernier volume japonais paru |
 
-  Le chemin le plus rentable reste **de trouver un ISBN aux 7 premiers dans `ParutionCatalogue`**,
-  pas de chercher une source de plus. Les 4 sorties se rempliront d'elles-mêmes à la parution,
-  quand le cron les promeut en tome.
+  Le chemin le plus rentable reste **de trouver un ISBN à ceux qui n'en ont pas dans
+  `ParutionCatalogue`**, pas de chercher une source de plus. `radiant` t20 se remplira de lui-même
+  à la parution.
 
   `covers:fetch`, `covers:bnf` et `covers:upload` restent au dépôt et gardent leur usage : un lot
   massif, ou une reprise forcée que le cron ne sait pas demander. Mais **le cas nominal ne passe
@@ -174,9 +176,16 @@ Ce qui reste :
 
 ### Ce qui tourne en arrière-plan, ou pas
 
-- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` en fait deux depuis le
-  16 septembre : promouvoir les sorties dont le mois est clos, puis **acquérir les couvertures
-  manquantes**. Restent les nouveaux tomes parus et la mise à jour d'`editionTerminee`.
+- **Compléter le rafraîchissement de fond de §5.** `app/api/cron/route.ts` en fait trois depuis le
+  21 septembre : matérialiser les tomes parus **sans supprimer leur annonce**, purger les annonces
+  de plus de deux mois, puis **acquérir les couvertures manquantes, annonces comprises**. Restent
+  les nouveaux tomes parus qu'aucune `Sortie` n'annonce, et la mise à jour d'`editionTerminee`.
+- **Le plafond de 80 images par passage n'est justifié nulle part** — ni dans `JOURNAL.md` ni dans
+  le commit qui l'a posé. Mesuré le 21 septembre : ~250 ms par appel BnF, donc 80 tomes tiennent en
+  ~36 s des 45 s du budget, lui-même tenu par le maximum de 60 s d'une fonction Vercel Hobby. Il ne
+  gêne pas aujourd'hui — la file se vide en trois nuits. Le vrai levier, s'il en faut un, est de
+  **paralléliser** la boucle, qui attend le réseau et non le processeur ; mais ça cogne d'autant
+  plus fort sur un service public. Écrire la phrase qui manque plutôt que changer le chiffre.
 - **Dériver les `Sortie` depuis `ParutionCatalogue`** plutôt que du manifeste de planning. C'est
   déjà le cas **à la création** d'une série depuis le 9 septembre ; il reste à le faire pour les
   éditions existantes, et à faire glisser la fenêtre M-1 → M+6 de §13.1.

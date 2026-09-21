@@ -90,10 +90,19 @@ ligne à l'ancienne date, et le groupe se retrouve avec deux lignes pour le mêm
 connue : `tomesParus` d'un candidat se calcule sur les lignes de date passée, donc un tome
 repoussé compte comme paru. Petit, mais ça grossit à chaque fenêtre retéléchargée.
 
-### 5. `npm run covers:fetch` puis `npm run covers:upload`
+### 5. Rien — le cron s'occupe des couvertures
 
-Pour les couvertures des sorties nouvellement créées. Plus indispensable qu'avant — la
-réconciliation ne détruit plus les images existantes — mais les créations en ont besoin.
+**Ne pas lancer `covers:fetch`.** Depuis le 21 septembre 2026, le cron quotidien illustre les
+`Sortie` dans la même passe que les tomes, avec la même chaîne et le même report. La
+réconciliation ne détruit plus d'image, donc il n'y a rien à rattraper.
+
+Et `fetch_covers.py` est à éviter en soi : sa résolution MangaDex passe par un **seuil de
+similarité sur les titres alternatifs**, c'est-à-dire le mécanisme remplacé le 16 septembre après
+deux couvertures fausses. Les garde-fous vivent dans `lib/couvertures.ts`, pas dans le Python.
+
+Pour combler tout de suite plutôt qu'attendre la nuit, appeler `acquerirCouverturesManquantes`
+depuis le poste avec un budget et un plafond plus larges : c'est le même code, sans la limite de
+60 s d'une fonction Vercel.
 
 ## Vérifier avant d'écrire, sur le banc jamais sur Neon
 
