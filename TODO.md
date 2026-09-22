@@ -143,8 +143,20 @@ Ce qui reste :
   jamais utilisé ce champ. Le remplir ne ferait que remplacer une recherche par un lien direct
   vers la fiche — un confort, pas un trou. Le planning ne porte pas les slugs ; il faudrait les
   déduire des titres ou les saisir.
-- **PWA** : le manifeste et les icônes sont faits, **le service worker non**. Rien n'est mis en
-  cache, donc §6 décrit une cible et pas l'état. L'installation, elle, n'attend que le HTTPS.
+- **PWA** : le manifeste, les icônes et **la bannière d'installation** sont faits — cette
+  dernière depuis le 22 septembre 2026, avec un `public/sw.js` qui est un **pur relais** et ne
+  met **rien** en cache. §6 décrit donc toujours une cible et pas l'état : **il n'y a pas de
+  hors-ligne**, et le service worker posé ne sert que l'installabilité.
+
+  **Ce qui reste à éprouver sur la bannière** : le parcours iOS et son retour sur `/acces` au
+  premier lancement de l'icône, la branche WebView (le lien ouvert depuis WhatsApp) et le repli
+  « menu ⋮ ». Android est vérifié, WebAPK confirmé dans *Paramètres → Applications*.
+
+  **Et une question ouverte** : le service worker n'est **pas prouvé nécessaire**. Sur Chrome 153
+  bureau, `beforeinstallprompt` part sur une origine vierge sans lui, contre ce qu'écrit
+  `developer.chrome.com`. Le mesurer sur Android demanderait de le retirer et de redéployer ;
+  tant que ce n'est pas fait, on le garde. **Ce poste ne peut pas trancher** — le téléphone n'y
+  est atteint qu'en HTTP par l'IP, qui n'est pas un contexte sécurisé.
 
   **Les icônes sont celles de Zenkan depuis le 17 septembre 2026** — un Z au pinceau sur fond
   papier. Cinq PNG servis depuis `public/icons/` (3 `any`, 2 `maskable`), plus
@@ -167,7 +179,11 @@ Ce qui reste :
   **Une PWA déjà installée ne se renomme pas toute seule** : il faut désinstaller et
   réinstaller depuis le navigateur.
 - **APK autonome par Bubblewrap** : décidé possible, pas fait. `/.well-known/` est déjà ouvert
-  côté garde ; restent le keystore et `assetlinks.json`.
+  côté garde ; restent le keystore et `assetlinks.json`. **Déclassé le 22 septembre 2026** : c'est
+  la bannière d'installation qui a été construite à sa place, parce que le sideload demande à un
+  non-développeur d'autoriser les « sources inconnues » puis de passer l'avertissement Play
+  Protect — plus d'étapes que le chemin natif — et ne fait rien pour un iPhone. Ce qui le
+  rouvrirait est un besoin que le WebAPK ne couvre pas, pas le confort d'installation.
 - **Thèmes** : **143 valeurs**, dont les 99 françaises d'origine avec leurs coupures d'import
   (`Post` + `apo`, `Super` + `héros`, `Dieux` + `Déesses`, `Combats` / `Combat`) et les anglaises
   venues de MangaBaka sur les 11 séries qui n'en avaient aucune. **Deux langues coexistent donc**,

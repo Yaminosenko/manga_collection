@@ -274,6 +274,8 @@ bas porte la même, de sorte que les deux bords fixes se répondent.
   peut plus réclamer `min-h-dvh` — elle est dans un `flex-1` sous la barre, et 100 dvh la
   pousserait hors du pli. **Et aucun onglet ne s'allume** sur ces pages, faute de savoir d'où
   l'on vient.
+- **Au-dessus de tout ça, depuis le 22 septembre 2026, une bannière d'installation** — voir
+  « La bannière d'installation » ci-dessous.
 - **Chaque panneau garde sa position de défilement**, sous une clé par panneau — et il la garde
   désormais **de lui-même**, chacun étant son propre conteneur défilant.
 
@@ -677,6 +679,61 @@ le reste, elle ne sait pas viser un autre compte. Elle revalide `/compte` et `/c
 alors exactement ce que les autres voient, ce qui est le meilleur retour possible sur un réglage
 dont l'effet est ailleurs. L'interrupteur, lui, dit l'état.
 
+### La bannière d'installation
+
+> **Construite le 22 septembre 2026.** Le motif, les mesures et ce qui reste non vérifié sont
+> dans `JOURNAL.md`.
+
+**Le problème est que les gens n'installent pas.** On leur envoie le lien, ils ouvrent Zenkan
+dans leur navigateur et s'en tiennent là — ce ne sont pas des développeurs. Sur Android,
+« Installer » fait pourtant fabriquer un **WebAPK** par Google : une vraie application dans le
+tiroir, listée dans *Paramètres → Applications*, sans barre d'adresse. Le manifeste cochait déjà
+tous les critères ; **il manquait de le proposer.**
+
+**L'APK autonome par Bubblewrap n'est pas la réponse**, bien que ce soit la demande littérale :
+le sideload demande d'autoriser les « sources inconnues » puis de passer l'avertissement Play
+Protect — plus d'étapes et plus effrayant que le chemin natif — et il ne fait rien pour un iPhone.
+La puce reste dans `TODO.md`.
+
+- **Elle est premier enfant de `.colonne-onglets`, dans le flux, et c'est le seul endroit sûr.**
+  Dans le layout racine elle s'ajouterait au-dessus d'une colonne qui vaut déjà `--hauteur-utile`
+  alors que `<body>` porte déjà `pt-[env(safe-area-inset-top)]` : le document dépasserait la
+  fenêtre et la barre du bas passerait sous le pli. **`OfflineBanner` porte exactement ce défaut**,
+  invisible parce que le hors-ligne n'est jamais éprouvé — c'est la preuve empirique qui a tranché,
+  et elle n'est **pas** corrigée. Sous `(tabs)`, la bannière prend ses 74 px à la piste et les lui
+  rend au rejet : aucun recouvrement, aucun `fixed`, aucun `z-index`.
+- **Elle n'est ni sur `/acces` ni sur `/inscription`, et c'est voulu.** Sur iOS le stockage du mode
+  autonome est **isolé de Safari** : installer avant d'avoir un compte donne une application qui
+  s'ouvre sur une connexion à l'aveugle. Le montage sous `(tabs)` l'obtient sans une condition.
+- **L'écouteur est dans le HTML, pas dans React.** `beforeinstallprompt` peut être émis avant
+  l'hydratation et **n'est jamais rejoué** : un écouteur posé dans un `useEffect` le rate
+  définitivement. Un `<script>` inline du `<head>` le parque sur `window` ; `lib/use-installation.ts`
+  ne fait que le lire, par un `useSyncExternalStore` **sans `useEffect` ni `useState`**, dont
+  l'instantané serveur ment dans le sens du silence — le HTML du serveur ne contient jamais la
+  bannière.
+- **Six formes, et jamais une bannière dont on ne sait pas produire le résultat.** Bouton natif
+  quand l'invite est captée ; le geste Safari sur iOS ; « ouvrez dans Safari » sur les autres
+  navigateurs iOS ; « ouvrez dans Chrome » dans une WebView — le cas du lien reçu par WhatsApp,
+  probablement la première cause réelle du problème ; le repli « menu ⋮ » sur Chromium si
+  l'événement n'arrive pas, **qui remonte tout seul au bouton s'il finit par arriver** ; et
+  `null` partout ailleurs, y compris dès que l'application est installée.
+- **« Plus tard » n'est pas définitif : 7 jours, trois fois au plus.** Le premier refus est un
+  « je ne sais pas encore » — la collection est vide. À la deuxième visite la valeur est visible.
+  Plafond à 4 affichages sur 3 semaines, puis plus rien. Toute installation éteint le mécanisme.
+
+**Un service worker a été posé pour ça** — `public/sw.js`, pur relais, **sans aucun cache**, et
+§6 dit pourquoi ça ne rouvre pas le hors-ligne. **Il n'est pas prouvé nécessaire** : la
+documentation de Chrome dit que l'invite exige encore un gestionnaire `fetch`, mais la mesure du
+22 septembre sur Chrome 153 **bureau** rend l'événement même sur une origine vierge sans service
+worker. Android n'a été éprouvé qu'avec, et **ce poste ne peut pas trancher** — le téléphone n'y
+est atteint qu'en HTTP par l'IP, qui n'est pas un contexte sécurisé. Gardé comme assurance.
+
+**`proxy.ts` doit exclure `sw.js`, et ne le faisait pas.** Le matcher nomme les fichiers publics
+un par un : sans la ligne, un visiteur sans cookie — **tout premier chargement d'un nouvel
+arrivant** — reçoit un 307 vers `/acces` puis du HTML, et `register()` échoue sur le type MIME.
+C'est le piège de §12, et il se contrôle **dans les deux sens** : `/sw.js` rend 200 en
+`application/javascript`, une page d'application rend toujours 307.
+
 ---
 
 ## 5. Données externes
@@ -887,10 +944,18 @@ récupération des couvertures manquantes. Jamais déclenchée par la navigation
 
 ## 6. Mode hors ligne
 
-> **NON IMPLÉMENTÉ au 31 août 2026.** Le service worker n'existe pas, rien n'est mis en cache.
-> Cette section décrit la cible, pas l'état. Relevé en revue : l'usage en librairie — celui qui
-> justifie l'application — ne fonctionne pas hors réseau. À construire ou à assumer
-> explicitement, mais la spec ne doit pas décrire une fonctionnalité absente.
+> **NON IMPLÉMENTÉ au 31 août 2026.** Cette section décrit la cible, pas l'état. Relevé en
+> revue : l'usage en librairie — celui qui justifie l'application — ne fonctionne pas hors
+> réseau. À construire ou à assumer explicitement, mais la spec ne doit pas décrire une
+> fonctionnalité absente.
+>
+> **Rectifié le 22 septembre 2026 : un service worker existe désormais, et il ne change rien
+> à ce qui précède.** `public/sw.js` a été posé pour l'installabilité (§4, la bannière
+> d'installation), **pas** pour le hors-ligne : il ne met **rien** en cache et n'intercepte que
+> les navigations, qu'il relaie telles quelles — ni les couvertures R2, ni `_next/static`, ni
+> les Server Actions ne passent par lui. **Rien n'est donc consultable hors réseau**, et la
+> première ligne de cette section reste vraie. Le jour où l'on voudra le hors-ligne, c'est ce
+> fichier qui l'accueillera, et ce paragraphe qui devra tomber.
 
 Consultation seule.
 

@@ -5473,6 +5473,121 @@ pas d'un tableau de bord.
 
 ---
 
+### Fait — la bannière d'installation, et le service worker qui n'était peut-être pas nécessaire (22 septembre 2026)
+
+**Demande du propriétaire** : les personnes à qui il envoie le lien n'installent pas la PWA et
+ouvrent Zenkan comme un site. Elles ne sont pas développeuses, et leur expliquer le geste à la
+voix ne marche pas. Trois se sont inscrites les 17 et 18 septembre — c'est un besoin mesuré.
+
+**L'APK autonome par Bubblewrap a été écarté d'emblée**, alors que c'était la demande littérale.
+Il est possible et le terrain est prêt depuis le 30 août — `/.well-known/` est hors du matcher de
+`proxy.ts` —, mais le sideload demande à un non-développeur d'autoriser les « sources inconnues »
+puis de passer l'avertissement Play Protect : **plus d'étapes et plus effrayant que le chemin
+natif**, et rien pour un iPhone. Sur Android, « Installer » fait déjà fabriquer un WebAPK par
+Google ; il manquait seulement de le **proposer**. La puce Bubblewrap reste dans `TODO.md`.
+
+#### Le service worker — la mesure du jour, et elle contredit la documentation
+
+Le diagnostic d'ouverture était « le manifeste coche tout, il ne manque qu'une bannière ». **Il
+était incomplet.** `developer.chrome.com/blog/update-install-criteria` distingue deux algorithmes :
+le critère du service worker a été levé **pour l'installation par le menu** (108 mobile, 112
+bureau), mais « the algorithm that displays the install prompt still requires the presence of a
+`fetch()` handler ». `beforeinstallprompt` *est* cet algorithme. Décision prise en connaissance de
+cause : on pose un service worker, **pur relais, sans aucun cache**, pour que §6 reste vraie.
+
+**Puis la mesure a dit l'inverse.** Sur Chrome 153 bureau, origine `127.0.0.1:3001` — vierge,
+n'ayant jamais eu de service worker — et `sw.js` rendant 404, **`beforeinstallprompt` part quand
+même**. Le billet est donc périmé, au moins côté bureau.
+
+| Ce qui a été éprouvé | Résultat |
+|---|---|
+| `localhost:3001`, service worker actif | l'événement part |
+| `localhost:3001`, service worker désenregistré, `sw.js` en 404 | l'événement part |
+| `127.0.0.1:3001`, **origine vierge**, `sw.js` en 404 | **l'événement part** |
+
+**Android n'a été éprouvé qu'avec le service worker**, donc on ne sait pas s'il y était
+nécessaire, et **ce poste ne peut pas le savoir** : le téléphone n'y est atteint qu'en HTTP par
+l'IP, qui n'est pas un contexte sécurisé, et le port USB de l'appareil est cassé, donc le port
+forwarding de `chrome://inspect` n'est pas une issue. Le service worker est **gardé comme
+assurance, pas comme nécessité prouvée**. C'est la sixième fois que « avant de conclure qu'une API
+ne sait pas faire quelque chose, chercher sa documentation » se double de son revers : **une
+documentation n'est pas une mesure non plus.**
+
+#### `proxy.ts` nommait les fichiers publics un par un, et pas `sw.js`
+
+Le piège de §12 s'est representé. Sans exclusion, un visiteur **sans cookie** — c'est-à-dire tout
+premier chargement d'un nouvel arrivant — aurait reçu un 307 vers `/acces` puis du HTML, et
+`register()` aurait échoué sur le type MIME : l'installabilité serait morte avec elle, sans que
+rien ne le signale depuis une session connectée. Contrôlé **dans les deux sens**, en production et
+sans cookie : `/sw.js` rend **200** en `application/javascript`, `/` rend toujours **307** vers
+`/acces`.
+
+#### L'événement précède l'hydratation, donc l'écouteur est dans le HTML
+
+`beforeinstallprompt` peut être émis avant que React ait repris la main, et **il n'est jamais
+rejoué** : un écouteur posé dans un `useEffect` — ou dans le `souscrire` d'un
+`useSyncExternalStore`, appelé après le montage — le rate définitivement. Un `<script>` inline
+dans le `<head>` le parque sur `window` et enregistre le service worker.
+
+Vérifié sur le HTML servi, pas supposé : **le script est rendu en place, non hissé**, et les neuf
+bundles qui le précèdent sont **tous en `async`**, donc il part le premier. C'était la réserve
+ouverte du plan.
+
+`lib/use-installation.ts` n'a **ni `useEffect` ni `useState`** — un seul `useSyncExternalStore`
+dont l'instantané est une **chaîne littérale**, donc stable par construction, et dont l'instantané
+serveur ment dans le sens du silence. Conséquence : le HTML du serveur ne contient **jamais** la
+bannière, donc aucune discordance d'hydratation et aucun bandeau qui clignote chez qui a déjà
+l'application. C'est l'inverse exact du piège de l'`inert` du 17 septembre.
+
+#### Le montage, et le défaut latent d'`OfflineBanner`
+
+La bannière est **premier enfant de `.colonne-onglets`**, dans le flux. Dans le layout racine elle
+s'ajouterait au-dessus d'une colonne qui vaut déjà `--hauteur-utile`, alors que `<body>` porte
+déjà `pt-[env(safe-area-inset-top)]` : le document dépasserait la fenêtre de sa hauteur et la
+barre du bas passerait sous le pli.
+
+**`OfflineBanner` porte exactement ce défaut aujourd'hui.** Hors ligne, sur `/`, `/manquants` et
+`/wishlist`, le document déborde d'environ 29 px. Personne ne l'a vu parce que le mode hors ligne
+n'est jamais éprouvé (§6). **Trouvé, non corrigé** — c'est un autre lot, et c'est la preuve
+empirique qui a tranché le montage.
+
+Elle n'est **ni sur `/acces` ni sur `/inscription`**, et c'est voulu : sur iOS le stockage du mode
+autonome est isolé de Safari, donc installer avant d'avoir un compte donne une application qui
+s'ouvre sur une connexion à l'aveugle. Le montage sous `(tabs)` l'obtient sans une ligne de
+condition.
+
+#### Les chiffres, mesurés sur la Collection, bannière affichée
+
+| | |
+|---|---|
+| `scrollHeight` / `clientHeight` | **911 / 911** — le document ne déborde pas |
+| Hauteur de la bannière | **74 px** |
+| Piste, avec puis sans bannière | **773 → 846** — elle rend exactement ce qu'elle avait pris |
+| Bas de la barre d'onglets | **911**, soit le bas de la fenêtre |
+| Tap sur la pastille Manquants | piste déplacée de **430 px**, URL réécrite |
+| Console | **aucun message** — ni hydratation, ni service worker |
+
+Le report est éprouvé dans ses quatre états : un tap écrit `reports: 1` et la bannière quitte le
+DOM ; un `dernierLe` reculé de huit jours la ramène ; trois reports l'éteignent définitivement ;
+`installee` la tait. Le plafond de 3 borne la nuisance à **4 affichages sur 3 semaines**, puis
+plus rien.
+
+#### La production, et ce qui reste non vérifié
+
+Fusionné dans `main` et déployé le jour même — aucune migration, donc le motif qui impose la
+branche ne s'appliquait pas. Vérifié sur `https://manga-collection-wcj8.vercel.app` : contexte
+sécurisé, service worker **activé**, invite captée, bannière affichée, document sans débordement.
+
+**Le propriétaire a éprouvé le parcours Android complet dans Chrome, et fait le contrôle qui
+compte** : « Zenkan » figure bien dans *Paramètres → Applications*, donc **c'est un WebAPK et pas
+un marque-page à icône**. Sans ce contrôle on ne saurait pas distinguer les deux.
+
+**Ne sont pas vérifiés, et ne doivent pas être écrits comme faits** : le parcours iOS et son
+retour sur `/acces` au premier lancement de l'icône, la branche WebView (le lien ouvert depuis
+WhatsApp), et le repli « menu ⋮ » quand l'événement n'arrive pas.
+
+---
+
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)
 
 `CLAUDE.md` faisait **184 700 caractères**, soit 4,6 fois le seuil au-delà duquel une session
