@@ -403,3 +403,27 @@ export const PLAFOND_COUVERTURES_PAR_PASSAGE = 80;
 export const BUDGET_COUVERTURES_MS = 45_000;
 export const JOURS_AVANT_NOUVEL_ESSAI = [7, 30, 90];
 export const MILLISECONDES_PAR_JOUR = 86_400_000;
+
+export const CHEMIN_SERVICE_WORKER = "/sw.js";
+export const CLE_GLOBALE_INSTALLATION = "__zenkanInstallation";
+export const CLE_STOCKAGE_INSTALLATION = "installation.invite";
+export const REQUETE_AUTONOME = "(display-mode: standalone)";
+export const JOURS_AVANT_RELANCE_INSTALLATION = 7;
+export const DELAI_RELANCE_INSTALLATION_MS =
+  JOURS_AVANT_RELANCE_INSTALLATION * MILLISECONDES_PAR_JOUR;
+export const DELAI_REPLI_INSTALLATION_MS = 4_000;
+export const REPORTS_INSTALLATION_MAX = 3;
+
+export const TITRE_INSTALLATION = `Installer ${NOM_APPLICATION}`;
+export const LIBELLE_INSTALLER = "Installer";
+export const LIBELLE_INSTALLATION_PLUS_TARD = "Plus tard";
+export const MENTION_INSTALLATION_INVITE =
+  "Pour l’ouvrir depuis l’écran d’accueil, sans le navigateur.";
+export const MENTION_INSTALLATION_MENU_CHROME =
+  "Menu de Chrome, puis « Installer l’application ».";
+export const MENTION_INSTALLATION_SAFARI =
+  "Touchez ce bouton en bas de l’écran, puis « Sur l’écran d’accueil ».";
+export const MENTION_INSTALLATION_IOS_AUTRE =
+  "Ouvrez cette page dans Safari pour pouvoir l’installer.";
+export const MENTION_INSTALLATION_WEBVIEW =
+  "Ouvrez cette page dans Chrome pour pouvoir l’installer.";

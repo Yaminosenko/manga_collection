@@ -9,6 +9,9 @@ export const CLASSE_BOUTON =
 export const CLASSE_BOUTON_SOUS_PAGE =
   "hover:border-accent-600 hover:text-accent-200 flex min-h-11 w-full items-center justify-center gap-[8px] rounded-md border border-neutral-800 text-[13px] font-medium tracking-[0.06em] text-neutral-300 uppercase transition-colors";
 
+export const CLASSE_BOUTON_COMPACT =
+  "border-accent text-accent flex min-h-11 flex-none items-center justify-center rounded-md border px-[14px] text-[13px] font-medium tracking-[0.06em] uppercase transition-colors hover:bg-accent/12 active:bg-accent/22";
+
 export const CLASSE_BOUTON_DISCRET =
   "min-h-11 w-full text-[12.5px] text-neutral-500 transition-colors hover:text-neutral-300";
 

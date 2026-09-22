@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { OfflineBanner } from "@/components/offline-banner";
+import { SCRIPT_INSTALLATION } from "@/lib/install-script";
 import {
   COULEUR_FOND_APPLICATION,
   LARGEUR_MAX_APPLICATION,
@@ -33,6 +34,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={`${inter.variable} h-full`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SCRIPT_INSTALLATION }} />
+      </head>
       <body className="bg-bg text-text min-h-full pt-[env(safe-area-inset-top)] antialiased">
         <div
           className="mx-auto w-full"
