@@ -5418,6 +5418,61 @@ et treize classes.
 
 ---
 
+### Fait — le store Vercel Blob vidé et supprimé (22 septembre 2026)
+
+Décidé le 3 septembre, mûr depuis le ~10, porté par `TODO.md` jusqu'ici. **Le tableau de bord
+Vercel refusait la suppression** en renvoyant vers le SDK : un store non vide ne se supprime pas
+depuis l'interface.
+
+**Trois contrôles ont précédé le geste, et c'est eux qui l'autorisaient**, pas la conviction que
+la migration du 3 septembre avait bien tout recopié :
+
+1. **Le code ne référence plus rien.** `@vercel/blob` est désinstallé, aucun import ; les seules
+   occurrences du dépôt sont quatre lignes de ce journal qui racontent la migration.
+2. **La base ne pointe nulle part vers Blob.** Sur les 2 376 `couvertureUrl` non nulles de
+   `Volume`, `Sortie`, `Edition` et `Serie` : **zéro** vers `blob.vercel-storage.com`, 2 376 vers
+   R2, **et un seul hôte en tout**. C'est ce dernier point qui compte — un décompte à zéro ne dit
+   rien d'un reliquat sur un troisième hôte.
+3. **Chaque blob a son jumeau dans R2, à l'octet près.** Les 1 688 chemins du store confrontés un
+   par un aux 2 376 objets de `covers/` : **0 absent, 0 de taille différente**.
+
+Le store portait **1 688 blobs, 40,2 Mo, tous sous `covers/`, tous déposés le 30 août 2026** — et
+ce compte recoupe exactement les 1 688 objets écrits sur R2 le 3 septembre, jour de la migration.
+
+**Le script de purge diffère du snippet officiel sur deux points.** Une **garde par blob** :
+chaque chemin est reconfronté à l'inventaire R2 juste avant sa suppression, et un blob absent est
+refusé plutôt que détruit — le contrôle global vaut pour l'instant où on le fait, la garde vaut
+pour l'instant du geste. Et **une correction d'un défaut de la documentation Vercel** : son
+`deleteAllBlobs` place le `await setTimeout(DELAY_MS)` après le `break` de succès, donc la
+« pause d'une seconde entre les lots » qu'il annonce n'est **jamais** atteinte quand tout se passe
+bien. Passage à blanc d'abord — 1 688 à supprimer, 0 refusé —, puis le réel.
+
+**Vérifié dans les deux sens après coup** : le store rend 0 blob, R2 est **inchangé à l'octet**
+— mêmes 9 653 objets, mêmes 230,9 Mo qu'avant la purge —, et la couverture témoin
+`covers/act-age/1.webp` est toujours servie en 200 avec ses 21 310 octets. Store supprimé ensuite
+depuis le tableau de bord par le propriétaire. **Restent `BLOB_READ_WRITE_TOKEN` et
+`BLOB_STORE_ID` dans `.env`**, désormais morts ; `.env.example` ne les a jamais portés.
+
+#### Établi — les quotas des trois services
+
+Relevé le même jour, et l'occasion de la purge. Les chiffres et ce qu'ils imposent sont passés en
+§7 ; ce qui reste ici est **comment ils ont été obtenus**, parce que deux des trois ne se lisent
+pas d'un tableau de bord.
+
+- **R2 se mesure à la source, par les clés S3 de `.env`.** Un `ListObjectsV2` paginé rend le
+  compte, la taille et la date de chaque objet — d'où l'histogramme d'écritures par jour qui
+  montre le pic du 10 septembre (7 192 objets, le `vignettes:fetch`) et le rythme de croisière du
+  cron, 25 à 227 par jour. Coût du relevé : **10 opérations de classe A**.
+- **Les 242,78 MB du tableau de bord et les 230,9 Mo mesurés sont le même octet.** Cloudflare
+  facture en mégaoctets décimaux (10⁶), le calcul local comptait en mébioctets (2²⁰) :
+  230,9 × 1,048576 = 242,1. **Ne pas lire un écart de 5 % comme une dérive.**
+- **Neon ne se mesure qu'à moitié depuis le poste.** `pg_database_size` rend le stockage, mais
+  **le CU-h — le seul palier vraiment serré — n'est lisible qu'au tableau de bord** ou par un
+  jeton d'API. Idem pour les opérations facturées de R2 et pour tout Vercel : aucun jeton
+  d'analytique n'est posé, et `wrangler`, `vercel` et `neonctl` ne sont pas installés.
+
+---
+
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)
 
 `CLAUDE.md` faisait **184 700 caractères**, soit 4,6 fois le seuil au-delà duquel une session

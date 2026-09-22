@@ -208,9 +208,10 @@ Ce qui reste :
   `/api/cron` répond 500, la promotion des sorties ayant déjà eu lieu. Les écrans, eux, n'en ont
   toujours pas besoin — ils lisent les URL absolues stockées en base. `R2_ENDPOINT` se **recopie
   tel qu'affiché**, jamais reconstruit depuis l'identifiant de compte.
-- **Supprimer le store Vercel Blob**, décidé le 3 septembre, mûr depuis le **~10 septembre 2026**.
-  `del()` est gratuit ; **ne pas ouvrir le navigateur de blobs**, qui consomme le quota
-  d'opérations avancées.
+- ~~**Supprimer le store Vercel Blob**~~ — **fait le 22 septembre 2026**, voir `JOURNAL.md`.
+  Reste à retirer `BLOB_READ_WRITE_TOKEN` et `BLOB_STORE_ID` de `.env`, où ils ne servent plus
+  rien ; côté Vercel, la suppression du store les emporte, **à vérifier une fois** dans les
+  variables d'environnement du projet.
 - **Brancher un domaine personnalisé sur le bucket R2.** L'URL `r2.dev` est **limitée en débit et
   non mise en cache** par Cloudflare. **Ce n'est pas une latence au premier accès** : mesuré le
   11 septembre, 20 requêtes simultanées rendent 20 fois 200 en 501 ms. Ne pas mettre une case vide
@@ -218,6 +219,15 @@ Ce qui reste :
   `covers:migrate` ne réécrit que les URL. Le frein est §7 : un domaine est une dépense
   **certaine et récurrente** (~10 $/an), pas un palier hors d'atteinte, donc l'amendement du
   1er septembre ne le couvre pas.
+
+  **Ce n'est pas urgent, et c'est mesuré : 4 780 lectures sur le mois du 3 septembre au
+  3 octobre**, soit ~160 par jour. Le quota de 10 M est hors de portée d'un facteur 2 000, et le
+  débit que Cloudflare ne publie pas l'est tout autant à ce rythme. **Ce qui rouvrirait la
+  question n'est pas le temps qui passe mais l'ouverture de l'application** — une croissance du
+  nombre de comptes, ou un robot qui énumérerait les couvertures. Le `noindex` couvre le second.
+  Vérifié le 22 septembre : une réponse ne porte **aucun `cf-cache-status`**, donc le constat
+  « non mise en cache » du 3 septembre est confirmé côté en-têtes, et pas seulement lu dans la
+  documentation.
 
   **L'achat d'un nom de domaine `zenkanapp.com` a été posé le 17 septembre 2026 et
   délibérément non tranché** — il vit dans `IDEES.md`, avec ce qu'il débloquerait et ce qu'il

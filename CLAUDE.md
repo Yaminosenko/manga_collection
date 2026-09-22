@@ -924,9 +924,38 @@ allumée en permanence. Tout ce qui suit découle de là.
 | ORM | Prisma | — |
 | Base | PostgreSQL sur Neon | Free — 0,5 Go, 100 CU-h/mois, veille après 5 min |
 | Hébergement | Vercel | Hobby — usage personnel, sans carte, non facturable |
-| Couvertures | Cloudflare R2 | Free — 10 Go, 1 M écritures/mois, egress gratuit, ~39 Mo nécessaires |
+| Couvertures | Cloudflare R2 | Free — 10 Go, 1 M écritures/mois, 10 M lectures/mois, egress gratuit |
 | Accès privé | Garde applicative : un compte par personne, pseudo et mot de passe, inscription libre | Hobby ne sait pas protéger la production |
 | Mobile | PWA installable | — |
+
+**Ce que ça consomme réellement — relevé aux trois tableaux de bord le 22 septembre 2026.** La
+ligne R2 annonçait « ~39 Mo nécessaires » depuis le 1er septembre ; c'est **six fois moins que la
+réalité**, les 7 277 vignettes de catalogue n'existant pas quand la phrase a été écrite. Le
+chiffre est donc remplacé par la mesure, et les autres postes l'accompagnent parce qu'un plan
+sans sa marge ne dit rien.
+
+| Poste | Consommé | Palier | Part |
+|---|---|---|---|
+| R2 — stockage | 242,8 Mo | 10 Go | **2,4 %** |
+| R2 — écritures (classe A) | 9 950 | 1 M/mois | **1,0 %** |
+| R2 — lectures (classe B) | 4 780 | 10 M/mois | **0,05 %** |
+| Neon — calcul | 8,1 CU-h | 100 CU-h/mois | **8,1 %** |
+| Neon — stockage | 0,06 Go | 0,5 Go | **12 %** |
+| Neon — transfert | 0,37 Go | 5 Go/mois | **7,4 %** |
+
+**Les postes ne vieillissent pas au même rythme, et c'est la seule chose à retenir de ce
+tableau.** Le stockage suit le catalogue, pas les comptes : ses 12 % seront encore 12 % à
+cinquante utilisateurs. **Le CU-h, lui, suit le trafic** — 8 CU-h pour 5 comptes, dont une part
+fixe de réveils du cron. **C'est donc lui qui cédera en premier**, vers quelques dizaines de
+comptes actifs, bien avant le stockage, les opérations R2 ou le transfert. La veille après
+5 minutes est exactement ce qui tient cette ligne basse.
+
+**Et le premier mur n'est pas un quota mais le débit de `r2.dev`**, dont le journal du
+3 septembre disait déjà qu'il est limité et non mis en cache. Mesuré le 22 septembre : une
+réponse de couverture ne porte **aucun `cf-cache-status`**, donc rien ne passe par le CDN et
+chaque lecture qui échappe au cache navigateur touche le bucket. À 4 780 lectures par mois c'est
+sans effet, et il reste un facteur 2 000 avant les 10 M — le remède, un domaine personnalisé,
+reste dans `TODO.md` et bute sur la dépense récurrente que §7 n'admet pas.
 
 Alternative écartée : FastAPI + React séparés. Deux déploiements, une couche API à écrire et
 à maintenir, aucun hébergeur gratuit crédible pour la partie Python sans mise en veille longue.
