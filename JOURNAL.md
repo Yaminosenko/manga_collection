@@ -5586,6 +5586,41 @@ un marque-page à icône**. Sans ce contrôle on ne saurait pas distinguer les d
 retour sur `/acces` au premier lancement de l'icône, la branche WebView (le lien ouvert depuis
 WhatsApp), et le repli « menu ⋮ » quand l'événement n'arrive pas.
 
+### Fait — les tomes d'une collection visitée, en lecture seule (23 septembre 2026)
+
+Une ligne de `/communaute/<identifiant>` ouvre désormais `/communaute/<identifiant>/<slug>` :
+la grille de « Mes tomes » avec les possessions de l'hôte, sans aucun geste d'écriture. La règle
+est en §4 « Communauté ». Aucune migration ; construit sur la branche `communaute-tomes`.
+
+| Fichier | Rôle |
+|---|---|
+| `lib/editions.ts` | `chargerTomesDe(slug, utilisateurId)` — volumes, possessions de l'hôte, sorties ; aucun prix ; `null` si non suivie, vendue ou en wish list |
+| `components/volume-grid.tsx` | `lectureSeule` : cases en `<div>`, ni `Tout` ni `Aucun`, mention de lecture seule ; `tomes` passe à `TomeGrille` |
+| `components/collection-row.tsx` | `inerte` devient `href`, son seul appelant était la visite |
+| `app/(tabs)/communaute/[identifiant]/[slug]/` | la page et son `loading.tsx` |
+
+**Vérifié dans Chrome sur `next dev`, connecté, lecture sur Neon :**
+
+- `/communaute/testeur/air-gear` rend `5 / 37`, tomes **1, 2, 3, 4, 6** possédés — exactement
+  les possessions de `testeur` en base. 37 cases, **aucune n'est un `<button>`**, ni `Tout` ni
+  `Aucun`.
+- Un vrai tap sur la case 5, recapturée juste avant : l'écran ne bouge pas et **le journal du
+  serveur n'enregistre aucun `POST`**. Le premier essai, à des coordonnées prises avant un
+  changement d'échelle de la fenêtre, ne prouvait rien — c'est le piège de §12, et il a été
+  refait.
+- Rendent la grille : `testeur/air-gear`, et `tempestl/judge` — non suivie mais possédée, donc
+  en Collection. Ne la rendent pas : `testeur/bakuman` et `testeur/fairy-tail-edition-collector`
+  (wish list), `tempestl/saotome-love-boxing` (vendue), un slug inconnu, un compte inconnu.
+- Ni `prix` ni `Centimes` dans le HTML, charge RSC comprise.
+- La flèche ramène à `/communaute/testeur`, dont les 15 lignes pointent sur la sous-page.
+- Non-régression : ma page `/edition/bleach/tomes` garde ses 74 cases en `<button>`, `Tout`,
+  `Aucun` et sa mention.
+
+**Non vérifié** : le refus d'un compte à `visible = false` — aucun compte ne l'est, et le basculer
+serait une écriture sur Neon. Le chemin est celui de la visite, inchangé. **Le cochage de ma
+propre grille n'a pas été re-tapé**, pour la même raison ; son code n'a pas changé hors du
+`lectureSeule`. Et rien n'a été vu sur un vrai téléphone.
+
 ---
 
 ## Annexe — les raisonnements archivés de `CLAUDE.md` (18 septembre 2026)

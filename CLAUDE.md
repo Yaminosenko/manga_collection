@@ -633,10 +633,9 @@ le monde ; le contrôle est de comparer les deux chemins, et il fait partie de l
 `Nom d'édition · Éditeur`, `X / Y` et la barre à trois zones : c'est la même anatomie de ligne
 que la Collection, par le même composant.
 
-- **Aucune ligne ne mène nulle part.** `CollectionRow` prend une prop `inerte` qui remplace le
-  `<Link>` par un `<div>`. Sans elle, chaque ligne pointerait `/edition/<slug>`, où
-  `chargerEdition` rendrait « cette édition n'existe pas » — le visiteur n'a pas de
-  `SuiviEdition` dessus. Un cul-de-sac, pas une fuite, mais un cul-de-sac quand même.
+- **Une ligne ouvre ses tomes, en lecture seule** — depuis le 23 septembre 2026, voir
+  ci-dessous. `CollectionRow` prend un `href` ; **jamais `/edition/<slug>`**, où `chargerEdition`
+  rendrait « cette édition n'existe pas », le visiteur n'ayant pas de `SuiviEdition` dessus.
 - **Ni valeur totale, ni prix.** `PanelStats` reçoit `prix={null}` : le montant **n'est pas
   calculé côté vue et n'atteint jamais le navigateur**, il n'est pas masqué en CSS. C'est le seul
   endroit où la visite montre moins que la Collection, et c'est le prix de la forme « publique
@@ -655,6 +654,26 @@ que la Collection, par le même composant.
 qu'affichée : toutes les actions de `lib/actions.ts` écrivent sur `idUtilisateurCourant()` et
 **aucune n'accepte un identifiant de compte en paramètre**. Il n'existe donc pas de chemin par
 lequel une visite écrirait chez l'hôte.
+
+#### Ses tomes — `/communaute/<identifiant>/<slug>`
+
+> **Construit le 23 septembre 2026.** La liste disait `11 / 13` sans dire lesquels — le problème
+> même que l'application résout pour sa propre collection (§1).
+
+**La grille de « Mes tomes », en lecture seule, et rien d'autre.** Même composant, `VolumeGrid`,
+avec `lectureSeule` : chaque case est un `<div>` et non un `<button>`, `Tout` / `Aucun` ne sont
+pas rendus, et la mention de pied dit la lecture seule. L'en-tête nomme le compte visité.
+
+- **On ouvre la grille, pas la page Édition.** Celle-ci porte « Modifier l'état », le retrait,
+  et des « Autres éditions » qui mènent à *ma* collection : autant d'impasses pour un visiteur.
+- **La même règle que la liste, appliquée à l'adresse** : `chargerTomesDe` rend `null` — donc
+  `notFound()` — si l'hôte ne suit pas l'édition, si elle est **vendue**, ou si elle est en
+  **wish list**. Sans ça, une adresse devinée ouvrirait ce que la visite a décidé de ne pas
+  montrer. Le compte à `visible = false` est refusé plus tôt, par `compteParIdentifiant`.
+- **Aucun prix n'est lu.** `chargerTomesDe` ne sélectionne ni `prixCentimes` ni
+  `prixDefautCentimes`, et la grille prend des `TomeGrille`, sans prix : rien n'atteint le
+  navigateur, comme `PanelStats prix={null}`.
+- **Pas de comparaison** — « lui l'a, moi non » reste derrière §9 et §13.3.
 
 #### Se retirer — l'interrupteur de `/compte`
 
