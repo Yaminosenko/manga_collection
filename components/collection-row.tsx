@@ -104,20 +104,12 @@ function ContenuLigne({ ligne }: { ligne: LigneCollection }) {
 
 type CollectionRowProps = {
   ligne: LigneCollection;
-  inerte?: boolean;
+  href?: string;
 };
 
-export function CollectionRow({ ligne, inerte = false }: CollectionRowProps) {
-  if (inerte) {
-    return (
-      <div className={CLASSE_LIGNE}>
-        <ContenuLigne ligne={ligne} />
-      </div>
-    );
-  }
-
+export function CollectionRow({ ligne, href = `/edition/${ligne.slug}` }: CollectionRowProps) {
   return (
-    <Link href={`/edition/${ligne.slug}`} className={`${CLASSE_LIGNE} transition-colors hover:bg-text/2`}>
+    <Link href={href} className={`${CLASSE_LIGNE} transition-colors hover:bg-text/2`}>
       <ContenuLigne ligne={ligne} />
     </Link>
   );

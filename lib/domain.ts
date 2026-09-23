@@ -71,6 +71,8 @@ export type Tome = {
   prixCentimes: number | null;
 };
 
+export type TomeGrille = Pick<Tome, "numero" | "possede" | "couvertureUrl">;
+
 export type AutreEdition = {
   slug: string;
   nom: string;
@@ -116,6 +118,16 @@ export type Edition = {
   sorties: SortieAnnoncee[];
   autresEditions: AutreEdition[];
   seriesLiees: SerieLiee[];
+};
+
+export type TomesVisite = {
+  slug: string;
+  nom: string;
+  titre: string;
+  tomesParus: number;
+  editionTerminee: boolean | null;
+  tomes: TomeGrille[];
+  sorties: SortieAnnoncee[];
 };
 
 export type EtatEdition = {

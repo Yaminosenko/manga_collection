@@ -4,11 +4,16 @@ import { useOptimistic, useTransition } from "react";
 import { basculerTome, definirTousLesTomes } from "@/lib/actions";
 import { Cover } from "@/components/cover";
 import { Check } from "@/components/icons";
-import { COLONNES_GRILLE } from "@/lib/constants";
+import {
+  COLONNES_GRILLE,
+  LIBELLE_TOME_MANQUANT,
+  LIBELLE_TOME_POSSEDE,
+  MENTION_TOMES_LECTURE_SEULE,
+} from "@/lib/constants";
 import { formaterMoisSortie } from "@/lib/format";
 import { nombreCasesAParaitre, type SortieAnnoncee } from "@/lib/domain";
 import { useEnLigne } from "@/lib/use-online";
-import type { Tome } from "@/lib/domain";
+import type { TomeGrille } from "@/lib/domain";
 
 type Mutation = { type: "bascule"; numero: number } | { type: "tous"; possede: boolean };
 
@@ -18,7 +23,8 @@ type VolumeGridProps = {
   tomesParus: number;
   aParaitre: boolean;
   sorties: SortieAnnoncee[];
-  tomes: Tome[];
+  tomes: TomeGrille[];
+  lectureSeule?: boolean;
 };
 
 const MENTION_ENREGISTREMENT =
@@ -42,6 +48,7 @@ export function VolumeGrid({
   aParaitre,
   sorties,
   tomes,
+  lectureSeule = false,
 }: VolumeGridProps) {
   const enLigne = useEnLigne();
   const [, demarrerTransition] = useTransition();
@@ -80,22 +87,24 @@ export function VolumeGrid({
         <span className="text-[17px] font-medium text-text">
           {possedes.length} / {tomesParus} tomes
         </span>
-        <div className="flex gap-[7px]">
-          <button
-            type="button"
-            onClick={() => definirTous(true)}
-            className="min-h-11 rounded-md border border-neutral-800 px-[11px] text-[11px] font-medium text-neutral-300 transition-colors hover:border-accent-600 hover:text-accent-200"
-          >
-            Tout
-          </button>
-          <button
-            type="button"
-            onClick={() => definirTous(false)}
-            className="min-h-11 rounded-md border border-neutral-800 px-[11px] text-[11px] font-medium text-neutral-300 transition-colors hover:border-accent-600 hover:text-accent-200"
-          >
-            Aucun
-          </button>
-        </div>
+        {lectureSeule ? null : (
+          <div className="flex gap-[7px]">
+            <button
+              type="button"
+              onClick={() => definirTous(true)}
+              className="min-h-11 rounded-md border border-neutral-800 px-[11px] text-[11px] font-medium text-neutral-300 transition-colors hover:border-accent-600 hover:text-accent-200"
+            >
+              Tout
+            </button>
+            <button
+              type="button"
+              onClick={() => definirTous(false)}
+              className="min-h-11 rounded-md border border-neutral-800 px-[11px] text-[11px] font-medium text-neutral-300 transition-colors hover:border-accent-600 hover:text-accent-200"
+            >
+              Aucun
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-[14px] overflow-y-auto px-[18px] pb-[18px]">
@@ -111,6 +120,7 @@ export function VolumeGrid({
                 key={numero}
                 possede={possede}
                 numero={numero}
+                lectureSeule={lectureSeule}
                 onBasculer={() => basculer(numero)}
               >
                 <span
@@ -191,7 +201,9 @@ export function VolumeGrid({
           </span>
         </div>
 
-        <span className="text-[11px]/[1.5] text-neutral-600">{MENTION_ENREGISTREMENT}</span>
+        <span className="text-[11px]/[1.5] text-neutral-600">
+          {lectureSeule ? MENTION_TOMES_LECTURE_SEULE : MENTION_ENREGISTREMENT}
+        </span>
       </div>
     </>
   );
@@ -200,17 +212,30 @@ export function VolumeGrid({
 function Case({
   possede,
   numero,
+  lectureSeule,
   onBasculer,
   children,
 }: {
   possede: boolean;
   numero: number;
+  lectureSeule: boolean;
   onBasculer: () => void;
   children: React.ReactNode;
 }) {
   const classe = `case-tome relative aspect-cover overflow-hidden rounded-cover ${
     possede ? "case-possede" : "case-manquant"
   }`;
+
+  if (lectureSeule) {
+    return (
+      <div
+        aria-label={`Tome ${numero}, ${possede ? LIBELLE_TOME_POSSEDE : LIBELLE_TOME_MANQUANT}`}
+        className={classe}
+      >
+        {children}
+      </div>
+    );
+  }
 
   return (
     <button

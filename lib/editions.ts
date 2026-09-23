@@ -16,6 +16,7 @@ import type {
   LigneCollection,
   LigneWishList,
   SortiePlanning,
+  TomesVisite,
 } from "@/lib/domain";
 import type { StatutEdition } from "@/lib/generated/prisma/enums";
 
@@ -213,6 +214,71 @@ export async function chargerEdition(slug: string): Promise<Edition | null> {
       .sort(
         (a, b) => ORDRE_LIENS_SERIE.indexOf(a.type) - ORDRE_LIENS_SERIE.indexOf(b.type),
       ),
+  };
+}
+
+export async function chargerTomesDe(
+  slug: string,
+  utilisateurId: string,
+): Promise<TomesVisite | null> {
+  const suivi = await prisma.suiviEdition.findFirst({
+    where: { utilisateurId, edition: { slug } },
+    select: {
+      statut: true,
+      suivie: true,
+      edition: {
+        select: {
+          slug: true,
+          nom: true,
+          tomesParus: true,
+          editionTerminee: true,
+          serie: { select: { titre: true } },
+          volumes: {
+            orderBy: { numero: "asc" },
+            select: {
+              numero: true,
+              couvertureUrl: true,
+              possessions: selectionPossession(utilisateurId),
+            },
+          },
+          sorties: {
+            orderBy: { numero: "asc" },
+            select: { numero: true, date: true, couvertureUrl: true },
+          },
+        },
+      },
+    },
+  });
+
+  if (!suivi || suivi.statut === "VENDUE") {
+    return null;
+  }
+
+  const edition = suivi.edition;
+  const possedes = volumesPossedes(edition.volumes).length;
+
+  if (estEnWishList({ possedes, suivie: suivi.suivie, statut: suivi.statut })) {
+    return null;
+  }
+
+  return {
+    slug: edition.slug,
+    nom: edition.nom,
+    titre: edition.serie.titre,
+    tomesParus: edition.tomesParus,
+    editionTerminee: edition.editionTerminee,
+    tomes: edition.volumes.map((volume) => ({
+      numero: volume.numero,
+      possede: estPossede(volume),
+      couvertureUrl: volume.couvertureUrl,
+    })),
+    sorties: edition.sorties
+      .filter((sortie) => sortie.numero > edition.tomesParus)
+      .map((sortie) => ({
+        numero: sortie.numero,
+        date: sortie.date.toISOString(),
+        couvertureUrl: sortie.couvertureUrl,
+      })),
   };
 }
 

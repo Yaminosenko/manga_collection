@@ -58,7 +58,11 @@ export default async function Page({ params }: PageProps<"/communaute/[identifia
           <>
             <PanelStats stats={stats} prix={null} />
             {collection.lignes.map((ligne) => (
-              <CollectionRow key={ligne.slug} ligne={ligne} inerte />
+              <CollectionRow
+                key={ligne.slug}
+                ligne={ligne}
+                href={`${CHEMIN_COMMUNAUTE}/${compte.identifiant}/${ligne.slug}`}
+              />
             ))}
           </>
         )}

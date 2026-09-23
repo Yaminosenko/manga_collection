@@ -395,6 +395,10 @@ export const LIBELLE_RETOUR_COMMUNAUTE = "Retour à la communauté";
 export const TITRE_SECTION_VISIBILITE = "Visibilité";
 export const LIBELLE_VISIBLE_DANS_COMMUNAUTE = "Visible dans Communauté";
 export const MENTION_COLLECTION_LECTURE_SEULE = "Collection consultée en lecture seule.";
+export const MENTION_TOMES_LECTURE_SEULE = "Tomes consultés en lecture seule.";
+export const LIBELLE_RETOUR_COLLECTION_VISITEE = "Retour à la collection";
+export const LIBELLE_TOME_POSSEDE = "possédé";
+export const LIBELLE_TOME_MANQUANT = "manquant";
 
 export const SOURCE_COUVERTURE_BNF = "bnf";
 export const SOURCE_COUVERTURE_MANGADEX = "mangadex";
